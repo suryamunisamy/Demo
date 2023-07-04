@@ -1,0 +1,19 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PushTokenClient
+import Backbase
+import Foundation
+import Swift
+public protocol PushTokenClientProtocol {
+  func registerToken(deviceId: Swift.String, token: Foundation.Data, completionHandler: @escaping (Swift.Error?) -> Swift.Void)
+  func registerToken(deviceId: Swift.String, token: Swift.String, completionHandler: @escaping (Swift.Error?) -> Swift.Void)
+}
+@objc @_hasMissingDesignatedInitializers public class PushTokenClient : ObjectiveC.NSObject, DBSClient, PushTokenClientProtocol {
+  @objc public var baseURL: Foundation.URL
+  @objc public var dataProvider: DBSDataProvider?
+  convenience public init(stringBaseUri: Swift.String) throws
+  public func registerToken(deviceId: Swift.String, token: Foundation.Data, completionHandler: @escaping (Swift.Error?) -> Swift.Void)
+  public func registerToken(deviceId: Swift.String, token: Swift.String, completionHandler: @escaping (Swift.Error?) -> Swift.Void)
+  @objc override dynamic public init()
+  @objc deinit
+}

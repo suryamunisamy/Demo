@@ -1,0 +1,4 @@
+framework module IdentitySelfEnrollmentJourney {
+  header "IdentitySelfEnrollmentJourney-Swift.h"
+  requires objc
+}

@@ -1,0 +1,11 @@
+framework module RetailPaymentJourney {
+  umbrella header "RetailPaymentJourney.h"
+
+  export *
+  module * { export * }
+}
+
+module RetailPaymentJourney.Swift {
+    header "RetailPaymentJourney-Swift.h"
+    requires objc
+}

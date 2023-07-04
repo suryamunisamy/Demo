@@ -1,0 +1,456 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ActionsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct Action : Swift.Codable, Swift.Equatable {
+  public var enabled: Swift.Bool?
+  public var type: Swift.String
+  public var destination: [Swift.String : Swift.String]?
+  public init(enabled: Swift.Bool? = nil, type: Swift.String, destination: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.Action, rhs: ActionsClient2.Action) -> Swift.Bool
+}
+public struct ActionEventsHistory : Swift.Codable, Swift.Equatable {
+  public var alertName: Swift.String?
+  public var deliveryMethod: Swift.String?
+  public var destinations: [Swift.String]?
+  public var alertDate: Foundation.Date?
+  public var alertText: Swift.String?
+  public init(alertName: Swift.String? = nil, deliveryMethod: Swift.String? = nil, destinations: [Swift.String]? = nil, alertDate: Foundation.Date? = nil, alertText: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionEventsHistory, rhs: ActionsClient2.ActionEventsHistory) -> Swift.Bool
+}
+public struct ActionParent : Swift.Codable, Swift.Equatable {
+  public var type: Swift.String
+  public var destination: [Swift.String : Swift.String]?
+  public init(type: Swift.String, destination: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionParent, rhs: ActionsClient2.ActionParent) -> Swift.Bool
+}
+public struct ActionRecipe : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var userId: Swift.String?
+  public var specificationId: Swift.String
+  public var actions: [ActionsClient2.Action]
+  public var amount: Swift.String?
+  public var arrangementId: Swift.String?
+  public var createdOn: Foundation.Date?
+  public var recurrence: ActionsClient2.Recurrence?
+  public var name: Swift.String?
+  public var active: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, userId: Swift.String? = nil, specificationId: Swift.String, actions: [ActionsClient2.Action], amount: Swift.String? = nil, arrangementId: Swift.String? = nil, createdOn: Foundation.Date? = nil, recurrence: ActionsClient2.Recurrence? = nil, name: Swift.String? = nil, active: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipe, rhs: ActionsClient2.ActionRecipe) -> Swift.Bool
+}
+public struct ActionRecipeGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var userId: Swift.String?
+  public var specificationId: Swift.String
+  public var actions: [ActionsClient2.Action]
+  public var amount: Swift.String?
+  public var arrangementId: Swift.String?
+  public var createdOn: Foundation.Date?
+  public var recurrence: ActionsClient2.Recurrence?
+  public var name: Swift.String?
+  public var active: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, userId: Swift.String? = nil, specificationId: Swift.String, actions: [ActionsClient2.Action], amount: Swift.String? = nil, arrangementId: Swift.String? = nil, createdOn: Foundation.Date? = nil, recurrence: ActionsClient2.Recurrence? = nil, name: Swift.String? = nil, active: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipeGetResponseBody, rhs: ActionsClient2.ActionRecipeGetResponseBody) -> Swift.Bool
+}
+public struct ActionRecipeItemParent : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var active: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String? = nil, active: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipeItemParent, rhs: ActionsClient2.ActionRecipeItemParent) -> Swift.Bool
+}
+public struct ActionRecipePutRequestBody : Swift.Codable, Swift.Equatable {
+  public var actions: [ActionsClient2.ActionParent]
+  public var amount: Swift.String?
+  public var arrangementId: Swift.String?
+  public var recurrence: ActionsClient2.Recurrence?
+  public var name: Swift.String?
+  public var active: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(actions: [ActionsClient2.ActionParent], amount: Swift.String? = nil, arrangementId: Swift.String? = nil, recurrence: ActionsClient2.Recurrence? = nil, name: Swift.String? = nil, active: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipePutRequestBody, rhs: ActionsClient2.ActionRecipePutRequestBody) -> Swift.Bool
+}
+public struct ActionRecipeSpecification : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var type: Swift.String?
+  public var category: Swift.String?
+  public var userDefinable: Swift.Bool?
+  public var actions: [ActionsClient2.SpecificationAction]?
+  public var digestEnabled: Swift.Bool?
+  public var recipeDefaults: ActionsClient2.ActionRecipeSpecificationDefaults?
+  public init(id: Swift.String? = nil, name: Swift.String? = nil, type: Swift.String? = nil, category: Swift.String? = nil, userDefinable: Swift.Bool? = nil, actions: [ActionsClient2.SpecificationAction]? = nil, digestEnabled: Swift.Bool? = nil, recipeDefaults: ActionsClient2.ActionRecipeSpecificationDefaults? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipeSpecification, rhs: ActionsClient2.ActionRecipeSpecification) -> Swift.Bool
+}
+public struct ActionRecipeSpecificationDefaults : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String?
+  public var actions: [ActionsClient2.SpecificationAction]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String? = nil, actions: [ActionsClient2.SpecificationAction]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipeSpecificationDefaults, rhs: ActionsClient2.ActionRecipeSpecificationDefaults) -> Swift.Bool
+}
+public protocol ActionRecipeSpecificationsAPIProtocol {
+  func getActionRecipeSpecificationsCall() throws -> ClientCommon.Call<ActionsClient2.ActionRecipeSpecificationsGetResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class ActionRecipeSpecificationsAPI : ObjectiveC.NSObject, DBSClient, ActionsClient2.ActionRecipeSpecificationsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getActionRecipeSpecificationsCall() throws -> ClientCommon.Call<ActionsClient2.ActionRecipeSpecificationsGetResponseBody>
+  @objc deinit
+}
+public struct ActionRecipeSpecificationsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var actionRecipeSpecifications: [ActionsClient2.ActionRecipeSpecification]?
+  public init(actionRecipeSpecifications: [ActionsClient2.ActionRecipeSpecification]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipeSpecificationsGetResponseBody, rhs: ActionsClient2.ActionRecipeSpecificationsGetResponseBody) -> Swift.Bool
+}
+public protocol ActionRecipesAPIProtocol {
+  func deleteActionRecipeCall(recipeId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getActionRecipeCall(recipeId: Swift.String) throws -> ClientCommon.Call<ActionsClient2.ActionRecipeGetResponseBody>
+  func getActionRecipesCall(specificationId: Swift.String?, active: Swift.Bool?, offset: Swift.Int?, limit: Swift.Int?, orderBy: Swift.String?, direction: ActionsClient2.ActionRecipesAPI.Direction_getActionRecipes?) throws -> ClientCommon.Call<ActionsClient2.ActionRecipesGetResponseBody>
+  func getActionsHistoryCall(offset: Swift.Int?, limit: Swift.Int?) throws -> ClientCommon.Call<ActionsClient2.ActionsHistoryGetResponseBody>
+  func getActionsHistoryByUserCall(userId: Swift.String, serviceAgreementId: Swift.String?, offset: Swift.Int?, limit: Swift.Int?) throws -> ClientCommon.Call<ActionsClient2.ActionsHistoryGetResponseBody>
+  func getPaymentStatusesCall() throws -> ClientCommon.Call<ActionsClient2.PaymentStatusesGetResponseBody>
+  func getPaymentTypesCall() throws -> ClientCommon.Call<ActionsClient2.PaymentTypesGetResponseBody>
+  func postActionRecipesCall(actionRecipesPostRequestBody: ActionsClient2.ActionRecipesPostRequestBody?) throws -> ClientCommon.Call<ActionsClient2.ActionRecipesPostResponseBody>
+  func postActivationRequestCall(recipeId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func postDeactivationRequestCall(recipeId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func putActionRecipeCall(recipeId: Swift.String, actionRecipePutRequestBody: ActionsClient2.ActionRecipePutRequestBody?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func putBatchProcessingCall(batchProcessingPutRequestBody: ActionsClient2.BatchProcessingPutRequestBody?) throws -> ClientCommon.Call<ActionsClient2.BatchProcessingPutResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class ActionRecipesAPI : ObjectiveC.NSObject, DBSClient, ActionsClient2.ActionRecipesAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteActionRecipeCall(recipeId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getActionRecipeCall(recipeId: Swift.String) throws -> ClientCommon.Call<ActionsClient2.ActionRecipeGetResponseBody>
+  public enum Direction_getActionRecipes : Swift.String, Swift.CaseIterable {
+    case asc
+    case desc
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [ActionsClient2.ActionRecipesAPI.Direction_getActionRecipes]
+    public static var allCases: [ActionsClient2.ActionRecipesAPI.Direction_getActionRecipes] {
+      get
+    }
+  }
+  open func getActionRecipesCall(specificationId: Swift.String? = nil, active: Swift.Bool? = nil, offset: Swift.Int? = nil, limit: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: ActionsClient2.ActionRecipesAPI.Direction_getActionRecipes? = nil) throws -> ClientCommon.Call<ActionsClient2.ActionRecipesGetResponseBody>
+  open func getActionsHistoryCall(offset: Swift.Int? = nil, limit: Swift.Int? = nil) throws -> ClientCommon.Call<ActionsClient2.ActionsHistoryGetResponseBody>
+  open func getActionsHistoryByUserCall(userId: Swift.String, serviceAgreementId: Swift.String? = nil, offset: Swift.Int? = nil, limit: Swift.Int? = nil) throws -> ClientCommon.Call<ActionsClient2.ActionsHistoryGetResponseBody>
+  open func getPaymentStatusesCall() throws -> ClientCommon.Call<ActionsClient2.PaymentStatusesGetResponseBody>
+  open func getPaymentTypesCall() throws -> ClientCommon.Call<ActionsClient2.PaymentTypesGetResponseBody>
+  open func postActionRecipesCall(actionRecipesPostRequestBody: ActionsClient2.ActionRecipesPostRequestBody? = nil) throws -> ClientCommon.Call<ActionsClient2.ActionRecipesPostResponseBody>
+  open func postActivationRequestCall(recipeId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func postDeactivationRequestCall(recipeId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func putActionRecipeCall(recipeId: Swift.String, actionRecipePutRequestBody: ActionsClient2.ActionRecipePutRequestBody? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func putBatchProcessingCall(batchProcessingPutRequestBody: ActionsClient2.BatchProcessingPutRequestBody? = nil) throws -> ClientCommon.Call<ActionsClient2.BatchProcessingPutResponseBody>
+  @objc deinit
+}
+public struct ActionRecipesGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var totalCount: Swift.Int64
+  public var actionRecipes: [ActionsClient2.ActionRecipe]
+  public init(totalCount: Swift.Int64, actionRecipes: [ActionsClient2.ActionRecipe])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipesGetResponseBody, rhs: ActionsClient2.ActionRecipesGetResponseBody) -> Swift.Bool
+}
+public struct ActionRecipesPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var userId: Swift.String?
+  public var specificationId: Swift.String
+  public var actions: [ActionsClient2.ActionParent]
+  public var amount: Swift.String?
+  public var arrangementId: Swift.String?
+  public var recurrence: ActionsClient2.Recurrence?
+  public var name: Swift.String?
+  public var active: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(userId: Swift.String? = nil, specificationId: Swift.String, actions: [ActionsClient2.ActionParent], amount: Swift.String? = nil, arrangementId: Swift.String? = nil, recurrence: ActionsClient2.Recurrence? = nil, name: Swift.String? = nil, active: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipesPostRequestBody, rhs: ActionsClient2.ActionRecipesPostRequestBody) -> Swift.Bool
+}
+public struct ActionRecipesPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public init(id: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionRecipesPostResponseBody, rhs: ActionsClient2.ActionRecipesPostResponseBody) -> Swift.Bool
+}
+public struct ActionsHistoryGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var actionEventsHistory: [ActionsClient2.ActionEventsHistory]?
+  public init(actionEventsHistory: [ActionsClient2.ActionEventsHistory]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ActionsHistoryGetResponseBody, rhs: ActionsClient2.ActionsHistoryGetResponseBody) -> Swift.Bool
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [ActionsClient2.ErrorItem]?
+  public init(message: Swift.String, errors: [ActionsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.BadRequestError, rhs: ActionsClient2.BadRequestError) -> Swift.Bool
+}
+public struct BatchProcessingPutRequestBody : Swift.Codable, Swift.Equatable {
+  public var actionRecipes: [ActionsClient2.BatchRecipe]
+  public init(actionRecipes: [ActionsClient2.BatchRecipe])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.BatchProcessingPutRequestBody, rhs: ActionsClient2.BatchProcessingPutRequestBody) -> Swift.Bool
+}
+public struct BatchProcessingPutResponseBody : Swift.Codable, Swift.Equatable {
+  public var actionRecipes: [ActionsClient2.ActionRecipe]
+  public init(actionRecipes: [ActionsClient2.ActionRecipe])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.BatchProcessingPutResponseBody, rhs: ActionsClient2.BatchProcessingPutResponseBody) -> Swift.Bool
+}
+public struct BatchRecipe : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var userId: Swift.String?
+  public var specificationId: Swift.String
+  public var actions: [ActionsClient2.ActionParent]
+  public var amount: Swift.String?
+  public var arrangementId: Swift.String?
+  public var recurrence: ActionsClient2.Recurrence?
+  public var name: Swift.String?
+  public var active: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String? = nil, userId: Swift.String? = nil, specificationId: Swift.String, actions: [ActionsClient2.ActionParent], amount: Swift.String? = nil, arrangementId: Swift.String? = nil, recurrence: ActionsClient2.Recurrence? = nil, name: Swift.String? = nil, active: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.BatchRecipe, rhs: ActionsClient2.BatchRecipe) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public enum DaysOfWeek : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case mon
+  case tue
+  case wed
+  case thu
+  case fri
+  case sat
+  case sun
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ActionsClient2.DaysOfWeek]
+  public static var allCases: [ActionsClient2.DaysOfWeek] {
+    get
+  }
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ErrorItem, rhs: ActionsClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [ActionsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [ActionsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.ForbiddenError, rhs: ActionsClient2.ForbiddenError) -> Swift.Bool
+}
+public enum HoursOfDay : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case _0
+  case _1
+  case _2
+  case _3
+  case _4
+  case _5
+  case _6
+  case _7
+  case _8
+  case _9
+  case _10
+  case _11
+  case _12
+  case _13
+  case _14
+  case _15
+  case _16
+  case _17
+  case _18
+  case _19
+  case _20
+  case _21
+  case _22
+  case _23
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ActionsClient2.HoursOfDay]
+  public static var allCases: [ActionsClient2.HoursOfDay] {
+    get
+  }
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [ActionsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [ActionsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.NotFoundError, rhs: ActionsClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct PaymentStatusesGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var paymentStatuses: [Swift.String]?
+  public init(paymentStatuses: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.PaymentStatusesGetResponseBody, rhs: ActionsClient2.PaymentStatusesGetResponseBody) -> Swift.Bool
+}
+public struct PaymentTypesGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var paymentTypes: [Swift.String]?
+  public init(paymentTypes: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.PaymentTypesGetResponseBody, rhs: ActionsClient2.PaymentTypesGetResponseBody) -> Swift.Bool
+}
+public struct Recurrence : Swift.Codable, Swift.Equatable {
+  public var daysOfWeek: [ActionsClient2.DaysOfWeek]?
+  public var hoursOfDay: [ActionsClient2.HoursOfDay]?
+  public var quartzExpression: Swift.String?
+  public init(daysOfWeek: [ActionsClient2.DaysOfWeek]? = nil, hoursOfDay: [ActionsClient2.HoursOfDay]? = nil, quartzExpression: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.Recurrence, rhs: ActionsClient2.Recurrence) -> Swift.Bool
+}
+public struct SpecificationAction : Swift.Codable, Swift.Equatable {
+  public var type: Swift.String
+  public init(type: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.SpecificationAction, rhs: ActionsClient2.SpecificationAction) -> Swift.Bool
+}
+public enum TemplateType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case regular
+  case digest
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ActionsClient2.TemplateType]
+  public static var allCases: [ActionsClient2.TemplateType] {
+    get
+  }
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [ActionsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [ActionsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ActionsClient2.UnauthorizedError, rhs: ActionsClient2.UnauthorizedError) -> Swift.Bool
+}
+extension ActionsClient2.ActionRecipesAPI.Direction_getActionRecipes : Swift.Equatable {}
+extension ActionsClient2.ActionRecipesAPI.Direction_getActionRecipes : Swift.Hashable {}
+extension ActionsClient2.ActionRecipesAPI.Direction_getActionRecipes : Swift.RawRepresentable {}
+extension ActionsClient2.DaysOfWeek : Swift.Equatable {}
+extension ActionsClient2.DaysOfWeek : Swift.Hashable {}
+extension ActionsClient2.DaysOfWeek : Swift.RawRepresentable {}
+extension ActionsClient2.HoursOfDay : Swift.Equatable {}
+extension ActionsClient2.HoursOfDay : Swift.Hashable {}
+extension ActionsClient2.HoursOfDay : Swift.RawRepresentable {}
+extension ActionsClient2.TemplateType : Swift.Equatable {}
+extension ActionsClient2.TemplateType : Swift.Hashable {}
+extension ActionsClient2.TemplateType : Swift.RawRepresentable {}

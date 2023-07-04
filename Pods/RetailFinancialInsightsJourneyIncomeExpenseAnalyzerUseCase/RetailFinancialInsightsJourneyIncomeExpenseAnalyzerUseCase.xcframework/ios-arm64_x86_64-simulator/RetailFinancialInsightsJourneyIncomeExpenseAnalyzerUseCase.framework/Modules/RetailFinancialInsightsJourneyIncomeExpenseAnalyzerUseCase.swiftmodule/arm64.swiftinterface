@@ -1,0 +1,17 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailFinancialInsightsJourneyIncomeExpenseAnalyzerUseCase
+import Backbase
+import ClientCommon
+import Foundation
+import IncomeExpenseAnalyzerClient1
+import Resolver
+import RetailFinancialInsightsJourney
+import Swift
+import _Concurrency
+final public class RetailIncomeExpenseAnalyzerUseCase : RetailFinancialInsightsJourney.IncomeExpenseAnalyzerUseCase {
+  public init(client: IncomeExpenseAnalyzerClient1.CategoryTotalsAPIProtocol)
+  public init()
+  final public func getSpendingCategoriesTotals(params: RetailFinancialInsightsJourney.SpendingCategoriesParams, completion: @escaping (Swift.Result<RetailFinancialInsightsJourney.Total, RetailFinancialInsightsJourney.ErrorResponse>) -> Swift.Void)
+  @objc deinit
+}

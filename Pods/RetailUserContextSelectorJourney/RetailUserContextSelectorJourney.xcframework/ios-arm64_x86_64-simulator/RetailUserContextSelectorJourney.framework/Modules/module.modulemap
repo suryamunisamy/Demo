@@ -1,0 +1,4 @@
+framework module RetailUserContextSelectorJourney {
+  header "RetailUserContextSelectorJourney-Swift.h"
+  requires objc
+}

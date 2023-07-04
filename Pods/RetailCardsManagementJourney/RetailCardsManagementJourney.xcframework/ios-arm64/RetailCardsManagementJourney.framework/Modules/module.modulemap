@@ -1,0 +1,4 @@
+framework module RetailCardsManagementJourney {
+  header "RetailCardsManagementJourney-Swift.h"
+  requires objc
+}

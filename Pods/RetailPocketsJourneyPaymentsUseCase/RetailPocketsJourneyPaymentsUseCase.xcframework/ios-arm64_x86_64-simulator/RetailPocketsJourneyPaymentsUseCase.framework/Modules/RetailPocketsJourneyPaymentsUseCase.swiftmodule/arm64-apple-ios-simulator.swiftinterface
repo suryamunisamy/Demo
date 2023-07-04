@@ -1,0 +1,15 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailPocketsJourneyPaymentsUseCase
+import ClientCommon
+import Foundation
+import PaymentOrderClient2
+import Resolver
+import RetailPocketsJourney
+import Swift
+import _Concurrency
+final public class PaymentsUseCase : RetailPocketsJourney.PaymentsServiceUseCase {
+  public init(client: PaymentOrderClient2.PaymentOrdersAPIProtocol)
+  final public func postPaymentOrder(_ paymentOrder: RetailPocketsJourney.PaymentOrdersPost, completion: @escaping (Swift.Result<RetailPocketsJourney.PaymentOrdersPostResponse, RetailPocketsJourney.ErrorResponse>) -> Swift.Void)
+  @objc deinit
+}

@@ -1,0 +1,21 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailCardsManagementJourneyTravelNoticesUseCase
+import Backbase
+import CardsClient2
+import ClientCommon
+import Foundation
+import Resolver
+import RetailCardsManagementJourney
+import Swift
+import _Concurrency
+final public class TravelNoticesUseCase : RetailCardsManagementJourney.TravelNoticesServiceUseCase {
+  public typealias CreateTravelNoticeResultHandler = (Swift.Result<RetailCardsManagementJourney.TravelNotice, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public typealias GetTravelNoticesResultHandler = (Swift.Result<[RetailCardsManagementJourney.TravelNotice], RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public typealias DeleteTravelNoticeByIdResultHandler = (Swift.Result<Swift.Void, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public init(client: CardsClient2.TravelNoticesAPIProtocol)
+  final public func createTravelNotice(postParams: RetailCardsManagementJourney.CreateTravelNoticePostParams, completion: @escaping RetailCardsManagementJourneyTravelNoticesUseCase.TravelNoticesUseCase.CreateTravelNoticeResultHandler)
+  final public func getTravelNotices(completion: @escaping RetailCardsManagementJourneyTravelNoticesUseCase.TravelNoticesUseCase.GetTravelNoticesResultHandler)
+  final public func deleteTravelNoticeById(postParams: RetailCardsManagementJourney.DeleteTravelNoticePostParams, completion: @escaping RetailCardsManagementJourneyTravelNoticesUseCase.TravelNoticesUseCase.DeleteTravelNoticeByIdResultHandler)
+  @objc deinit
+}

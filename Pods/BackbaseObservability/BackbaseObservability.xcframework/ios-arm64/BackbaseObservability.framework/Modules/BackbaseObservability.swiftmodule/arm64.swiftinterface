@@ -1,0 +1,49 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BackbaseObservability
+@_exported import BackbaseObservability
+import Foundation
+import Swift
+import _Concurrency
+public enum BasicEventData : Swift.Equatable {
+  case string(Swift.String)
+  case boolean(Swift.Bool)
+  case number(Foundation.NSNumber)
+  public var boolValue: Swift.Bool? {
+    get
+  }
+  public var numberValue: Foundation.NSNumber? {
+    get
+  }
+  public var stringValue: Swift.String? {
+    get
+  }
+  public static func == (a: BackbaseObservability.BasicEventData, b: BackbaseObservability.BasicEventData) -> Swift.Bool
+}
+public protocol Publisher {
+  func publish<T>(event: T)
+}
+public struct ScreenViewEvent {
+  public let name: Swift.String
+  public let journey: Swift.String
+  public let addition: Swift.String?
+  public init(name: Swift.String, journey: Swift.String, addition: Swift.String? = nil)
+}
+public protocol Subscriber {
+  func subscribe<T>(subscriber: Swift.AnyHashable, eventClass: T.Type, completion: @escaping (T) -> Swift.Void)
+  func unsubscribe(subscriber: Swift.AnyHashable)
+}
+public typealias Tracker = BackbaseObservability.Publisher & BackbaseObservability.Subscriber
+public struct TrackerBuilder {
+  public static func create() -> BackbaseObservability.Tracker
+}
+open class UserActionEvent {
+  final public let name: Swift.String
+  final public let journey: Swift.String
+  final public let attributes: [Swift.String : BackbaseObservability.BasicEventData]
+  public init(name: Swift.String, journey: Swift.String, attributes: [Swift.String : BackbaseObservability.BasicEventData] = [:])
+  @objc deinit
+}
+extension BackbaseObservability.UserActionEvent : Swift.Equatable {
+  public static func == (lhs: BackbaseObservability.UserActionEvent, rhs: BackbaseObservability.UserActionEvent) -> Swift.Bool
+}

@@ -1,0 +1,214 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailFinancialInsightsJourney
+import BackbaseDesignSystem
+import BackbaseObservability
+import ClientCommon
+import Foundation
+import Resolver
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+public struct Category : Swift.Equatable {
+  public var category: Swift.String
+  public var totalAmount: RetailFinancialInsightsJourney.Currency
+  public var trend: Swift.Double
+  public var portion: Swift.Double
+  public var transactionCount: Swift.Int?
+  public var additions: [Swift.String : Swift.String]?
+  public init(category name: Swift.String, totalAmount: RetailFinancialInsightsJourney.Currency, trend: Swift.Double, portion: Swift.Double, transactionCount: Swift.Int? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailFinancialInsightsJourney.Category, b: RetailFinancialInsightsJourney.Category) -> Swift.Bool
+}
+extension RetailFinancialInsightsJourney.FinancialInsights {
+  public struct Configuration {
+    public init()
+    public var amountCurrencyFormatter: (_ currency: RetailFinancialInsightsJourney.Currency) -> Swift.String
+    public var insights: RetailFinancialInsightsJourney.Insights.Configuration
+    public var design: RetailFinancialInsightsJourney.FinancialInsights.Design
+    public var strings: RetailFinancialInsightsJourney.FinancialInsights.Strings
+    public var uiDataMapper: RetailFinancialInsightsJourney.FinancialInsights.UIDataMapper
+  }
+}
+public struct Currency : Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailFinancialInsightsJourney.Currency, b: RetailFinancialInsightsJourney.Currency) -> Swift.Bool
+}
+extension RetailFinancialInsightsJourney.FinancialInsights {
+  public struct Design {
+    public var styles: RetailFinancialInsightsJourney.FinancialInsights.Styles
+  }
+}
+public struct ErrorResponse : Swift.Error {
+  public let statusCode: Swift.Int?
+  public let data: Foundation.Data?
+  public let error: Swift.Error?
+  public init(statusCode: Swift.Int? = nil, data: Foundation.Data? = nil, error: Swift.Error? = nil)
+}
+extension RetailFinancialInsightsJourney.ErrorResponse : Swift.Equatable {
+  public static func == (lhs: RetailFinancialInsightsJourney.ErrorResponse, rhs: RetailFinancialInsightsJourney.ErrorResponse) -> Swift.Bool
+}
+extension RetailFinancialInsightsJourney.ErrorResponse {
+  public init(_ errorResponse: ClientCommon.ErrorResponse)
+}
+public struct FinancialInsights {
+}
+extension RetailFinancialInsightsJourney.FinancialInsights {
+  public typealias ErrorFormatter<Error, T> = (Error) -> T where Error : Swift.Error
+  public enum Error : Swift.Error {
+    case noInternet
+    case noData
+    case generic(underlying: Swift.Error)
+    case unknown
+  }
+}
+extension RetailFinancialInsightsJourney.FinancialInsights.Error : Swift.Equatable {
+  public static func == (lhs: RetailFinancialInsightsJourney.FinancialInsights.Error, rhs: RetailFinancialInsightsJourney.FinancialInsights.Error) -> Swift.Bool
+}
+public protocol IncomeExpenseAnalyzerUseCase {
+  func getSpendingCategoriesTotals(params: RetailFinancialInsightsJourney.SpendingCategoriesParams, completion: @escaping (Swift.Result<RetailFinancialInsightsJourney.Total, RetailFinancialInsightsJourney.ErrorResponse>) -> Swift.Void)
+}
+public struct Insights {
+  public static func build(_ navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailFinancialInsightsJourney.Insights {
+  public struct Analytics {
+    public var screenLabel: Swift.String?
+  }
+}
+extension RetailFinancialInsightsJourney.Insights {
+  public struct Configuration {
+    public var strings: RetailFinancialInsightsJourney.Insights.Strings
+    public var analytics: RetailFinancialInsightsJourney.Insights.Analytics
+    public var design: RetailFinancialInsightsJourney.Insights.Design
+    public var uiDataMapper: RetailFinancialInsightsJourney.Insights.UIDataMapper
+  }
+}
+extension RetailFinancialInsightsJourney.Insights {
+  public struct Design {
+    public var styles: RetailFinancialInsightsJourney.Insights.Styles
+    public var loadPeriodAmountShimmerImage: UIKit.UIImage?
+    public var loadCategoriesShimmerImage: UIKit.UIImage?
+    public var previousPeriodIcon: UIKit.UIImage?
+    public var nextPeriodIcon: UIKit.UIImage?
+  }
+}
+extension RetailFinancialInsightsJourney.Insights {
+  public struct Strings {
+    public var accessibility: RetailFinancialInsightsJourney.Insights.Strings.Accessibility
+    public var title: RetailJourneyCommon.LocalizedString
+    public var totalSpendingTitle: RetailJourneyCommon.LocalizedString
+    public var transactionCategoriesSectionTitle: RetailJourneyCommon.LocalizedString
+    public var missingSpendingAmount: RetailJourneyCommon.LocalizedString
+    public var errorIconName: (_ error: RetailFinancialInsightsJourney.FinancialInsights.Error) -> Swift.String
+    public var errorTitle: (_ error: RetailFinancialInsightsJourney.FinancialInsights.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailFinancialInsightsJourney.FinancialInsights.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorFirstActionButtonTitle: (_ error: RetailFinancialInsightsJourney.FinancialInsights.Error) -> RetailJourneyCommon.LocalizedString?
+  }
+}
+extension RetailFinancialInsightsJourney.Insights.Strings {
+  public struct Accessibility {
+    public var previousPeriodTitle: RetailJourneyCommon.LocalizedString
+    public var nextPeriodTitle: RetailJourneyCommon.LocalizedString
+    public var spendingAmountLabel: RetailJourneyCommon.LocalizedString
+    public var spendingAmountMissingLabel: RetailJourneyCommon.LocalizedString
+    public var spendingPeriodLabel: RetailJourneyCommon.LocalizedString
+    public var transactionCategoriesTitleLabel: RetailJourneyCommon.LocalizedString
+    public var transactionCategoriesSpendingAmountLabel: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailFinancialInsightsJourney.Insights {
+  public struct Styles {
+    public var navigationController: (_ controller: UIKit.UINavigationController) -> Swift.Void
+    public var transactionCategoryIcon: (_ iconView: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var transactionCategoriesShimmer: (_ view: BackbaseDesignSystem.ShimmerView) -> Swift.Void
+    public var totalSpendingPeriodLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var totalSpendingAmountLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var totalSpendingAmountShimmer: (_ view: BackbaseDesignSystem.ShimmerView) -> Swift.Void
+    public var totalSpendingTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var transactionCategoryName: (_ label: UIKit.UILabel) -> Swift.Void
+    public var transactionCategoryAmount: (_ label: UIKit.UILabel) -> Swift.Void
+    public var transactionCategoriesSectionTitle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var transactionCategoriesSectionTitleView: (_ view: UIKit.UIView) -> Swift.Void
+    public var stateView: (_ stateView: BackbaseDesignSystem.StateView) -> Swift.Void
+    public var previousPeriodIcon: (_ view: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var nextPeriodIcon: (_ view: BackbaseDesignSystem.IconView) -> Swift.Void
+  }
+}
+extension RetailFinancialInsightsJourney.Insights {
+  public struct UIDataMapper {
+    public var transactionsCategoryMapper: RetailFinancialInsightsJourney.Insights.UIDataMapper.TransactionsCategoryMapper
+    public var spendingPeriodAmount: (_ currency: RetailFinancialInsightsJourney.Currency) -> Swift.String
+    public var spendingPeriodDate: (_ date: Foundation.Date) -> Swift.String
+    public var transactionCategoryAmountCurrency: (_ currency: RetailFinancialInsightsJourney.Currency) -> Swift.String
+  }
+}
+public struct SpendingCategoriesParams {
+  public let creditDebitIndicator: RetailFinancialInsightsJourney.SpendingCategoriesParams.CreditDebitIndicator
+  public let periodStartDate: Foundation.Date
+  public let periodEndDate: Foundation.Date
+  public let intervalStartDay: Swift.Int?
+  public let arrangementIds: [Swift.String]?
+  public let intervalDuration: RetailFinancialInsightsJourney.SpendingCategoriesParams.IntervalDuration?
+  public let parentCategory: Swift.String?
+  public init(creditDebitIndicator: RetailFinancialInsightsJourney.SpendingCategoriesParams.CreditDebitIndicator, periodStartDate: Foundation.Date, periodEndDate: Foundation.Date, intervalStartDay: Swift.Int? = nil, arrangementIds: [Swift.String]? = nil, intervalDuration: RetailFinancialInsightsJourney.SpendingCategoriesParams.IntervalDuration? = nil, parentCategory: Swift.String? = nil)
+}
+extension RetailFinancialInsightsJourney.SpendingCategoriesParams {
+  public enum CreditDebitIndicator : Swift.String {
+    case debit
+    case credit
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum IntervalDuration : Swift.String {
+    case day
+    case week
+    case month
+    case year
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension RetailFinancialInsightsJourney.FinancialInsights {
+  public struct Strings {
+  }
+}
+extension RetailFinancialInsightsJourney.FinancialInsights {
+  public struct Styles {
+  }
+}
+public struct Total : Swift.Equatable {
+  public let currency: RetailFinancialInsightsJourney.Currency
+  public let categories: [RetailFinancialInsightsJourney.Category]
+  public let additions: [Swift.String : Swift.String]?
+  public init(currency: RetailFinancialInsightsJourney.Currency, categories: [RetailFinancialInsightsJourney.Category], additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailFinancialInsightsJourney.Total, b: RetailFinancialInsightsJourney.Total) -> Swift.Bool
+}
+extension RetailFinancialInsightsJourney.Insights.UIDataMapper {
+  public struct TransactionsCategoryMapper {
+    public var transactionCategoryIcon: (_ category: Swift.String) -> UIKit.UIImage?
+    public var transactionCategoryTitle: (_ name: Swift.String) -> Swift.String
+  }
+}
+extension RetailFinancialInsightsJourney.FinancialInsights {
+  public struct UIDataMapper {
+  }
+}
+extension RetailFinancialInsightsJourney.SpendingCategoriesParams.CreditDebitIndicator : Swift.Equatable {}
+extension RetailFinancialInsightsJourney.SpendingCategoriesParams.CreditDebitIndicator : Swift.Hashable {}
+extension RetailFinancialInsightsJourney.SpendingCategoriesParams.CreditDebitIndicator : Swift.RawRepresentable {}
+extension RetailFinancialInsightsJourney.SpendingCategoriesParams.IntervalDuration : Swift.Equatable {}
+extension RetailFinancialInsightsJourney.SpendingCategoriesParams.IntervalDuration : Swift.Hashable {}
+extension RetailFinancialInsightsJourney.SpendingCategoriesParams.IntervalDuration : Swift.RawRepresentable {}

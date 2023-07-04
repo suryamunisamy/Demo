@@ -1,0 +1,317 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailUpcomingPaymentsJourney
+import Backbase
+import BackbaseDesignSystem
+import ClientCommon
+import Foundation
+import PaymentOrderClient2
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import RxCocoa
+import RxDataSources
+import RxRelay
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+public struct Amount {
+  public init(value: Foundation.Decimal, currencyCode: Swift.String)
+  public let value: Foundation.Decimal
+  public let currencyCode: Swift.String
+}
+extension RetailUpcomingPaymentsJourney.UpcomingPayments {
+  public struct AmountFormatter {
+    public init()
+    public var useCurrencyISOCode: Swift.Bool
+    public var enablePositiveSign: Swift.Bool
+  }
+}
+extension Foundation.Bundle {
+  public static let upcomingPayments: Foundation.Bundle?
+}
+public struct CounterpartyAccount {
+  @available(*, deprecated, message: "init(name: String, identifier: String?, accountNumber: String?)")
+  public init(name: Swift.String, accountNumber: Swift.String?)
+  public init(name: Swift.String, identifier: Swift.String?, accountNumber: Swift.String?)
+  public let name: Swift.String
+  public let accountNumber: Swift.String?
+  public let identifier: Swift.String?
+}
+extension RetailUpcomingPaymentsJourney.UpcomingPayments {
+  public struct Formatters {
+    public init()
+    public var paymentsListAmountFormatter: RetailUpcomingPaymentsJourney.UpcomingPayments.AmountFormatter
+    public var paymentDetailsAmountFormatter: RetailUpcomingPaymentsJourney.UpcomingPayments.AmountFormatter
+  }
+}
+public protocol GetUpcomingPaymentsUseCase {
+  func cancelPayment(identifier paymentIdentifier: Swift.String, version paymentVersion: Swift.Int, _ whenDone: @escaping RetailUpcomingPaymentsJourney.OnResult<Swift.Bool, RetailUpcomingPaymentsJourney.UpcomingPaymentsError>)
+  func getPayments(status: [Swift.String], executionDate: Foundation.Date, from: Swift.Int, size: Swift.Int, _ whenDone: @escaping RetailUpcomingPaymentsJourney.OnResult<[RetailUpcomingPaymentsJourney.Payment], RetailUpcomingPaymentsJourney.UpcomingPaymentsError>)
+}
+public struct IconConfiguration {
+  public init(image: UIKit.UIImage?, backgroundColor: UIKit.UIColor, tintColor: UIKit.UIColor)
+}
+@objc @_inheritsConvenienceInitializers @available(*, deprecated, message: "This class will no longer be public in the future, please discontinue use.")
+public class NetworkDataProvider : ObjectiveC.NSObject, DBSDataProvider {
+  @objc public func execute(_ request: Foundation.URLRequest, completionHandler: ((Foundation.URLResponse?, Foundation.Data?, Swift.Error?) -> Swift.Void)? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct OriginatorAccount {
+  @available(*, deprecated, message: "init(name: String, identifier: String?, accountNumber: String?)")
+  public init(name: Swift.String)
+  public init(name: Swift.String, identifier: Swift.String?, accountNumber: Swift.String?)
+  public let name: Swift.String
+  public let identifier: Swift.String?
+  public let accountNumber: Swift.String?
+}
+public struct Payment {
+  public init(identifier: Swift.String, amount: RetailUpcomingPaymentsJourney.Amount, counterpartyAccount: RetailUpcomingPaymentsJourney.CounterpartyAccount, originatorAccount: RetailUpcomingPaymentsJourney.OriginatorAccount, schedule: RetailUpcomingPaymentsJourney.Schedule, requestedExecutionDate: Foundation.Date?, status: RetailUpcomingPaymentsJourney.PaymentStatus, reasonCode: Swift.String?, type: Swift.String?, version: Swift.Int, description: Swift.String?, paymentSetupId: Swift.String?)
+  public let identifier: Swift.String
+  public let amount: RetailUpcomingPaymentsJourney.Amount
+  public let counterpartyAccount: RetailUpcomingPaymentsJourney.CounterpartyAccount
+  public let originatorAccount: RetailUpcomingPaymentsJourney.OriginatorAccount
+  public let schedule: RetailUpcomingPaymentsJourney.Schedule
+  public let requestedExecutionDate: Foundation.Date?
+  public let status: RetailUpcomingPaymentsJourney.PaymentStatus
+  public let reasonCode: Swift.String?
+  public let type: Swift.String?
+  public let version: Swift.Int
+  public let description: Swift.String?
+  public let paymentSetupId: Swift.String?
+}
+extension RetailUpcomingPaymentsJourney.Payment : Swift.Equatable {
+  public static func == (lhs: RetailUpcomingPaymentsJourney.Payment, rhs: RetailUpcomingPaymentsJourney.Payment) -> Swift.Bool
+}
+extension RetailUpcomingPaymentsJourney.PaymentDetails {
+  public struct UIDataMaper {
+    public init()
+    public var summaryStackViewProvider: (_ payment: RetailUpcomingPaymentsJourney.Payment) -> RetailUpcomingPaymentsJourney.SummaryStackViewInfoModel
+    public var badgeNameProvider: (_ payment: RetailUpcomingPaymentsJourney.Payment) -> Swift.String?
+    public var detailListEntryTypesProvider: (_ payment: RetailUpcomingPaymentsJourney.Payment) -> [RetailUpcomingPaymentsJourney.PaymentDetailsEntryType]
+    public var detailListItemProvider: (_ payment: RetailUpcomingPaymentsJourney.Payment, _ entryType: RetailUpcomingPaymentsJourney.PaymentDetailsEntryType) -> RetailUpcomingPaymentsJourney.PaymentDetailsListItemModel?
+  }
+}
+public struct PaymentDetails {
+  public init()
+  public static func build(payment: RetailUpcomingPaymentsJourney.Payment, configuration: RetailUpcomingPaymentsJourney.UpcomingPayments.Configuration, navigationController: UIKit.UINavigationController, updateListCompletion: @escaping (Swift.Bool) -> Swift.Void) -> UIKit.UIViewController
+}
+extension RetailUpcomingPaymentsJourney.PaymentDetails {
+  public struct Configuration {
+    public init()
+    public var dateFormatter: RetailUpcomingPaymentsJourney.DateFormatting
+    public var uiDataMapper: RetailUpcomingPaymentsJourney.PaymentDetails.UIDataMaper
+    public var design: RetailUpcomingPaymentsJourney.PaymentDetails.Design
+    public var router: RetailUpcomingPaymentsJourney.PaymentDetails.Router
+  }
+}
+extension RetailUpcomingPaymentsJourney.PaymentDetails {
+  public struct Design {
+    public init()
+    public var deleteButtonImage: UIKit.UIImage?
+    public var deleteButtonColor: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button>
+    public var deleteButtonTintColor: UIKit.UIColor
+    public var deleteButtonTextStyle: BackbaseDesignSystem.DesignSystem.LabelStyle
+    public var editButtonImage: UIKit.UIImage?
+    public var editButtonColor: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button>
+    public var editButtonTintColor: UIKit.UIColor
+    public var editButtonTextStyle: BackbaseDesignSystem.DesignSystem.LabelStyle
+    public var footerLabelTextSyle: BackbaseDesignSystem.DesignSystem.LabelStyle
+    public var badgeStyle: (_ status: RetailUpcomingPaymentsJourney.PaymentStatus) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge>?
+    public var detailItemTitleTextStyle: BackbaseDesignSystem.DesignSystem.LabelStyle
+    public var detailItemSubtitleTextStyle: BackbaseDesignSystem.DesignSystem.LabelStyle
+  }
+}
+public enum PaymentDetailsEntryType {
+  case fromAccount
+  case recipientAccountNumber
+  case recipientContactDetails
+  case startDate
+  case endDate
+  case frequency
+  case numberOfPayment
+  case description
+  case securityQuestion
+  case confirmationNumber
+  case sentDate
+  public static func == (a: RetailUpcomingPaymentsJourney.PaymentDetailsEntryType, b: RetailUpcomingPaymentsJourney.PaymentDetailsEntryType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct PaymentDetailsListItemModel {
+  public let title: Swift.String
+  public let subtitle: Swift.String
+  public init(title: Swift.String, subtitle: Swift.String)
+}
+public enum EditPaymentCompletionState {
+  case success
+  case failed
+  case cancel
+  public static func == (a: RetailUpcomingPaymentsJourney.EditPaymentCompletionState, b: RetailUpcomingPaymentsJourney.EditPaymentCompletionState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension RetailUpcomingPaymentsJourney.PaymentDetails {
+  public struct Router {
+    public init()
+    public var didTapEditPayment: ((UIKit.UINavigationController) -> (RetailUpcomingPaymentsJourney.Payment, @escaping (RetailUpcomingPaymentsJourney.EditPaymentCompletionState) -> Swift.Void) -> Swift.Void)?
+  }
+}
+public enum PaymentStatus {
+  case draft
+  case entered
+  case ready
+  case accepted
+  case processed
+  case rejected
+  case cancelled
+  case cancellationPending
+  case unknown
+  public static func == (a: RetailUpcomingPaymentsJourney.PaymentStatus, b: RetailUpcomingPaymentsJourney.PaymentStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public typealias OnResult<T, E> = (Swift.Result<T, E>) -> Swift.Void where E : Swift.Error
+public class RetailGetUpcomingPaymentsUseCase : RetailUpcomingPaymentsJourney.GetUpcomingPaymentsUseCase {
+  public init()
+  public func getPayments(status: [Swift.String], executionDate: Foundation.Date, from: Swift.Int, size: Swift.Int, _ whenDone: @escaping RetailUpcomingPaymentsJourney.OnResult<[RetailUpcomingPaymentsJourney.Payment], RetailUpcomingPaymentsJourney.UpcomingPaymentsError>)
+  public func cancelPayment(identifier paymentIdentifier: Swift.String, version paymentVersion: Swift.Int, _ whenDone: @escaping RetailUpcomingPaymentsJourney.OnResult<Swift.Bool, RetailUpcomingPaymentsJourney.UpcomingPaymentsError>)
+  @objc deinit
+}
+public enum Frequency : Swift.String {
+  case once
+  case daily
+  case weekly
+  case biweekly
+  case monthly
+  case quarterly
+  case yearly
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Schedule {
+  public init(nextExecutionDate: Foundation.Date?, frequency: RetailUpcomingPaymentsJourney.Frequency, endDate: Foundation.Date?, startDate: Foundation.Date?, numberOfPayment: Swift.Int?)
+  public let nextExecutionDate: Foundation.Date?
+  public let frequency: RetailUpcomingPaymentsJourney.Frequency
+  public let endDate: Foundation.Date?
+  public let startDate: Foundation.Date?
+  public let numberOfPayment: Swift.Int?
+}
+public protocol DateFormatting {
+  func format(date: Foundation.Date, style: Foundation.DateFormatter.Style) -> Swift.String
+}
+public struct SummaryStackViewInfoModel {
+  public let name: Swift.String
+  public let amountFormatter: BackbaseDesignSystem.DesignSystem.Formatting.AmountOptions
+  public let scheduleInfo: Swift.String?
+  public let additionalInfo: Swift.String?
+  public init(name: Swift.String, amountFormatter: BackbaseDesignSystem.DesignSystem.Formatting.AmountOptions, scheduleInfo: Swift.String?, additionalInfo: Swift.String?)
+}
+extension RetailUpcomingPaymentsJourney.UpcomingPayments {
+  public struct Strings {
+    public init()
+    public var listNavigationTitle: RetailJourneyCommon.LocalizedString
+    public var loadingViewTitle: RetailJourneyCommon.LocalizedString
+    public var listScheduleDate: (Foundation.Date) -> (Swift.String)
+    public var listScheduleDateRecurringUntil: (Foundation.Date, RetailJourneyCommon.LocalizedString, Foundation.Date) -> (Swift.String)
+    public var listScheduleRecurringUntil: (RetailJourneyCommon.LocalizedString, Foundation.Date) -> (Swift.String)
+    public var listScheduleDateRecurring: (Foundation.Date, RetailJourneyCommon.LocalizedString) -> (Swift.String)
+    public var listScheduleFrequency: (RetailJourneyCommon.LocalizedString) -> (Swift.String)
+    public var endOfListDescription: RetailJourneyCommon.LocalizedString
+    public var dialogDeleteTitle: RetailJourneyCommon.LocalizedString
+    public var dialogDeleteMessage: RetailJourneyCommon.LocalizedString
+    public var dialogDeleteActionCancelTitle: RetailJourneyCommon.LocalizedString
+    public var dialogDeleteActionKeepItTitle: RetailJourneyCommon.LocalizedString
+    public var dialogDeleteActionDeleteTitle: RetailJourneyCommon.LocalizedString
+    public var dialogSwipeActionDeleteTitle: RetailJourneyCommon.LocalizedString
+    public var emptyStateTitle: RetailJourneyCommon.LocalizedString
+    public var emptyStateMessage: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailureActionTitle: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailureTitle: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailureSubtitle: RetailJourneyCommon.LocalizedString
+    public var noInternetTitle: RetailJourneyCommon.LocalizedString
+    public var noInternetSubtitle: RetailJourneyCommon.LocalizedString
+    public var errorNoInternetActionTitle: RetailJourneyCommon.LocalizedString
+    public var onceFrequency: RetailJourneyCommon.LocalizedString
+    public var dailyFrequency: RetailJourneyCommon.LocalizedString
+    public var weeklyFrequency: RetailJourneyCommon.LocalizedString
+    public var biweeklyFrequency: RetailJourneyCommon.LocalizedString
+    public var monthlyFrequency: RetailJourneyCommon.LocalizedString
+    public var quarterlyFrequency: RetailJourneyCommon.LocalizedString
+    public var yearlyFrequency: RetailJourneyCommon.LocalizedString
+    public var uknownFrequency: RetailJourneyCommon.LocalizedString
+    public var detailHeaderTo: (Swift.String) -> (Swift.String)
+    public var detailHeaderScheduledFor: (Foundation.Date) -> (Swift.String)
+    public var detailHeaderActionDeleteTitle: RetailJourneyCommon.LocalizedString
+    public var detailHeaderActionEditTitle: RetailJourneyCommon.LocalizedString
+    public var detailHeaderAcceptedTitle: RetailJourneyCommon.LocalizedString
+    public var detailHeaderSentOn: RetailJourneyCommon.LocalizedString
+    public var detailHeaderSent: RetailJourneyCommon.LocalizedString
+    public var detailFromAccount: RetailJourneyCommon.LocalizedString
+    public var detailRecipientAccountNumber: RetailJourneyCommon.LocalizedString
+    public var detailrecipientContactDetails: RetailJourneyCommon.LocalizedString
+    public var detailStartDate: RetailJourneyCommon.LocalizedString
+    public var detailEndDate: RetailJourneyCommon.LocalizedString
+    public var detailFrequency: RetailJourneyCommon.LocalizedString
+    public var detailNumberOfTranfers: RetailJourneyCommon.LocalizedString
+    public var detailDescription: RetailJourneyCommon.LocalizedString
+    public var detailSentDate: RetailJourneyCommon.LocalizedString
+    public var detailSecurityQuestion: RetailJourneyCommon.LocalizedString
+    public var detailConfirmationNumber: RetailJourneyCommon.LocalizedString
+    public var detailCanNotEditOrDeleteDescription: RetailJourneyCommon.LocalizedString
+    public var detailCanNotEditDescription: RetailJourneyCommon.LocalizedString
+    public var cancelPaymentFailureTitle: RetailJourneyCommon.LocalizedString
+    public var cancelPaymentFailureMessage: RetailJourneyCommon.LocalizedString
+    public var cancelPaymentFailureActionTitle: RetailJourneyCommon.LocalizedString
+    public var cancelPaymentNoInternetTitle: RetailJourneyCommon.LocalizedString
+    public var cancelPaymentNoInternetMessage: RetailJourneyCommon.LocalizedString
+    public var cancelPaymentNoInternetActionTitle: RetailJourneyCommon.LocalizedString
+    public var segmentedControlScheduleTitle: RetailJourneyCommon.LocalizedString
+    public var paymentStatus: (_ status: RetailUpcomingPaymentsJourney.PaymentStatus) -> Swift.String
+  }
+}
+public struct UpcomingPayments {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailUpcomingPaymentsJourney.UpcomingPayments {
+  public struct Configuration {
+    public init()
+    public var strings: RetailUpcomingPaymentsJourney.UpcomingPayments.Strings
+    public var formatters: RetailUpcomingPaymentsJourney.UpcomingPayments.Formatters
+    public var iconListConfiguration: (RetailUpcomingPaymentsJourney.Frequency) -> RetailUpcomingPaymentsJourney.IconConfiguration
+    public var paymentDetails: RetailUpcomingPaymentsJourney.PaymentDetails.Configuration
+  }
+}
+public enum UpcomingPaymentsError : Swift.Error {
+  case failed
+  case noInternet
+  public static func == (a: RetailUpcomingPaymentsJourney.UpcomingPaymentsError, b: RetailUpcomingPaymentsJourney.UpcomingPaymentsError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension RetailUpcomingPaymentsJourney.PaymentDetailsEntryType : Swift.Equatable {}
+extension RetailUpcomingPaymentsJourney.PaymentDetailsEntryType : Swift.Hashable {}
+extension RetailUpcomingPaymentsJourney.EditPaymentCompletionState : Swift.Equatable {}
+extension RetailUpcomingPaymentsJourney.EditPaymentCompletionState : Swift.Hashable {}
+extension RetailUpcomingPaymentsJourney.PaymentStatus : Swift.Equatable {}
+extension RetailUpcomingPaymentsJourney.PaymentStatus : Swift.Hashable {}
+extension RetailUpcomingPaymentsJourney.Frequency : Swift.Equatable {}
+extension RetailUpcomingPaymentsJourney.Frequency : Swift.Hashable {}
+extension RetailUpcomingPaymentsJourney.Frequency : Swift.RawRepresentable {}
+extension RetailUpcomingPaymentsJourney.UpcomingPaymentsError : Swift.Equatable {}
+extension RetailUpcomingPaymentsJourney.UpcomingPaymentsError : Swift.Hashable {}

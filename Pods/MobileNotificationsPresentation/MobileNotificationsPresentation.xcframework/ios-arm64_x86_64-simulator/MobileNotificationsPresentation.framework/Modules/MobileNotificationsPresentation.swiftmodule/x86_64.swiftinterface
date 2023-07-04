@@ -1,0 +1,96 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MobileNotificationsPresentation
+import CoreGraphics
+import Foundation
+import MobileNotificationsCore
+import Swift
+import UIKit
+import UserNotifications
+import _Concurrency
+public protocol NotificationsCacher : AnyObject {
+  var appStateProvider: MobileNotificationsCore.AppStateProvider { get set }
+  var delegate: MobileNotificationsPresentation.NotificationsCacherDelegate? { get set }
+  func canHandleNotification(response: MobileNotificationsCore.MNNotificationResponse, notification: MobileNotificationsCore.PushNotification) -> Swift.Bool
+  func showCachedNotificationIfExist()
+}
+public protocol NotificationsCacherDelegate : AnyObject {
+  func handleCachedNotification(response: MobileNotificationsCore.MNNotificationResponse, notification: MobileNotificationsCore.PushNotification)
+}
+public class DefaultNotificationsCacher {
+  public var appStateProvider: MobileNotificationsCore.AppStateProvider
+  weak public var delegate: MobileNotificationsPresentation.NotificationsCacherDelegate?
+  public init(appStateProvider: MobileNotificationsCore.AppStateProvider)
+  @objc deinit
+}
+extension MobileNotificationsPresentation.DefaultNotificationsCacher : MobileNotificationsPresentation.NotificationsCacher {
+  public func canHandleNotification(response: MobileNotificationsCore.MNNotificationResponse, notification: MobileNotificationsCore.PushNotification) -> Swift.Bool
+  public func showCachedNotificationIfExist()
+}
+@_hasMissingDesignatedInitializers public class NudgeManager {
+  public static let shared: MobileNotificationsPresentation.NudgeManager
+  public func queueNudge(title: Swift.String, subtitle: Swift.String, nudgeDuration: Swift.Double = 2, icon: UIKit.UIImage?, configuration: MobileNotificationsCore.UINotificationConfiguration?, expanded: Swift.Bool = false, tapHandler: ((MobileNotificationsPresentation.MNNudgeProtocol) -> Swift.Void)? = nil, getContentView: ((MobileNotificationsPresentation.MNNudgeProtocol) -> UIKit.UIView)? = nil)
+  public func dismissCurrentNudge(clearQueue: Swift.Bool = false)
+  @objc deinit
+}
+public class DefaultNotificationHandlerProvider : MobileNotificationsCore.NotificationHandlerProvider {
+  public var handlers: [MobileNotificationsCore.NotificationHandler]
+  public var notificationsCacher: MobileNotificationsPresentation.NotificationsCacher?
+  public var routingForCategoryList: [MobileNotificationsCore.Routing]
+  public init(iconResolver: @escaping MobileNotificationsPresentation.IconResolver, route: MobileNotificationsPresentation.PushNotificationRouter? = nil, uiConfigurationResolver: MobileNotificationsPresentation.UIConfigurationResolver? = nil, handlers: [MobileNotificationsCore.NotificationHandler] = [], notificationsCacher: MobileNotificationsPresentation.NotificationsCacher? = nil)
+  public func provide(for routing: MobileNotificationsCore.Routing?) -> MobileNotificationsCore.NotificationHandler?
+  @objc deinit
+}
+extension MobileNotificationsPresentation.DefaultNotificationHandlerProvider : MobileNotificationsPresentation.NotificationsCacherDelegate {
+  public func handleCachedNotification(response: MobileNotificationsCore.MNNotificationResponse, notification: MobileNotificationsCore.PushNotification)
+}
+extension MobileNotificationsCore.UINotificationConfiguration {
+  public static func getDefault(isDark: Swift.Bool) -> MobileNotificationsCore.UINotificationConfiguration
+}
+public class UINotificationExpandable : MobileNotificationsCore.UINotification {
+  public var notification: MobileNotificationsCore.PushNotification
+  public var icon: UIKit.UIImage
+  public var configuration: MobileNotificationsCore.UINotificationConfiguration?
+  public var isContentExpanded: Swift.Bool
+  final public let getContentView: ((MobileNotificationsPresentation.MNNudgeProtocol) -> UIKit.UIView)
+  public init(notification: MobileNotificationsCore.PushNotification, icon: UIKit.UIImage, configuration: MobileNotificationsCore.UINotificationConfiguration? = nil, isContentExpanded: Swift.Bool = false, getContentView: @escaping ((MobileNotificationsPresentation.MNNudgeProtocol) -> UIKit.UIView))
+  @objc deinit
+}
+public typealias IconResolver = (MobileNotificationsCore.PushNotification.Level, MobileNotificationsCore.Routing?) -> UIKit.UIImage
+public typealias UIConfigurationResolver = ((MobileNotificationsCore.PushNotification.Level, MobileNotificationsCore.Routing?) -> MobileNotificationsCore.UINotificationConfiguration?)
+public typealias PushNotificationRouter = (MobileNotificationsCore.PushNotification) -> Swift.Void
+public class DefaultNotificationHandler : MobileNotificationsCore.NotificationHandler {
+  final public let iconResolver: MobileNotificationsPresentation.IconResolver
+  final public let uiConfigurationResolver: MobileNotificationsPresentation.UIConfigurationResolver?
+  final public let route: MobileNotificationsPresentation.PushNotificationRouter?
+  final public let notificationsCacher: MobileNotificationsPresentation.NotificationsCacher?
+  required public init(iconResolver: @escaping MobileNotificationsPresentation.IconResolver, uiConfigurationResolver: MobileNotificationsPresentation.UIConfigurationResolver? = nil, route: MobileNotificationsPresentation.PushNotificationRouter? = nil, notificationsCacher: MobileNotificationsPresentation.NotificationsCacher? = nil)
+  public func getNotificationCategory(for routing: MobileNotificationsCore.Routing?) -> UserNotifications.UNNotificationCategory?
+  public func handleNotificationAction(response: MobileNotificationsCore.MNNotificationResponse, notification: MobileNotificationsCore.PushNotification)
+  public func createUINotification(notification: MobileNotificationsCore.PushNotification, completion: (MobileNotificationsCore.UINotification?, Swift.Error?) -> Swift.Void)
+  public func canHandle(routing: MobileNotificationsCore.Routing?) -> Swift.Bool
+  @objc deinit
+}
+public protocol MNNudgeManager {
+  func queueNudge(title: Swift.String, subtitle: Swift.String, nudgeDuration: Swift.Double, icon: UIKit.UIImage?, configuration: MobileNotificationsCore.UINotificationConfiguration?, expanded: Swift.Bool, tapHandler: ((MobileNotificationsPresentation.MNNudgeProtocol) -> Swift.Void)?, getContentView: ((MobileNotificationsPresentation.MNNudgeProtocol) -> UIKit.UIView)?)
+  func dismissCurrentNudge(clearQueue: Swift.Bool)
+}
+public protocol MNNudgeProtocol {
+  func dismiss()
+}
+extension MobileNotificationsPresentation.NudgeManager : MobileNotificationsPresentation.MNNudgeManager {
+}
+public class NudgePresenter : MobileNotificationsCore.InAppNotificationPresenter {
+  public init(nudgeManager: MobileNotificationsPresentation.MNNudgeManager = NudgeManager.shared)
+  public func display(notification: MobileNotificationsCore.UINotification) -> MobileNotificationsCore.DisplayResult
+  public func clear()
+  @objc deinit
+}
+public class UINotificationSimple : MobileNotificationsCore.UINotification {
+  public var notification: MobileNotificationsCore.PushNotification
+  public var icon: UIKit.UIImage
+  public var configuration: MobileNotificationsCore.UINotificationConfiguration?
+  public var onTap: (() -> Swift.Void)?
+  public init(notification: MobileNotificationsCore.PushNotification, icon: UIKit.UIImage, configuration: MobileNotificationsCore.UINotificationConfiguration?, onTap: (() -> Swift.Void)? = nil)
+  @objc deinit
+}

@@ -1,0 +1,4 @@
+framework module BackbaseDesignSystem {
+  header "BackbaseDesignSystem-Swift.h"
+  requires objc
+}

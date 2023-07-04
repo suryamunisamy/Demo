@@ -1,0 +1,4 @@
+framework module MessagesJourney {
+  header "MessagesJourney-Swift.h"
+  requires objc
+}

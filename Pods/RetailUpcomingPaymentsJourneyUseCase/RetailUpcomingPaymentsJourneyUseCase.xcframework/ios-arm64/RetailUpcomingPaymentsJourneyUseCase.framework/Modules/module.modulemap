@@ -1,0 +1,4 @@
+framework module RetailUpcomingPaymentsJourneyUseCase {
+  header "RetailUpcomingPaymentsJourneyUseCase-Swift.h"
+  requires objc
+}

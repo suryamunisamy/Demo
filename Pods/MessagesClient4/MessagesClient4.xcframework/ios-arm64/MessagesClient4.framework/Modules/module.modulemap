@@ -1,0 +1,4 @@
+framework module MessagesClient4 {
+  header "MessagesClient4-Swift.h"
+  requires objc
+}

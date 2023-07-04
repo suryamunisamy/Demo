@@ -1,0 +1,4 @@
+framework module EngagementsClient1 {
+  header "EngagementsClient1-Swift.h"
+  requires objc
+}

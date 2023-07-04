@@ -1,0 +1,381 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailRemoteDepositHistoryJourney
+import BackbaseDesignSystem
+import Combine
+import Foundation
+import Resolver
+import RetailJourneyCommon
+import SnapKit
+import Swift
+import SwiftUI
+import UIKit
+import _Concurrency
+public protocol AmountFormatter {
+  func amountStyle(for amount: RetailRemoteDepositHistoryJourney.BatchCurrency) -> Swift.String?
+}
+public struct BatchCurrency : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailRemoteDepositHistoryJourney.BatchCurrency, b: RetailRemoteDepositHistoryJourney.BatchCurrency) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum BatchStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case pending
+  case processed
+  case cancelled
+  case rejected
+  case expired
+  case mixed
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RetailRemoteDepositHistoryJourney.BatchStatus]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RetailRemoteDepositHistoryJourney.BatchStatus] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension Foundation.Bundle {
+  public static var remoteDepositHistory: Foundation.Bundle? {
+    get
+  }
+}
+public struct CheckImageSectionModel : Swift.Equatable {
+  public struct Section : Swift.Identifiable, Swift.Equatable {
+    public init(id: Swift.String, title: Swift.String?, checks: [RetailRemoteDepositHistoryJourney.CheckItem], status: RetailRemoteDepositHistoryJourney.DepositItemStatus)
+    public let id: Swift.String
+    public let title: Swift.String?
+    public let checks: [RetailRemoteDepositHistoryJourney.CheckItem]
+    public let status: RetailRemoteDepositHistoryJourney.DepositItemStatus
+    public static func == (a: RetailRemoteDepositHistoryJourney.CheckImageSectionModel.Section, b: RetailRemoteDepositHistoryJourney.CheckImageSectionModel.Section) -> Swift.Bool
+    public typealias ID = Swift.String
+  }
+  public var sections: [RetailRemoteDepositHistoryJourney.CheckImageSectionModel.Section]
+  public static func == (a: RetailRemoteDepositHistoryJourney.CheckImageSectionModel, b: RetailRemoteDepositHistoryJourney.CheckImageSectionModel) -> Swift.Bool
+}
+public struct CheckItem : Swift.Equatable {
+  public init(index: Swift.Int, title: Swift.String, subtitle: Swift.String? = nil)
+  public var index: Swift.Int
+  public var title: Swift.String
+  public var subtitle: Swift.String?
+  public static func == (a: RetailRemoteDepositHistoryJourney.CheckItem, b: RetailRemoteDepositHistoryJourney.CheckItem) -> Swift.Bool
+}
+public struct CheckImages : Swift.Codable, Swift.Equatable {
+  public struct Image : Swift.Codable, Swift.Equatable {
+    public init(content: Swift.String, type: Swift.String)
+    public let content: Swift.String
+    public let type: Swift.String
+    public static func == (a: RetailRemoteDepositHistoryJourney.CheckImages.Image, b: RetailRemoteDepositHistoryJourney.CheckImages.Image) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let frontImage: RetailRemoteDepositHistoryJourney.CheckImages.Image
+  public let backImage: RetailRemoteDepositHistoryJourney.CheckImages.Image
+  public init(frontImage: RetailRemoteDepositHistoryJourney.CheckImages.Image, backImage: RetailRemoteDepositHistoryJourney.CheckImages.Image)
+  public static func == (a: RetailRemoteDepositHistoryJourney.CheckImages, b: RetailRemoteDepositHistoryJourney.CheckImages) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RetailRemoteDepositHistoryJourney.RemoteDepositHistory {
+  public struct Configuration {
+    public init(useCaseProvider: @escaping () -> RetailRemoteDepositHistoryJourney.RemoteDepositHistoryUseCase)
+    public var router: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Router
+    public var historyList: RetailRemoteDepositHistoryJourney.HistoryList.Configuration
+    public var historyDetails: RetailRemoteDepositHistoryJourney.HistoryDetails.Configuration
+    public var depositCheckImages: RetailRemoteDepositHistoryJourney.DepositCheckImages.Configuration
+    public var rejectedReason: RetailRemoteDepositHistoryJourney.RejectedCheckReason.Configuration
+    public static var amountFormatter: RetailRemoteDepositHistoryJourney.AmountFormatter
+    public static var dateFormatter: Foundation.DateFormatter
+  }
+  public struct DataMappers {
+    public static var badgeStyle: (_ batch: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge>
+  }
+  public struct Strings {
+    public static var depositBatchStatus: (_ batch: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch) -> RetailJourneyCommon.LocalizedString
+  }
+}
+public struct DepositCheckImages {
+  public static func build(navigation: UIKit.UINavigationController, depositItem: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch, item: RetailRemoteDepositHistoryJourney.DepositItem, configuration: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositHistoryJourney.DepositCheckImages {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositHistoryJourney.DepositCheckImages.Strings
+  }
+}
+extension RetailRemoteDepositHistoryJourney.DepositCheckImages {
+  public struct Strings {
+    public var titleFront: RetailJourneyCommon.LocalizedString
+    public var titleBack: RetailJourneyCommon.LocalizedString
+    public var errorNoInternetTitle: RetailJourneyCommon.LocalizedString
+    public var errorNoInternetSubtitle: RetailJourneyCommon.LocalizedString
+    public var errorNoInternetButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailedTitle: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailedSubtitle: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailedButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct DepositItem : Swift.Codable, Swift.Equatable {
+  public var index: Swift.Int
+  public var recognizedCheckNumber: Swift.String?
+  public var userAmount: RetailRemoteDepositHistoryJourney.BatchCurrency
+  public var actualAmount: RetailRemoteDepositHistoryJourney.BatchCurrency?
+  public var message: Swift.String?
+  public var status: RetailRemoteDepositHistoryJourney.DepositItemStatus
+  public init(index: Swift.Int, recognizedCheckNumber: Swift.String? = nil, userAmount: RetailRemoteDepositHistoryJourney.BatchCurrency, actualAmount: RetailRemoteDepositHistoryJourney.BatchCurrency? = nil, message: Swift.String? = nil, status: RetailRemoteDepositHistoryJourney.DepositItemStatus)
+  public static func == (a: RetailRemoteDepositHistoryJourney.DepositItem, b: RetailRemoteDepositHistoryJourney.DepositItem) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct DepositItemDetails : Swift.Equatable, Swift.Identifiable {
+  public init(id: Swift.String, title: Swift.String, description: Swift.String)
+  public var id: Swift.String
+  public var title: Swift.String
+  public var description: Swift.String
+  public static func == (a: RetailRemoteDepositHistoryJourney.DepositItemDetails, b: RetailRemoteDepositHistoryJourney.DepositItemDetails) -> Swift.Bool
+  public typealias ID = Swift.String
+}
+public enum DepositItemStatus : Swift.String, Swift.Codable, Swift.CaseIterable, Swift.Equatable {
+  case pending
+  case processed
+  case cancelled
+  case rejected
+  case expired
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RetailRemoteDepositHistoryJourney.DepositItemStatus]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RetailRemoteDepositHistoryJourney.DepositItemStatus] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct ErrorResponse : Swift.Error, Swift.Equatable, Swift.Hashable {
+  public init(statusCode: Swift.Int, message: Swift.String? = nil)
+  public static func == (lhs: RetailRemoteDepositHistoryJourney.ErrorResponse, rhs: RetailRemoteDepositHistoryJourney.ErrorResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension RetailRemoteDepositHistoryJourney.ErrorResponse {
+  public static let noInternet: RetailRemoteDepositHistoryJourney.ErrorResponse
+  public static let failed: RetailRemoteDepositHistoryJourney.ErrorResponse
+  public static let sessionExpired: RetailRemoteDepositHistoryJourney.ErrorResponse
+  public static let badRequest: RetailRemoteDepositHistoryJourney.ErrorResponse
+  public static let internalServerError: RetailRemoteDepositHistoryJourney.ErrorResponse
+}
+public struct GetSubmittedDepositBatchParams {
+  public let context: Swift.String
+  public init(context: Swift.String)
+}
+public struct GetSubmittedImagesParams {
+  public let id: Swift.String
+  public let index: Swift.Int
+  public let context: Swift.String
+  public init(id: Swift.String, index: Swift.Int, context: Swift.String)
+}
+public struct HistoryDetails {
+  public static func build(navigation: UIKit.UINavigationController, depositBatch: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch, configuration: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositHistoryJourney.HistoryDetails {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositHistoryJourney.HistoryDetails.Strings
+    public var router: RetailRemoteDepositHistoryJourney.HistoryDetails.Router
+    public var dataMappers: RetailRemoteDepositHistoryJourney.HistoryDetails.DataMappers
+    public var amountFormatter: RetailRemoteDepositHistoryJourney.AmountFormatter
+    public var dateFormatter: Foundation.DateFormatter
+    public var idProvider: () -> Swift.String
+  }
+  public struct Router {
+    public var viewDepositCheckImages: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> (RetailRemoteDepositHistoryJourney.SubmittedDepositBatch, RetailRemoteDepositHistoryJourney.DepositItem) -> Swift.Void
+    public var viewWhyRejectedScreen: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> ([RetailRemoteDepositHistoryJourney.DepositItem]) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositHistoryJourney.HistoryDetails {
+  public struct MapperConfiguration {
+    public let dateFormatter: Foundation.DateFormatter
+    public let detailType: [RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType]
+    public let idProvider: () -> Swift.String
+    public let amountFormatter: RetailRemoteDepositHistoryJourney.AmountFormatter
+    public init(dateFormatter: Foundation.DateFormatter, detailsType: [RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType], idProvider: @escaping () -> Swift.String, amountFormatter: RetailRemoteDepositHistoryJourney.AmountFormatter)
+  }
+  public struct DataMappers {
+    public var formatAmount: (_ amount: RetailRemoteDepositHistoryJourney.BatchCurrency, _ formatter: RetailRemoteDepositHistoryJourney.AmountFormatter) -> Swift.String
+    public var defaultDetailsType: [RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType]
+    public var submittedDepositDetails: (_ strings: RetailRemoteDepositHistoryJourney.HistoryDetails.Strings, _ item: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch, _ configuration: RetailRemoteDepositHistoryJourney.HistoryDetails.MapperConfiguration) -> [RetailRemoteDepositHistoryJourney.DepositItemDetails]
+    public var checksSectionModel: (_ strings: RetailRemoteDepositHistoryJourney.HistoryDetails.Strings, _ depositBatch: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch, _ mapper: RetailRemoteDepositHistoryJourney.HistoryDetails.MapperConfiguration) -> RetailRemoteDepositHistoryJourney.CheckImageSectionModel
+    public var badgeStyle: (_ batch: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge>
+  }
+  public enum DetailsType : Swift.CaseIterable {
+    case accountNumber
+    case confirmationNumber
+    case checkNumber
+    case dateSubmission
+    case submittedBy
+    public static func == (a: RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType, b: RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType]
+    public static var allCases: [RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailRemoteDepositHistoryJourney.HistoryDetails {
+  public struct Strings {
+    public var accountNumber: RetailJourneyCommon.LocalizedString
+    public var confirmationNumber: RetailJourneyCommon.LocalizedString
+    public var checkNumber: RetailJourneyCommon.LocalizedString
+    public var dateOfSubmittion: RetailJourneyCommon.LocalizedString
+    public var checkImages: RetailJourneyCommon.LocalizedString
+    public var seeFrontAndBack: RetailJourneyCommon.LocalizedString
+    public var whyRejected: RetailJourneyCommon.LocalizedString
+    public var submitedBy: RetailJourneyCommon.LocalizedString
+    public var pendingChecks: RetailJourneyCommon.LocalizedString
+    public var rejectedChecks: RetailJourneyCommon.LocalizedString
+    public var approvedChecks: RetailJourneyCommon.LocalizedString
+    public var checkOf: (_ amount: Swift.String) -> Swift.String
+    public var number: (_ check: Swift.String) -> Swift.String
+    public var numberOfChecks: (_ checks: Swift.Int) -> Swift.String
+    public var depositBatchStatus: (_ batch: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch) -> RetailJourneyCommon.LocalizedString
+  }
+}
+public struct HistoryList {
+  public static func build(navigation: UIKit.UINavigationController, configuration: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositHistoryJourney.HistoryList {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositHistoryJourney.HistoryList.Strings
+    public var dataMappers: RetailRemoteDepositHistoryJourney.HistoryList.DataMappers
+    public var router: RetailRemoteDepositHistoryJourney.HistoryList.Router
+    public var dateFormatter: Foundation.DateFormatter
+    public var amountFormatter: RetailRemoteDepositHistoryJourney.AmountFormatter
+  }
+  public struct Router {
+    public var viewDetails: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> (RetailRemoteDepositHistoryJourney.SubmittedDepositBatch) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositHistoryJourney.HistoryList {
+  public struct DataMappers {
+    public var badgeStyle: (_ batch: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge>
+  }
+}
+extension RetailRemoteDepositHistoryJourney.HistoryList {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var pendingSectionTitle: RetailJourneyCommon.LocalizedString
+    public var processedSectionTitle: RetailJourneyCommon.LocalizedString
+    public var numberOfChecks: (_ checks: Swift.Int) -> Swift.String
+    public var emptyListTitle: RetailJourneyCommon.LocalizedString
+    public var emptyListSubtitle: RetailJourneyCommon.LocalizedString
+    public var emptyListButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorNoInternetTitle: RetailJourneyCommon.LocalizedString
+    public var errorNoInternetSubtitle: RetailJourneyCommon.LocalizedString
+    public var errorNoInternetButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailedTitle: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailedSubtitle: RetailJourneyCommon.LocalizedString
+    public var errorLoadingFailedButtonTitle: RetailJourneyCommon.LocalizedString
+    public var depositBatchStatus: (_ batch: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch) -> RetailJourneyCommon.LocalizedString
+  }
+}
+public struct RejectedCheckReason {
+  public static func build(navigation: UIKit.UINavigationController, items: [RetailRemoteDepositHistoryJourney.DepositItem], configuration: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositHistoryJourney.RejectedCheckReason {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositHistoryJourney.RejectedCheckReason.Strings
+    public var router: RetailRemoteDepositHistoryJourney.RejectedCheckReason.Router
+    public var amountFormater: RetailRemoteDepositHistoryJourney.AmountFormatter
+    public var idProvider: () -> Swift.String
+  }
+}
+extension RetailRemoteDepositHistoryJourney.RejectedCheckReason {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var gotItButtonTitle: RetailJourneyCommon.LocalizedString
+    public var headerTitle: (_ title: Swift.String) -> Swift.String
+  }
+}
+extension RetailRemoteDepositHistoryJourney.RejectedCheckReason {
+  public struct Router {
+    public var dismiss: (_ navigation: UIKit.UINavigationController, RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> () -> Swift.Void
+  }
+}
+public struct RemoteDepositHistory {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositHistoryJourney.RemoteDepositHistory {
+  public struct Router {
+    public var dismissJourney: (_ navigationController: UIKit.UINavigationController, RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration) -> Swift.Void
+  }
+}
+public protocol RemoteDepositHistoryUseCase : AnyObject {
+  typealias StartSessionCompletion = (Swift.Result<RetailRemoteDepositHistoryJourney.Session, RetailRemoteDepositHistoryJourney.ErrorResponse>) -> Swift.Void
+  func startSession(completion: @escaping Self.StartSessionCompletion)
+  func getSubmittedDepositBatches(params: RetailRemoteDepositHistoryJourney.GetSubmittedDepositBatchParams, completion: @escaping (Swift.Result<[RetailRemoteDepositHistoryJourney.SubmittedDepositBatch], RetailRemoteDepositHistoryJourney.ErrorResponse>) -> Swift.Void)
+  func getSubmittedImages(params: RetailRemoteDepositHistoryJourney.GetSubmittedImagesParams, completion: @escaping (Swift.Result<RetailRemoteDepositHistoryJourney.CheckImages, RetailRemoteDepositHistoryJourney.ErrorResponse>) -> Swift.Void)
+}
+public struct ScrollViewIfNeeded<Content> : SwiftUI.View where Content : SwiftUI.View {
+  public var content: Content
+  public var axes: SwiftUI.Axis.Set
+  public var showsIndicators: Swift.Bool
+  public init(_ axes: SwiftUI.Axis.Set = .vertical, showsIndicators: Swift.Bool = true, @SwiftUI.ViewBuilder content: () -> Content)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s33RetailRemoteDepositHistoryJourney18ScrollViewIfNeededV4bodyQrvp", 0) __<Content>
+}
+public struct Session : Swift.Equatable, Swift.Codable {
+  public let context: Swift.String
+  public let accountIDs: [RetailRemoteDepositHistoryJourney.RDCAccountIdentifier]
+  public init(context: Swift.String, accountIDs: [RetailRemoteDepositHistoryJourney.RDCAccountIdentifier])
+  public static func == (a: RetailRemoteDepositHistoryJourney.Session, b: RetailRemoteDepositHistoryJourney.Session) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RDCAccountIdentifier : Swift.Equatable, Swift.Codable {
+  public var id: Swift.String
+  public var rdcId: Swift.String
+  public init(id: Swift.String, rdcId: Swift.String)
+  public static func == (a: RetailRemoteDepositHistoryJourney.RDCAccountIdentifier, b: RetailRemoteDepositHistoryJourney.RDCAccountIdentifier) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct SubmittedDepositBatch : Swift.Codable, Swift.Equatable {
+  public init(id: Swift.String, submissionDate: Foundation.Date, submittedById: Swift.String? = nil, submittedByUsername: Swift.String? = nil, arrangementId: Swift.String? = nil, arrangementAccountNumber: Swift.String? = nil, description: Swift.String? = nil, confirmationNumber: Swift.Int? = nil, status: RetailRemoteDepositHistoryJourney.BatchStatus, userAmount: RetailRemoteDepositHistoryJourney.BatchCurrency, actualAmount: RetailRemoteDepositHistoryJourney.BatchCurrency, items: [RetailRemoteDepositHistoryJourney.DepositItem])
+  public var id: Swift.String
+  public var submissionDate: Foundation.Date
+  public var submittedById: Swift.String?
+  public var submittedByUsername: Swift.String?
+  public var arrangementId: Swift.String?
+  public var arrangementAccountNumber: Swift.String?
+  public var description: Swift.String?
+  public var confirmationNumber: Swift.Int?
+  public var status: RetailRemoteDepositHistoryJourney.BatchStatus
+  public var userAmount: RetailRemoteDepositHistoryJourney.BatchCurrency
+  public var actualAmount: RetailRemoteDepositHistoryJourney.BatchCurrency?
+  public var items: [RetailRemoteDepositHistoryJourney.DepositItem]
+  public static func == (a: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch, b: RetailRemoteDepositHistoryJourney.SubmittedDepositBatch) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RetailRemoteDepositHistoryJourney.BatchStatus : Swift.Equatable {}
+extension RetailRemoteDepositHistoryJourney.BatchStatus : Swift.Hashable {}
+extension RetailRemoteDepositHistoryJourney.BatchStatus : Swift.RawRepresentable {}
+extension RetailRemoteDepositHistoryJourney.DepositItemStatus : Swift.Hashable {}
+extension RetailRemoteDepositHistoryJourney.DepositItemStatus : Swift.RawRepresentable {}
+extension RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType : Swift.Equatable {}
+extension RetailRemoteDepositHistoryJourney.HistoryDetails.DetailsType : Swift.Hashable {}

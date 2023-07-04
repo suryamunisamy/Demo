@@ -1,0 +1,4 @@
+framework module ClientCommon {
+  header "ClientCommon-Swift.h"
+  requires objc
+}

@@ -1,0 +1,370 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailContactsJourney
+import BackbaseDesignSystem
+import Foundation
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import RxCocoa
+import RxRelay
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+extension Foundation.Bundle {
+  public static var contacts: Foundation.Bundle? {
+    get
+  }
+}
+public struct Contact {
+  public var id: Swift.String
+  public var name: Swift.String
+  public var account: RetailContactsJourney.Contact.Account
+  public init(id: Swift.String, name: Swift.String, account: RetailContactsJourney.Contact.Account)
+}
+extension RetailContactsJourney.Contact {
+  public struct Account : Swift.Equatable, Swift.Hashable {
+    public let identifiers: [RetailContactsJourney.Contact.Account.Identifier]
+    public init(identifiers: [RetailContactsJourney.Contact.Account.Identifier])
+    public static func == (a: RetailContactsJourney.Contact.Account, b: RetailContactsJourney.Contact.Account) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailContactsJourney.Contact.Account {
+  public struct Identifier : Swift.Equatable, Swift.Hashable {
+    public let value: Swift.String
+    public let type: RetailContactsJourney.Contact.Account.Identifier.IdentifierType
+    public init(value: Swift.String, type: RetailContactsJourney.Contact.Account.Identifier.IdentifierType)
+    public enum IdentifierType : Swift.Equatable, Swift.Hashable, Swift.CaseIterable {
+      case accountNumber
+      case IBAN
+      case phoneNumber
+      case email
+      public static func == (a: RetailContactsJourney.Contact.Account.Identifier.IdentifierType, b: RetailContactsJourney.Contact.Account.Identifier.IdentifierType) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public typealias AllCases = [RetailContactsJourney.Contact.Account.Identifier.IdentifierType]
+      public static var allCases: [RetailContactsJourney.Contact.Account.Identifier.IdentifierType] {
+        get
+      }
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public static func == (a: RetailContactsJourney.Contact.Account.Identifier, b: RetailContactsJourney.Contact.Account.Identifier) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailContactsJourney.Contact : Swift.Equatable, Swift.Hashable {
+  public static func == (a: RetailContactsJourney.Contact, b: RetailContactsJourney.Contact) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct ContactDetails {
+  public static func build(contact: RetailContactsJourney.Contact) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailContactsJourney.ContactDetails {
+  public struct AccountIdentifierField {
+    public typealias ConfigurationBlock = (inout RetailContactsJourney.ContactDetails.AccountIdentifierField) -> Swift.Void
+    public let identifierType: RetailContactsJourney.Contact.Account.Identifier.IdentifierType
+    public var labelProvider: () -> RetailJourneyCommon.LocalizedString
+    public static func accountNumber(_ config: RetailContactsJourney.ContactDetails.AccountIdentifierField.ConfigurationBlock? = nil) -> RetailContactsJourney.ContactDetails.AccountIdentifierField
+    public static func iban(_ config: RetailContactsJourney.ContactDetails.AccountIdentifierField.ConfigurationBlock? = nil) -> RetailContactsJourney.ContactDetails.AccountIdentifierField
+    public static func email(_ config: RetailContactsJourney.ContactDetails.AccountIdentifierField.ConfigurationBlock? = nil) -> RetailContactsJourney.ContactDetails.AccountIdentifierField
+    public static func phoneNumber(_ config: RetailContactsJourney.ContactDetails.AccountIdentifierField.ConfigurationBlock? = nil) -> RetailContactsJourney.ContactDetails.AccountIdentifierField
+  }
+}
+extension RetailContactsJourney.ContactDetails {
+  public struct Configuration {
+    public init()
+    public var accountIdentifiers: [RetailContactsJourney.ContactDetails.AccountIdentifierField]
+    public var strings: RetailContactsJourney.ContactDetails.Strings
+    public var design: RetailContactsJourney.ContactDetails.Design
+  }
+}
+extension RetailContactsJourney.ContactDetails {
+  public struct Design {
+    public init()
+    public var spinnerLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var spinnerBackgroundView: (_ view: UIKit.UIView) -> Swift.Void
+    public var spinner: (_ view: UIKit.UIActivityIndicatorView) -> Swift.Void
+  }
+}
+extension RetailContactsJourney.ContactDetails {
+  public struct Strings {
+    public init()
+    public var cardTitle: RetailJourneyCommon.LocalizedString
+    public var nameTitle: RetailJourneyCommon.LocalizedString
+    public var accountNumberTitle: RetailJourneyCommon.LocalizedString
+    public var IBANTitle: RetailJourneyCommon.LocalizedString
+    public var emailTitle: RetailJourneyCommon.LocalizedString
+    public var phoneNumberTitle: RetailJourneyCommon.LocalizedString
+    public var deleteButtonTitle: RetailJourneyCommon.LocalizedString
+    public var editButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct ContactForm {
+  public static func buildAdd(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+  public static func buildEdit(contact: RetailContactsJourney.Contact) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+  public enum FieldState : Swift.Equatable {
+    case valid
+    case invalidWithDefaultMessage
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: RetailContactsJourney.ContactForm.FieldState, b: RetailContactsJourney.ContactForm.FieldState) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailContactsJourney.ContactForm {
+  public struct AccountIdentifierField {
+    public typealias ConfigurationBlock = (inout RetailContactsJourney.ContactForm.AccountIdentifierField) -> Swift.Void
+    public let identifierType: RetailContactsJourney.Contact.Account.Identifier.IdentifierType
+    public var labelProvider: () -> RetailJourneyCommon.LocalizedString
+    public var placeholderProvider: () -> RetailJourneyCommon.LocalizedString
+    public var invalidErrorProvider: () -> RetailJourneyCommon.LocalizedString
+    public var validationProvider: (Swift.String) -> RetailContactsJourney.ContactForm.FieldState
+    public static func accountNumber(_ config: RetailContactsJourney.ContactForm.AccountIdentifierField.ConfigurationBlock? = nil) -> RetailContactsJourney.ContactForm.AccountIdentifierField
+    public static func iban(_ config: RetailContactsJourney.ContactForm.AccountIdentifierField.ConfigurationBlock? = nil) -> RetailContactsJourney.ContactForm.AccountIdentifierField
+    public static func email(_ config: RetailContactsJourney.ContactForm.AccountIdentifierField.ConfigurationBlock? = nil) -> RetailContactsJourney.ContactForm.AccountIdentifierField
+    public static func phoneNumber(_ config: RetailContactsJourney.ContactForm.AccountIdentifierField.ConfigurationBlock? = nil) -> RetailContactsJourney.ContactForm.AccountIdentifierField
+  }
+}
+extension RetailContactsJourney.ContactForm {
+  public struct Configuration {
+    public init()
+    public var nameValidationProvider: (_ name: Swift.String) -> RetailContactsJourney.ContactForm.FieldState
+    public var addAccountIdentifiers: [RetailContactsJourney.ContactForm.AccountIdentifierField]
+    public var editAccountIdentifiers: [RetailContactsJourney.ContactForm.AccountIdentifierField]
+    public var strings: RetailContactsJourney.ContactForm.Strings
+    public var design: RetailContactsJourney.ContactForm.Design
+  }
+}
+extension RetailContactsJourney.ContactForm {
+  public struct Design {
+    public init()
+    public var nameInputLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var nameTextInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var accountIdentifierInputLabel: (RetailContactsJourney.Contact.Account.Identifier.IdentifierType) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var accountIdentifierTextInput: (RetailContactsJourney.Contact.Account.Identifier.IdentifierType) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput>
+    public var submitButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button>
+  }
+}
+extension RetailContactsJourney.ContactForm {
+  public enum Error : Swift.Error {
+    case noInternet
+    case unknown
+    public static func == (a: RetailContactsJourney.ContactForm.Error, b: RetailContactsJourney.ContactForm.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailContactsJourney.ContactForm {
+  public struct Strings {
+    public init()
+    public var addNavigationTitle: RetailJourneyCommon.LocalizedString
+    public var editNavigationTitle: RetailJourneyCommon.LocalizedString
+    public var nameLabel: RetailJourneyCommon.LocalizedString
+    public var namePlaceholder: RetailJourneyCommon.LocalizedString
+    public var accountNumberLabel: RetailJourneyCommon.LocalizedString
+    public var IBANLabel: RetailJourneyCommon.LocalizedString
+    public var emailLabel: RetailJourneyCommon.LocalizedString
+    public var phoneNumberLabel: RetailJourneyCommon.LocalizedString
+    public var accountNumberPlaceholder: RetailJourneyCommon.LocalizedString
+    public var IBANPlaceholder: RetailJourneyCommon.LocalizedString
+    public var emailPlaceholder: RetailJourneyCommon.LocalizedString
+    public var phoneNumberPlaceholder: RetailJourneyCommon.LocalizedString
+    public var invalidNameError: RetailJourneyCommon.LocalizedString
+    public var invalidAccountNumberError: RetailJourneyCommon.LocalizedString
+    public var invalidIBANError: RetailJourneyCommon.LocalizedString
+    public var invalidEmailError: RetailJourneyCommon.LocalizedString
+    public var invalidPhoneNumberError: RetailJourneyCommon.LocalizedString
+    public var submitButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorAlertTitle: (RetailContactsJourney.ContactForm.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorAlertMessage: (RetailContactsJourney.ContactForm.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorAlertDismissOption: (RetailContactsJourney.ContactForm.Error) -> RetailJourneyCommon.LocalizedString
+    public var discardAddAlertTitle: RetailJourneyCommon.LocalizedString
+    public var discardEditAlertTitle: RetailJourneyCommon.LocalizedString
+    public var discardAddAlertDiscardOption: RetailJourneyCommon.LocalizedString
+    public var discardEditAlertDiscardOption: RetailJourneyCommon.LocalizedString
+    public var discardAlertCancelOption: RetailJourneyCommon.LocalizedString
+    public var closeButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct ContactList {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailContactsJourney.ContactList {
+  public struct Configuration {
+    public init()
+    public var searchRequestDelay: Swift.Int
+    public var strings: RetailContactsJourney.ContactList.Strings
+    public var design: RetailContactsJourney.ContactList.Design
+  }
+}
+extension RetailContactsJourney.ContactList {
+  public struct Design {
+    public init()
+    public var errorImage: (_ error: RetailContactsJourney.ContactList.Error) -> UIKit.UIImage?
+    public var shimmerImage: UIKit.UIImage?
+    public var endOfListIcon: UIKit.UIImage?
+  }
+}
+extension RetailContactsJourney.ContactList {
+  public enum Error : Swift.Error {
+    case failedToLoad
+    case failedToReload
+    case failedToLoadMore
+    case empty
+    case noInternet
+    case noResults
+    public static func == (a: RetailContactsJourney.ContactList.Error, b: RetailContactsJourney.ContactList.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailContactsJourney.ContactList {
+  public struct Strings {
+    public init()
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailContactsJourney.ContactList.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailContactsJourney.ContactList.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorActionTitle: (_ error: RetailContactsJourney.ContactList.Error) -> RetailJourneyCommon.LocalizedString?
+    public var errorDismissActionTitle: (_ error: RetailContactsJourney.ContactList.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorAlertOKOption: RetailJourneyCommon.LocalizedString
+    public var errorAlertCancelOption: RetailJourneyCommon.LocalizedString
+    public var endOfListTitle: RetailJourneyCommon.LocalizedString
+    public var searchPlaceholder: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct Contacts {
+}
+extension RetailContactsJourney.Contacts {
+  public struct Configuration {
+    public init()
+    public var canAddNewContacts: Swift.Bool
+    public var router: RetailContactsJourney.Contacts.Router
+    public var strings: RetailContactsJourney.Contacts.Strings
+    public var list: RetailContactsJourney.ContactList.Configuration
+    public var form: RetailContactsJourney.ContactForm.Configuration
+    public var details: RetailContactsJourney.ContactDetails.Configuration
+  }
+}
+extension RetailContactsJourney.Contacts {
+  public enum Error : Swift.Error {
+    case noInternet
+    case unknown
+    public static func == (a: RetailContactsJourney.Contacts.Error, b: RetailContactsJourney.Contacts.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public struct ContactsPage {
+  public let contacts: [RetailContactsJourney.Contact]
+  public let nextPageCursor: RetailContactsJourney.ContactsPageCursor?
+  public init(contacts: [RetailContactsJourney.Contact], nextPageCursor: RetailContactsJourney.ContactsPageCursor?)
+}
+public protocol ContactsPageCursor {
+}
+public struct ContactsPageFirstCursor : RetailContactsJourney.ContactsPageCursor {
+  public init()
+}
+public struct ContactsPageRequestParameters {
+  public let cursor: RetailContactsJourney.ContactsPageCursor
+  public let query: Swift.String?
+  public init(cursor: RetailContactsJourney.ContactsPageCursor, query: Swift.String?)
+}
+extension RetailContactsJourney.Contacts {
+  final public class Router {
+    public init()
+    final public var onTapAddContact: ((UIKit.UINavigationController) -> () -> Swift.Void)?
+    final public var onTapEditContact: ((UIKit.UINavigationController) -> (RetailContactsJourney.Contact) -> Swift.Void)?
+    final public var onCancelCreatingContact: ((UIKit.UINavigationController) -> Swift.Void)?
+    final public var onAddContact: ((UIKit.UINavigationController) -> (RetailContactsJourney.Contact) -> Swift.Void)?
+    final public var onEditContact: ((UIKit.UINavigationController) -> (RetailContactsJourney.Contact) -> Swift.Void)?
+    final public var onSelectContact: ((UIKit.UINavigationController) -> (RetailContactsJourney.Contact) -> Swift.Void)?
+    final public var onDeleteContact: ((UIKit.UINavigationController) -> (RetailContactsJourney.Contact) -> Swift.Void)?
+    @objc deinit
+  }
+}
+extension RetailContactsJourney.Contacts {
+  final public class Strings {
+    public init()
+    final public var deleteInProgressTitle: RetailJourneyCommon.LocalizedString
+    final public var errorAlertTitle: (_ error: RetailContactsJourney.Contacts.Error) -> RetailJourneyCommon.LocalizedString
+    final public var errorAlertMessage: (_ error: RetailContactsJourney.Contacts.Error) -> RetailJourneyCommon.LocalizedString
+    final public var errorAlertDismissOption: (RetailContactsJourney.Contacts.Error) -> RetailJourneyCommon.LocalizedString
+    final public var errorAlertRetryOption: (RetailContactsJourney.Contacts.Error) -> RetailJourneyCommon.LocalizedString
+    final public var confirmDeleteAlertMessage: RetailJourneyCommon.LocalizedString
+    final public var confirmDeleteAlertConfirmOption: RetailJourneyCommon.LocalizedString
+    final public var confirmDeleteAlertCancelOption: RetailJourneyCommon.LocalizedString
+    @objc deinit
+  }
+}
+public protocol ContactsUseCase {
+  typealias RetrieveContactsCompletion = (Swift.Result<RetailContactsJourney.ContactsPage, RetailContactsJourney.ErrorResponse>) -> Swift.Void
+  typealias CreateContactCompletion = (Swift.Result<Swift.String, RetailContactsJourney.ErrorResponse>) -> Swift.Void
+  typealias UpdateContactCompletion = (Swift.Result<RetailContactsJourney.UpdateContactResponse, RetailContactsJourney.ErrorResponse>) -> Swift.Void
+  typealias DeleteContactCompletion = (Swift.Result<RetailContactsJourney.DeleteContactResponse, RetailContactsJourney.ErrorResponse>) -> Swift.Void
+  func retrieveContactsPage(parameters: RetailContactsJourney.ContactsPageRequestParameters, completion: @escaping Self.RetrieveContactsCompletion)
+  func createContact(parameters: RetailContactsJourney.CreateContactRequestParameters, completion: @escaping Self.CreateContactCompletion)
+  func updateContact(parameters: RetailContactsJourney.UpdateContactRequestParameters, completion: @escaping Self.UpdateContactCompletion)
+  func deleteContact(parameters: RetailContactsJourney.DeleteContactRequestParameters, completion: @escaping Self.DeleteContactCompletion)
+}
+public struct CreateContactRequestParameters {
+  public let name: Swift.String
+  public let identifiers: [RetailContactsJourney.Contact.Account.Identifier]
+  public init(name: Swift.String, identifiers: [RetailContactsJourney.Contact.Account.Identifier])
+}
+public struct DeleteContactRequestParameters {
+  public let contactID: Swift.String
+  public init(contactID: Swift.String)
+}
+public struct DeleteContactResponse {
+  public init()
+}
+public struct ErrorResponse : Swift.Error, Swift.Equatable {
+  public init(statusCode: Swift.Int? = nil, data: Foundation.Data? = nil, error: Swift.Error? = nil)
+  public static func == (lhs: RetailContactsJourney.ErrorResponse, rhs: RetailContactsJourney.ErrorResponse) -> Swift.Bool
+}
+extension RetailContactsJourney.ErrorResponse {
+  public static let noInternet: RetailContactsJourney.ErrorResponse
+  public static let failed: RetailContactsJourney.ErrorResponse
+}
+public struct UpdateContactRequestParameters {
+  public let id: Swift.String
+  public let name: Swift.String
+  public let identifiers: [RetailContactsJourney.Contact.Account.Identifier]
+  public init(id: Swift.String, name: Swift.String, identifiers: [RetailContactsJourney.Contact.Account.Identifier])
+}
+public struct UpdateContactResponse {
+  public init()
+}
+extension RetailContactsJourney.ContactForm.FieldState : Swift.Hashable {}
+extension RetailContactsJourney.ContactForm.Error : Swift.Equatable {}
+extension RetailContactsJourney.ContactForm.Error : Swift.Hashable {}
+extension RetailContactsJourney.ContactList.Error : Swift.Equatable {}
+extension RetailContactsJourney.ContactList.Error : Swift.Hashable {}
+extension RetailContactsJourney.Contacts.Error : Swift.Equatable {}
+extension RetailContactsJourney.Contacts.Error : Swift.Hashable {}

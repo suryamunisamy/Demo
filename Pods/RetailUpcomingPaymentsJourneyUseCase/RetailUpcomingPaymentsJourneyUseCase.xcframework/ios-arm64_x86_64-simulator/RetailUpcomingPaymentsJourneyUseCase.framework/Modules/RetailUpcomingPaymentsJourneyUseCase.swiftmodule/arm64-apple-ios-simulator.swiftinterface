@@ -1,0 +1,23 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailUpcomingPaymentsJourneyUseCase
+import Backbase
+import ClientCommon
+import Foundation
+import PaymentOrderClient2
+import Resolver
+import RetailUpcomingPaymentsJourney
+import Swift
+import _Concurrency
+@objc @_inheritsConvenienceInitializers @available(*, deprecated, message: "This class will no longer be public in the future, please discontinue use.")
+public class NetworkDataProvider : ObjectiveC.NSObject, DBSDataProvider {
+  @objc public func execute(_ request: Foundation.URLRequest, completionHandler: ((Foundation.URLResponse?, Foundation.Data?, Swift.Error?) -> Swift.Void)? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public class RetailGetUpcomingPaymentsUseCase : RetailUpcomingPaymentsJourney.GetUpcomingPaymentsUseCase {
+  public init()
+  public func getPayments(status: [Swift.String], executionDate: Foundation.Date, from: Swift.Int, size: Swift.Int, _ whenDone: @escaping RetailUpcomingPaymentsJourney.OnResult<[RetailUpcomingPaymentsJourney.Payment], RetailUpcomingPaymentsJourney.UpcomingPaymentsError>)
+  public func cancelPayment(identifier paymentIdentifier: Swift.String, version paymentVersion: Swift.Int, _ whenDone: @escaping RetailUpcomingPaymentsJourney.OnResult<Swift.Bool, RetailUpcomingPaymentsJourney.UpcomingPaymentsError>)
+  @objc deinit
+}

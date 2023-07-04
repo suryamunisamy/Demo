@@ -1,0 +1,303 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BackbaseAppUpdater
+import Backbase
+import BackbaseDesignSystem
+import Foundation
+import RemoteConfig
+import Resolver
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+public enum AppUpdateStatus {
+  case ok
+  case deprecatedUpdate
+  case deprecatedNoUpdate
+  case obsolete
+  public static func == (a: BackbaseAppUpdater.AppUpdateStatus, b: BackbaseAppUpdater.AppUpdateStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct AppUpdater {
+}
+extension BackbaseAppUpdater.AppUpdater.Design {
+  public enum Background {
+    case solid(UIKit.UIColor?)
+    case gradient(BackbaseDesignSystem.DesignSystem.Gradient)
+    case image(UIKit.UIImage?)
+  }
+  @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BackgroundView : UIKit.UIView {
+    @_Concurrency.MainActor(unsafe) @objc override dynamic open var bounds: CoreGraphics.CGRect {
+      @_Concurrency.MainActor(unsafe) @objc get
+      @_Concurrency.MainActor(unsafe) @objc set
+    }
+    @_Concurrency.MainActor(unsafe) open var background: BackbaseAppUpdater.AppUpdater.Design.Background? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+    @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+    @objc deinit
+  }
+}
+extension BackbaseAppUpdater.AppUpdater.Design {
+  public enum ButtonType : Swift.CaseIterable {
+    case primary
+    case secondary
+    case success
+    case warning
+    case danger
+    case info
+    case plain
+    public static func == (a: BackbaseAppUpdater.AppUpdater.Design.ButtonType, b: BackbaseAppUpdater.AppUpdater.Design.ButtonType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [BackbaseAppUpdater.AppUpdater.Design.ButtonType]
+    public static var allCases: [BackbaseAppUpdater.AppUpdater.Design.ButtonType] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension BackbaseAppUpdater.AppUpdater.Design {
+  public struct Colors {
+    public init()
+    public var foundation: BackbaseAppUpdater.AppUpdater.Design.Colors.Foundation
+    public var surfacePrimary: BackbaseAppUpdater.AppUpdater.Design.Colors.SurfacePrimary
+    public var highContrast: BackbaseAppUpdater.AppUpdater.Design.Colors.HighContrast
+  }
+}
+extension BackbaseAppUpdater.AppUpdater.Design.Colors {
+  public struct Foundation {
+    public init()
+    public var `default`: UIKit.UIColor
+    public var onFoundation: BackbaseAppUpdater.AppUpdater.Design.Colors.Foundation.OnFoundation
+  }
+}
+extension BackbaseAppUpdater.AppUpdater.Design.Colors.Foundation {
+  public struct OnFoundation {
+    public init()
+    public var `default`: UIKit.UIColor
+  }
+}
+extension BackbaseAppUpdater.AppUpdater.Design.Colors {
+  public struct SurfacePrimary {
+    public init()
+    public var `default`: UIKit.UIColor
+    public var onSurfacePrimary: BackbaseAppUpdater.AppUpdater.Design.Colors.SurfacePrimary.OnSurfacePrimary
+  }
+}
+extension BackbaseAppUpdater.AppUpdater.Design.Colors.SurfacePrimary {
+  public struct OnSurfacePrimary {
+    public init()
+    public var `default`: UIKit.UIColor
+  }
+}
+extension BackbaseAppUpdater.AppUpdater.Design.Colors {
+  public struct HighContrast {
+    public init()
+    public var primary: UIKit.UIColor
+    public var tint: UIKit.UIColor
+  }
+}
+extension BackbaseAppUpdater.AppUpdater {
+  public struct Configuration {
+    @available(*, message: "This initializer will be removed in 3.0.0")
+    public init(serviceUrl: Swift.String = "", projectName: Swift.String = "", bundleId: Swift.String = "", appVersion: Swift.String = "")
+    public var mandatoryView: BackbaseAppUpdater.MandatoryView.Configuration {
+      mutating get
+      set
+    }
+    public var recommendedView: BackbaseAppUpdater.RecommendedView.Configuration {
+      mutating get
+      set
+    }
+    public var bundleId: Swift.String {
+      mutating get
+      set
+    }
+    public var appVersion: Swift.String {
+      mutating get
+      set
+    }
+    public var serviceUrl: Swift.String {
+      mutating get
+      set
+    }
+    public var projectName: Swift.String {
+      mutating get
+      set
+    }
+    public var appStoreId: Swift.String {
+      mutating get
+      set
+    }
+    public var design: BackbaseAppUpdater.AppUpdater.Design
+    public var router: BackbaseAppUpdater.AppUpdater.Router
+    @available(*, message: "This client will be removed in favor of `AppUpdaterUseCase`.")
+    public var client: BackbaseAppUpdater.RemoteConfigClientProtocol
+    @available(*, message: "This completion block will be removed in favor of `router.didTapContinue`.")
+    public var dismissButtonAction: (() -> Swift.Void?)?
+  }
+}
+extension BackbaseAppUpdater.AppUpdater {
+  public struct Design {
+    public var styles: BackbaseAppUpdater.AppUpdater.Design.Styles {
+      mutating get
+      set
+    }
+  }
+}
+public class ItunesChecker {
+  public init(bundleId: Swift.String, appVersion: Swift.String)
+  public func isUpdateAvailable(completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc deinit
+}
+public struct MandatoryView {
+  public static func build() -> UIKit.UIViewController
+}
+extension BackbaseAppUpdater.MandatoryView {
+  public struct Configuration {
+    public var design: BackbaseAppUpdater.MandatoryView.Design {
+      mutating get
+      set
+    }
+    public var image: UIKit.UIImage?
+    public var strings: BackbaseAppUpdater.MandatoryView.Strings
+  }
+}
+extension BackbaseAppUpdater.MandatoryView {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<BackbaseAppUpdater.AppUpdater.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var body: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var updateActionButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+  }
+}
+extension BackbaseAppUpdater.MandatoryView {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var body: RetailJourneyCommon.LocalizedString
+    public var updateActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public protocol RemoteConfigClientProtocol {
+  func fetchAppStatus(completion: @escaping (BackbaseAppUpdater.AppUpdateStatus?) -> Swift.Void)
+}
+public struct RecommendedView {
+  public static func build() -> UIKit.UIViewController
+}
+extension BackbaseAppUpdater.RecommendedView {
+  public struct Configuration {
+    public var design: BackbaseAppUpdater.RecommendedView.Design {
+      mutating get
+      set
+    }
+    public var image: UIKit.UIImage?
+    public var strings: BackbaseAppUpdater.RecommendedView.Strings
+  }
+}
+extension BackbaseAppUpdater.RecommendedView {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<BackbaseAppUpdater.AppUpdater.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var body: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var updateActionButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var dismissActionButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension BackbaseAppUpdater.RecommendedView {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var body: RetailJourneyCommon.LocalizedString
+    public var updateActionTitle: RetailJourneyCommon.LocalizedString
+    public var dismissActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+@_hasMissingDesignatedInitializers public class RemoteConfigClient {
+  @objc deinit
+}
+extension BackbaseAppUpdater.RemoteConfigClient : BackbaseAppUpdater.RemoteConfigClientProtocol {
+  public func fetchAppStatus(completion: @escaping (BackbaseAppUpdater.AppUpdateStatus?) -> Swift.Void)
+}
+extension BackbaseAppUpdater.AppUpdater {
+  public struct Router {
+    public var didTapContinue: (() -> Swift.Void)?
+  }
+}
+extension BackbaseAppUpdater.AppUpdater {
+  public struct Strings {
+  }
+}
+extension BackbaseAppUpdater.AppUpdater.Design {
+  @_hasMissingDesignatedInitializers public class Styles {
+    public var background: BackbaseDesignSystem.Style<BackbaseAppUpdater.AppUpdater.Design.BackgroundView> {
+      get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var bodyTextLabelStyle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      get
+      set
+    }
+    public var button: BackbaseDesignSystem.StyleSelector<BackbaseAppUpdater.AppUpdater.Design.ButtonType, BackbaseDesignSystem.Button> {
+      get
+      set
+    }
+    @objc deinit
+  }
+}
+public protocol UpdateAppUseCase {
+  func fetchAppStatus(completion: @escaping (BackbaseAppUpdater.AppUpdateStatus?) -> Swift.Void)
+}
+extension BackbaseAppUpdater.AppUpdateStatus : Swift.Equatable {}
+extension BackbaseAppUpdater.AppUpdateStatus : Swift.Hashable {}
+extension BackbaseAppUpdater.AppUpdater.Design.ButtonType : Swift.Equatable {}
+extension BackbaseAppUpdater.AppUpdater.Design.ButtonType : Swift.Hashable {}

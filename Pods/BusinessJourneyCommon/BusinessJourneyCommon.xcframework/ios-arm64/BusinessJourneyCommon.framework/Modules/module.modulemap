@@ -1,0 +1,11 @@
+framework module BusinessJourneyCommon {
+  umbrella header "BusinessJourneyCommon.h"
+
+  export *
+  module * { export * }
+}
+
+module BusinessJourneyCommon.Swift {
+    header "BusinessJourneyCommon-Swift.h"
+    requires objc
+}

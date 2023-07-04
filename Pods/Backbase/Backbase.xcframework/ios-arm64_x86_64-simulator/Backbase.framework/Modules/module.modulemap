@@ -1,0 +1,6 @@
+framework module Backbase {
+  umbrella header "Backbase.h"
+
+  export *
+  module * { export * }
+}

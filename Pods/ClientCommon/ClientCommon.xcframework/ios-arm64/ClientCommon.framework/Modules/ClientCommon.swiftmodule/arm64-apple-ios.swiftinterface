@@ -1,0 +1,75 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ClientCommon
+import Backbase
+import Foundation
+import MobileCoreServices
+import Swift
+import _Concurrency
+open class Call<T> where T : Swift.Decodable {
+  final public let dataProvider: DBSDataProvider
+  final public let request: Foundation.URLRequest
+  public init(dataProvider: DBSDataProvider, request: Foundation.URLRequest)
+  open func execute(_ completion: @escaping (_ result: Swift.Result<ClientCommon.Response<T>, ClientCommon.ErrorResponse>) -> Swift.Void)
+  open func cancel() -> Swift.Bool
+  @objc deinit
+}
+public enum CallError : Swift.Error {
+  case missingDataProvider
+  case requestMissingUrl
+  case invalidUrl
+  case emptyDataResponse
+  case nilHTTPResponse(Swift.Error?)
+  case unsuccessfulHTTPStatusCode(Swift.Error?)
+  case jsonDecoding(Swift.Error)
+  case generalError(Swift.Error)
+}
+public typealias NoResponse = Foundation.Data
+open class Response<T> {
+  final public let statusCode: Swift.Int
+  final public let header: [Swift.String : Swift.String]
+  final public let body: T?
+  public init(statusCode: Swift.Int, header: [Swift.String : Swift.String], body: T?)
+  convenience public init(response: Foundation.HTTPURLResponse, body: T?)
+  @objc deinit
+}
+public enum ErrorResponse : Swift.Error {
+  case error(Swift.Int, Foundation.Data?, Swift.Error)
+}
+@_hasMissingDesignatedInitializers open class JSONEncodingHelper {
+  open class func encodingParameters<T>(forEncodableObject encodableObj: T?) -> [Swift.String : Any]? where T : Swift.Encodable
+  open class func encodingParameters(forEncodableObject encodableObj: Any?) -> [Swift.String : Any]?
+  @objc deinit
+}
+public protocol ParameterEncoding {
+  static func encode(_ urlRequest: Foundation.URLRequest, with parameters: [Swift.String : Any]?) throws -> Foundation.URLRequest
+}
+@_hasMissingDesignatedInitializers public class URLEncoding : ClientCommon.ParameterEncoding {
+  public static func encode(_ urlRequest: Foundation.URLRequest, with parameters: [Swift.String : Any]?) throws -> Foundation.URLRequest
+  @objc deinit
+}
+public struct JSONDataEncoding : ClientCommon.ParameterEncoding {
+  public static func encode(_ urlRequest: Foundation.URLRequest, with parameters: [Swift.String : Any]?) -> Foundation.URLRequest
+  public static func encodingParameters(jsonData: Foundation.Data?) -> [Swift.String : Any]?
+}
+@_hasMissingDesignatedInitializers public class FileUploadEncoding : ClientCommon.ParameterEncoding {
+  public static func encode(_ urlRequest: Foundation.URLRequest, with parameters: [Swift.String : Any]?) throws -> Foundation.URLRequest
+  @objc deinit
+}
+public enum RequestBuilder {
+  public enum BodyType {
+    case none
+    case json
+    case multipartForm
+    public static func == (a: ClientCommon.RequestBuilder.BodyType, b: ClientCommon.RequestBuilder.BodyType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @available(*, deprecated)
+  public static func createURLRequest(requestUrl: Foundation.URL, method: Swift.String, parameters: [Swift.String : Any]?, isBody: Swift.Bool, headers: [Swift.String : Swift.String] = [:]) throws -> Foundation.URLRequest
+  public static func createURLRequest(requestUrl: Foundation.URL, method: Swift.String, queryParameters: [Swift.String : Any]?, bodyParameters: [Swift.String : Any]?, bodyType: ClientCommon.RequestBuilder.BodyType, headers: [Swift.String : Swift.String] = [:]) throws -> Foundation.URLRequest
+}
+extension ClientCommon.RequestBuilder.BodyType : Swift.Equatable {}
+extension ClientCommon.RequestBuilder.BodyType : Swift.Hashable {}

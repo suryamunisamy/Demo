@@ -1,0 +1,49 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailRemoteDepositHistoryJourneyUseCase
+import Backbase
+import ClientCommon
+import Foundation
+import RemoteDepositCaptureClient2
+import Resolver
+import RetailRemoteDepositHistoryJourney
+import Swift
+import UIKit
+import _Concurrency
+extension Foundation.DateFormatter {
+  public static var decoderFormatter: Foundation.DateFormatter {
+    get
+  }
+}
+public struct DeviceInformation {
+  public init(identifier: Swift.String = Self.identifier, appVersion: Swift.String = Self.appVersion, type: Swift.String = Self.type, osName: Swift.String = Self.osName, osVersion: Swift.String = Self.osVersion, maker: Swift.String = Self.maker, model: Swift.String = Self.model)
+  public static var appVersion: Swift.String {
+    get
+  }
+  public static var identifier: Swift.String {
+    get
+  }
+  public static var type: Swift.String {
+    get
+  }
+  public static var osName: Swift.String {
+    get
+  }
+  public static var osVersion: Swift.String {
+    get
+  }
+  public static var maker: Swift.String {
+    get
+  }
+  public static var model: Swift.String {
+    get
+  }
+}
+public class RetailRemoteDepositHistoryUseCase : RetailRemoteDepositHistoryJourney.RemoteDepositHistoryUseCase {
+  public init(deviceInformation: RetailRemoteDepositHistoryJourneyUseCase.DeviceInformation = .init(), dataProvider: (() -> (DBSDataProvider?))? = nil)
+  public init(deviceInformation: RetailRemoteDepositHistoryJourneyUseCase.DeviceInformation = .init(), rdcClient: RemoteDepositCaptureClient2.RemoteDepositCapturerClientAPIProtocol)
+  public func startSession(completion: @escaping RetailRemoteDepositHistoryJourneyUseCase.RetailRemoteDepositHistoryUseCase.StartSessionCompletion)
+  public func getSubmittedDepositBatches(params: RetailRemoteDepositHistoryJourney.GetSubmittedDepositBatchParams, completion: @escaping (Swift.Result<[RetailRemoteDepositHistoryJourney.SubmittedDepositBatch], RetailRemoteDepositHistoryJourney.ErrorResponse>) -> Swift.Void)
+  public func getSubmittedImages(params: RetailRemoteDepositHistoryJourney.GetSubmittedImagesParams, completion: @escaping (Swift.Result<RetailRemoteDepositHistoryJourney.CheckImages, RetailRemoteDepositHistoryJourney.ErrorResponse>) -> Swift.Void)
+  @objc deinit
+}

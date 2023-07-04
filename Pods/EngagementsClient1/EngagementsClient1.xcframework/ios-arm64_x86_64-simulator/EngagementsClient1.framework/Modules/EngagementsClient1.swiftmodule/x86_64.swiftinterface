@@ -1,0 +1,1646 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name EngagementsClient1
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct Audience : Swift.Codable, Swift.Equatable {
+  public var type: EngagementsClient1.AudienceType?
+  public var id: Swift.String?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Audience.Builder class.")
+  public init(type: EngagementsClient1.AudienceType? = nil, id: Swift.String? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var type: EngagementsClient1.AudienceType? {
+      get
+    }
+    final public var id: Swift.String? {
+      get
+    }
+    public init()
+    final public func set(type: EngagementsClient1.AudienceType?) -> Self
+    final public func set(id: Swift.String?) -> Self
+    final public func build() -> EngagementsClient1.Audience
+    public static func == (lhs: EngagementsClient1.Audience.Builder, rhs: EngagementsClient1.Audience.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.Audience, rhs: EngagementsClient1.Audience) -> Swift.Bool
+}
+public enum AudienceType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case _none
+  case id
+  case all
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [EngagementsClient1.AudienceType]
+  public static var allCases: [EngagementsClient1.AudienceType] {
+    get
+  }
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [EngagementsClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of BadRequestError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [EngagementsClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [EngagementsClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [EngagementsClient1.ErrorItem]?) -> Self
+    final public func build() -> EngagementsClient1.BadRequestError
+    public static func == (lhs: EngagementsClient1.BadRequestError.Builder, rhs: EngagementsClient1.BadRequestError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.BadRequestError, rhs: EngagementsClient1.BadRequestError) -> Swift.Bool
+}
+public struct BannerChannel : Swift.Codable, Swift.Equatable {
+  public enum Priority : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case low
+    case medium
+    case high
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [EngagementsClient1.BannerChannel.Priority]
+    public static var allCases: [EngagementsClient1.BannerChannel.Priority] {
+      get
+    }
+  }
+  public var type: EngagementsClient1.EngagementChannelType?
+  public var enabled: Swift.Bool?
+  public var uuid: Foundation.UUID?
+  public var targetUrl: Swift.String
+  public var targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource?
+  public var priority: EngagementsClient1.BannerChannel.Priority
+  public var creatives: [EngagementsClient1.CreativeResource]
+  public var campaignSlots: [EngagementsClient1.CampaignSlot]
+  public var startDate: Foundation.Date
+  public var endDate: Foundation.Date
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of BannerChannel.Builder class.")
+  public init(type: EngagementsClient1.EngagementChannelType? = nil, enabled: Swift.Bool? = nil, uuid: Foundation.UUID? = nil, targetUrl: Swift.String, targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource? = nil, priority: EngagementsClient1.BannerChannel.Priority, creatives: [EngagementsClient1.CreativeResource], campaignSlots: [EngagementsClient1.CampaignSlot], startDate: Foundation.Date, endDate: Foundation.Date)
+  final public class Builder : Swift.Equatable {
+    final public var type: EngagementsClient1.EngagementChannelType? {
+      get
+    }
+    final public var enabled: Swift.Bool? {
+      get
+    }
+    final public var uuid: Foundation.UUID? {
+      get
+    }
+    final public let targetUrl: Swift.String
+    final public var targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource? {
+      get
+    }
+    final public let priority: EngagementsClient1.BannerChannel.Priority
+    final public let creatives: [EngagementsClient1.CreativeResource]
+    final public let campaignSlots: [EngagementsClient1.CampaignSlot]
+    final public let startDate: Foundation.Date
+    final public let endDate: Foundation.Date
+    public init(targetUrl: Swift.String, priority: EngagementsClient1.BannerChannel.Priority, creatives: [EngagementsClient1.CreativeResource], campaignSlots: [EngagementsClient1.CampaignSlot], startDate: Foundation.Date, endDate: Foundation.Date)
+    final public func set(type: EngagementsClient1.EngagementChannelType?) -> Self
+    final public func set(enabled: Swift.Bool?) -> Self
+    final public func set(uuid: Foundation.UUID?) -> Self
+    final public func set(targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource?) -> Self
+    final public func build() -> EngagementsClient1.BannerChannel
+    public static func == (lhs: EngagementsClient1.BannerChannel.Builder, rhs: EngagementsClient1.BannerChannel.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.BannerChannel, rhs: EngagementsClient1.BannerChannel) -> Swift.Bool
+}
+public struct BannerChannelAllOf : Swift.Codable, Swift.Equatable {
+  public enum Priority : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case low
+    case medium
+    case high
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [EngagementsClient1.BannerChannelAllOf.Priority]
+    public static var allCases: [EngagementsClient1.BannerChannelAllOf.Priority] {
+      get
+    }
+  }
+  public var targetUrl: Swift.String
+  public var targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource?
+  public var priority: EngagementsClient1.BannerChannelAllOf.Priority
+  public var creatives: [EngagementsClient1.CreativeResource]
+  public var campaignSlots: [EngagementsClient1.CampaignSlot]
+  public var startDate: Foundation.Date
+  public var endDate: Foundation.Date
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of BannerChannelAllOf.Builder class.")
+  public init(targetUrl: Swift.String, targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource? = nil, priority: EngagementsClient1.BannerChannelAllOf.Priority, creatives: [EngagementsClient1.CreativeResource], campaignSlots: [EngagementsClient1.CampaignSlot], startDate: Foundation.Date, endDate: Foundation.Date)
+  final public class Builder : Swift.Equatable {
+    final public let targetUrl: Swift.String
+    final public var targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource? {
+      get
+    }
+    final public let priority: EngagementsClient1.BannerChannelAllOf.Priority
+    final public let creatives: [EngagementsClient1.CreativeResource]
+    final public let campaignSlots: [EngagementsClient1.CampaignSlot]
+    final public let startDate: Foundation.Date
+    final public let endDate: Foundation.Date
+    public init(targetUrl: Swift.String, priority: EngagementsClient1.BannerChannelAllOf.Priority, creatives: [EngagementsClient1.CreativeResource], campaignSlots: [EngagementsClient1.CampaignSlot], startDate: Foundation.Date, endDate: Foundation.Date)
+    final public func set(targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource?) -> Self
+    final public func build() -> EngagementsClient1.BannerChannelAllOf
+    public static func == (lhs: EngagementsClient1.BannerChannelAllOf.Builder, rhs: EngagementsClient1.BannerChannelAllOf.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.BannerChannelAllOf, rhs: EngagementsClient1.BannerChannelAllOf) -> Swift.Bool
+}
+public struct BaseCreativeResource : Swift.Codable, Swift.Equatable {
+  public var uuid: Foundation.UUID
+  public var dimensions: Swift.String
+  public var filename: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of BaseCreativeResource.Builder class.")
+  public init(uuid: Foundation.UUID, dimensions: Swift.String, filename: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let uuid: Foundation.UUID
+    final public let dimensions: Swift.String
+    final public let filename: Swift.String
+    public init(uuid: Foundation.UUID, dimensions: Swift.String, filename: Swift.String)
+    final public func build() -> EngagementsClient1.BaseCreativeResource
+    public static func == (lhs: EngagementsClient1.BaseCreativeResource.Builder, rhs: EngagementsClient1.BaseCreativeResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.BaseCreativeResource, rhs: EngagementsClient1.BaseCreativeResource) -> Swift.Bool
+}
+public struct CampaignSlot : Swift.Codable, Swift.Equatable {
+  public var portalName: Swift.String?
+  public var pageName: Swift.String?
+  public var widgetName: Swift.String?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of CampaignSlot.Builder class.")
+  public init(portalName: Swift.String? = nil, pageName: Swift.String? = nil, widgetName: Swift.String? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var portalName: Swift.String? {
+      get
+    }
+    final public var pageName: Swift.String? {
+      get
+    }
+    final public var widgetName: Swift.String? {
+      get
+    }
+    public init()
+    final public func set(portalName: Swift.String?) -> Self
+    final public func set(pageName: Swift.String?) -> Self
+    final public func set(widgetName: Swift.String?) -> Self
+    final public func build() -> EngagementsClient1.CampaignSlot
+    public static func == (lhs: EngagementsClient1.CampaignSlot.Builder, rhs: EngagementsClient1.CampaignSlot.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.CampaignSlot, rhs: EngagementsClient1.CampaignSlot) -> Swift.Bool
+}
+public struct Channel : Swift.Codable, Swift.Equatable {
+  public var type: EngagementsClient1.EngagementChannelType?
+  public var enabled: Swift.Bool?
+  public var uuid: Foundation.UUID?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Channel.Builder class.")
+  public init(type: EngagementsClient1.EngagementChannelType? = nil, enabled: Swift.Bool? = nil, uuid: Foundation.UUID? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var type: EngagementsClient1.EngagementChannelType? {
+      get
+    }
+    final public var enabled: Swift.Bool? {
+      get
+    }
+    final public var uuid: Foundation.UUID? {
+      get
+    }
+    public init()
+    final public func set(type: EngagementsClient1.EngagementChannelType?) -> Self
+    final public func set(enabled: Swift.Bool?) -> Self
+    final public func set(uuid: Foundation.UUID?) -> Self
+    final public func build() -> EngagementsClient1.Channel
+    public static func == (lhs: EngagementsClient1.Channel.Builder, rhs: EngagementsClient1.Channel.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.Channel, rhs: EngagementsClient1.Channel) -> Swift.Bool
+}
+public struct ChannelSettings : Swift.Codable, Swift.Equatable {
+  public var severityLevel: EngagementsClient1.SeverityLevel
+  public var origin: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ChannelSettings.Builder class.")
+  public init(severityLevel: EngagementsClient1.SeverityLevel, origin: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let severityLevel: EngagementsClient1.SeverityLevel
+    final public let origin: Swift.String
+    public init(severityLevel: EngagementsClient1.SeverityLevel, origin: Swift.String)
+    final public func build() -> EngagementsClient1.ChannelSettings
+    public static func == (lhs: EngagementsClient1.ChannelSettings.Builder, rhs: EngagementsClient1.ChannelSettings.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.ChannelSettings, rhs: EngagementsClient1.ChannelSettings) -> Swift.Bool
+}
+public struct ClicksAndImpressionsResource : Swift.Codable, Swift.Equatable {
+  public var clicks: Swift.Int?
+  public var impressions: Swift.Int?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ClicksAndImpressionsResource.Builder class.")
+  public init(clicks: Swift.Int? = nil, impressions: Swift.Int? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var clicks: Swift.Int? {
+      get
+    }
+    final public var impressions: Swift.Int? {
+      get
+    }
+    public init()
+    final public func set(clicks: Swift.Int?) -> Self
+    final public func set(impressions: Swift.Int?) -> Self
+    final public func build() -> EngagementsClient1.ClicksAndImpressionsResource
+    public static func == (lhs: EngagementsClient1.ClicksAndImpressionsResource.Builder, rhs: EngagementsClient1.ClicksAndImpressionsResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.ClicksAndImpressionsResource, rhs: EngagementsClient1.ClicksAndImpressionsResource) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct ConflictError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [EngagementsClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ConflictError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [EngagementsClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [EngagementsClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [EngagementsClient1.ErrorItem]?) -> Self
+    final public func build() -> EngagementsClient1.ConflictError
+    public static func == (lhs: EngagementsClient1.ConflictError.Builder, rhs: EngagementsClient1.ConflictError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.ConflictError, rhs: EngagementsClient1.ConflictError) -> Swift.Bool
+}
+public struct ConsolidatedMetricsResource : Swift.Codable, Swift.Equatable {
+  public var clicks: Swift.Int?
+  public var impressions: Swift.Int?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ConsolidatedMetricsResource.Builder class.")
+  public init(clicks: Swift.Int? = nil, impressions: Swift.Int? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var clicks: Swift.Int? {
+      get
+    }
+    final public var impressions: Swift.Int? {
+      get
+    }
+    public init()
+    final public func set(clicks: Swift.Int?) -> Self
+    final public func set(impressions: Swift.Int?) -> Self
+    final public func build() -> EngagementsClient1.ConsolidatedMetricsResource
+    public static func == (lhs: EngagementsClient1.ConsolidatedMetricsResource.Builder, rhs: EngagementsClient1.ConsolidatedMetricsResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.ConsolidatedMetricsResource, rhs: EngagementsClient1.ConsolidatedMetricsResource) -> Swift.Bool
+}
+public struct CreativeResource : Swift.Codable, Swift.Equatable {
+  public var uuid: Foundation.UUID
+  public var dimensions: Swift.String
+  public var filename: Swift.String
+  public var draftContentId: Swift.String
+  public var draftRepositoryId: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of CreativeResource.Builder class.")
+  public init(uuid: Foundation.UUID, dimensions: Swift.String, filename: Swift.String, draftContentId: Swift.String, draftRepositoryId: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let uuid: Foundation.UUID
+    final public let dimensions: Swift.String
+    final public let filename: Swift.String
+    final public let draftContentId: Swift.String
+    final public let draftRepositoryId: Swift.String
+    public init(uuid: Foundation.UUID, dimensions: Swift.String, filename: Swift.String, draftContentId: Swift.String, draftRepositoryId: Swift.String)
+    final public func build() -> EngagementsClient1.CreativeResource
+    public static func == (lhs: EngagementsClient1.CreativeResource.Builder, rhs: EngagementsClient1.CreativeResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.CreativeResource, rhs: EngagementsClient1.CreativeResource) -> Swift.Bool
+}
+public struct CreativeResourceAllOf : Swift.Codable, Swift.Equatable {
+  public var draftContentId: Swift.String
+  public var draftRepositoryId: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of CreativeResourceAllOf.Builder class.")
+  public init(draftContentId: Swift.String, draftRepositoryId: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let draftContentId: Swift.String
+    final public let draftRepositoryId: Swift.String
+    public init(draftContentId: Swift.String, draftRepositoryId: Swift.String)
+    final public func build() -> EngagementsClient1.CreativeResourceAllOf
+    public static func == (lhs: EngagementsClient1.CreativeResourceAllOf.Builder, rhs: EngagementsClient1.CreativeResourceAllOf.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.CreativeResourceAllOf, rhs: EngagementsClient1.CreativeResourceAllOf) -> Swift.Bool
+}
+public struct DeliveryChannel : Swift.Codable, Swift.Equatable {
+  public var channel: Swift.String
+  public var enabled: Swift.Bool
+  public var userCanChange: Swift.Bool
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of DeliveryChannel.Builder class.")
+  public init(channel: Swift.String, enabled: Swift.Bool, userCanChange: Swift.Bool)
+  final public class Builder : Swift.Equatable {
+    final public let channel: Swift.String
+    final public let enabled: Swift.Bool
+    final public let userCanChange: Swift.Bool
+    public init(channel: Swift.String, enabled: Swift.Bool, userCanChange: Swift.Bool)
+    final public func build() -> EngagementsClient1.DeliveryChannel
+    public static func == (lhs: EngagementsClient1.DeliveryChannel.Builder, rhs: EngagementsClient1.DeliveryChannel.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.DeliveryChannel, rhs: EngagementsClient1.DeliveryChannel) -> Swift.Bool
+}
+public struct DeliveryChannelRequest : Swift.Codable, Swift.Equatable {
+  public var channel: Swift.String
+  public var enabled: Swift.Bool
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of DeliveryChannelRequest.Builder class.")
+  public init(channel: Swift.String, enabled: Swift.Bool)
+  final public class Builder : Swift.Equatable {
+    final public let channel: Swift.String
+    final public let enabled: Swift.Bool
+    public init(channel: Swift.String, enabled: Swift.Bool)
+    final public func build() -> EngagementsClient1.DeliveryChannelRequest
+    public static func == (lhs: EngagementsClient1.DeliveryChannelRequest.Builder, rhs: EngagementsClient1.DeliveryChannelRequest.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.DeliveryChannelRequest, rhs: EngagementsClient1.DeliveryChannelRequest) -> Swift.Bool
+}
+public protocol EngagementAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateEngagementRequestParams class.")
+  func createEngagementCall(engagementRequestResource: EngagementsClient1.EngagementRequestResource) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  func createEngagementCall(params: EngagementsClient1.CreateEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with DisableEngagementRequestParams class.")
+  func disableEngagementCall(engagementId: Foundation.UUID) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  func disableEngagementCall(params: EngagementsClient1.DisableEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with EnableEngagementRequestParams class.")
+  func enableEngagementCall(engagementId: Foundation.UUID) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  func enableEngagementCall(params: EngagementsClient1.EnableEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with FinalizeEngagementRequestParams class.")
+  func finalizeEngagementCall(engagementId: Foundation.UUID) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  func finalizeEngagementCall(params: EngagementsClient1.FinalizeEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetEngagementByEngagementIdRequestParams class.")
+  func getEngagementByEngagementIdCall(engagementId: Foundation.UUID, status: [Swift.String]?, version: Swift.Int?) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  func getEngagementByEngagementIdCall(params: EngagementsClient1.GetEngagementByEngagementIdRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetEngagementsRequestParams class.")
+  func getEngagementsCall(from: Swift.Int?, size: Swift.Int?, endDateAfter: Swift.String?, endDateBefore: Swift.String?) throws -> ClientCommon.Call<[EngagementsClient1.EngagementToDisplayResource]>
+  func getEngagementsCall(params: EngagementsClient1.GetEngagementsRequestParams) throws -> ClientCommon.Call<[EngagementsClient1.EngagementToDisplayResource]>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with UpdateEngagementRequestParams class.")
+  func updateEngagementCall(engagementId: Foundation.UUID, engagementRequestResource: EngagementsClient1.EngagementRequestResource?) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  func updateEngagementCall(params: EngagementsClient1.UpdateEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+}
+@objc @_inheritsConvenienceInitializers public class EngagementAPI : ObjectiveC.NSObject, DBSClient, EngagementsClient1.EngagementAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateEngagementRequestParams class.")
+  open func createEngagementCall(engagementRequestResource: EngagementsClient1.EngagementRequestResource) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  open func createEngagementCall(params: EngagementsClient1.CreateEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with DisableEngagementRequestParams class.")
+  open func disableEngagementCall(engagementId: Foundation.UUID) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  open func disableEngagementCall(params: EngagementsClient1.DisableEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with EnableEngagementRequestParams class.")
+  open func enableEngagementCall(engagementId: Foundation.UUID) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  open func enableEngagementCall(params: EngagementsClient1.EnableEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with FinalizeEngagementRequestParams class.")
+  open func finalizeEngagementCall(engagementId: Foundation.UUID) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  open func finalizeEngagementCall(params: EngagementsClient1.FinalizeEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetEngagementByEngagementIdRequestParams class.")
+  open func getEngagementByEngagementIdCall(engagementId: Foundation.UUID, status: [Swift.String]? = nil, version: Swift.Int? = nil) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  open func getEngagementByEngagementIdCall(params: EngagementsClient1.GetEngagementByEngagementIdRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetEngagementsRequestParams class.")
+  open func getEngagementsCall(from: Swift.Int? = nil, size: Swift.Int? = nil, endDateAfter: Swift.String? = nil, endDateBefore: Swift.String? = nil) throws -> ClientCommon.Call<[EngagementsClient1.EngagementToDisplayResource]>
+  open func getEngagementsCall(params: EngagementsClient1.GetEngagementsRequestParams) throws -> ClientCommon.Call<[EngagementsClient1.EngagementToDisplayResource]>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with UpdateEngagementRequestParams class.")
+  open func updateEngagementCall(engagementId: Foundation.UUID, engagementRequestResource: EngagementsClient1.EngagementRequestResource? = nil) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  open func updateEngagementCall(params: EngagementsClient1.UpdateEngagementRequestParams) throws -> ClientCommon.Call<EngagementsClient1.EngagementResource>
+  @objc deinit
+}
+public struct CreateEngagementRequestParams : Swift.Equatable {
+  public let engagementRequestResource: EngagementsClient1.EngagementRequestResource
+  final public class Builder : Swift.Equatable {
+    final public let engagementRequestResource: EngagementsClient1.EngagementRequestResource
+    public init(engagementRequestResource: EngagementsClient1.EngagementRequestResource)
+    final public func build() -> EngagementsClient1.CreateEngagementRequestParams
+    public static func == (lhs: EngagementsClient1.CreateEngagementRequestParams.Builder, rhs: EngagementsClient1.CreateEngagementRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.CreateEngagementRequestParams, rhs: EngagementsClient1.CreateEngagementRequestParams) -> Swift.Bool
+}
+public struct DisableEngagementRequestParams : Swift.Equatable {
+  public let engagementId: Foundation.UUID
+  final public class Builder : Swift.Equatable {
+    final public let engagementId: Foundation.UUID
+    public init(engagementId: Foundation.UUID)
+    final public func build() -> EngagementsClient1.DisableEngagementRequestParams
+    public static func == (lhs: EngagementsClient1.DisableEngagementRequestParams.Builder, rhs: EngagementsClient1.DisableEngagementRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.DisableEngagementRequestParams, rhs: EngagementsClient1.DisableEngagementRequestParams) -> Swift.Bool
+}
+public struct EnableEngagementRequestParams : Swift.Equatable {
+  public let engagementId: Foundation.UUID
+  final public class Builder : Swift.Equatable {
+    final public let engagementId: Foundation.UUID
+    public init(engagementId: Foundation.UUID)
+    final public func build() -> EngagementsClient1.EnableEngagementRequestParams
+    public static func == (lhs: EngagementsClient1.EnableEngagementRequestParams.Builder, rhs: EngagementsClient1.EnableEngagementRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.EnableEngagementRequestParams, rhs: EngagementsClient1.EnableEngagementRequestParams) -> Swift.Bool
+}
+public struct FinalizeEngagementRequestParams : Swift.Equatable {
+  public let engagementId: Foundation.UUID
+  final public class Builder : Swift.Equatable {
+    final public let engagementId: Foundation.UUID
+    public init(engagementId: Foundation.UUID)
+    final public func build() -> EngagementsClient1.FinalizeEngagementRequestParams
+    public static func == (lhs: EngagementsClient1.FinalizeEngagementRequestParams.Builder, rhs: EngagementsClient1.FinalizeEngagementRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.FinalizeEngagementRequestParams, rhs: EngagementsClient1.FinalizeEngagementRequestParams) -> Swift.Bool
+}
+public struct GetEngagementByEngagementIdRequestParams : Swift.Equatable {
+  public let engagementId: Foundation.UUID
+  public let status: [Swift.String]?
+  public let version: Swift.Int?
+  final public class Builder : Swift.Equatable {
+    final public let engagementId: Foundation.UUID
+    final public var status: [Swift.String]? {
+      get
+    }
+    final public var version: Swift.Int? {
+      get
+    }
+    public init(engagementId: Foundation.UUID)
+    final public func set(status: [Swift.String]?) -> Self
+    final public func set(version: Swift.Int?) -> Self
+    final public func build() -> EngagementsClient1.GetEngagementByEngagementIdRequestParams
+    public static func == (lhs: EngagementsClient1.GetEngagementByEngagementIdRequestParams.Builder, rhs: EngagementsClient1.GetEngagementByEngagementIdRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.GetEngagementByEngagementIdRequestParams, rhs: EngagementsClient1.GetEngagementByEngagementIdRequestParams) -> Swift.Bool
+}
+public struct GetEngagementsRequestParams : Swift.Equatable {
+  public let from: Swift.Int?
+  public let size: Swift.Int?
+  public let endDateAfter: Swift.String?
+  public let endDateBefore: Swift.String?
+  final public class Builder : Swift.Equatable {
+    final public var from: Swift.Int? {
+      get
+    }
+    final public var size: Swift.Int? {
+      get
+    }
+    final public var endDateAfter: Swift.String? {
+      get
+    }
+    final public var endDateBefore: Swift.String? {
+      get
+    }
+    public init()
+    final public func set(from: Swift.Int?) -> Self
+    final public func set(size: Swift.Int?) -> Self
+    final public func set(endDateAfter: Swift.String?) -> Self
+    final public func set(endDateBefore: Swift.String?) -> Self
+    final public func build() -> EngagementsClient1.GetEngagementsRequestParams
+    public static func == (lhs: EngagementsClient1.GetEngagementsRequestParams.Builder, rhs: EngagementsClient1.GetEngagementsRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.GetEngagementsRequestParams, rhs: EngagementsClient1.GetEngagementsRequestParams) -> Swift.Bool
+}
+public struct UpdateEngagementRequestParams : Swift.Equatable {
+  public let engagementId: Foundation.UUID
+  public let engagementRequestResource: EngagementsClient1.EngagementRequestResource?
+  final public class Builder : Swift.Equatable {
+    final public let engagementId: Foundation.UUID
+    final public var engagementRequestResource: EngagementsClient1.EngagementRequestResource? {
+      get
+    }
+    public init(engagementId: Foundation.UUID)
+    final public func set(engagementRequestResource: EngagementsClient1.EngagementRequestResource?) -> Self
+    final public func build() -> EngagementsClient1.UpdateEngagementRequestParams
+    public static func == (lhs: EngagementsClient1.UpdateEngagementRequestParams.Builder, rhs: EngagementsClient1.UpdateEngagementRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.UpdateEngagementRequestParams, rhs: EngagementsClient1.UpdateEngagementRequestParams) -> Swift.Bool
+}
+public struct EngagementBaseResource : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var uuid: Foundation.UUID?
+  public var version: Swift.Int?
+  public var locale: Swift.String
+  public var startDate: Foundation.Date?
+  public var endDate: Foundation.Date
+  public var audience: EngagementsClient1.Audience?
+  public var channels: [EngagementsClient1.Channel]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of EngagementBaseResource.Builder class.")
+  public init(name: Swift.String, uuid: Foundation.UUID? = nil, version: Swift.Int? = nil, locale: Swift.String, startDate: Foundation.Date? = nil, endDate: Foundation.Date, audience: EngagementsClient1.Audience? = nil, channels: [EngagementsClient1.Channel]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let name: Swift.String
+    final public var uuid: Foundation.UUID? {
+      get
+    }
+    final public var version: Swift.Int? {
+      get
+    }
+    final public let locale: Swift.String
+    final public var startDate: Foundation.Date? {
+      get
+    }
+    final public let endDate: Foundation.Date
+    final public var audience: EngagementsClient1.Audience? {
+      get
+    }
+    final public var channels: [EngagementsClient1.Channel]? {
+      get
+    }
+    public init(name: Swift.String, locale: Swift.String, endDate: Foundation.Date)
+    final public func set(uuid: Foundation.UUID?) -> Self
+    final public func set(version: Swift.Int?) -> Self
+    final public func set(startDate: Foundation.Date?) -> Self
+    final public func set(audience: EngagementsClient1.Audience?) -> Self
+    final public func set(channels: [EngagementsClient1.Channel]?) -> Self
+    final public func build() -> EngagementsClient1.EngagementBaseResource
+    public static func == (lhs: EngagementsClient1.EngagementBaseResource.Builder, rhs: EngagementsClient1.EngagementBaseResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.EngagementBaseResource, rhs: EngagementsClient1.EngagementBaseResource) -> Swift.Bool
+}
+public enum EngagementChannelType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case banner
+  case messageCenter
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [EngagementsClient1.EngagementChannelType]
+  public static var allCases: [EngagementsClient1.EngagementChannelType] {
+    get
+  }
+}
+public protocol EngagementMetricsAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetEngagementMetricsRequestParams class.")
+  func getEngagementMetricsCall(engagementId: Foundation.UUID, channelId: Foundation.UUID) throws -> ClientCommon.Call<EngagementsClient1.MetricsResource>
+  func getEngagementMetricsCall(params: EngagementsClient1.GetEngagementMetricsRequestParams) throws -> ClientCommon.Call<EngagementsClient1.MetricsResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with RedirectBannerRequestParams class.")
+  func redirectBannerCall(utmContent: Swift.String, utmBanner: Foundation.UUID) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func redirectBannerCall(params: EngagementsClient1.RedirectBannerRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class EngagementMetricsAPI : ObjectiveC.NSObject, DBSClient, EngagementsClient1.EngagementMetricsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetEngagementMetricsRequestParams class.")
+  open func getEngagementMetricsCall(engagementId: Foundation.UUID, channelId: Foundation.UUID) throws -> ClientCommon.Call<EngagementsClient1.MetricsResource>
+  open func getEngagementMetricsCall(params: EngagementsClient1.GetEngagementMetricsRequestParams) throws -> ClientCommon.Call<EngagementsClient1.MetricsResource>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with RedirectBannerRequestParams class.")
+  open func redirectBannerCall(utmContent: Swift.String, utmBanner: Foundation.UUID) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func redirectBannerCall(params: EngagementsClient1.RedirectBannerRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct GetEngagementMetricsRequestParams : Swift.Equatable {
+  public let engagementId: Foundation.UUID
+  public let channelId: Foundation.UUID
+  final public class Builder : Swift.Equatable {
+    final public let engagementId: Foundation.UUID
+    final public let channelId: Foundation.UUID
+    public init(engagementId: Foundation.UUID, channelId: Foundation.UUID)
+    final public func build() -> EngagementsClient1.GetEngagementMetricsRequestParams
+    public static func == (lhs: EngagementsClient1.GetEngagementMetricsRequestParams.Builder, rhs: EngagementsClient1.GetEngagementMetricsRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.GetEngagementMetricsRequestParams, rhs: EngagementsClient1.GetEngagementMetricsRequestParams) -> Swift.Bool
+}
+public struct RedirectBannerRequestParams : Swift.Equatable {
+  public let utmContent: Swift.String
+  public let utmBanner: Foundation.UUID
+  final public class Builder : Swift.Equatable {
+    final public let utmContent: Swift.String
+    final public let utmBanner: Foundation.UUID
+    public init(utmContent: Swift.String, utmBanner: Foundation.UUID)
+    final public func build() -> EngagementsClient1.RedirectBannerRequestParams
+    public static func == (lhs: EngagementsClient1.RedirectBannerRequestParams.Builder, rhs: EngagementsClient1.RedirectBannerRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.RedirectBannerRequestParams, rhs: EngagementsClient1.RedirectBannerRequestParams) -> Swift.Bool
+}
+public struct EngagementRequestResource : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var uuid: Foundation.UUID?
+  public var version: Swift.Int?
+  public var locale: Swift.String
+  public var startDate: Foundation.Date?
+  public var endDate: Foundation.Date
+  public var audience: EngagementsClient1.Audience?
+  public var channels: [EngagementsClient1.Channel]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of EngagementRequestResource.Builder class.")
+  public init(name: Swift.String, uuid: Foundation.UUID? = nil, version: Swift.Int? = nil, locale: Swift.String, startDate: Foundation.Date? = nil, endDate: Foundation.Date, audience: EngagementsClient1.Audience? = nil, channels: [EngagementsClient1.Channel]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let name: Swift.String
+    final public var uuid: Foundation.UUID? {
+      get
+    }
+    final public var version: Swift.Int? {
+      get
+    }
+    final public let locale: Swift.String
+    final public var startDate: Foundation.Date? {
+      get
+    }
+    final public let endDate: Foundation.Date
+    final public var audience: EngagementsClient1.Audience? {
+      get
+    }
+    final public var channels: [EngagementsClient1.Channel]? {
+      get
+    }
+    public init(name: Swift.String, locale: Swift.String, endDate: Foundation.Date)
+    final public func set(uuid: Foundation.UUID?) -> Self
+    final public func set(version: Swift.Int?) -> Self
+    final public func set(startDate: Foundation.Date?) -> Self
+    final public func set(audience: EngagementsClient1.Audience?) -> Self
+    final public func set(channels: [EngagementsClient1.Channel]?) -> Self
+    final public func build() -> EngagementsClient1.EngagementRequestResource
+    public static func == (lhs: EngagementsClient1.EngagementRequestResource.Builder, rhs: EngagementsClient1.EngagementRequestResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.EngagementRequestResource, rhs: EngagementsClient1.EngagementRequestResource) -> Swift.Bool
+}
+public struct EngagementResource : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var uuid: Foundation.UUID
+  public var version: Swift.Int
+  public var locale: Swift.String
+  public var startDate: Foundation.Date?
+  public var endDate: Foundation.Date
+  public var audience: EngagementsClient1.Audience
+  public var channels: [EngagementsClient1.Channel]
+  public var status: EngagementsClient1.EngagementStatus
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of EngagementResource.Builder class.")
+  public init(name: Swift.String, uuid: Foundation.UUID, version: Swift.Int, locale: Swift.String, startDate: Foundation.Date? = nil, endDate: Foundation.Date, audience: EngagementsClient1.Audience, channels: [EngagementsClient1.Channel], status: EngagementsClient1.EngagementStatus)
+  final public class Builder : Swift.Equatable {
+    final public let name: Swift.String
+    final public let uuid: Foundation.UUID
+    final public let version: Swift.Int
+    final public let locale: Swift.String
+    final public var startDate: Foundation.Date? {
+      get
+    }
+    final public let endDate: Foundation.Date
+    final public let audience: EngagementsClient1.Audience
+    final public let channels: [EngagementsClient1.Channel]
+    final public let status: EngagementsClient1.EngagementStatus
+    public init(name: Swift.String, uuid: Foundation.UUID, version: Swift.Int, locale: Swift.String, endDate: Foundation.Date, audience: EngagementsClient1.Audience, channels: [EngagementsClient1.Channel], status: EngagementsClient1.EngagementStatus)
+    final public func set(startDate: Foundation.Date?) -> Self
+    final public func build() -> EngagementsClient1.EngagementResource
+    public static func == (lhs: EngagementsClient1.EngagementResource.Builder, rhs: EngagementsClient1.EngagementResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.EngagementResource, rhs: EngagementsClient1.EngagementResource) -> Swift.Bool
+}
+public struct EngagementResourceAllOf : Swift.Codable, Swift.Equatable {
+  public var status: EngagementsClient1.EngagementStatus
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of EngagementResourceAllOf.Builder class.")
+  public init(status: EngagementsClient1.EngagementStatus)
+  final public class Builder : Swift.Equatable {
+    final public let status: EngagementsClient1.EngagementStatus
+    public init(status: EngagementsClient1.EngagementStatus)
+    final public func build() -> EngagementsClient1.EngagementResourceAllOf
+    public static func == (lhs: EngagementsClient1.EngagementResourceAllOf.Builder, rhs: EngagementsClient1.EngagementResourceAllOf.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.EngagementResourceAllOf, rhs: EngagementsClient1.EngagementResourceAllOf) -> Swift.Bool
+}
+public enum EngagementStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case draft
+  case _final
+  case superseded
+  case paused
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [EngagementsClient1.EngagementStatus]
+  public static var allCases: [EngagementsClient1.EngagementStatus] {
+    get
+  }
+}
+public struct EngagementTemplate : Swift.Codable, Swift.Equatable {
+  public var repositoryId: Swift.String
+  public var contentPath: Swift.String
+  public var locale: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of EngagementTemplate.Builder class.")
+  public init(repositoryId: Swift.String, contentPath: Swift.String, locale: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let repositoryId: Swift.String
+    final public let contentPath: Swift.String
+    final public let locale: Swift.String
+    public init(repositoryId: Swift.String, contentPath: Swift.String, locale: Swift.String)
+    final public func build() -> EngagementsClient1.EngagementTemplate
+    public static func == (lhs: EngagementsClient1.EngagementTemplate.Builder, rhs: EngagementsClient1.EngagementTemplate.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.EngagementTemplate, rhs: EngagementsClient1.EngagementTemplate) -> Swift.Bool
+}
+public struct EngagementToDisplayResource : Swift.Codable, Swift.Equatable {
+  public var hasChanges: Swift.Bool?
+  public var metrics: EngagementsClient1.ConsolidatedMetricsResource?
+  public var status: EngagementsClient1.EngagementStatus
+  public var name: Swift.String
+  public var uuid: Foundation.UUID
+  public var version: Swift.Int
+  public var locale: Swift.String
+  public var startDate: Foundation.Date?
+  public var endDate: Foundation.Date
+  public var audience: EngagementsClient1.Audience?
+  public var channels: [EngagementsClient1.Channel]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of EngagementToDisplayResource.Builder class.")
+  public init(hasChanges: Swift.Bool? = nil, metrics: EngagementsClient1.ConsolidatedMetricsResource? = nil, status: EngagementsClient1.EngagementStatus, name: Swift.String, uuid: Foundation.UUID, version: Swift.Int, locale: Swift.String, startDate: Foundation.Date? = nil, endDate: Foundation.Date, audience: EngagementsClient1.Audience? = nil, channels: [EngagementsClient1.Channel]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var hasChanges: Swift.Bool? {
+      get
+    }
+    final public var metrics: EngagementsClient1.ConsolidatedMetricsResource? {
+      get
+    }
+    final public let status: EngagementsClient1.EngagementStatus
+    final public let name: Swift.String
+    final public let uuid: Foundation.UUID
+    final public let version: Swift.Int
+    final public let locale: Swift.String
+    final public var startDate: Foundation.Date? {
+      get
+    }
+    final public let endDate: Foundation.Date
+    final public var audience: EngagementsClient1.Audience? {
+      get
+    }
+    final public var channels: [EngagementsClient1.Channel]? {
+      get
+    }
+    public init(status: EngagementsClient1.EngagementStatus, name: Swift.String, uuid: Foundation.UUID, version: Swift.Int, locale: Swift.String, endDate: Foundation.Date)
+    final public func set(hasChanges: Swift.Bool?) -> Self
+    final public func set(metrics: EngagementsClient1.ConsolidatedMetricsResource?) -> Self
+    final public func set(startDate: Foundation.Date?) -> Self
+    final public func set(audience: EngagementsClient1.Audience?) -> Self
+    final public func set(channels: [EngagementsClient1.Channel]?) -> Self
+    final public func build() -> EngagementsClient1.EngagementToDisplayResource
+    public static func == (lhs: EngagementsClient1.EngagementToDisplayResource.Builder, rhs: EngagementsClient1.EngagementToDisplayResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.EngagementToDisplayResource, rhs: EngagementsClient1.EngagementToDisplayResource) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var context: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ErrorItem.Builder class.")
+  public init(message: Swift.String, key: Swift.String, context: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var context: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(context: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> EngagementsClient1.ErrorItem
+    public static func == (lhs: EngagementsClient1.ErrorItem.Builder, rhs: EngagementsClient1.ErrorItem.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.ErrorItem, rhs: EngagementsClient1.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [EngagementsClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ForbiddenError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [EngagementsClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [EngagementsClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [EngagementsClient1.ErrorItem]?) -> Self
+    final public func build() -> EngagementsClient1.ForbiddenError
+    public static func == (lhs: EngagementsClient1.ForbiddenError.Builder, rhs: EngagementsClient1.ForbiddenError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.ForbiddenError, rhs: EngagementsClient1.ForbiddenError) -> Swift.Bool
+}
+public struct GeneralNotification : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var name: Swift.String
+  public var preferencesEnabled: Swift.Bool
+  public var push: EngagementsClient1.PushMessagePayload?
+  public var inAppNotification: EngagementsClient1.NotificationMessagePayload?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of GeneralNotification.Builder class.")
+  public init(id: Swift.String, name: Swift.String, preferencesEnabled: Swift.Bool, push: EngagementsClient1.PushMessagePayload? = nil, inAppNotification: EngagementsClient1.NotificationMessagePayload? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let name: Swift.String
+    final public let preferencesEnabled: Swift.Bool
+    final public var push: EngagementsClient1.PushMessagePayload? {
+      get
+    }
+    final public var inAppNotification: EngagementsClient1.NotificationMessagePayload? {
+      get
+    }
+    public init(id: Swift.String, name: Swift.String, preferencesEnabled: Swift.Bool)
+    final public func set(push: EngagementsClient1.PushMessagePayload?) -> Self
+    final public func set(inAppNotification: EngagementsClient1.NotificationMessagePayload?) -> Self
+    final public func build() -> EngagementsClient1.GeneralNotification
+    public static func == (lhs: EngagementsClient1.GeneralNotification.Builder, rhs: EngagementsClient1.GeneralNotification.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.GeneralNotification, rhs: EngagementsClient1.GeneralNotification) -> Swift.Bool
+}
+public protocol GeneralNotificationAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetGeneralNotificationByIdRequestParams class.")
+  func getGeneralNotificationByIdCall(id: Swift.String) throws -> ClientCommon.Call<EngagementsClient1.GeneralNotification>
+  func getGeneralNotificationByIdCall(params: EngagementsClient1.GetGeneralNotificationByIdRequestParams) throws -> ClientCommon.Call<EngagementsClient1.GeneralNotification>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetGeneralNotificationsRequestParams class.")
+  func getGeneralNotificationsCall(from: Swift.Int?, size: Swift.Int?) throws -> ClientCommon.Call<[EngagementsClient1.GeneralNotificationSummary]>
+  func getGeneralNotificationsCall(params: EngagementsClient1.GetGeneralNotificationsRequestParams) throws -> ClientCommon.Call<[EngagementsClient1.GeneralNotificationSummary]>
+}
+@objc @_inheritsConvenienceInitializers public class GeneralNotificationAPI : ObjectiveC.NSObject, DBSClient, EngagementsClient1.GeneralNotificationAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetGeneralNotificationByIdRequestParams class.")
+  open func getGeneralNotificationByIdCall(id: Swift.String) throws -> ClientCommon.Call<EngagementsClient1.GeneralNotification>
+  open func getGeneralNotificationByIdCall(params: EngagementsClient1.GetGeneralNotificationByIdRequestParams) throws -> ClientCommon.Call<EngagementsClient1.GeneralNotification>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetGeneralNotificationsRequestParams class.")
+  open func getGeneralNotificationsCall(from: Swift.Int? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[EngagementsClient1.GeneralNotificationSummary]>
+  open func getGeneralNotificationsCall(params: EngagementsClient1.GetGeneralNotificationsRequestParams) throws -> ClientCommon.Call<[EngagementsClient1.GeneralNotificationSummary]>
+  @objc deinit
+}
+public struct GetGeneralNotificationByIdRequestParams : Swift.Equatable {
+  public let id: Swift.String
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    public init(id: Swift.String)
+    final public func build() -> EngagementsClient1.GetGeneralNotificationByIdRequestParams
+    public static func == (lhs: EngagementsClient1.GetGeneralNotificationByIdRequestParams.Builder, rhs: EngagementsClient1.GetGeneralNotificationByIdRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.GetGeneralNotificationByIdRequestParams, rhs: EngagementsClient1.GetGeneralNotificationByIdRequestParams) -> Swift.Bool
+}
+public struct GetGeneralNotificationsRequestParams : Swift.Equatable {
+  public let from: Swift.Int?
+  public let size: Swift.Int?
+  final public class Builder : Swift.Equatable {
+    final public var from: Swift.Int? {
+      get
+    }
+    final public var size: Swift.Int? {
+      get
+    }
+    public init()
+    final public func set(from: Swift.Int?) -> Self
+    final public func set(size: Swift.Int?) -> Self
+    final public func build() -> EngagementsClient1.GetGeneralNotificationsRequestParams
+    public static func == (lhs: EngagementsClient1.GetGeneralNotificationsRequestParams.Builder, rhs: EngagementsClient1.GetGeneralNotificationsRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.GetGeneralNotificationsRequestParams, rhs: EngagementsClient1.GetGeneralNotificationsRequestParams) -> Swift.Bool
+}
+public struct GeneralNotificationAllOf : Swift.Codable, Swift.Equatable {
+  public var preferencesEnabled: Swift.Bool
+  public var push: EngagementsClient1.PushMessagePayload?
+  public var inAppNotification: EngagementsClient1.NotificationMessagePayload?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of GeneralNotificationAllOf.Builder class.")
+  public init(preferencesEnabled: Swift.Bool, push: EngagementsClient1.PushMessagePayload? = nil, inAppNotification: EngagementsClient1.NotificationMessagePayload? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let preferencesEnabled: Swift.Bool
+    final public var push: EngagementsClient1.PushMessagePayload? {
+      get
+    }
+    final public var inAppNotification: EngagementsClient1.NotificationMessagePayload? {
+      get
+    }
+    public init(preferencesEnabled: Swift.Bool)
+    final public func set(push: EngagementsClient1.PushMessagePayload?) -> Self
+    final public func set(inAppNotification: EngagementsClient1.NotificationMessagePayload?) -> Self
+    final public func build() -> EngagementsClient1.GeneralNotificationAllOf
+    public static func == (lhs: EngagementsClient1.GeneralNotificationAllOf.Builder, rhs: EngagementsClient1.GeneralNotificationAllOf.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.GeneralNotificationAllOf, rhs: EngagementsClient1.GeneralNotificationAllOf) -> Swift.Bool
+}
+public struct GeneralNotificationParent : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var name: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of GeneralNotificationParent.Builder class.")
+  public init(id: Swift.String, name: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let name: Swift.String
+    public init(id: Swift.String, name: Swift.String)
+    final public func build() -> EngagementsClient1.GeneralNotificationParent
+    public static func == (lhs: EngagementsClient1.GeneralNotificationParent.Builder, rhs: EngagementsClient1.GeneralNotificationParent.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.GeneralNotificationParent, rhs: EngagementsClient1.GeneralNotificationParent) -> Swift.Bool
+}
+public struct GeneralNotificationSummary : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var name: Swift.String
+  public var deliveryOptions: [Swift.String]
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of GeneralNotificationSummary.Builder class.")
+  public init(id: Swift.String, name: Swift.String, deliveryOptions: [Swift.String])
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let name: Swift.String
+    final public let deliveryOptions: [Swift.String]
+    public init(id: Swift.String, name: Swift.String, deliveryOptions: [Swift.String])
+    final public func build() -> EngagementsClient1.GeneralNotificationSummary
+    public static func == (lhs: EngagementsClient1.GeneralNotificationSummary.Builder, rhs: EngagementsClient1.GeneralNotificationSummary.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.GeneralNotificationSummary, rhs: EngagementsClient1.GeneralNotificationSummary) -> Swift.Bool
+}
+public struct GeneralNotificationSummaryAllOf : Swift.Codable, Swift.Equatable {
+  public var deliveryOptions: [Swift.String]
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of GeneralNotificationSummaryAllOf.Builder class.")
+  public init(deliveryOptions: [Swift.String])
+  final public class Builder : Swift.Equatable {
+    final public let deliveryOptions: [Swift.String]
+    public init(deliveryOptions: [Swift.String])
+    final public func build() -> EngagementsClient1.GeneralNotificationSummaryAllOf
+    public static func == (lhs: EngagementsClient1.GeneralNotificationSummaryAllOf.Builder, rhs: EngagementsClient1.GeneralNotificationSummaryAllOf.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.GeneralNotificationSummaryAllOf, rhs: EngagementsClient1.GeneralNotificationSummaryAllOf) -> Swift.Bool
+}
+public struct MessageCenterChannel : Swift.Codable, Swift.Equatable {
+  public var type: EngagementsClient1.EngagementChannelType?
+  public var enabled: Swift.Bool?
+  public var uuid: Foundation.UUID?
+  public var topicId: Swift.String
+  public var draftContentId: Swift.String
+  public var draftRepositoryId: Swift.String
+  public var scheduledAt: Foundation.Date
+  public var deliveredAt: Foundation.Date?
+  public var locked: Swift.Bool?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of MessageCenterChannel.Builder class.")
+  public init(type: EngagementsClient1.EngagementChannelType? = nil, enabled: Swift.Bool? = nil, uuid: Foundation.UUID? = nil, topicId: Swift.String, draftContentId: Swift.String, draftRepositoryId: Swift.String, scheduledAt: Foundation.Date, deliveredAt: Foundation.Date? = nil, locked: Swift.Bool? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var type: EngagementsClient1.EngagementChannelType? {
+      get
+    }
+    final public var enabled: Swift.Bool? {
+      get
+    }
+    final public var uuid: Foundation.UUID? {
+      get
+    }
+    final public let topicId: Swift.String
+    final public let draftContentId: Swift.String
+    final public let draftRepositoryId: Swift.String
+    final public let scheduledAt: Foundation.Date
+    final public var deliveredAt: Foundation.Date? {
+      get
+    }
+    final public var locked: Swift.Bool? {
+      get
+    }
+    public init(topicId: Swift.String, draftContentId: Swift.String, draftRepositoryId: Swift.String, scheduledAt: Foundation.Date)
+    final public func set(type: EngagementsClient1.EngagementChannelType?) -> Self
+    final public func set(enabled: Swift.Bool?) -> Self
+    final public func set(uuid: Foundation.UUID?) -> Self
+    final public func set(deliveredAt: Foundation.Date?) -> Self
+    final public func set(locked: Swift.Bool?) -> Self
+    final public func build() -> EngagementsClient1.MessageCenterChannel
+    public static func == (lhs: EngagementsClient1.MessageCenterChannel.Builder, rhs: EngagementsClient1.MessageCenterChannel.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.MessageCenterChannel, rhs: EngagementsClient1.MessageCenterChannel) -> Swift.Bool
+}
+public struct MessageCenterChannelAllOf : Swift.Codable, Swift.Equatable {
+  public var topicId: Swift.String
+  public var draftContentId: Swift.String
+  public var draftRepositoryId: Swift.String
+  public var scheduledAt: Foundation.Date
+  public var deliveredAt: Foundation.Date?
+  public var locked: Swift.Bool?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of MessageCenterChannelAllOf.Builder class.")
+  public init(topicId: Swift.String, draftContentId: Swift.String, draftRepositoryId: Swift.String, scheduledAt: Foundation.Date, deliveredAt: Foundation.Date? = nil, locked: Swift.Bool? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let topicId: Swift.String
+    final public let draftContentId: Swift.String
+    final public let draftRepositoryId: Swift.String
+    final public let scheduledAt: Foundation.Date
+    final public var deliveredAt: Foundation.Date? {
+      get
+    }
+    final public var locked: Swift.Bool? {
+      get
+    }
+    public init(topicId: Swift.String, draftContentId: Swift.String, draftRepositoryId: Swift.String, scheduledAt: Foundation.Date)
+    final public func set(deliveredAt: Foundation.Date?) -> Self
+    final public func set(locked: Swift.Bool?) -> Self
+    final public func build() -> EngagementsClient1.MessageCenterChannelAllOf
+    public static func == (lhs: EngagementsClient1.MessageCenterChannelAllOf.Builder, rhs: EngagementsClient1.MessageCenterChannelAllOf.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.MessageCenterChannelAllOf, rhs: EngagementsClient1.MessageCenterChannelAllOf) -> Swift.Bool
+}
+public struct MetricsResource : Swift.Codable, Swift.Equatable {
+  public var unit: Swift.String
+  public var metrics: [Swift.String : EngagementsClient1.ClicksAndImpressionsResource]
+  public var consolidated: EngagementsClient1.ClicksAndImpressionsResource
+  public var creatives: [Swift.String : EngagementsClient1.ClicksAndImpressionsResource]
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of MetricsResource.Builder class.")
+  public init(unit: Swift.String, metrics: [Swift.String : EngagementsClient1.ClicksAndImpressionsResource], consolidated: EngagementsClient1.ClicksAndImpressionsResource, creatives: [Swift.String : EngagementsClient1.ClicksAndImpressionsResource])
+  final public class Builder : Swift.Equatable {
+    final public let unit: Swift.String
+    final public let metrics: [Swift.String : EngagementsClient1.ClicksAndImpressionsResource]
+    final public let consolidated: EngagementsClient1.ClicksAndImpressionsResource
+    final public let creatives: [Swift.String : EngagementsClient1.ClicksAndImpressionsResource]
+    public init(unit: Swift.String, metrics: [Swift.String : EngagementsClient1.ClicksAndImpressionsResource], consolidated: EngagementsClient1.ClicksAndImpressionsResource, creatives: [Swift.String : EngagementsClient1.ClicksAndImpressionsResource])
+    final public func build() -> EngagementsClient1.MetricsResource
+    public static func == (lhs: EngagementsClient1.MetricsResource.Builder, rhs: EngagementsClient1.MetricsResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.MetricsResource, rhs: EngagementsClient1.MetricsResource) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [EngagementsClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of NotFoundError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [EngagementsClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [EngagementsClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [EngagementsClient1.ErrorItem]?) -> Self
+    final public func build() -> EngagementsClient1.NotFoundError
+    public static func == (lhs: EngagementsClient1.NotFoundError.Builder, rhs: EngagementsClient1.NotFoundError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.NotFoundError, rhs: EngagementsClient1.NotFoundError) -> Swift.Bool
+}
+public struct NotificationMessagePayload : Swift.Codable, Swift.Equatable {
+  public var engagementTemplates: [EngagementsClient1.EngagementTemplate]
+  public var channelSettings: EngagementsClient1.ChannelSettings
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of NotificationMessagePayload.Builder class.")
+  public init(engagementTemplates: [EngagementsClient1.EngagementTemplate], channelSettings: EngagementsClient1.ChannelSettings)
+  final public class Builder : Swift.Equatable {
+    final public let engagementTemplates: [EngagementsClient1.EngagementTemplate]
+    final public let channelSettings: EngagementsClient1.ChannelSettings
+    public init(engagementTemplates: [EngagementsClient1.EngagementTemplate], channelSettings: EngagementsClient1.ChannelSettings)
+    final public func build() -> EngagementsClient1.NotificationMessagePayload
+    public static func == (lhs: EngagementsClient1.NotificationMessagePayload.Builder, rhs: EngagementsClient1.NotificationMessagePayload.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.NotificationMessagePayload, rhs: EngagementsClient1.NotificationMessagePayload) -> Swift.Bool
+}
+public struct NotificationPreference : Swift.Codable, Swift.Equatable {
+  public var id: Foundation.UUID?
+  public var generalNotificationId: Swift.String
+  public var active: Swift.Bool
+  public var channels: [EngagementsClient1.DeliveryChannel]
+  public var userConditions: EngagementsClient1.UserConditions?
+  public var createdOn: Foundation.Date?
+  public var lastUpdatedAt: Foundation.Date?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of NotificationPreference.Builder class.")
+  public init(id: Foundation.UUID? = nil, generalNotificationId: Swift.String, active: Swift.Bool, channels: [EngagementsClient1.DeliveryChannel], userConditions: EngagementsClient1.UserConditions? = nil, createdOn: Foundation.Date? = nil, lastUpdatedAt: Foundation.Date? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var id: Foundation.UUID? {
+      get
+    }
+    final public let generalNotificationId: Swift.String
+    final public let active: Swift.Bool
+    final public let channels: [EngagementsClient1.DeliveryChannel]
+    final public var userConditions: EngagementsClient1.UserConditions? {
+      get
+    }
+    final public var createdOn: Foundation.Date? {
+      get
+    }
+    final public var lastUpdatedAt: Foundation.Date? {
+      get
+    }
+    public init(generalNotificationId: Swift.String, active: Swift.Bool, channels: [EngagementsClient1.DeliveryChannel])
+    final public func set(id: Foundation.UUID?) -> Self
+    final public func set(userConditions: EngagementsClient1.UserConditions?) -> Self
+    final public func set(createdOn: Foundation.Date?) -> Self
+    final public func set(lastUpdatedAt: Foundation.Date?) -> Self
+    final public func build() -> EngagementsClient1.NotificationPreference
+    public static func == (lhs: EngagementsClient1.NotificationPreference.Builder, rhs: EngagementsClient1.NotificationPreference.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.NotificationPreference, rhs: EngagementsClient1.NotificationPreference) -> Swift.Bool
+}
+public protocol NotificationPreferenceAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateNotificationPreferenceRequestParams class.")
+  func createNotificationPreferenceCall(notificationPreferencePostRequest: EngagementsClient1.NotificationPreferencePostRequest) throws -> ClientCommon.Call<EngagementsClient1.NotificationPreference>
+  func createNotificationPreferenceCall(params: EngagementsClient1.CreateNotificationPreferenceRequestParams) throws -> ClientCommon.Call<EngagementsClient1.NotificationPreference>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetNotificationPreferencesRequestParams class.")
+  func getNotificationPreferencesCall(generalNotificationId: Swift.String?, active: Swift.Bool?, entityId: Foundation.UUID?, entityType: Swift.String?) throws -> ClientCommon.Call<EngagementsClient1.NotificationsPreferencesGet>
+  func getNotificationPreferencesCall(params: EngagementsClient1.GetNotificationPreferencesRequestParams) throws -> ClientCommon.Call<EngagementsClient1.NotificationsPreferencesGet>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with UpdateNotificationPreferenceRequestParams class.")
+  func updateNotificationPreferenceCall(id: Foundation.UUID, notificationPreferencePutRequest: EngagementsClient1.NotificationPreferencePutRequest) throws -> ClientCommon.Call<EngagementsClient1.NotificationPreference>
+  func updateNotificationPreferenceCall(params: EngagementsClient1.UpdateNotificationPreferenceRequestParams) throws -> ClientCommon.Call<EngagementsClient1.NotificationPreference>
+}
+@objc @_inheritsConvenienceInitializers public class NotificationPreferenceAPI : ObjectiveC.NSObject, DBSClient, EngagementsClient1.NotificationPreferenceAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateNotificationPreferenceRequestParams class.")
+  open func createNotificationPreferenceCall(notificationPreferencePostRequest: EngagementsClient1.NotificationPreferencePostRequest) throws -> ClientCommon.Call<EngagementsClient1.NotificationPreference>
+  open func createNotificationPreferenceCall(params: EngagementsClient1.CreateNotificationPreferenceRequestParams) throws -> ClientCommon.Call<EngagementsClient1.NotificationPreference>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetNotificationPreferencesRequestParams class.")
+  open func getNotificationPreferencesCall(generalNotificationId: Swift.String? = nil, active: Swift.Bool? = nil, entityId: Foundation.UUID? = nil, entityType: Swift.String? = nil) throws -> ClientCommon.Call<EngagementsClient1.NotificationsPreferencesGet>
+  open func getNotificationPreferencesCall(params: EngagementsClient1.GetNotificationPreferencesRequestParams) throws -> ClientCommon.Call<EngagementsClient1.NotificationsPreferencesGet>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with UpdateNotificationPreferenceRequestParams class.")
+  open func updateNotificationPreferenceCall(id: Foundation.UUID, notificationPreferencePutRequest: EngagementsClient1.NotificationPreferencePutRequest) throws -> ClientCommon.Call<EngagementsClient1.NotificationPreference>
+  open func updateNotificationPreferenceCall(params: EngagementsClient1.UpdateNotificationPreferenceRequestParams) throws -> ClientCommon.Call<EngagementsClient1.NotificationPreference>
+  @objc deinit
+}
+public struct CreateNotificationPreferenceRequestParams : Swift.Equatable {
+  public let notificationPreferencePostRequest: EngagementsClient1.NotificationPreferencePostRequest
+  final public class Builder : Swift.Equatable {
+    final public let notificationPreferencePostRequest: EngagementsClient1.NotificationPreferencePostRequest
+    public init(notificationPreferencePostRequest: EngagementsClient1.NotificationPreferencePostRequest)
+    final public func build() -> EngagementsClient1.CreateNotificationPreferenceRequestParams
+    public static func == (lhs: EngagementsClient1.CreateNotificationPreferenceRequestParams.Builder, rhs: EngagementsClient1.CreateNotificationPreferenceRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.CreateNotificationPreferenceRequestParams, rhs: EngagementsClient1.CreateNotificationPreferenceRequestParams) -> Swift.Bool
+}
+public struct GetNotificationPreferencesRequestParams : Swift.Equatable {
+  public let generalNotificationId: Swift.String?
+  public let active: Swift.Bool?
+  public let entityId: Foundation.UUID?
+  public let entityType: Swift.String?
+  final public class Builder : Swift.Equatable {
+    final public var generalNotificationId: Swift.String? {
+      get
+    }
+    final public var active: Swift.Bool? {
+      get
+    }
+    final public var entityId: Foundation.UUID? {
+      get
+    }
+    final public var entityType: Swift.String? {
+      get
+    }
+    public init()
+    final public func set(generalNotificationId: Swift.String?) -> Self
+    final public func set(active: Swift.Bool?) -> Self
+    final public func set(entityId: Foundation.UUID?) -> Self
+    final public func set(entityType: Swift.String?) -> Self
+    final public func build() -> EngagementsClient1.GetNotificationPreferencesRequestParams
+    public static func == (lhs: EngagementsClient1.GetNotificationPreferencesRequestParams.Builder, rhs: EngagementsClient1.GetNotificationPreferencesRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.GetNotificationPreferencesRequestParams, rhs: EngagementsClient1.GetNotificationPreferencesRequestParams) -> Swift.Bool
+}
+public struct UpdateNotificationPreferenceRequestParams : Swift.Equatable {
+  public let id: Foundation.UUID
+  public let notificationPreferencePutRequest: EngagementsClient1.NotificationPreferencePutRequest
+  final public class Builder : Swift.Equatable {
+    final public let id: Foundation.UUID
+    final public let notificationPreferencePutRequest: EngagementsClient1.NotificationPreferencePutRequest
+    public init(id: Foundation.UUID, notificationPreferencePutRequest: EngagementsClient1.NotificationPreferencePutRequest)
+    final public func build() -> EngagementsClient1.UpdateNotificationPreferenceRequestParams
+    public static func == (lhs: EngagementsClient1.UpdateNotificationPreferenceRequestParams.Builder, rhs: EngagementsClient1.UpdateNotificationPreferenceRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.UpdateNotificationPreferenceRequestParams, rhs: EngagementsClient1.UpdateNotificationPreferenceRequestParams) -> Swift.Bool
+}
+public struct NotificationPreferenceGet : Swift.Codable, Swift.Equatable {
+  public var totalCount: Swift.Double
+  public var notificationPreferences: [EngagementsClient1.NotificationPreference]
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of NotificationPreferenceGet.Builder class.")
+  public init(totalCount: Swift.Double, notificationPreferences: [EngagementsClient1.NotificationPreference])
+  final public class Builder : Swift.Equatable {
+    final public let totalCount: Swift.Double
+    final public let notificationPreferences: [EngagementsClient1.NotificationPreference]
+    public init(totalCount: Swift.Double, notificationPreferences: [EngagementsClient1.NotificationPreference])
+    final public func build() -> EngagementsClient1.NotificationPreferenceGet
+    public static func == (lhs: EngagementsClient1.NotificationPreferenceGet.Builder, rhs: EngagementsClient1.NotificationPreferenceGet.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.NotificationPreferenceGet, rhs: EngagementsClient1.NotificationPreferenceGet) -> Swift.Bool
+}
+public struct NotificationPreferencePostRequest : Swift.Codable, Swift.Equatable {
+  public var generalNotificationId: Swift.String
+  public var active: Swift.Bool
+  public var channels: [EngagementsClient1.DeliveryChannelRequest]
+  public var eRef: Foundation.UUID
+  public var conditions: [Swift.String : Any]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of NotificationPreferencePostRequest.Builder class.")
+  public init(generalNotificationId: Swift.String, active: Swift.Bool, channels: [EngagementsClient1.DeliveryChannelRequest], eRef: Foundation.UUID, conditions: [Swift.String : Any]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let generalNotificationId: Swift.String
+    final public let active: Swift.Bool
+    final public let channels: [EngagementsClient1.DeliveryChannelRequest]
+    final public let eRef: Foundation.UUID
+    final public var conditions: [Swift.String : Any]? {
+      get
+    }
+    public init(generalNotificationId: Swift.String, active: Swift.Bool, channels: [EngagementsClient1.DeliveryChannelRequest], eRef: Foundation.UUID)
+    final public func set(conditions: [Swift.String : Any]?) -> Self
+    final public func build() -> EngagementsClient1.NotificationPreferencePostRequest
+    public static func == (lhs: EngagementsClient1.NotificationPreferencePostRequest.Builder, rhs: EngagementsClient1.NotificationPreferencePostRequest.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.NotificationPreferencePostRequest, rhs: EngagementsClient1.NotificationPreferencePostRequest) -> Swift.Bool
+}
+public struct NotificationPreferencePutRequest : Swift.Codable, Swift.Equatable {
+  public var active: Swift.Bool
+  public var channels: [EngagementsClient1.DeliveryChannelRequest]
+  public var conditions: [Swift.String : Any]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of NotificationPreferencePutRequest.Builder class.")
+  public init(active: Swift.Bool, channels: [EngagementsClient1.DeliveryChannelRequest], conditions: [Swift.String : Any]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let active: Swift.Bool
+    final public let channels: [EngagementsClient1.DeliveryChannelRequest]
+    final public var conditions: [Swift.String : Any]? {
+      get
+    }
+    public init(active: Swift.Bool, channels: [EngagementsClient1.DeliveryChannelRequest])
+    final public func set(conditions: [Swift.String : Any]?) -> Self
+    final public func build() -> EngagementsClient1.NotificationPreferencePutRequest
+    public static func == (lhs: EngagementsClient1.NotificationPreferencePutRequest.Builder, rhs: EngagementsClient1.NotificationPreferencePutRequest.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.NotificationPreferencePutRequest, rhs: EngagementsClient1.NotificationPreferencePutRequest) -> Swift.Bool
+}
+public struct NotificationsPreferencesGet : Swift.Codable, Swift.Equatable {
+  public var totalCount: Swift.Double
+  public var notificationPreferences: [EngagementsClient1.NotificationPreference]
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of NotificationsPreferencesGet.Builder class.")
+  public init(totalCount: Swift.Double, notificationPreferences: [EngagementsClient1.NotificationPreference])
+  final public class Builder : Swift.Equatable {
+    final public let totalCount: Swift.Double
+    final public let notificationPreferences: [EngagementsClient1.NotificationPreference]
+    public init(totalCount: Swift.Double, notificationPreferences: [EngagementsClient1.NotificationPreference])
+    final public func build() -> EngagementsClient1.NotificationsPreferencesGet
+    public static func == (lhs: EngagementsClient1.NotificationsPreferencesGet.Builder, rhs: EngagementsClient1.NotificationsPreferencesGet.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.NotificationsPreferencesGet, rhs: EngagementsClient1.NotificationsPreferencesGet) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct PushMessagePayload : Swift.Codable, Swift.Equatable {
+  public var engagementTemplates: [EngagementsClient1.EngagementTemplate]
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of PushMessagePayload.Builder class.")
+  public init(engagementTemplates: [EngagementsClient1.EngagementTemplate])
+  final public class Builder : Swift.Equatable {
+    final public let engagementTemplates: [EngagementsClient1.EngagementTemplate]
+    public init(engagementTemplates: [EngagementsClient1.EngagementTemplate])
+    final public func build() -> EngagementsClient1.PushMessagePayload
+    public static func == (lhs: EngagementsClient1.PushMessagePayload.Builder, rhs: EngagementsClient1.PushMessagePayload.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.PushMessagePayload, rhs: EngagementsClient1.PushMessagePayload) -> Swift.Bool
+}
+public protocol SelectBannerAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with SelectBannerRequestParams class.")
+  func selectBannerCall(spaceId: Swift.String, dimensions: Swift.String, locale: Swift.String) throws -> ClientCommon.Call<EngagementsClient1.SelectedBannerResource>
+  func selectBannerCall(params: EngagementsClient1.SelectBannerRequestParams) throws -> ClientCommon.Call<EngagementsClient1.SelectedBannerResource>
+}
+@objc @_inheritsConvenienceInitializers public class SelectBannerAPI : ObjectiveC.NSObject, DBSClient, EngagementsClient1.SelectBannerAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with SelectBannerRequestParams class.")
+  open func selectBannerCall(spaceId: Swift.String, dimensions: Swift.String, locale: Swift.String) throws -> ClientCommon.Call<EngagementsClient1.SelectedBannerResource>
+  open func selectBannerCall(params: EngagementsClient1.SelectBannerRequestParams) throws -> ClientCommon.Call<EngagementsClient1.SelectedBannerResource>
+  @objc deinit
+}
+public struct SelectBannerRequestParams : Swift.Equatable {
+  public let spaceId: Swift.String
+  public let dimensions: Swift.String
+  public let locale: Swift.String
+  final public class Builder : Swift.Equatable {
+    final public let spaceId: Swift.String
+    final public let dimensions: Swift.String
+    final public let locale: Swift.String
+    public init(spaceId: Swift.String, dimensions: Swift.String, locale: Swift.String)
+    final public func build() -> EngagementsClient1.SelectBannerRequestParams
+    public static func == (lhs: EngagementsClient1.SelectBannerRequestParams.Builder, rhs: EngagementsClient1.SelectBannerRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: EngagementsClient1.SelectBannerRequestParams, rhs: EngagementsClient1.SelectBannerRequestParams) -> Swift.Bool
+}
+public struct SelectedBannerResource : Swift.Codable, Swift.Equatable {
+  public var targetUrl: Swift.String
+  public var targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource?
+  public var creative: EngagementsClient1.SelectedCreativeResource
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SelectedBannerResource.Builder class.")
+  public init(targetUrl: Swift.String, targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource? = nil, creative: EngagementsClient1.SelectedCreativeResource)
+  final public class Builder : Swift.Equatable {
+    final public let targetUrl: Swift.String
+    final public var targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource? {
+      get
+    }
+    final public let creative: EngagementsClient1.SelectedCreativeResource
+    public init(targetUrl: Swift.String, creative: EngagementsClient1.SelectedCreativeResource)
+    final public func set(targetUrlDisplayMode: EngagementsClient1.TargetUrlDisplayModeResource?) -> Self
+    final public func build() -> EngagementsClient1.SelectedBannerResource
+    public static func == (lhs: EngagementsClient1.SelectedBannerResource.Builder, rhs: EngagementsClient1.SelectedBannerResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.SelectedBannerResource, rhs: EngagementsClient1.SelectedBannerResource) -> Swift.Bool
+}
+public struct SelectedCreativeResource : Swift.Codable, Swift.Equatable {
+  public var uuid: Foundation.UUID
+  public var dimensions: Swift.String
+  public var filename: Swift.String
+  public var content: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SelectedCreativeResource.Builder class.")
+  public init(uuid: Foundation.UUID, dimensions: Swift.String, filename: Swift.String, content: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let uuid: Foundation.UUID
+    final public let dimensions: Swift.String
+    final public let filename: Swift.String
+    final public let content: Swift.String
+    public init(uuid: Foundation.UUID, dimensions: Swift.String, filename: Swift.String, content: Swift.String)
+    final public func build() -> EngagementsClient1.SelectedCreativeResource
+    public static func == (lhs: EngagementsClient1.SelectedCreativeResource.Builder, rhs: EngagementsClient1.SelectedCreativeResource.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.SelectedCreativeResource, rhs: EngagementsClient1.SelectedCreativeResource) -> Swift.Bool
+}
+public struct SelectedCreativeResourceAllOf : Swift.Codable, Swift.Equatable {
+  public var content: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SelectedCreativeResourceAllOf.Builder class.")
+  public init(content: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let content: Swift.String
+    public init(content: Swift.String)
+    final public func build() -> EngagementsClient1.SelectedCreativeResourceAllOf
+    public static func == (lhs: EngagementsClient1.SelectedCreativeResourceAllOf.Builder, rhs: EngagementsClient1.SelectedCreativeResourceAllOf.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.SelectedCreativeResourceAllOf, rhs: EngagementsClient1.SelectedCreativeResourceAllOf) -> Swift.Bool
+}
+public enum SeverityLevel : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case alert
+  case warning
+  case success
+  case info
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [EngagementsClient1.SeverityLevel]
+  public static var allCases: [EngagementsClient1.SeverityLevel] {
+    get
+  }
+}
+public enum TargetUrlDisplayModeResource : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case _self
+  case blank
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [EngagementsClient1.TargetUrlDisplayModeResource]
+  public static var allCases: [EngagementsClient1.TargetUrlDisplayModeResource] {
+    get
+  }
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [EngagementsClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of UnauthorizedError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [EngagementsClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [EngagementsClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [EngagementsClient1.ErrorItem]?) -> Self
+    final public func build() -> EngagementsClient1.UnauthorizedError
+    public static func == (lhs: EngagementsClient1.UnauthorizedError.Builder, rhs: EngagementsClient1.UnauthorizedError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.UnauthorizedError, rhs: EngagementsClient1.UnauthorizedError) -> Swift.Bool
+}
+public struct UserConditions : Swift.Codable, Swift.Equatable {
+  public var eType: Swift.String
+  public var eRef: Foundation.UUID?
+  public var conditions: [Swift.String : Any]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of UserConditions.Builder class.")
+  public init(eType: Swift.String, eRef: Foundation.UUID? = nil, conditions: [Swift.String : Any]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let eType: Swift.String
+    final public var eRef: Foundation.UUID? {
+      get
+    }
+    final public var conditions: [Swift.String : Any]? {
+      get
+    }
+    public init(eType: Swift.String)
+    final public func set(eRef: Foundation.UUID?) -> Self
+    final public func set(conditions: [Swift.String : Any]?) -> Self
+    final public func build() -> EngagementsClient1.UserConditions
+    public static func == (lhs: EngagementsClient1.UserConditions.Builder, rhs: EngagementsClient1.UserConditions.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: EngagementsClient1.UserConditions, rhs: EngagementsClient1.UserConditions) -> Swift.Bool
+}
+extension EngagementsClient1.AudienceType : Swift.Equatable {}
+extension EngagementsClient1.AudienceType : Swift.Hashable {}
+extension EngagementsClient1.AudienceType : Swift.RawRepresentable {}
+extension EngagementsClient1.BannerChannel.Priority : Swift.Equatable {}
+extension EngagementsClient1.BannerChannel.Priority : Swift.Hashable {}
+extension EngagementsClient1.BannerChannel.Priority : Swift.RawRepresentable {}
+extension EngagementsClient1.BannerChannelAllOf.Priority : Swift.Equatable {}
+extension EngagementsClient1.BannerChannelAllOf.Priority : Swift.Hashable {}
+extension EngagementsClient1.BannerChannelAllOf.Priority : Swift.RawRepresentable {}
+extension EngagementsClient1.EngagementChannelType : Swift.Equatable {}
+extension EngagementsClient1.EngagementChannelType : Swift.Hashable {}
+extension EngagementsClient1.EngagementChannelType : Swift.RawRepresentable {}
+extension EngagementsClient1.EngagementStatus : Swift.Equatable {}
+extension EngagementsClient1.EngagementStatus : Swift.Hashable {}
+extension EngagementsClient1.EngagementStatus : Swift.RawRepresentable {}
+extension EngagementsClient1.SeverityLevel : Swift.Equatable {}
+extension EngagementsClient1.SeverityLevel : Swift.Hashable {}
+extension EngagementsClient1.SeverityLevel : Swift.RawRepresentable {}
+extension EngagementsClient1.TargetUrlDisplayModeResource : Swift.Equatable {}
+extension EngagementsClient1.TargetUrlDisplayModeResource : Swift.Hashable {}
+extension EngagementsClient1.TargetUrlDisplayModeResource : Swift.RawRepresentable {}

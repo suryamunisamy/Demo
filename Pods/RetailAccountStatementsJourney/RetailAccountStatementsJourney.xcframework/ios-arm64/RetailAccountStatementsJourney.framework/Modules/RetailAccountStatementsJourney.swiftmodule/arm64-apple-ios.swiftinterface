@@ -1,0 +1,397 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailAccountStatementsJourney
+import AccountStatementsClient2
+import Backbase
+import BackbaseDesignSystem
+import ClientCommon
+import Foundation
+import MobileCoreServices
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import WebKit
+import _Concurrency
+public struct AccountStatement : Swift.Equatable {
+  public let date: Foundation.Date
+  public let description: Swift.String?
+  public let category: Swift.String?
+  public let documents: [RetailAccountStatementsJourney.AccountStatementIdentification]
+  public let additions: [Swift.String : Swift.String]?
+  public init(date: Foundation.Date, description: Swift.String?, category: Swift.String?, documents: [RetailAccountStatementsJourney.AccountStatementIdentification], additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailAccountStatementsJourney.AccountStatement, b: RetailAccountStatementsJourney.AccountStatement) -> Swift.Bool
+}
+public struct AccountStatementIdentification : Swift.Equatable {
+  public let uid: Swift.String?
+  public let url: Swift.String?
+  public let contentType: Swift.String?
+  public let additions: [Swift.String : Swift.String]?
+  public init(uid: Swift.String?, contentType: Swift.String?, additions: [Swift.String : Swift.String]? = nil)
+  public init(uid: Swift.String?, url: Swift.String?, contentType: Swift.String?, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailAccountStatementsJourney.AccountStatementIdentification, b: RetailAccountStatementsJourney.AccountStatementIdentification) -> Swift.Bool
+}
+public struct AccountStatementPreview {
+  public static func build(navigationController: UIKit.UINavigationController, accountStatement: RetailAccountStatementsJourney.AccountStatement) -> UIKit.UIViewController
+}
+extension RetailAccountStatementsJourney.AccountStatementPreview {
+  public struct Configuration {
+    public var design: RetailAccountStatementsJourney.AccountStatementPreview.Design
+    public var strings: RetailAccountStatementsJourney.AccountStatementPreview.Strings
+    public var formattedDateProvider: (Foundation.Date) -> Swift.String
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementPreview {
+  public struct Design {
+    public var styles: RetailAccountStatementsJourney.AccountStatementPreview.Design.Styles
+    public var navigationShareBarButtonImage: UIKit.UIImage?
+    public var errorIcon: (_ error: RetailAccountStatementsJourney.AccountStatementPreview.Error) -> UIKit.UIImage?
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementPreview {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailAccountStatementsJourney.AccountStatementPreview.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case previewNotSupported(Swift.String)
+    public static func == (a: RetailAccountStatementsJourney.AccountStatementPreview.Error, b: RetailAccountStatementsJourney.AccountStatementPreview.Error) -> Swift.Bool
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementPreview.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementPreview {
+  public struct Strings {
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementPreview.Design {
+  public struct Styles {
+  }
+}
+public protocol AccountStatementRetrievingUseCase : AnyObject {
+  typealias AccountStatementLoadingStateHandler = (Swift.Bool) -> Swift.Void
+  typealias AccountStatementHandler = (Swift.Result<Foundation.Data, Swift.Error>) -> Swift.Void
+  func retrieveAccountStatement(uid: Swift.String, loading: @escaping Self.AccountStatementLoadingStateHandler, completion: @escaping Self.AccountStatementHandler)
+  func retrieveAccountStatement(url: Foundation.URL, loading: @escaping Self.AccountStatementLoadingStateHandler, completion: @escaping Self.AccountStatementHandler)
+}
+public protocol AccountStatementCell {
+  var typeTitleLabel: UIKit.UILabel { get }
+  var dateLabel: UIKit.UILabel { get }
+  var descriptionLabel: UIKit.UILabel { get }
+}
+extension RetailAccountStatementsJourney.RetailAccountStatements {
+  public struct CategoryIconMappingConfiguration {
+    public var categoryIconMap: [Swift.String : UIKit.UIImage?]
+    public var defaultCategoryIcon: UIKit.UIImage?
+  }
+}
+public struct AccountStatementsFilter {
+  public typealias DidChangeFilterInfo = (RetailAccountStatementsJourney.FilterInfo?) -> Swift.Void
+  public static func build(navigationController: UIKit.UINavigationController, filterInfo: RetailAccountStatementsJourney.FilterInfo?, didChangeFilterInfo: @escaping RetailAccountStatementsJourney.AccountStatementsFilter.DidChangeFilterInfo) -> UIKit.UIViewController
+}
+extension RetailAccountStatementsJourney.AccountStatementsFilter {
+  public struct Configuration {
+    public var design: RetailAccountStatementsJourney.AccountStatementsFilter.Design
+    public var strings: RetailAccountStatementsJourney.AccountStatementsFilter.Strings
+    public var formattedDateProvider: (Foundation.Date) -> Swift.String
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementsFilter {
+  public struct Design {
+    public var styles: RetailAccountStatementsJourney.AccountStatementsFilter.Design.Styles
+    public var calendarIcon: UIKit.UIImage?
+    public var cancelIcon: UIKit.UIImage?
+  }
+}
+public protocol AccountStatementsRetrievingCategoriesUseCase {
+  func retrieveCategories(completion: @escaping (Swift.Result<[Swift.String], Swift.Error>) -> Swift.Void)
+}
+extension RetailAccountStatementsJourney.AccountStatementsFilter {
+  public struct Strings {
+    public init()
+    public var screenTitle: RetailJourneyCommon.LocalizedString
+    public var navigationCancelButtonTitle: RetailJourneyCommon.LocalizedString
+    public var resetButtonTitle: RetailJourneyCommon.LocalizedString
+    public var dateRangeTitle: RetailJourneyCommon.LocalizedString
+    public var statementTypeTitle: RetailJourneyCommon.LocalizedString
+    public var dateRangeFrom: RetailJourneyCommon.LocalizedString
+    public var dateRangeTo: RetailJourneyCommon.LocalizedString
+    public var dateFieldPlaceholder: RetailJourneyCommon.LocalizedString
+    public var dateFieldResetDateButtonAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var datePickerDoneButtonTitle: RetailJourneyCommon.LocalizedString
+    public var applyButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementsFilter.Design {
+  public struct Styles {
+    public var resetBarButtonItemStyle: (_ button: UIKit.UIBarButtonItem) -> Swift.Void
+    public var cancelBarButtonItemStyle: (_ button: UIKit.UIBarButtonItem) -> Swift.Void
+    public var applyFiltersButtonStyle: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var backgroundStyle: (UIKit.UIView) -> Swift.Void
+    public var dateRangeRowView: (_ view: RetailAccountStatementsJourney.DateRowView) -> Swift.Void
+    public var dateRangeContainerView: (_ view: RetailAccountStatementsJourney.DateContainerView) -> Swift.Void
+    public var dimmingOverlay: (_ view: UIKit.UIView) -> Swift.Void
+    public var statementTypeLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var statementTypeSectionTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+  }
+}
+public struct AccountStatementsList {
+}
+extension RetailAccountStatementsJourney.AccountStatementsList {
+  public struct Configuration {
+    public init()
+    public var design: RetailAccountStatementsJourney.AccountStatementsList.Design
+    public var strings: RetailAccountStatementsJourney.AccountStatementsList.Strings
+    public var pageSize: Swift.Int
+    public var filterChipFormattedDateProvider: (Foundation.Date) -> Swift.String
+    public var listItemFormattedDateProvider: (Foundation.Date) -> Swift.String
+    public var router: RetailAccountStatementsJourney.AccountStatementsList.Router
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementsList {
+  public struct Design {
+    public var styles: RetailAccountStatementsJourney.AccountStatementsList.Design.Styles
+    public var errorIcon: (_ error: RetailAccountStatementsJourney.AccountStatementsList.Error) -> UIKit.UIImage?
+    public var shimmerIcon: UIKit.UIImage?
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementsList {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailAccountStatementsJourney.AccountStatementsList.Error, T>
+  public enum Error : Swift.Error {
+    case emptyList
+    case noFilterResults
+    case pageNotFound
+    public static func == (a: RetailAccountStatementsJourney.AccountStatementsList.Error, b: RetailAccountStatementsJourney.AccountStatementsList.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementsList.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementsList {
+  public struct Router {
+    public var didSelectAccountStatement: ((UIKit.UINavigationController) -> (RetailAccountStatementsJourney.AccountStatement) -> Swift.Void)?
+    public var didSelectFilter: ((UIKit.UINavigationController) -> (RetailAccountStatementsJourney.FilterInfo?, @escaping RetailAccountStatementsJourney.AccountStatementsFilter.DidChangeFilterInfo) -> Swift.Void)?
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementsList {
+  public struct Strings {
+    public var screenTitle: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailAccountStatementsJourney.AccountStatementsList.Error) -> RetailJourneyCommon.LocalizedString?
+    public var errorSubtitle: (_ error: RetailAccountStatementsJourney.AccountStatementsList.Error) -> RetailJourneyCommon.LocalizedString?
+    public var errorRetryButtonTitle: (_ error: RetailAccountStatementsJourney.AccountStatementsList.Error) -> RetailJourneyCommon.LocalizedString?
+    public var cancelButtonTitle: RetailJourneyCommon.LocalizedString
+    public var retryButtonTitle: RetailJourneyCommon.LocalizedString
+    public var chipsDateFrom: RetailJourneyCommon.LocalizedString
+    public var chipsDateUntil: RetailJourneyCommon.LocalizedString
+    public var chipRangeDate: RetailJourneyCommon.LocalizedString
+    public var chipsDateFromAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var chipsDateUntilAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var chipRangeDateAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var chipRemoveButtonAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var filterButtonAccessibilityLabel: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailAccountStatementsJourney.AccountStatementsList.Design {
+  public struct Styles {
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    public var accountStatementCell: (_ cell: RetailAccountStatementsJourney.AccountStatementCell) -> Swift.Void
+    public var accountStatementCellSelectionStyle: (_ cornerIndicator: (isTopCurved: Swift.Bool, isBottomCurved: Swift.Bool)) -> BackbaseDesignSystem.Style<UIKit.UIView>
+    public var chipView: (_ chipView: BackbaseDesignSystem.ChipView) -> Swift.Void
+    public var chipsContainer: (_ view: UIKit.UIView) -> Swift.Void
+    public var tableView: (_ tableView: UIKit.UITableView) -> Swift.Void
+    public var cornerShadow: (_ view: UIKit.UIView) -> Swift.Void
+    public var accountIcon: (_ view: BackbaseDesignSystem.Icon) -> Swift.Void
+  }
+}
+public struct AccountStatementsRequestParams {
+  public enum AccountStatementsDirection : Swift.String {
+    case asc
+    case desc
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var accountId: Swift.String?
+  public var dateFrom: Swift.String?
+  public var dateTo: Swift.String?
+  public var category: [Swift.String]?
+  public var cursor: Swift.String?
+  public var size: Swift.Int
+  public var orderBy: Swift.String?
+  public var direction: RetailAccountStatementsJourney.AccountStatementsRequestParams.AccountStatementsDirection?
+  public var additions: [Swift.String : Swift.String]?
+  public init(accountId: Swift.String? = nil, dateFrom: Swift.String? = nil, dateTo: Swift.String? = nil, category: [Swift.String]? = nil, cursor: Swift.String? = nil, size: Swift.Int = 10, orderBy: Swift.String? = nil, direction: RetailAccountStatementsJourney.AccountStatementsRequestParams.AccountStatementsDirection? = nil, additions: [Swift.String : Swift.String]? = nil)
+}
+extension Foundation.Bundle {
+  public static var accountStatements: Foundation.Bundle? {
+    get
+  }
+}
+public protocol ChipCollectionCell {
+  var titleLabel: UIKit.UILabel { get }
+  var removeButton: UIKit.UIButton { get }
+  var contentView: UIKit.UIView { get }
+}
+extension BackbaseDesignSystem.ChipView : RetailAccountStatementsJourney.ChipCollectionCell {
+  @_Concurrency.MainActor(unsafe) final public var contentView: UIKit.UIView {
+    get
+  }
+}
+public protocol DateContainerView {
+  var titleLabel: UIKit.UILabel { get }
+}
+public struct DateRangeInfo {
+  public var reseted: Swift.Bool {
+    get
+  }
+  public let fromDate: Foundation.Date?
+  public let toDate: Foundation.Date?
+  public init(fromDate: Foundation.Date?, toDate: Foundation.Date?)
+}
+extension RetailAccountStatementsJourney.DateRangeInfo : Swift.Equatable {
+  public static func == (lhs: RetailAccountStatementsJourney.DateRangeInfo, rhs: RetailAccountStatementsJourney.DateRangeInfo) -> Swift.Bool
+}
+public protocol DateRowView {
+  var titleLabel: UIKit.UILabel { get }
+  var dateInputField: BackbaseDesignSystem.TextFieldDateInput { get }
+}
+public struct FilterInfo : Swift.Equatable {
+  public var reseted: Swift.Bool {
+    get
+  }
+  public var dateRange: RetailAccountStatementsJourney.DateRangeInfo?
+  public var statementTypes: [RetailAccountStatementsJourney.StatementTypeFilter]?
+  public init(dateRange: RetailAccountStatementsJourney.DateRangeInfo? = nil, statementTypes: [RetailAccountStatementsJourney.StatementTypeFilter]? = nil)
+  public static func == (lhs: RetailAccountStatementsJourney.FilterInfo, rhs: RetailAccountStatementsJourney.FilterInfo) -> Swift.Bool
+}
+public struct AccountStatementsEntryParams {
+  public let accountIdentifier: Swift.String?
+  public let summaryStackRows: [BackbaseDesignSystem.SummaryStackRow]
+  public init(accountIdentifier: Swift.String?, summaryStackRows: [BackbaseDesignSystem.SummaryStackRow])
+}
+public struct RetailAccountStatements {
+  public static func build(navigationController: UIKit.UINavigationController, entryParams: RetailAccountStatementsJourney.AccountStatementsEntryParams) -> UIKit.UIViewController
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailAccountStatementsJourney.RetailAccountStatements {
+  public struct Configuration {
+    public init()
+    public var design: RetailAccountStatementsJourney.RetailAccountStatements.Design
+    public var strings: RetailAccountStatementsJourney.RetailAccountStatements.Strings
+    public var showCategory: Swift.Bool
+    public var showStatementCategoryFilter: Swift.Bool
+    public var list: RetailAccountStatementsJourney.AccountStatementsList.Configuration
+    public var preview: RetailAccountStatementsJourney.AccountStatementPreview.Configuration
+    public var filter: RetailAccountStatementsJourney.AccountStatementsFilter.Configuration
+    public var formattedDateProvider: (Foundation.Date) -> Swift.String
+    public var categoryIconMapping: RetailAccountStatementsJourney.RetailAccountStatements.CategoryIconMappingConfiguration
+  }
+}
+extension RetailAccountStatementsJourney.RetailAccountStatements {
+  public struct Design {
+    public var styles: RetailAccountStatementsJourney.RetailAccountStatements.Design.Styles
+    public var errorIcon: (_ error: RetailAccountStatementsJourney.RetailAccountStatements.Error) -> UIKit.UIImage?
+    public var navigationFilterBarButtonImage: UIKit.UIImage?
+  }
+}
+extension RetailAccountStatementsJourney.RetailAccountStatements {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailAccountStatementsJourney.RetailAccountStatements.Error, T>
+  public enum Error : Swift.Error {
+    case loadingFailed
+    case notConnected
+    case invalidResponse
+    public static func == (a: RetailAccountStatementsJourney.RetailAccountStatements.Error, b: RetailAccountStatementsJourney.RetailAccountStatements.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailAccountStatementsJourney.RetailAccountStatements.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+public protocol AccountStatementsServiceUseCase : RetailAccountStatementsJourney.AccountStatementRetrievingUseCase, RetailAccountStatementsJourney.AccountStatementsRetrievingCategoriesUseCase, RetailAccountStatementsJourney.AccountStatementsRetrievingUseCase {
+  typealias RetrieveHandler = (Swift.Result<[RetailAccountStatementsJourney.AccountStatement], Swift.Error>) -> Swift.Void
+  typealias RetrieveLoadingStateHandler = (Swift.Bool) -> Swift.Void
+  func retrieveAccountStatementsFirstPage(params: RetailAccountStatementsJourney.AccountStatementsRequestParams, loading: @escaping Self.RetrieveLoadingStateHandler, completion: @escaping Self.RetrieveHandler)
+  func retrieveAccountStatementsNextPage(params: RetailAccountStatementsJourney.AccountStatementsRequestParams, loading: @escaping Self.RetrieveLoadingStateHandler, completion: @escaping Self.RetrieveHandler)
+  func retrieveCategories(completion: @escaping (Swift.Result<[Swift.String], Swift.Error>) -> Swift.Void)
+  typealias AccountStatementLoadingStateHandler = (Swift.Bool) -> Swift.Void
+  typealias AccountStatementHandler = (Swift.Result<Foundation.Data, Swift.Error>) -> Swift.Void
+  func retrieveAccountStatement(uid: Swift.String, loading: @escaping Self.AccountStatementLoadingStateHandler, completion: @escaping Self.AccountStatementHandler)
+  func retrieveAccountStatement(url: Foundation.URL, loading: @escaping Self.AccountStatementLoadingStateHandler, completion: @escaping Self.AccountStatementHandler)
+}
+public protocol AccountStatementsRetrievingUseCase : AnyObject {
+  typealias RetrieveHandler = (Swift.Result<[RetailAccountStatementsJourney.AccountStatement], Swift.Error>) -> Swift.Void
+  typealias RetrieveLoadingStateHandler = (Swift.Bool) -> Swift.Void
+  func retrieveAccountStatementsFirstPage(params: RetailAccountStatementsJourney.AccountStatementsRequestParams, loading: @escaping Self.RetrieveLoadingStateHandler, completion: @escaping Self.RetrieveHandler)
+  func retrieveAccountStatementsNextPage(params: RetailAccountStatementsJourney.AccountStatementsRequestParams, loading: @escaping Self.RetrieveLoadingStateHandler, completion: @escaping Self.RetrieveHandler)
+}
+extension RetailAccountStatementsJourney.RetailAccountStatements {
+  public struct Strings {
+    public init()
+    public var errorTitle: (_ error: RetailAccountStatementsJourney.RetailAccountStatements.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailAccountStatementsJourney.RetailAccountStatements.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorRetryButtonTitle: (_ error: RetailAccountStatementsJourney.RetailAccountStatements.Error) -> RetailJourneyCommon.LocalizedString?
+  }
+}
+extension RetailAccountStatementsJourney.RetailAccountStatements.Design {
+  public struct Styles {
+    public var accountStatementIcon: (_ category: Swift.String?) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon>
+  }
+}
+public struct StatementTypeFilter : Swift.Equatable {
+  public let category: Swift.String
+  public var selected: Swift.Bool {
+    get
+  }
+  public static func == (a: RetailAccountStatementsJourney.StatementTypeFilter, b: RetailAccountStatementsJourney.StatementTypeFilter) -> Swift.Bool
+}
+extension RetailAccountStatementsJourney.AccountStatementsList.Error : Swift.Equatable {}
+extension RetailAccountStatementsJourney.AccountStatementsList.Error : Swift.Hashable {}
+extension RetailAccountStatementsJourney.AccountStatementsRequestParams.AccountStatementsDirection : Swift.Equatable {}
+extension RetailAccountStatementsJourney.AccountStatementsRequestParams.AccountStatementsDirection : Swift.Hashable {}
+extension RetailAccountStatementsJourney.AccountStatementsRequestParams.AccountStatementsDirection : Swift.RawRepresentable {}
+extension RetailAccountStatementsJourney.RetailAccountStatements.Error : Swift.Equatable {}
+extension RetailAccountStatementsJourney.RetailAccountStatements.Error : Swift.Hashable {}

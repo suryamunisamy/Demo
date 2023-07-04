@@ -1,0 +1,1111 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BusinessDesign
+import BackbaseDesignSystem
+@_exported import BusinessDesign
+import Foundation
+import Swift
+import UIKit
+import UIScrollView_InfiniteScroll
+import VGParallaxHeader
+import _Concurrency
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol AppGrid {
+  var baseline: (CoreGraphics.CGFloat) -> CoreGraphics.CGFloat { get }
+  var fine: (CoreGraphics.CGFloat) -> CoreGraphics.CGFloat { get }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol AppTheme : AnyObject {
+  init(colors: BusinessDesign.ColorsConfiguration, fonts: BusinessDesign.FontsConfiguration, grid: BusinessDesign.AppGrid, icons: BusinessDesign.IconsConfiguration)
+  var colors: BusinessDesign.ColorsConfiguration { get }
+  var fonts: BusinessDesign.FontsConfiguration { get }
+  var icons: BusinessDesign.IconsConfiguration { get }
+  var grid: BusinessDesign.AppGrid { get }
+  var defaultLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void { get }
+  var lightLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void { get }
+  var titleLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void { get }
+  var darkLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void { get }
+  var subtitleLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void { get }
+  var amountLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void { get }
+  var formFieldLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void { get }
+  var darkNavigationController: (BusinessDesign.AppTheme) -> (UIKit.UINavigationBar) -> Swift.Void { get }
+  var lightNavigationController: (BusinessDesign.AppTheme) -> (UIKit.UINavigationBar) -> Swift.Void { get }
+  func style<Component>(for keyPath: Swift.KeyPath<BusinessDesign.AppTheme, (BusinessDesign.AppTheme) -> (Component) -> Swift.Void>) -> (Component) -> Swift.Void
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public typealias Constraint = (UIKit.UIView, UIKit.UIView) -> UIKit.NSLayoutConstraint
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+@discardableResult
+public func equal<L, Axis>(_ to: Swift.KeyPath<UIKit.UIView, L>, constant: CoreGraphics.CGFloat = 0) -> BusinessDesign.Constraint where L : UIKit.NSLayoutAnchor<Axis>, Axis : AnyObject
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+@discardableResult
+public func equal<L, Axis>(_ from: Swift.KeyPath<UIKit.UIView, L>, _ to: Swift.KeyPath<UIKit.UIView, L>, constant: CoreGraphics.CGFloat = 0) -> BusinessDesign.Constraint where L : UIKit.NSLayoutAnchor<Axis>, Axis : AnyObject
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+@discardableResult
+public func equal<L>(_ keyPath: Swift.KeyPath<UIKit.UIView, L>, constant: CoreGraphics.CGFloat) -> BusinessDesign.Constraint where L : UIKit.NSLayoutDimension
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func addSubview(_ other: UIKit.UIView, constraints: [BusinessDesign.Constraint])
+}
+@objc @_Concurrency.MainActor(unsafe) public class BBCircularProgressView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public init(lineWidth: CoreGraphics.CGFloat = 1.5)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public func count(to value: Swift.Double)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSublayers(of layer: QuartzCore.CALayer)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public struct BBGrid : BusinessDesign.AppGrid {
+  public typealias GridFunction = (CoreGraphics.CGFloat) -> CoreGraphics.CGFloat
+  public var baseline: BusinessDesign.BBGrid.GridFunction
+  public var fine: BusinessDesign.BBGrid.GridFunction
+  public init(baseline: @escaping BusinessDesign.BBGrid.GridFunction = { return $0 * 8 }, fine: @escaping BusinessDesign.BBGrid.GridFunction = { return $0 * 4 })
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.BBLabel {
+  public enum Predefined {
+    case title
+    case subtitle
+    case regular
+    public static func == (a: BusinessDesign.BBLabel.Predefined, b: BusinessDesign.BBLabel.Predefined) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.BBLabel {
+  public enum Color {
+    case light
+    case dark
+    public static func == (a: BusinessDesign.BBLabel.Color, b: BusinessDesign.BBLabel.Color) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.BBLabel {
+  @_Concurrency.MainActor(unsafe) convenience public init(theme: BusinessDesign.AppTheme = BaseTheme, style: BusinessDesign.BBLabel.Predefined, color: BusinessDesign.BBLabel.Color)
+  @_Concurrency.MainActor(unsafe) convenience public init(theme: BusinessDesign.AppTheme = BaseTheme, style: BusinessDesign.BBLabel.Predefined, color: BusinessDesign.BBLabel.Color, configuration: (BusinessDesign.BBLabel) -> Swift.Void)
+}
+@objc @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) open class BBLabel : UIKit.UILabel, BusinessDesign.ThemeInitialized {
+  @_Concurrency.MainActor(unsafe) open var localizedTitle: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) required convenience public init(theme: BusinessDesign.AppTheme)
+  @_Concurrency.MainActor(unsafe) public init(style: (BusinessDesign.BBLabel) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.BBLabel {
+  @_hasMissingDesignatedInitializers open class Style {
+    open class func `default`(theme: BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void
+    open class func formFieldTitle(theme: BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void
+    open class func title(theme: BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void
+    open class func light(theme: BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void
+    open class func dark(theme: BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void
+    open class func subtitle(theme: BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void
+    open class func amount(theme: BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void
+    @objc deinit
+  }
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class ListItemAmountConfiguration : BusinessDesign.TextConfigurable {
+  public var fontStyle: BusinessDesign.FontStyle
+  public var textColorStyle: BusinessDesign.ColorStyle
+  public var alignment: UIKit.NSTextAlignment
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BBListItemAmountLabel : BusinessDesign.BaseLabel {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class ListItemCaptionConfiguration : BusinessDesign.TextConfigurable {
+  public var fontStyle: BusinessDesign.FontStyle
+  public var textColorStyle: BusinessDesign.ColorStyle
+  public var alignment: UIKit.NSTextAlignment
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BBListItemCaptionLabel : BusinessDesign.BaseLabel {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class ListItemCategoryIconConfiguration {
+  public var backgroundShape: BusinessDesign.IconBackgroundShape
+  public var backgroundColor: BusinessDesign.ColorStyle
+  public var foregroundColor: BusinessDesign.ColorStyle
+  public var applyTintColorTo: BusinessDesign.IconTintBehavior
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) final public class BBListItemCategoryIconView : BusinessDesign.BaseIconView {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class ListItemSubtitleConfiguration : BusinessDesign.TextConfigurable {
+  public var fontStyle: BusinessDesign.FontStyle
+  public var textColorStyle: BusinessDesign.ColorStyle
+  public var alignment: UIKit.NSTextAlignment
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BBListItemSubtitleLabel : BusinessDesign.BaseLabel {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class ListItemTitleConfiguration : BusinessDesign.TextConfigurable {
+  public var fontStyle: BusinessDesign.FontStyle
+  public var textColorStyle: BusinessDesign.ColorStyle
+  public var alignment: UIKit.NSTextAlignment
+  public var textTransform: BusinessDesign.ListItemTitleConfiguration.TextTransform
+  public enum TextTransform {
+    case none
+    case sentenceCase
+    case upperCase
+    case lowerCase
+    public static func == (a: BusinessDesign.ListItemTitleConfiguration.TextTransform, b: BusinessDesign.ListItemTitleConfiguration.TextTransform) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BBListItemTitleLabel : BusinessDesign.BaseLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var text: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class ListItemTrendIconConfiguration {
+  public var backgroundShape: BusinessDesign.IconBackgroundShape
+  public var backgroundColor: BusinessDesign.ColorStyle
+  public var foregroundColor: BusinessDesign.ColorStyle
+  public var applyTintColorTo: BusinessDesign.IconTintBehavior
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) final public class BBListItemTrendIconView : BusinessDesign.BaseIconView {
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public struct BBListItemViewModel {
+  public var title: Swift.String?
+  public var subtitle: Swift.String?
+  public var amount: Swift.String?
+  public var icon: UIKit.UIImage?
+  public init(title: Swift.String?, subtitle: Swift.String?, amount: Swift.String? = nil, icon: UIKit.UIImage? = nil)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BBBaseNavigationController : UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var shouldAutorotate: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @available(iOS 5.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_Concurrency.MainActor(unsafe) final public class BBDarkNavigationController : BusinessDesign.BBBaseNavigationController, BusinessDesign.ThemeInitialized {
+  @_Concurrency.MainActor(unsafe) required convenience public init(theme: BusinessDesign.AppTheme)
+  @_Concurrency.MainActor(unsafe) public init(style: (UIKit.UINavigationBar) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override final public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @objc deinit
+}
+@objc @_Concurrency.MainActor(unsafe) final public class BBLightNavigationController : BusinessDesign.BBBaseNavigationController, BusinessDesign.ThemeInitialized {
+  @_Concurrency.MainActor(unsafe) required convenience public init(theme: BusinessDesign.AppTheme)
+  @_Concurrency.MainActor(unsafe) public init(style: (UIKit.UINavigationBar) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override final public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BBNavigationBar : UIKit.UINavigationBar {
+  @_hasMissingDesignatedInitializers open class Style {
+    open class func dark(theme: BusinessDesign.AppTheme) -> (UIKit.UINavigationBar) -> Swift.Void
+    open class func light(theme: BusinessDesign.AppTheme) -> (UIKit.UINavigationBar) -> Swift.Void
+    @objc deinit
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BBNoIconTableViewCell : UIKit.UITableViewCell, BusinessDesign.BaseListItemProtocol {
+  @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func setSelected(_ selected: Swift.Bool, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func setHighlighted(_ highlighted: Swift.Bool, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func configure(_ viewModel: BusinessDesign.BBListItemViewModel)
+  @available(iOS 3.0, *)
+  @available(*, deprecated)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class BBNudge : UIKit.UIView {
+  public enum NudgeState {
+    case collapsed
+    case expanded
+    public static func == (a: BusinessDesign.BBNudge.NudgeState, b: BusinessDesign.BBNudge.NudgeState) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+extension BusinessDesign.BBNudge {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func dismiss()
+}
+@objc @_Concurrency.MainActor(unsafe) open class BBNudgeCloseButton : UIKit.UIButton {
+  @objc required dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+open class BBNudgeManager {
+  public static let shared: BusinessDesign.BBNudgeManager
+  public var isNudgeVisible: Swift.Bool {
+    get
+  }
+  public init(window: UIKit.UIWindow?)
+  public func queueNudge(title: Swift.String, subtitle: Swift.String, nudgeDuration: Swift.Double = 2, type: BusinessDesign.BBNudgeType = .info, tapHandler: ((BusinessDesign.BBNudge) -> Swift.Void)? = nil, getContentView: ((BusinessDesign.BBNudge) -> UIKit.UIView)? = nil)
+  public func queueNudge(title: Swift.String, subtitle: Swift.String, nudgeDuration: Swift.Double = 2, icon: UIKit.UIImage?, iconColor: UIKit.UIColor?, tapHandler: ((BusinessDesign.BBNudge) -> Swift.Void)? = nil, getContentView: ((BusinessDesign.BBNudge) -> UIKit.UIView)? = nil)
+  @objc deinit
+}
+public enum BBNudgeType : Swift.String {
+  case error
+  case info
+  case warning
+  case success
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum BBTableHeaderType {
+  case standard(view: UIKit.UIView, height: CoreGraphics.CGFloat, backgroundColor: UIKit.UIColor)
+  case parallax(view: UIKit.UIView, height: CoreGraphics.CGFloat, backgroundColor: UIKit.UIColor)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BBTableView : UIKit.UITableView {
+  @_Concurrency.MainActor(unsafe) public var bbTableHeaderType: BusinessDesign.BBTableHeaderType? {
+    get
+    set
+  }
+  @objc convenience dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect, style: UIKit.UITableView.Style)
+  @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) public func attachedTo(superview: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) public func addTopBounceAreaView(color: UIKit.UIColor = .white)
+  @objc deinit
+}
+@available(*, deprecated, message: "Use DesignSystem instead for the latest configurations")
+public var BaseTheme: BusinessDesign.AppTheme
+public protocol ThemeInitialized : AnyObject {
+  init(theme: BusinessDesign.AppTheme)
+}
+@available(*, deprecated, message: "BBTheme is deprecated, use DesignSystem instead for the latest configurations")
+open class BBTheme : BusinessDesign.AppTheme {
+  @available(*, deprecated, message: "BaseTheme.colors is deprecated, use DesignSystem.colors instead")
+  open var colors: BusinessDesign.ColorsConfiguration
+  @available(*, deprecated, message: "BaseTheme.fonts is deprecated, use DesignSystem.fonts instead")
+  open var fonts: BusinessDesign.FontsConfiguration
+  @available(*, deprecated, message: "BaseTheme.icons is deprecated, use DesignSystem.icons instead")
+  open var icons: BusinessDesign.IconsConfiguration
+  @available(*, deprecated, message: "BaseTheme.grid is deprecated")
+  open var grid: BusinessDesign.AppGrid
+  open var defaultLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void {
+    get
+  }
+  open var lightLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void {
+    get
+  }
+  open var titleLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void {
+    get
+  }
+  open var darkLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void {
+    get
+  }
+  open var subtitleLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void {
+    get
+  }
+  open var amountLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void {
+    get
+  }
+  open var formFieldLabel: (BusinessDesign.AppTheme) -> (UIKit.UILabel) -> Swift.Void {
+    get
+  }
+  open var darkNavigationController: (BusinessDesign.AppTheme) -> (UIKit.UINavigationBar) -> Swift.Void {
+    get
+  }
+  open var lightNavigationController: (BusinessDesign.AppTheme) -> (UIKit.UINavigationBar) -> Swift.Void {
+    get
+  }
+  open func style<Component>(for keyPath: Swift.KeyPath<BusinessDesign.AppTheme, (BusinessDesign.AppTheme) -> (Component) -> Swift.Void>) -> (Component) -> Swift.Void
+  required public init(colors: BusinessDesign.ColorsConfiguration = OldDesignSystem.colors, fonts: BusinessDesign.FontsConfiguration = OldDesignSystem.fonts, grid: BusinessDesign.AppGrid = BBGrid(), icons: BusinessDesign.IconsConfiguration = OldDesignSystem.icons)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BBTrendTableViewCell : UIKit.UITableViewCell, BusinessDesign.BaseListItemProtocol {
+  @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func setSelected(_ selected: Swift.Bool, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func setHighlighted(_ highlighted: Swift.Bool, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func configure(_ viewModel: BusinessDesign.BBListItemViewModel)
+  @available(iOS 3.0, *)
+  @available(*, deprecated)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum IconBackgroundShape {
+  case square
+  case extraSmall
+  case small
+  case medium
+  case circle
+  public static func == (a: BusinessDesign.IconBackgroundShape, b: BusinessDesign.IconBackgroundShape) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum IconTintBehavior {
+  case none
+  case foreground
+  case background
+  public static func == (a: BusinessDesign.IconTintBehavior, b: BusinessDesign.IconTintBehavior) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BaseIconView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tintColor: UIKit.UIColor! {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func setImage(_ image: UIKit.UIImage?, withTintColor imageTintColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BaseLabel : UIKit.UILabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var textAlignment: UIKit.NSTextAlignment {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var textColor: UIKit.UIColor! {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var font: UIKit.UIFont! {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc override dynamic public func awakeFromNib()
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol BaseListItemProtocol : UIKit.UITableViewCell {
+  func configure(_ viewModel: BusinessDesign.BBListItemViewModel)
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public var businessStyles: BackbaseDesignSystem.DesignSystem.BusinessStyles {
+    get
+    set
+  }
+  public struct BusinessStyles {
+    public var background: (_ view: UIKit.UIView) -> Swift.Void
+    public var navigationBar: (_ navbar: UIKit.UINavigationBar) -> Swift.Void
+    public var segmentedControl: (_ ctrl: UIKit.UISegmentedControl) -> Swift.Void
+    public var navigationItem: (_ navItem: UIKit.UINavigationItem) -> Swift.Void
+    public var tabBar: (_ tabBar: UIKit.UITabBar) -> Swift.Void
+    public var tableView: (_ tableView: UIKit.UITableView) -> Swift.Void
+    public var searchBar: (_ searchBar: UIKit.UISearchBar) -> Swift.Void
+    public var separator: (_ separator: BackbaseDesignSystem.Separator) -> Swift.Void
+    public var edgeCaseTitle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var edgeCaseDescription: (_ label: UIKit.UILabel) -> Swift.Void
+    public var edgeCaseImage: (_ imageView: UIKit.UIImageView) -> Swift.Void
+    public var edgeCaseActionButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public func applySeparatorStyle(style: (BackbaseDesignSystem.Separator) -> Swift.Void, on tableView: UIKit.UITableView)
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum ColorStyle {
+  case primary
+  case primaryLightest
+  case primaryLighter
+  case primaryDarker
+  case primaryDarkest
+  case secondary
+  case secondaryLightest
+  case secondaryLighter
+  case secondaryDarker
+  case secondaryDarkest
+  case accent
+  case accentLightest
+  case accentLighter
+  case accentDarker
+  case accentDarkest
+  case supportDanger
+  case supportDangerLightest
+  case supportDangerLighter
+  case supportDangerDarker
+  case supportDangerDarkest
+  case supportInfo
+  case supportInfoLightest
+  case supportInfoLighter
+  case supportInfoDarker
+  case supportInfoDarkest
+  case supportSuccess
+  case supportSuccessLightest
+  case supportSuccessLighter
+  case supportSuccessDarker
+  case supportSuccessDarkest
+  case supportWarning
+  case supportWarningLightest
+  case supportWarningLighter
+  case supportWarningDarker
+  case supportWarningDarkest
+  case transparent
+  case white
+  case whiteLightest
+  case whiteLighter
+  case whiteLight
+  case grey
+  case greyer
+  case greyest
+  case dark
+  case darker
+  case black
+  case charts1
+  case charts2
+  case charts3
+  case charts4
+  case charts5
+  case charts6
+  case charts7
+  case charts8
+  case charts9
+  case charts10
+  case mainContentBackgroundColor
+  public static func == (a: BusinessDesign.ColorStyle, b: BusinessDesign.ColorStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.ColorStyle {
+  public var color: UIKit.UIColor {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+final public class ColorsConfiguration {
+  public init()
+  final public var primary: UIKit.UIColor
+  final public var primaryLightest: UIKit.UIColor
+  final public var primaryLighter: UIKit.UIColor
+  final public var primaryDarker: UIKit.UIColor
+  final public var primaryDarkest: UIKit.UIColor
+  final public var secondary: UIKit.UIColor
+  final public var secondaryLightest: UIKit.UIColor
+  final public var secondaryLighter: UIKit.UIColor
+  final public var secondaryDarker: UIKit.UIColor
+  final public var secondaryDarkest: UIKit.UIColor
+  final public var accent: UIKit.UIColor
+  final public var accentLightest: UIKit.UIColor
+  final public var accentLighter: UIKit.UIColor
+  final public var accentDarker: UIKit.UIColor
+  final public var accentDarkest: UIKit.UIColor
+  final public var supportDanger: UIKit.UIColor
+  final public var supportDangerLightest: UIKit.UIColor
+  final public var supportDangerLighter: UIKit.UIColor
+  final public var supportDangerDarker: UIKit.UIColor
+  final public var supportDangerDarkest: UIKit.UIColor
+  final public var supportInfo: UIKit.UIColor
+  final public var supportInfoLightest: UIKit.UIColor
+  final public var supportInfoLighter: UIKit.UIColor
+  final public var supportInfoDarker: UIKit.UIColor
+  final public var supportInfoDarkest: UIKit.UIColor
+  final public var supportSuccess: UIKit.UIColor
+  final public var supportSuccessLightest: UIKit.UIColor
+  final public var supportSuccessLighter: UIKit.UIColor
+  final public var supportSuccessDarker: UIKit.UIColor
+  final public var supportSuccessDarkest: UIKit.UIColor
+  final public var supportWarning: UIKit.UIColor
+  final public var supportWarningLightest: UIKit.UIColor
+  final public var supportWarningLighter: UIKit.UIColor
+  final public var supportWarningDarker: UIKit.UIColor
+  final public var supportWarningDarkest: UIKit.UIColor
+  final public var transparent: UIKit.UIColor
+  final public var white: UIKit.UIColor
+  final public var whiteLightest: UIKit.UIColor
+  final public var whiteLighter: UIKit.UIColor
+  final public var whiteLight: UIKit.UIColor
+  final public var grey: UIKit.UIColor
+  final public var greyer: UIKit.UIColor
+  final public var greyest: UIKit.UIColor
+  final public var dark: UIKit.UIColor
+  final public var darker: UIKit.UIColor
+  final public var black: UIKit.UIColor
+  final public var charts1: UIKit.UIColor
+  final public var charts2: UIKit.UIColor
+  final public var charts3: UIKit.UIColor
+  final public var charts4: UIKit.UIColor
+  final public var charts5: UIKit.UIColor
+  final public var charts6: UIKit.UIColor
+  final public var charts7: UIKit.UIColor
+  final public var charts8: UIKit.UIColor
+  final public var charts9: UIKit.UIColor
+  final public var charts10: UIKit.UIColor
+  final public var charts11: UIKit.UIColor
+  final public var mainContentBackgroundColor: UIKit.UIColor
+  public static func configure(_ closure: (BusinessDesign.ColorsConfiguration) -> Swift.Void) -> BusinessDesign.ColorsConfiguration
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public class DesignConfiguration {
+  public var list: BusinessDesign.ListConfiguration {
+    get
+  }
+  public init()
+  public static func configure(closure: (BusinessDesign.DesignConfiguration) -> Swift.Void) -> BusinessDesign.DesignConfiguration
+  public func list(_ closure: (BusinessDesign.ListConfiguration) -> Swift.Void)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol EdgeCaseLoadable {
+  var edgeCaseView: BusinessDesign.EdgeCaseView { get set }
+  var edgeCaseTitle: Swift.String? { get }
+  var edgeCaseDescription: Swift.String? { get }
+  var edgeCaseImage: UIKit.UIImage? { get }
+  var edgeCaseImageTintColor: UIKit.UIColor? { get }
+  var edgeCaseTopInset: CoreGraphics.CGFloat { get }
+  var actionButtonTitle: Swift.String? { get }
+  func actionButtonHandler()
+}
+extension BusinessDesign.EdgeCaseLoadable {
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+  public func actionButtonHandler()
+}
+@objc @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class EdgeCaseView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public init(loader: BusinessDesign.EdgeCaseLoadable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public func update(title: Swift.String? = nil, description: Swift.String? = nil, image: UIKit.UIImage? = nil, showActionButton: Swift.Bool = true)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum FontStyle {
+  case h1
+  case h2
+  case h3
+  case `default`
+  case defaultBold
+  case defaultMedium
+  case subtitle
+  case subtitleBold
+  case subheader
+  case subheaderBold
+  case tabbarItemTitle
+  public static func == (a: BusinessDesign.FontStyle, b: BusinessDesign.FontStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.FontStyle {
+  public var font: UIKit.UIFont {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+final public class FontsConfiguration {
+  final public var h1: UIKit.UIFont
+  final public var h2: UIKit.UIFont
+  final public var h3: UIKit.UIFont
+  final public var `default`: UIKit.UIFont
+  final public var defaultMedium: UIKit.UIFont
+  final public var defaultBold: UIKit.UIFont
+  final public var subtitle: UIKit.UIFont
+  final public var subtitleBold: UIKit.UIFont
+  final public var subtitleSemiBold: UIKit.UIFont
+  final public var subheader: UIKit.UIFont
+  final public var subheaderBold: UIKit.UIFont
+  final public var subheaderSemiBold: UIKit.UIFont
+  final public var caption: UIKit.UIFont
+  final public var captionMedium: UIKit.UIFont
+  final public var tabbarItemTitle: UIKit.UIFont
+  public init()
+  public static func configure(_ closure: (BusinessDesign.FontsConfiguration) -> Swift.Void) -> BusinessDesign.FontsConfiguration
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum IconStyle {
+  case accountBalanceWallet
+  case accountBalance
+  case addBox
+  case add
+  case apps
+  case arrowBack
+  case arrowDropDown
+  case callMade
+  case callReceiving
+  case cancel
+  case checkCircle
+  case check
+  case chevronLeft
+  case chevronRight
+  case close
+  case creditCard
+  case delete
+  case domain
+  case donutSmall
+  case downArrow
+  case draft
+  case email
+  case error
+  case errorOutline
+  case exitToApp
+  case gavel
+  case inbox
+  case infoOutline
+  case info
+  case language
+  case loading
+  case localAtm
+  case lock
+  case loop
+  case longArrow
+  case message
+  case notification
+  case removeCircleOutline
+  case search
+  case swapHoriz
+  case starBorder
+  case star
+  case timer
+  case trendingUp
+  case warning
+  case moreHoriz
+  case highlightOff
+  case checkBox
+  case checkBoxOutlineBlank
+  case barChart
+  case warningOutline
+  case wifiSignalLost
+  case today
+  case watch
+  case `repeat`
+  case identity
+  case addPerson
+  case expandMore
+  public static func == (a: BusinessDesign.IconStyle, b: BusinessDesign.IconStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.IconStyle {
+  public var imageLocator: BusinessDesign.IconLocator {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public class IconsConfiguration {
+  public var accountBalanceWallet: (name: Swift.String, bundle: Foundation.Bundle)
+  public var accountBalance: (name: Swift.String, bundle: Foundation.Bundle)
+  public var addBox: (name: Swift.String, bundle: Foundation.Bundle)
+  public var add: (name: Swift.String, bundle: Foundation.Bundle)
+  public var apps: (name: Swift.String, bundle: Foundation.Bundle)
+  public var arrowBack: (name: Swift.String, bundle: Foundation.Bundle)
+  public var arrowDropDown: (name: Swift.String, bundle: Foundation.Bundle)
+  public var callMade: (name: Swift.String, bundle: Foundation.Bundle)
+  public var callReceiving: (name: Swift.String, bundle: Foundation.Bundle)
+  public var cancel: (name: Swift.String, bundle: Foundation.Bundle)
+  public var checkCircle: (name: Swift.String, bundle: Foundation.Bundle)
+  public var check: (name: Swift.String, bundle: Foundation.Bundle)
+  public var chevronLeft: (name: Swift.String, bundle: Foundation.Bundle)
+  public var chevronRight: (name: Swift.String, bundle: Foundation.Bundle)
+  public var close: (name: Swift.String, bundle: Foundation.Bundle)
+  public var creditCard: (name: Swift.String, bundle: Foundation.Bundle)
+  public var delete: (name: Swift.String, bundle: Foundation.Bundle)
+  public var domain: (name: Swift.String, bundle: Foundation.Bundle)
+  public var donutSmall: (name: Swift.String, bundle: Foundation.Bundle)
+  public var downArrow: (name: Swift.String, bundle: Foundation.Bundle)
+  public var draft: (name: Swift.String, bundle: Foundation.Bundle)
+  public var email: (name: Swift.String, bundle: Foundation.Bundle)
+  public var error: (name: Swift.String, bundle: Foundation.Bundle)
+  public var errorOutline: (name: Swift.String, bundle: Foundation.Bundle)
+  public var exitToApp: (name: Swift.String, bundle: Foundation.Bundle)
+  public var gavel: (name: Swift.String, bundle: Foundation.Bundle)
+  public var inbox: (name: Swift.String, bundle: Foundation.Bundle)
+  public var infoOutline: (name: Swift.String, bundle: Foundation.Bundle)
+  public var info: (name: Swift.String, bundle: Foundation.Bundle)
+  public var language: (name: Swift.String, bundle: Foundation.Bundle)
+  public var loading: (name: Swift.String, bundle: Foundation.Bundle)
+  public var localAtm: (name: Swift.String, bundle: Foundation.Bundle)
+  public var lock: (name: Swift.String, bundle: Foundation.Bundle)
+  public var longArrow: (name: Swift.String, bundle: Foundation.Bundle)
+  public var loop: (name: Swift.String, bundle: Foundation.Bundle)
+  public var message: (name: Swift.String, bundle: Foundation.Bundle)
+  public var notification: (name: Swift.String, bundle: Foundation.Bundle)
+  public var removeCircleOutline: (name: Swift.String, bundle: Foundation.Bundle)
+  public var search: (name: Swift.String, bundle: Foundation.Bundle)
+  public var swapHoriz: (name: Swift.String, bundle: Foundation.Bundle)
+  public var starBorder: (name: Swift.String, bundle: Foundation.Bundle)
+  public var star: (name: Swift.String, bundle: Foundation.Bundle)
+  public var timer: (name: Swift.String, bundle: Foundation.Bundle)
+  public var trendingUp: (name: Swift.String, bundle: Foundation.Bundle)
+  public var warning: (name: Swift.String, bundle: Foundation.Bundle)
+  public var wifiSignalLost: (name: Swift.String, bundle: Foundation.Bundle)
+  public var moreHoriz: (name: Swift.String, bundle: Foundation.Bundle)
+  public var highlightOff: (name: Swift.String, bundle: Foundation.Bundle)
+  public var checkBox: (name: Swift.String, bundle: Foundation.Bundle)
+  public var checkBoxOutlineBlank: (name: Swift.String, bundle: Foundation.Bundle)
+  public var barChart: (name: Swift.String, bundle: Foundation.Bundle)
+  public var warningOutline: (name: Swift.String, bundle: Foundation.Bundle)
+  public var today: (name: Swift.String, bundle: Foundation.Bundle)
+  public var watch: (name: Swift.String, bundle: Foundation.Bundle)
+  public var `repeat`: (name: Swift.String, bundle: Foundation.Bundle)
+  public var identity: (name: Swift.String, bundle: Foundation.Bundle)
+  public var addPerson: (name: Swift.String, bundle: Foundation.Bundle)
+  public var expandMore: (name: Swift.String, bundle: Foundation.Bundle)
+  public init()
+  public static func configure(_ closure: (BusinessDesign.IconsConfiguration) -> Swift.Void) -> BusinessDesign.IconsConfiguration
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.IconsConfiguration {
+  public func largeMaterial(_ iconStyle: BusinessDesign.IconStyle) -> UIKit.UIImage
+  public func material(_ iconStyle: BusinessDesign.IconStyle) -> UIKit.UIImage
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class ListConfiguration {
+  public var itemTitle: BusinessDesign.ListItemTitleConfiguration {
+    get
+  }
+  public var itemSubtitle: BusinessDesign.ListItemSubtitleConfiguration {
+    get
+  }
+  public var itemCaption: BusinessDesign.ListItemCaptionConfiguration {
+    get
+  }
+  public var itemAmount: BusinessDesign.ListItemAmountConfiguration {
+    get
+  }
+  public var itemCategoryIcon: BusinessDesign.ListItemCategoryIconConfiguration {
+    get
+  }
+  public var itemTrendIcon: BusinessDesign.ListItemTrendIconConfiguration {
+    get
+  }
+  public func title(closure: (BusinessDesign.ListItemTitleConfiguration) -> Swift.Void)
+  public func subtitle(closure: (BusinessDesign.ListItemSubtitleConfiguration) -> Swift.Void)
+  public func caption(closure: (BusinessDesign.ListItemCaptionConfiguration) -> Swift.Void)
+  public func amount(closure: (BusinessDesign.ListItemAmountConfiguration) -> Swift.Void)
+  public func itemCategoryIcon(_ closure: (BusinessDesign.ListItemCategoryIconConfiguration) -> Swift.Void)
+  public func itemTrendIcon(_ closure: (BusinessDesign.ListItemTrendIconConfiguration) -> Swift.Void)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum ListItemVariation {
+  case trendTableViewCell
+  case noIconTableViewCell
+  public static func == (a: BusinessDesign.ListItemVariation, b: BusinessDesign.ListItemVariation) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class MaterialLoadingView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var color: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var title: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol NavigationThemeable : UIKit.UIViewController {
+  func setTitleView(title: Swift.String, textColor: UIKit.UIColor)
+}
+extension BusinessDesign.NavigationThemeable {
+  public func setTitleView(title: Swift.String, textColor: UIKit.UIColor)
+  public func setTitleLabel(_ label: UIKit.UILabel)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.NavigationThemeable {
+  public func titleView(textColor: UIKit.UIColor) -> UIKit.UILabel
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class OldDesignSystem {
+  public static let shared: BusinessDesign.OldDesignSystem
+  public static var colors: BusinessDesign.ColorsConfiguration {
+    get
+  }
+  public static var fonts: BusinessDesign.FontsConfiguration {
+    get
+  }
+  public static var icons: BusinessDesign.IconsConfiguration {
+    get
+  }
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.OldDesignSystem {
+  public func configure(_ designConfiguration: BusinessDesign.DesignConfiguration)
+  public func configure(_ colors: BusinessDesign.ColorsConfiguration)
+  public func configure(_ fonts: BusinessDesign.FontsConfiguration)
+  public func configure(_ icons: BusinessDesign.IconsConfiguration)
+}
+precedencegroup LeftApplyPrecedence {
+  associativity: left
+  higherThan: AssignmentPrecedence
+  lowerThan: TernaryPrecedence
+}
+precedencegroup FunctionCompositionPrecedence {
+  associativity: right
+  higherThan: LeftApplyPrecedence
+}
+precedencegroup ForwardApplication {
+  associativity: left
+}
+precedencegroup ForwardComposition {
+  associativity: left
+  higherThan: ForwardApplication
+}
+precedencegroup SingleTypeComposition {
+  associativity: left
+  higherThan: ForwardApplication
+}
+precedencegroup LensSetPrecedence {
+  associativity: left
+  higherThan: ForwardComposition
+}
+infix operator .~ : LensSetPrecedence
+infix operator |> : ForwardApplication
+infix operator <| : ForwardApplication
+infix operator ?> : ForwardApplication
+infix operator *> : ForwardApplication
+infix operator >>> : ForwardComposition
+infix operator <> : SingleTypeComposition
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func |> <A, B>(a: A, f: (A) -> B) -> B
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func |> <A>(a: inout A, f: (inout A) -> Swift.Void)
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func *> <A>(a: A, f: (A) -> Swift.Void) -> A
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func <| <A, B>(f: (A) -> B, a: A) -> B
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func ?> <A, B>(a: A?, f: (A) -> B) -> B?
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func >>> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func <> <A>(f: @escaping (A) -> A, g: @escaping (A) -> A) -> ((A) -> A)
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func <> <A>(f: @escaping (inout A) -> Swift.Void, g: @escaping (inout A) -> Swift.Void) -> ((inout A) -> Swift.Void)
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func <> <A>(f: @escaping (A) -> Swift.Void, g: @escaping (A) -> Swift.Void) -> (A) -> Swift.Void where A : AnyObject
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func <> <A, B>(f: @escaping (A) -> (B) -> Swift.Void, g: @escaping (A) -> (B) -> Swift.Void) -> (A) -> (B) -> Swift.Void
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func .~ <Whole, Part>(lens: Swift.WritableKeyPath<Whole, Part>, part: Part) -> (Whole) -> Whole
+@objc @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class ParallaxContainerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let headerHeight: CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) public init(header: UIKit.UIView, height: CoreGraphics.CGFloat)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToSuperview()
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public struct PaymentOderViewModel {
+  public var id: Swift.String
+  public init(id: Swift.String, counterpartyName: Swift.String?, counterpartyTitle: Swift.String?, counterpartyAccountTitle: Swift.String?, counterpartyAccountNumber: Swift.String?, executionDate: Swift.String?, executionDateValue: Swift.String?, amount: Swift.String?, originator: Swift.String?, originatorAccount: Swift.String?, occurs: Swift.String?, occursValue: Swift.String?, executionDateStackViewSpacing: CoreGraphics.CGFloat, counterpartyAccountStackViewSpacing: CoreGraphics.CGFloat)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol PaymentOrderStyling {
+  var paymentOrderSupportLabel: BackbaseDesignSystem.Style<UIKit.UILabel> { get }
+  var paymentOrderTitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> { get }
+  var paymentOrderParticipantNameLabel: BackbaseDesignSystem.Style<UIKit.UILabel> { get }
+  var paymentOrderOccurrenceValueLabel: BackbaseDesignSystem.Style<UIKit.UILabel> { get }
+  var paymentOrderVerticalDivider: BackbaseDesignSystem.Style<UIKit.UIView> { get }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class PaymentOrderView : UIKit.UIView {
+  public enum DisplayMode {
+    case payments
+    case multiSelectApprovals
+    case approvalsList
+    public static func == (a: BusinessDesign.PaymentOrderView.DisplayMode, b: BusinessDesign.PaymentOrderView.DisplayMode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) public func configure(_ viewModel: BusinessDesign.PaymentOderViewModel, mode: BusinessDesign.PaymentOrderView.DisplayMode)
+  @_Concurrency.MainActor(unsafe) public func configure(_ viewModel: BusinessDesign.PaymentOderViewModel, mode: BusinessDesign.PaymentOrderView.DisplayMode, stylingConfiguration: BusinessDesign.PaymentOrderStyling? = nil)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class SectionHeaderView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var titleLabel: BusinessDesign.BBLabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public init(title: Swift.String?, appearance: BusinessDesign.SectionHeaderView.Appearance)
+  @objc deinit
+}
+extension BusinessDesign.SectionHeaderView {
+  public struct Appearance {
+    public init(color: UIKit.UIColor, font: UIKit.UIFont, icon: UIKit.UIImage? = nil, backgroundColor: UIKit.UIColor? = nil)
+  }
+}
+@objc @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class StandardTableHeaderContainerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public init(header: UIKit.UIView, frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+public struct StaticTableViewSection {
+  public init(numberOfRows: Swift.Int, cellType: UIKit.UITableViewCell.Type)
+}
+@objc @_Concurrency.MainActor(unsafe) public class StaticTableViewDataSource : ObjectiveC.NSObject, UIKit.UITableViewDataSource {
+  @_Concurrency.MainActor(unsafe) final public let sections: [BusinessDesign.StaticTableViewSection]
+  @_Concurrency.MainActor(unsafe) public init(sections: [BusinessDesign.StaticTableViewSection] = [])
+  @_Concurrency.MainActor(unsafe) @objc public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func autolayoutStyle<V>(_ view: V) where V : UIKit.UIView
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func cornerRadiusStyle<V>(radius: CoreGraphics.CGFloat) -> (V) -> Swift.Void where V : UIKit.UIView
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func backgroundColorStyle<V>(color: UIKit.UIColor) -> (V) -> Swift.Void where V : UIKit.UIView
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func sizeStyle<V>(width: CoreGraphics.CGFloat? = nil, height: CoreGraphics.CGFloat? = nil) -> (V) -> Swift.Void where V : UIKit.UIView
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func minimumSizeStyle<V>(width: CoreGraphics.CGFloat? = nil, height: CoreGraphics.CGFloat? = nil) -> (V) -> Swift.Void where V : UIKit.UIView
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func titleColorStyle<B>(color: UIKit.UIColor, state: UIKit.UIControl.State = .normal) -> (B) -> Swift.Void where B : UIKit.UIButton
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func fontStyle<B>(font: UIKit.UIFont) -> (B) -> Swift.Void where B : UIKit.UIButton
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func contentInsetStyle<B>(insets: UIKit.UIEdgeInsets) -> (B) -> Swift.Void where B : UIKit.UIButton
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func backgroundColorWithImageStyle<B>(color: UIKit.UIColor, forState state: UIKit.UIControl.State) -> (B) -> Swift.Void where B : UIKit.UIButton
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func clippingCornerRadiusStyle<B>(radius: CoreGraphics.CGFloat) -> (B) -> Swift.Void where B : UIKit.UIButton
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func textAlignmentStyle<L>(alignment: UIKit.NSTextAlignment) -> (L) -> Swift.Void where L : UIKit.UILabel
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func fontStyle<L>(font: UIKit.UIFont) -> (L) -> Swift.Void where L : UIKit.UILabel
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public func textColorStyle<L>(color: UIKit.UIColor) -> (L) -> Swift.Void where L : UIKit.UILabel
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol TextConfigurable {
+  var fontStyle: BusinessDesign.FontStyle { get set }
+  var textColorStyle: BusinessDesign.ColorStyle { get set }
+  var alignment: UIKit.NSTextAlignment { get set }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+@objc extension UIKit.UIColor {
+  @objc convenience dynamic public init(hex3: Swift.UInt16, alpha: CoreGraphics.CGFloat = 1)
+  @objc convenience dynamic public init(hex4: Swift.UInt16)
+  @objc convenience dynamic public init(hex6: Swift.UInt32, alpha: CoreGraphics.CGFloat = 1)
+  @objc convenience dynamic public init(hex8: Swift.UInt32)
+  @objc dynamic public var singlePixelImage: UIKit.UIImage {
+    @objc get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public typealias IconLocator = (name: Swift.String, bundle: Foundation.Bundle)
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension UIKit.UIImage {
+  public static func forIconLocator(_ iconLocator: BusinessDesign.IconLocator?) -> UIKit.UIImage?
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.BBLabel.Predefined : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.BBLabel.Predefined : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.BBLabel.Color : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.BBLabel.Color : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.ListItemTitleConfiguration.TextTransform : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.ListItemTitleConfiguration.TextTransform : Swift.Hashable {}
+extension BusinessDesign.BBNudge.NudgeState : Swift.Equatable {}
+extension BusinessDesign.BBNudge.NudgeState : Swift.Hashable {}
+extension BusinessDesign.BBNudgeType : Swift.Equatable {}
+extension BusinessDesign.BBNudgeType : Swift.Hashable {}
+extension BusinessDesign.BBNudgeType : Swift.RawRepresentable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.IconBackgroundShape : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.IconBackgroundShape : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.IconTintBehavior : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.IconTintBehavior : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.ColorStyle : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.ColorStyle : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.FontStyle : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.FontStyle : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.IconStyle : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.IconStyle : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.ListItemVariation : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.ListItemVariation : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.PaymentOrderView.DisplayMode : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessDesign.PaymentOrderView.DisplayMode : Swift.Hashable {}

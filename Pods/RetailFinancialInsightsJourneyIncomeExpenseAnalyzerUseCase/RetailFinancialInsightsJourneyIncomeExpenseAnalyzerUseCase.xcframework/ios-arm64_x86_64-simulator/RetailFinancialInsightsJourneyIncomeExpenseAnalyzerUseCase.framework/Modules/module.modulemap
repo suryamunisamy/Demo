@@ -1,0 +1,4 @@
+framework module RetailFinancialInsightsJourneyIncomeExpenseAnalyzerUseCase {
+  header "RetailFinancialInsightsJourneyIncomeExpenseAnalyzerUseCase-Swift.h"
+  requires objc
+}

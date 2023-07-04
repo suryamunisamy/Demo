@@ -1,0 +1,132 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FinancialInstitutionManagerClient1
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [FinancialInstitutionManagerClient1.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [FinancialInstitutionManagerClient1.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: FinancialInstitutionManagerClient1.BadRequestError, rhs: FinancialInstitutionManagerClient1.BadRequestError) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String, key: Swift.String, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: FinancialInstitutionManagerClient1.ErrorItem, rhs: FinancialInstitutionManagerClient1.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct FinancialInstitution : Swift.Codable, Swift.Equatable {
+  public var id: Swift.Int64
+  public var externalId: Swift.String
+  public var name: Swift.String
+  public var logo: Swift.String?
+  public init(id: Swift.Int64, externalId: Swift.String, name: Swift.String, logo: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: FinancialInstitutionManagerClient1.FinancialInstitution, rhs: FinancialInstitutionManagerClient1.FinancialInstitution) -> Swift.Bool
+}
+public protocol FinancialInstitutionManagerClientAPIProtocol {
+  func getFinancialInstitutionsCall(ids: [Swift.Int64]?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<FinancialInstitutionManagerClient1.SearchResponse>
+}
+@objc @_inheritsConvenienceInitializers public class FinancialInstitutionManagerClientAPI : ObjectiveC.NSObject, DBSClient, FinancialInstitutionManagerClient1.FinancialInstitutionManagerClientAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getFinancialInstitutionsCall(ids: [Swift.Int64]? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<FinancialInstitutionManagerClient1.SearchResponse>
+  @objc deinit
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: FinancialInstitutionManagerClient1.InternalServerError, rhs: FinancialInstitutionManagerClient1.InternalServerError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct SearchResponse : Swift.Codable, Swift.Equatable {
+  public var financialInstitutions: [FinancialInstitutionManagerClient1.FinancialInstitution]
+  public init(financialInstitutions: [FinancialInstitutionManagerClient1.FinancialInstitution])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: FinancialInstitutionManagerClient1.SearchResponse, rhs: FinancialInstitutionManagerClient1.SearchResponse) -> Swift.Bool
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [FinancialInstitutionManagerClient1.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [FinancialInstitutionManagerClient1.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: FinancialInstitutionManagerClient1.UnauthorizedError, rhs: FinancialInstitutionManagerClient1.UnauthorizedError) -> Swift.Bool
+}

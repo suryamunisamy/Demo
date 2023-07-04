@@ -1,0 +1,11 @@
+framework module MobileNotificationsCore {
+  umbrella header "MobileNotificationsCore.h"
+
+  export *
+  module * { export * }
+}
+
+module MobileNotificationsCore.Swift {
+    header "MobileNotificationsCore-Swift.h"
+    requires objc
+}

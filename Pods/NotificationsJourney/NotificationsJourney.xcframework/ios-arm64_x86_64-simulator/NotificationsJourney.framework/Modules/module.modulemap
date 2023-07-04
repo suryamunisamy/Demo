@@ -1,0 +1,4 @@
+framework module NotificationsJourney {
+  header "NotificationsJourney-Swift.h"
+  requires objc
+}

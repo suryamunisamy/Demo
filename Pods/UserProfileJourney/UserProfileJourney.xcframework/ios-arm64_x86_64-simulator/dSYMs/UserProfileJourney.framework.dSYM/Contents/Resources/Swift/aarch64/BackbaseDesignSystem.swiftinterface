@@ -1,0 +1,3064 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BackbaseDesignSystem
+import CoreGraphics
+import Foundation
+import Swift
+import UIKit
+import _Concurrency
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Accessibility {
+    public var formattedAmountString: (_ amountOptions: BackbaseDesignSystem.DesignSystem.Formatting.AmountOptions) -> Swift.String?
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Formatting {
+  public struct AmountAbbreviationSymbols {
+    public var thousand: Swift.String
+    public var million: Swift.String
+    public var billion: Swift.String
+    public var trillion: Swift.String
+    public var quadrillion: Swift.String
+    public var quintillion: Swift.String
+    public init()
+  }
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Formatting {
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Formatting {
+  public static let defaultFractionDigits: Swift.Int
+  public enum AmountFormatType {
+    case decimal(locale: Foundation.Locale = Locale.autoupdatingCurrent, minFractionDigits: Swift.Int = defaultFractionDigits, maxFractionDigits: Swift.Int = defaultFractionDigits)
+    case currency(locale: Foundation.Locale = Locale.autoupdatingCurrent, isISO: Swift.Bool = false, code: Swift.String = "", minFractionDigits: Swift.Int = defaultFractionDigits, maxFractionDigits: Swift.Int = defaultFractionDigits)
+    case percentage(locale: Foundation.Locale = Locale.autoupdatingCurrent, minFractionDigits: Swift.Int = defaultFractionDigits, maxFractionDigits: Swift.Int = defaultFractionDigits)
+    @available(*, deprecated, message: "In favor of 'customizeFormatter(with: NumberFormatter)'")
+    public func customizeFormatter(_ numberFormatter: Foundation.NumberFormatter, shouldOverrideFractionDigits: Swift.Bool = true)
+    public func customizeFormatter(with numberFormatter: Foundation.NumberFormatter)
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Formatting {
+  @_hasMissingDesignatedInitializers public class AmountFormatter {
+    @objc deinit
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Formatting {
+  public struct AmountOptions {
+    public var amount: Foundation.NSDecimalNumber
+    public var format: BackbaseDesignSystem.DesignSystem.Formatting.AmountFormatType
+    public var enableAbbreviation: Swift.Bool
+    public var enablePositiveSign: Swift.Bool
+    public var enableSignHighlighting: Swift.Bool
+    public init()
+  }
+}
+public typealias Animation<Component> = (Component) -> Swift.Void
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Animations {
+    public var paymentCardFlip: BackbaseDesignSystem.Animation<BackbaseDesignSystem.PaymentCard> {
+      mutating get
+      set
+    }
+  }
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Assets {
+    public static let ic360: Swift.String
+    public static let ic3dRotation: Swift.String
+    public static let ic4k: Swift.String
+    public static let icAcUnit: Swift.String
+    public static let icAccessAlarm: Swift.String
+    public static let icAccessAlarms: Swift.String
+    public static let icAccessTime: Swift.String
+    public static let icAccessibility: Swift.String
+    public static let icAccessibilityNew: Swift.String
+    public static let icAccessible: Swift.String
+    public static let icAccessibleForward: Swift.String
+    public static let icAccountBalance: Swift.String
+    public static let icAccountBalanceWallet: Swift.String
+    public static let icAccountBox: Swift.String
+    public static let icAccountCircle: Swift.String
+    public static let icAdb: Swift.String
+    public static let icAdd: Swift.String
+    public static let icAddAPhoto: Swift.String
+    public static let icAddAlarm: Swift.String
+    public static let icAddBox: Swift.String
+    public static let icAddCall: Swift.String
+    public static let icAddCircle: Swift.String
+    public static let icAddCircleOutline: Swift.String
+    public static let icAddComment: Swift.String
+    public static let icAddLocation: Swift.String
+    public static let icAddPhotoAlternate: Swift.String
+    public static let icAddShoppingCart: Swift.String
+    public static let icAddToHomeScreen: Swift.String
+    public static let icAddToPhotos: Swift.String
+    public static let icAddToQueue: Swift.String
+    public static let icAdjust: Swift.String
+    public static let icAirlineSeatFlat: Swift.String
+    public static let icAirlineSeatFlatAngled: Swift.String
+    public static let icAirlineSeatIndividualSuite: Swift.String
+    public static let icAirlineSeatLegroomExtra: Swift.String
+    public static let icAirlineSeatLegroomNormal: Swift.String
+    public static let icAirlineSeatLegroomReduced: Swift.String
+    public static let icAirlineSeatReclineExtra: Swift.String
+    public static let icAirlineSeatReclineNormal: Swift.String
+    public static let icAirplanemodeActive: Swift.String
+    public static let icAirplanemodeInactive: Swift.String
+    public static let icAirplay: Swift.String
+    public static let icAirportShuttle: Swift.String
+    public static let icAlarm: Swift.String
+    public static let icAlarmAdd: Swift.String
+    public static let icAlarmOff: Swift.String
+    public static let icAlarmOn: Swift.String
+    public static let icAlbum: Swift.String
+    public static let icAllInbox: Swift.String
+    public static let icAllInclusive: Swift.String
+    public static let icAllOut: Swift.String
+    public static let icAlternateEmail: Swift.String
+    public static let icAmericanExpress: Swift.String
+    public static let icAndroid: Swift.String
+    public static let icAnnouncement: Swift.String
+    public static let icApps: Swift.String
+    public static let icArchive: Swift.String
+    public static let icArrowBack: Swift.String
+    public static let icArrowBackIos: Swift.String
+    public static let icArrowDownward: Swift.String
+    public static let icArrowDropDown: Swift.String
+    public static let icArrowDropDownCircle: Swift.String
+    public static let icArrowDropUp: Swift.String
+    public static let icArrowForward: Swift.String
+    public static let icArrowForwardIos: Swift.String
+    public static let icArrowLeft: Swift.String
+    public static let icArrowRight: Swift.String
+    public static let icArrowRightAlt: Swift.String
+    public static let icArrowUpward: Swift.String
+    public static let icArtTrack: Swift.String
+    public static let icAspectRatio: Swift.String
+    public static let icAssessment: Swift.String
+    public static let icAssignment: Swift.String
+    public static let icAssignmentInd: Swift.String
+    public static let icAssignmentLate: Swift.String
+    public static let icAssignmentReturn: Swift.String
+    public static let icAssignmentReturned: Swift.String
+    public static let icAssignmentTurnedIn: Swift.String
+    public static let icAssistant: Swift.String
+    public static let icAssistantPhoto: Swift.String
+    public static let icAtm: Swift.String
+    public static let icAttachFile: Swift.String
+    public static let icAttachMoney: Swift.String
+    public static let icAttachment: Swift.String
+    public static let icAttribution: Swift.String
+    public static let icAudiotrack: Swift.String
+    public static let icAutorenew: Swift.String
+    public static let icBackspace: Swift.String
+    public static let icBackup: Swift.String
+    public static let icBallot: Swift.String
+    public static let icBarChart: Swift.String
+    public static let icBatteryAlert: Swift.String
+    public static let icBatteryChargingFull: Swift.String
+    public static let icBatteryFull: Swift.String
+    public static let icBatteryStd: Swift.String
+    public static let icBatteryUnknown: Swift.String
+    public static let icBeachAccess: Swift.String
+    public static let icBeenhere: Swift.String
+    public static let icBlock: Swift.String
+    public static let icBluetooth: Swift.String
+    public static let icBluetoothAudio: Swift.String
+    public static let icBluetoothConnected: Swift.String
+    public static let icBluetoothDisabled: Swift.String
+    public static let icBluetoothSearching: Swift.String
+    public static let icBlurCircular: Swift.String
+    public static let icBlurLinear: Swift.String
+    public static let icBlurOff: Swift.String
+    public static let icBlurOn: Swift.String
+    public static let icBook: Swift.String
+    public static let icBookmark: Swift.String
+    public static let icBookmarkBorder: Swift.String
+    public static let icBookmarks: Swift.String
+    public static let icBorderAll: Swift.String
+    public static let icBorderBottom: Swift.String
+    public static let icBorderClear: Swift.String
+    public static let icBorderColor: Swift.String
+    public static let icBorderHorizontal: Swift.String
+    public static let icBorderInner: Swift.String
+    public static let icBorderLeft: Swift.String
+    public static let icBorderOuter: Swift.String
+    public static let icBorderRight: Swift.String
+    public static let icBorderStyle: Swift.String
+    public static let icBorderTop: Swift.String
+    public static let icBorderVertical: Swift.String
+    public static let icBrandingWatermark: Swift.String
+    public static let icBrightness1: Swift.String
+    public static let icBrightness2: Swift.String
+    public static let icBrightness3: Swift.String
+    public static let icBrightness4: Swift.String
+    public static let icBrightness5: Swift.String
+    public static let icBrightness6: Swift.String
+    public static let icBrightness7: Swift.String
+    public static let icBrightnessAuto: Swift.String
+    public static let icBrightnessHigh: Swift.String
+    public static let icBrightnessLow: Swift.String
+    public static let icBrightnessMedium: Swift.String
+    public static let icBrokenImage: Swift.String
+    public static let icBrush: Swift.String
+    public static let icBubbleChart: Swift.String
+    public static let icBugReport: Swift.String
+    public static let icBuild: Swift.String
+    public static let icBurstMode: Swift.String
+    public static let icBusiness: Swift.String
+    public static let icBusinessCenter: Swift.String
+    public static let icCached: Swift.String
+    public static let icCake: Swift.String
+    public static let icCalendarToday: Swift.String
+    public static let icCalendarViewDay: Swift.String
+    public static let icCall: Swift.String
+    public static let icCallEnd: Swift.String
+    public static let icCallMade: Swift.String
+    public static let icCallMerge: Swift.String
+    public static let icCallMissed: Swift.String
+    public static let icCallMissedOutgoing: Swift.String
+    public static let icCallReceived: Swift.String
+    public static let icCallSplit: Swift.String
+    public static let icCallToAction: Swift.String
+    public static let icCamera: Swift.String
+    public static let icCameraAlt: Swift.String
+    public static let icCameraEnhance: Swift.String
+    public static let icCameraFront: Swift.String
+    public static let icCameraRear: Swift.String
+    public static let icCameraRoll: Swift.String
+    public static let icCancel: Swift.String
+    public static let icCancelPresentation: Swift.String
+    public static let icCardGiftcard: Swift.String
+    public static let icCardMembership: Swift.String
+    public static let icCardTravel: Swift.String
+    public static let icCasino: Swift.String
+    public static let icCast: Swift.String
+    public static let icCastConnected: Swift.String
+    public static let icCastForEducation: Swift.String
+    public static let icCategory: Swift.String
+    public static let icCellWifi: Swift.String
+    public static let icCenterFocusStrong: Swift.String
+    public static let icCenterFocusWeak: Swift.String
+    public static let icChangeHistory: Swift.String
+    public static let icChat: Swift.String
+    public static let icChatBubble: Swift.String
+    public static let icChatBubbleOutline: Swift.String
+    public static let icCheck: Swift.String
+    public static let icCheckBox: Swift.String
+    public static let icCheckBoxOutlineBlank: Swift.String
+    public static let icCheckCircle: Swift.String
+    public static let icCheckCircleOutline: Swift.String
+    public static let icChevronLeft: Swift.String
+    public static let icChevronRight: Swift.String
+    public static let icChildCare: Swift.String
+    public static let icChildFriendly: Swift.String
+    public static let icChromeReaderMode: Swift.String
+    public static let icCircleOutline: Swift.String
+    public static let icClass: Swift.String
+    public static let icClear: Swift.String
+    public static let icClearAll: Swift.String
+    public static let icClose: Swift.String
+    public static let icClosedCaption: Swift.String
+    public static let icCloud: Swift.String
+    public static let icCloudCircle: Swift.String
+    public static let icCloudDone: Swift.String
+    public static let icCloudDownload: Swift.String
+    public static let icCloudOff: Swift.String
+    public static let icCloudQueue: Swift.String
+    public static let icCloudUpload: Swift.String
+    public static let icCode: Swift.String
+    public static let icCollections: Swift.String
+    public static let icCollectionsBookmark: Swift.String
+    public static let icColorLens: Swift.String
+    public static let icColorize: Swift.String
+    public static let icComment: Swift.String
+    public static let icCommute: Swift.String
+    public static let icCompare: Swift.String
+    public static let icCompareArrows: Swift.String
+    public static let icCompassCalibration: Swift.String
+    public static let icComputer: Swift.String
+    public static let icConfirmationNumber: Swift.String
+    public static let icContactMail: Swift.String
+    public static let icContactPhone: Swift.String
+    public static let icContactSupport: Swift.String
+    public static let icContacts: Swift.String
+    public static let icControlCamera: Swift.String
+    public static let icControlPoint: Swift.String
+    public static let icControlPointDuplicate: Swift.String
+    public static let icCopy: Swift.String
+    public static let icCopyright: Swift.String
+    public static let icCreate: Swift.String
+    public static let icCreateNewFolder: Swift.String
+    public static let icCreditCard: Swift.String
+    public static let icCrop: Swift.String
+    public static let icCrop169: Swift.String
+    public static let icCrop32: Swift.String
+    public static let icCrop54: Swift.String
+    public static let icCrop75: Swift.String
+    public static let icCropDin: Swift.String
+    public static let icCropFree: Swift.String
+    public static let icCropLandscape: Swift.String
+    public static let icCropOriginal: Swift.String
+    public static let icCropPortrait: Swift.String
+    public static let icCropRotate: Swift.String
+    public static let icCropSquare: Swift.String
+    public static let icCut: Swift.String
+    public static let icDashboard: Swift.String
+    public static let icDataUsage: Swift.String
+    public static let icDateRange: Swift.String
+    public static let icDehaze: Swift.String
+    public static let icDelete: Swift.String
+    public static let icDeleteForever: Swift.String
+    public static let icDeleteOutline: Swift.String
+    public static let icDeleteSweep: Swift.String
+    public static let icDepartureBoard: Swift.String
+    public static let icDescription: Swift.String
+    public static let icDesktopAccessDisabled: Swift.String
+    public static let icDesktopMac: Swift.String
+    public static let icDesktopWindows: Swift.String
+    public static let icDetails: Swift.String
+    public static let icDeveloperBoard: Swift.String
+    public static let icDeveloperMode: Swift.String
+    public static let icDeviceHub: Swift.String
+    public static let icDeviceUnknown: Swift.String
+    public static let icDevices: Swift.String
+    public static let icDevicesOther: Swift.String
+    public static let icDialerSip: Swift.String
+    public static let icDialpad: Swift.String
+    public static let icDinersClub: Swift.String
+    public static let icDirections: Swift.String
+    public static let icDirectionsBike: Swift.String
+    public static let icDirectionsBoat: Swift.String
+    public static let icDirectionsBus: Swift.String
+    public static let icDirectionsCar: Swift.String
+    public static let icDirectionsRailway: Swift.String
+    public static let icDirectionsRun: Swift.String
+    public static let icDirectionsSubway: Swift.String
+    public static let icDirectionsTransit: Swift.String
+    public static let icDirectionsWalk: Swift.String
+    public static let icDiscFull: Swift.String
+    public static let icDns: Swift.String
+    public static let icDoDisturb: Swift.String
+    public static let icDoDisturbAlt: Swift.String
+    public static let icDoDisturbOff: Swift.String
+    public static let icDoDisturbOn: Swift.String
+    public static let icDock: Swift.String
+    public static let icDomain: Swift.String
+    public static let icDomainDisabled: Swift.String
+    public static let icDone: Swift.String
+    public static let icDoneAll: Swift.String
+    public static let icDoneOutline: Swift.String
+    public static let icDonutLarge: Swift.String
+    public static let icDonutSmall: Swift.String
+    public static let icDownload: Swift.String
+    public static let icDownloadDone: Swift.String
+    public static let icDrafts: Swift.String
+    public static let icDragHandle: Swift.String
+    public static let icDragIndicator: Swift.String
+    public static let icDriveEta: Swift.String
+    public static let icDuo: Swift.String
+    public static let icDvr: Swift.String
+    public static let icEdit: Swift.String
+    public static let icEditAttributes: Swift.String
+    public static let icEditLocation: Swift.String
+    public static let icEject: Swift.String
+    public static let icEmail: Swift.String
+    public static let icEnhancedEncryption: Swift.String
+    public static let icEq: Swift.String
+    public static let icEqualizer: Swift.String
+    public static let icError: Swift.String
+    public static let icErrorOutline: Swift.String
+    public static let icEuroSymbol: Swift.String
+    public static let icEvStation: Swift.String
+    public static let icEvent: Swift.String
+    public static let icEventAvailable: Swift.String
+    public static let icEventBusy: Swift.String
+    public static let icEventNote: Swift.String
+    public static let icEventSeat: Swift.String
+    public static let icExitToApp: Swift.String
+    public static let icExpandLess: Swift.String
+    public static let icExpandMore: Swift.String
+    public static let icExplicit: Swift.String
+    public static let icExplore: Swift.String
+    public static let icExploreOff: Swift.String
+    public static let icExposure: Swift.String
+    public static let icExposureNeg1: Swift.String
+    public static let icExposureNeg2: Swift.String
+    public static let icExposurePlus1: Swift.String
+    public static let icExposurePlus2: Swift.String
+    public static let icExposureZero: Swift.String
+    public static let icExtension: Swift.String
+    public static let icFace: Swift.String
+    public static let icFaceUnlock: Swift.String
+    public static let icFastForward: Swift.String
+    public static let icFastRewind: Swift.String
+    public static let icFastfood: Swift.String
+    public static let icFavorite: Swift.String
+    public static let icFavoriteBorder: Swift.String
+    public static let icFeaturedPlayList: Swift.String
+    public static let icFeaturedVideo: Swift.String
+    public static let icFeedback: Swift.String
+    public static let icFiberDvr: Swift.String
+    public static let icFiberManualRecord: Swift.String
+    public static let icFiberNew: Swift.String
+    public static let icFiberPin: Swift.String
+    public static let icFiberSmartRecord: Swift.String
+    public static let icFileCopy: Swift.String
+    public static let icFilter: Swift.String
+    public static let icFilter1: Swift.String
+    public static let icFilter2: Swift.String
+    public static let icFilter3: Swift.String
+    public static let icFilter4: Swift.String
+    public static let icFilter5: Swift.String
+    public static let icFilter6: Swift.String
+    public static let icFilter7: Swift.String
+    public static let icFilter8: Swift.String
+    public static let icFilter9: Swift.String
+    public static let icFilter9Plus: Swift.String
+    public static let icFilterBAndW: Swift.String
+    public static let icFilterCenterFocus: Swift.String
+    public static let icFilterDrama: Swift.String
+    public static let icFilterFrames: Swift.String
+    public static let icFilterHdr: Swift.String
+    public static let icFilterList: Swift.String
+    public static let icFilterNone: Swift.String
+    public static let icFilterTiltShift: Swift.String
+    public static let icFilterVintage: Swift.String
+    public static let icFindInPage: Swift.String
+    public static let icFindReplace: Swift.String
+    public static let icFingerprint: Swift.String
+    public static let icFirstPage: Swift.String
+    public static let icFitnessCenter: Swift.String
+    public static let icFlag: Swift.String
+    public static let icFlare: Swift.String
+    public static let icFlashAuto: Swift.String
+    public static let icFlashOff: Swift.String
+    public static let icFlashOn: Swift.String
+    public static let icFlight: Swift.String
+    public static let icFlightLand: Swift.String
+    public static let icFlightTakeoff: Swift.String
+    public static let icFlip: Swift.String
+    public static let icFlipToBack: Swift.String
+    public static let icFlipToFront: Swift.String
+    public static let icFolder: Swift.String
+    public static let icFolderOpen: Swift.String
+    public static let icFolderShared: Swift.String
+    public static let icFolderSpecial: Swift.String
+    public static let icFontDownload: Swift.String
+    public static let icFormatAlignCenter: Swift.String
+    public static let icFormatAlignJustify: Swift.String
+    public static let icFormatAlignLeft: Swift.String
+    public static let icFormatAlignRight: Swift.String
+    public static let icFormatBold: Swift.String
+    public static let icFormatClear: Swift.String
+    public static let icFormatColorFill: Swift.String
+    public static let icFormatColorReset: Swift.String
+    public static let icFormatColorText: Swift.String
+    public static let icFormatIndentDecrease: Swift.String
+    public static let icFormatIndentIncrease: Swift.String
+    public static let icFormatLineSpacing: Swift.String
+    public static let icFormatListBulleted: Swift.String
+    public static let icFormatListNumbered: Swift.String
+    public static let icFormatPaint: Swift.String
+    public static let icFormatQuote: Swift.String
+    public static let icFormatShapes: Swift.String
+    public static let icFormatSize: Swift.String
+    public static let icFormatStrikethrough: Swift.String
+    public static let icFormatTextdirectionLToR: Swift.String
+    public static let icFormatTextdirectionRToL: Swift.String
+    public static let icFormatUnderlined: Swift.String
+    public static let icForum: Swift.String
+    public static let icForward: Swift.String
+    public static let icForward10: Swift.String
+    public static let icForward30: Swift.String
+    public static let icForward5: Swift.String
+    public static let icFreeBreakfast: Swift.String
+    public static let icFullscreen: Swift.String
+    public static let icFullscreenExit: Swift.String
+    public static let icFunctions: Swift.String
+    public static let icGTranslate: Swift.String
+    public static let icGamepad: Swift.String
+    public static let icGames: Swift.String
+    public static let icGavel: Swift.String
+    public static let icGesture: Swift.String
+    public static let icGetApp: Swift.String
+    public static let icGif: Swift.String
+    public static let icGolfCourse: Swift.String
+    public static let icGpsFixed: Swift.String
+    public static let icGpsNotFixed: Swift.String
+    public static let icGpsOff: Swift.String
+    public static let icGrade: Swift.String
+    public static let icGradient: Swift.String
+    public static let icGrain: Swift.String
+    public static let icGridOff: Swift.String
+    public static let icGridOn: Swift.String
+    public static let icGroup: Swift.String
+    public static let icGroupAdd: Swift.String
+    public static let icGroupWork: Swift.String
+    public static let icHd: Swift.String
+    public static let icHdrOff: Swift.String
+    public static let icHdrOn: Swift.String
+    public static let icHdrStrong: Swift.String
+    public static let icHdrWeak: Swift.String
+    public static let icHeadset: Swift.String
+    public static let icHeadsetMic: Swift.String
+    public static let icHealing: Swift.String
+    public static let icHearing: Swift.String
+    public static let icHelp: Swift.String
+    public static let icHelpOutline: Swift.String
+    public static let icHighQuality: Swift.String
+    public static let icHighlight: Swift.String
+    public static let icHighlightOff: Swift.String
+    public static let icHistory: Swift.String
+    public static let icHome: Swift.String
+    public static let icHorizontalSplit: Swift.String
+    public static let icHotTub: Swift.String
+    public static let icHotel: Swift.String
+    public static let icHourglassEmpty: Swift.String
+    public static let icHourglassFull: Swift.String
+    public static let icHowToReg: Swift.String
+    public static let icHowToVote: Swift.String
+    public static let icHttp: Swift.String
+    public static let icHttps: Swift.String
+    public static let icImage: Swift.String
+    public static let icImageAspectRatio: Swift.String
+    public static let icImageSearch: Swift.String
+    public static let icImportContacts: Swift.String
+    public static let icImportExport: Swift.String
+    public static let icImportantDevices: Swift.String
+    public static let icInbox: Swift.String
+    public static let icIndeterminateCheckBox: Swift.String
+    public static let icIndeterminateCheckCircle: Swift.String
+    public static let icInfo: Swift.String
+    public static let icInput: Swift.String
+    public static let icInsertChart: Swift.String
+    public static let icInsertChartOutlined: Swift.String
+    public static let icInsertComment: Swift.String
+    public static let icInsertDriveFile: Swift.String
+    public static let icInsertEmoticon: Swift.String
+    public static let icInsertInvitation: Swift.String
+    public static let icInsertLink: Swift.String
+    public static let icInsertPhoto: Swift.String
+    public static let icInvertColors: Swift.String
+    public static let icInvertColorsOff: Swift.String
+    public static let icIso: Swift.String
+    public static let icKeyboard: Swift.String
+    public static let icKeyboardArrowDown: Swift.String
+    public static let icKeyboardArrowLeft: Swift.String
+    public static let icKeyboardArrowRight: Swift.String
+    public static let icKeyboardArrowUp: Swift.String
+    public static let icKeyboardBackspace: Swift.String
+    public static let icKeyboardCapslock: Swift.String
+    public static let icKeyboardHide: Swift.String
+    public static let icKeyboardReturn: Swift.String
+    public static let icKeyboardTab: Swift.String
+    public static let icKeyboardVoice: Swift.String
+    public static let icKitchen: Swift.String
+    public static let icLabel: Swift.String
+    public static let icLabelImportant: Swift.String
+    public static let icLabelImportant2: Swift.String
+    public static let icLabelOff: Swift.String
+    public static let icLandscape: Swift.String
+    public static let icLanguage: Swift.String
+    public static let icLaptop: Swift.String
+    public static let icLaptopChromebook: Swift.String
+    public static let icLaptopMac: Swift.String
+    public static let icLaptopWindows: Swift.String
+    public static let icLastPage: Swift.String
+    public static let icLaunch: Swift.String
+    public static let icLayers: Swift.String
+    public static let icLayersClear: Swift.String
+    public static let icLeakAdd: Swift.String
+    public static let icLeakRemove: Swift.String
+    public static let icLens: Swift.String
+    public static let icLibraryAdd: Swift.String
+    public static let icLibraryBooks: Swift.String
+    public static let icLibraryMusic: Swift.String
+    public static let icLightbulb: Swift.String
+    public static let icLineStyle: Swift.String
+    public static let icLineWeight: Swift.String
+    public static let icLinearScale: Swift.String
+    public static let icLink: Swift.String
+    public static let icLinkOff: Swift.String
+    public static let icLinkedCamera: Swift.String
+    public static let icList: Swift.String
+    public static let icListAlt: Swift.String
+    public static let icLiveHelp: Swift.String
+    public static let icLiveTv: Swift.String
+    public static let icLocalActivity: Swift.String
+    public static let icLocalAirport: Swift.String
+    public static let icLocalAtm: Swift.String
+    public static let icLocalBar: Swift.String
+    public static let icLocalCafe: Swift.String
+    public static let icLocalCarWash: Swift.String
+    public static let icLocalConvenienceStore: Swift.String
+    public static let icLocalDining: Swift.String
+    public static let icLocalDrink: Swift.String
+    public static let icLocalFlorist: Swift.String
+    public static let icLocalGasStation: Swift.String
+    public static let icLocalGroceryStore: Swift.String
+    public static let icLocalHospital: Swift.String
+    public static let icLocalHotel: Swift.String
+    public static let icLocalLaundryService: Swift.String
+    public static let icLocalLibrary: Swift.String
+    public static let icLocalMall: Swift.String
+    public static let icLocalMovies: Swift.String
+    public static let icLocalOffer: Swift.String
+    public static let icLocalParking: Swift.String
+    public static let icLocalPharmacy: Swift.String
+    public static let icLocalPhone: Swift.String
+    public static let icLocalPizza: Swift.String
+    public static let icLocalPlay: Swift.String
+    public static let icLocalPostOffice: Swift.String
+    public static let icLocalPrintshop: Swift.String
+    public static let icLocalSee: Swift.String
+    public static let icLocalShipping: Swift.String
+    public static let icLocalTaxi: Swift.String
+    public static let icLocationCity: Swift.String
+    public static let icLocationDisabled: Swift.String
+    public static let icLocationOff: Swift.String
+    public static let icLocationOn: Swift.String
+    public static let icLocationSearching: Swift.String
+    public static let icLock: Swift.String
+    public static let icLockOpen: Swift.String
+    public static let icLooks: Swift.String
+    public static let icLooks3: Swift.String
+    public static let icLooks4: Swift.String
+    public static let icLooks5: Swift.String
+    public static let icLooks6: Swift.String
+    public static let icLooksOne: Swift.String
+    public static let icLooksTwo: Swift.String
+    public static let icLoop: Swift.String
+    public static let icLoupe: Swift.String
+    public static let icLowPriority: Swift.String
+    public static let icLoyalty: Swift.String
+    public static let icMaestro: Swift.String
+    public static let icMail: Swift.String
+    public static let icMailOutline: Swift.String
+    public static let icMap: Swift.String
+    public static let icMarkunread: Swift.String
+    public static let icMarkunreadMailbox: Swift.String
+    public static let icMastercard: Swift.String
+    public static let icMaximize: Swift.String
+    public static let icMeetingRoom: Swift.String
+    public static let icMemory: Swift.String
+    public static let icMenu: Swift.String
+    public static let icMergeType: Swift.String
+    public static let icMessage: Swift.String
+    public static let icMic: Swift.String
+    public static let icMicNone: Swift.String
+    public static let icMicOff: Swift.String
+    public static let icMinimize: Swift.String
+    public static let icMissedVideoCall: Swift.String
+    public static let icMms: Swift.String
+    public static let icMobileFriendly: Swift.String
+    public static let icMobileOff: Swift.String
+    public static let icMobileScreenShare: Swift.String
+    public static let icMode: Swift.String
+    public static let icModeComment: Swift.String
+    public static let icMonetizationOn: Swift.String
+    public static let icMoney: Swift.String
+    public static let icMoneyOff: Swift.String
+    public static let icMoneyOffCsred: Swift.String
+    public static let icMonochromePhotos: Swift.String
+    public static let icMood: Swift.String
+    public static let icMoodBad: Swift.String
+    public static let icMore: Swift.String
+    public static let icMoreHoriz: Swift.String
+    public static let icMoreVert: Swift.String
+    public static let icMotorcycle: Swift.String
+    public static let icMouse: Swift.String
+    public static let icMoveToInbox: Swift.String
+    public static let icMovie: Swift.String
+    public static let icMovieCreation: Swift.String
+    public static let icMovieFilter: Swift.String
+    public static let icMultilineChart: Swift.String
+    public static let icMusicNote: Swift.String
+    public static let icMusicOff: Swift.String
+    public static let icMusicVideo: Swift.String
+    public static let icMyLocation: Swift.String
+    public static let icNature: Swift.String
+    public static let icNaturePeople: Swift.String
+    public static let icNavigateBefore: Swift.String
+    public static let icNavigateNext: Swift.String
+    public static let icNavigation: Swift.String
+    public static let icNearMe: Swift.String
+    public static let icNetworkCell: Swift.String
+    public static let icNetworkCheck: Swift.String
+    public static let icNetworkLocked: Swift.String
+    public static let icNetworkWifi: Swift.String
+    public static let icNewReleases: Swift.String
+    public static let icNextWeek: Swift.String
+    public static let icNfc: Swift.String
+    public static let icNoEncryption: Swift.String
+    public static let icNoEncryptionGmailerrorred: Swift.String
+    public static let icNoMeetingRoom: Swift.String
+    public static let icNoSim: Swift.String
+    public static let icNotInterested: Swift.String
+    public static let icNotListedLocation: Swift.String
+    public static let icNote: Swift.String
+    public static let icNoteAdd: Swift.String
+    public static let icNotes: Swift.String
+    public static let icNotificationImportant: Swift.String
+    public static let icNotifications: Swift.String
+    public static let icNotificationsActive: Swift.String
+    public static let icNotificationsNone: Swift.String
+    public static let icNotificationsOff: Swift.String
+    public static let icNotificationsPaused: Swift.String
+    public static let icOfflineBolt: Swift.String
+    public static let icOfflinePin: Swift.String
+    public static let icOndemandVideo: Swift.String
+    public static let icOpacity: Swift.String
+    public static let icOpenInBrowser: Swift.String
+    public static let icOpenInNew: Swift.String
+    public static let icOpenWith: Swift.String
+    public static let icOutlinedFlag: Swift.String
+    public static let icPages: Swift.String
+    public static let icPageview: Swift.String
+    public static let icPalette: Swift.String
+    public static let icPanTool: Swift.String
+    public static let icPanorama: Swift.String
+    public static let icPanoramaFishEye: Swift.String
+    public static let icPanoramaHorizontal: Swift.String
+    public static let icPanoramaVertical: Swift.String
+    public static let icPanoramaWideAngle: Swift.String
+    public static let icPartyMode: Swift.String
+    public static let icPaste: Swift.String
+    public static let icPause: Swift.String
+    public static let icPauseCircleFilled: Swift.String
+    public static let icPauseCircleOutline: Swift.String
+    public static let icPausePresentation: Swift.String
+    public static let icPayment: Swift.String
+    public static let icPeople: Swift.String
+    public static let icPeopleOutline: Swift.String
+    public static let icPermCameraMic: Swift.String
+    public static let icPermContactCalendar: Swift.String
+    public static let icPermDataSetting: Swift.String
+    public static let icPermDeviceInformation: Swift.String
+    public static let icPermIdentity: Swift.String
+    public static let icPermMedia: Swift.String
+    public static let icPermPhoneMsg: Swift.String
+    public static let icPermScanWifi: Swift.String
+    public static let icPerson: Swift.String
+    public static let icPersonAdd: Swift.String
+    public static let icPersonAddDisabled: Swift.String
+    public static let icPersonOutline: Swift.String
+    public static let icPersonPin: Swift.String
+    public static let icPersonPinCircle: Swift.String
+    public static let icPersonalVideo: Swift.String
+    public static let icPets: Swift.String
+    public static let icPhone: Swift.String
+    public static let icPhoneAndroid: Swift.String
+    public static let icPhoneBluetoothSpeaker: Swift.String
+    public static let icPhoneCallback: Swift.String
+    public static let icPhoneForwarded: Swift.String
+    public static let icPhoneInTalk: Swift.String
+    public static let icPhoneIphone: Swift.String
+    public static let icPhoneLocked: Swift.String
+    public static let icPhoneMissed: Swift.String
+    public static let icPhonePaused: Swift.String
+    public static let icPhonelink: Swift.String
+    public static let icPhonelinkErase: Swift.String
+    public static let icPhonelinkLock: Swift.String
+    public static let icPhonelinkOff: Swift.String
+    public static let icPhonelinkRing: Swift.String
+    public static let icPhonelinkSetup: Swift.String
+    public static let icPhoto: Swift.String
+    public static let icPhotoAlbum: Swift.String
+    public static let icPhotoCamera: Swift.String
+    public static let icPhotoFilter: Swift.String
+    public static let icPhotoLibrary: Swift.String
+    public static let icPhotoSizeSelectActual: Swift.String
+    public static let icPhotoSizeSelectLarge: Swift.String
+    public static let icPhotoSizeSelectSmall: Swift.String
+    public static let icPictureAsPdf: Swift.String
+    public static let icPictureInPicture: Swift.String
+    public static let icPictureInPictureAlt: Swift.String
+    public static let icPieChart: Swift.String
+    public static let icPieChartOutline: Swift.String
+    public static let icPinDrop: Swift.String
+    public static let icPlace: Swift.String
+    public static let icPlayArrow: Swift.String
+    public static let icPlayCircleFilled: Swift.String
+    public static let icPlayCircleFilledWhite: Swift.String
+    public static let icPlayCircleOutline: Swift.String
+    public static let icPlayForWork: Swift.String
+    public static let icPlaylistAdd: Swift.String
+    public static let icPlaylistAddCheck: Swift.String
+    public static let icPlaylistPlay: Swift.String
+    public static let icPlusOne: Swift.String
+    public static let icPoll: Swift.String
+    public static let icPolymer: Swift.String
+    public static let icPool: Swift.String
+    public static let icPortableWifiOff: Swift.String
+    public static let icPortrait: Swift.String
+    public static let icPower: Swift.String
+    public static let icPowerInput: Swift.String
+    public static let icPowerOff: Swift.String
+    public static let icPowerSettingsNew: Swift.String
+    public static let icPregnantWoman: Swift.String
+    public static let icPresentToAll: Swift.String
+    public static let icPrint: Swift.String
+    public static let icPrintDisabled: Swift.String
+    public static let icPriorityHigh: Swift.String
+    public static let icPublish: Swift.String
+    public static let icQueryBuilder: Swift.String
+    public static let icQuestionAnswer: Swift.String
+    public static let icQueue: Swift.String
+    public static let icQueueMusic: Swift.String
+    public static let icQueuePlayNext: Swift.String
+    public static let icRadio: Swift.String
+    public static let icRadioButtonChecked: Swift.String
+    public static let icRadioButtonUnchecked: Swift.String
+    public static let icRateReview: Swift.String
+    public static let icReceipt: Swift.String
+    public static let icRecentActors: Swift.String
+    public static let icRecordVoiceOver: Swift.String
+    public static let icRedeem: Swift.String
+    public static let icRedo: Swift.String
+    public static let icRefresh: Swift.String
+    public static let icRemove: Swift.String
+    public static let icRemoveCircle: Swift.String
+    public static let icRemoveCircleOutline: Swift.String
+    public static let icRemoveFromQueue: Swift.String
+    public static let icRemoveRedEye: Swift.String
+    public static let icRemoveShoppingCart: Swift.String
+    public static let icReorder: Swift.String
+    public static let icRepeat: Swift.String
+    public static let icRepeatOne: Swift.String
+    public static let icReplay: Swift.String
+    public static let icReplay10: Swift.String
+    public static let icReplay30: Swift.String
+    public static let icReplay5: Swift.String
+    public static let icReply: Swift.String
+    public static let icReplyAll: Swift.String
+    public static let icReport: Swift.String
+    public static let icReportGmailerrorred: Swift.String
+    public static let icReportOff: Swift.String
+    public static let icReportProblem: Swift.String
+    public static let icRestaurant: Swift.String
+    public static let icRestaurantMenu: Swift.String
+    public static let icRestore: Swift.String
+    public static let icRestoreFromTrash: Swift.String
+    public static let icRestorePage: Swift.String
+    public static let icRingVolume: Swift.String
+    public static let icRoom: Swift.String
+    public static let icRoomService: Swift.String
+    public static let icRotate90DegreesCcw: Swift.String
+    public static let icRotateLeft: Swift.String
+    public static let icRotateRight: Swift.String
+    public static let icRoundedCorner: Swift.String
+    public static let icRouter: Swift.String
+    public static let icRowing: Swift.String
+    public static let icRssFeed: Swift.String
+    public static let icRvHookup: Swift.String
+    public static let icSatellite: Swift.String
+    public static let icSave: Swift.String
+    public static let icSaveAlt: Swift.String
+    public static let icScanner: Swift.String
+    public static let icScatterPlot: Swift.String
+    public static let icSchedule: Swift.String
+    public static let icSchool: Swift.String
+    public static let icScore: Swift.String
+    public static let icScreenLockLandscape: Swift.String
+    public static let icScreenLockPortrait: Swift.String
+    public static let icScreenLockRotation: Swift.String
+    public static let icScreenRotation: Swift.String
+    public static let icScreenShare: Swift.String
+    public static let icSdCard: Swift.String
+    public static let icSdCardAlert: Swift.String
+    public static let icSdStorage: Swift.String
+    public static let icSearch: Swift.String
+    public static let icSecurity: Swift.String
+    public static let icSelectAll: Swift.String
+    public static let icSend: Swift.String
+    public static let icSentimentDissatisfied: Swift.String
+    public static let icSentimentNeutral: Swift.String
+    public static let icSentimentSatisfied: Swift.String
+    public static let icSentimentSatisfiedAlt: Swift.String
+    public static let icSentimentVeryDissatisfied: Swift.String
+    public static let icSentimentVerySatisfied: Swift.String
+    public static let icSettings: Swift.String
+    public static let icSettingsApplications: Swift.String
+    public static let icSettingsBackupRestore: Swift.String
+    public static let icSettingsBluetooth: Swift.String
+    public static let icSettingsBrightness: Swift.String
+    public static let icSettingsCell: Swift.String
+    public static let icSettingsEthernet: Swift.String
+    public static let icSettingsInputAntenna: Swift.String
+    public static let icSettingsInputComponent: Swift.String
+    public static let icSettingsInputComposite: Swift.String
+    public static let icSettingsInputHdmi: Swift.String
+    public static let icSettingsInputSvideo: Swift.String
+    public static let icSettingsOverscan: Swift.String
+    public static let icSettingsPhone: Swift.String
+    public static let icSettingsPower: Swift.String
+    public static let icSettingsRemote: Swift.String
+    public static let icSettingsSystemDaydream: Swift.String
+    public static let icSettingsVoice: Swift.String
+    public static let icShare: Swift.String
+    public static let icShop: Swift.String
+    public static let icShopTwo: Swift.String
+    public static let icShoppingBasket: Swift.String
+    public static let icShoppingCart: Swift.String
+    public static let icShortText: Swift.String
+    public static let icShowChart: Swift.String
+    public static let icShuffle: Swift.String
+    public static let icShutterSpeed: Swift.String
+    public static let icSignalCellularAlt: Swift.String
+    public static let icSignalCellularConnectedNoInternet4Bar: Swift.String
+    public static let icSignalCellularNoSim: Swift.String
+    public static let icSignalCellularNull: Swift.String
+    public static let icSignalCellularOff: Swift.String
+    public static let icSignalWifiOff: Swift.String
+    public static let icSignalWifiStatusbar: Swift.String
+    public static let icSignalWifiStatusbarConnectedNoInternet: Swift.String
+    public static let icSignalWifiStatusbarNotConnected: Swift.String
+    public static let icSimCard: Swift.String
+    public static let icSkipNext: Swift.String
+    public static let icSkipPrevious: Swift.String
+    public static let icSlideshow: Swift.String
+    public static let icSlowMotionVideo: Swift.String
+    public static let icSmartphone: Swift.String
+    public static let icSmokeFree: Swift.String
+    public static let icSmokingRooms: Swift.String
+    public static let icSms: Swift.String
+    public static let icSmsFailed: Swift.String
+    public static let icSnooze: Swift.String
+    public static let icSort: Swift.String
+    public static let icSortByAlpha: Swift.String
+    public static let icSpa: Swift.String
+    public static let icSpaceBar: Swift.String
+    public static let icSpeaker: Swift.String
+    public static let icSpeakerGroup: Swift.String
+    public static let icSpeakerNotes: Swift.String
+    public static let icSpeakerNotesOff: Swift.String
+    public static let icSpeakerPhone: Swift.String
+    public static let icSpellcheck: Swift.String
+    public static let icStar: Swift.String
+    public static let icStarBorder: Swift.String
+    public static let icStarHalf: Swift.String
+    public static let icStarOutline: Swift.String
+    public static let icStars: Swift.String
+    public static let icStateViewLoadingFailed: Swift.String
+    public static let icStateViewNoResults: Swift.String
+    public static let icStateViewNoWifi: Swift.String
+    public static let icStayCurrentLandscape: Swift.String
+    public static let icStayCurrentPortrait: Swift.String
+    public static let icStayPrimaryLandscape: Swift.String
+    public static let icStayPrimaryPortrait: Swift.String
+    public static let icStop: Swift.String
+    public static let icStopScreenShare: Swift.String
+    public static let icStorage: Swift.String
+    public static let icStore: Swift.String
+    public static let icStoreMallDirectory: Swift.String
+    public static let icStraighten: Swift.String
+    public static let icStreetview: Swift.String
+    public static let icStrikethroughS: Swift.String
+    public static let icStyle: Swift.String
+    public static let icSubdirectoryArrowLeft: Swift.String
+    public static let icSubdirectoryArrowRight: Swift.String
+    public static let icSubject: Swift.String
+    public static let icSubscriptions: Swift.String
+    public static let icSubtitles: Swift.String
+    public static let icSubway: Swift.String
+    public static let icSupervisedUserCircle: Swift.String
+    public static let icSupervisorAccount: Swift.String
+    public static let icSurroundSound: Swift.String
+    public static let icSwapCalls: Swift.String
+    public static let icSwapHoriz: Swift.String
+    public static let icSwapHorizontalCircle: Swift.String
+    public static let icSwapVert: Swift.String
+    public static let icSwapVerticalCircle: Swift.String
+    public static let icSwitchCamera: Swift.String
+    public static let icSwitchVideo: Swift.String
+    public static let icSync: Swift.String
+    public static let icSyncDisabled: Swift.String
+    public static let icSyncProblem: Swift.String
+    public static let icSystemUpdate: Swift.String
+    public static let icSystemVerticalAlt: Swift.String
+    public static let icTab: Swift.String
+    public static let icTabUnselected: Swift.String
+    public static let icTableChart: Swift.String
+    public static let icTablet: Swift.String
+    public static let icTabletAndroid: Swift.String
+    public static let icTabletMac: Swift.String
+    public static let icTagFaces: Swift.String
+    public static let icTapAndPlay: Swift.String
+    public static let icTerrain: Swift.String
+    public static let icTextFields: Swift.String
+    public static let icTextFormat: Swift.String
+    public static let icTextRotateUp: Swift.String
+    public static let icTextRotateVertical: Swift.String
+    public static let icTextRotationAngleDown: Swift.String
+    public static let icTextRotationAngleUp: Swift.String
+    public static let icTextRotationDown: Swift.String
+    public static let icTextRotationNone: Swift.String
+    public static let icTextsms: Swift.String
+    public static let icTexture: Swift.String
+    public static let icTheaters: Swift.String
+    public static let icThermostat: Swift.String
+    public static let icThumbDown: Swift.String
+    public static let icThumbDownAlt: Swift.String
+    public static let icThumbUp: Swift.String
+    public static let icThumbUpAlt: Swift.String
+    public static let icThumbsUpDown: Swift.String
+    public static let icTimeToLeave: Swift.String
+    public static let icTimelapse: Swift.String
+    public static let icTimeline: Swift.String
+    public static let icTimer: Swift.String
+    public static let icTimer10: Swift.String
+    public static let icTimer3: Swift.String
+    public static let icTimerOff: Swift.String
+    public static let icTitle: Swift.String
+    public static let icToc: Swift.String
+    public static let icToday: Swift.String
+    public static let icToggleOff: Swift.String
+    public static let icToggleOn: Swift.String
+    public static let icToll: Swift.String
+    public static let icTonality: Swift.String
+    public static let icTouchApp: Swift.String
+    public static let icToys: Swift.String
+    public static let icTrackChanges: Swift.String
+    public static let icTraffic: Swift.String
+    public static let icTrain: Swift.String
+    public static let icTram: Swift.String
+    public static let icTransferWithinAStation: Swift.String
+    public static let icTransform: Swift.String
+    public static let icTransitEnterexit: Swift.String
+    public static let icTranslate: Swift.String
+    public static let icTrendingDown: Swift.String
+    public static let icTrendingFlat: Swift.String
+    public static let icTrendingUp: Swift.String
+    public static let icTripOrigin: Swift.String
+    public static let icTune: Swift.String
+    public static let icTurnedIn: Swift.String
+    public static let icTurnedInNot: Swift.String
+    public static let icTv: Swift.String
+    public static let icTvOff: Swift.String
+    public static let icUnarchive: Swift.String
+    public static let icUndo: Swift.String
+    public static let icUnfoldLess: Swift.String
+    public static let icUnfoldMore: Swift.String
+    public static let icUnionPay: Swift.String
+    public static let icUnsubscribe: Swift.String
+    public static let icUpdate: Swift.String
+    public static let icUpload: Swift.String
+    public static let icUsb: Swift.String
+    public static let icVerifiedUser: Swift.String
+    public static let icVerticalAlignBottom: Swift.String
+    public static let icVerticalAlignCenter: Swift.String
+    public static let icVerticalAlignTop: Swift.String
+    public static let icVerticalSplit: Swift.String
+    public static let icVibration: Swift.String
+    public static let icVideoCall: Swift.String
+    public static let icVideoLabel: Swift.String
+    public static let icVideoLibrary: Swift.String
+    public static let icVideocam: Swift.String
+    public static let icVideocamOff: Swift.String
+    public static let icVideogameAsset: Swift.String
+    public static let icViewAgenda: Swift.String
+    public static let icViewArray: Swift.String
+    public static let icViewCarousel: Swift.String
+    public static let icViewColumn: Swift.String
+    public static let icViewComfy: Swift.String
+    public static let icViewCompact: Swift.String
+    public static let icViewDay: Swift.String
+    public static let icViewHeadline: Swift.String
+    public static let icViewList: Swift.String
+    public static let icViewModule: Swift.String
+    public static let icViewQuilt: Swift.String
+    public static let icViewStream: Swift.String
+    public static let icViewWeek: Swift.String
+    public static let icVignette: Swift.String
+    public static let icVisaColor: Swift.String
+    public static let icVisibility: Swift.String
+    public static let icVisibilityOff: Swift.String
+    public static let icVoiceChat: Swift.String
+    public static let icVoiceOverOff: Swift.String
+    public static let icVoicemail: Swift.String
+    public static let icVolumeDown: Swift.String
+    public static let icVolumeMute: Swift.String
+    public static let icVolumeOff: Swift.String
+    public static let icVolumeUp: Swift.String
+    public static let icVpnKey: Swift.String
+    public static let icVpnLock: Swift.String
+    public static let icWallpaper: Swift.String
+    public static let icWarning: Swift.String
+    public static let icWarningAmber: Swift.String
+    public static let icWatch: Swift.String
+    public static let icWatchLater: Swift.String
+    public static let icWaves: Swift.String
+    public static let icWbAuto: Swift.String
+    public static let icWbCloudy: Swift.String
+    public static let icWbIncandescent: Swift.String
+    public static let icWbIridescent: Swift.String
+    public static let icWbSunny: Swift.String
+    public static let icWc: Swift.String
+    public static let icWeb: Swift.String
+    public static let icWebAsset: Swift.String
+    public static let icWeekend: Swift.String
+    public static let icWhatshot: Swift.String
+    public static let icWhereToVote: Swift.String
+    public static let icWidgets: Swift.String
+    public static let icWifi: Swift.String
+    public static let icWifiLock: Swift.String
+    public static let icWifiOff: Swift.String
+    public static let icWifiTethering: Swift.String
+    public static let icWork: Swift.String
+    public static let icWorkOff: Swift.String
+    public static let icWorkOutline: Swift.String
+    public static let icWrapText: Swift.String
+    public static let icYoutubeSearchedFor: Swift.String
+    public static let icZoomIn: Swift.String
+    public static let icZoomOut: Swift.String
+    public static let icZoomOutMap: Swift.String
+  }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class Avatar : UIKit.UIView {
+  public enum Size : CoreGraphics.CGFloat {
+    case `default`
+    case large
+    case small
+    public init?(rawValue: CoreGraphics.CGFloat)
+    public typealias RawValue = CoreGraphics.CGFloat
+    public var rawValue: CoreGraphics.CGFloat {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) final public var onTraitCollectionDidChange: ((UIKit.UITraitCollection?) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) final public var iconColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var initialsColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var size: BackbaseDesignSystem.Avatar.Size {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var image: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var initials: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) public init(size: BackbaseDesignSystem.Avatar.Size = .default, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.Avatar> = DesignSystem.shared.styles.avatar)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class Badge : UIKit.UIView, BackbaseDesignSystem.SummaryStackRow {
+  @_Concurrency.MainActor(unsafe) final public let customSpacingAfter: CoreGraphics.CGFloat?
+  @_Concurrency.MainActor(unsafe) final public var text: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var textColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public init(text: Swift.String = "", style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge> = DesignSystem.shared.styles.badge, customSpacingAfter: CoreGraphics.CGFloat?)
+  @_Concurrency.MainActor(unsafe) public init(text: Swift.String = "", style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge> = DesignSystem.shared.styles.badge)
+  @objc deinit
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public typealias BorderStyle = BackbaseDesignSystem.DesignSystem.BorderOptions
+  public struct BorderOptions {
+    public var color: CoreGraphics.CGColor?
+    public var width: CoreGraphics.CGFloat
+    public init(color: CoreGraphics.CGColor? = nil, width: CoreGraphics.CGFloat = 0)
+  }
+}
+extension Foundation.Bundle {
+  public static var design: Foundation.Bundle? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class Button : UIKit.UIButton, BackbaseDesignSystem.SummaryStackRow {
+  @_Concurrency.MainActor(unsafe) final public var normalBackgroundColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) final public var highlightedBackgroundColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) final public var disabledBackgroundColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) final public var normalBorderColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) final public var disabledBorderColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) final public var customSpacingAfter: CoreGraphics.CGFloat?
+  @_Concurrency.MainActor(unsafe) final public var minimumHeight: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var cornerRadius: BackbaseDesignSystem.DesignSystem.CornerRadiusTypes {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var onTraitCollectionDidChange: ((UIKit.UITraitCollection?) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) final public var accessibilityLabelWhenLoading: Swift.String?
+  @_Concurrency.MainActor(unsafe) final public var indicator: UIKit.UIActivityIndicatorView {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var isEnabled: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var isHighlighted: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  public enum ButtonType {
+    case small
+    case medium
+    public static func == (a: BackbaseDesignSystem.Button.ButtonType, b: BackbaseDesignSystem.Button.ButtonType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect = .zero, buttonType: BackbaseDesignSystem.Button.ButtonType)
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) final public func startLoading()
+  @_Concurrency.MainActor(unsafe) final public func stopLoading()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class Card : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect, style: @escaping BackbaseDesignSystem.Style<UIKit.UIView> = DesignSystem.shared.styles.cardView)
+  @_Concurrency.MainActor(unsafe) public init(_ style: @escaping BackbaseDesignSystem.Style<UIKit.UIView> = DesignSystem.shared.styles.cardView)
+  @objc deinit
+}
+@objc @_Concurrency.MainActor(unsafe) final public class Checkbox : UIKit.UIButton {
+  public enum IconAlignment {
+    case center, top
+    public static func == (a: BackbaseDesignSystem.Checkbox.IconAlignment, b: BackbaseDesignSystem.Checkbox.IconAlignment) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) final public var normalImageTintColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) final public var disabledImageTintColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) final public var errorImageTintColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) final public var indeterminate: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var hasError: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var iconAlignment: BackbaseDesignSystem.Checkbox.IconAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var isEnabled: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) convenience public init(_ title: Swift.String, _ style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.Checkbox> = DesignSystem.shared.styles.checkbox)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override final public func setTitle(_ title: Swift.String?, for state: UIKit.UIControl.State)
+  @objc deinit
+}
+final public class CheckboxGroup {
+  final public var selectedCheckbox: BackbaseDesignSystem.Checkbox? {
+    get
+    set
+  }
+  public init(checkboxes: [BackbaseDesignSystem.Checkbox])
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class ChipView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public var foregroundColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var borderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var stackView: UIKit.UIStackView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) final public var titleLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) final public var removeButton: UIKit.UIButton {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) final public var onTraitCollectionDidChange: ((UIKit.UITraitCollection?) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) final public var onRemove: ((BackbaseDesignSystem.ChipView) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public init(text: Swift.String, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.ChipView> = DesignSystem.shared.styles.chipView)
+  @_Concurrency.MainActor(unsafe) @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override final public func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @objc deinit
+}
+extension BackbaseDesignSystem.DesignSystem.Colors {
+  public struct Charts {
+    public var one: BackbaseDesignSystem.DesignSystem.Colors.Charts.One
+    public var two: BackbaseDesignSystem.DesignSystem.Colors.Charts.Two
+    public var three: BackbaseDesignSystem.DesignSystem.Colors.Charts.Three
+    public var four: BackbaseDesignSystem.DesignSystem.Colors.Charts.Four
+    public var five: BackbaseDesignSystem.DesignSystem.Colors.Charts.Five
+    public var six: BackbaseDesignSystem.DesignSystem.Colors.Charts.Six
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Colors.Charts {
+  public struct One {
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+  }
+  public struct Two {
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+  }
+  public struct Three {
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+  }
+  public struct Four {
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+  }
+  public struct Five {
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+  }
+  public struct Six {
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Colors {
+  public struct Neutrals {
+    public var neutral00: UIKit.UIColor
+    public var neutral10: UIKit.UIColor
+    public var neutral20: UIKit.UIColor
+    public var neutral30: UIKit.UIColor
+    public var neutral40: UIKit.UIColor
+    public var neutral50: UIKit.UIColor
+    public var neutral60: UIKit.UIColor
+    public var neutral70: UIKit.UIColor
+    public var neutral80: UIKit.UIColor
+    public var neutral90: UIKit.UIColor
+    public var neutral100: UIKit.UIColor
+  }
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Colors {
+    public init(colors: BackbaseDesignSystem.DesignSystemTokens.Colors)
+    public var primary: BackbaseDesignSystem.DesignSystem.Colors.Primary
+    public var secondary: BackbaseDesignSystem.DesignSystem.Colors.Secondary
+    public var accent: BackbaseDesignSystem.DesignSystem.Colors.Accent
+    public var success: BackbaseDesignSystem.DesignSystem.Colors.Success
+    public var warning: BackbaseDesignSystem.DesignSystem.Colors.Warning
+    public var danger: BackbaseDesignSystem.DesignSystem.Colors.Danger
+    public var info: BackbaseDesignSystem.DesignSystem.Colors.Info
+    public var charts: BackbaseDesignSystem.DesignSystem.Colors.Charts
+    public var neutrals: BackbaseDesignSystem.DesignSystem.Colors.Neutrals
+    public var foundation: BackbaseDesignSystem.DesignSystem.Colors.Foundation
+    public var surfacePrimary: BackbaseDesignSystem.DesignSystem.Colors.SurfacePrimary
+    public var surfaceSecondary: BackbaseDesignSystem.DesignSystem.Colors.SurfaceSecondary
+    public var surfaceDisabled: BackbaseDesignSystem.DesignSystem.Colors.SurfaceDisabled
+    public var selected: BackbaseDesignSystem.DesignSystem.Colors.Selected
+    public var text: BackbaseDesignSystem.DesignSystem.Colors.Text
+    public var inputBorder: UIKit.UIColor
+    public var shimmer: UIKit.UIColor
+    public var separator: UIKit.UIColor
+    public var highlight: BackbaseDesignSystem.DesignSystem.Colors.Highlight
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Colors {
+  public struct Primary {
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+    public var onDefault: UIKit.UIColor
+  }
+  public struct Secondary {
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+    public var onDefault: UIKit.UIColor
+  }
+  public struct Accent {
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+    public var onDefault: UIKit.UIColor
+  }
+  public struct Success {
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+    public var onDefault: UIKit.UIColor
+  }
+  public struct Danger {
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+    public var onDefault: UIKit.UIColor
+  }
+  public struct Warning {
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+    public var onDefault: UIKit.UIColor
+  }
+  public struct Info {
+    public var lightest: UIKit.UIColor
+    public var lighter: UIKit.UIColor
+    public var `default`: UIKit.UIColor {
+      get
+      set
+    }
+    public var darker: UIKit.UIColor
+    public var darkest: UIKit.UIColor
+    public var onDefault: UIKit.UIColor
+  }
+  public struct Highlight {
+    public var foundation: UIKit.UIColor
+    public var onFoundation: UIKit.UIColor
+    public var primary: UIKit.UIColor
+    public var onPrimary: UIKit.UIColor
+  }
+  public struct Foundation {
+    public var `default`: UIKit.UIColor
+    public var onFoundation: BackbaseDesignSystem.DesignSystem.Colors.Foundation.OnFoundation
+  }
+  public struct SurfacePrimary {
+    public var `default`: UIKit.UIColor
+    public var onSurfacePrimary: BackbaseDesignSystem.DesignSystem.Colors.SurfacePrimary.OnSurfacePrimary
+  }
+  public struct SurfaceSecondary {
+    public var `default`: UIKit.UIColor
+    public var onSurfaceSecondary: BackbaseDesignSystem.DesignSystem.Colors.SurfaceSecondary.OnSurfaceSecondary
+  }
+  public struct SurfaceDisabled {
+    public var `default`: UIKit.UIColor
+    public var onSurfaceDisabled: BackbaseDesignSystem.DesignSystem.Colors.SurfaceDisabled.OnSurfaceDisabled
+  }
+  public struct Selected {
+    public var `default`: UIKit.UIColor
+    public var onSelected: BackbaseDesignSystem.DesignSystem.Colors.Selected.OnSelected
+  }
+  public struct Text {
+    public var `default`: UIKit.UIColor
+    public var support: UIKit.UIColor
+    public var disabled: UIKit.UIColor
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Colors.Foundation {
+  public struct OnFoundation {
+    public var `default`: UIKit.UIColor
+    public var support: UIKit.UIColor
+    public var disabled: UIKit.UIColor
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Colors.SurfacePrimary {
+  public struct OnSurfacePrimary {
+    public var `default`: UIKit.UIColor
+    public var support: UIKit.UIColor
+    public var disabled: UIKit.UIColor
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Colors.SurfaceSecondary {
+  public struct OnSurfaceSecondary {
+    public var `default`: UIKit.UIColor
+    public var support: UIKit.UIColor
+    public var disabled: UIKit.UIColor
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Colors.SurfaceDisabled {
+  public struct OnSurfaceDisabled {
+    public var `default`: UIKit.UIColor
+    public var support: UIKit.UIColor
+    public var disabled: UIKit.UIColor
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Colors.Selected {
+  public struct OnSelected {
+    public var `default`: UIKit.UIColor
+    public var support: UIKit.UIColor
+    public var disabled: UIKit.UIColor
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class CompactDateInput : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let errorLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public let datePicker: UIKit.UIDatePicker
+  @_Concurrency.MainActor(unsafe) final public var spacing: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var normalStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.CompactDateInput>? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var disabledStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.CompactDateInput>? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var errorStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.CompactDateInput>? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var isUserInteractionEnabled: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var accessibilityIdentifier: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect = .zero, datePickerMode: UIKit.UIDatePicker.Mode, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.CompactDateInput> = DesignSystem.shared.styles.defaultCompactDateInput)
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) final public func setError(message: Swift.String?)
+  @_Concurrency.MainActor(unsafe) final public func clearError()
+  @_Concurrency.MainActor(unsafe) final public func setDate(_ date: Foundation.Date, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) final public func setLocale(_ locale: Foundation.Locale)
+  @_Concurrency.MainActor(unsafe) final public func onValueChanged(_ callback: @escaping (Foundation.Date) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) final public func onTraitCollectionChanged(_ callback: @escaping (UIKit.UITraitCollection?) -> Swift.Void)
+  @objc deinit
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct CornerRadius {
+    public var none: CoreGraphics.CGFloat
+    public var small: CoreGraphics.CGFloat
+    public var medium: CoreGraphics.CGFloat
+    public var large: CoreGraphics.CGFloat
+  }
+  public enum CornerRadiusTypes {
+    case none
+    case small(roundedCorners: UIKit.UIRectCorner = .allCorners)
+    case medium(roundedCorners: UIKit.UIRectCorner = .allCorners)
+    case large(roundedCorners: UIKit.UIRectCorner = .allCorners)
+    case max(roundedCorners: UIKit.UIRectCorner = .allCorners)
+    public func calculateFor(_ layer: QuartzCore.CALayer) -> (radius: CoreGraphics.CGFloat, corners: UIKit.UIRectCorner)
+  }
+}
+public class DesignSystem {
+  public static func initialize(tokens: BackbaseDesignSystem.DesignSystemTokens)
+  public init()
+  public init(tokens: BackbaseDesignSystem.DesignSystemTokens)
+  public static var shared: BackbaseDesignSystem.DesignSystem
+  public var colors: BackbaseDesignSystem.DesignSystem.Colors
+  public var shadows: BackbaseDesignSystem.DesignSystem.Shadows
+  public var cornerRadius: BackbaseDesignSystem.DesignSystem.CornerRadius
+  public var spacer: BackbaseDesignSystem.DesignSystem.Spacers
+  public var sizer: BackbaseDesignSystem.DesignSystem.Sizers
+  public var styles: BackbaseDesignSystem.DesignSystem.Styles
+  public var fonts: BackbaseDesignSystem.DesignSystem.Fonts
+  public var animations: BackbaseDesignSystem.DesignSystem.Animations
+  public var accessibility: BackbaseDesignSystem.DesignSystem.Accessibility
+  @available(*, deprecated, message: "Margins will be replaced with Spacers")
+  public var margin: BackbaseDesignSystem.DesignSystem.Margins
+  @objc deinit
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public static func initialize(jsonName: Swift.String, bundle: Foundation.Bundle = .main)
+  public static func loadTokens(jsonName: Swift.String, bundle: Foundation.Bundle = .main) -> BackbaseDesignSystem.DesignSystemTokens?
+}
+extension BackbaseDesignSystem.DesignSystemTokens.Shadows : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension BackbaseDesignSystem.DesignSystemTokens : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension BackbaseDesignSystem.DesignSystemTokens.Colors : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct DesignSystemTokens {
+  public init(colors: BackbaseDesignSystem.DesignSystemTokens.Colors, spacers: BackbaseDesignSystem.DesignSystemTokens.Spacers, shadows: BackbaseDesignSystem.DesignSystemTokens.Shadows, sizers: BackbaseDesignSystem.DesignSystemTokens.Sizers, radii: BackbaseDesignSystem.DesignSystemTokens.Radii)
+}
+extension BackbaseDesignSystem.DesignSystemTokens {
+  public struct Radii : Swift.Decodable {
+    public init(none: CoreGraphics.CGFloat, small: CoreGraphics.CGFloat, medium: CoreGraphics.CGFloat, large: CoreGraphics.CGFloat)
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Sizers : Swift.Decodable {
+    public init(xxs: CoreGraphics.CGFloat, xs: CoreGraphics.CGFloat, sm: CoreGraphics.CGFloat, md: CoreGraphics.CGFloat, lg: CoreGraphics.CGFloat, xl: CoreGraphics.CGFloat)
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Shadows {
+    public init(none: BackbaseDesignSystem.DesignSystem.Shadow, small: BackbaseDesignSystem.DesignSystem.Shadow, medium: BackbaseDesignSystem.DesignSystem.Shadow, large: BackbaseDesignSystem.DesignSystem.Shadow, xLarge: BackbaseDesignSystem.DesignSystem.Shadow)
+  }
+  public struct Spacers : Swift.Decodable {
+    public init(xxs: CoreGraphics.CGFloat, xs: CoreGraphics.CGFloat, sm: CoreGraphics.CGFloat, md: CoreGraphics.CGFloat, lg: CoreGraphics.CGFloat, xl: CoreGraphics.CGFloat)
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Colors {
+    public init(primary: UIKit.UIColor, success: UIKit.UIColor, secondary: UIKit.UIColor, danger: UIKit.UIColor, info: UIKit.UIColor, warning: UIKit.UIColor, accent: UIKit.UIColor, onPrimary: UIKit.UIColor, onSuccess: UIKit.UIColor, onSecondary: UIKit.UIColor, onDanger: UIKit.UIColor, onInfo: UIKit.UIColor, onWarning: UIKit.UIColor, onAccent: UIKit.UIColor, foundation: UIKit.UIColor, surfacePrimary: UIKit.UIColor, surfaceSecondary: UIKit.UIColor, onSurfaceSecondary: UIKit.UIColor, onSurfaceSecondarySupport: UIKit.UIColor, onSurfaceSecondaryDisabled: UIKit.UIColor, surfaceDisabled: UIKit.UIColor, textDefault: UIKit.UIColor, textSupport: UIKit.UIColor, textDisabled: UIKit.UIColor, chartsOne: UIKit.UIColor, chartsTwo: UIKit.UIColor, chartsThree: UIKit.UIColor, chartsFour: UIKit.UIColor, chartsFive: UIKit.UIColor, chartsSix: UIKit.UIColor, neutral00: UIKit.UIColor, neutral10: UIKit.UIColor, neutral20: UIKit.UIColor, neutral30: UIKit.UIColor, neutral40: UIKit.UIColor, neutral50: UIKit.UIColor, neutral60: UIKit.UIColor, neutral70: UIKit.UIColor, neutral80: UIKit.UIColor, neutral90: UIKit.UIColor, neutral100: UIKit.UIColor, separator: UIKit.UIColor, inputBorder: UIKit.UIColor, shimmer: UIKit.UIColor, selected: UIKit.UIColor, highlightFoundation: UIKit.UIColor, highlightOnFoundation: UIKit.UIColor, highlightPrimary: UIKit.UIColor, highlightOnPrimary: UIKit.UIColor)
+  }
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Fonts {
+    public init()
+    public var preferredFont: (_ style: UIKit.UIFont.TextStyle, _ weight: UIKit.UIFont.Weight) -> UIKit.UIFont
+    public var defaultFont: (_ style: UIKit.UIFont.TextStyle, _ weight: UIKit.UIFont.Weight) -> UIKit.UIFont
+  }
+}
+public struct GenericStateViewConfiguration : BackbaseDesignSystem.StateViewConfiguration {
+  public let iconName: Swift.String?
+  public let title: Swift.String
+  public let subtitle: Swift.String
+  public let animationView: UIKit.UIView?
+  public let firstButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?
+  public let secondButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?
+  public init(iconName: Swift.String?, title: Swift.String, subtitle: Swift.String, animationView: UIKit.UIView?, firstButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?, secondButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?)
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Gradient {
+    public let startPoint: BackbaseDesignSystem.DesignSystem.Gradient.Point
+    public let endPoint: BackbaseDesignSystem.DesignSystem.Gradient.Point
+    public let locations: [BackbaseDesignSystem.DesignSystem.Gradient.Location]
+    public init(startPoint: BackbaseDesignSystem.DesignSystem.Gradient.Point, endPoint: BackbaseDesignSystem.DesignSystem.Gradient.Point, locations: [BackbaseDesignSystem.DesignSystem.Gradient.Location] = [])
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Gradient {
+  public struct Point {
+    public let point: CoreGraphics.CGPoint
+    public let color: UIKit.UIColor
+    public init(point: CoreGraphics.CGPoint, color: UIKit.UIColor)
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Gradient {
+  public struct Location {
+    public let location: CoreGraphics.CGFloat
+    public let color: UIKit.UIColor
+    public init(location: CoreGraphics.CGFloat, color: UIKit.UIColor)
+  }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class GradientBackgroundView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public init(gradient: BackbaseDesignSystem.DesignSystem.Gradient)
+  @_Concurrency.MainActor(unsafe) @objc override final public class var layerClass: Swift.AnyClass {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var bounds: CoreGraphics.CGRect {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Use 'IconView' instead.")
+@_Concurrency.MainActor(unsafe) final public class Icon : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let imageView: UIKit.UIImageView
+  @_Concurrency.MainActor(unsafe) final public var padding: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var cornerRadius: BackbaseDesignSystem.DesignSystem.CornerRadiusTypes {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var image: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class IconButton : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var normalColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var disabledColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) public var isLoading: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isEnabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var labelPlacement: BackbaseDesignSystem.IconButton.LabelPlacement {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var icon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var title: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var button: BackbaseDesignSystem.Button {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var label: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var stackView: UIKit.UIStackView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect = .zero, style: (BackbaseDesignSystem.IconButton) -> Swift.Void = DesignSystem.shared.styles.primaryIconButton)
+  @objc deinit
+}
+extension BackbaseDesignSystem.IconButton {
+  public enum LabelPlacement {
+    case noTitle
+    case top
+    case bottom
+    public static func == (a: BackbaseDesignSystem.IconButton.LabelPlacement, b: BackbaseDesignSystem.IconButton.LabelPlacement) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class IconView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let imageView: UIKit.UIImageView
+  @_Concurrency.MainActor(unsafe) final public var padding: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var cornerRadius: BackbaseDesignSystem.DesignSystem.CornerRadiusTypes {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var image: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class ImageBackgroundView : UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class InlineAlert : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let iconView: UIKit.UIImageView
+  @_Concurrency.MainActor(unsafe) final public let titleLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public let subtitleLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) public var linkButton: UIKit.UIButton {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var dismissButton: UIKit.UIButton {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public init(content: BackbaseDesignSystem.InlineAlert.Content)
+  @objc @_Concurrency.MainActor(unsafe) public func dismiss()
+  @objc @_Concurrency.MainActor(unsafe) public func linkTapped()
+  @objc deinit
+}
+extension BackbaseDesignSystem.InlineAlert {
+  public struct Content {
+    public let title: Swift.String
+    public let subtitle: Swift.String?
+    public let link: BackbaseDesignSystem.InlineAlert.Content.Link?
+    public let dismissAction: (() -> Swift.Void)?
+    public init(title: Swift.String, subtitle: Swift.String? = nil, link: BackbaseDesignSystem.InlineAlert.Content.Link? = nil, dismissAction: (() -> Swift.Void)? = nil)
+  }
+}
+extension BackbaseDesignSystem.InlineAlert.Content {
+  public struct Link {
+    public let title: Swift.String
+    public let underlined: Swift.Bool
+    public let action: (() -> Swift.Void)?
+    public init(title: Swift.String, underlined: Swift.Bool = true, action: (() -> Swift.Void)?)
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Styles {
+  public struct InlineAlertStyles {
+    public var info: BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert> {
+      get
+    }
+    public var danger: BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert> {
+      get
+    }
+    public var success: BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert> {
+      get
+    }
+    public var warning: BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert> {
+      get
+    }
+    public init(info: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert>, success: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert>, warning: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert>, danger: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert>)
+  }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class InlineErrorView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let errorLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public let errorIcon: BackbaseDesignSystem.Icon
+  @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) public func set(errorMessage: Swift.String?, icon: UIKit.UIImage? = nil)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class InputAmount : UIKit.UIView {
+  public enum CurrencyAlignment {
+    case leading
+    case trailing
+    public static func == (a: BackbaseDesignSystem.InputAmount.CurrencyAlignment, b: BackbaseDesignSystem.InputAmount.CurrencyAlignment) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) public var inputTextDidChange: ((UIKit.UITextField) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var inputTextDidBeginEditing: ((UIKit.UITextField) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var inputTextDidEndEditing: ((UIKit.UITextField) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var inputFieldPaddings: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var textAlignment: UIKit.NSTextAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var cornerRadius: BackbaseDesignSystem.DesignSystem.CornerRadiusTypes {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var currencySpacing: CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) public var normalTextColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) public var placeholderColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) public var placeholder: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var minimumAmountErrorMessage: Swift.String
+  @_Concurrency.MainActor(unsafe) public var amount: Foundation.Decimal? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var currencyAlignment: BackbaseDesignSystem.InputAmount.CurrencyAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isUnderlined: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var currency: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var inputField: BackbaseDesignSystem.TextInput {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var contentView: UIKit.UIView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var isIso: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var currencyCode: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var amountTextField: UIKit.UITextField {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var currencyLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var inlineErrorView: BackbaseDesignSystem.InlineErrorView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var titleLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var underlineView: BackbaseDesignSystem.Separator {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect = .zero, amountOptions: BackbaseDesignSystem.DesignSystem.Formatting.AmountOptions = DesignSystem.Formatting.AmountOptions(), amountValidator: BackbaseDesignSystem.InputAmountValidator = DesignSystem.shared.styles.inputAmountValidators.default, locale: Foundation.Locale = Locale.autoupdatingCurrent, style: (BackbaseDesignSystem.InputAmount) -> Swift.Void = DesignSystem.shared.styles.inputAmount)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+extension BackbaseDesignSystem.InputAmount {
+  @_Concurrency.MainActor(unsafe) public func setTitle(_ title: Swift.String?)
+  @_Concurrency.MainActor(unsafe) public func setErrorMessage(_ errorMessage: Swift.String?, icon: UIKit.UIImage? = nil)
+}
+extension BackbaseDesignSystem.InputAmount : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textFieldDidChangeSelection(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+}
+public protocol InputAmountValidating {
+  func validate(_ text: Swift.String?, currencyCode: Swift.String) -> Swift.Result<Swift.Void, BackbaseDesignSystem.InputAmountValidator.Error>
+}
+public struct InputAmountValidator {
+  public let locale: Foundation.Locale
+  public init(locale: Foundation.Locale = Locale.autoupdatingCurrent)
+  public enum Error : Swift.Error, Swift.Equatable {
+    case osError
+    case multipleDecimalSeparators
+    case tooManyFractionalDigits
+    case notADecimal
+    case generic(message: Swift.String)
+    public static func == (a: BackbaseDesignSystem.InputAmountValidator.Error, b: BackbaseDesignSystem.InputAmountValidator.Error) -> Swift.Bool
+  }
+  public var validators: [BackbaseDesignSystem.InputAmountValidating]
+  public func validate(_ text: Swift.String?, currencyCode: Swift.String) -> Swift.Result<Swift.Void, BackbaseDesignSystem.InputAmountValidator.Error>
+}
+public struct CheckForMultipleDecimalSeparators : BackbaseDesignSystem.InputAmountValidating {
+  public func validate(_ text: Swift.String?, currencyCode: Swift.String) -> Swift.Result<Swift.Void, BackbaseDesignSystem.InputAmountValidator.Error>
+}
+public struct LoadingFailureStateViewConfiguration : BackbaseDesignSystem.StateViewConfiguration {
+  public let iconName: Swift.String?
+  public let title: Swift.String
+  public let subtitle: Swift.String
+  public let animationView: UIKit.UIView?
+  public let firstButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?
+  public let secondButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?
+  public init(iconName: Swift.String? = DesignSystem.Assets.icStateViewLoadingFailed, animationView: UIKit.UIView? = nil, title: Swift.String = "Oops, Loading Failed", subtitle: Swift.String = "Something went wrong.\nPlease try again", firstButtonAction: @escaping (() -> Swift.Void))
+  public init(iconName: Swift.String? = DesignSystem.Assets.icStateViewLoadingFailed, animationView: UIKit.UIView? = nil, title: Swift.String = "Oops, Loading Failed", subtitle: Swift.String = "Something went wrong.\nPlease try again", buttonConfiguration: BackbaseDesignSystem.ButtonConfiguration)
+}
+extension Foundation.Locale {
+  public static func getCurrencySymbol(for currencyCode: Swift.String) -> Swift.String?
+}
+extension BackbaseDesignSystem.DesignSystem {
+  @available(*, deprecated, message: "Margins will be replaced with Spacers")
+  public struct Margins {
+    public init()
+    public var xs: CoreGraphics.CGFloat
+    public var sm: CoreGraphics.CGFloat
+    public var md: CoreGraphics.CGFloat
+    public var lg: CoreGraphics.CGFloat
+    public var xl: CoreGraphics.CGFloat
+  }
+}
+public class NavigationBarTransparencyModifier {
+  final public let includeStatusBar: Swift.Bool
+  weak public var navigationController: UIKit.UINavigationController? {
+    get
+  }
+  public init(includeStatusBar: Swift.Bool = true, opaqueBackgroundColor: UIKit.UIColor = DesignSystem.shared.colors.foundation.default)
+  public func viewWillAppear(navigationController: UIKit.UINavigationController?)
+  public func viewWillDisappear()
+  public func updateTransparency(withScrollView scrollView: UIKit.UIScrollView)
+  public func cleanUp(withStyle style: @escaping BackbaseDesignSystem.Style<UIKit.UINavigationController> = DesignSystem.shared.styles.navigationController)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class NavigationController : UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) public init(rootViewController: UIKit.UIViewController, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.NavigationController>)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc deinit
+}
+public struct NavigationControllerTokens {
+  public var backgroundColor: UIKit.UIColor
+  public var textColor: UIKit.UIColor
+  public var actionsColor: UIKit.UIColor
+  public var backIcon: UIKit.UIImage?
+  public var isTranslucent: Swift.Bool
+  public var underlineColor: UIKit.UIColor?
+  public init(backgroundColor: UIKit.UIColor, textColor: UIKit.UIColor, actionsColor: UIKit.UIColor, backIcon: UIKit.UIImage? = UIImage.named(DesignSystem.Assets.icArrowBack, in: .design), isTranslucent: Swift.Bool = false, borderColor: UIKit.UIColor? = nil)
+}
+public struct NoConnectionStateViewConfiguration : BackbaseDesignSystem.StateViewConfiguration {
+  public let iconName: Swift.String?
+  public let title: Swift.String
+  public let subtitle: Swift.String
+  public let animationView: UIKit.UIView?
+  public let firstButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?
+  public let secondButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?
+  public init(iconName: Swift.String? = DesignSystem.Assets.icStateViewNoWifi, animationView: UIKit.UIView? = nil, title: Swift.String = "No Internet Connection", subtitle: Swift.String = "It seems you're not connected to a network", firstButtonAction: @escaping (() -> Swift.Void))
+  public init(iconName: Swift.String? = DesignSystem.Assets.icStateViewNoWifi, animationView: UIKit.UIView? = nil, title: Swift.String = "No Internet Connection", subtitle: Swift.String = "It seems you're not connected to a network", buttonConfiguration: BackbaseDesignSystem.ButtonConfiguration)
+}
+public struct NoResultsStateViewConfiguration : BackbaseDesignSystem.StateViewConfiguration {
+  public let iconName: Swift.String?
+  public let title: Swift.String
+  public let subtitle: Swift.String
+  public let animationView: UIKit.UIView?
+  public let firstButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?
+  public let secondButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration?
+  public init(iconName: Swift.String? = DesignSystem.Assets.icStateViewNoResults, animationView: UIKit.UIView? = nil, title: Swift.String = "No Results Found", subtitle: Swift.String = "Sorry we couldn't find what you're looking for. Please try again.")
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class NotificationBadge : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public var maxCount: Swift.Int? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var content: BackbaseDesignSystem.NotificationBadge.Content {
+    get
+    set
+  }
+  public enum Content : Swift.Equatable {
+    case counter(Swift.Int)
+    case text(Swift.String)
+    case empty
+    public static func == (a: BackbaseDesignSystem.NotificationBadge.Content, b: BackbaseDesignSystem.NotificationBadge.Content) -> Swift.Bool
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public init(content: BackbaseDesignSystem.NotificationBadge.Content = .empty, maxCount: Swift.Int? = nil, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.NotificationBadge> = DesignSystem.shared.styles.notificationBadge)
+  @objc deinit
+}
+infix operator |> : AdditionPrecedence
+infix operator <> : AdditionPrecedence
+infix operator >>> : AdditionPrecedence
+public func |> <A, B>(a: A, f: (A) -> B) -> B
+public func <> <A>(f: @escaping (A) -> Swift.Void, g: @escaping (A) -> Swift.Void) -> (A) -> Swift.Void
+public func >>> <A, B, C>(a2b: @escaping (A) -> B, b2c: @escaping (B) -> C) -> (A) -> C
+public enum BackgroundType {
+  case solidColor(_: UIKit.UIColor)
+  case image(_: UIKit.UIImage?)
+  case gradient(_: BackbaseDesignSystem.DesignSystem.Gradient)
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class PaymentCard : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var front: BackbaseDesignSystem.PaymentCardFront!
+  @_Concurrency.MainActor(unsafe) public var back: BackbaseDesignSystem.PaymentCardBack!
+  @_Concurrency.MainActor(unsafe) public var cardData: BackbaseDesignSystem.PaymentCardData? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var flipAnimation: BackbaseDesignSystem.Animation<BackbaseDesignSystem.PaymentCard>?
+  @_Concurrency.MainActor(unsafe) public var canFlip: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var cardHeightToWidthRatio: CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) public var shouldFlipOnTap: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isDisabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isFlipped: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var side: BackbaseDesignSystem.PaymentCard.PaymentCardSide {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect = .zero, background: BackbaseDesignSystem.BackgroundType, style: (BackbaseDesignSystem.PaymentCard) -> Swift.Void = DesignSystem.shared.styles.paymentCard)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+extension BackbaseDesignSystem.PaymentCard {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func flip()
+  @_Concurrency.MainActor(unsafe) public func setStatus(title: Swift.String, icon: UIKit.UIImage? = UIImage(named: DesignSystem.Assets.icLock, in: .design, compatibleWith: nil))
+}
+extension BackbaseDesignSystem.PaymentCard {
+  public enum PaymentCardSide {
+    case front
+    case back
+    public static func == (a: BackbaseDesignSystem.PaymentCard.PaymentCardSide, b: BackbaseDesignSystem.PaymentCard.PaymentCardSide) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class PaymentCardBack : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public var spacer: CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) final public var backgroundView: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) final public var cvv: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var cvvLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public let lockedView: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect = .zero, background: BackbaseDesignSystem.BackgroundType)
+  @objc deinit
+}
+public struct PaymentCardData {
+  public var labelOne: Swift.String
+  public var labelTwo: Swift.String
+  public var labelThree: Swift.String
+  public var labelFour: Swift.String
+  public var labelVendor: Swift.String?
+  public var cvv: Swift.String?
+  public var cardLogo: BackbaseDesignSystem.DesignSystem.SizedImage?
+  public var vendorLogo: BackbaseDesignSystem.DesignSystem.SizedImage?
+  public var rightMiddleLogo: BackbaseDesignSystem.DesignSystem.SizedImage?
+  public var rightBottomLogo: BackbaseDesignSystem.DesignSystem.SizedImage?
+  public init(textOne: Swift.String, textTwo: Swift.String, textThree: Swift.String, textFour: Swift.String, labelVendor: Swift.String?, cvv: Swift.String?, cardLogo: BackbaseDesignSystem.DesignSystem.SizedImage?, vendorLogo: BackbaseDesignSystem.DesignSystem.SizedImage?, rightMiddleLogo: BackbaseDesignSystem.DesignSystem.SizedImage?, rightBottomLogo: BackbaseDesignSystem.DesignSystem.SizedImage?)
+}
+extension BackbaseDesignSystem.PaymentCard {
+  @_Concurrency.MainActor(unsafe) public func setup(data: BackbaseDesignSystem.PaymentCardData)
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class PaymentCardFront : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let lockedView: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) public var spacer: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tintColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @available(*, deprecated, message: "Use rightView.vendorLabel")
+  @_Concurrency.MainActor(unsafe) public var vendorLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) public var backgroundView: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) public var cardLogo: UIKit.UIImageView
+  @_Concurrency.MainActor(unsafe) public var labelOne: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) public var labelTwo: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) public var labelThree: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) public var labelFour: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) public var rightView: BackbaseDesignSystem.PaymentCardFront.RightView
+  @_Concurrency.MainActor(unsafe) public var statusView: BackbaseDesignSystem.PaymentCardStatusView
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect = .zero, background: BackbaseDesignSystem.BackgroundType)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class PaymentCardStatusView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let label: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public let imageView: UIKit.UIImageView
+  @objc deinit
+}
+extension BackbaseDesignSystem.PaymentCardStatusView {
+  @_Concurrency.MainActor(unsafe) final public func setStatus(title: Swift.String, icon image: UIKit.UIImage?)
+}
+extension BackbaseDesignSystem.DesignSystem.Formatting {
+  public enum ProductNumberAttribute {
+    case iban
+    case bban
+    case accountNumber
+    case cardNumber
+    public static func == (a: BackbaseDesignSystem.DesignSystem.Formatting.ProductNumberAttribute, b: BackbaseDesignSystem.DesignSystem.Formatting.ProductNumberAttribute) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Formatting {
+  public enum ProductNumberFormatter {
+    public static func uniformChunks(ofSize size: Swift.UInt8, separator: Swift.String = " ") -> (Swift.String) -> (Swift.String)
+    public static func variableChunks(ofSizes sizes: [Swift.UInt8], separator: Swift.String = " ") -> (Swift.String) -> (Swift.String)
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class ProgressIndicator : UIKit.UIProgressView {
+  @_Concurrency.MainActor(unsafe) final public var onTraitCollectionDidChange: ((UIKit.UITraitCollection?) -> Swift.Void)?
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) convenience public init(frame: CoreGraphics.CGRect, style: BackbaseDesignSystem.DesignSystem.ProgressIndicatorStyle)
+  @_Concurrency.MainActor(unsafe) @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @objc deinit
+}
+extension BackbaseDesignSystem.PaymentCardFront {
+  @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class RightView : UIKit.UIView {
+    @_Concurrency.MainActor(unsafe) public var vendorLabel: UIKit.UILabel
+    @_Concurrency.MainActor(unsafe) public var topImageView: UIKit.UIImageView
+    @_Concurrency.MainActor(unsafe) public var middleImageView: UIKit.UIImageView
+    @_Concurrency.MainActor(unsafe) public var bottomImageView: UIKit.UIImageView
+    @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+    @objc deinit
+  }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class SegmentedControl : UIKit.UISegmentedControl {
+  @_Concurrency.MainActor(unsafe) public static let kMaximumSegmentCount: Swift.Int
+  @_Concurrency.MainActor(unsafe) public var selectionDidChange: ((Swift.Int) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public init(items: [Any], style: (BackbaseDesignSystem.SegmentedControl) -> Swift.Void = DesignSystem.shared.styles.segmentedControl)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) public func setTextColor(_ color: UIKit.UIColor, for state: UIKit.UIControl.State)
+  @_Concurrency.MainActor(unsafe) public func setFont(_ font: UIKit.UIFont, for state: UIKit.UIControl.State)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class Separator : UIKit.UIView {
+  public enum Style {
+    case fullWidth
+    case centered
+    case `default`
+    public static func == (a: BackbaseDesignSystem.Separator.Style, b: BackbaseDesignSystem.Separator.Style) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) final public var inset: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var style: BackbaseDesignSystem.Separator.Style {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public init(style: BackbaseDesignSystem.Separator.Style = .default, inset: CoreGraphics.CGFloat = 0)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @objc deinit
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Shadows {
+    public var none: BackbaseDesignSystem.DesignSystem.Shadow
+    public var small: BackbaseDesignSystem.DesignSystem.Shadow
+    public var medium: BackbaseDesignSystem.DesignSystem.Shadow
+    public var large: BackbaseDesignSystem.DesignSystem.Shadow
+    public var xLarge: BackbaseDesignSystem.DesignSystem.Shadow
+  }
+  public enum ShadowStyle {
+    case none
+    case small
+    case medium
+    case large
+    case xLarge
+    public static func == (a: BackbaseDesignSystem.DesignSystem.ShadowStyle, b: BackbaseDesignSystem.DesignSystem.ShadowStyle) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public struct Shadow : Swift.Equatable {
+    public var offset: CoreGraphics.CGSize
+    public var opacity: Swift.Float
+    public var radius: CoreGraphics.CGFloat
+    public var color: UIKit.UIColor
+    public init(offset: CoreGraphics.CGSize, opacity: Swift.Float, radius: CoreGraphics.CGFloat, color: UIKit.UIColor)
+    public static func == (a: BackbaseDesignSystem.DesignSystem.Shadow, b: BackbaseDesignSystem.DesignSystem.Shadow) -> Swift.Bool
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Shadow : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class ShimmerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) convenience public init(image: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override final public var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) final public var hidesWhenStopped: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public func startAnimating()
+  @_Concurrency.MainActor(unsafe) final public func stopAnimating()
+  @_Concurrency.MainActor(unsafe) final public func startShimmering(speed: Foundation.TimeInterval = 1.5, repeatCount: Swift.Float = .infinity)
+  @_Concurrency.MainActor(unsafe) final public func stopShimmering()
+  @objc deinit
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct SizedImage {
+    public init(image: UIKit.UIImage?, size: CoreGraphics.CGSize? = nil)
+  }
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Sizers {
+    public var xxs: CoreGraphics.CGFloat
+    public var xs: CoreGraphics.CGFloat
+    public var sm: CoreGraphics.CGFloat
+    public var md: CoreGraphics.CGFloat
+    public var lg: CoreGraphics.CGFloat
+    public var xl: CoreGraphics.CGFloat
+  }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class SolidColorBackgroundView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public init(color: UIKit.UIColor)
+  @objc deinit
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Spacers {
+    public var xxs: CoreGraphics.CGFloat
+    public var xs: CoreGraphics.CGFloat
+    public var sm: CoreGraphics.CGFloat
+    public var md: CoreGraphics.CGFloat
+    public var lg: CoreGraphics.CGFloat
+    public var xl: CoreGraphics.CGFloat
+  }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class StateView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var iconOrAnimationSize: CoreGraphics.CGSize
+  @_Concurrency.MainActor(unsafe) public var padding: UIKit.UIEdgeInsets
+  @_Concurrency.MainActor(unsafe) public var titleLabelStyle: BackbaseDesignSystem.Style<UIKit.UILabel>?
+  @_Concurrency.MainActor(unsafe) public var subtitleLabelStyle: BackbaseDesignSystem.Style<UIKit.UILabel>?
+  @_Concurrency.MainActor(unsafe) public var firstButtonStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button>?
+  @_Concurrency.MainActor(unsafe) public var secondButtonStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button>?
+  @_Concurrency.MainActor(unsafe) public var titleLabel: UIKit.UILabel? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var subtitleLabel: UIKit.UILabel? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var firstButton: BackbaseDesignSystem.Button? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var secondButton: BackbaseDesignSystem.Button? {
+    get
+  }
+  @available(*, deprecated, message: "Use the alternative initialiser with `StateViewInitParams`")
+  @_Concurrency.MainActor(unsafe) public init(configuration: BackbaseDesignSystem.StateViewConfiguration, style: (BackbaseDesignSystem.StateView) -> Swift.Void = DesignSystem.shared.styles.stateView)
+  @available(*, deprecated, message: "Use the alternative initialiser with `StateViewInitParams`")
+  @_Concurrency.MainActor(unsafe) public init(configuration: BackbaseDesignSystem.StateViewConfiguration, style: (BackbaseDesignSystem.StateView) -> Swift.Void = DesignSystem.shared.styles.stateView, bundles: Foundation.Bundle?...)
+  @_Concurrency.MainActor(unsafe) public init(params: BackbaseDesignSystem.StateViewInitParams)
+  @objc deinit
+}
+public protocol StateViewConfiguration {
+  var iconName: Swift.String? { get }
+  var animationView: UIKit.UIView? { get }
+  var title: Swift.String { get }
+  var subtitle: Swift.String { get }
+  var firstButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration? { get }
+  var secondButtonConfiguration: BackbaseDesignSystem.ButtonConfiguration? { get }
+}
+public struct ButtonConfiguration {
+  public let title: Swift.String
+  public let action: () -> Swift.Void
+  public init(title: Swift.String, action: @escaping () -> Swift.Void)
+}
+public struct StateViewInitParams {
+  public let configuration: BackbaseDesignSystem.StateViewConfiguration
+  public let style: BackbaseDesignSystem.Style<BackbaseDesignSystem.StateView>
+  public let bundles: [Foundation.Bundle]
+  public let titleLabelMaxWidth: CoreGraphics.CGFloat?
+  public let subtitleLabelMaxWidth: CoreGraphics.CGFloat?
+  public init(configuration: BackbaseDesignSystem.StateViewConfiguration, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.StateView> = DesignSystem.shared.styles.stateView, bundles: Foundation.Bundle..., titleLabelMaxWidth: CoreGraphics.CGFloat? = UIScreen.main.bounds.width * 0.7, subtitleLabelMaxWidth: CoreGraphics.CGFloat? = UIScreen.main.bounds.width * 0.75)
+}
+public protocol StyleableInput {
+  associatedtype InputType
+  var normalStyle: BackbaseDesignSystem.Style<Self.InputType>? { get set }
+  var focusStyle: BackbaseDesignSystem.Style<Self.InputType>? { get set }
+  var editingStyle: BackbaseDesignSystem.Style<Self.InputType>? { get set }
+  var errorStyle: BackbaseDesignSystem.Style<Self.InputType>? { get set }
+  var disableStyle: BackbaseDesignSystem.Style<Self.InputType>? { get set }
+}
+public typealias AmountAbbreviationFormatter = (Foundation.NumberFormatter) -> (Foundation.NSDecimalNumber) -> Swift.String
+extension BackbaseDesignSystem.DesignSystem.Styles {
+  public struct AmountAbbreviators {
+    public let configurable: BackbaseDesignSystem.DesignSystem.Styles.AmountAbbreviator
+    public let `default`: BackbaseDesignSystem.AmountAbbreviationFormatter
+  }
+  public struct AmountAbbreviator {
+    public var configure: (BackbaseDesignSystem.DesignSystem.Formatting.AmountAbbreviationSymbols) -> BackbaseDesignSystem.AmountAbbreviationFormatter {
+      get
+    }
+  }
+}
+extension BackbaseDesignSystem.DesignSystem.Styles {
+  public struct InputAmountValidators {
+    public var `default`: BackbaseDesignSystem.InputAmountValidator
+  }
+}
+extension BackbaseDesignSystem.DesignSystem {
+  public enum ProgressIndicatorStyle {
+    case `default`
+    case inverted
+    public static func == (a: BackbaseDesignSystem.DesignSystem.ProgressIndicatorStyle, b: BackbaseDesignSystem.DesignSystem.ProgressIndicatorStyle) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public typealias SwitchStyle = BackbaseDesignSystem.Style<BackbaseDesignSystem.Switch>
+extension BackbaseDesignSystem.DesignSystem {
+  public struct LabelStyle {
+    public let font: UIKit.UIFont
+    public let textAlignment: UIKit.NSTextAlignment
+    public let textColor: UIKit.UIColor?
+    public init(font: UIKit.UIFont, textAlignment: UIKit.NSTextAlignment, textColor: UIKit.UIColor?)
+  }
+}
+extension UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) public func setup(tokens: BackbaseDesignSystem.NavigationControllerTokens)
+}
+public typealias Style<Component> = (Component) -> Swift.Void
+public typealias StyleSelector<Option, Component> = (Option) -> BackbaseDesignSystem.Style<Component>
+extension BackbaseDesignSystem.DesignSystem {
+  public struct Styles {
+    public var autolayout: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var backgroundColor: BackbaseDesignSystem.StyleSelector<UIKit.UIColor, UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var cornerRadius: BackbaseDesignSystem.StyleSelector<BackbaseDesignSystem.DesignSystem.CornerRadiusTypes, QuartzCore.CALayer> {
+      mutating get
+      set
+    }
+    public var border: BackbaseDesignSystem.StyleSelector<BackbaseDesignSystem.DesignSystem.BorderOptions, QuartzCore.CALayer> {
+      mutating get
+      set
+    }
+    public var shadow: BackbaseDesignSystem.StyleSelector<BackbaseDesignSystem.DesignSystem.ShadowStyle, QuartzCore.CALayer> {
+      mutating get
+      set
+    }
+    public var button: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var smallButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var roundButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var primaryButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var successButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var dangerButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var linkButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var secondaryButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var primaryIconButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.IconButton> {
+      mutating get
+      set
+    }
+    public var dangerIconButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.IconButton> {
+      mutating get
+      set
+    }
+    public var label: BackbaseDesignSystem.StyleSelector<BackbaseDesignSystem.DesignSystem.LabelStyle, UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var formLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var loadingIndicator: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var primaryPageControl: BackbaseDesignSystem.Style<UIKit.UIPageControl> {
+      mutating get
+      set
+    }
+    public var secondaryPageControl: BackbaseDesignSystem.Style<UIKit.UIPageControl> {
+      mutating get
+      set
+    }
+    @available(*, deprecated, message: "Use `navigationController` style instead.")
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var navigationController: BackbaseDesignSystem.Style<UIKit.UINavigationController> {
+      mutating get
+      set
+    }
+    public var foundationNavigationController: BackbaseDesignSystem.Style<UIKit.UINavigationController> {
+      mutating get
+    }
+    public var surfacePrimaryNavigationController: BackbaseDesignSystem.Style<UIKit.UINavigationController> {
+      mutating get
+    }
+    public var surfaceSecondaryNavigationController: BackbaseDesignSystem.Style<UIKit.UINavigationController> {
+      mutating get
+    }
+    public var tabBar: BackbaseDesignSystem.Style<UIKit.UITabBar> {
+      mutating get
+      set
+    }
+    public var separator: BackbaseDesignSystem.Style<BackbaseDesignSystem.Separator> {
+      mutating get
+      set
+    }
+    public var cardView: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var textInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var readOnlyTextInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var passwordTextInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var textArea: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextArea> {
+      mutating get
+      set
+    }
+    public var inputAmount: BackbaseDesignSystem.Style<BackbaseDesignSystem.InputAmount> {
+      mutating get
+      set
+    }
+    public var inputAmountBordered: BackbaseDesignSystem.Style<BackbaseDesignSystem.InputAmount> {
+      mutating get
+      set
+    }
+    public var inputAmountUnderlined: BackbaseDesignSystem.Style<BackbaseDesignSystem.InputAmount> {
+      mutating get
+      set
+    }
+    public var amountInputPlaceHolderStyle: BackbaseDesignSystem.Style<UIKit.UITextField>
+    @available(*, deprecated, message: "Use `iconViewWithBackground` style with `IconView` instead.")
+    public var iconWithBackground: BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon> {
+      mutating get
+      set
+    }
+    public var iconViewWithBackground: BackbaseDesignSystem.Style<BackbaseDesignSystem.IconView> {
+      mutating get
+      set
+    }
+    public var avatar: BackbaseDesignSystem.Style<BackbaseDesignSystem.Avatar> {
+      mutating get
+      set
+    }
+    public var chipView: BackbaseDesignSystem.Style<BackbaseDesignSystem.ChipView> {
+      mutating get
+      set
+    }
+    public var badge: BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge> {
+      mutating get
+      set
+    }
+    public var neutralBadge: BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge> {
+      mutating get
+      set
+    }
+    public var infoBadge: BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge> {
+      mutating get
+      set
+    }
+    public var warningBadge: BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge> {
+      mutating get
+      set
+    }
+    public var successBadge: BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge> {
+      mutating get
+      set
+    }
+    public var dangerBadge: BackbaseDesignSystem.Style<BackbaseDesignSystem.Badge> {
+      mutating get
+      set
+    }
+    public var notificationBadge: BackbaseDesignSystem.Style<BackbaseDesignSystem.NotificationBadge> {
+      mutating get
+      set
+    }
+    public var checkbox: BackbaseDesignSystem.Style<BackbaseDesignSystem.Checkbox> {
+      mutating get
+      set
+    }
+    public var paymentCard: BackbaseDesignSystem.Style<BackbaseDesignSystem.PaymentCard> {
+      mutating get
+      set
+    }
+    public var defaultProgressIndicator: BackbaseDesignSystem.Style<BackbaseDesignSystem.ProgressIndicator> {
+      mutating get
+      set
+    }
+    public var invertedProgressIndicator: BackbaseDesignSystem.Style<BackbaseDesignSystem.ProgressIndicator> {
+      mutating get
+      set
+    }
+    public var segmentedControl: BackbaseDesignSystem.Style<BackbaseDesignSystem.SegmentedControl> {
+      mutating get
+      set
+    }
+    public var summaryStackView: BackbaseDesignSystem.Style<BackbaseDesignSystem.SummaryStackView> {
+      mutating get
+      set
+    }
+    public var summaryStackViewPrimaryLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var summaryStackViewSecondaryLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var summaryStackViewAmountLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var summaryStackViewDefaultLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var stateView: BackbaseDesignSystem.Style<BackbaseDesignSystem.StateView> {
+      mutating get
+      set
+    }
+    public var switchStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.Switch> {
+      mutating get
+      set
+    }
+    public var defaultCompactDateInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.CompactDateInput> {
+      mutating get
+      set
+    }
+    public var defaultTextFieldDateInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextFieldDateInput> {
+      mutating get
+      set
+    }
+    public var defaultCurrencyFormat: (_ currencyCode: Swift.String) -> (BackbaseDesignSystem.DesignSystem.Formatting.AmountFormatType)
+    public var inlineAlertStyles: BackbaseDesignSystem.DesignSystem.Styles.InlineAlertStyles
+    public var abbreviators: BackbaseDesignSystem.DesignSystem.Styles.AmountAbbreviators
+    public var inputAmountValidators: BackbaseDesignSystem.DesignSystem.Styles.InputAmountValidators
+    public var formatAmount: (@escaping BackbaseDesignSystem.AmountAbbreviationFormatter) -> (BackbaseDesignSystem.DesignSystem.Formatting.AmountOptions) -> (UIKit.UILabel) -> Swift.Void {
+      get
+    }
+    public var formattedAmountString: (@escaping BackbaseDesignSystem.AmountAbbreviationFormatter) -> (BackbaseDesignSystem.DesignSystem.Formatting.AmountOptions) -> Swift.String? {
+      get
+    }
+    public var formattedProductNumberString: (BackbaseDesignSystem.DesignSystem.Formatting.ProductNumberAttribute) -> (Swift.String) -> Swift.String
+    public var numberFormatter: (_ amountFormatType: BackbaseDesignSystem.DesignSystem.Formatting.AmountFormatType) -> BackbaseDesignSystem.Style<Foundation.NumberFormatter>
+    public var shimmerView: BackbaseDesignSystem.Style<BackbaseDesignSystem.ShimmerView> {
+      mutating get
+      set
+    }
+  }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class SummaryStackView : UIKit.UIStackView {
+  @_Concurrency.MainActor(unsafe) final public var rows: [BackbaseDesignSystem.SummaryStackRow] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public init(style: (BackbaseDesignSystem.SummaryStackView) -> Swift.Void = DesignSystem.shared.styles.summaryStackView)
+  @objc deinit
+}
+public protocol SummaryStackRow : UIKit.UIView {
+  var customSpacingAfter: CoreGraphics.CGFloat? { get }
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class SummaryStackTextRow : UIKit.UIView, BackbaseDesignSystem.SummaryStackRow {
+  @_Concurrency.MainActor(unsafe) final public let customSpacingAfter: CoreGraphics.CGFloat?
+  @_Concurrency.MainActor(unsafe) final public let textLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) convenience public init(primaryTextRow text: Swift.String, customSpacingAfter: CoreGraphics.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) convenience public init(secondaryTextRow text: Swift.String, customSpacingAfter: CoreGraphics.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) public init(amountRow amountOptions: BackbaseDesignSystem.DesignSystem.Formatting.AmountOptions, abbreviator: @escaping BackbaseDesignSystem.AmountAbbreviationFormatter = DesignSystem.shared.styles.abbreviators.default, textStyle: @escaping BackbaseDesignSystem.Style<UIKit.UILabel> = DesignSystem.shared.styles.summaryStackViewAmountLabel, customSpacingAfter: CoreGraphics.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) public init(amountTextRow text: Swift.String, amountOptions: BackbaseDesignSystem.DesignSystem.Formatting.AmountOptions, abbreviator: @escaping BackbaseDesignSystem.AmountAbbreviationFormatter = DesignSystem.shared.styles.abbreviators.default, textStyle: @escaping BackbaseDesignSystem.Style<UIKit.UILabel> = DesignSystem.shared.styles.summaryStackViewDefaultLabel, customSpacingAfter: CoreGraphics.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) public init(textRow text: Swift.String, textStyle: @escaping BackbaseDesignSystem.Style<UIKit.UILabel> = DesignSystem.shared.styles.summaryStackViewDefaultLabel, customSpacingAfter: CoreGraphics.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) public init(textRow text: Swift.String, textStyle: @escaping BackbaseDesignSystem.Style<UIKit.UILabel> = DesignSystem.shared.styles.summaryStackViewDefaultLabel, customSpacingAfter: CoreGraphics.CGFloat? = nil, maxWidth: CoreGraphics.CGFloat?)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class SummaryStackIconRow : UIKit.UIView, BackbaseDesignSystem.SummaryStackRow {
+  @_Concurrency.MainActor(unsafe) final public let customSpacingAfter: CoreGraphics.CGFloat?
+  @available(*, deprecated, message: "Use the alternative initialiser with `IconView`")
+  @_Concurrency.MainActor(unsafe) public init(with image: UIKit.UIImage, iconStyle: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon> = DesignSystem.shared.styles.iconWithBackground, iconSize: CoreGraphics.CGSize, customSpacingAfter: CoreGraphics.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) public init(_ image: UIKit.UIImage, iconViewStyle: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.IconView> = DesignSystem.shared.styles.iconViewWithBackground, iconSize: CoreGraphics.CGSize, customSpacingAfter: CoreGraphics.CGFloat? = nil)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class SummaryStackGenericViewRow : UIKit.UIView, BackbaseDesignSystem.SummaryStackRow {
+  @_Concurrency.MainActor(unsafe) final public let customSpacingAfter: CoreGraphics.CGFloat?
+  @_Concurrency.MainActor(unsafe) public init(with view: UIKit.UIView, size: CoreGraphics.CGSize, radius: BackbaseDesignSystem.DesignSystem.CornerRadiusTypes = .max(), customSpacingAfter: CoreGraphics.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class Switch : UIKit.UISwitch {
+  @_Concurrency.MainActor(unsafe) public var isOnValueChanged: ((Swift.Bool) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var offTintColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var dynamicThumbTintColor: BackbaseDesignSystem.Switch.DynamicThumbTintColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isOn: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public init(style: (BackbaseDesignSystem.Switch) -> Swift.Void = DesignSystem.shared.styles.switchStyle)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+}
+extension BackbaseDesignSystem.Switch {
+  public struct DynamicThumbTintColor {
+    public let whileOn: UIKit.UIColor
+    public let whileOff: UIKit.UIColor
+    public init(whileOn: UIKit.UIColor, whileOff: UIKit.UIColor)
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TabBarController : UIKit.UITabBarController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public struct TabBarTokens {
+  public var backgroundColor: UIKit.UIColor
+  public var selectedColor: UIKit.UIColor
+  public var unselectedColor: UIKit.UIColor
+  public var lineColor: UIKit.UIColor?
+  public var shadow: BackbaseDesignSystem.DesignSystem.Shadow?
+  public var backgroundImage: UIKit.UIImage?
+  public init(backgroundColor: UIKit.UIColor, selectedColor: UIKit.UIColor, unselectedColor: UIKit.UIColor, lineColor: UIKit.UIColor?, shadow: BackbaseDesignSystem.DesignSystem.Shadow?, backgroundImage: UIKit.UIImage? = nil)
+}
+extension UIKit.UITabBar {
+  @_Concurrency.MainActor(unsafe) public func setup(tokens: BackbaseDesignSystem.TabBarTokens)
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class TextArea : UIKit.UIView, BackbaseDesignSystem.StyleableInput {
+  public typealias InputType = BackbaseDesignSystem.TextArea
+  @_Concurrency.MainActor(unsafe) public static let kDefaultTextViewHeight: CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) public static let kDefaultCharacterLimit: Swift.Int
+  @_Concurrency.MainActor(unsafe) public var normalStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextArea>?
+  @_Concurrency.MainActor(unsafe) public var focusStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextArea>?
+  @_Concurrency.MainActor(unsafe) public var editingStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextArea>?
+  @_Concurrency.MainActor(unsafe) public var errorStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextArea>?
+  @_Concurrency.MainActor(unsafe) public var disableStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextArea>?
+  @_Concurrency.MainActor(unsafe) public var characterLimit: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var titleHorizontalSpacing: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var subviewsVerticalSpacing: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var cornerRadius: BackbaseDesignSystem.DesignSystem.CornerRadiusTypes {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var borderOptions: BackbaseDesignSystem.DesignSystem.BorderOptions? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var text: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var placeholder: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var placeholderFont: UIKit.UIFont? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var placeholderTextColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var textViewHeight: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var textContainerInset: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var titleLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var subtitleLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var errorLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var characterLimitLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var textView: UIKit.UITextView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isUserInteractionEnabled: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public init(style: (BackbaseDesignSystem.TextArea) -> Swift.Void = DesignSystem.shared.styles.textArea)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) public func enableScrolling()
+  @_Concurrency.MainActor(unsafe) public func disableScrolling()
+  @_Concurrency.MainActor(unsafe) public func setError(errorMessage: Swift.String)
+  @_Concurrency.MainActor(unsafe) public func clearError()
+}
+extension BackbaseDesignSystem.TextArea : UIKit.UITextViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textView(_ textView: UIKit.UITextView, shouldChangeTextIn range: Foundation.NSRange, replacementText text: Swift.String) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class TextFieldDateInput : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let textField: UIKit.UITextField
+  @_Concurrency.MainActor(unsafe) final public let errorLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public let datePicker: UIKit.UIDatePicker
+  @_Concurrency.MainActor(unsafe) final public var restingTextColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var normalTextColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var normalStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextFieldDateInput>? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var focusedStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextFieldDateInput>? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var errorStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextFieldDateInput>? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var disabledStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextFieldDateInput>? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var spacing: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var cornerRadius: BackbaseDesignSystem.DesignSystem.CornerRadiusTypes {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var border: BackbaseDesignSystem.DesignSystem.BorderOptions? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var textFieldPaddings: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var leftViewOffset: CoreGraphics.CGVector {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var rightViewOffset: CoreGraphics.CGVector {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var currentDate: Foundation.Date? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) final public var displayValueFormatter: ((Foundation.Date) -> Swift.String)? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var displayValuePlaceholder: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var leftIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var rightIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var inputView: UIKit.UIView? {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var inputAccessoryView: UIKit.UIView? {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var canBecomeFirstResponder: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var accessibilityIdentifier: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var isUserInteractionEnabled: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect = .zero, datePickerMode: UIKit.UIDatePicker.Mode, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.TextFieldDateInput> = DesignSystem.shared.styles.defaultTextFieldDateInput)
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override final public func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override final public func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc override final public func becomeFirstResponder() -> Swift.Bool
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc override final public func resignFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) final public func setDate(_ date: Foundation.Date, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) final public func removeDate(animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) final public func setLocale(_ locale: Foundation.Locale)
+  @_Concurrency.MainActor(unsafe) final public func onValueChanged(_ callback: @escaping (Foundation.Date?) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) final public func onTraitCollectionChanged(_ callback: @escaping (UIKit.UITraitCollection?) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) final public func setError(message: Swift.String?)
+  @_Concurrency.MainActor(unsafe) final public func clearError()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class TextInput : UIKit.UIView, BackbaseDesignSystem.StyleableInput {
+  public typealias InputType = BackbaseDesignSystem.TextInput
+  @_Concurrency.MainActor(unsafe) final public let textField: UIKit.UITextField
+  @_Concurrency.MainActor(unsafe) final public var errorLabel: UIKit.UILabel {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var normalStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput>?
+  @_Concurrency.MainActor(unsafe) final public var focusStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput>?
+  @_Concurrency.MainActor(unsafe) final public var editingStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput>?
+  @_Concurrency.MainActor(unsafe) final public var errorStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput>?
+  @_Concurrency.MainActor(unsafe) final public var disableStyle: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput>?
+  @_Concurrency.MainActor(unsafe) final public var subViewsSpacing: CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) final public var cornerRadius: BackbaseDesignSystem.DesignSystem.CornerRadiusTypes {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var border: BackbaseDesignSystem.DesignSystem.BorderOptions? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var leftViewOffset: CoreGraphics.CGVector {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var rightViewOffset: CoreGraphics.CGVector {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var textFieldPaddings: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var showPasswordVisibilityAccessory: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var accessibilityIdentifier: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var isUserInteractionEnabled: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) final public func setError(errorMessage: Swift.String)
+  @_Concurrency.MainActor(unsafe) final public func clearError()
+  @_Concurrency.MainActor(unsafe) final public func setTrailingViewImage(_ image: UIKit.UIImage?, for state: UIKit.UIControl.State, mode: UIKit.UITextField.ViewMode = .always)
+  @objc deinit
+}
+extension UIKit.UIColor {
+  public var light: UIKit.UIColor {
+    get
+  }
+  public var dark: UIKit.UIColor {
+    get
+  }
+  convenience public init(light: UIKit.UIColor, dark: UIKit.UIColor)
+  convenience public init(any: UIKit.UIColor)
+  convenience public init(hex: Swift.String)
+  public func addWhite(opacity: CoreGraphics.CGFloat) -> UIKit.UIColor
+  public func addBlack(opacity: CoreGraphics.CGFloat) -> UIKit.UIColor
+}
+extension UIKit.UIFont {
+  public static func preferredFont(forTextStyle style: UIKit.UIFont.TextStyle, weight: UIKit.UIFont.Weight) -> UIKit.UIFont
+  public static func preferredFont(forTextStyle style: UIKit.UIFont.TextStyle, weight: UIKit.UIFont.Weight, contentSizeCategory: UIKit.UIContentSizeCategory) -> UIKit.UIFont
+  public static func preferredFont(forTextStyle style: UIKit.UIFont.TextStyle, weight: UIKit.UIFont.Weight, contentSizeCategory: UIKit.UIContentSizeCategory, fontName: Swift.String?) -> UIKit.UIFont
+}
+extension UIKit.UIImage {
+  public static func named(_ name: Swift.String, in bundles: Foundation.Bundle?...) -> UIKit.UIImage?
+  public func scale(targetSize: CoreGraphics.CGSize, renderingMode: UIKit.UIImage.RenderingMode = .automatic) -> UIKit.UIImage
+}
+extension UIKit.UIImage {
+  convenience public init?(color: UIKit.UIColor, size: CoreGraphics.CGSize = CGSize(width: UIScreen.main.bounds.width, height: 0.5))
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public func addImageToNavigationItemTitleView(_ image: UIKit.UIImage?, withHeight height: CoreGraphics.CGFloat = 30)
+}
+extension BackbaseDesignSystem.Avatar.Size : Swift.Equatable {}
+extension BackbaseDesignSystem.Avatar.Size : Swift.Hashable {}
+extension BackbaseDesignSystem.Avatar.Size : Swift.RawRepresentable {}
+extension BackbaseDesignSystem.Button.ButtonType : Swift.Equatable {}
+extension BackbaseDesignSystem.Button.ButtonType : Swift.Hashable {}
+extension BackbaseDesignSystem.Checkbox.IconAlignment : Swift.Equatable {}
+extension BackbaseDesignSystem.Checkbox.IconAlignment : Swift.Hashable {}
+extension BackbaseDesignSystem.IconButton.LabelPlacement : Swift.Equatable {}
+extension BackbaseDesignSystem.IconButton.LabelPlacement : Swift.Hashable {}
+extension BackbaseDesignSystem.InputAmount.CurrencyAlignment : Swift.Equatable {}
+extension BackbaseDesignSystem.InputAmount.CurrencyAlignment : Swift.Hashable {}
+extension BackbaseDesignSystem.PaymentCard.PaymentCardSide : Swift.Equatable {}
+extension BackbaseDesignSystem.PaymentCard.PaymentCardSide : Swift.Hashable {}
+extension BackbaseDesignSystem.DesignSystem.Formatting.ProductNumberAttribute : Swift.Equatable {}
+extension BackbaseDesignSystem.DesignSystem.Formatting.ProductNumberAttribute : Swift.Hashable {}
+extension BackbaseDesignSystem.Separator.Style : Swift.Equatable {}
+extension BackbaseDesignSystem.Separator.Style : Swift.Hashable {}
+extension BackbaseDesignSystem.DesignSystem.ShadowStyle : Swift.Equatable {}
+extension BackbaseDesignSystem.DesignSystem.ShadowStyle : Swift.Hashable {}
+extension BackbaseDesignSystem.DesignSystem.ProgressIndicatorStyle : Swift.Equatable {}
+extension BackbaseDesignSystem.DesignSystem.ProgressIndicatorStyle : Swift.Hashable {}

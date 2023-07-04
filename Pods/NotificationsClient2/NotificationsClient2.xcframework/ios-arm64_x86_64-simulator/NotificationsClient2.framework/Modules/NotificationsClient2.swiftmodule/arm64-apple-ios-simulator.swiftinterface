@@ -1,0 +1,450 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NotificationsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct ApprovableNotification : Swift.Codable, Swift.Equatable {
+  public var title: Swift.String?
+  public var message: Swift.String
+  public var link: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public var recipients: [NotificationsClient2.Recipient]?
+  public var legalEntities: [NotificationsClient2.LegalEntity]?
+  public var level: NotificationsClient2.SeverityLevel
+  public var targetGroup: NotificationsClient2.TargetGroup
+  public var validFrom: Foundation.Date?
+  public var expiresOn: Foundation.Date?
+  public var origin: Swift.String
+  public var routing: NotificationsClient2.Routing?
+  public var translations: [Swift.String : NotificationsClient2.LocaleSpecificProperties]?
+  public init(title: Swift.String? = nil, message: Swift.String, link: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil, recipients: [NotificationsClient2.Recipient]? = nil, legalEntities: [NotificationsClient2.LegalEntity]? = nil, level: NotificationsClient2.SeverityLevel, targetGroup: NotificationsClient2.TargetGroup, validFrom: Foundation.Date? = nil, expiresOn: Foundation.Date? = nil, origin: Swift.String, routing: NotificationsClient2.Routing? = nil, translations: [Swift.String : NotificationsClient2.LocaleSpecificProperties]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.ApprovableNotification, rhs: NotificationsClient2.ApprovableNotification) -> Swift.Bool
+}
+public enum ApprovalStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case pending
+  case approved
+  case rejected
+  case cancelled
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [NotificationsClient2.ApprovalStatus]
+  public static var allCases: [NotificationsClient2.ApprovalStatus] {
+    get
+  }
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [NotificationsClient2.ErrorItem]?
+  public init(message: Swift.String, errors: [NotificationsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.BadRequestError, rhs: NotificationsClient2.BadRequestError) -> Swift.Bool
+}
+public struct CategoryGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var categories: [Swift.String]?
+  public init(categories: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.CategoryGetResponseBody, rhs: NotificationsClient2.CategoryGetResponseBody) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct CountByCategory : Swift.Codable, Swift.Equatable {
+  public var category: Swift.String
+  public var unreadCount: Swift.Int
+  public init(category: Swift.String, unreadCount: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.CountByCategory, rhs: NotificationsClient2.CountByCategory) -> Swift.Bool
+}
+public protocol EmployeeAPIProtocol {
+  func getApprovableNotificationCall(managementId: Swift.String) throws -> ClientCommon.Call<NotificationsClient2.ApprovableNotification>
+  func postManageNotificationsCall(notificationsPostRequestBody: NotificationsClient2.NotificationsPostRequestBody?) throws -> ClientCommon.Call<NotificationsClient2.NotificationsEmployeePostResponseBody>
+  func putApprovableNotificationCall(managementId: Swift.String, notificationApprovalPutRequestBody: NotificationsClient2.NotificationApprovalPutRequestBody?) throws -> ClientCommon.Call<NotificationsClient2.NotificationApprovalPutResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class EmployeeAPI : ObjectiveC.NSObject, DBSClient, NotificationsClient2.EmployeeAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getApprovableNotificationCall(managementId: Swift.String) throws -> ClientCommon.Call<NotificationsClient2.ApprovableNotification>
+  open func postManageNotificationsCall(notificationsPostRequestBody: NotificationsClient2.NotificationsPostRequestBody? = nil) throws -> ClientCommon.Call<NotificationsClient2.NotificationsEmployeePostResponseBody>
+  open func putApprovableNotificationCall(managementId: Swift.String, notificationApprovalPutRequestBody: NotificationsClient2.NotificationApprovalPutRequestBody? = nil) throws -> ClientCommon.Call<NotificationsClient2.NotificationApprovalPutResponseBody>
+  @objc deinit
+}
+public struct ErrorDetails : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errorFields: [NotificationsClient2.ErrorField]
+  public init(message: Swift.String, errorFields: [NotificationsClient2.ErrorField])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.ErrorDetails, rhs: NotificationsClient2.ErrorDetails) -> Swift.Bool
+}
+public struct ErrorField : Swift.Codable, Swift.Equatable {
+  public var fieldName: Swift.String
+  public var message: Swift.String
+  public init(fieldName: Swift.String, message: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.ErrorField, rhs: NotificationsClient2.ErrorField) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.ErrorItem, rhs: NotificationsClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [NotificationsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [NotificationsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.ForbiddenError, rhs: NotificationsClient2.ForbiddenError) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public init(message: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.InternalServerError, rhs: NotificationsClient2.InternalServerError) -> Swift.Bool
+}
+public struct LegacyNotificationProperties : Swift.Codable, Swift.Equatable {
+  public var title: Swift.String?
+  public var message: Swift.String
+  public var link: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(title: Swift.String? = nil, message: Swift.String, link: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.LegacyNotificationProperties, rhs: NotificationsClient2.LegacyNotificationProperties) -> Swift.Bool
+}
+public struct LegalEntity : Swift.Codable, Swift.Equatable {
+  public var leId: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(leId: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.LegalEntity, rhs: NotificationsClient2.LegalEntity) -> Swift.Bool
+}
+public struct LocaleSpecificProperties : Swift.Codable, Swift.Equatable {
+  public var title: Swift.String?
+  public var message: Swift.String
+  public var link: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(title: Swift.String? = nil, message: Swift.String, link: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.LocaleSpecificProperties, rhs: NotificationsClient2.LocaleSpecificProperties) -> Swift.Bool
+}
+public struct MarkAsReadPutRequestBody : Swift.Codable, Swift.Equatable {
+  public var read: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(read: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.MarkAsReadPutRequestBody, rhs: NotificationsClient2.MarkAsReadPutRequestBody) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [NotificationsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [NotificationsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotFoundError, rhs: NotificationsClient2.NotFoundError) -> Swift.Bool
+}
+public struct NotificationApprovalPutRequestBody : Swift.Codable, Swift.Equatable {
+  public var approvalStatus: NotificationsClient2.ApprovalStatus?
+  public var additions: [Swift.String : Swift.String]?
+  public init(approvalStatus: NotificationsClient2.ApprovalStatus? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotificationApprovalPutRequestBody, rhs: NotificationsClient2.NotificationApprovalPutRequestBody) -> Swift.Bool
+}
+public struct NotificationApprovalPutResponseBody : Swift.Codable, Swift.Equatable {
+  public var approvalStatus: NotificationsClient2.ApprovalStatus?
+  public init(approvalStatus: NotificationsClient2.ApprovalStatus? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotificationApprovalPutResponseBody, rhs: NotificationsClient2.NotificationApprovalPutResponseBody) -> Swift.Bool
+}
+public protocol NotificationsAPIProtocol {
+  func deleteNotificationCall(id: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getCategoryCall() throws -> ClientCommon.Call<NotificationsClient2.CategoryGetResponseBody>
+  func getNotificationsCall(from: Swift.Int?, size: Swift.Int?, fromDate: Foundation.Date?, toDate: Foundation.Date?, levels: [Swift.String]?, read: Swift.String?, origins: [Swift.String]?) throws -> ClientCommon.Call<[NotificationsClient2.NotificationsGetResponseBody]>
+  func getNotificationsDigestCall() throws -> ClientCommon.Call<NotificationsClient2.NotificationsDigestGetResponseBody>
+  func getNotificationsStreamCall(interval: Swift.Int?, levels: Swift.String?, origins: [Swift.String]?) throws -> ClientCommon.Call<[NotificationsClient2.NotificationsStreamGetResponseBody]>
+  func getUnreadCountCall(levels: [Swift.String]?, origins: [Swift.String]?) throws -> ClientCommon.Call<NotificationsClient2.UnreadCountGetResponseBody>
+  func putMarkAsReadCall(id: Swift.String, markAsReadPutRequestBody: NotificationsClient2.MarkAsReadPutRequestBody?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func putReadCall() throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class NotificationsAPI : ObjectiveC.NSObject, DBSClient, NotificationsClient2.NotificationsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteNotificationCall(id: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getCategoryCall() throws -> ClientCommon.Call<NotificationsClient2.CategoryGetResponseBody>
+  open func getNotificationsCall(from: Swift.Int? = nil, size: Swift.Int? = nil, fromDate: Foundation.Date? = nil, toDate: Foundation.Date? = nil, levels: [Swift.String]? = nil, read: Swift.String? = nil, origins: [Swift.String]? = nil) throws -> ClientCommon.Call<[NotificationsClient2.NotificationsGetResponseBody]>
+  open func getNotificationsDigestCall() throws -> ClientCommon.Call<NotificationsClient2.NotificationsDigestGetResponseBody>
+  open func getNotificationsStreamCall(interval: Swift.Int? = nil, levels: Swift.String? = nil, origins: [Swift.String]? = nil) throws -> ClientCommon.Call<[NotificationsClient2.NotificationsStreamGetResponseBody]>
+  open func getUnreadCountCall(levels: [Swift.String]? = nil, origins: [Swift.String]? = nil) throws -> ClientCommon.Call<NotificationsClient2.UnreadCountGetResponseBody>
+  open func putMarkAsReadCall(id: Swift.String, markAsReadPutRequestBody: NotificationsClient2.MarkAsReadPutRequestBody? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func putReadCall() throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct NotificationsDigestGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var totalUnreadCount: Swift.Int
+  public var countByCategory: [NotificationsClient2.CountByCategory]
+  public init(totalUnreadCount: Swift.Int, countByCategory: [NotificationsClient2.CountByCategory])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotificationsDigestGetResponseBody, rhs: NotificationsClient2.NotificationsDigestGetResponseBody) -> Swift.Bool
+}
+public struct NotificationsEmployeePostResponseBody : Swift.Codable, Swift.Equatable {
+  public var managementId: Swift.String
+  public var approvalStatus: NotificationsClient2.ApprovalStatus
+  public var notificationIds: [Swift.String]
+  public var additions: [Swift.String : Swift.String]?
+  public init(managementId: Swift.String, approvalStatus: NotificationsClient2.ApprovalStatus, notificationIds: [Swift.String], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotificationsEmployeePostResponseBody, rhs: NotificationsClient2.NotificationsEmployeePostResponseBody) -> Swift.Bool
+}
+public struct NotificationsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var level: NotificationsClient2.SeverityLevel
+  public var createdOn: Foundation.Date
+  public var validFrom: Foundation.Date?
+  public var expiresOn: Foundation.Date?
+  public var read: Swift.Bool
+  public var origin: Swift.String
+  public var routing: NotificationsClient2.Routing?
+  public var translations: Any?
+  public var title: Swift.String?
+  public var message: Swift.String
+  public var link: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, level: NotificationsClient2.SeverityLevel, createdOn: Foundation.Date, validFrom: Foundation.Date? = nil, expiresOn: Foundation.Date? = nil, read: Swift.Bool, origin: Swift.String, routing: NotificationsClient2.Routing? = nil, translations: Any? = nil, title: Swift.String? = nil, message: Swift.String, link: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotificationsGetResponseBody, rhs: NotificationsClient2.NotificationsGetResponseBody) -> Swift.Bool
+}
+public struct NotificationsPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var title: Swift.String?
+  public var message: Swift.String
+  public var link: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public var recipients: [NotificationsClient2.Recipient]?
+  public var legalEntities: [NotificationsClient2.LegalEntity]?
+  public var level: NotificationsClient2.SeverityLevel
+  public var targetGroup: NotificationsClient2.TargetGroup
+  public var validFrom: Foundation.Date?
+  public var expiresOn: Foundation.Date?
+  public var origin: Swift.String
+  public var routing: NotificationsClient2.Routing?
+  public var translations: [Swift.String : NotificationsClient2.LocaleSpecificProperties]?
+  public init(title: Swift.String? = nil, message: Swift.String, link: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil, recipients: [NotificationsClient2.Recipient]? = nil, legalEntities: [NotificationsClient2.LegalEntity]? = nil, level: NotificationsClient2.SeverityLevel, targetGroup: NotificationsClient2.TargetGroup, validFrom: Foundation.Date? = nil, expiresOn: Foundation.Date? = nil, origin: Swift.String, routing: NotificationsClient2.Routing? = nil, translations: [Swift.String : NotificationsClient2.LocaleSpecificProperties]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotificationsPostRequestBody, rhs: NotificationsClient2.NotificationsPostRequestBody) -> Swift.Bool
+}
+public struct NotificationsPostRequestBodyAllOf : Swift.Codable, Swift.Equatable {
+  public var recipients: [NotificationsClient2.Recipient]?
+  public var legalEntities: [NotificationsClient2.LegalEntity]?
+  public var level: NotificationsClient2.SeverityLevel
+  public var targetGroup: NotificationsClient2.TargetGroup
+  public var validFrom: Foundation.Date?
+  public var expiresOn: Foundation.Date?
+  public var origin: Swift.String
+  public var routing: NotificationsClient2.Routing?
+  public var translations: [Swift.String : NotificationsClient2.LocaleSpecificProperties]?
+  public init(recipients: [NotificationsClient2.Recipient]? = nil, legalEntities: [NotificationsClient2.LegalEntity]? = nil, level: NotificationsClient2.SeverityLevel, targetGroup: NotificationsClient2.TargetGroup, validFrom: Foundation.Date? = nil, expiresOn: Foundation.Date? = nil, origin: Swift.String, routing: NotificationsClient2.Routing? = nil, translations: [Swift.String : NotificationsClient2.LocaleSpecificProperties]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotificationsPostRequestBodyAllOf, rhs: NotificationsClient2.NotificationsPostRequestBodyAllOf) -> Swift.Bool
+}
+public struct NotificationsStreamGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var level: NotificationsClient2.SeverityLevel
+  public var createdOn: Foundation.Date
+  public var validFrom: Foundation.Date?
+  public var expiresOn: Foundation.Date?
+  public var origin: Swift.String?
+  public var routing: NotificationsClient2.Routing?
+  public var translations: Any?
+  public var title: Swift.String?
+  public var message: Swift.String
+  public var link: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, level: NotificationsClient2.SeverityLevel, createdOn: Foundation.Date, validFrom: Foundation.Date? = nil, expiresOn: Foundation.Date? = nil, origin: Swift.String? = nil, routing: NotificationsClient2.Routing? = nil, translations: Any? = nil, title: Swift.String? = nil, message: Swift.String, link: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.NotificationsStreamGetResponseBody, rhs: NotificationsClient2.NotificationsStreamGetResponseBody) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct Recipient : Swift.Codable, Swift.Equatable {
+  public var userId: Swift.String
+  public var serviceAgreementId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(userId: Swift.String, serviceAgreementId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.Recipient, rhs: NotificationsClient2.Recipient) -> Swift.Bool
+}
+public struct Routing : Swift.Codable, Swift.Equatable {
+  public var whereTo: Swift.String?
+  public var data: Any?
+  public var additions: [Swift.String : Swift.String]?
+  public init(whereTo: Swift.String? = nil, data: Any? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.Routing, rhs: NotificationsClient2.Routing) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case whereTo
+    case data
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [NotificationsClient2.Routing.CodingKeys]
+    public static var allCases: [NotificationsClient2.Routing.CodingKeys] {
+      get
+    }
+  }
+}
+public enum SeverityLevel : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case alert
+  case warning
+  case success
+  case info
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [NotificationsClient2.SeverityLevel]
+  public static var allCases: [NotificationsClient2.SeverityLevel] {
+    get
+  }
+}
+public enum TargetGroup : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case global
+  case customer
+  case user
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [NotificationsClient2.TargetGroup]
+  public static var allCases: [NotificationsClient2.TargetGroup] {
+    get
+  }
+}
+public struct UnprocessableEntityException : Swift.Codable, Swift.Equatable {
+  public var errorDetails: NotificationsClient2.ErrorDetails?
+  public init(errorDetails: NotificationsClient2.ErrorDetails? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.UnprocessableEntityException, rhs: NotificationsClient2.UnprocessableEntityException) -> Swift.Bool
+}
+public struct UnreadCountGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var unread: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(unread: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NotificationsClient2.UnreadCountGetResponseBody, rhs: NotificationsClient2.UnreadCountGetResponseBody) -> Swift.Bool
+}
+extension NotificationsClient2.ApprovalStatus : Swift.Equatable {}
+extension NotificationsClient2.ApprovalStatus : Swift.Hashable {}
+extension NotificationsClient2.ApprovalStatus : Swift.RawRepresentable {}
+extension NotificationsClient2.Routing.CodingKeys : Swift.Equatable {}
+extension NotificationsClient2.Routing.CodingKeys : Swift.Hashable {}
+extension NotificationsClient2.Routing.CodingKeys : Swift.RawRepresentable {}
+extension NotificationsClient2.SeverityLevel : Swift.Equatable {}
+extension NotificationsClient2.SeverityLevel : Swift.Hashable {}
+extension NotificationsClient2.SeverityLevel : Swift.RawRepresentable {}
+extension NotificationsClient2.TargetGroup : Swift.Equatable {}
+extension NotificationsClient2.TargetGroup : Swift.Hashable {}
+extension NotificationsClient2.TargetGroup : Swift.RawRepresentable {}

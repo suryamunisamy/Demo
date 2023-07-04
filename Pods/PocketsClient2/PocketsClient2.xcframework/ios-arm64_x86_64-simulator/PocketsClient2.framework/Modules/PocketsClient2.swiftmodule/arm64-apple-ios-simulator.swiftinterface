@@ -1,0 +1,195 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PocketsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [PocketsClient2.ErrorItem]?
+  public init(message: Swift.String, errors: [PocketsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.BadRequestError, rhs: PocketsClient2.BadRequestError) -> Swift.Bool
+}
+public struct ClosePocketRequest : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public init(id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.ClosePocketRequest, rhs: PocketsClient2.ClosePocketRequest) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct Currency : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.Currency, rhs: PocketsClient2.Currency) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.ErrorItem, rhs: PocketsClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [PocketsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [PocketsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.ForbiddenError, rhs: PocketsClient2.ForbiddenError) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public init(message: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.InternalServerError, rhs: PocketsClient2.InternalServerError) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [PocketsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [PocketsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.NotFoundError, rhs: PocketsClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct Pocket : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var arrangementId: Swift.String
+  public var name: Swift.String
+  public var icon: Swift.String
+  public var goal: PocketsClient2.PocketGoal?
+  public var balance: PocketsClient2.Currency
+  public init(id: Swift.String, arrangementId: Swift.String, name: Swift.String, icon: Swift.String, goal: PocketsClient2.PocketGoal? = nil, balance: PocketsClient2.Currency)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.Pocket, rhs: PocketsClient2.Pocket) -> Swift.Bool
+}
+public struct PocketGoal : Swift.Codable, Swift.Equatable {
+  public var amountCurrency: PocketsClient2.Currency?
+  public var deadline: Foundation.Date?
+  public var progress: Swift.Double?
+  public init(amountCurrency: PocketsClient2.Currency? = nil, deadline: Foundation.Date? = nil, progress: Swift.Double? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.PocketGoal, rhs: PocketsClient2.PocketGoal) -> Swift.Bool
+}
+public struct PocketGoalRequest : Swift.Codable, Swift.Equatable {
+  public var amountCurrency: PocketsClient2.Currency?
+  public var deadline: Foundation.Date?
+  public init(amountCurrency: PocketsClient2.Currency? = nil, deadline: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.PocketGoalRequest, rhs: PocketsClient2.PocketGoalRequest) -> Swift.Bool
+}
+public struct PocketListResponse : Swift.Codable, Swift.Equatable {
+  public var pockets: [PocketsClient2.Pocket]
+  public init(pockets: [PocketsClient2.Pocket])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.PocketListResponse, rhs: PocketsClient2.PocketListResponse) -> Swift.Bool
+}
+public struct PocketPostRequest : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var icon: Swift.String
+  public var goal: PocketsClient2.PocketGoalRequest?
+  public init(name: Swift.String, icon: Swift.String, goal: PocketsClient2.PocketGoalRequest? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.PocketPostRequest, rhs: PocketsClient2.PocketPostRequest) -> Swift.Bool
+}
+public protocol PocketTailorClientAPIProtocol {
+  func closePocketCall(closePocketRequest: PocketsClient2.ClosePocketRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func listPocketsCall() throws -> ClientCommon.Call<PocketsClient2.PocketListResponse>
+  func postPocketCall(pocketPostRequest: PocketsClient2.PocketPostRequest) throws -> ClientCommon.Call<PocketsClient2.Pocket>
+  func viewPocketCall(pocketId: Swift.String) throws -> ClientCommon.Call<PocketsClient2.Pocket>
+}
+@objc @_inheritsConvenienceInitializers public class PocketTailorClientAPI : ObjectiveC.NSObject, DBSClient, PocketsClient2.PocketTailorClientAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func closePocketCall(closePocketRequest: PocketsClient2.ClosePocketRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func listPocketsCall() throws -> ClientCommon.Call<PocketsClient2.PocketListResponse>
+  open func postPocketCall(pocketPostRequest: PocketsClient2.PocketPostRequest) throws -> ClientCommon.Call<PocketsClient2.Pocket>
+  open func viewPocketCall(pocketId: Swift.String) throws -> ClientCommon.Call<PocketsClient2.Pocket>
+  @objc deinit
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [PocketsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [PocketsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PocketsClient2.UnauthorizedError, rhs: PocketsClient2.UnauthorizedError) -> Swift.Bool
+}

@@ -1,0 +1,2096 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailCardsManagementJourney
+import Backbase
+import BackbaseDesignSystem
+import CardsClient2
+import ClientCommon
+import Foundation
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import UserManagerClient2
+import _Concurrency
+public struct ActivateCardCVV {
+  public struct EntryParams {
+    public let cardItem: RetailCardsManagementJourney.CardItem
+    public init(cardItem: RetailCardsManagementJourney.CardItem)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.ActivateCardCVV.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.ActivateCardCVV {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.ActivateCardCVV.Design
+    public var strings: RetailCardsManagementJourney.ActivateCardCVV.Strings
+    public var cvvPlaceholder: Swift.String
+    public var router: RetailCardsManagementJourney.ActivateCardCVV.Router
+  }
+}
+extension RetailCardsManagementJourney.ActivateCardCVV {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.ActivateCardCVV.Styles
+  }
+}
+extension RetailCardsManagementJourney.ActivateCardCVV {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailCardsManagementJourney.ActivateCardCVV.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case notConnected
+    case generalFailure
+    case insufficientDigits
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: RetailCardsManagementJourney.ActivateCardCVV.Error, b: RetailCardsManagementJourney.ActivateCardCVV.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailCardsManagementJourney.ActivateCardCVV.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailCardsManagementJourney.ActivateCardCVV {
+  public struct ExitParams {
+    public let cardItem: RetailCardsManagementJourney.CardItem
+    public init(cardItem: RetailCardsManagementJourney.CardItem)
+  }
+  public struct Router {
+    public var didActivateCard: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.ActivateCardCVV.ExitParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.ActivateCardCVV {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var enterCVVCodeTitle: RetailJourneyCommon.LocalizedString
+    public var enterCVVCodeSubtitle: RetailJourneyCommon.LocalizedString
+    public var confirmButtonCaption: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailCardsManagementJourney.ActivateCardCVV.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailCardsManagementJourney.ActivateCardCVV.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorButtonTitle: (_ error: RetailCardsManagementJourney.ActivateCardCVV.Error) -> RetailJourneyCommon.LocalizedString
+    public var toolbarActionButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.ActivateCardCVV {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var confirmButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+public struct ActivateCardSuccess {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.ActivateCardSuccess {
+  public struct Configuration {
+    public var strings: RetailCardsManagementJourney.ActivateCardSuccess.Strings
+    public var router: RetailCardsManagementJourney.ActivateCardSuccess.Router
+  }
+}
+extension RetailCardsManagementJourney.ActivateCardSuccess {
+  public struct Router {
+    public var didComplete: (UIKit.UINavigationController) -> () -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.ActivateCardSuccess {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+    public var buttonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct ActivatePost {
+  public let token: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(token: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+}
+extension Foundation.Bundle {
+  public static var cardsManagement: Foundation.Bundle? {
+    get
+  }
+}
+public struct CardHolder : Swift.Equatable {
+  public let name: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String, additions: [Swift.String : Swift.String]?)
+  public static func == (a: RetailCardsManagementJourney.CardHolder, b: RetailCardsManagementJourney.CardHolder) -> Swift.Bool
+}
+public struct CardImageRequestParams : Swift.Equatable {
+  public let size: CoreGraphics.CGSize
+  public let front: Swift.Bool
+  public let back: Swift.Bool
+  public let card: RetailCardsManagementJourney.CardItem
+  public init(size: CoreGraphics.CGSize, front: Swift.Bool = true, back: Swift.Bool = true, card: RetailCardsManagementJourney.CardItem)
+  public static func == (a: RetailCardsManagementJourney.CardImageRequestParams, b: RetailCardsManagementJourney.CardImageRequestParams) -> Swift.Bool
+}
+public struct CardImageResponse : Swift.Equatable {
+  public let front: BackbaseDesignSystem.BackgroundType
+  public let back: BackbaseDesignSystem.BackgroundType
+  public init(front: BackbaseDesignSystem.BackgroundType, back: BackbaseDesignSystem.BackgroundType)
+  public static func == (a: RetailCardsManagementJourney.CardImageResponse, b: RetailCardsManagementJourney.CardImageResponse) -> Swift.Bool
+}
+public protocol CardImageUseCase : AnyObject {
+  func shouldPreloadAllImagesToCache() -> Swift.Bool
+  func preloadAllImagesToCache(requestParams: RetailCardsManagementJourney.CardImagesRequestParams, completion: @escaping (Swift.Bool) -> Swift.Void)
+  func fetchCardImage(requestParams: RetailCardsManagementJourney.CardImageRequestParams, completion: @escaping (RetailCardsManagementJourney.CardImageResponse) -> Swift.Void)
+}
+public struct CardImagesRequestParams {
+  public let params: [RetailCardsManagementJourney.CardImageRequestParams]
+  public init(_ params: [RetailCardsManagementJourney.CardImageRequestParams])
+}
+public struct CardItem : Swift.Equatable {
+  public enum LockStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case locked
+    case unlocked
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RetailCardsManagementJourney.CardItem.LockStatus]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RetailCardsManagementJourney.CardItem.LockStatus] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let identifier: Swift.String
+  public let brand: Swift.String
+  public let type: Swift.String
+  public let subType: Swift.String?
+  public let name: Swift.String?
+  public let status: Swift.String
+  public let lockStatus: RetailCardsManagementJourney.CardItem.LockStatus?
+  public let replacement: RetailCardsManagementJourney.Replacement?
+  public let delivery: RetailCardsManagementJourney.Delivery?
+  public let holder: RetailCardsManagementJourney.CardHolder?
+  public let expiryDate: RetailCardsManagementJourney.YearMonth?
+  public let currency: Swift.String?
+  public let maskedNumber: Swift.String
+  public let limits: [RetailCardsManagementJourney.CardLimit]?
+  public let additions: [Swift.String : Swift.String]?
+  public init(identifier: Swift.String, brand: Swift.String, type: Swift.String, subType: Swift.String?, name: Swift.String?, status: Swift.String, lockStatus: RetailCardsManagementJourney.CardItem.LockStatus?, replacement: RetailCardsManagementJourney.Replacement?, delivery: RetailCardsManagementJourney.Delivery?, holder: RetailCardsManagementJourney.CardHolder?, expiryDate: RetailCardsManagementJourney.YearMonth?, currency: Swift.String?, maskedNumber: Swift.String, limits: [RetailCardsManagementJourney.CardLimit]?, additions: [Swift.String : Swift.String]?)
+  public static func == (a: RetailCardsManagementJourney.CardItem, b: RetailCardsManagementJourney.CardItem) -> Swift.Bool
+}
+public struct CardLimit : Swift.Equatable {
+  public let identifier: Swift.String
+  public let channel: Swift.String?
+  public let frequency: Swift.String?
+  public let amount: Swift.Double
+  public let maxAmount: Swift.Double
+  public let minAmount: Swift.Double?
+  public let additions: [Swift.String : Swift.String]?
+  public init(identifier: Swift.String, channel: Swift.String?, frequency: Swift.String?, amount: Swift.Double, maxAmount: Swift.Double, minAmount: Swift.Double?, additions: [Swift.String : Swift.String]?)
+  public static func == (a: RetailCardsManagementJourney.CardLimit, b: RetailCardsManagementJourney.CardLimit) -> Swift.Bool
+}
+@available(*, deprecated, message: "in favor of `CardsServiceUseCase`. Make sure to integrate `CardsUseCase` artifact and inject it with resolver.")
+public protocol CardLockUpdatingServiceUseCase : AnyObject {
+  typealias UpdateHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, Swift.Error>) -> Swift.Void
+  typealias UpdateLoadingStateHandler = (Swift.Bool) -> Swift.Void
+  func updateCardLockStatus(cardId: Swift.String, lockStatusPost: RetailCardsManagementJourney.LockStatusPost, loading: @escaping Self.UpdateLoadingStateHandler, completion: @escaping Self.UpdateHandler)
+}
+extension RetailCardsManagementJourney.CardsDetails {
+  public struct CardOption : Swift.Equatable, RetailCardsManagementJourney.CardOptionProtocol {
+    public typealias Action = (RetailCardsManagementJourney.CardItem) -> Swift.Void
+    public let title: Swift.String
+    public let action: RetailCardsManagementJourney.CardsDetails.CardOption.Action
+    public let subtitle: Swift.String?
+    public let isSeparatorHidden: Swift.Bool
+    public let leftAccessoryIcon: UIKit.UIImage?
+    public let rightAccessoryIcon: UIKit.UIImage?
+    public let accessibilityLabelValue: Swift.String?
+    public init(title: Swift.String, action: @escaping RetailCardsManagementJourney.CardsDetails.CardOption.Action, subtitle: Swift.String? = nil, leftAccessoryIcon: UIKit.UIImage? = nil, rightAccessoryIcon: UIKit.UIImage? = nil)
+    public init(title: Swift.String, action: @escaping RetailCardsManagementJourney.CardsDetails.CardOption.Action, isSeparatorHidden: Swift.Bool, subtitle: Swift.String? = nil, leftAccessoryIcon: UIKit.UIImage? = nil, rightAccessoryIcon: UIKit.UIImage? = nil)
+    public init(title: Swift.String, action: @escaping RetailCardsManagementJourney.CardsDetails.CardOption.Action, isSeparatorHidden: Swift.Bool = true, subtitle: Swift.String? = nil, leftAccessoryIcon: UIKit.UIImage? = nil, rightAccessoryIcon: UIKit.UIImage? = nil, accessibilityLabelValue: Swift.String? = nil)
+    public static func == (lhs: RetailCardsManagementJourney.CardsDetails.CardOption, rhs: RetailCardsManagementJourney.CardsDetails.CardOption) -> Swift.Bool
+  }
+}
+public protocol CardOptionProtocol {
+  var title: Swift.String { get }
+  var subtitle: Swift.String? { get }
+  var action: ((RetailCardsManagementJourney.CardItem) -> Swift.Void) { get }
+  var isSeparatorHidden: Swift.Bool { get }
+  var leftAccessoryIcon: UIKit.UIImage? { get }
+  var rightAccessoryIcon: UIKit.UIImage? { get }
+  var accessibilityLabelValue: Swift.String? { get }
+}
+public struct CardSpendingLimit : Swift.Equatable, Swift.Hashable {
+  public let identifier: Swift.String
+  public let cardIdentifier: Swift.String
+  public let amount: RetailCardsManagementJourney.Currency
+  public let maxAmount: RetailCardsManagementJourney.Currency
+  public let channel: Swift.String
+  public let frequency: Swift.String
+  public let minAmount: RetailCardsManagementJourney.Currency?
+  public let additions: [Swift.String : Swift.String]?
+  public init(identifier: Swift.String, cardIdentifier: Swift.String, amount: RetailCardsManagementJourney.Currency, maxAmount: RetailCardsManagementJourney.Currency, channel: Swift.String, frequency: Swift.String, minAmount: RetailCardsManagementJourney.Currency?, additions: [Swift.String : Swift.String]?)
+  public init?(from cardLimit: RetailCardsManagementJourney.CardLimit, currencyCode: Swift.String, cardIdentifier: Swift.String)
+  public static func == (a: RetailCardsManagementJourney.CardSpendingLimit, b: RetailCardsManagementJourney.CardSpendingLimit) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct CardsDetails {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.CardsDetails {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.CardsDetails.Design
+    public var strings: RetailCardsManagementJourney.CardsDetails.Strings
+    public var uiDataMapper: RetailCardsManagementJourney.CardsDetails.UIDataMapper
+    @available(*, deprecated, message: "This option will be available until the deprecated shimmer image is removed from the journey")
+    public var useNewShimmer: Swift.Bool
+    public var router: RetailCardsManagementJourney.CardsDetails.Router
+    public var customerServicePhoneNumber: Swift.String?
+    public var shouldDisplayLockUnlockOption: (_ cardItem: RetailCardsManagementJourney.CardItem) -> Swift.Bool
+    public let lockUnlockCardOption: (RetailCardsManagementJourney.CardItem, _ isSeparatorHidden: Swift.Bool) -> RetailCardsManagementJourney.CardOptionProtocol
+    @available(*, deprecated, message: "in favor of cardNavigationOptionsV2.")
+    public var cardNavigationOptions: (_ navigationController: UIKit.UINavigationController) -> (RetailCardsManagementJourney.CardItem) -> [RetailCardsManagementJourney.CardsDetails.CardOption]?
+    public var cardNavigationOptionsV2: (_ navigationController: UIKit.UINavigationController) -> (RetailCardsManagementJourney.CardItem) -> [RetailCardsManagementJourney.CardOptionProtocol]?
+  }
+}
+extension RetailCardsManagementJourney.CardsDetails {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.CardsDetails.Styles
+    @available(*, deprecated, message: "There are now two shimmer components. If you wish to keep using this old one,\ntoggle off `useNewShimmer` in the details configuration.\nThe new shimmer components are: `loadCardShimmerImage` and `cardOptionsShimmerImage`.")
+    public var shimmerImage: UIKit.UIImage?
+    public var cardOptionsShimmerImage: UIKit.UIImage?
+    public var cardShimmerImage: UIKit.UIImage?
+    public var lockIcon: UIKit.UIImage?
+    public var dismissibleMessageViewInfoIcon: UIKit.UIImage?
+    public var dismissibleMessageViewCloseButtonIcon: UIKit.UIImage?
+    public var supportSectionContentViewInfoIcon: UIKit.UIImage?
+    public var navigationItemRightBarButtonIcon: UIKit.UIImage?
+  }
+}
+extension RetailCardsManagementJourney.CardsDetails {
+  public struct Router {
+    public struct ExitParams {
+      public let cardItems: [RetailCardsManagementJourney.CardItem]
+      public init(cardItems: [RetailCardsManagementJourney.CardItem])
+    }
+    public var didSelectTravelNotice: ((UIKit.UINavigationController) -> (RetailCardsManagementJourney.CardsDetails.Router.ExitParams) -> Swift.Void)
+  }
+}
+extension RetailCardsManagementJourney.CardsDetails {
+  public struct Strings {
+    public init()
+    public var screenTitle: RetailJourneyCommon.LocalizedString
+    public var actionSheetTravelNoticeTitle: RetailJourneyCommon.LocalizedString
+    public var actionSheetCancelTitle: RetailJourneyCommon.LocalizedString
+    public var failedToLockErrorPopupTitle: RetailJourneyCommon.LocalizedString
+    public var failedToUnlockErrorPopupTitle: RetailJourneyCommon.LocalizedString
+    public var lockUnlockErrorPopupCallUsMessage: RetailJourneyCommon.LocalizedString
+    public var lockUnlockErrorPopupTryAgainMessage: RetailJourneyCommon.LocalizedString
+    public var lockUnlockErrorPopupFailedToCallTitle: RetailJourneyCommon.LocalizedString
+    public var lockUnlockErrorPopupFailedToCallMessage: RetailJourneyCommon.LocalizedString
+    public var lockUnlockErrorPopupCallTitle: RetailJourneyCommon.LocalizedString
+    public var lockUnlockErrorPopupRetryTitle: RetailJourneyCommon.LocalizedString
+    public var lockUnlockErrorPopupCancelTitle: RetailJourneyCommon.LocalizedString
+    public var lockUnlockSpinnerTitle: RetailJourneyCommon.LocalizedString
+    public var lockUnlockTitle: RetailJourneyCommon.LocalizedString
+    public var lockUnlockSubtitle: RetailJourneyCommon.LocalizedString
+    public var lockDismissibleMessageTitle: RetailJourneyCommon.LocalizedString
+    public var lockDismissibleMessageSubtitle: RetailJourneyCommon.LocalizedString
+    public var inlineMessageCancelledTitle: RetailJourneyCommon.LocalizedString
+    public var inlineMessageCancelledSubtitle: RetailJourneyCommon.LocalizedString
+    public var inlineMessageDamagedTitle: RetailJourneyCommon.LocalizedString
+    public var inlineMessageDamagedSubtitle: RetailJourneyCommon.LocalizedString
+    public var inlineMessageInactiveTitle: RetailJourneyCommon.LocalizedString
+    public var inlineMessageInactiveSubtitle: RetailJourneyCommon.LocalizedString
+    public var inlineMessageInactiveButtonTitle: RetailJourneyCommon.LocalizedString
+    public var supportSectionContentTitle: RetailJourneyCommon.LocalizedString
+    public var supportSectionContentButtonTitle: RetailJourneyCommon.LocalizedString
+    public var changePINTitle: RetailJourneyCommon.LocalizedString
+    public var changePINSubtitle: RetailJourneyCommon.LocalizedString
+    public var changePinScreenTitle: RetailJourneyCommon.LocalizedString
+    public var requestPINTitle: RetailJourneyCommon.LocalizedString
+    public var requestPINSubtitle: RetailJourneyCommon.LocalizedString
+    public var requestPinScreenTitle: RetailJourneyCommon.LocalizedString
+    public var replaceCardTitle: RetailJourneyCommon.LocalizedString
+    public var replaceCardSubtitle: RetailJourneyCommon.LocalizedString
+    public var spendingLimitOptionsTitle: RetailJourneyCommon.LocalizedString
+    public var spendingLimitOptionsSubtitle: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardOptionsLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardOptionsLockUnlockViewLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardOptionsLockedLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardOptionsUnlockedLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardOptionsGenericCardOptionLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityNavigationRightButtonLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityTravelNoticeActionLabel: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.CardsDetails {
+  public struct Styles {
+    @available(*, deprecated, message: "There are now two shimmer components. If you wish to keep using this old one,\ntoggle off `useNewShimmer` in the details configuration.\nThe new shimmer styles are: `cardShimmerView` and `cardOptionsShimmerView`.")
+    public var shimmerView: (_ view: RetailDesign.ShimmerView) -> Swift.Void
+    public var cardOptionsShimmerView: (_ view: BackbaseDesignSystem.ShimmerView) -> Swift.Void
+    public var cardShimmerView: (_ view: BackbaseDesignSystem.ShimmerView) -> Swift.Void
+    public var navigationBar: (_ navigationBar: UIKit.UINavigationBar) -> Swift.Void
+    public var lockUnlockSpinnerLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var lockUnlockSpinnerBackgroundView: (_ view: UIKit.UIView) -> Swift.Void
+    public var lockUnlockSpinner: (_ view: UIKit.UIActivityIndicatorView) -> Swift.Void
+    public var cardOptionTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var cardOptionSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var cardOptionLeftAccessoryIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var cardOptionRightAccessoryIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var cardOptionSeparatorView: (_ view: UIKit.UIView) -> Swift.Void
+    public var supportSectionIconView: (_ view: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var supportSectionTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var supportSectionButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    @available(*, deprecated, message: "use `DesignSystem.shared.styles.inlineAlertStyles.info` instead")
+    public var lockDismissibleMessageBackgroundView: (_ view: UIKit.UIView) -> Swift.Void
+    @available(*, deprecated, message: "use `DesignSystem.shared.styles.inlineAlertStyles.info` instead")
+    public var lockDismissibleMessageTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    @available(*, deprecated, message: "use `DesignSystem.shared.styles.inlineAlertStyles.info` instead")
+    public var lockDismissibleMessageSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    @available(*, deprecated, message: "use `DesignSystem.shared.styles.inlineAlertStyles.info` instead")
+    public var lockDismissibleMessageInfoIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    @available(*, deprecated, message: "use `DesignSystem.shared.styles.inlineAlertStyles.info` instead")
+    public var lockDismissibleMessageCloseButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.CardsDetails {
+  public struct UIDataMapper {
+    public typealias InlineAlertViewContentHandler = ((_ navigationController: UIKit.UINavigationController) -> (_ cardItem: RetailCardsManagementJourney.CardItem, _ dismissed: Swift.Bool) -> RetailCardsManagementJourney.InlineAlertContent?)
+    @available(*, deprecated, message: "in favor of `configuration.details.uiDataMapper.inlineAlertViewContent`.")
+    public var inlineAlertContent: (_ cardItem: RetailCardsManagementJourney.CardItem, _ dismissed: Swift.Bool) -> RetailCardsManagementJourney.InlineAlertContent?
+    public var inlineAlertViewContent: (_ navigationController: UIKit.UINavigationController) -> (_ cardItem: RetailCardsManagementJourney.CardItem, _ dismissed: Swift.Bool) -> RetailCardsManagementJourney.InlineAlertContent?
+    public var supportSectionContent: (UIKit.UINavigationController) -> (_ cardItem: RetailCardsManagementJourney.CardItem) -> RetailCardsManagementJourney.SupportSectionContent?
+  }
+}
+public struct CardsManagement {
+}
+@available(*, deprecated, message: "in favor of `CardsServiceUseCase`. Make sure to integrate `CardsUseCase` artifact and inject it with resolver.")
+public protocol CardsRetrievingUseCase : AnyObject {
+  typealias RetrieveHandler = (Swift.Result<[RetailCardsManagementJourney.CardItem], Swift.Error>) -> Swift.Void
+  typealias RetrieveLoadingStateHandler = (Swift.Bool) -> Swift.Void
+  func retrieveCards(loading: @escaping Self.RetrieveLoadingStateHandler, completion: @escaping Self.RetrieveHandler)
+}
+public protocol CardsServiceUseCase {
+  func getCards(requestParams: RetailCardsManagementJourney.GetCardsRequestParams?, completion: @escaping (Swift.Result<[RetailCardsManagementJourney.CardItem], RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  func updateLockStatus(identifier: Swift.String, lockStatusPost: RetailCardsManagementJourney.LockStatusPost?, completion: @escaping (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  func requestPIN(identifier: Swift.String, requestPINPost: RetailCardsManagementJourney.RequestPINPost?, completion: @escaping (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  func resetPIN(identifier: Swift.String, resetPINPost: RetailCardsManagementJourney.ResetPINPost?, completion: @escaping (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  func requestReplacement(identifier: Swift.String, requestReplacementPost: RetailCardsManagementJourney.RequestReplacementPost?, completion: @escaping (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  func activateCard(identifier: Swift.String, activatePost: RetailCardsManagementJourney.ActivatePost?, completion: @escaping (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  func changeLimits(postParams: RetailCardsManagementJourney.ChangeLimitPostParams, completion: @escaping (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+}
+public struct GetCardsRequestParams {
+  public let ids: [Swift.String]?
+  public let status: [Swift.String]?
+  public let types: [Swift.String]?
+  public init(ids: [Swift.String]?, status: [Swift.String]?, types: [Swift.String]?)
+}
+public struct LockStatusPost {
+  public enum LockStatus : Swift.String {
+    case locked
+    case unlocked
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var lockStatus: RetailCardsManagementJourney.LockStatusPost.LockStatus
+  public var additions: [Swift.String : Swift.String]?
+  public init(lockStatus: RetailCardsManagementJourney.LockStatusPost.LockStatus, additions: [Swift.String : Swift.String]? = nil)
+}
+public struct ChangeLimitPostParams {
+  public let cardId: Swift.String
+  public let limits: [RetailCardsManagementJourney.ChangeLimitPostParams.ChangeLimitsPostItem]
+  public init(cardId: Swift.String, limits: [RetailCardsManagementJourney.ChangeLimitPostParams.ChangeLimitsPostItem])
+  public struct ChangeLimitsPostItem {
+    public let limitId: Swift.String
+    public let amount: Swift.Double
+    public let frequency: Swift.String?
+    public let additions: [Swift.String : Swift.String]?
+    public init(limitId: Swift.String, amount: Swift.Double, frequency: Swift.String?, additions: [Swift.String : Swift.String]?)
+  }
+}
+public struct ChangePIN {
+  public struct EntryParams {
+    public init(cardItem: RetailCardsManagementJourney.CardItem, token: Swift.String)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.ChangePIN.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.ChangePIN {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.ChangePIN.Design
+    public var strings: RetailCardsManagementJourney.ChangePIN.Strings
+    public var router: RetailCardsManagementJourney.ChangePIN.Router
+  }
+}
+extension RetailCardsManagementJourney.ChangePIN {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.ChangePIN.Styles
+  }
+}
+@available(*, deprecated, message: "in favor of ResetPINPost")
+public struct ChangePINRequest : Swift.Equatable {
+  public let cardItem: RetailCardsManagementJourney.CardItem
+  public let newPIN: Swift.String
+  public let token: Swift.String
+  public init(cardItem: RetailCardsManagementJourney.CardItem, newPIN: Swift.String, token: Swift.String)
+  public static func == (a: RetailCardsManagementJourney.ChangePINRequest, b: RetailCardsManagementJourney.ChangePINRequest) -> Swift.Bool
+}
+public struct ResetPINPost : Swift.Equatable {
+  public let newPIN: Swift.String
+  public let token: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(newPIN: Swift.String, token: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailCardsManagementJourney.ResetPINPost, b: RetailCardsManagementJourney.ResetPINPost) -> Swift.Bool
+}
+extension RetailCardsManagementJourney.ChangePIN {
+  public struct Router {
+    public struct NewPinEnteredParams {
+      public init(cardItem: RetailCardsManagementJourney.CardItem, newPIN: Swift.String, token: Swift.String)
+    }
+    public var didEnterNewPIN: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.ChangePIN.Router.NewPinEnteredParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.ChangePIN {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var enterNewPinTitle: RetailJourneyCommon.LocalizedString
+    public var enterNewPINSubtitle: RetailJourneyCommon.LocalizedString
+    public var toolbarActionButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.ChangePIN {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+  }
+}
+@available(*, deprecated, message: "in favor of `CardsServiceUseCase`. Make sure to integrate `CardsUseCase` artifact and inject it with resolver.")
+public protocol CardPINUseCase {
+  typealias ChangePINHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, Swift.Error>) -> Swift.Void
+  func changePIN(changePINRequest: RetailCardsManagementJourney.ChangePINRequest, completion: @escaping Self.ChangePINHandler)
+}
+extension RetailCardsManagementJourney.CardsManagement {
+  public struct Configuration {
+    public init()
+    public var details: RetailCardsManagementJourney.CardsDetails.Configuration
+    public var enterCVVChangePIN: RetailCardsManagementJourney.EnterCVVChangePIN.Configuration
+    public var changePIN: RetailCardsManagementJourney.ChangePIN.Configuration
+    public var confirmPIN: RetailCardsManagementJourney.ConfirmPIN.Configuration
+    public var enterCVVRequestPIN: RetailCardsManagementJourney.EnterCVVRequestPIN.Configuration
+    public var requestPIN: RetailCardsManagementJourney.RequestPIN.Configuration
+    public var successMessage: RetailCardsManagementJourney.SuccessMessage.Configuration
+    public var replaceCardSelectReason: RetailCardsManagementJourney.ReplaceCardSelectReason.Configuration
+    public var replaceCardAddressConfirmation: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Configuration
+    public var replaceCardSuccess: RetailCardsManagementJourney.ReplaceCardSuccess.Configuration
+    public var activateCardCVV: RetailCardsManagementJourney.ActivateCardCVV.Configuration
+    public var activateCardSuccess: RetailCardsManagementJourney.ActivateCardSuccess.Configuration
+    public var spendingLimitSelectChannel: RetailCardsManagementJourney.SpendingLimitsSelectChannel.Configuration
+    public var spendingLimitsSelectFrequency: RetailCardsManagementJourney.SpendingLimitsSelectFrequency.Configuration
+    public var spendingLimitsEditLimit: RetailCardsManagementJourney.SpendingLimitsEditLimit.Configuration
+    public var travelNoticeOverview: RetailCardsManagementJourney.TravelNoticeOverview.Configuration
+    public var travelNoticeDetails: RetailCardsManagementJourney.TravelNoticeDetails.Configuration
+    public var travelNoticeDestinationSelection: RetailCardsManagementJourney.TravelNoticeDestinationSelection.Configuration
+    public var travelNoticeReview: RetailCardsManagementJourney.TravelNoticeReview.Configuration
+    public var travelNoticeCreateSuccess: RetailCardsManagementJourney.TravelNoticeCreateSuccess.Configuration
+    public var strings: RetailCardsManagementJourney.CardsManagement.Strings
+    public var design: RetailCardsManagementJourney.CardsManagement.Design
+    public var cvvPlaceholder: Swift.String
+    public var uiDataMapper: RetailCardsManagementJourney.CardsManagement.UIDataMapper
+    public var tabItem: RetailJourneyCommon.TabItem
+    public var currencyFormatter: (_ amount: Swift.String, _ currencyCode: Swift.String) -> Swift.String?
+    public var maxFractionDigits: Swift.Int
+  }
+}
+public struct ConfirmPIN {
+  public struct EntryParams {
+    public init(cardItem: RetailCardsManagementJourney.CardItem, newPIN: Swift.String, token: Swift.String)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.ConfirmPIN.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+public typealias ErrorFormatter<E, T> = (E) -> T where E : Swift.Error
+public typealias ConfirmPINErrorFormatter<T> = RetailCardsManagementJourney.ErrorFormatter<RetailCardsManagementJourney.ConfirmPIN.Error, T>
+extension RetailCardsManagementJourney.ConfirmPIN {
+  public enum Error : Swift.Error {
+    case notMatchPIN
+    case generalFailure
+    public static func == (a: RetailCardsManagementJourney.ConfirmPIN.Error, b: RetailCardsManagementJourney.ConfirmPIN.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.ConfirmPIN.Design
+    public var strings: RetailCardsManagementJourney.ConfirmPIN.Strings
+    public var router: RetailCardsManagementJourney.ConfirmPIN.Router
+  }
+}
+extension RetailCardsManagementJourney.ConfirmPIN {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.ConfirmPIN.Styles
+  }
+}
+extension RetailCardsManagementJourney.ConfirmPIN {
+  public struct Router {
+    public struct ChangePINSucceedParams {
+      public let messageTitle: Swift.String
+      public let messageBody: Swift.String
+      public let doneButtonTitle: Swift.String
+      public init(messageTitle: Swift.String, messageBody: Swift.String, doneButtonTitle: Swift.String)
+    }
+    public var didChangePIN: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.ConfirmPIN.Router.ChangePINSucceedParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.ConfirmPIN {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var confirmNewPinTitle: RetailJourneyCommon.LocalizedString
+    public var confirmButtonCaption: RetailJourneyCommon.LocalizedString
+    public var errorAlertTitle: (_ error: RetailCardsManagementJourney.ConfirmPIN.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorAlertMessage: (_ error: RetailCardsManagementJourney.ConfirmPIN.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorAlertActionButtonTitle: (_ error: RetailCardsManagementJourney.ConfirmPIN.Error) -> RetailJourneyCommon.LocalizedString?
+    public var errorAlertNaturalButtonTitle: (_ error: RetailCardsManagementJourney.ConfirmPIN.Error) -> RetailJourneyCommon.LocalizedString
+    public var successTitle: RetailJourneyCommon.LocalizedString
+    public var successMessage: RetailJourneyCommon.LocalizedString
+    public var successDoneButtonCaption: RetailJourneyCommon.LocalizedString
+    public var toolbarActionButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.ConfirmPIN {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var confirmButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+public struct CreateTravelNoticePostParams {
+  public let travelNotice: RetailCardsManagementJourney.TravelNotice
+  public init(travelNotice: RetailCardsManagementJourney.TravelNotice)
+}
+public struct Currency : Swift.Codable, Swift.Equatable, Swift.Hashable {
+  public let amount: Swift.String
+  public let currencyCode: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailCardsManagementJourney.Currency, b: RetailCardsManagementJourney.Currency) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public func encode(to encoder: Swift.Encoder) throws
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RetailCardsManagementJourney.Currency {
+  public var decimalAmount: Foundation.Decimal? {
+    get
+  }
+}
+public struct DeleteTravelNoticePostParams {
+  public let identifier: Swift.String
+  public init(identifier: Swift.String)
+}
+public struct Delivery : Swift.Equatable {
+  public let transitSteps: [RetailCardsManagementJourney.DeliveryTransitStep]
+  public let additions: [Swift.String : Swift.String]?
+  public init(transitSteps: [RetailCardsManagementJourney.DeliveryTransitStep], additions: [Swift.String : Swift.String]?)
+  public static func == (a: RetailCardsManagementJourney.Delivery, b: RetailCardsManagementJourney.Delivery) -> Swift.Bool
+}
+public struct DeliveryTransitStep : Swift.Equatable {
+  public enum Status : Swift.String, Swift.CaseIterable {
+    case success
+    case failed
+    case pending
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RetailCardsManagementJourney.DeliveryTransitStep.Status]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RetailCardsManagementJourney.DeliveryTransitStep.Status] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let name: Swift.String
+  public let status: RetailCardsManagementJourney.DeliveryTransitStep.Status
+  public let stepDateTime: Foundation.Date?
+  public let additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String, status: RetailCardsManagementJourney.DeliveryTransitStep.Status, stepDateTime: Foundation.Date?, additions: [Swift.String : Swift.String]?)
+  public static func == (a: RetailCardsManagementJourney.DeliveryTransitStep, b: RetailCardsManagementJourney.DeliveryTransitStep) -> Swift.Bool
+}
+extension RetailCardsManagementJourney.CardsManagement {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.CardsManagement.Design.Styles
+    @available(*, deprecated, message: "in favor of `CardsManagement.Configuration.UIDataMapper.paymentCardContentProvider.front.backgroundType`.")
+    public var cardFrontBackgroundImage: (_ cardItem: RetailCardsManagementJourney.CardItem) -> UIKit.UIImage?
+    @available(*, deprecated, message: "in favor of `CardsManagement.Configuration.UIDataMapper.paymentCardContentProvider.back.backgroundType`.")
+    public var cardBackBackgroundImage: (_ cardItem: RetailCardsManagementJourney.CardItem) -> UIKit.UIImage?
+    @available(*, deprecated, message: "in favor of `CardsManagement.Configuration.UIDataMapper.paymentCardContentProvider.front.leftTopImage`.")
+    public var cardBankIcon: (RetailCardsManagementJourney.CardItem) -> UIKit.UIImage?
+    @available(*, deprecated, message: "in favor of `CardsManagement.Configuration.UIDataMapper.paymentCardContentProvider.front.rightTopImage`.")
+    public var cardBrandIcon: (_ cardItem: RetailCardsManagementJourney.CardItem) -> UIKit.UIImage?
+    public var errorIcon: (_ error: RetailCardsManagementJourney.CardsManagement.Error) -> UIKit.UIImage?
+    public var cardLockIcon: UIKit.UIImage?
+    public var cardCancelledIcon: UIKit.UIImage?
+    public var cardInactiveIcon: UIKit.UIImage?
+    public var pinIcon: UIKit.UIImage?
+    public var replaceCardIcon: UIKit.UIImage?
+    public var spendingLimitOptionsIcon: UIKit.UIImage?
+    public var cardDetailItemNavigationIcon: UIKit.UIImage?
+  }
+}
+public struct EnterCVVChangePIN {
+  public struct EntryParams {
+    public init(cardItem: RetailCardsManagementJourney.CardItem)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.EnterCVVChangePIN.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.EnterCVVChangePIN {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.EnterCVVChangePIN.Design
+    public var strings: RetailCardsManagementJourney.EnterCVVChangePIN.Strings
+    public var cvvPlaceholder: Swift.String
+    public var router: RetailCardsManagementJourney.EnterCVVChangePIN.Router
+  }
+}
+extension RetailCardsManagementJourney.EnterCVVChangePIN {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.EnterCVVChangePIN.Styles
+  }
+}
+extension RetailCardsManagementJourney.EnterCVVChangePIN {
+  public struct Router {
+    public struct CVVEnteredParams {
+      public init(cvvCode: Swift.String, cardItem: RetailCardsManagementJourney.CardItem)
+    }
+    public var didEnterCVV: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.EnterCVVChangePIN.Router.CVVEnteredParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.EnterCVVChangePIN {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var enterCVVCodeTitle: RetailJourneyCommon.LocalizedString
+    public var enterCVVCodeSubtitle: RetailJourneyCommon.LocalizedString
+    public var toolbarActionButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.EnterCVVChangePIN {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+  }
+}
+public struct EnterCVVRequestPIN {
+  public struct EntryParams {
+    public init(cardItem: RetailCardsManagementJourney.CardItem)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.EnterCVVRequestPIN.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.EnterCVVRequestPIN {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.EnterCVVRequestPIN.Design
+    public var strings: RetailCardsManagementJourney.EnterCVVRequestPIN.Strings
+    public var cvvPlaceholder: Swift.String
+    public var router: RetailCardsManagementJourney.EnterCVVRequestPIN.Router
+  }
+}
+extension RetailCardsManagementJourney.EnterCVVRequestPIN {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.EnterCVVRequestPIN.Styles
+  }
+}
+extension RetailCardsManagementJourney.EnterCVVRequestPIN {
+  public struct Router {
+    public struct CVVEnteredParams {
+      public init(cvvCode: Swift.String, cardItem: RetailCardsManagementJourney.CardItem)
+    }
+    public var didCVVEntered: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.EnterCVVRequestPIN.Router.CVVEnteredParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.EnterCVVRequestPIN {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var enterCVVCodeTitle: RetailJourneyCommon.LocalizedString
+    public var enterCVVCodeSubtitle: RetailJourneyCommon.LocalizedString
+    public var toolbarActionButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.EnterCVVRequestPIN {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+  }
+}
+extension RetailCardsManagementJourney.CardsManagement {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailCardsManagementJourney.CardsManagement.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    public static func == (lhs: RetailCardsManagementJourney.CardsManagement.Error, rhs: RetailCardsManagementJourney.CardsManagement.Error) -> Swift.Bool
+    case notConnected
+    case invalidResponse
+    case emptyList
+    @available(*, deprecated, message: "in favor of `loadingFailure(underlying: Swift.Error?)`.")
+    case loadingFailed
+    case loadingFailure(underlying: Swift.Error?)
+  }
+}
+extension RetailCardsManagementJourney.CardsManagement.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+public struct ErrorResponse : Swift.Error, Swift.Equatable {
+  public let statusCode: Swift.Int?
+  public let data: Foundation.Data?
+  public let error: Swift.Error?
+  public init(statusCode: Swift.Int? = nil, data: Foundation.Data? = nil, error: Swift.Error? = nil)
+  public static func == (lhs: RetailCardsManagementJourney.ErrorResponse, rhs: RetailCardsManagementJourney.ErrorResponse) -> Swift.Bool
+}
+public struct GetTravelDestinationsParams {
+  public let fileName: Swift.String
+  public let bundle: Foundation.Bundle
+  public init(fileName: Swift.String, bundle: Foundation.Bundle = Bundle.main)
+  public init()
+}
+public struct InlineAlertContent : Swift.Equatable {
+  public struct ButtonContent : Swift.Equatable {
+    public static func == (lhs: RetailCardsManagementJourney.InlineAlertContent.ButtonContent, rhs: RetailCardsManagementJourney.InlineAlertContent.ButtonContent) -> Swift.Bool
+    public let title: Swift.String
+    public let underlined: Swift.Bool
+    public let action: (() -> Swift.Void)
+    public init(title: Swift.String, underlined: Swift.Bool = false, action: @escaping (() -> Swift.Void))
+  }
+  public static func == (lhs: RetailCardsManagementJourney.InlineAlertContent, rhs: RetailCardsManagementJourney.InlineAlertContent) -> Swift.Bool
+  public let title: Swift.String
+  public let subtitle: Swift.String?
+  public let style: BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert>
+  public let buttonContent: RetailCardsManagementJourney.InlineAlertContent.ButtonContent?
+  @available(*, deprecated, message: "in favor of `init(style:title:subtitle:buttonContent:)`.")
+  public init(title: Swift.String, subtitle: Swift.String? = nil, showDismissButton: Swift.Bool = false, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert>)
+  public init(style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.InlineAlert>, title: Swift.String, subtitle: Swift.String? = nil, buttonContent: RetailCardsManagementJourney.InlineAlertContent.ButtonContent? = nil)
+}
+extension BackbaseDesignSystem.InlineAlert.Content : Swift.Equatable {
+  public static func == (lhs: BackbaseDesignSystem.InlineAlert.Content, rhs: BackbaseDesignSystem.InlineAlert.Content) -> Swift.Bool
+}
+final public class LocalTravelDestinationUseCase : RetailCardsManagementJourney.TravelDestinationsUseCase {
+  public init(params: RetailCardsManagementJourney.GetTravelDestinationsParams = GetTravelDestinationsParams())
+  final public func getTravelDestinations(completion: @escaping (Swift.Result<[RetailCardsManagementJourney.TravelDestination], RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  @objc deinit
+}
+public struct PaymentCardContent : Swift.Equatable {
+  public struct StatusViewContent : Swift.Equatable {
+    public let text: Swift.String
+    public let icon: UIKit.UIImage?
+    public init(text: Swift.String, icon: UIKit.UIImage?)
+    public static func == (a: RetailCardsManagementJourney.PaymentCardContent.StatusViewContent, b: RetailCardsManagementJourney.PaymentCardContent.StatusViewContent) -> Swift.Bool
+  }
+  public struct Front : Swift.Equatable {
+    public let backgroundType: BackbaseDesignSystem.BackgroundType
+    public let labelOne: Swift.String
+    public let labelTwo: Swift.String
+    public let labelThree: Swift.String
+    public let labelFour: Swift.String
+    public let labelFive: Swift.String?
+    public let leftTopImage: BackbaseDesignSystem.DesignSystem.SizedImage?
+    public let rightTopImage: BackbaseDesignSystem.DesignSystem.SizedImage?
+    public let rightMiddleImage: BackbaseDesignSystem.DesignSystem.SizedImage?
+    public let rightBottomImage: BackbaseDesignSystem.DesignSystem.SizedImage?
+    public let statusViewContent: RetailCardsManagementJourney.PaymentCardContent.StatusViewContent?
+    public init(backgroundType: BackbaseDesignSystem.BackgroundType, labelOne: Swift.String, labelTwo: Swift.String, labelThree: Swift.String, labelFour: Swift.String, labelFive: Swift.String? = nil, leftTopImage: BackbaseDesignSystem.DesignSystem.SizedImage? = nil, rightTopImage: BackbaseDesignSystem.DesignSystem.SizedImage? = nil, rightMiddleImage: BackbaseDesignSystem.DesignSystem.SizedImage? = nil, rightBottomImage: BackbaseDesignSystem.DesignSystem.SizedImage? = nil, statusViewContent: RetailCardsManagementJourney.PaymentCardContent.StatusViewContent? = nil)
+    public static func == (lhs: RetailCardsManagementJourney.PaymentCardContent.Front, rhs: RetailCardsManagementJourney.PaymentCardContent.Front) -> Swift.Bool
+  }
+  public struct Back : Swift.Equatable {
+    public let backgroundType: BackbaseDesignSystem.BackgroundType
+    public let cvvPlaceholder: Swift.String
+    public init(backgroundType: BackbaseDesignSystem.BackgroundType, cvvPlaceholder: Swift.String)
+    public static func == (a: RetailCardsManagementJourney.PaymentCardContent.Back, b: RetailCardsManagementJourney.PaymentCardContent.Back) -> Swift.Bool
+  }
+  public struct Accessibility : Swift.Equatable {
+    public let backgroundAccessibilityLabelValue: Swift.String?
+    public let labelOneAccessibilityLabelValue: Swift.String?
+    public let labelTwoAccessibilityLabelValue: Swift.String?
+    public let labelFourAccessibilityLabelValue: Swift.String?
+    public let labelFiveAccessibilityLabelValue: Swift.String?
+    public let statusViewTextAccessibilityLabelValue: Swift.String?
+    public let cvvPlaceholderAccessibilityLabelValue: Swift.String?
+    public init(backgroundAccessibilityLabelValue: Swift.String? = nil, labelOneAccessibilityLabelValue: Swift.String? = nil, labelTwoAccessibilityLabelValue: Swift.String? = nil, labelFourAccessibilityLabelValue: Swift.String? = nil, labelFiveAccessibilityLabelValue: Swift.String? = nil, statusViewTextAccessibilityLabelValue: Swift.String? = nil, cvvPlaceholderAccessibilityLabelValue: Swift.String? = nil)
+    public static func == (a: RetailCardsManagementJourney.PaymentCardContent.Accessibility, b: RetailCardsManagementJourney.PaymentCardContent.Accessibility) -> Swift.Bool
+  }
+  public let identifier: Swift.String
+  public let front: RetailCardsManagementJourney.PaymentCardContent.Front
+  public let back: RetailCardsManagementJourney.PaymentCardContent.Back
+  public let style: BackbaseDesignSystem.Style<BackbaseDesignSystem.PaymentCard>
+  public let accessibility: RetailCardsManagementJourney.PaymentCardContent.Accessibility?
+  public init(identifier: Swift.String, front: RetailCardsManagementJourney.PaymentCardContent.Front, back: RetailCardsManagementJourney.PaymentCardContent.Back, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.PaymentCard>)
+  public init(identifier: Swift.String, front: RetailCardsManagementJourney.PaymentCardContent.Front, back: RetailCardsManagementJourney.PaymentCardContent.Back, style: @escaping BackbaseDesignSystem.Style<BackbaseDesignSystem.PaymentCard>, accessibility: RetailCardsManagementJourney.PaymentCardContent.Accessibility? = nil)
+  public static func == (lhs: RetailCardsManagementJourney.PaymentCardContent, rhs: RetailCardsManagementJourney.PaymentCardContent) -> Swift.Bool
+}
+extension BackbaseDesignSystem.BackgroundType : Swift.Equatable {
+  public static func == (lhs: BackbaseDesignSystem.BackgroundType, rhs: BackbaseDesignSystem.BackgroundType) -> Swift.Bool
+}
+extension BackbaseDesignSystem.DesignSystem.Gradient : Swift.Equatable {
+  public static func == (lhs: BackbaseDesignSystem.DesignSystem.Gradient, rhs: BackbaseDesignSystem.DesignSystem.Gradient) -> Swift.Bool
+}
+extension BackbaseDesignSystem.DesignSystem.Gradient.Point : Swift.Equatable {
+  public static func == (lhs: BackbaseDesignSystem.DesignSystem.Gradient.Point, rhs: BackbaseDesignSystem.DesignSystem.Gradient.Point) -> Swift.Bool
+}
+public struct PostalAddress : Swift.Equatable {
+  public var buildingNumber: Swift.String?
+  public var streetName: Swift.String?
+  public var townName: Swift.String?
+  public var postalCode: Swift.String?
+  public var country: Swift.String?
+  public var primary: Swift.Bool?
+  public init(buildingNumber: Swift.String?, streetName: Swift.String?, townName: Swift.String?, postalCode: Swift.String?, country: Swift.String?, primary: Swift.Bool?)
+  public static func == (a: RetailCardsManagementJourney.PostalAddress, b: RetailCardsManagementJourney.PostalAddress) -> Swift.Bool
+}
+public struct ReplaceCardAddressConfirmation {
+  public struct EntryParams {
+    public init(cardItem: RetailCardsManagementJourney.CardItem, replaceReason: Swift.String)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Design
+    public var strings: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Strings
+    public var router: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Router
+    public var uiDataMapper: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.UIDataMapper
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Styles
+    public var addressShimmerIcon: UIKit.UIImage?
+    public var deliveryShimmerIcon: UIKit.UIImage?
+    public var errorIcon: (_ error: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error) -> UIKit.UIImage?
+  }
+}
+public typealias ReplaceCardErrorFormatter<T> = RetailCardsManagementJourney.ErrorFormatter<RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error, T>
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation {
+  public enum Error : Swift.Error {
+    case loadingDataGeneralFailure
+    case loadingDataNotConnected
+    case loadingDataEmptyAddress
+    case replaceCardGeneralFailure
+    public static func == (a: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error, b: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation {
+  public struct Router {
+    public var didReplaceCard: (UIKit.UINavigationController) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation {
+  public struct Strings {
+    public init()
+    public var screenTitleLost: RetailJourneyCommon.LocalizedString
+    public var screenTitleStolen: RetailJourneyCommon.LocalizedString
+    public var screenTitleDamaged: RetailJourneyCommon.LocalizedString
+    public var deliveryAddressTitle: RetailJourneyCommon.LocalizedString
+    public var deliveryInfoTitle: RetailJourneyCommon.LocalizedString
+    public var deliveryInfoSubtitle: RetailJourneyCommon.LocalizedString
+    public var orderNewCardButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorButtonTitle: (_ error: RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error) -> RetailJourneyCommon.LocalizedString?
+    public var inlineMessageTitleLost: RetailJourneyCommon.LocalizedString
+    public var inlineMessageTitleStolen: RetailJourneyCommon.LocalizedString
+    public var inlineMessageTitleDamaged: RetailJourneyCommon.LocalizedString
+    public var inlineMessageSubtitleLost: RetailJourneyCommon.LocalizedString
+    public var inlineMessageSubtitleStolen: RetailJourneyCommon.LocalizedString
+    public var inlineMessageSubtitleDamaged: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var navigationItem: BackbaseDesignSystem.Style<UIKit.UINavigationItem> {
+      mutating get
+      set
+    }
+    public var titles: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var messages: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var replaceCardButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation {
+  public struct UIDataMapper {
+    public var screenTitle: (_ reason: Swift.String) -> Swift.String?
+    public var inlineAlertContent: (RetailCardsManagementJourney.CardItem, _ reason: Swift.String) -> RetailCardsManagementJourney.InlineAlertContent
+    public var noPrimaryAddressInlineAlertActionLink: () -> BackbaseDesignSystem.InlineAlert.Content.Link?
+  }
+}
+public struct ReplaceCardReasonItem {
+  public let reason: Swift.String
+  public let icon: UIKit.UIImage?
+  public let title: Swift.String
+  public let subtitle: Swift.String
+  public init(reason: Swift.String, icon: UIKit.UIImage?, title: Swift.String, subtitle: Swift.String)
+}
+@available(*, deprecated, message: "in favor of RequestReplacementPost")
+public struct ReplaceCardRequest : Swift.Equatable {
+  public let cardItem: RetailCardsManagementJourney.CardItem
+  public let replacementReason: Swift.String
+  public init(cardItem: RetailCardsManagementJourney.CardItem, replacementReason: Swift.String)
+  public static func == (a: RetailCardsManagementJourney.ReplaceCardRequest, b: RetailCardsManagementJourney.ReplaceCardRequest) -> Swift.Bool
+}
+public struct RequestReplacementPost : Swift.Equatable {
+  public let replacementReason: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(replacementReason: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailCardsManagementJourney.RequestReplacementPost, b: RetailCardsManagementJourney.RequestReplacementPost) -> Swift.Bool
+}
+public struct ReplaceCardSelectReason {
+  public struct EntryParams {
+    public init(cardItem: RetailCardsManagementJourney.CardItem)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.ReplaceCardSelectReason.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.ReplaceCardSelectReason {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.ReplaceCardSelectReason.Design
+    public var strings: RetailCardsManagementJourney.ReplaceCardSelectReason.Strings
+    public var router: RetailCardsManagementJourney.ReplaceCardSelectReason.Router
+    public var uiDataMapper: RetailCardsManagementJourney.ReplaceCardSelectReason.UIDataMapper
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardSelectReason {
+  public struct Design {
+    public var lostIcon: UIKit.UIImage?
+    public var stolenIcon: UIKit.UIImage?
+    public var damagedIcon: UIKit.UIImage?
+    public var itemNavigationIcon: UIKit.UIImage?
+    public var styles: RetailCardsManagementJourney.ReplaceCardSelectReason.Styles
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardSelectReason {
+  public struct Router {
+    public struct ExitParams {
+      public let replacementReason: Swift.String
+      public let card: RetailCardsManagementJourney.CardItem
+      public init(card: RetailCardsManagementJourney.CardItem, replacementReason: Swift.String)
+    }
+    public var didReplaceCardSelectReason: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.ReplaceCardSelectReason.Router.ExitParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardSelectReason {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var replaceCardDescription: RetailJourneyCommon.LocalizedString
+    public var lostTitle: RetailJourneyCommon.LocalizedString
+    public var lostSubtitle: RetailJourneyCommon.LocalizedString
+    public var stolenTitle: RetailJourneyCommon.LocalizedString
+    public var stolenSubtitle: RetailJourneyCommon.LocalizedString
+    public var damagedCardTitle: RetailJourneyCommon.LocalizedString
+    public var damagedCardSubtitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardSelectReason {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var replacementItemsView: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var replaceCardSelectReasonLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var replacementReasonTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var replacementReasonSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var replacementReasonLeftAccessoryIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var replacementReasonRightAccessoryIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardSelectReason {
+  public struct UIDataMapper {
+    public var selectCardReasonsProvider: (RetailCardsManagementJourney.CardItem) -> [RetailCardsManagementJourney.ReplaceCardReasonItem]
+  }
+}
+public struct ReplaceCardSuccess {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.ReplaceCardSuccess {
+  public struct Configuration {
+    public var strings: RetailCardsManagementJourney.ReplaceCardSuccess.Strings
+    public var router: RetailCardsManagementJourney.ReplaceCardSuccess.Router
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardSuccess {
+  public struct Router {
+    public var didComplete: (UIKit.UINavigationController) -> () -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.ReplaceCardSuccess {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+    public var buttonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+@available(*, deprecated, message: "in favor of `CardsServiceUseCase`. Make sure to integrate `CardsUseCase` artifact and inject it with resolver.")
+public protocol ReplaceCardUseCase {
+  typealias ReplaceCardHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, Swift.Error>) -> Swift.Void
+  func replaceCard(replaceCardRequest: RetailCardsManagementJourney.ReplaceCardRequest, completion: @escaping Self.ReplaceCardHandler)
+}
+public struct Replacement : Swift.Equatable {
+  public let status: Swift.String
+  public let reason: Swift.String?
+  public let replacedById: Swift.String?
+  public let replacingId: Swift.String?
+  public let additions: [Swift.String : Swift.String]?
+  public init(status: Swift.String, reason: Swift.String?, replacedById: Swift.String?, replacingId: Swift.String?, additions: [Swift.String : Swift.String]?)
+  public static func == (a: RetailCardsManagementJourney.Replacement, b: RetailCardsManagementJourney.Replacement) -> Swift.Bool
+}
+public struct RequestPIN {
+  public struct EntryParams {
+    public init(cardItem: RetailCardsManagementJourney.CardItem, token: Swift.String)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.RequestPIN.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+public enum RequestPINAddressUseCaseError : Swift.Error {
+  case invalidResponse
+  case loadingFailure(Swift.Error)
+  case notConnected
+}
+public protocol RequestPINAddressUseCase {
+  typealias GetPostalAddressesHandler = (Swift.Result<[RetailCardsManagementJourney.PostalAddress], RetailCardsManagementJourney.RequestPINAddressUseCaseError>) -> Swift.Void
+  func getPostalAddresses(completion: @escaping Self.GetPostalAddressesHandler)
+}
+@available(*, deprecated)
+public enum RequestPINCardUseCaseError : Swift.Error {
+  case generalFailure
+  public static func == (a: RetailCardsManagementJourney.RequestPINCardUseCaseError, b: RetailCardsManagementJourney.RequestPINCardUseCaseError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, deprecated, message: "in favor of `CardsServiceUseCase`. Make sure to integrate `CardsUseCase` artifact and inject it with resolver.")
+public protocol RequestPINCardUseCase {
+  typealias ChangePINHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, Swift.Error>) -> Swift.Void
+  func requestPIN(requestPINParams: RetailCardsManagementJourney.RequestPINParams, completion: @escaping Self.ChangePINHandler)
+}
+extension RetailCardsManagementJourney.RequestPIN {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.RequestPIN.Design
+    public var strings: RetailCardsManagementJourney.RequestPIN.Strings
+    public var router: RetailCardsManagementJourney.RequestPIN.Router
+    public var uiDataMapper: RetailCardsManagementJourney.RequestPIN.UIDataMapper
+  }
+}
+extension RetailCardsManagementJourney.RequestPIN {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.RequestPIN.Styles
+    public var shimmerIcon: UIKit.UIImage?
+    public var deliveryShimmerIcon: UIKit.UIImage?
+    public var errorIcon: (_ error: RetailCardsManagementJourney.RequestPIN.Error) -> UIKit.UIImage?
+  }
+}
+public typealias RequestPINErrorFormatter<T> = RetailCardsManagementJourney.ErrorFormatter<RetailCardsManagementJourney.RequestPIN.Error, T>
+extension RetailCardsManagementJourney.RequestPIN {
+  public enum Error : Swift.Error {
+    case loadingDataGeneralFailure
+    case loadingDataNotConnected
+    case loadingDataEmptyAddress
+    case requestPINGeneralFailure
+    public static func == (a: RetailCardsManagementJourney.RequestPIN.Error, b: RetailCardsManagementJourney.RequestPIN.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailCardsManagementJourney.RequestPIN.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+@available(*, deprecated, message: "in favor of RequestPINPost")
+public struct RequestPINParams : Swift.Equatable {
+  public let cardItem: RetailCardsManagementJourney.CardItem
+  public let token: Swift.String
+  public init(cardItem: RetailCardsManagementJourney.CardItem, token: Swift.String)
+  public static func == (a: RetailCardsManagementJourney.RequestPINParams, b: RetailCardsManagementJourney.RequestPINParams) -> Swift.Bool
+}
+public struct RequestPINPost : Swift.Equatable {
+  public let token: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(token: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailCardsManagementJourney.RequestPINPost, b: RetailCardsManagementJourney.RequestPINPost) -> Swift.Bool
+}
+extension RetailCardsManagementJourney.RequestPIN {
+  public struct Router {
+    public struct RequestPINSucceedParams {
+      public init(messageTitle: Swift.String, messageBody: Swift.String, doneButtonTitle: Swift.String)
+    }
+    public var didRequestPIN: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.RequestPIN.Router.RequestPINSucceedParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.RequestPIN {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var addressTitle: RetailJourneyCommon.LocalizedString
+    public var estimatedDeliveryTitle: RetailJourneyCommon.LocalizedString
+    public var estimatedDeliveryMessage: RetailJourneyCommon.LocalizedString
+    public var requestButtonCaption: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailCardsManagementJourney.RequestPIN.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailCardsManagementJourney.RequestPIN.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorButtonTitle: (_ error: RetailCardsManagementJourney.RequestPIN.Error) -> RetailJourneyCommon.LocalizedString?
+    public var successTitle: RetailJourneyCommon.LocalizedString
+    public var successMessage: RetailJourneyCommon.LocalizedString
+    public var successDoneButtonCaption: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.RequestPIN {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var navigationItem: BackbaseDesignSystem.Style<UIKit.UINavigationItem> {
+      mutating get
+      set
+    }
+    public var addressCard: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var titles: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var messages: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var requestPINButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension RetailCardsManagementJourney.RequestPIN {
+  public struct UIDataMapper {
+    public var noAddressInlineAlertActionLink: () -> BackbaseDesignSystem.InlineAlert.Content.Link?
+  }
+}
+public struct SpendingLimitEdit {
+  public let title: Swift.String
+  public let currencyCode: Swift.String
+  public let currentLimitAmount: Swift.String
+  public let subtitle: Swift.String
+  public init(title: Swift.String, currencyCode: Swift.String, currentLimitAmount: Swift.String, subtitle: Swift.String)
+}
+public struct SpendingLimitsChannelOption {
+  public let channel: Swift.String
+  public let channelIcon: UIKit.UIImage?
+  public let title: Swift.String
+  public let subtitle: Swift.String?
+  public let navigationIcon: UIKit.UIImage?
+  public let accessibilityLabel: Swift.String?
+  public init(channel: Swift.String, channelIcon: UIKit.UIImage?, title: Swift.String, subtitle: Swift.String?, navigationIcon: UIKit.UIImage?, accessibilityLabel: Swift.String?)
+}
+public struct SpendingLimitsEditLimit {
+  public struct EntryParams {
+    public let cardLimit: RetailCardsManagementJourney.CardSpendingLimit
+    public init(cardLimit: RetailCardsManagementJourney.CardSpendingLimit)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.SpendingLimitsEditLimit.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.SpendingLimitsEditLimit {
+  public struct Configuration {
+    public var strings: RetailCardsManagementJourney.SpendingLimitsEditLimit.Strings
+    public var design: RetailCardsManagementJourney.SpendingLimitsEditLimit.Design
+    public var router: RetailCardsManagementJourney.SpendingLimitsEditLimit.Router
+    public var uiDataMapper: RetailCardsManagementJourney.SpendingLimitsEditLimit.UIDataMapper
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsEditLimit {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.SpendingLimitsEditLimit.Styles
+    public var closeIcon: UIKit.UIImage?
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsEditLimit {
+  public struct Router {
+    public struct ExitParams {
+      public let cardItem: RetailCardsManagementJourney.CardItem
+      public init(_ cardItem: RetailCardsManagementJourney.CardItem)
+    }
+    public var didTapCloseScreen: (UIKit.UINavigationController) -> () -> Swift.Void
+    public var didEditLimit: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.SpendingLimitsEditLimit.Router.ExitParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsEditLimit {
+  public struct Strings {
+    public var screenTitleAtmChannel: RetailJourneyCommon.LocalizedString
+    public var screenTitlePosChannel: RetailJourneyCommon.LocalizedString
+    public var screenTitleOnlineChannel: RetailJourneyCommon.LocalizedString
+    public var dailyFrequencyTitle: RetailJourneyCommon.LocalizedString
+    public var weeklyFrequencyTitle: RetailJourneyCommon.LocalizedString
+    public var monthlyFrequencyTitle: RetailJourneyCommon.LocalizedString
+    public var fallbackFrequencyTitle: RetailJourneyCommon.LocalizedString
+    public var maximumLimitSubtitleWithPlaceholder: RetailJourneyCommon.LocalizedString
+    public var updateButtonTitle: RetailJourneyCommon.LocalizedString
+    public var closeButtonAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var toolbarActionButtonTitle: RetailJourneyCommon.LocalizedString
+    public var minimumAmountErrorMessage: RetailJourneyCommon.LocalizedString
+    public var minimumInputAmountErrorMessageWithPlaceholder: RetailJourneyCommon.LocalizedString
+    public var maximumInputAmountErrorMessageWithPlaceholder: RetailJourneyCommon.LocalizedString
+    public var errorGenericTitle: RetailJourneyCommon.LocalizedString
+    public var errorGenericMessage: RetailJourneyCommon.LocalizedString
+    public var errorGenericFirstActionButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsEditLimit {
+  public struct Styles {
+    public var navigationController: (_ navController: UIKit.UINavigationController) -> Swift.Void
+    public var limitOptionSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var updateButton: (BackbaseDesignSystem.Button) -> Swift.Void
+    public var inputAmount: (_ input: BackbaseDesignSystem.InputAmount) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsEditLimit {
+  public struct UIDataMapper {
+    public var titleProvider: (_ cardLimit: RetailCardsManagementJourney.CardSpendingLimit) -> Swift.String
+    public var spendingLimitsEditLimitProvider: (_ cardLimit: RetailCardsManagementJourney.CardSpendingLimit) -> RetailCardsManagementJourney.SpendingLimitEdit
+  }
+}
+public struct SpendingLimitsFrequencyOption {
+  public let limitIdentifier: Swift.String
+  public let frequencyTitle: Swift.String
+  public let currentLimit: Swift.String
+  public let frequencyOptionSubtitle: Swift.String?
+  public let maxLimitSpecificationAmount: Swift.String?
+  public let frequencyOptionIcon: UIKit.UIImage?
+  public let accessibilityLabel: Swift.String?
+  public init(limitIdentifier: Swift.String, frequencyTitle: Swift.String, currentLimit: Swift.String, frequencyOptionSubtitle: Swift.String?, maxLimitSpecificationAmount: Swift.String?, frequencyOptionIcon: UIKit.UIImage?, accessibilityLabel: Swift.String?)
+}
+public struct SpendingLimitsSelectChannel {
+  public struct EntryParams {
+    public let cardLimits: [RetailCardsManagementJourney.CardSpendingLimit]
+    public init(cardLimits: [RetailCardsManagementJourney.CardSpendingLimit])
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.SpendingLimitsSelectChannel.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectChannel {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.SpendingLimitsSelectChannel.Design
+    public var strings: RetailCardsManagementJourney.SpendingLimitsSelectChannel.Strings
+    public var router: RetailCardsManagementJourney.SpendingLimitsSelectChannel.Router
+    public var uiDataMapper: RetailCardsManagementJourney.SpendingLimitsSelectChannel.UIDataMapper
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectChannel {
+  public struct Design {
+    public var fallbackChannelOptionLeadingIcon: UIKit.UIImage?
+    public var atmChannelOptionLeadingIcon: UIKit.UIImage?
+    public var posChannelOptionLeadingIcon: UIKit.UIImage?
+    public var onlineChannelOptionLeadingIcon: UIKit.UIImage?
+    public var channelNavigationTrailingIcon: UIKit.UIImage?
+    public var styles: RetailCardsManagementJourney.SpendingLimitsSelectChannel.Styles
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectChannel {
+  public struct Router {
+    public struct ExitParams {
+      public let cardLimits: [RetailCardsManagementJourney.CardSpendingLimit]
+      public init(cardLimits: [RetailCardsManagementJourney.CardSpendingLimit])
+    }
+    public var didSelectLimitChannel: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.SpendingLimitsSelectChannel.Router.ExitParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectChannel {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var channelOptionsHeaderDescription: RetailJourneyCommon.LocalizedString
+    public var atmChannelOptionTitle: RetailJourneyCommon.LocalizedString
+    public var atmChannelOptionSubtitle: RetailJourneyCommon.LocalizedString
+    public var posChannelOptionTitle: RetailJourneyCommon.LocalizedString
+    public var posChannelOptionSubtitle: RetailJourneyCommon.LocalizedString
+    public var onlineChannelOptionTitle: RetailJourneyCommon.LocalizedString
+    public var onlineChannelOptionSubtitle: RetailJourneyCommon.LocalizedString
+    public var accessibilityChannelOptionLabel: RetailJourneyCommon.LocalizedString
+    public var emptyEdgeCaseTitle: RetailJourneyCommon.LocalizedString
+    public var emptyEdgeCaseMessage: RetailJourneyCommon.LocalizedString
+    public var emptyEdgeCaseFirstActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectChannel {
+  public struct Styles {
+    public var navigationBar: (_ navigationBar: UIKit.UINavigationBar) -> Swift.Void
+    public var limitOptionsContainerView: (_ view: UIKit.UIView) -> Swift.Void
+    public var limitOptionTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var limitOptionHeaderLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var limitOptionSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var limitOptionChannelIcon: (_ icon: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var spendingLimitOptionNavigationIcon: (_ icon: BackbaseDesignSystem.IconView) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectChannel {
+  public struct UIDataMapper {
+    public var spendingLimitsChannelOptionsProvider: (_ cardLimits: [RetailCardsManagementJourney.CardSpendingLimit]) -> [RetailCardsManagementJourney.SpendingLimitsChannelOption]
+  }
+}
+public struct SpendingLimitsSelectFrequency {
+  public struct EntryParams {
+    public let cardLimits: [RetailCardsManagementJourney.CardSpendingLimit]
+    public init(cardLimits: [RetailCardsManagementJourney.CardSpendingLimit])
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.SpendingLimitsSelectFrequency.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectFrequency {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.SpendingLimitsSelectFrequency.Design
+    public var strings: RetailCardsManagementJourney.SpendingLimitsSelectFrequency.Strings
+    public var router: RetailCardsManagementJourney.SpendingLimitsSelectFrequency.Router
+    public var uiDataMapper: RetailCardsManagementJourney.SpendingLimitsSelectFrequency.UIDataMapper
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectFrequency {
+  public struct Design {
+    public var frequencyOptionIcon: UIKit.UIImage?
+    public var styles: RetailCardsManagementJourney.SpendingLimitsSelectFrequency.Styles
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectFrequency {
+  public struct Router {
+    public struct ExitParams {
+      public let cardLimit: RetailCardsManagementJourney.CardSpendingLimit
+      public init(cardLimit: RetailCardsManagementJourney.CardSpendingLimit)
+    }
+    public var didSelectFrequencyOption: (UIKit.UINavigationController) -> (RetailCardsManagementJourney.SpendingLimitsSelectFrequency.Router.ExitParams) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectFrequency {
+  public struct Strings {
+    public var screenTitleAtmChannel: RetailJourneyCommon.LocalizedString
+    public var screenTitlePosChannel: RetailJourneyCommon.LocalizedString
+    public var screenTitleOnlineChannel: RetailJourneyCommon.LocalizedString
+    public var dailyFrequencyOptionTitle: RetailJourneyCommon.LocalizedString
+    public var weeklyFrequencyOptionTitle: RetailJourneyCommon.LocalizedString
+    public var monthlyFrequencyOptionTitle: RetailJourneyCommon.LocalizedString
+    public var fallbackFrequencyOptionTitle: RetailJourneyCommon.LocalizedString
+    public var frequencyOptionSubtitle: RetailJourneyCommon.LocalizedString
+    public var accessibilityFrequencyOptionLabel: RetailJourneyCommon.LocalizedString
+    public var emptyEdgeCaseTitle: RetailJourneyCommon.LocalizedString
+    public var emptyEdgeCaseMessage: RetailJourneyCommon.LocalizedString
+    public var emptyEdgeCaseFirstActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectFrequency {
+  public struct Styles {
+    public var navigationBar: (_ navigationBar: UIKit.UINavigationBar) -> Swift.Void
+    public var limitDetailsOption: (_ view: UIKit.UIView) -> Swift.Void
+    public var titleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var currentLimitLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var maxSpecificationLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var maxSpecificationAmountLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var limitOptionEditIcon: (_ icon: BackbaseDesignSystem.IconView) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.SpendingLimitsSelectFrequency {
+  public struct UIDataMapper {
+    public var spendingLimitsFrequencyOptionsProvider: (_ cardLimits: [RetailCardsManagementJourney.CardSpendingLimit]) -> [RetailCardsManagementJourney.SpendingLimitsFrequencyOption]
+    public var titleProvider: (_ cardLimit: RetailCardsManagementJourney.CardSpendingLimit) -> Swift.String
+  }
+}
+extension RetailCardsManagementJourney.CardsManagement {
+  public struct Strings {
+    public typealias RawKeyLocalizer<T> = (T) -> RetailJourneyCommon.LocalizedString
+    public var cardBannerViewLockedTitle: RetailJourneyCommon.LocalizedString {
+      get
+    }
+    public var cardBannerViewCancelledTitle: RetailJourneyCommon.LocalizedString {
+      get
+    }
+    public var cardBannerViewInactiveTitle: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "in favor of `CardsManagement.Configuration.UIDataMapper.paymentCardContentProvider.front.labelOne`.")
+    public var cardNumberWithMask: (_ number: Swift.String) -> Swift.String
+    public var cardValidThru: RetailJourneyCommon.LocalizedString
+    public var cardType: (_ value: Swift.String) -> RetailJourneyCommon.LocalizedString
+    public var cardStatus: (_ value: Swift.String) -> RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailCardsManagementJourney.CardsManagement.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailCardsManagementJourney.CardsManagement.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorRetryButtonTitle: (_ error: RetailCardsManagementJourney.CardsManagement.Error) -> RetailJourneyCommon.LocalizedString?
+    public var accessibilityCardsListLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardsListSliderLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardBackgroundLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardLabelOne: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardLabelTwo: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardLabelFour: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardLabelFive: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardStatusTitleLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCardCVVLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityBackButtonLabel: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "in favor of `configuration.design.strings.cardBannerViewLockedTitle`.")
+    public var cardLockBannerViewTitle: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "in favor of `configuration.design.strings.cardBannerViewCancelledTitle`.")
+    public var cardLockBannerViewCancelledTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.CardsManagement.Design {
+  public struct Styles {
+    @available(*, deprecated, message: "in favor of `configuration.details.design.styles`.")
+    public var details: RetailCardsManagementJourney.CardsDetails.Styles
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardNumberLabel: (RetailCardsManagementJourney.CardItem) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardHolderNameLabel: (RetailCardsManagementJourney.CardItem) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardExpiryDateTitleLabel: (RetailCardsManagementJourney.CardItem) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardExpiryDateLabel: (RetailCardsManagementJourney.CardItem) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardTypeLabel: (RetailCardsManagementJourney.CardItem) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardBackgroundImageView: (_ imageView: UIKit.UIImageView) -> Swift.Void
+    public var cardsCarouselView: (_ view: UIKit.UIView) -> Swift.Void
+    public var cardsPageControl: (_ view: UIKit.UIPageControl) -> Swift.Void
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardLockBannerView: (_ view: UIKit.UIView) -> Swift.Void
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardLockBannerTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardLockBannerIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardBackBackgroundCVVPlaceholderView: (_ view: UIKit.UIView) -> Swift.Void
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardBackBackgroundCVVPlaceholderLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    @available(*, deprecated, message: "in favor of `DesignSystem.shared.styles.paymentCard`.")
+    public var cardBackMagnetView: (_ view: UIKit.UIView) -> Swift.Void
+  }
+}
+public struct SuccessMessage {
+  public struct EntryParams {
+    public init(messageTitle: Swift.String, messageBody: Swift.String, doneButtonTitle: Swift.String)
+  }
+  public static func build(with buildParams: RetailCardsManagementJourney.SuccessMessage.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.SuccessMessage {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.SuccessMessage.Design
+    public var router: RetailCardsManagementJourney.SuccessMessage.Router
+  }
+}
+extension RetailCardsManagementJourney.SuccessMessage {
+  public struct Design {
+    public var successIcon: UIKit.UIImage?
+    public var styles: RetailCardsManagementJourney.SuccessMessage.Styles
+  }
+}
+extension RetailCardsManagementJourney.SuccessMessage {
+  public struct Router {
+    public var didComplete: (UIKit.UINavigationController) -> () -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.SuccessMessage {
+  public struct Styles {
+    public var backgroundView: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var messageTitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var messageBodyLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var doneButton: (BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+public struct SupportSectionContent {
+  public let title: Swift.String?
+  public let titleIcon: UIKit.UIImage?
+  public let linkText: Swift.String?
+  public let linkAction: (() -> Swift.Void)?
+  public init(title: Swift.String? = nil, titleIcon: UIKit.UIImage? = nil, linkText: Swift.String? = nil, linkAction: (() -> Swift.Void)? = nil)
+}
+public struct TravelContact : Swift.Equatable {
+  public let phoneNumber: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(phoneNumber: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailCardsManagementJourney.TravelContact, b: RetailCardsManagementJourney.TravelContact) -> Swift.Bool
+}
+public struct TravelDestination : Swift.Decodable, Swift.Equatable {
+  public let code: Swift.String
+  public let name: Swift.String
+  public let regions: [RetailCardsManagementJourney.TravelDestination.Region]?
+  public init(code: Swift.String, name: Swift.String, regions: [RetailCardsManagementJourney.TravelDestination.Region]?)
+  public static func == (a: RetailCardsManagementJourney.TravelDestination, b: RetailCardsManagementJourney.TravelDestination) -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RetailCardsManagementJourney.TravelDestination {
+  public struct Region : Swift.Decodable, Swift.Equatable {
+    public let code: Swift.String
+    public let name: Swift.String
+    public init(code: Swift.String, name: Swift.String)
+    public static func == (a: RetailCardsManagementJourney.TravelDestination.Region, b: RetailCardsManagementJourney.TravelDestination.Region) -> Swift.Bool
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+public protocol TravelDestinationsUseCase {
+  func getTravelDestinations(completion: @escaping (Swift.Result<[RetailCardsManagementJourney.TravelDestination], RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+}
+public struct TravelNotice : Swift.Equatable {
+  public let identifier: Swift.String?
+  public let cardIdentifiers: [Swift.String]
+  public let destinationIdentifiers: [Swift.String : [Swift.String]?]
+  public let departureDate: Foundation.Date
+  public let returnDate: Foundation.Date
+  public let contact: RetailCardsManagementJourney.TravelContact?
+  public let additions: [Swift.String : Swift.String]?
+  public init(identifier: Swift.String?, cardIdentifiers: [Swift.String], destinationIdentifiers: [Swift.String : [Swift.String]?], departureDate: Foundation.Date, returnDate: Foundation.Date, contact: RetailCardsManagementJourney.TravelContact?, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailCardsManagementJourney.TravelNotice, b: RetailCardsManagementJourney.TravelNotice) -> Swift.Bool
+}
+public struct TravelNoticeCreateSuccess {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.TravelNoticeCreateSuccess {
+  public struct Configuration {
+    public var strings: RetailCardsManagementJourney.TravelNoticeCreateSuccess.Strings
+    public var router: RetailCardsManagementJourney.TravelNoticeCreateSuccess.Router
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeCreateSuccess {
+  public struct Router {
+    public var didComplete: (UIKit.UINavigationController) -> () -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeCreateSuccess {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+    public var buttonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public typealias DidTriggerDestinationsSelection = ([RetailCardsManagementJourney.TravelDestination]) -> Swift.Void
+public struct TravelNoticeDestinationSelection {
+  public struct EntryParams {
+    public let destinations: [RetailCardsManagementJourney.TravelDestination]
+    public let didSelectDestinations: RetailCardsManagementJourney.DidTriggerDestinationsSelection
+    public init(destinations: [RetailCardsManagementJourney.TravelDestination], didSelectDestinations: @escaping RetailCardsManagementJourney.DidTriggerDestinationsSelection)
+  }
+  public static func build(with entryParams: RetailCardsManagementJourney.TravelNoticeDestinationSelection.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.TravelNoticeDestinationSelection {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.TravelNoticeDestinationSelection.Design
+    public var strings: RetailCardsManagementJourney.TravelNoticeDestinationSelection.Strings
+    public var uiDataMapper: RetailCardsManagementJourney.TravelNoticeDestinationSelection.UIDataMapper
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDestinationSelection {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.TravelNoticeDestinationSelection.Styles
+    public var checkIcon: UIKit.UIImage?
+    public var closeIcon: UIKit.UIImage?
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDestinationSelection {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var doneButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorPopupTitle: RetailJourneyCommon.LocalizedString
+    public var errorPopupMessage: RetailJourneyCommon.LocalizedString
+    public var errorPopupFirstActionButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorPopupSecondActionButtonTitle: RetailJourneyCommon.LocalizedString
+    public var accessibilityNavigationCloseButtonLabel: RetailJourneyCommon.LocalizedString
+    public var accessibilityCellTitleLabel: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDestinationSelection {
+  public struct Styles {
+    public var navigationController: BackbaseDesignSystem.Style<UIKit.UINavigationController> {
+      mutating get
+      set
+    }
+    public var doneBarButtonItemStyle: (_ button: UIKit.UIBarButtonItem) -> Swift.Void
+    public var backgroundView: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var destinationTitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var destinationIconView: BackbaseDesignSystem.Style<BackbaseDesignSystem.IconView> {
+      mutating get
+      set
+    }
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDestinationSelection {
+  public struct UIDataMapper {
+    public var destinationTitleHandler: (_ destination: RetailCardsManagementJourney.TravelDestination) -> Swift.String
+    public var destinationRegionTitleHandler: (_ destination: RetailCardsManagementJourney.TravelDestination, _ region: RetailCardsManagementJourney.TravelDestination.Region) -> Swift.String
+  }
+}
+public struct TravelNoticeDetails {
+  public struct EntryParams {
+    public let cardItems: [RetailCardsManagementJourney.CardItem]
+    public init(cardItems: [RetailCardsManagementJourney.CardItem])
+  }
+  public static func build(with entryParams: RetailCardsManagementJourney.TravelNoticeDetails.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.TravelNoticeDetails {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.TravelNoticeDetails.Design
+    public var strings: RetailCardsManagementJourney.TravelNoticeDetails.Strings
+    public var uiDataMapper: RetailCardsManagementJourney.TravelNoticeDetails.UIDataMapper
+    public var contactPhoneNumberMaxAllowedCharacters: Swift.Int
+    public var contactPhoneNumberAllowedCharacters: [Foundation.CharacterSet]
+    public var contactPhoneNumberValidator: (_ phoneNumber: Swift.String) -> Swift.Bool
+    public var router: RetailCardsManagementJourney.TravelNoticeDetails.Router
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDetails {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.TravelNoticeDetails.Styles
+    public var destinationsEmptyButtonIcon: UIKit.UIImage?
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDetails {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailCardsManagementJourney.TravelNoticeDetails.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case emptyList
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: RetailCardsManagementJourney.TravelNoticeDetails.Error, b: RetailCardsManagementJourney.TravelNoticeDetails.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDetails {
+  public struct Router {
+    public struct DestinationSelectionParams {
+      public let destinations: [RetailCardsManagementJourney.TravelDestination]
+      public let didReceiveDestinations: RetailCardsManagementJourney.DidTriggerDestinationsSelection
+      public init(destinations: [RetailCardsManagementJourney.TravelDestination], didReceiveDestinations: @escaping RetailCardsManagementJourney.DidTriggerDestinationsSelection)
+    }
+    public struct ExitParams {
+      public let destinations: [RetailCardsManagementJourney.TravelDestination]
+      public let cardIds: [Swift.String]
+      public let departureDate: Foundation.Date
+      public let returnDate: Foundation.Date
+      public let contactPhoneNumber: Swift.String?
+      public init(destinations: [RetailCardsManagementJourney.TravelDestination], cardIds: [Swift.String], departureDate: Foundation.Date, returnDate: Foundation.Date, contactPhoneNumber: Swift.String? = nil)
+    }
+    public var didTapSelectDestination: ((UIKit.UINavigationController) -> (RetailCardsManagementJourney.TravelNoticeDetails.Router.DestinationSelectionParams) -> Swift.Void)
+    public var didTapContinue: ((UIKit.UINavigationController) -> (RetailCardsManagementJourney.TravelNoticeDetails.Router.ExitParams) -> Swift.Void)
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDetails {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var destinationsTitle: RetailJourneyCommon.LocalizedString
+    public var destinationsEmptyButtonTitle: RetailJourneyCommon.LocalizedString
+    public var destinationsEditButtonTitle: RetailJourneyCommon.LocalizedString
+    public var accessibilityChipRemoveButtonLabelTitle: RetailJourneyCommon.LocalizedString
+    public var departureDateTitle: RetailJourneyCommon.LocalizedString
+    public var departureDatePlaceholder: RetailJourneyCommon.LocalizedString
+    public var returnDateTitle: RetailJourneyCommon.LocalizedString
+    public var returnDatePlaceholder: RetailJourneyCommon.LocalizedString
+    public var continueButtonCaption: RetailJourneyCommon.LocalizedString
+    public var contactPhoneNumberTitle: RetailJourneyCommon.LocalizedString
+    public var contactPhoneNumberSubtitle: RetailJourneyCommon.LocalizedString
+    public var contactPhoneNumberHint: RetailJourneyCommon.LocalizedString
+    public var contactPhoneNumberErrorMessage: RetailJourneyCommon.LocalizedString
+    public var contactPhoneNumberPlaceholder: RetailJourneyCommon.LocalizedString
+    public var genericValidationErrorTitle: RetailJourneyCommon.LocalizedString
+    public var genericValidationErrorMessage: RetailJourneyCommon.LocalizedString
+    public var genericValidationErrorButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorPopupTitle: RetailJourneyCommon.LocalizedString
+    public var errorPopupMessage: RetailJourneyCommon.LocalizedString
+    public var errorPopupFirstActionButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorPopupSecondActionButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDetails {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var sectionTitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var destinationsEmptyButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var destinationsEmptyButtonArrowIcon: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var destinationsEditButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var compactDateInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.CompactDateInput> {
+      mutating get
+      set
+    }
+    public var contactPhoneNumberInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var contactPhoneNumberSectionSubtitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var contactPhoneNumberInfoLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeDetails {
+  public struct UIDataMapper {
+    public var destinationTitleHandler: (_ destination: RetailCardsManagementJourney.TravelDestination) -> Swift.String
+    public var destinationRegionTitleHandler: (_ destination: RetailCardsManagementJourney.TravelDestination, _ region: RetailCardsManagementJourney.TravelDestination.Region) -> Swift.String
+  }
+}
+public struct TravelNoticeOverview {
+  public struct EntryParams {
+    public let cardItems: [RetailCardsManagementJourney.CardItem]
+    public init(cardItems: [RetailCardsManagementJourney.CardItem])
+  }
+  public static func build(with entryParams: RetailCardsManagementJourney.TravelNoticeOverview.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.TravelNoticeOverview {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.TravelNoticeOverview.Design
+    public var strings: RetailCardsManagementJourney.TravelNoticeOverview.Strings
+    public var router: RetailCardsManagementJourney.TravelNoticeOverview.Router
+    public var uiDataMapper: RetailCardsManagementJourney.TravelNoticeOverview.UIDataMapper
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeOverview {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.TravelNoticeOverview.Styles
+    public var shimmerImage: UIKit.UIImage?
+    public var emptyEdgeCaseButtonPlusIcon: UIKit.UIImage?
+    public var createTravelNoticeBarButtonIcon: UIKit.UIImage?
+    public var travelNoticeItemIcon: UIKit.UIImage?
+    public var travelNoticeDeleteIcon: UIKit.UIImage?
+    public var errorIcon: (_ error: RetailCardsManagementJourney.TravelNoticeOverview.Error) -> UIKit.UIImage?
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeOverview {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailCardsManagementJourney.TravelNoticeOverview.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case emptyList
+    case genericError
+    case notConnected
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: RetailCardsManagementJourney.TravelNoticeOverview.Error, b: RetailCardsManagementJourney.TravelNoticeOverview.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeOverview.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeOverview {
+  public struct Router {
+    public struct ExitParams {
+      public let cardItems: [RetailCardsManagementJourney.CardItem]
+      public init(cardItems: [RetailCardsManagementJourney.CardItem])
+    }
+    public var didTapCreateNew: ((UIKit.UINavigationController) -> (RetailCardsManagementJourney.TravelNoticeOverview.Router.ExitParams) -> Swift.Void)
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeOverview {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var deleteIconAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var deleteTitle: RetailJourneyCommon.LocalizedString
+    public var deleteMessage: RetailJourneyCommon.LocalizedString
+    public var deleteFirstOptionTitle: RetailJourneyCommon.LocalizedString
+    public var deleteSecondOptionTitle: RetailJourneyCommon.LocalizedString
+    public var deleteLoadingTitle: RetailJourneyCommon.LocalizedString
+    public var deleteErrorTitle: RetailJourneyCommon.LocalizedString
+    public var deleteErrorMessage: RetailJourneyCommon.LocalizedString
+    public var deleteErrorFirstOptionTitle: RetailJourneyCommon.LocalizedString
+    public var createNewButtonAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var datesStringAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var destinationsStringAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var contactNumberStringAccessibilityLabel: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailCardsManagementJourney.TravelNoticeOverview.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailCardsManagementJourney.TravelNoticeOverview.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorButtonTitle: (_ error: RetailCardsManagementJourney.TravelNoticeOverview.Error) -> RetailJourneyCommon.LocalizedString?
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeOverview {
+  public struct Styles {
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var edgeCase: (_ view: RetailDesign.EdgeCaseView) -> Swift.Void
+    public var titleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var subtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var contactNumberLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var createTravelNoticeBarButtonIcon: (_ icon: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var deleteTravelNoticeButton: (_ icon: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var travelNoticeIcon: (_ icon: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var shimmerView: (_ view: RetailDesign.ShimmerView) -> Swift.Void
+    public var lockUnlockSpinnerLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var lockUnlockSpinnerBackgroundView: (_ view: UIKit.UIView) -> Swift.Void
+    public var lockUnlockSpinner: (_ view: UIKit.UIActivityIndicatorView) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeOverview {
+  public struct UIDataMapper {
+    public var destinationDescription: (_ destinations: [RetailCardsManagementJourney.TravelDestination]) -> Swift.String
+    public var dateDescription: (_ departureDate: Foundation.Date, _ returnDate: Foundation.Date) -> Swift.String
+  }
+}
+public struct TravelNoticeReview {
+  public struct EntryParams {
+    public let destinations: [RetailCardsManagementJourney.TravelDestination]
+    public let cardIds: [Swift.String]
+    public let departureDate: Foundation.Date
+    public let returnDate: Foundation.Date
+    public let contactPhoneNumber: Swift.String?
+    public init(destinations: [RetailCardsManagementJourney.TravelDestination], cardIds: [Swift.String], departureDate: Foundation.Date, returnDate: Foundation.Date, contactPhoneNumber: Swift.String? = nil)
+  }
+  public static func build(with entryParams: RetailCardsManagementJourney.TravelNoticeReview.EntryParams, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailCardsManagementJourney.TravelNoticeReview {
+  public struct Configuration {
+    public var design: RetailCardsManagementJourney.TravelNoticeReview.Design
+    public var strings: RetailCardsManagementJourney.TravelNoticeReview.Strings
+    public var uiDataMapper: RetailCardsManagementJourney.TravelNoticeReview.UIDataMapper
+    public var router: RetailCardsManagementJourney.TravelNoticeReview.Router
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeReview {
+  public struct Design {
+    public var styles: RetailCardsManagementJourney.TravelNoticeReview.Styles
+    public var destinationIcon: UIKit.UIImage?
+    public var departureDateIcon: UIKit.UIImage?
+    public var returnDateIcon: UIKit.UIImage?
+    public var contactPhoneNumberIcon: UIKit.UIImage?
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeReview {
+  public struct Router {
+    public struct ExitParams {
+      public let travelNotice: RetailCardsManagementJourney.TravelNotice
+      public init(travelNotice: RetailCardsManagementJourney.TravelNotice)
+    }
+    public var didCreateTravelNotice: ((UIKit.UINavigationController) -> (RetailCardsManagementJourney.TravelNoticeReview.Router.ExitParams) -> Swift.Void)
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeReview {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var cardAlertInformationTitle: RetailJourneyCommon.LocalizedString
+    public var cardAlertInformationDescription: RetailJourneyCommon.LocalizedString
+    public var travelNoticeDescription: RetailJourneyCommon.LocalizedString
+    public var destinationTitle: RetailJourneyCommon.LocalizedString
+    public var departureDateTitle: RetailJourneyCommon.LocalizedString
+    public var returnDateTitle: RetailJourneyCommon.LocalizedString
+    public var contactPhoneNumberTitle: RetailJourneyCommon.LocalizedString
+    public var confirmTravelNoticeButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorGenericTitle: RetailJourneyCommon.LocalizedString
+    public var errorGenericMessage: RetailJourneyCommon.LocalizedString
+    public var errorGenericFirstActionButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeReview {
+  public struct Styles {
+    public var navigationBar: (_ navigationBar: UIKit.UINavigationBar) -> Swift.Void
+    public var travelNoticeDescriptionHeaderLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var rowTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var rowValueLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accessoryIcon: (_ iconView: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var createTravelNoticeButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+extension RetailCardsManagementJourney.TravelNoticeReview {
+  public struct UIDataMapper {
+    public var destinationDescription: (_ destinations: [RetailCardsManagementJourney.TravelDestination]) -> Swift.String
+    public var departureDateDescription: (_ date: Foundation.Date) -> Swift.String
+    public var returnDateDescription: (_ date: Foundation.Date) -> Swift.String
+    public var contactDescription: (_ contactNumber: Swift.String?) -> Swift.String?
+  }
+}
+public protocol TravelNoticesServiceUseCase {
+  func createTravelNotice(postParams: RetailCardsManagementJourney.CreateTravelNoticePostParams, completion: @escaping (Swift.Result<RetailCardsManagementJourney.TravelNotice, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  func getTravelNotices(completion: @escaping (Swift.Result<[RetailCardsManagementJourney.TravelNotice], RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+  func deleteTravelNoticeById(postParams: RetailCardsManagementJourney.DeleteTravelNoticePostParams, completion: @escaping (Swift.Result<Swift.Void, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void)
+}
+extension RetailCardsManagementJourney.CardsManagement {
+  public struct UIDataMapper {
+    public typealias PaymentCardContentProviderHandler = ((_ cardItem: RetailCardsManagementJourney.CardItem, _ cvvPlaceholder: Swift.String) -> RetailCardsManagementJourney.PaymentCardContent)
+    public var paymentCardContentProvider: (_ cardItem: RetailCardsManagementJourney.CardItem, _ cvvPlaceholder: Swift.String) -> RetailCardsManagementJourney.PaymentCardContent
+  }
+}
+public struct YearMonth : Swift.Equatable {
+  public let year: Swift.String?
+  public let month: Swift.String?
+  public let additions: [Swift.String : Swift.String]?
+  public init(year: Swift.String?, month: Swift.String?, additions: [Swift.String : Swift.String]?)
+  public static func == (a: RetailCardsManagementJourney.YearMonth, b: RetailCardsManagementJourney.YearMonth) -> Swift.Bool
+}
+extension RetailCardsManagementJourney.ActivateCardCVV.Error : Swift.Hashable {}
+extension RetailCardsManagementJourney.CardItem.LockStatus : Swift.Equatable {}
+extension RetailCardsManagementJourney.CardItem.LockStatus : Swift.Hashable {}
+extension RetailCardsManagementJourney.CardItem.LockStatus : Swift.RawRepresentable {}
+extension RetailCardsManagementJourney.LockStatusPost.LockStatus : Swift.Equatable {}
+extension RetailCardsManagementJourney.LockStatusPost.LockStatus : Swift.Hashable {}
+extension RetailCardsManagementJourney.LockStatusPost.LockStatus : Swift.RawRepresentable {}
+extension RetailCardsManagementJourney.ConfirmPIN.Error : Swift.Equatable {}
+extension RetailCardsManagementJourney.ConfirmPIN.Error : Swift.Hashable {}
+extension RetailCardsManagementJourney.DeliveryTransitStep.Status : Swift.Equatable {}
+extension RetailCardsManagementJourney.DeliveryTransitStep.Status : Swift.Hashable {}
+extension RetailCardsManagementJourney.DeliveryTransitStep.Status : Swift.RawRepresentable {}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error : Swift.Equatable {}
+extension RetailCardsManagementJourney.ReplaceCardAddressConfirmation.Error : Swift.Hashable {}
+@available(*, deprecated)
+extension RetailCardsManagementJourney.RequestPINCardUseCaseError : Swift.Equatable {}
+@available(*, deprecated)
+extension RetailCardsManagementJourney.RequestPINCardUseCaseError : Swift.Hashable {}
+extension RetailCardsManagementJourney.RequestPIN.Error : Swift.Equatable {}
+extension RetailCardsManagementJourney.RequestPIN.Error : Swift.Hashable {}
+extension RetailCardsManagementJourney.TravelNoticeDetails.Error : Swift.Hashable {}
+extension RetailCardsManagementJourney.TravelNoticeOverview.Error : Swift.Hashable {}

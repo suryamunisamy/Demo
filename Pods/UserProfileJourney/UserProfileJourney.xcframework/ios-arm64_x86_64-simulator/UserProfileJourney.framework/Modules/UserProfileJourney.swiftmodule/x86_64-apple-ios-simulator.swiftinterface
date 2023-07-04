@@ -1,0 +1,437 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UserProfileJourney
+import BackbaseDesignSystem
+import Foundation
+import Resolver
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+public protocol AddressCreating {
+  var department: Swift.String { get }
+  var subDepartment: Swift.String { get }
+  var addressLine: Swift.String { get }
+  var buildingNumber: Swift.String { get }
+  var streetName: Swift.String { get }
+  var townName: Swift.String { get }
+  var countrySubDivision: Swift.String { get }
+  var postalCode: Swift.String { get }
+  var country: Swift.String { get }
+  var primary: Swift.Bool { get }
+  var type: Swift.String { get }
+}
+public protocol AddressRepresenting : UserProfileJourney.AddressCreating {
+  var id: Swift.String { get }
+}
+extension Foundation.Bundle {
+  public static var userProfile: Foundation.Bundle? {
+    get
+  }
+}
+public struct EmailAddress {
+}
+extension UserProfileJourney.EmailAddress {
+  public struct Configuration {
+    public var design: UserProfileJourney.EmailAddress.Design
+    public var router: UserProfileJourney.EmailAddress.Router
+    public var addStrings: UserProfileJourney.EmailAddress.Strings
+    public var editStrings: UserProfileJourney.EmailAddress.Strings
+  }
+}
+extension UserProfileJourney.EmailAddress {
+  public struct Design {
+    public init()
+    public var emailAddressLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var emailAddressField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var typeLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var typeField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var primaryLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var primarySwitch: (_ view: BackbaseDesignSystem.Switch) -> Swift.Void
+    public var confirmButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var cancelButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var deleteBarButtonImage: UIKit.UIImage?
+  }
+}
+extension UserProfileJourney.EmailAddress {
+  public struct Router {
+    public var didTapCancel: (_ controller: UIKit.UIViewController) -> () -> Swift.Void
+    public var didFinishEmailAddress: (_ controller: UIKit.UIViewController, _ finishHandler: @escaping () -> Swift.Void) -> (UserProfileJourney.SuccessConfirmation.Strings) -> Swift.Void
+  }
+}
+extension UserProfileJourney.EmailAddress {
+  public struct Strings {
+    public init(isEditScreen: Swift.Bool = false)
+    public var title: UserProfileJourney.LocalizedString
+    public var emailAddressLabel: UserProfileJourney.LocalizedString
+    public var emailAddressTypeLabel: UserProfileJourney.LocalizedString
+    public var primarySwitchLabel: UserProfileJourney.LocalizedString
+    public var emailAddressTypePlaceholder: UserProfileJourney.LocalizedString
+    public var confirm: UserProfileJourney.LocalizedString
+    public var cancel: UserProfileJourney.LocalizedString
+    public var loading: UserProfileJourney.LocalizedString
+    public var emailAddressInlineValidationError: UserProfileJourney.LocalizedString
+    public var emailAddressTypeInlineValidationError: UserProfileJourney.LocalizedString
+    public var submitErrorTitle: UserProfileJourney.LocalizedString
+    public var submitErrorBody: UserProfileJourney.LocalizedString
+    public var submitErrorButton: UserProfileJourney.LocalizedString
+    public var successStrings: UserProfileJourney.SuccessConfirmation.Strings
+    public var deleteAlert: UserProfileJourney.CancellableAlertStrings
+    public var deleteLoading: UserProfileJourney.LocalizedString
+    public var deleteSuccessStrings: UserProfileJourney.SuccessConfirmation.Strings
+  }
+}
+public protocol EmailCreating {
+  var address: Swift.String { get }
+  var primary: Swift.Bool { get }
+  var type: Swift.String { get }
+}
+public protocol EmailRepresenting : UserProfileJourney.EmailCreating {
+  var id: Swift.String { get }
+}
+public struct ErrorAlertStrings {
+  public var title: UserProfileJourney.LocalizedString
+  public var body: UserProfileJourney.LocalizedString
+  public var dismissButton: UserProfileJourney.LocalizedString
+}
+public struct LocalizedString : Swift.ExpressibleByStringLiteral {
+  public init(value: Swift.String)
+  public init(stringLiteral value: Swift.String)
+  public init(key: Swift.String, in bundles: Foundation.Bundle?...)
+  public func callAsFunction() -> Swift.String
+  public var value: Swift.String {
+    get
+  }
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+public struct PersonalInformation {
+}
+public struct CancellableAlertStrings {
+  public var title: UserProfileJourney.LocalizedString
+  public var message: UserProfileJourney.LocalizedString
+  public var firstButtonTitle: UserProfileJourney.LocalizedString
+  public var secondButtonTitle: UserProfileJourney.LocalizedString
+}
+extension UserProfileJourney.PersonalInformation {
+  public struct Configuration {
+    public var design: UserProfileJourney.PersonalInformation.Design
+    public var strings: UserProfileJourney.PersonalInformation.Strings
+    public var router: UserProfileJourney.PersonalInformation.Router
+    public var phoneNumber: UserProfileJourney.PhoneNumber.Configuration
+    public var emailAddress: UserProfileJourney.EmailAddress.Configuration
+    public var postalAddress: UserProfileJourney.PostalAddress.Configuration
+    public var successConfirmation: UserProfileJourney.SuccessConfirmation.Configuration
+    public var emailTypeMapping: UserProfileJourney.PersonalInformationFieldMapping
+    public var addressTypeMapping: UserProfileJourney.PersonalInformationFieldMapping
+    public var phoneTypeMapping: UserProfileJourney.PersonalInformationFieldMapping
+    public var postalAddressFormatter: (UserProfileJourney.AddressRepresenting) -> Swift.String
+    public var errorImage: UIKit.UIImage?
+    public var emailAddressCountLimit: Swift.Int
+    public var emailAddressSectionIsHidden: Swift.Bool
+    public var isEmailAddressAddEnabled: Swift.Bool
+    public var isEmailAddressEditEnabled: Swift.Bool
+    public var phoneNumberCountLimit: Swift.Int
+    public var phoneNumberSectionIsHidden: Swift.Bool
+    public var isPhoneNumberAddEnabled: Swift.Bool
+    public var isPhoneNumberEditEnabled: Swift.Bool
+    public var postalAddressSectionIsHidden: Swift.Bool
+    public var isPostalAddressAddEnabled: Swift.Bool
+    public var isPostalAddressEditEnabled: Swift.Bool
+    public var postalAddressCountLimit: Swift.Int
+  }
+}
+extension UserProfileJourney.PersonalInformation {
+  public struct Design {
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var sectionView: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var sectionTitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var fieldTitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var fieldSubtitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var fieldAccessoryView: (_ imageView: UIKit.UIImageView) -> Swift.Void
+    public var sectionEmptyLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    @available(*, deprecated, message: "This property has been deprecated in version 1.1 because of an update to the design")
+    public var separator: (_ view: UIKit.UIView) -> Swift.Void
+    public var retrieveUserProfileErrorTitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var retrieveUserProfileErrorBodyLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var loading: (_ view: UIKit.UIActivityIndicatorView) -> Swift.Void
+    public var addInformationButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+extension UserProfileJourney.PersonalInformation {
+  public struct Router {
+    public var didTapAddPhone: ((_ navigationController: UIKit.UINavigationController) -> (@escaping () -> Swift.Void) -> Swift.Void)?
+    public var didTapEditPhone: ((_ navigationController: UIKit.UINavigationController) -> (UserProfileJourney.PhoneNumberRepresenting?, Swift.Bool?, @escaping () -> Swift.Void) -> Swift.Void)?
+    public var didTapAddEmail: ((_ navigationController: UIKit.UINavigationController) -> (@escaping () -> Swift.Void) -> Swift.Void)?
+    public var didTapEditEmail: ((_ navigationController: UIKit.UINavigationController) -> (UserProfileJourney.EmailRepresenting?, Swift.Bool?, @escaping () -> Swift.Void) -> Swift.Void)?
+    public var didTapAddPostalAddress: ((_ navigationController: UIKit.UINavigationController) -> (@escaping () -> Swift.Void) -> Swift.Void)?
+    public var didTapEditPostalAddress: ((_ navigationController: UIKit.UINavigationController) -> (UserProfileJourney.AddressRepresenting, Swift.Bool, @escaping () -> Swift.Void) -> Swift.Void)?
+  }
+}
+extension UserProfileJourney.PersonalInformation {
+  public struct Strings {
+    public init()
+    @available(*, deprecated, message: "This property is no longer being used as of version 1.1")
+    public var missingNamePageTitle: UserProfileJourney.LocalizedString
+    public var pageTitle: UserProfileJourney.LocalizedString
+    public var emailSubheadingWhenPrimary: UserProfileJourney.LocalizedString
+    public var emailSectionTitle: UserProfileJourney.LocalizedString
+    public var emailSectionEmptyPlaceholder: UserProfileJourney.LocalizedString
+    public var emailSectionAddButtonText: UserProfileJourney.LocalizedString
+    public var emailRowAccessibilityHint: UserProfileJourney.LocalizedString
+    public var postalAddressSectionTitle: UserProfileJourney.LocalizedString
+    public var postalAddressSectionEmptyPlaceholder: UserProfileJourney.LocalizedString
+    public var postalAddressSectionAddButtonText: UserProfileJourney.LocalizedString
+    public var postalAddressRowAccessibilityHint: UserProfileJourney.LocalizedString
+    public var postalAddressSubheadingWhenPrimary: UserProfileJourney.LocalizedString
+    public var phoneNumberSectionTitle: UserProfileJourney.LocalizedString
+    public var phoneNumberSectionEmptyPlaceholder: UserProfileJourney.LocalizedString
+    public var phoneNumberSectionAddButtonText: UserProfileJourney.LocalizedString
+    public var phoneNumberRowAccessibilityHint: UserProfileJourney.LocalizedString
+    public var phoneNumberSubheadingWhenPrimary: UserProfileJourney.LocalizedString
+    public var retrieveUserProfileErrorTitle: UserProfileJourney.LocalizedString
+    public var retrieveUserProfileErrorBody: UserProfileJourney.LocalizedString
+    public var addPhoneNumberLimitReachedAlert: UserProfileJourney.ErrorAlertStrings
+    public var addEmailAddressLimitReachedAlert: UserProfileJourney.ErrorAlertStrings
+    public var addPostalAddressLimitReachedAlert: UserProfileJourney.ErrorAlertStrings
+  }
+}
+public struct PhoneNumber {
+}
+extension UserProfileJourney.PhoneNumber {
+  public struct Configuration {
+    public var design: UserProfileJourney.PhoneNumber.Design
+    public var router: UserProfileJourney.PhoneNumber.Router
+    public var addStrings: UserProfileJourney.PhoneNumber.Strings
+    public var editStrings: UserProfileJourney.PhoneNumber.Strings
+    public var deleteBarButtonImage: UIKit.UIImage?
+  }
+}
+extension UserProfileJourney.PhoneNumber {
+  public struct Design {
+    public init()
+    public var phoneNumberLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var phoneNumberField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var typeLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var typeField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var primaryLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var primarySwitch: (_ view: BackbaseDesignSystem.Switch) -> Swift.Void
+    public var confirmButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var cancelButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var loadingIndicator: (_ view: UIKit.UIActivityIndicatorView) -> Swift.Void
+  }
+}
+public protocol PhoneNumberCreating {
+  var isPrimary: Swift.Bool { get }
+  var number: Swift.String { get }
+  var type: Swift.String { get }
+}
+public protocol PhoneNumberRepresenting : UserProfileJourney.PhoneNumberCreating {
+  var id: Swift.String { get }
+}
+extension UserProfileJourney.PhoneNumber {
+  public struct Router {
+    public var didTapCancel: (_ controller: UIKit.UIViewController) -> () -> Swift.Void
+    public var didFinishPhoneNumber: (_ controller: UIKit.UIViewController, _ finishHandler: @escaping () -> Swift.Void) -> (UserProfileJourney.SuccessConfirmation.Strings) -> Swift.Void
+  }
+}
+extension UserProfileJourney.PhoneNumber {
+  public struct Strings {
+    public init(isEditScreen: Swift.Bool = false)
+    public var title: UserProfileJourney.LocalizedString
+    public var phoneNumberLabel: UserProfileJourney.LocalizedString
+    public var phoneNumberTypeLabel: UserProfileJourney.LocalizedString
+    public var primarySwitchLabel: UserProfileJourney.LocalizedString
+    public var phoneNumberTypePlaceholder: UserProfileJourney.LocalizedString
+    public var confirm: UserProfileJourney.LocalizedString
+    public var cancel: UserProfileJourney.LocalizedString
+    public var loading: UserProfileJourney.LocalizedString
+    public var phoneNumberInlineValidationError: UserProfileJourney.LocalizedString
+    public var phoneNumberTypeInlineValidationError: UserProfileJourney.LocalizedString
+    public var submitErrorTitle: UserProfileJourney.LocalizedString
+    public var submitErrorBody: UserProfileJourney.LocalizedString
+    public var submitErrorButton: UserProfileJourney.LocalizedString
+    public var successStrings: UserProfileJourney.SuccessConfirmation.Strings
+    public var delete: UserProfileJourney.PhoneNumber.Strings.Delete?
+    public struct Delete {
+      public var alert: UserProfileJourney.PhoneNumber.Strings.Delete.Alert
+      public struct Alert {
+        public var title: UserProfileJourney.LocalizedString
+        public var body: UserProfileJourney.LocalizedString
+        public var cancel: UserProfileJourney.LocalizedString
+        public var delete: UserProfileJourney.LocalizedString
+      }
+      public var loading: UserProfileJourney.LocalizedString
+      public var successStrings: UserProfileJourney.SuccessConfirmation.Strings
+    }
+  }
+}
+public struct PostalAddress {
+}
+extension UserProfileJourney.PostalAddress {
+  public struct Configuration {
+    public var addStrings: UserProfileJourney.PostalAddress.Strings
+    public var editStrings: UserProfileJourney.PostalAddress.Strings
+    public var design: UserProfileJourney.PostalAddress.Design
+    public var router: UserProfileJourney.PostalAddress.Router
+    public var visibleFields: [UserProfileJourney.PostalAddress.Field]
+    public var requiredFields: Swift.Set<UserProfileJourney.PostalAddress.Field>
+    public var subDivisions: [Swift.String : Swift.String]
+    public var deleteBarButtonImage: UIKit.UIImage?
+  }
+  public enum Field {
+    case buildingNumber
+    case street
+    case addressLine
+    case city
+    case subDivision
+    case postcode
+    case department
+    case subDepartment
+    case country
+    case type
+    case primary
+    public static func == (a: UserProfileJourney.PostalAddress.Field, b: UserProfileJourney.PostalAddress.Field) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension UserProfileJourney.PostalAddress {
+  public struct Design {
+    public init()
+    public var buildingNumberLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var buildingNumberField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var streetLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var streetField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var addressLineLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var addressLineField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var cityLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var cityField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var subDivisionLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var subDivisionField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var postcodeLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var postcodeField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var departmentLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var departmentField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var subDepartmentLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var subDepartmentField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var countryLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var countryField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var typeLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var typeField: (_ view: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var primaryLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var primarySwitch: (_ view: BackbaseDesignSystem.Switch) -> Swift.Void
+    public var confirmButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var cancelButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+extension UserProfileJourney.PostalAddress {
+  public struct Router {
+    public var didFinishPostalAddress: (_ controller: UIKit.UIViewController, _ finishHandler: @escaping () -> Swift.Void) -> (UserProfileJourney.SuccessConfirmation.Strings) -> Swift.Void
+    public var didTapCancel: (_ controller: UIKit.UIViewController) -> () -> Swift.Void
+  }
+}
+extension UserProfileJourney.PostalAddress {
+  public struct Strings {
+    public var title: UserProfileJourney.LocalizedString
+    public var buildingNumberLabel: UserProfileJourney.LocalizedString
+    public var streetLabel: UserProfileJourney.LocalizedString
+    public var addressLineLabel: UserProfileJourney.LocalizedString
+    public var cityLabel: UserProfileJourney.LocalizedString
+    public var subDivisionLabel: UserProfileJourney.LocalizedString
+    public var postcodeLabel: UserProfileJourney.LocalizedString
+    public var departmentLabel: UserProfileJourney.LocalizedString
+    public var subDepartmentLabel: UserProfileJourney.LocalizedString
+    public var countryLabel: UserProfileJourney.LocalizedString
+    public var subDivisionPlaceholder: UserProfileJourney.LocalizedString
+    public var typeLabel: UserProfileJourney.LocalizedString
+    public var typePlaceholder: UserProfileJourney.LocalizedString
+    public var primarySwitchLabel: UserProfileJourney.LocalizedString
+    public var confirm: UserProfileJourney.LocalizedString
+    public var cancel: UserProfileJourney.LocalizedString
+    public var inlineValidationError: UserProfileJourney.LocalizedString
+    public var loading: UserProfileJourney.LocalizedString
+    public var successStrings: UserProfileJourney.SuccessConfirmation.Strings
+    public var submitErrorAlert: UserProfileJourney.ErrorAlertStrings
+    public var deleteAlert: UserProfileJourney.CancellableAlertStrings
+    public var deleteLoading: UserProfileJourney.LocalizedString
+    public var deleteSuccessStrings: UserProfileJourney.SuccessConfirmation.Strings
+  }
+}
+public struct SuccessConfirmation {
+}
+extension UserProfileJourney.SuccessConfirmation {
+  public struct Configuration {
+    public var design: UserProfileJourney.SuccessConfirmation.Design
+    public var router: UserProfileJourney.SuccessConfirmation.Router
+    public var successImage: UIKit.UIImage?
+  }
+}
+extension UserProfileJourney.SuccessConfirmation {
+  public struct Design {
+    public var successMessage: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var cancelButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var dismissButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+extension UserProfileJourney.SuccessConfirmation {
+  public struct Router {
+    public var didTapCancel: (_ controller: UIKit.UIViewController) -> () -> Swift.Void
+    public var didTapDismiss: (_ controller: UIKit.UIViewController) -> () -> Swift.Void
+  }
+}
+extension UserProfileJourney.SuccessConfirmation {
+  public struct Strings {
+    public var message: UserProfileJourney.LocalizedString
+    public var dismiss: UserProfileJourney.LocalizedString
+    public var cancel: UserProfileJourney.LocalizedString
+  }
+}
+public typealias PersonalInformationFieldMapping = [Swift.String : Swift.String]
+public struct UserProfile {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension UserProfileJourney.UserProfile {
+  public struct Configuration {
+    public init()
+    public var personalInformation: UserProfileJourney.PersonalInformation.Configuration
+  }
+}
+public protocol UserProfileUseCase {
+  typealias UserProfileHandler = (Swift.Result<UserProfileJourney.UserRepresenting, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void
+  typealias UpdateCompletedHandler = (Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void
+  func retrieveUserProfile(callback: Self.UserProfileHandler?)
+  func addPhoneAddress(phoneAddress: UserProfileJourney.PhoneNumberCreating, callback: Self.UpdateCompletedHandler?)
+  func updatePhoneAddress(phoneAddress: UserProfileJourney.PhoneNumberCreating, with id: Swift.String, callback: Self.UpdateCompletedHandler?)
+  func deletePhoneAddress(with id: Swift.String, callback: Self.UpdateCompletedHandler?)
+  func addEmailAddress(emailAddress: UserProfileJourney.EmailCreating, callback: Self.UpdateCompletedHandler?)
+  func updateEmailAddress(emailAddress: UserProfileJourney.EmailCreating, with id: Swift.String, callback: Self.UpdateCompletedHandler?)
+  func deleteEmailAddress(with id: Swift.String, callback: Self.UpdateCompletedHandler?)
+  func addPostalAddress(postalAddress: UserProfileJourney.AddressCreating, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  func updatePostalAddress(postalAddress: UserProfileJourney.AddressCreating, with id: Swift.String, callback: Self.UpdateCompletedHandler?)
+  func deletePostalAddress(with id: Swift.String, callback: Self.UpdateCompletedHandler?)
+}
+public enum UserProfileUseCaseError : Swift.Error, Swift.Equatable {
+  case networkError(Swift.Error)
+  case noUserAvailable
+  public static func == (lhs: UserProfileJourney.UserProfileUseCaseError, rhs: UserProfileJourney.UserProfileUseCaseError) -> Swift.Bool
+}
+@available(*, deprecated, message: "These methods are included for compatibility reasons, and will be removed in User Profile Journey 3.0")
+extension UserProfileJourney.UserProfileUseCase {
+  public func addPostalAddress(postalAddress: UserProfileJourney.AddressCreating, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  public func updatePostalAddress(postalAddress: UserProfileJourney.AddressCreating, with id: Swift.String, callback: Self.UpdateCompletedHandler?)
+  public func deletePostalAddress(with id: Swift.String, callback: Self.UpdateCompletedHandler?)
+}
+public protocol UserRepresenting {
+  var fullName: Swift.String { get }
+  var emailAddresses: [UserProfileJourney.EmailRepresenting] { get }
+  var postalAddresses: [UserProfileJourney.AddressRepresenting] { get }
+  var phoneNumbers: [UserProfileJourney.PhoneNumberRepresenting] { get }
+}
+extension UserProfileJourney.PostalAddress.Field : Swift.Equatable {}
+extension UserProfileJourney.PostalAddress.Field : Swift.Hashable {}

@@ -1,0 +1,4 @@
+framework module RetailLocaleSelectorJourneyPersistentUseCase {
+  header "RetailLocaleSelectorJourneyPersistentUseCase-Swift.h"
+  requires objc
+}

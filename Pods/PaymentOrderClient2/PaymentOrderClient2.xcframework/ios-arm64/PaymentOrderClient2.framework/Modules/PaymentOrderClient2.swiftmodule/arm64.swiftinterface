@@ -1,0 +1,1529 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PaymentOrderClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct AccountIdentification : Swift.Codable, Swift.Equatable {
+  public var identification: PaymentOrderClient2.Identification
+  public var name: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(identification: PaymentOrderClient2.Identification, name: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.AccountIdentification, rhs: PaymentOrderClient2.AccountIdentification) -> Swift.Bool
+}
+public struct ApprovalErrorStatus : Swift.Codable, Swift.Equatable {
+  public enum Code : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case ok
+    case error
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.ApprovalErrorStatus.Code]
+    public static var allCases: [PaymentOrderClient2.ApprovalErrorStatus.Code] {
+      get
+    }
+  }
+  public var code: PaymentOrderClient2.ApprovalErrorStatus.Code
+  public var message: Swift.String?
+  public var errors: [PaymentOrderClient2.ErrorItem]?
+  public init(code: PaymentOrderClient2.ApprovalErrorStatus.Code, message: Swift.String? = nil, errors: [PaymentOrderClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.ApprovalErrorStatus, rhs: PaymentOrderClient2.ApprovalErrorStatus) -> Swift.Bool
+}
+public enum ApprovalStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case pending
+  case approved
+  case rejected
+  case cancelled
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.ApprovalStatus]
+  public static var allCases: [PaymentOrderClient2.ApprovalStatus] {
+    get
+  }
+}
+public struct ApprovalTypeDto : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var name: Swift.String
+  public var description: Swift.String?
+  public var rank: Swift.Int
+  public init(id: Swift.String, name: Swift.String, description: Swift.String? = nil, rank: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.ApprovalTypeDto, rhs: PaymentOrderClient2.ApprovalTypeDto) -> Swift.Bool
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [PaymentOrderClient2.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [PaymentOrderClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BadRequestError, rhs: PaymentOrderClient2.BadRequestError) -> Swift.Bool
+}
+public struct Bank : Swift.Codable, Swift.Equatable {
+  public var bankBranchCode: Swift.String?
+  public var name: Swift.String?
+  public var postalAddress: PaymentOrderClient2.PostalAddress?
+  public var bic: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(bankBranchCode: Swift.String? = nil, name: Swift.String? = nil, postalAddress: PaymentOrderClient2.PostalAddress? = nil, bic: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.Bank, rhs: PaymentOrderClient2.Bank) -> Swift.Bool
+}
+public struct BasicIdentifiedPaymentOrder : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var approvalId: Swift.String?
+  public var status: PaymentOrderClient2.Status
+  public var bankStatus: Swift.String?
+  public var reasonCode: Swift.String?
+  public var reasonText: Swift.String?
+  public var errorDescription: Swift.String?
+  public var createdBy: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var updatedBy: Swift.String?
+  public var updatedAt: Foundation.Date?
+  public var actions: [PaymentOrderClient2.PaymentAction]?
+  public var permissibleActions: PaymentOrderClient2.PermissibleActions?
+  public var contextualInformation: PaymentOrderClient2.ContextualInformation?
+  public var intraLegalEntity: Swift.Bool?
+  public var originatorAccountCurrency: Swift.String?
+  public var confirmationId: Swift.String?
+  public var paymentSetupId: Swift.String?
+  public var paymentSubmissionId: Swift.String?
+  public var originator: PaymentOrderClient2.InvolvedParty?
+  public var originatorAccount: PaymentOrderClient2.OriginatorAccount?
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date?
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var entryClass: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction?
+  public var totalAmount: PaymentOrderClient2.Currency?
+  public var edited: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, approvalId: Swift.String? = nil, status: PaymentOrderClient2.Status, bankStatus: Swift.String? = nil, reasonCode: Swift.String? = nil, reasonText: Swift.String? = nil, errorDescription: Swift.String? = nil, createdBy: Swift.String? = nil, createdAt: Foundation.Date? = nil, updatedBy: Swift.String? = nil, updatedAt: Foundation.Date? = nil, actions: [PaymentOrderClient2.PaymentAction]? = nil, permissibleActions: PaymentOrderClient2.PermissibleActions? = nil, contextualInformation: PaymentOrderClient2.ContextualInformation? = nil, intraLegalEntity: Swift.Bool? = nil, originatorAccountCurrency: Swift.String? = nil, confirmationId: Swift.String? = nil, paymentSetupId: Swift.String? = nil, paymentSubmissionId: Swift.String? = nil, originator: PaymentOrderClient2.InvolvedParty? = nil, originatorAccount: PaymentOrderClient2.OriginatorAccount? = nil, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date? = nil, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, entryClass: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction? = nil, totalAmount: PaymentOrderClient2.Currency? = nil, edited: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BasicIdentifiedPaymentOrder, rhs: PaymentOrderClient2.BasicIdentifiedPaymentOrder) -> Swift.Bool
+}
+public struct BreachInfo : Swift.Codable, Swift.Equatable {
+  public enum BreachType : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case threshold
+    case consumption
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.BreachInfo.BreachType]
+    public static var allCases: [PaymentOrderClient2.BreachInfo.BreachType] {
+      get
+    }
+  }
+  public enum BreachedLimitType : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case periodic
+    case transactional
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.BreachInfo.BreachedLimitType]
+    public static var allCases: [PaymentOrderClient2.BreachInfo.BreachedLimitType] {
+      get
+    }
+  }
+  public var breachType: PaymentOrderClient2.BreachInfo.BreachType
+  public var breachedLimitType: PaymentOrderClient2.BreachInfo.BreachedLimitType?
+  public var timeframe: PaymentOrderClient2.TimeFrame?
+  public var currentConsumption: Swift.String
+  public var currentThreshold: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(breachType: PaymentOrderClient2.BreachInfo.BreachType, breachedLimitType: PaymentOrderClient2.BreachInfo.BreachedLimitType? = nil, timeframe: PaymentOrderClient2.TimeFrame? = nil, currentConsumption: Swift.String, currentThreshold: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BreachInfo, rhs: PaymentOrderClient2.BreachInfo) -> Swift.Bool
+}
+public struct BreachReportItem : Swift.Codable, Swift.Equatable {
+  public var limitedEntity: [PaymentOrderClient2.EntityDescription]?
+  public var shadow: Swift.Bool?
+  public var currency: Swift.String?
+  public var userBBID: Swift.String?
+  public var breachInfo: [PaymentOrderClient2.BreachInfo]
+  public var additions: [Swift.String : Swift.String]?
+  public init(limitedEntity: [PaymentOrderClient2.EntityDescription]? = nil, shadow: Swift.Bool? = nil, currency: Swift.String? = nil, userBBID: Swift.String? = nil, breachInfo: [PaymentOrderClient2.BreachInfo], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BreachReportItem, rhs: PaymentOrderClient2.BreachReportItem) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case limitedEntity
+    case shadow
+    case currency
+    case userBBID
+    case breachInfo
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [PaymentOrderClient2.BreachReportItem.CodingKeys]
+    public static var allCases: [PaymentOrderClient2.BreachReportItem.CodingKeys] {
+      get
+    }
+  }
+}
+public struct BulkApprovalProgressStatusGetResponse : Swift.Codable, Swift.Equatable {
+  public var progressStatus: Swift.String?
+  public var reasonCode: Swift.String?
+  public init(progressStatus: Swift.String? = nil, reasonCode: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BulkApprovalProgressStatusGetResponse, rhs: PaymentOrderClient2.BulkApprovalProgressStatusGetResponse) -> Swift.Bool
+}
+public struct BulkApprovedPaymentOrder : Swift.Codable, Swift.Equatable {
+  public var paymentOrderId: Swift.String
+  public var paymentOrder: PaymentOrderClient2.IdentifiedPaymentOrder?
+  public var approvalStatus: Swift.String?
+  public var status: PaymentOrderClient2.ApprovalErrorStatus
+  public var breachReport: [PaymentOrderClient2.BreachReportItem]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(paymentOrderId: Swift.String, paymentOrder: PaymentOrderClient2.IdentifiedPaymentOrder? = nil, approvalStatus: Swift.String? = nil, status: PaymentOrderClient2.ApprovalErrorStatus, breachReport: [PaymentOrderClient2.BreachReportItem]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BulkApprovedPaymentOrder, rhs: PaymentOrderClient2.BulkApprovedPaymentOrder) -> Swift.Bool
+}
+public struct BulkPaymentOrdersApprovalGetProgressResponse : Swift.Codable, Swift.Equatable {
+  public var progressStatus: Swift.String?
+  public var reasonCode: Swift.String?
+  public init(progressStatus: Swift.String? = nil, reasonCode: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BulkPaymentOrdersApprovalGetProgressResponse, rhs: PaymentOrderClient2.BulkPaymentOrdersApprovalGetProgressResponse) -> Swift.Bool
+}
+public struct BulkPaymentOrdersApprovalGetResponse : Swift.Codable, Swift.Equatable {
+  public var bulkStatus: Swift.String
+  public var bulkStatusCode: Swift.String?
+  public var approvalStatus: PaymentOrderClient2.ApprovalStatus
+  public var comment: Swift.String?
+  public var paymentOrders: [PaymentOrderClient2.BulkApprovedPaymentOrder]
+  public var successCount: Swift.Int
+  public var failCount: Swift.Int
+  public var unprocessedCount: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(bulkStatus: Swift.String, bulkStatusCode: Swift.String? = nil, approvalStatus: PaymentOrderClient2.ApprovalStatus, comment: Swift.String? = nil, paymentOrders: [PaymentOrderClient2.BulkApprovedPaymentOrder], successCount: Swift.Int, failCount: Swift.Int, unprocessedCount: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BulkPaymentOrdersApprovalGetResponse, rhs: PaymentOrderClient2.BulkPaymentOrdersApprovalGetResponse) -> Swift.Bool
+}
+public struct BulkPaymentOrdersApprovalPutRequest : Swift.Codable, Swift.Equatable {
+  public var approvalStatus: PaymentOrderClient2.RecordStatus
+  public var paymentOrderIds: [Swift.String]
+  public var comment: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(approvalStatus: PaymentOrderClient2.RecordStatus, paymentOrderIds: [Swift.String], comment: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BulkPaymentOrdersApprovalPutRequest, rhs: PaymentOrderClient2.BulkPaymentOrdersApprovalPutRequest) -> Swift.Bool
+}
+public struct BulkPaymentOrdersApprovalPutResponse : Swift.Codable, Swift.Equatable {
+  public var approvalStatus: PaymentOrderClient2.ApprovalStatus
+  public var comment: Swift.String?
+  public var paymentOrders: [PaymentOrderClient2.BulkApprovedPaymentOrder]
+  public var successCount: Swift.Int
+  public var failCount: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(approvalStatus: PaymentOrderClient2.ApprovalStatus, comment: Swift.String? = nil, paymentOrders: [PaymentOrderClient2.BulkApprovedPaymentOrder], successCount: Swift.Int, failCount: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.BulkPaymentOrdersApprovalPutResponse, rhs: PaymentOrderClient2.BulkPaymentOrdersApprovalPutResponse) -> Swift.Bool
+}
+public enum ChargeBearer : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case our
+  case ben
+  case sha
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.ChargeBearer]
+  public static var allCases: [PaymentOrderClient2.ChargeBearer] {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct ContextualInformation : Swift.Codable, Swift.Equatable {
+  public var externalUserId: Swift.String
+  public var internalUserId: Swift.String?
+  public var serviceAgreementId: Swift.String
+  public var legalEntityId: Swift.String?
+  public var origin: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(externalUserId: Swift.String, internalUserId: Swift.String? = nil, serviceAgreementId: Swift.String, legalEntityId: Swift.String? = nil, origin: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.ContextualInformation, rhs: PaymentOrderClient2.ContextualInformation) -> Swift.Bool
+}
+public struct CounterpartyAccount : Swift.Codable, Swift.Equatable {
+  public var accountType: Swift.String?
+  public var arrangementId: Swift.String?
+  public var externalArrangementId: Swift.String?
+  public var identification: PaymentOrderClient2.Identification
+  public var name: Swift.String?
+  public var selectedContact: PaymentOrderClient2.SelectedContactDto?
+  public var additions: [Swift.String : Swift.String]?
+  public init(accountType: Swift.String? = nil, arrangementId: Swift.String? = nil, externalArrangementId: Swift.String? = nil, identification: PaymentOrderClient2.Identification, name: Swift.String? = nil, selectedContact: PaymentOrderClient2.SelectedContactDto? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.CounterpartyAccount, rhs: PaymentOrderClient2.CounterpartyAccount) -> Swift.Bool
+}
+public struct CurrenciesGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var code: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(code: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.CurrenciesGetResponseBody, rhs: PaymentOrderClient2.CurrenciesGetResponseBody) -> Swift.Bool
+}
+public struct Currency : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.Currency, rhs: PaymentOrderClient2.Currency) -> Swift.Bool
+}
+public struct EditPaymentOrder : Swift.Codable, Swift.Equatable {
+  public var approvalDetails: PaymentOrderClient2.PresentationApprovalDetailDto?
+  public var breachReports: [PaymentOrderClient2.BreachReportItem]?
+  public var id: Swift.String
+  public var approvalId: Swift.String?
+  public var status: PaymentOrderClient2.Status
+  public var bankStatus: Swift.String?
+  public var reasonCode: Swift.String?
+  public var reasonText: Swift.String?
+  public var errorDescription: Swift.String?
+  public var createdBy: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var updatedBy: Swift.String?
+  public var updatedAt: Foundation.Date?
+  public var actions: [PaymentOrderClient2.PaymentAction]?
+  public var permissibleActions: PaymentOrderClient2.PermissibleActions?
+  public var contextualInformation: PaymentOrderClient2.ContextualInformation?
+  public var intraLegalEntity: Swift.Bool?
+  public var originatorAccountCurrency: Swift.String?
+  public var confirmationId: Swift.String?
+  public var paymentSetupId: Swift.String?
+  public var paymentSubmissionId: Swift.String?
+  public var originator: PaymentOrderClient2.InvolvedParty?
+  public var originatorAccount: PaymentOrderClient2.OriginatorAccount?
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date?
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var entryClass: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction?
+  public var totalAmount: PaymentOrderClient2.Currency?
+  public var edited: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public var version: Swift.Int
+  public init(approvalDetails: PaymentOrderClient2.PresentationApprovalDetailDto? = nil, breachReports: [PaymentOrderClient2.BreachReportItem]? = nil, id: Swift.String, approvalId: Swift.String? = nil, status: PaymentOrderClient2.Status, bankStatus: Swift.String? = nil, reasonCode: Swift.String? = nil, reasonText: Swift.String? = nil, errorDescription: Swift.String? = nil, createdBy: Swift.String? = nil, createdAt: Foundation.Date? = nil, updatedBy: Swift.String? = nil, updatedAt: Foundation.Date? = nil, actions: [PaymentOrderClient2.PaymentAction]? = nil, permissibleActions: PaymentOrderClient2.PermissibleActions? = nil, contextualInformation: PaymentOrderClient2.ContextualInformation? = nil, intraLegalEntity: Swift.Bool? = nil, originatorAccountCurrency: Swift.String? = nil, confirmationId: Swift.String? = nil, paymentSetupId: Swift.String? = nil, paymentSubmissionId: Swift.String? = nil, originator: PaymentOrderClient2.InvolvedParty? = nil, originatorAccount: PaymentOrderClient2.OriginatorAccount? = nil, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date? = nil, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, entryClass: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction? = nil, totalAmount: PaymentOrderClient2.Currency? = nil, edited: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil, version: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.EditPaymentOrder, rhs: PaymentOrderClient2.EditPaymentOrder) -> Swift.Bool
+}
+public struct EntityDescription : Swift.Codable, Swift.Equatable {
+  public var ref: Swift.String
+  public var type: Swift.String
+  public var description: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(ref: Swift.String, type: Swift.String, description: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.EntityDescription, rhs: PaymentOrderClient2.EntityDescription) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: Any?
+  public var additions: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: Any? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.ErrorItem, rhs: PaymentOrderClient2.ErrorItem) -> Swift.Bool
+}
+public struct ExchangeRateInformation : Swift.Codable, Swift.Equatable {
+  public enum RateType : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case actual
+    case indicative
+    case agreed
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.ExchangeRateInformation.RateType]
+    public static var allCases: [PaymentOrderClient2.ExchangeRateInformation.RateType] {
+      get
+    }
+  }
+  public var currencyCode: Swift.String?
+  public var rate: Swift.String?
+  public var rateType: PaymentOrderClient2.ExchangeRateInformation.RateType?
+  public var contractIdentification: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(currencyCode: Swift.String? = nil, rate: Swift.String? = nil, rateType: PaymentOrderClient2.ExchangeRateInformation.RateType? = nil, contractIdentification: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.ExchangeRateInformation, rhs: PaymentOrderClient2.ExchangeRateInformation) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [PaymentOrderClient2.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [PaymentOrderClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.ForbiddenError, rhs: PaymentOrderClient2.ForbiddenError) -> Swift.Bool
+}
+public struct Identification : Swift.Codable, Swift.Equatable {
+  public var identification: Swift.String
+  public var schemeName: PaymentOrderClient2.SchemeNames
+  public var additions: [Swift.String : Swift.String]?
+  public init(identification: Swift.String, schemeName: PaymentOrderClient2.SchemeNames, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.Identification, rhs: PaymentOrderClient2.Identification) -> Swift.Bool
+}
+public struct IdentifiedPaymentOrder : Swift.Codable, Swift.Equatable {
+  public var version: Swift.Int
+  public var id: Swift.String
+  public var approvalId: Swift.String?
+  public var status: PaymentOrderClient2.Status
+  public var bankStatus: Swift.String?
+  public var reasonCode: Swift.String?
+  public var reasonText: Swift.String?
+  public var errorDescription: Swift.String?
+  public var createdBy: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var updatedBy: Swift.String?
+  public var updatedAt: Foundation.Date?
+  public var actions: [PaymentOrderClient2.PaymentAction]?
+  public var permissibleActions: PaymentOrderClient2.PermissibleActions?
+  public var contextualInformation: PaymentOrderClient2.ContextualInformation?
+  public var intraLegalEntity: Swift.Bool?
+  public var originatorAccountCurrency: Swift.String?
+  public var confirmationId: Swift.String?
+  public var paymentSetupId: Swift.String?
+  public var paymentSubmissionId: Swift.String?
+  public var originator: PaymentOrderClient2.InvolvedParty?
+  public var originatorAccount: PaymentOrderClient2.OriginatorAccount?
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date?
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var entryClass: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction?
+  public var totalAmount: PaymentOrderClient2.Currency?
+  public var edited: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(version: Swift.Int, id: Swift.String, approvalId: Swift.String? = nil, status: PaymentOrderClient2.Status, bankStatus: Swift.String? = nil, reasonCode: Swift.String? = nil, reasonText: Swift.String? = nil, errorDescription: Swift.String? = nil, createdBy: Swift.String? = nil, createdAt: Foundation.Date? = nil, updatedBy: Swift.String? = nil, updatedAt: Foundation.Date? = nil, actions: [PaymentOrderClient2.PaymentAction]? = nil, permissibleActions: PaymentOrderClient2.PermissibleActions? = nil, contextualInformation: PaymentOrderClient2.ContextualInformation? = nil, intraLegalEntity: Swift.Bool? = nil, originatorAccountCurrency: Swift.String? = nil, confirmationId: Swift.String? = nil, paymentSetupId: Swift.String? = nil, paymentSubmissionId: Swift.String? = nil, originator: PaymentOrderClient2.InvolvedParty? = nil, originatorAccount: PaymentOrderClient2.OriginatorAccount? = nil, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date? = nil, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, entryClass: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction? = nil, totalAmount: PaymentOrderClient2.Currency? = nil, edited: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.IdentifiedPaymentOrder, rhs: PaymentOrderClient2.IdentifiedPaymentOrder) -> Swift.Bool
+}
+public struct IdentifiedTransaction : Swift.Codable, Swift.Equatable {
+  public var counterparty: PaymentOrderClient2.InvolvedParty
+  public var counterpartyAccount: PaymentOrderClient2.CounterpartyAccount
+  public var counterpartyBank: PaymentOrderClient2.Bank?
+  public var instructedAmount: PaymentOrderClient2.Currency
+  public var correspondentBank: PaymentOrderClient2.Bank?
+  public var intermediaryBank: PaymentOrderClient2.Bank?
+  public var messageToBank: Swift.String?
+  public var targetCurrency: Swift.String?
+  public var remittanceInformation: PaymentOrderClient2.RemittanceInformation?
+  public var endToEndIdentification: Swift.String?
+  public var mandateIdentifier: Swift.String?
+  public var chargeBearer: PaymentOrderClient2.ChargeBearer?
+  public var transferFee: PaymentOrderClient2.Currency?
+  public var exchangeRateInformation: PaymentOrderClient2.ExchangeRateInformation?
+  public var purposeOfPayment: PaymentOrderClient2.PurposeOfPaymentInfo?
+  public var additions: [Swift.String : Swift.String]?
+  public init(counterparty: PaymentOrderClient2.InvolvedParty, counterpartyAccount: PaymentOrderClient2.CounterpartyAccount, counterpartyBank: PaymentOrderClient2.Bank? = nil, instructedAmount: PaymentOrderClient2.Currency, correspondentBank: PaymentOrderClient2.Bank? = nil, intermediaryBank: PaymentOrderClient2.Bank? = nil, messageToBank: Swift.String? = nil, targetCurrency: Swift.String? = nil, remittanceInformation: PaymentOrderClient2.RemittanceInformation? = nil, endToEndIdentification: Swift.String? = nil, mandateIdentifier: Swift.String? = nil, chargeBearer: PaymentOrderClient2.ChargeBearer? = nil, transferFee: PaymentOrderClient2.Currency? = nil, exchangeRateInformation: PaymentOrderClient2.ExchangeRateInformation? = nil, purposeOfPayment: PaymentOrderClient2.PurposeOfPaymentInfo? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.IdentifiedTransaction, rhs: PaymentOrderClient2.IdentifiedTransaction) -> Swift.Bool
+}
+public struct InitiateCounterpartyAccount : Swift.Codable, Swift.Equatable {
+  public var arrangementId: Swift.String?
+  public var accountType: Swift.String?
+  public var selectedContact: PaymentOrderClient2.SelectedContactDto?
+  public var identification: PaymentOrderClient2.Identification
+  public var name: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(arrangementId: Swift.String? = nil, accountType: Swift.String? = nil, selectedContact: PaymentOrderClient2.SelectedContactDto? = nil, identification: PaymentOrderClient2.Identification, name: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.InitiateCounterpartyAccount, rhs: PaymentOrderClient2.InitiateCounterpartyAccount) -> Swift.Bool
+}
+public struct InitiatePaymentOrder : Swift.Codable, Swift.Equatable {
+  public var originatorAccount: PaymentOrderClient2.AccountIdentification
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var entryClass: Swift.String?
+  public var transferTransactionInformation: PaymentOrderClient2.InitiateTransaction
+  public var approved: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(originatorAccount: PaymentOrderClient2.AccountIdentification, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, entryClass: Swift.String? = nil, transferTransactionInformation: PaymentOrderClient2.InitiateTransaction, approved: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.InitiatePaymentOrder, rhs: PaymentOrderClient2.InitiatePaymentOrder) -> Swift.Bool
+}
+public struct InitiatePaymentOrderWithId : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var originatorAccount: PaymentOrderClient2.AccountIdentification
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var entryClass: Swift.String?
+  public var transferTransactionInformation: PaymentOrderClient2.InitiateTransaction
+  public var approved: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, originatorAccount: PaymentOrderClient2.AccountIdentification, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, entryClass: Swift.String? = nil, transferTransactionInformation: PaymentOrderClient2.InitiateTransaction, approved: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.InitiatePaymentOrderWithId, rhs: PaymentOrderClient2.InitiatePaymentOrderWithId) -> Swift.Bool
+}
+public struct InitiateTransaction : Swift.Codable, Swift.Equatable {
+  public var counterparty: PaymentOrderClient2.InvolvedParty
+  public var counterpartyAccount: PaymentOrderClient2.InitiateCounterpartyAccount
+  public var counterpartyBank: PaymentOrderClient2.Bank?
+  public var instructedAmount: PaymentOrderClient2.Currency
+  public var correspondentBank: PaymentOrderClient2.Bank?
+  public var intermediaryBank: PaymentOrderClient2.Bank?
+  public var messageToBank: Swift.String?
+  public var targetCurrency: Swift.String?
+  public var remittanceInformation: Swift.String?
+  public var endToEndIdentification: Swift.String?
+  public var mandateIdentifier: Swift.String?
+  public var chargeBearer: PaymentOrderClient2.ChargeBearer?
+  public var transferFee: PaymentOrderClient2.Currency?
+  public var purposeOfPayment: PaymentOrderClient2.PurposeOfPayment?
+  public var additions: [Swift.String : Swift.String]?
+  public init(counterparty: PaymentOrderClient2.InvolvedParty, counterpartyAccount: PaymentOrderClient2.InitiateCounterpartyAccount, counterpartyBank: PaymentOrderClient2.Bank? = nil, instructedAmount: PaymentOrderClient2.Currency, correspondentBank: PaymentOrderClient2.Bank? = nil, intermediaryBank: PaymentOrderClient2.Bank? = nil, messageToBank: Swift.String? = nil, targetCurrency: Swift.String? = nil, remittanceInformation: Swift.String? = nil, endToEndIdentification: Swift.String? = nil, mandateIdentifier: Swift.String? = nil, chargeBearer: PaymentOrderClient2.ChargeBearer? = nil, transferFee: PaymentOrderClient2.Currency? = nil, purposeOfPayment: PaymentOrderClient2.PurposeOfPayment? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.InitiateTransaction, rhs: PaymentOrderClient2.InitiateTransaction) -> Swift.Bool
+}
+public enum InstructionPriority : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case norm
+  case high
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.InstructionPriority]
+  public static var allCases: [PaymentOrderClient2.InstructionPriority] {
+    get
+  }
+}
+public struct InvolvedParty : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var role: PaymentOrderClient2.InvolvedPartyRole?
+  public var postalAddress: PaymentOrderClient2.PostalAddress?
+  public var recipientId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String, role: PaymentOrderClient2.InvolvedPartyRole? = nil, postalAddress: PaymentOrderClient2.PostalAddress? = nil, recipientId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.InvolvedParty, rhs: PaymentOrderClient2.InvolvedParty) -> Swift.Bool
+}
+public enum InvolvedPartyRole : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case creditor
+  case debtor
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.InvolvedPartyRole]
+  public static var allCases: [PaymentOrderClient2.InvolvedPartyRole] {
+    get
+  }
+}
+public enum LogicalOperator : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case or
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.LogicalOperator]
+  public static var allCases: [PaymentOrderClient2.LogicalOperator] {
+    get
+  }
+}
+public struct LogicalPolicyDetailsDto : Swift.Codable, Swift.Equatable {
+  public var rank: Swift.Int?
+  public var _operator: PaymentOrderClient2.LogicalOperator?
+  public var items: [PaymentOrderClient2.PolicyItemDetailsDto]?
+  public init(rank: Swift.Int? = nil, _operator: PaymentOrderClient2.LogicalOperator? = nil, items: [PaymentOrderClient2.PolicyItemDetailsDto]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.LogicalPolicyDetailsDto, rhs: PaymentOrderClient2.LogicalPolicyDetailsDto) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case rank
+    case _operator
+    case items
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [PaymentOrderClient2.LogicalPolicyDetailsDto.CodingKeys]
+    public static var allCases: [PaymentOrderClient2.LogicalPolicyDetailsDto.CodingKeys] {
+      get
+    }
+  }
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [PaymentOrderClient2.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [PaymentOrderClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.NotFoundError, rhs: PaymentOrderClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct OriginatorAccount : Swift.Codable, Swift.Equatable {
+  public var arrangementId: Swift.String
+  public var externalArrangementId: Swift.String?
+  public var identification: PaymentOrderClient2.Identification
+  public var name: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(arrangementId: Swift.String, externalArrangementId: Swift.String? = nil, identification: PaymentOrderClient2.Identification, name: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.OriginatorAccount, rhs: PaymentOrderClient2.OriginatorAccount) -> Swift.Bool
+}
+public enum PaymentAction : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case approve
+  case finalApprove
+  case reject
+  case cancel
+  case delete
+  case edit
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.PaymentAction]
+  public static var allCases: [PaymentOrderClient2.PaymentAction] {
+    get
+  }
+}
+public struct PaymentForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [PaymentOrderClient2.ErrorItem]?
+  public var payment: PaymentOrderClient2.IdentifiedPaymentOrder?
+  public var checkTime: Foundation.Date?
+  public var breachReport: [PaymentOrderClient2.BreachReportItem]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(message: Swift.String, key: Swift.String, errors: [PaymentOrderClient2.ErrorItem]? = nil, payment: PaymentOrderClient2.IdentifiedPaymentOrder? = nil, checkTime: Foundation.Date? = nil, breachReport: [PaymentOrderClient2.BreachReportItem]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentForbiddenError, rhs: PaymentOrderClient2.PaymentForbiddenError) -> Swift.Bool
+}
+public enum PaymentMode : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case single
+  case recurring
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.PaymentMode]
+  public static var allCases: [PaymentOrderClient2.PaymentMode] {
+    get
+  }
+}
+public struct PaymentOrderApprovalPutRequest : Swift.Codable, Swift.Equatable {
+  public var approvalStatus: PaymentOrderClient2.RecordStatus
+  public var comment: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(approvalStatus: PaymentOrderClient2.RecordStatus, comment: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderApprovalPutRequest, rhs: PaymentOrderClient2.PaymentOrderApprovalPutRequest) -> Swift.Bool
+}
+public struct PaymentOrderApprovalRequest : Swift.Codable, Swift.Equatable {
+  public var approvalStatus: PaymentOrderClient2.RecordStatus
+  public var comment: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(approvalStatus: PaymentOrderClient2.RecordStatus, comment: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderApprovalRequest, rhs: PaymentOrderClient2.PaymentOrderApprovalRequest) -> Swift.Bool
+}
+public struct PaymentOrderCancelPostRequest : Swift.Codable, Swift.Equatable {
+  public var version: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(version: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderCancelPostRequest, rhs: PaymentOrderClient2.PaymentOrderCancelPostRequest) -> Swift.Bool
+}
+public struct PaymentOrderCancelPostResponse : Swift.Codable, Swift.Equatable {
+  public var accepted: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(accepted: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderCancelPostResponse, rhs: PaymentOrderClient2.PaymentOrderCancelPostResponse) -> Swift.Bool
+}
+public struct PaymentOrderCancelRequest : Swift.Codable, Swift.Equatable {
+  public var version: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(version: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderCancelRequest, rhs: PaymentOrderClient2.PaymentOrderCancelRequest) -> Swift.Bool
+}
+public struct PaymentOrderCancelResponse : Swift.Codable, Swift.Equatable {
+  public var accepted: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(accepted: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderCancelResponse, rhs: PaymentOrderClient2.PaymentOrderCancelResponse) -> Swift.Bool
+}
+public struct PaymentOrderGetResponse : Swift.Codable, Swift.Equatable {
+  public var approvalDetails: PaymentOrderClient2.PresentationApprovalDetailDto?
+  public var id: Swift.String
+  public var approvalId: Swift.String?
+  public var status: PaymentOrderClient2.Status
+  public var bankStatus: Swift.String?
+  public var reasonCode: Swift.String?
+  public var reasonText: Swift.String?
+  public var errorDescription: Swift.String?
+  public var createdBy: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var updatedBy: Swift.String?
+  public var updatedAt: Foundation.Date?
+  public var actions: [PaymentOrderClient2.PaymentAction]?
+  public var permissibleActions: PaymentOrderClient2.PermissibleActions?
+  public var version: Swift.Int
+  public var contextualInformation: PaymentOrderClient2.ContextualInformation?
+  public var intraLegalEntity: Swift.Bool?
+  public var originatorAccountCurrency: Swift.String?
+  public var confirmationId: Swift.String?
+  public var paymentSetupId: Swift.String?
+  public var paymentSubmissionId: Swift.String?
+  public var originator: PaymentOrderClient2.InvolvedParty?
+  public var originatorAccount: PaymentOrderClient2.OriginatorAccount?
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date?
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var entryClass: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction?
+  public var totalAmount: PaymentOrderClient2.Currency?
+  public var editingPaymentOrderId: Swift.String?
+  public var edited: Swift.Bool?
+  public var editedPaymentOrder: PaymentOrderClient2.EditPaymentOrder?
+  public var breachReports: [PaymentOrderClient2.BreachReportItem]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(approvalDetails: PaymentOrderClient2.PresentationApprovalDetailDto? = nil, id: Swift.String, approvalId: Swift.String? = nil, status: PaymentOrderClient2.Status, bankStatus: Swift.String? = nil, reasonCode: Swift.String? = nil, reasonText: Swift.String? = nil, errorDescription: Swift.String? = nil, createdBy: Swift.String? = nil, createdAt: Foundation.Date? = nil, updatedBy: Swift.String? = nil, updatedAt: Foundation.Date? = nil, actions: [PaymentOrderClient2.PaymentAction]? = nil, permissibleActions: PaymentOrderClient2.PermissibleActions? = nil, version: Swift.Int, contextualInformation: PaymentOrderClient2.ContextualInformation? = nil, intraLegalEntity: Swift.Bool? = nil, originatorAccountCurrency: Swift.String? = nil, confirmationId: Swift.String? = nil, paymentSetupId: Swift.String? = nil, paymentSubmissionId: Swift.String? = nil, originator: PaymentOrderClient2.InvolvedParty? = nil, originatorAccount: PaymentOrderClient2.OriginatorAccount? = nil, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date? = nil, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, entryClass: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction? = nil, totalAmount: PaymentOrderClient2.Currency? = nil, editingPaymentOrderId: Swift.String? = nil, edited: Swift.Bool? = nil, editedPaymentOrder: PaymentOrderClient2.EditPaymentOrder? = nil, breachReports: [PaymentOrderClient2.BreachReportItem]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderGetResponse, rhs: PaymentOrderClient2.PaymentOrderGetResponse) -> Swift.Bool
+}
+public struct PaymentOrderProgressStatusGet : Swift.Codable, Swift.Equatable {
+  public enum ProgressStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case confirmationPending
+    case userDeclined
+    case systemDeclined
+    case pendingApproval
+    case sending
+    case accepted
+    case rejected
+    case processed
+    case noProgress
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.PaymentOrderProgressStatusGet.ProgressStatus]
+    public static var allCases: [PaymentOrderClient2.PaymentOrderProgressStatusGet.ProgressStatus] {
+      get
+    }
+  }
+  public var progressStatus: PaymentOrderClient2.PaymentOrderProgressStatusGet.ProgressStatus?
+  public var reasonCode: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(progressStatus: PaymentOrderClient2.PaymentOrderProgressStatusGet.ProgressStatus? = nil, reasonCode: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderProgressStatusGet, rhs: PaymentOrderClient2.PaymentOrderProgressStatusGet) -> Swift.Bool
+}
+public struct PaymentOrderPut : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var originatorAccount: PaymentOrderClient2.AccountIdentification
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var entryClass: Swift.String?
+  public var transferTransactionInformation: PaymentOrderClient2.InitiateTransaction
+  public var approved: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, originatorAccount: PaymentOrderClient2.AccountIdentification, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, entryClass: Swift.String? = nil, transferTransactionInformation: PaymentOrderClient2.InitiateTransaction, approved: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrderPut, rhs: PaymentOrderClient2.PaymentOrderPut) -> Swift.Bool
+}
+public protocol PaymentOrdersAPIProtocol {
+  func deletePaymentOrderByIdCall(paymentOrderId: Swift.String, version: Swift.Int) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getApprovablePaymentOrdersCall(cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[PaymentOrderClient2.IdentifiedPaymentOrder]>
+  func getBulkApprovalByIdCall(bulkId: Swift.Int64) throws -> ClientCommon.Call<PaymentOrderClient2.BulkPaymentOrdersApprovalGetResponse>
+  func getCurrenciesCall() throws -> ClientCommon.Call<[PaymentOrderClient2.CurrenciesGetResponseBody]>
+  func getPaymentOrderByIdCall(paymentOrderId: Swift.String, userId: Swift.String?, saId: Swift.String?) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrderGetResponse>
+  func getPaymentOrderExportCall(paymentOrderId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  func getPaymentOrdersCall(status: [Swift.String]?, paymentTypeGroup: Swift.String?, createdByMe: Swift.Bool?, userId: Swift.String?, saId: Swift.String?, originatorArrangementId: Swift.String?, query: Swift.String?, amountFrom: Swift.Double?, amountTo: Swift.Double?, executionDate: Foundation.Date?, executionDateFrom: Foundation.Date?, executionDateTo: Foundation.Date?, nextExecutionDate: Foundation.Date?, nextExecutionDateFrom: Foundation.Date?, nextExecutionDateTo: Foundation.Date?, paymentMode: PaymentOrderClient2.PaymentOrdersAPI.PaymentMode_getPaymentOrders?, paymentSetupId: Swift.String?, transferFrequency: PaymentOrderClient2.PaymentOrdersAPI.TransferFrequency_getPaymentOrders?, from: Swift.Int?, size: Swift.Int?, orderBy: Swift.String?, direction: PaymentOrderClient2.PaymentOrdersAPI.Direction_getPaymentOrders?) throws -> ClientCommon.Call<[PaymentOrderClient2.IdentifiedPaymentOrder]>
+  func getProgressStatusByBulkIdCall(bulkId: Swift.Int64) throws -> ClientCommon.Call<PaymentOrderClient2.BulkApprovalProgressStatusGetResponse>
+  func getProgressStatusByPaymentOrderIdCall(paymentOrderId: Swift.String) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrderProgressStatusGet>
+  func getRateCall(currencyFrom: Swift.String, currencyTo: Swift.String) throws -> ClientCommon.Call<PaymentOrderClient2.RateGet>
+  func postCancelByPaymentOrderIdCall(paymentOrderId: Swift.String, paymentOrderCancelPostRequest: PaymentOrderClient2.PaymentOrderCancelPostRequest) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrderCancelPostResponse>
+  func postPaymentOrdersCall(paymentOrdersPost: PaymentOrderClient2.PaymentOrdersPost, X_MFA: Swift.String?) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrdersPostResponse>
+  func postValidateCall(paymentOrdersValidatePost: PaymentOrderClient2.PaymentOrdersValidatePost) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrdersValidatePostResponse>
+  func putApprovalsByPaymentOrderIdCall(paymentOrderId: Swift.String, paymentOrderApprovalPutRequest: PaymentOrderClient2.PaymentOrderApprovalPutRequest) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrdersPostResponse>
+  func putBulkApprovalsCall(bulkPaymentOrdersApprovalPutRequest: PaymentOrderClient2.BulkPaymentOrdersApprovalPutRequest) throws -> ClientCommon.Call<PaymentOrderClient2.BulkPaymentOrdersApprovalPutResponse>
+  func putPaymentOrderByIdCall(paymentOrderId: Swift.String, paymentOrderPut: PaymentOrderClient2.PaymentOrderPut, X_MFA: Swift.String?) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrdersPostResponse>
+}
+@objc @_inheritsConvenienceInitializers public class PaymentOrdersAPI : ObjectiveC.NSObject, DBSClient, PaymentOrderClient2.PaymentOrdersAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deletePaymentOrderByIdCall(paymentOrderId: Swift.String, version: Swift.Int) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getApprovablePaymentOrdersCall(cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[PaymentOrderClient2.IdentifiedPaymentOrder]>
+  open func getBulkApprovalByIdCall(bulkId: Swift.Int64) throws -> ClientCommon.Call<PaymentOrderClient2.BulkPaymentOrdersApprovalGetResponse>
+  open func getCurrenciesCall() throws -> ClientCommon.Call<[PaymentOrderClient2.CurrenciesGetResponseBody]>
+  open func getPaymentOrderByIdCall(paymentOrderId: Swift.String, userId: Swift.String? = nil, saId: Swift.String? = nil) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrderGetResponse>
+  open func getPaymentOrderExportCall(paymentOrderId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  public enum Status_getPaymentOrders : Swift.String, Swift.CaseIterable {
+    case entered
+    case ready
+    case accepted
+    case processed
+    case rejected
+    case cancelled
+    case cancellationPending
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.PaymentOrdersAPI.Status_getPaymentOrders]
+    public static var allCases: [PaymentOrderClient2.PaymentOrdersAPI.Status_getPaymentOrders] {
+      get
+    }
+  }
+  public enum PaymentMode_getPaymentOrders : Swift.String, Swift.CaseIterable {
+    case single
+    case recurring
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.PaymentOrdersAPI.PaymentMode_getPaymentOrders]
+    public static var allCases: [PaymentOrderClient2.PaymentOrdersAPI.PaymentMode_getPaymentOrders] {
+      get
+    }
+  }
+  public enum TransferFrequency_getPaymentOrders : Swift.String, Swift.CaseIterable {
+    case once
+    case daily
+    case weekly
+    case biweekly
+    case monthly
+    case quarterly
+    case yearly
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.PaymentOrdersAPI.TransferFrequency_getPaymentOrders]
+    public static var allCases: [PaymentOrderClient2.PaymentOrdersAPI.TransferFrequency_getPaymentOrders] {
+      get
+    }
+  }
+  public enum Direction_getPaymentOrders : Swift.String, Swift.CaseIterable {
+    case asc
+    case desc
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.PaymentOrdersAPI.Direction_getPaymentOrders]
+    public static var allCases: [PaymentOrderClient2.PaymentOrdersAPI.Direction_getPaymentOrders] {
+      get
+    }
+  }
+  open func getPaymentOrdersCall(status: [Swift.String]? = nil, paymentTypeGroup: Swift.String? = nil, createdByMe: Swift.Bool? = nil, userId: Swift.String? = nil, saId: Swift.String? = nil, originatorArrangementId: Swift.String? = nil, query: Swift.String? = nil, amountFrom: Swift.Double? = nil, amountTo: Swift.Double? = nil, executionDate: Foundation.Date? = nil, executionDateFrom: Foundation.Date? = nil, executionDateTo: Foundation.Date? = nil, nextExecutionDate: Foundation.Date? = nil, nextExecutionDateFrom: Foundation.Date? = nil, nextExecutionDateTo: Foundation.Date? = nil, paymentMode: PaymentOrderClient2.PaymentOrdersAPI.PaymentMode_getPaymentOrders? = nil, paymentSetupId: Swift.String? = nil, transferFrequency: PaymentOrderClient2.PaymentOrdersAPI.TransferFrequency_getPaymentOrders? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: PaymentOrderClient2.PaymentOrdersAPI.Direction_getPaymentOrders? = nil) throws -> ClientCommon.Call<[PaymentOrderClient2.IdentifiedPaymentOrder]>
+  open func getProgressStatusByBulkIdCall(bulkId: Swift.Int64) throws -> ClientCommon.Call<PaymentOrderClient2.BulkApprovalProgressStatusGetResponse>
+  open func getProgressStatusByPaymentOrderIdCall(paymentOrderId: Swift.String) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrderProgressStatusGet>
+  open func getRateCall(currencyFrom: Swift.String, currencyTo: Swift.String) throws -> ClientCommon.Call<PaymentOrderClient2.RateGet>
+  open func postCancelByPaymentOrderIdCall(paymentOrderId: Swift.String, paymentOrderCancelPostRequest: PaymentOrderClient2.PaymentOrderCancelPostRequest) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrderCancelPostResponse>
+  open func postPaymentOrdersCall(paymentOrdersPost: PaymentOrderClient2.PaymentOrdersPost, X_MFA: Swift.String? = nil) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrdersPostResponse>
+  open func postValidateCall(paymentOrdersValidatePost: PaymentOrderClient2.PaymentOrdersValidatePost) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrdersValidatePostResponse>
+  open func putApprovalsByPaymentOrderIdCall(paymentOrderId: Swift.String, paymentOrderApprovalPutRequest: PaymentOrderClient2.PaymentOrderApprovalPutRequest) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrdersPostResponse>
+  open func putBulkApprovalsCall(bulkPaymentOrdersApprovalPutRequest: PaymentOrderClient2.BulkPaymentOrdersApprovalPutRequest) throws -> ClientCommon.Call<PaymentOrderClient2.BulkPaymentOrdersApprovalPutResponse>
+  open func putPaymentOrderByIdCall(paymentOrderId: Swift.String, paymentOrderPut: PaymentOrderClient2.PaymentOrderPut, X_MFA: Swift.String? = nil) throws -> ClientCommon.Call<PaymentOrderClient2.PaymentOrdersPostResponse>
+  @objc deinit
+}
+public struct PaymentOrdersPost : Swift.Codable, Swift.Equatable {
+  public var originatorAccount: PaymentOrderClient2.AccountIdentification
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var entryClass: Swift.String?
+  public var transferTransactionInformation: PaymentOrderClient2.InitiateTransaction
+  public var approved: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(originatorAccount: PaymentOrderClient2.AccountIdentification, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, entryClass: Swift.String? = nil, transferTransactionInformation: PaymentOrderClient2.InitiateTransaction, approved: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrdersPost, rhs: PaymentOrderClient2.PaymentOrdersPost) -> Swift.Bool
+}
+public struct PaymentOrdersPostResponse : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var status: PaymentOrderClient2.Status
+  public var bankStatus: Swift.String?
+  public var reasonCode: Swift.String?
+  public var reasonText: Swift.String?
+  public var errorDescription: Swift.String?
+  public var nextExecutionDate: Foundation.Date?
+  public var paymentSetupId: Swift.String?
+  public var paymentSubmissionId: Swift.String?
+  public var approvalStatus: Swift.String?
+  public var transferFee: PaymentOrderClient2.Currency?
+  public var exchangeRateInformation: PaymentOrderClient2.ExchangeRateInformation?
+  public var exportAllowed: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, status: PaymentOrderClient2.Status, bankStatus: Swift.String? = nil, reasonCode: Swift.String? = nil, reasonText: Swift.String? = nil, errorDescription: Swift.String? = nil, nextExecutionDate: Foundation.Date? = nil, paymentSetupId: Swift.String? = nil, paymentSubmissionId: Swift.String? = nil, approvalStatus: Swift.String? = nil, transferFee: PaymentOrderClient2.Currency? = nil, exchangeRateInformation: PaymentOrderClient2.ExchangeRateInformation? = nil, exportAllowed: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrdersPostResponse, rhs: PaymentOrderClient2.PaymentOrdersPostResponse) -> Swift.Bool
+}
+public struct PaymentOrdersValidatePost : Swift.Codable, Swift.Equatable {
+  public var originatorAccount: PaymentOrderClient2.AccountIdentification
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var entryClass: Swift.String?
+  public var transferTransactionInformation: PaymentOrderClient2.InitiateTransaction
+  public var approved: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(originatorAccount: PaymentOrderClient2.AccountIdentification, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, entryClass: Swift.String? = nil, transferTransactionInformation: PaymentOrderClient2.InitiateTransaction, approved: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrdersValidatePost, rhs: PaymentOrderClient2.PaymentOrdersValidatePost) -> Swift.Bool
+}
+public struct PaymentOrdersValidatePostResponse : Swift.Codable, Swift.Equatable {
+  public var originatorAccount: PaymentOrderClient2.OriginatorAccount?
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date?
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var entryClass: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction?
+  public var paymentSetupId: Swift.String?
+  public var paymentSubmissionId: Swift.String?
+  public var originator: PaymentOrderClient2.InvolvedParty?
+  public var totalAmount: PaymentOrderClient2.Currency?
+  public var isIntraLegalEntityPaymentOrder: Swift.Bool
+  public var canApprove: Swift.Bool
+  public var finalApprover: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(originatorAccount: PaymentOrderClient2.OriginatorAccount? = nil, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date? = nil, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, entryClass: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction? = nil, paymentSetupId: Swift.String? = nil, paymentSubmissionId: Swift.String? = nil, originator: PaymentOrderClient2.InvolvedParty? = nil, totalAmount: PaymentOrderClient2.Currency? = nil, isIntraLegalEntityPaymentOrder: Swift.Bool, canApprove: Swift.Bool, finalApprover: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentOrdersValidatePostResponse, rhs: PaymentOrderClient2.PaymentOrdersValidatePostResponse) -> Swift.Bool
+}
+public struct PaymentUnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [PaymentOrderClient2.ErrorItem]?
+  public var confirmationId: Swift.String?
+  public var challenges: [[Swift.String : Swift.String]]?
+  public var data: [Swift.String : Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(message: Swift.String, key: Swift.String, errors: [PaymentOrderClient2.ErrorItem]? = nil, confirmationId: Swift.String? = nil, challenges: [[Swift.String : Swift.String]]? = nil, data: [Swift.String : Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PaymentUnauthorizedError, rhs: PaymentOrderClient2.PaymentUnauthorizedError) -> Swift.Bool
+}
+public struct PermissibleActions : Swift.Codable, Swift.Equatable {
+  public var approve: Swift.Bool?
+  public var finalApprove: Swift.Bool?
+  public var reject: Swift.Bool?
+  public var cancel: Swift.Bool?
+  public var delete: Swift.Bool?
+  public var edit: Swift.Bool?
+  public var create: Swift.Bool?
+  public var export: Swift.Bool?
+  public init(approve: Swift.Bool? = nil, finalApprove: Swift.Bool? = nil, reject: Swift.Bool? = nil, cancel: Swift.Bool? = nil, delete: Swift.Bool? = nil, edit: Swift.Bool? = nil, create: Swift.Bool? = nil, export: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PermissibleActions, rhs: PaymentOrderClient2.PermissibleActions) -> Swift.Bool
+}
+public struct PolicyItemDetailsDto : Swift.Codable, Swift.Equatable {
+  public var approvalType: PaymentOrderClient2.ApprovalTypeDto
+  public var numberOfApprovals: Swift.Int
+  public init(approvalType: PaymentOrderClient2.ApprovalTypeDto, numberOfApprovals: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PolicyItemDetailsDto, rhs: PaymentOrderClient2.PolicyItemDetailsDto) -> Swift.Bool
+}
+public struct PostalAddress : Swift.Codable, Swift.Equatable {
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var streetName: Swift.String?
+  public var postCode: Swift.String?
+  public var town: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, postCode: Swift.String? = nil, town: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PostalAddress, rhs: PaymentOrderClient2.PostalAddress) -> Swift.Bool
+}
+public struct PresentationApprovalDetailDto : Swift.Codable, Swift.Equatable {
+  public var approvalTypes: [PaymentOrderClient2.PresentationApprovalTypeDto]
+  public var policy: PaymentOrderClient2.PresentationPolicyDto
+  public var id: Swift.String
+  public var userId: Swift.String
+  public var externalUserId: Swift.String?
+  public var userFullName: Swift.String?
+  public var serviceAgreementId: Swift.String
+  public var itemId: Swift.String
+  public var dataAccessItemId: Swift.String?
+  public var resource: Swift.String
+  public var function: Swift.String
+  public var status: PaymentOrderClient2.ApprovalStatus
+  public var records: [PaymentOrderClient2.PresentationRecordDto]?
+  public var canApprove: Swift.Bool?
+  public var canReject: Swift.Bool?
+  public var finalApprover: Swift.Bool?
+  public var action: Swift.String?
+  public var createdAt: Foundation.Date
+  public var additions: [Swift.String : Swift.String]?
+  public init(approvalTypes: [PaymentOrderClient2.PresentationApprovalTypeDto], policy: PaymentOrderClient2.PresentationPolicyDto, id: Swift.String, userId: Swift.String, externalUserId: Swift.String? = nil, userFullName: Swift.String? = nil, serviceAgreementId: Swift.String, itemId: Swift.String, dataAccessItemId: Swift.String? = nil, resource: Swift.String, function: Swift.String, status: PaymentOrderClient2.ApprovalStatus, records: [PaymentOrderClient2.PresentationRecordDto]? = nil, canApprove: Swift.Bool? = nil, canReject: Swift.Bool? = nil, finalApprover: Swift.Bool? = nil, action: Swift.String? = nil, createdAt: Foundation.Date, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PresentationApprovalDetailDto, rhs: PaymentOrderClient2.PresentationApprovalDetailDto) -> Swift.Bool
+}
+public struct PresentationApprovalTypeDto : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var name: Swift.String
+  public var description: Swift.String?
+  public var rank: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, name: Swift.String, description: Swift.String? = nil, rank: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PresentationApprovalTypeDto, rhs: PaymentOrderClient2.PresentationApprovalTypeDto) -> Swift.Bool
+}
+public struct PresentationPolicyDto : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var name: Swift.String
+  public var description: Swift.String?
+  public var items: [PaymentOrderClient2.PresentationPolicyItemDto]?
+  public var logicalItems: [PaymentOrderClient2.LogicalPolicyDetailsDto]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, name: Swift.String, description: Swift.String? = nil, items: [PaymentOrderClient2.PresentationPolicyItemDto]? = nil, logicalItems: [PaymentOrderClient2.LogicalPolicyDetailsDto]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PresentationPolicyDto, rhs: PaymentOrderClient2.PresentationPolicyDto) -> Swift.Bool
+}
+public struct PresentationPolicyItemDto : Swift.Codable, Swift.Equatable {
+  public var approvalTypeId: Swift.String
+  public var numberOfApprovals: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(approvalTypeId: Swift.String, numberOfApprovals: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PresentationPolicyItemDto, rhs: PaymentOrderClient2.PresentationPolicyItemDto) -> Swift.Bool
+}
+public struct PresentationRecordDto : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var userId: Swift.String
+  public var externalUserId: Swift.String?
+  public var userFullName: Swift.String?
+  public var approvalTypeId: Swift.String
+  public var status: PaymentOrderClient2.RecordStatus
+  public var createdAt: Foundation.Date
+  public var comment: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, userId: Swift.String, externalUserId: Swift.String? = nil, userFullName: Swift.String? = nil, approvalTypeId: Swift.String, status: PaymentOrderClient2.RecordStatus, createdAt: Foundation.Date, comment: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PresentationRecordDto, rhs: PaymentOrderClient2.PresentationRecordDto) -> Swift.Bool
+}
+public struct PurposeOfPayment : Swift.Codable, Swift.Equatable {
+  public var code: Swift.String?
+  public var freeText: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(code: Swift.String? = nil, freeText: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PurposeOfPayment, rhs: PaymentOrderClient2.PurposeOfPayment) -> Swift.Bool
+}
+public struct PurposeOfPaymentInfo : Swift.Codable, Swift.Equatable {
+  public var code: Swift.String?
+  public var description: Swift.String?
+  public var freeText: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(code: Swift.String? = nil, description: Swift.String? = nil, freeText: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.PurposeOfPaymentInfo, rhs: PaymentOrderClient2.PurposeOfPaymentInfo) -> Swift.Bool
+}
+public struct RateGet : Swift.Codable, Swift.Equatable {
+  public var rate: Swift.Double
+  public var additions: [Swift.String : Swift.String]?
+  public init(rate: Swift.Double, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.RateGet, rhs: PaymentOrderClient2.RateGet) -> Swift.Bool
+}
+public struct RateGetResponse : Swift.Codable, Swift.Equatable {
+  public var rate: Swift.Double
+  public var additions: [Swift.String : Swift.String]?
+  public init(rate: Swift.Double, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.RateGetResponse, rhs: PaymentOrderClient2.RateGetResponse) -> Swift.Bool
+}
+public struct ReauthUnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var challenges: [[Swift.String : Swift.String]]?
+  public var data: [Swift.String : Swift.String]?
+  public init(challenges: [[Swift.String : Swift.String]]? = nil, data: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.ReauthUnauthorizedError, rhs: PaymentOrderClient2.ReauthUnauthorizedError) -> Swift.Bool
+}
+public enum RecordStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case approved
+  case rejected
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.RecordStatus]
+  public static var allCases: [PaymentOrderClient2.RecordStatus] {
+    get
+  }
+}
+public struct RemittanceInformation : Swift.Codable, Swift.Equatable {
+  public enum ModelType : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case structured
+    case unstructured
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.RemittanceInformation.ModelType]
+    public static var allCases: [PaymentOrderClient2.RemittanceInformation.ModelType] {
+      get
+    }
+  }
+  public var type: PaymentOrderClient2.RemittanceInformation.ModelType
+  public var content: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(type: PaymentOrderClient2.RemittanceInformation.ModelType, content: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.RemittanceInformation, rhs: PaymentOrderClient2.RemittanceInformation) -> Swift.Bool
+}
+public struct Schedule : Swift.Codable, Swift.Equatable {
+  public enum NonWorkingDayExecutionStrategy : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case before
+    case after
+    case _none
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.Schedule.NonWorkingDayExecutionStrategy]
+    public static var allCases: [PaymentOrderClient2.Schedule.NonWorkingDayExecutionStrategy] {
+      get
+    }
+  }
+  public enum TransferFrequency : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case once
+    case daily
+    case weekly
+    case biweekly
+    case monthly
+    case quarterly
+    case yearly
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.Schedule.TransferFrequency]
+    public static var allCases: [PaymentOrderClient2.Schedule.TransferFrequency] {
+      get
+    }
+  }
+  public enum Every : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case _1
+    case _2
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [PaymentOrderClient2.Schedule.Every]
+    public static var allCases: [PaymentOrderClient2.Schedule.Every] {
+      get
+    }
+  }
+  public var nonWorkingDayExecutionStrategy: PaymentOrderClient2.Schedule.NonWorkingDayExecutionStrategy?
+  public var transferFrequency: PaymentOrderClient2.Schedule.TransferFrequency
+  public var on: Swift.Int
+  public var startDate: Foundation.Date
+  public var endDate: Foundation.Date?
+  public var _repeat: Swift.Int?
+  public var every: PaymentOrderClient2.Schedule.Every
+  public var nextExecutionDate: Foundation.Date?
+  public var additions: [Swift.String : Swift.String]?
+  public init(nonWorkingDayExecutionStrategy: PaymentOrderClient2.Schedule.NonWorkingDayExecutionStrategy? = nil, transferFrequency: PaymentOrderClient2.Schedule.TransferFrequency, on: Swift.Int, startDate: Foundation.Date, endDate: Foundation.Date? = nil, _repeat: Swift.Int? = nil, every: PaymentOrderClient2.Schedule.Every, nextExecutionDate: Foundation.Date? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.Schedule, rhs: PaymentOrderClient2.Schedule) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case nonWorkingDayExecutionStrategy
+    case transferFrequency
+    case on
+    case startDate
+    case endDate
+    case _repeat
+    case every
+    case nextExecutionDate
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [PaymentOrderClient2.Schedule.CodingKeys]
+    public static var allCases: [PaymentOrderClient2.Schedule.CodingKeys] {
+      get
+    }
+  }
+}
+public enum SchemeNames : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case iban
+  case bban
+  case id
+  case externalId
+  case email
+  case mobile
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.SchemeNames]
+  public static var allCases: [PaymentOrderClient2.SchemeNames] {
+    get
+  }
+}
+public struct SelectedContactDto : Swift.Codable, Swift.Equatable {
+  public var contactId: Swift.String?
+  public var accountId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(contactId: Swift.String? = nil, accountId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.SelectedContactDto, rhs: PaymentOrderClient2.SelectedContactDto) -> Swift.Bool
+}
+public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case draft
+  case entered
+  case ready
+  case accepted
+  case processed
+  case rejected
+  case cancelled
+  case cancellationPending
+  case confirmationPending
+  case confirmationDeclined
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PaymentOrderClient2.Status]
+  public static var allCases: [PaymentOrderClient2.Status] {
+    get
+  }
+}
+public struct TimeFrame : Swift.Codable, Swift.Equatable {
+  public var period: Swift.String
+  public var startTime: Foundation.Date
+  public var endTime: Foundation.Date
+  public var additions: [Swift.String : Swift.String]?
+  public init(period: Swift.String, startTime: Foundation.Date, endTime: Foundation.Date, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.TimeFrame, rhs: PaymentOrderClient2.TimeFrame) -> Swift.Bool
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [PaymentOrderClient2.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [PaymentOrderClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.UnauthorizedError, rhs: PaymentOrderClient2.UnauthorizedError) -> Swift.Bool
+}
+public struct ValidatePaymentOrderResponse : Swift.Codable, Swift.Equatable {
+  public var originatorAccount: PaymentOrderClient2.OriginatorAccount?
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: PaymentOrderClient2.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date?
+  public var paymentMode: PaymentOrderClient2.PaymentMode?
+  public var paymentType: Swift.String?
+  public var entryClass: Swift.String?
+  public var schedule: PaymentOrderClient2.Schedule?
+  public var transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction?
+  public var paymentSetupId: Swift.String?
+  public var paymentSubmissionId: Swift.String?
+  public var originator: PaymentOrderClient2.InvolvedParty?
+  public var totalAmount: PaymentOrderClient2.Currency?
+  public var isIntraLegalEntityPaymentOrder: Swift.Bool
+  public var canApprove: Swift.Bool
+  public var finalApprover: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(originatorAccount: PaymentOrderClient2.OriginatorAccount? = nil, batchBooking: Swift.Bool? = nil, instructionPriority: PaymentOrderClient2.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date? = nil, paymentMode: PaymentOrderClient2.PaymentMode? = nil, paymentType: Swift.String? = nil, entryClass: Swift.String? = nil, schedule: PaymentOrderClient2.Schedule? = nil, transferTransactionInformation: PaymentOrderClient2.IdentifiedTransaction? = nil, paymentSetupId: Swift.String? = nil, paymentSubmissionId: Swift.String? = nil, originator: PaymentOrderClient2.InvolvedParty? = nil, totalAmount: PaymentOrderClient2.Currency? = nil, isIntraLegalEntityPaymentOrder: Swift.Bool, canApprove: Swift.Bool, finalApprover: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: PaymentOrderClient2.ValidatePaymentOrderResponse, rhs: PaymentOrderClient2.ValidatePaymentOrderResponse) -> Swift.Bool
+}
+extension PaymentOrderClient2.ApprovalErrorStatus.Code : Swift.Equatable {}
+extension PaymentOrderClient2.ApprovalErrorStatus.Code : Swift.Hashable {}
+extension PaymentOrderClient2.ApprovalErrorStatus.Code : Swift.RawRepresentable {}
+extension PaymentOrderClient2.ApprovalStatus : Swift.Equatable {}
+extension PaymentOrderClient2.ApprovalStatus : Swift.Hashable {}
+extension PaymentOrderClient2.ApprovalStatus : Swift.RawRepresentable {}
+extension PaymentOrderClient2.BreachInfo.BreachType : Swift.Equatable {}
+extension PaymentOrderClient2.BreachInfo.BreachType : Swift.Hashable {}
+extension PaymentOrderClient2.BreachInfo.BreachType : Swift.RawRepresentable {}
+extension PaymentOrderClient2.BreachInfo.BreachedLimitType : Swift.Equatable {}
+extension PaymentOrderClient2.BreachInfo.BreachedLimitType : Swift.Hashable {}
+extension PaymentOrderClient2.BreachInfo.BreachedLimitType : Swift.RawRepresentable {}
+extension PaymentOrderClient2.BreachReportItem.CodingKeys : Swift.Equatable {}
+extension PaymentOrderClient2.BreachReportItem.CodingKeys : Swift.Hashable {}
+extension PaymentOrderClient2.BreachReportItem.CodingKeys : Swift.RawRepresentable {}
+extension PaymentOrderClient2.ChargeBearer : Swift.Equatable {}
+extension PaymentOrderClient2.ChargeBearer : Swift.Hashable {}
+extension PaymentOrderClient2.ChargeBearer : Swift.RawRepresentable {}
+extension PaymentOrderClient2.ExchangeRateInformation.RateType : Swift.Equatable {}
+extension PaymentOrderClient2.ExchangeRateInformation.RateType : Swift.Hashable {}
+extension PaymentOrderClient2.ExchangeRateInformation.RateType : Swift.RawRepresentable {}
+extension PaymentOrderClient2.InstructionPriority : Swift.Equatable {}
+extension PaymentOrderClient2.InstructionPriority : Swift.Hashable {}
+extension PaymentOrderClient2.InstructionPriority : Swift.RawRepresentable {}
+extension PaymentOrderClient2.InvolvedPartyRole : Swift.Equatable {}
+extension PaymentOrderClient2.InvolvedPartyRole : Swift.Hashable {}
+extension PaymentOrderClient2.InvolvedPartyRole : Swift.RawRepresentable {}
+extension PaymentOrderClient2.LogicalOperator : Swift.Equatable {}
+extension PaymentOrderClient2.LogicalOperator : Swift.Hashable {}
+extension PaymentOrderClient2.LogicalOperator : Swift.RawRepresentable {}
+extension PaymentOrderClient2.LogicalPolicyDetailsDto.CodingKeys : Swift.Equatable {}
+extension PaymentOrderClient2.LogicalPolicyDetailsDto.CodingKeys : Swift.Hashable {}
+extension PaymentOrderClient2.LogicalPolicyDetailsDto.CodingKeys : Swift.RawRepresentable {}
+extension PaymentOrderClient2.PaymentAction : Swift.Equatable {}
+extension PaymentOrderClient2.PaymentAction : Swift.Hashable {}
+extension PaymentOrderClient2.PaymentAction : Swift.RawRepresentable {}
+extension PaymentOrderClient2.PaymentMode : Swift.Equatable {}
+extension PaymentOrderClient2.PaymentMode : Swift.Hashable {}
+extension PaymentOrderClient2.PaymentMode : Swift.RawRepresentable {}
+extension PaymentOrderClient2.PaymentOrderProgressStatusGet.ProgressStatus : Swift.Equatable {}
+extension PaymentOrderClient2.PaymentOrderProgressStatusGet.ProgressStatus : Swift.Hashable {}
+extension PaymentOrderClient2.PaymentOrderProgressStatusGet.ProgressStatus : Swift.RawRepresentable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.Status_getPaymentOrders : Swift.Equatable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.Status_getPaymentOrders : Swift.Hashable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.Status_getPaymentOrders : Swift.RawRepresentable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.PaymentMode_getPaymentOrders : Swift.Equatable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.PaymentMode_getPaymentOrders : Swift.Hashable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.PaymentMode_getPaymentOrders : Swift.RawRepresentable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.TransferFrequency_getPaymentOrders : Swift.Equatable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.TransferFrequency_getPaymentOrders : Swift.Hashable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.TransferFrequency_getPaymentOrders : Swift.RawRepresentable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.Direction_getPaymentOrders : Swift.Equatable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.Direction_getPaymentOrders : Swift.Hashable {}
+extension PaymentOrderClient2.PaymentOrdersAPI.Direction_getPaymentOrders : Swift.RawRepresentable {}
+extension PaymentOrderClient2.RecordStatus : Swift.Equatable {}
+extension PaymentOrderClient2.RecordStatus : Swift.Hashable {}
+extension PaymentOrderClient2.RecordStatus : Swift.RawRepresentable {}
+extension PaymentOrderClient2.RemittanceInformation.ModelType : Swift.Equatable {}
+extension PaymentOrderClient2.RemittanceInformation.ModelType : Swift.Hashable {}
+extension PaymentOrderClient2.RemittanceInformation.ModelType : Swift.RawRepresentable {}
+extension PaymentOrderClient2.Schedule.NonWorkingDayExecutionStrategy : Swift.Equatable {}
+extension PaymentOrderClient2.Schedule.NonWorkingDayExecutionStrategy : Swift.Hashable {}
+extension PaymentOrderClient2.Schedule.NonWorkingDayExecutionStrategy : Swift.RawRepresentable {}
+extension PaymentOrderClient2.Schedule.TransferFrequency : Swift.Equatable {}
+extension PaymentOrderClient2.Schedule.TransferFrequency : Swift.Hashable {}
+extension PaymentOrderClient2.Schedule.TransferFrequency : Swift.RawRepresentable {}
+extension PaymentOrderClient2.Schedule.Every : Swift.Equatable {}
+extension PaymentOrderClient2.Schedule.Every : Swift.Hashable {}
+extension PaymentOrderClient2.Schedule.Every : Swift.RawRepresentable {}
+extension PaymentOrderClient2.Schedule.CodingKeys : Swift.Equatable {}
+extension PaymentOrderClient2.Schedule.CodingKeys : Swift.Hashable {}
+extension PaymentOrderClient2.Schedule.CodingKeys : Swift.RawRepresentable {}
+extension PaymentOrderClient2.SchemeNames : Swift.Equatable {}
+extension PaymentOrderClient2.SchemeNames : Swift.Hashable {}
+extension PaymentOrderClient2.SchemeNames : Swift.RawRepresentable {}
+extension PaymentOrderClient2.Status : Swift.Equatable {}
+extension PaymentOrderClient2.Status : Swift.Hashable {}
+extension PaymentOrderClient2.Status : Swift.RawRepresentable {}

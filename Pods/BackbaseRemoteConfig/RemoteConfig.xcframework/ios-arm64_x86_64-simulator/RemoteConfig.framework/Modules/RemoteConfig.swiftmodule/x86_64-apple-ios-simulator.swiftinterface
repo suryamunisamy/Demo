@@ -1,0 +1,41 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RemoteConfig
+import Backbase
+import CommonCrypto
+import Foundation
+import Swift
+@_hasMissingDesignatedInitializers public class RemoteConfig {
+  convenience public init(serviceUrl: Swift.String, projectName: Swift.String, appName: Swift.String? = nil, dataProvider: DBSDataProvider? = nil, storage: StorageComponent? = nil)
+  convenience public init(serviceUrl: Swift.String, projectName: Swift.String, appName: Swift.String? = nil, appVersion: Swift.String? = nil, dataProvider: DBSDataProvider? = nil, storage: StorageComponent? = nil)
+  public func fetchAppStatus(completion: @escaping (AppStatus?) -> Swift.Void)
+  public func fetch(completion: @escaping (Swift.Bool) -> Swift.Void)
+  public func fetchAndActivate(completion: @escaping (Swift.Bool) -> Swift.Void)
+  public func activate()
+  public func setDefaultConfiguration(parameters: [Swift.String : Any])
+  public func setDefaultConfiguration(json: Swift.String)
+  public func setDefaultConfiguration(encryptedJson: Foundation.Data)
+  public func getBool(name: Swift.String) -> Swift.Bool?
+  public func getDouble(name: Swift.String) -> Swift.Double?
+  public func getInt(name: Swift.String) -> Swift.Int?
+  public func getString(name: Swift.String) -> Swift.String?
+  public func getArray(name: Swift.String) -> [Any]?
+  public func getDictionary(name: Swift.String) -> [Swift.String : Any]?
+  public func addCustomTag(_ tag: Swift.String)
+  public func removeCustomTag(_ tag: Swift.String)
+  public func clearCustomTags()
+  @objc deinit
+}
+public enum AppStatus : Swift.String, Swift.Decodable {
+  case ok
+  case deprecated
+  case obsolete
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension AppStatus : Swift.Equatable {}
+extension AppStatus : Swift.Hashable {}
+extension AppStatus : Swift.RawRepresentable {}

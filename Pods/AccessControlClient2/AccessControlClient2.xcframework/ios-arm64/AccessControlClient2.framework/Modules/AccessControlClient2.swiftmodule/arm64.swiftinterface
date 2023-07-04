@@ -1,0 +1,1959 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AccessControlClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct AdditionalPropertiesAware : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public init(additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.AdditionalPropertiesAware, rhs: AccessControlClient2.AdditionalPropertiesAware) -> Swift.Bool
+}
+public enum ApprovalStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case APPROVED
+  case PENDING
+  case REJECTED
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [AccessControlClient2.ApprovalStatus]
+  public static var allCases: [AccessControlClient2.ApprovalStatus] {
+    get
+  }
+}
+public protocol ApprovalsAPIProtocol {
+  func getApprovalsCall(from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[AccessControlClient2.PresentationApprovalItem]>
+  func getPresentationDataGroupApprovalDetailsItemCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationDataGroupApprovalDetailsItem>
+  func getPresentationFunctionGroupApprovalDetailsItemCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationFunctionGroupApprovalDetailsItem>
+  func getPresentationPermissionsApprovalDetailsItemCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationPermissionsApprovalDetailsItem>
+  func getServiceAgreementApprovalDetailsItemCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.ServiceAgreeementApprovalDetailsItem>
+  func postApproveApprovalRequestCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationApprovalStatus>
+  func postRejectApprovalRequestCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationApprovalStatus>
+}
+@objc @_inheritsConvenienceInitializers public class ApprovalsAPI : ObjectiveC.NSObject, DBSClient, AccessControlClient2.ApprovalsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getApprovalsCall(from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[AccessControlClient2.PresentationApprovalItem]>
+  open func getPresentationDataGroupApprovalDetailsItemCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationDataGroupApprovalDetailsItem>
+  open func getPresentationFunctionGroupApprovalDetailsItemCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationFunctionGroupApprovalDetailsItem>
+  open func getPresentationPermissionsApprovalDetailsItemCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationPermissionsApprovalDetailsItem>
+  open func getServiceAgreementApprovalDetailsItemCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.ServiceAgreeementApprovalDetailsItem>
+  open func postApproveApprovalRequestCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationApprovalStatus>
+  open func postRejectApprovalRequestCall(approvalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationApprovalStatus>
+  @objc deinit
+}
+public struct ArrangementPrivilegesGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var arrangementId: Swift.String
+  public var privileges: [AccessControlClient2.Privilege]
+  public init(additions: [Swift.String : Swift.String]? = nil, arrangementId: Swift.String, privileges: [AccessControlClient2.Privilege])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ArrangementPrivilegesGetResponseBody, rhs: AccessControlClient2.ArrangementPrivilegesGetResponseBody) -> Swift.Bool
+}
+public struct ArrangementPrivilegesGetResponseBodyAllOf : Swift.Codable, Swift.Equatable {
+  public var arrangementId: Swift.String?
+  public var privileges: [AccessControlClient2.Privilege]?
+  public init(arrangementId: Swift.String? = nil, privileges: [AccessControlClient2.Privilege]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ArrangementPrivilegesGetResponseBodyAllOf, rhs: AccessControlClient2.ArrangementPrivilegesGetResponseBodyAllOf) -> Swift.Bool
+}
+public struct BBAccessControl : Swift.Codable, Swift.Equatable {
+  public var resource: Swift.String
+  public var function: Swift.String
+  public var privilege: Swift.String
+  public init(resource: Swift.String, function: Swift.String, privilege: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.BBAccessControl, rhs: AccessControlClient2.BBAccessControl) -> Swift.Bool
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [AccessControlClient2.ErrorItem]?
+  public init(message: Swift.String, errors: [AccessControlClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.BadRequestError, rhs: AccessControlClient2.BadRequestError) -> Swift.Bool
+}
+public struct BbApiDeprecation : Swift.Codable, Swift.Equatable {
+  public var deprecatedFromVersion: Swift.String
+  public var removedFromVersion: Swift.String
+  public var reason: Swift.String
+  public var description: Swift.String
+  public init(deprecatedFromVersion: Swift.String, removedFromVersion: Swift.String, reason: Swift.String, description: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.BbApiDeprecation, rhs: AccessControlClient2.BbApiDeprecation) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct DataGroupData : Swift.Codable, Swift.Equatable {
+  public var dataGroupId: Swift.String?
+  public var dataItemIds: [Swift.String]?
+  public init(dataGroupId: Swift.String? = nil, dataItemIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.DataGroupData, rhs: AccessControlClient2.DataGroupData) -> Swift.Bool
+}
+public struct DataGroupItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var approvalId: Swift.String?
+  public var serviceAgreementId: Swift.String
+  public var name: Swift.String
+  public var description: Swift.String
+  public var type: Swift.String
+  public var items: [Swift.String]?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String, approvalId: Swift.String? = nil, serviceAgreementId: Swift.String, name: Swift.String, description: Swift.String, type: Swift.String, items: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.DataGroupItem, rhs: AccessControlClient2.DataGroupItem) -> Swift.Bool
+}
+public struct DataGroupItemAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var approvalId: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var type: Swift.String?
+  public var items: [Swift.String]?
+  public init(id: Swift.String? = nil, approvalId: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, type: Swift.String? = nil, items: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.DataGroupItemAllOf, rhs: AccessControlClient2.DataGroupItemAllOf) -> Swift.Bool
+}
+public struct DataGroupItemBase : Swift.Codable, Swift.Equatable {
+  public var serviceAgreementId: Swift.String
+  public var name: Swift.String
+  public var description: Swift.String
+  public var type: Swift.String
+  public var items: [Swift.String]?
+  public init(serviceAgreementId: Swift.String, name: Swift.String, description: Swift.String, type: Swift.String, items: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.DataGroupItemBase, rhs: AccessControlClient2.DataGroupItemBase) -> Swift.Bool
+}
+public struct DataGroupItemParent : Swift.Codable, Swift.Equatable {
+  public var serviceAgreementId: Swift.String
+  public var name: Swift.String
+  public var description: Swift.String
+  public var type: Swift.String
+  public var items: [Swift.String]?
+  public init(serviceAgreementId: Swift.String, name: Swift.String, description: Swift.String, type: Swift.String, items: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.DataGroupItemParent, rhs: AccessControlClient2.DataGroupItemParent) -> Swift.Bool
+}
+public protocol DataGroupsAPIProtocol {
+  func deleteDataGroupByIdCall(id: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getDataGroupByIdCall(id: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.DataGroupItem>
+  func getDataGroupsCall(serviceAgreementId: Swift.String, type: Swift.String?, includeItems: Swift.Bool?) throws -> ClientCommon.Call<[AccessControlClient2.DataGroupItem]>
+  func postDataGroupsCall(dataGroupItemBase: AccessControlClient2.DataGroupItemBase?) throws -> ClientCommon.Call<AccessControlClient2.IdItem>
+  func putDataGroupByIdCall(id: Swift.String, dataGroupItem: AccessControlClient2.DataGroupItem?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class DataGroupsAPI : ObjectiveC.NSObject, DBSClient, AccessControlClient2.DataGroupsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteDataGroupByIdCall(id: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getDataGroupByIdCall(id: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.DataGroupItem>
+  open func getDataGroupsCall(serviceAgreementId: Swift.String, type: Swift.String? = nil, includeItems: Swift.Bool? = nil) throws -> ClientCommon.Call<[AccessControlClient2.DataGroupItem]>
+  open func postDataGroupsCall(dataGroupItemBase: AccessControlClient2.DataGroupItemBase? = nil) throws -> ClientCommon.Call<AccessControlClient2.IdItem>
+  open func putDataGroupByIdCall(id: Swift.String, dataGroupItem: AccessControlClient2.DataGroupItem? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct Dataaccessgroupsforfunctionaccessgroupitem : Swift.Codable, Swift.Equatable {
+  public var functionAccessGroupId: Swift.String
+  public var dataAccessGroupIds: [Swift.String]?
+  public init(functionAccessGroupId: Swift.String, dataAccessGroupIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.Dataaccessgroupsforfunctionaccessgroupitem, rhs: AccessControlClient2.Dataaccessgroupsforfunctionaccessgroupitem) -> Swift.Bool
+}
+public struct Datagroupitembasedetails : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var description: Swift.String
+  public var type: Swift.String
+  public var items: [Swift.String]?
+  public init(name: Swift.String, description: Swift.String, type: Swift.String, items: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.Datagroupitembasedetails, rhs: AccessControlClient2.Datagroupitembasedetails) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ErrorItem, rhs: AccessControlClient2.ErrorItem) -> Swift.Bool
+}
+public struct ExistingCustomServiceAgreement : Swift.Codable, Swift.Equatable {
+  public var serviceAgreementId: Swift.String
+  public var participantInfo: AccessControlClient2.ParticipantInfo
+  public init(serviceAgreementId: Swift.String, participantInfo: AccessControlClient2.ParticipantInfo)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ExistingCustomServiceAgreement, rhs: AccessControlClient2.ExistingCustomServiceAgreement) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [AccessControlClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [AccessControlClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ForbiddenError, rhs: AccessControlClient2.ForbiddenError) -> Swift.Bool
+}
+public struct FunctionGroupBase : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var description: Swift.String
+  public var serviceAgreementId: Swift.String
+  public var permissions: [AccessControlClient2.Permission]?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var approvalTypeId: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public init(name: Swift.String, description: Swift.String, serviceAgreementId: Swift.String, permissions: [AccessControlClient2.Permission]? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, approvalTypeId: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.FunctionGroupBase, rhs: AccessControlClient2.FunctionGroupBase) -> Swift.Bool
+}
+public struct FunctionGroupItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var approvalId: Swift.String?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var serviceAgreementId: Swift.String
+  public var permissions: [AccessControlClient2.Permission]?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var approvalTypeId: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String, approvalId: Swift.String? = nil, name: Swift.String, description: Swift.String, serviceAgreementId: Swift.String, permissions: [AccessControlClient2.Permission]? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, approvalTypeId: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.FunctionGroupItem, rhs: AccessControlClient2.FunctionGroupItem) -> Swift.Bool
+}
+public struct FunctionGroupItemAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var approvalId: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var permissions: [AccessControlClient2.Permission]?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var approvalTypeId: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public init(id: Swift.String? = nil, approvalId: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, permissions: [AccessControlClient2.Permission]? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, approvalTypeId: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.FunctionGroupItemAllOf, rhs: AccessControlClient2.FunctionGroupItemAllOf) -> Swift.Bool
+}
+public struct FunctionGroupItemBase : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var description: Swift.String
+  public var serviceAgreementId: Swift.String
+  public var permissions: [AccessControlClient2.Permission]?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var approvalTypeId: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public init(name: Swift.String, description: Swift.String, serviceAgreementId: Swift.String, permissions: [AccessControlClient2.Permission]? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, approvalTypeId: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.FunctionGroupItemBase, rhs: AccessControlClient2.FunctionGroupItemBase) -> Swift.Bool
+}
+public struct FunctionGroupItemPut : Swift.Codable, Swift.Equatable {
+  public var approvalTypeId: Swift.String?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var serviceAgreementId: Swift.String
+  public var permissions: [AccessControlClient2.Permission]?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public init(approvalTypeId: Swift.String? = nil, name: Swift.String, description: Swift.String, serviceAgreementId: Swift.String, permissions: [AccessControlClient2.Permission]? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.FunctionGroupItemPut, rhs: AccessControlClient2.FunctionGroupItemPut) -> Swift.Bool
+}
+public enum FunctionGroupType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case REGULAR
+  case TEMPLATE
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [AccessControlClient2.FunctionGroupType]
+  public static var allCases: [AccessControlClient2.FunctionGroupType] {
+    get
+  }
+}
+public protocol FunctionGroupsAPIProtocol {
+  func deleteFunctionGroupByIdCall(id: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getFunctionGroupByIdCall(id: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.FunctionGroupItem>
+  func getFunctionGroupsCall(serviceAgreementId: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.FunctionGroupItem]>
+  func postFunctionGroupsCall(functionGroupItemBase: AccessControlClient2.FunctionGroupItemBase?) throws -> ClientCommon.Call<AccessControlClient2.IdItem>
+  func putFunctionGroupByIdCall(id: Swift.String, functionGroupItemPut: AccessControlClient2.FunctionGroupItemPut?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class FunctionGroupsAPI : ObjectiveC.NSObject, DBSClient, AccessControlClient2.FunctionGroupsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteFunctionGroupByIdCall(id: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getFunctionGroupByIdCall(id: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.FunctionGroupItem>
+  open func getFunctionGroupsCall(serviceAgreementId: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.FunctionGroupItem]>
+  open func postFunctionGroupsCall(functionGroupItemBase: AccessControlClient2.FunctionGroupItemBase? = nil) throws -> ClientCommon.Call<AccessControlClient2.IdItem>
+  open func putFunctionGroupByIdCall(id: Swift.String, functionGroupItemPut: AccessControlClient2.FunctionGroupItemPut? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct FunctionsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var functionId: Swift.String
+  public var functionCode: Swift.String
+  public var resource: Swift.String
+  public var resourceCode: Swift.String?
+  public var name: Swift.String
+  public var privileges: [AccessControlClient2.PresentationPrivilege]
+  public init(additions: [Swift.String : Swift.String]? = nil, functionId: Swift.String, functionCode: Swift.String, resource: Swift.String, resourceCode: Swift.String? = nil, name: Swift.String, privileges: [AccessControlClient2.PresentationPrivilege])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.FunctionsGetResponseBody, rhs: AccessControlClient2.FunctionsGetResponseBody) -> Swift.Bool
+}
+public struct FunctionsGetResponseBodyAllOf : Swift.Codable, Swift.Equatable {
+  public var functionId: Swift.String?
+  public var functionCode: Swift.String?
+  public var resource: Swift.String?
+  public var resourceCode: Swift.String?
+  public var name: Swift.String?
+  public var privileges: [AccessControlClient2.PresentationPrivilege]?
+  public init(functionId: Swift.String? = nil, functionCode: Swift.String? = nil, resource: Swift.String? = nil, resourceCode: Swift.String? = nil, name: Swift.String? = nil, privileges: [AccessControlClient2.PresentationPrivilege]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.FunctionsGetResponseBodyAllOf, rhs: AccessControlClient2.FunctionsGetResponseBodyAllOf) -> Swift.Bool
+}
+public struct GetServiceAgreement : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var externalId: Swift.String?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var creatorLegalEntity: Swift.String?
+  public var isMaster: Swift.Bool?
+  public var status: AccessControlClient2.Status?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String, externalId: Swift.String? = nil, name: Swift.String, description: Swift.String, creatorLegalEntity: Swift.String? = nil, isMaster: Swift.Bool? = nil, status: AccessControlClient2.Status? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.GetServiceAgreement, rhs: AccessControlClient2.GetServiceAgreement) -> Swift.Bool
+}
+public struct GetServiceAgreementAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var creatorLegalEntity: Swift.String?
+  public var isMaster: Swift.Bool?
+  public var status: AccessControlClient2.Status?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(id: Swift.String? = nil, externalId: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, creatorLegalEntity: Swift.String? = nil, isMaster: Swift.Bool? = nil, status: AccessControlClient2.Status? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.GetServiceAgreementAllOf, rhs: AccessControlClient2.GetServiceAgreementAllOf) -> Swift.Bool
+}
+public struct IdItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.IdItem, rhs: AccessControlClient2.IdItem) -> Swift.Bool
+}
+public struct IdItemAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public init(id: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.IdItemAllOf, rhs: AccessControlClient2.IdItemAllOf) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public init(message: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.InternalServerError, rhs: AccessControlClient2.InternalServerError) -> Swift.Bool
+}
+public protocol LegalEntitiesAPIProtocol {
+  func getLegalEntitiesCall(parentEntityId: Swift.String?) throws -> ClientCommon.Call<[AccessControlClient2.LegalEntityItem]>
+  func getLegalEntityByExternalIdCall(externalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.LegalEntityItemBase>
+  func getLegalEntityByIdCall(legalEntityId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.LegalEntityItem>
+  func getLegalEntityExternalDataCall(field: Swift.String?, term: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[AccessControlClient2.LegalEntityExternalDataItem]>
+  func getLegalEntityForUserCall() throws -> ClientCommon.Call<AccessControlClient2.LegalEntityItem>
+  func getMasterServiceAgreementCall(legalEntityId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.GetServiceAgreement>
+  func getSegmentationCall(businessFunction: Swift.String, query: Swift.String?, privilege: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[AccessControlClient2.LegalEntityItem]>
+  func postLegalEntitiesCall(legalEntityCreateItem: AccessControlClient2.LegalEntityCreateItem?) throws -> ClientCommon.Call<AccessControlClient2.LegalEntityItemId>
+  func postLegalEntitiesAsParticipantCall(legalEntityAsParticipantCreateItem: AccessControlClient2.LegalEntityAsParticipantCreateItem?) throws -> ClientCommon.Call<AccessControlClient2.LegalEntityAsParticipantItemId>
+  func postSubEntitiesCall(searchSubEntitiesParameters: AccessControlClient2.SearchSubEntitiesParameters?) throws -> ClientCommon.Call<[AccessControlClient2.LegalEntityItemBase]>
+}
+@objc @_inheritsConvenienceInitializers public class LegalEntitiesAPI : ObjectiveC.NSObject, DBSClient, AccessControlClient2.LegalEntitiesAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getLegalEntitiesCall(parentEntityId: Swift.String? = nil) throws -> ClientCommon.Call<[AccessControlClient2.LegalEntityItem]>
+  open func getLegalEntityByExternalIdCall(externalId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.LegalEntityItemBase>
+  open func getLegalEntityByIdCall(legalEntityId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.LegalEntityItem>
+  open func getLegalEntityExternalDataCall(field: Swift.String? = nil, term: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[AccessControlClient2.LegalEntityExternalDataItem]>
+  open func getLegalEntityForUserCall() throws -> ClientCommon.Call<AccessControlClient2.LegalEntityItem>
+  open func getMasterServiceAgreementCall(legalEntityId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.GetServiceAgreement>
+  open func getSegmentationCall(businessFunction: Swift.String, query: Swift.String? = nil, privilege: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[AccessControlClient2.LegalEntityItem]>
+  open func postLegalEntitiesCall(legalEntityCreateItem: AccessControlClient2.LegalEntityCreateItem? = nil) throws -> ClientCommon.Call<AccessControlClient2.LegalEntityItemId>
+  open func postLegalEntitiesAsParticipantCall(legalEntityAsParticipantCreateItem: AccessControlClient2.LegalEntityAsParticipantCreateItem? = nil) throws -> ClientCommon.Call<AccessControlClient2.LegalEntityAsParticipantItemId>
+  open func postSubEntitiesCall(searchSubEntitiesParameters: AccessControlClient2.SearchSubEntitiesParameters? = nil) throws -> ClientCommon.Call<[AccessControlClient2.LegalEntityItemBase]>
+  @objc deinit
+}
+public struct LegalEntityAdmins : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var admins: [Swift.String]
+  public init(id: Swift.String, admins: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityAdmins, rhs: AccessControlClient2.LegalEntityAdmins) -> Swift.Bool
+}
+public struct LegalEntityAsParticipantCreateItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var legalEntityName: Swift.String
+  public var legalEntityExternalId: Swift.String
+  public var legalEntityParentId: Swift.String?
+  public var legalEntityType: AccessControlClient2.LegalEntityType
+  public var participantOf: AccessControlClient2.ParticipantOf
+  public init(additions: [Swift.String : Swift.String]? = nil, legalEntityName: Swift.String, legalEntityExternalId: Swift.String, legalEntityParentId: Swift.String? = nil, legalEntityType: AccessControlClient2.LegalEntityType, participantOf: AccessControlClient2.ParticipantOf)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityAsParticipantCreateItem, rhs: AccessControlClient2.LegalEntityAsParticipantCreateItem) -> Swift.Bool
+}
+public struct LegalEntityAsParticipantCreateItemAllOf : Swift.Codable, Swift.Equatable {
+  public var legalEntityName: Swift.String
+  public var legalEntityExternalId: Swift.String
+  public var legalEntityParentId: Swift.String?
+  public var legalEntityType: AccessControlClient2.LegalEntityType
+  public var participantOf: AccessControlClient2.ParticipantOf
+  public init(legalEntityName: Swift.String, legalEntityExternalId: Swift.String, legalEntityParentId: Swift.String? = nil, legalEntityType: AccessControlClient2.LegalEntityType, participantOf: AccessControlClient2.ParticipantOf)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityAsParticipantCreateItemAllOf, rhs: AccessControlClient2.LegalEntityAsParticipantCreateItemAllOf) -> Swift.Bool
+}
+public struct LegalEntityAsParticipantItemId : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var legalEntityId: Swift.String
+  public var serviceAgreementId: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, legalEntityId: Swift.String, serviceAgreementId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityAsParticipantItemId, rhs: AccessControlClient2.LegalEntityAsParticipantItemId) -> Swift.Bool
+}
+public struct LegalEntityAsParticipantItemIdAllOf : Swift.Codable, Swift.Equatable {
+  public var legalEntityId: Swift.String
+  public var serviceAgreementId: Swift.String?
+  public init(legalEntityId: Swift.String, serviceAgreementId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityAsParticipantItemIdAllOf, rhs: AccessControlClient2.LegalEntityAsParticipantItemIdAllOf) -> Swift.Bool
+}
+public struct LegalEntityBase : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var name: Swift.String
+  public var type: AccessControlClient2.LegalEntityType
+  public init(id: Swift.String, externalId: Swift.String, name: Swift.String, type: AccessControlClient2.LegalEntityType)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityBase, rhs: AccessControlClient2.LegalEntityBase) -> Swift.Bool
+}
+public struct LegalEntityCreateItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var externalId: Swift.String?
+  public var name: Swift.String
+  public var parentInternalId: Swift.String
+  public var type: AccessControlClient2.LegalEntityType
+  public var activateSingleServiceAgreement: Swift.Bool
+  public init(additions: [Swift.String : Swift.String]? = nil, externalId: Swift.String? = nil, name: Swift.String, parentInternalId: Swift.String, type: AccessControlClient2.LegalEntityType, activateSingleServiceAgreement: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityCreateItem, rhs: AccessControlClient2.LegalEntityCreateItem) -> Swift.Bool
+}
+public struct LegalEntityCreateItemAllOf : Swift.Codable, Swift.Equatable {
+  public var externalId: Swift.String?
+  public var name: Swift.String?
+  public var parentInternalId: Swift.String?
+  public var type: AccessControlClient2.LegalEntityType?
+  public var activateSingleServiceAgreement: Swift.Bool?
+  public init(externalId: Swift.String? = nil, name: Swift.String? = nil, parentInternalId: Swift.String? = nil, type: AccessControlClient2.LegalEntityType? = nil, activateSingleServiceAgreement: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityCreateItemAllOf, rhs: AccessControlClient2.LegalEntityCreateItemAllOf) -> Swift.Bool
+}
+public struct LegalEntityExternalDataItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var externalId: Swift.String
+  public var name: Swift.String
+  public var type: AccessControlClient2.LegalEntityType?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, externalId: Swift.String, name: Swift.String, type: AccessControlClient2.LegalEntityType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityExternalDataItem, rhs: AccessControlClient2.LegalEntityExternalDataItem) -> Swift.Bool
+}
+public struct LegalEntityExternalDataItemAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var name: Swift.String?
+  public var type: AccessControlClient2.LegalEntityType?
+  public init(id: Swift.String? = nil, externalId: Swift.String? = nil, name: Swift.String? = nil, type: AccessControlClient2.LegalEntityType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityExternalDataItemAllOf, rhs: AccessControlClient2.LegalEntityExternalDataItemAllOf) -> Swift.Bool
+}
+public struct LegalEntityItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var parentId: Swift.String?
+  public var isParent: Swift.Bool?
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var name: Swift.String
+  public var type: AccessControlClient2.LegalEntityType
+  public init(additions: [Swift.String : Swift.String]? = nil, parentId: Swift.String? = nil, isParent: Swift.Bool? = nil, id: Swift.String, externalId: Swift.String, name: Swift.String, type: AccessControlClient2.LegalEntityType)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityItem, rhs: AccessControlClient2.LegalEntityItem) -> Swift.Bool
+}
+public struct LegalEntityItemAllOf : Swift.Codable, Swift.Equatable {
+  public var parentId: Swift.String?
+  public var isParent: Swift.Bool?
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var name: Swift.String?
+  public var type: AccessControlClient2.LegalEntityType?
+  public init(parentId: Swift.String? = nil, isParent: Swift.Bool? = nil, id: Swift.String? = nil, externalId: Swift.String? = nil, name: Swift.String? = nil, type: AccessControlClient2.LegalEntityType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityItemAllOf, rhs: AccessControlClient2.LegalEntityItemAllOf) -> Swift.Bool
+}
+public struct LegalEntityItemBase : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var name: Swift.String
+  public var type: AccessControlClient2.LegalEntityType
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String, externalId: Swift.String, name: Swift.String, type: AccessControlClient2.LegalEntityType)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityItemBase, rhs: AccessControlClient2.LegalEntityItemBase) -> Swift.Bool
+}
+public struct LegalEntityItemId : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.LegalEntityItemId, rhs: AccessControlClient2.LegalEntityItemId) -> Swift.Bool
+}
+public enum LegalEntityType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case customer
+  case bank
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [AccessControlClient2.LegalEntityType]
+  public static var allCases: [AccessControlClient2.LegalEntityType] {
+    get
+  }
+}
+public struct ListOfFunctionGroupsWithDataGroups : Swift.Codable, Swift.Equatable {
+  public var items: [AccessControlClient2.PresentationFunctionDataGroup]
+  public init(items: [AccessControlClient2.PresentationFunctionDataGroup])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ListOfFunctionGroupsWithDataGroups, rhs: AccessControlClient2.ListOfFunctionGroupsWithDataGroups) -> Swift.Bool
+}
+public struct NewCustomServiceAgreement : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var serviceAgreementName: Swift.String
+  public var serviceAgreementDescription: Swift.String
+  public var serviceAgreementExternalId: Swift.String?
+  public var serviceAgreementValidFromDate: Swift.String?
+  public var serviceAgreementValidFromTime: Swift.String?
+  public var serviceAgreementValidUntilDate: Swift.String?
+  public var serviceAgreementValidUntilTime: Swift.String?
+  public var serviceAgreementState: AccessControlClient2.Status?
+  public var participantInfo: AccessControlClient2.ParticipantInfo
+  public init(additions: [Swift.String : Swift.String]? = nil, serviceAgreementName: Swift.String, serviceAgreementDescription: Swift.String, serviceAgreementExternalId: Swift.String? = nil, serviceAgreementValidFromDate: Swift.String? = nil, serviceAgreementValidFromTime: Swift.String? = nil, serviceAgreementValidUntilDate: Swift.String? = nil, serviceAgreementValidUntilTime: Swift.String? = nil, serviceAgreementState: AccessControlClient2.Status? = nil, participantInfo: AccessControlClient2.ParticipantInfo)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.NewCustomServiceAgreement, rhs: AccessControlClient2.NewCustomServiceAgreement) -> Swift.Bool
+}
+public struct NewCustomServiceAgreementAllOf : Swift.Codable, Swift.Equatable {
+  public var serviceAgreementName: Swift.String
+  public var serviceAgreementDescription: Swift.String
+  public var serviceAgreementExternalId: Swift.String?
+  public var serviceAgreementValidFromDate: Swift.String?
+  public var serviceAgreementValidFromTime: Swift.String?
+  public var serviceAgreementValidUntilDate: Swift.String?
+  public var serviceAgreementValidUntilTime: Swift.String?
+  public var serviceAgreementState: AccessControlClient2.Status?
+  public var participantInfo: AccessControlClient2.ParticipantInfo
+  public init(serviceAgreementName: Swift.String, serviceAgreementDescription: Swift.String, serviceAgreementExternalId: Swift.String? = nil, serviceAgreementValidFromDate: Swift.String? = nil, serviceAgreementValidFromTime: Swift.String? = nil, serviceAgreementValidUntilDate: Swift.String? = nil, serviceAgreementValidUntilTime: Swift.String? = nil, serviceAgreementState: AccessControlClient2.Status? = nil, participantInfo: AccessControlClient2.ParticipantInfo)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.NewCustomServiceAgreementAllOf, rhs: AccessControlClient2.NewCustomServiceAgreementAllOf) -> Swift.Bool
+}
+public struct NewMasterServiceAgreement : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var serviceAgreementName: Swift.String
+  public var serviceAgreementDescription: Swift.String
+  public var serviceAgreementValidFromDate: Swift.String?
+  public var serviceAgreementValidFromTime: Swift.String?
+  public var serviceAgreementValidUntilDate: Swift.String?
+  public var serviceAgreementValidUntilTime: Swift.String?
+  public var serviceAgreementState: AccessControlClient2.Status?
+  public init(additions: [Swift.String : Swift.String]? = nil, serviceAgreementName: Swift.String, serviceAgreementDescription: Swift.String, serviceAgreementValidFromDate: Swift.String? = nil, serviceAgreementValidFromTime: Swift.String? = nil, serviceAgreementValidUntilDate: Swift.String? = nil, serviceAgreementValidUntilTime: Swift.String? = nil, serviceAgreementState: AccessControlClient2.Status? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.NewMasterServiceAgreement, rhs: AccessControlClient2.NewMasterServiceAgreement) -> Swift.Bool
+}
+public struct NewMasterServiceAgreementAllOf : Swift.Codable, Swift.Equatable {
+  public var serviceAgreementName: Swift.String
+  public var serviceAgreementDescription: Swift.String
+  public var serviceAgreementValidFromDate: Swift.String?
+  public var serviceAgreementValidFromTime: Swift.String?
+  public var serviceAgreementValidUntilDate: Swift.String?
+  public var serviceAgreementValidUntilTime: Swift.String?
+  public var serviceAgreementState: AccessControlClient2.Status?
+  public init(serviceAgreementName: Swift.String, serviceAgreementDescription: Swift.String, serviceAgreementValidFromDate: Swift.String? = nil, serviceAgreementValidFromTime: Swift.String? = nil, serviceAgreementValidUntilDate: Swift.String? = nil, serviceAgreementValidUntilTime: Swift.String? = nil, serviceAgreementState: AccessControlClient2.Status? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.NewMasterServiceAgreementAllOf, rhs: AccessControlClient2.NewMasterServiceAgreementAllOf) -> Swift.Bool
+}
+public struct NotAcceptableError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var supportedMediaTypes: [Swift.String]?
+  public init(message: Swift.String? = nil, supportedMediaTypes: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.NotAcceptableError, rhs: AccessControlClient2.NotAcceptableError) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [AccessControlClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [AccessControlClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.NotFoundError, rhs: AccessControlClient2.NotFoundError) -> Swift.Bool
+}
+public struct OldNewPrivileges : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var view: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var create: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var edit: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var delete: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var approve: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var cancel: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var execute: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public init(additions: [Swift.String : Swift.String]? = nil, view: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, create: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, edit: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, delete: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, approve: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, cancel: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, execute: AccessControlClient2.OldNewPrivilegesAllOfView? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.OldNewPrivileges, rhs: AccessControlClient2.OldNewPrivileges) -> Swift.Bool
+}
+public struct OldNewPrivilegesAllOf : Swift.Codable, Swift.Equatable {
+  public var view: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var create: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var edit: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var delete: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var approve: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var cancel: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public var execute: AccessControlClient2.OldNewPrivilegesAllOfView?
+  public init(view: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, create: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, edit: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, delete: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, approve: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, cancel: AccessControlClient2.OldNewPrivilegesAllOfView? = nil, execute: AccessControlClient2.OldNewPrivilegesAllOfView? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.OldNewPrivilegesAllOf, rhs: AccessControlClient2.OldNewPrivilegesAllOf) -> Swift.Bool
+}
+public struct OldNewPrivilegesAllOfView : Swift.Codable, Swift.Equatable {
+  public var old: Swift.Bool?
+  public var new: Swift.Bool?
+  public init(old: Swift.Bool? = nil, new: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.OldNewPrivilegesAllOfView, rhs: AccessControlClient2.OldNewPrivilegesAllOfView) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct PageableSearchableParameters : Swift.Codable, Swift.Equatable {
+  public var query: Swift.String?
+  public var cursor: Swift.String?
+  public var from: Swift.Int?
+  public var size: Swift.Int?
+  public init(query: Swift.String? = nil, cursor: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PageableSearchableParameters, rhs: AccessControlClient2.PageableSearchableParameters) -> Swift.Bool
+}
+public struct Participant : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var sharingUsers: Swift.Bool
+  public var sharingAccounts: Swift.Bool
+  public var admins: [Swift.String]?
+  public init(id: Swift.String, sharingUsers: Swift.Bool, sharingAccounts: Swift.Bool, admins: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.Participant, rhs: AccessControlClient2.Participant) -> Swift.Bool
+}
+public struct ParticipantInfo : Swift.Codable, Swift.Equatable {
+  public var shareUsers: Swift.Bool
+  public var shareAccounts: Swift.Bool
+  public init(shareUsers: Swift.Bool, shareAccounts: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ParticipantInfo, rhs: AccessControlClient2.ParticipantInfo) -> Swift.Bool
+}
+public struct ParticipantOf : Swift.Codable, Swift.Equatable {
+  public var existingCustomServiceAgreement: AccessControlClient2.ExistingCustomServiceAgreement?
+  public var newCustomServiceAgreement: AccessControlClient2.NewCustomServiceAgreement?
+  public var newMasterServiceAgreement: AccessControlClient2.NewMasterServiceAgreement?
+  public init(existingCustomServiceAgreement: AccessControlClient2.ExistingCustomServiceAgreement? = nil, newCustomServiceAgreement: AccessControlClient2.NewCustomServiceAgreement? = nil, newMasterServiceAgreement: AccessControlClient2.NewMasterServiceAgreement? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ParticipantOf, rhs: AccessControlClient2.ParticipantOf) -> Swift.Bool
+}
+public struct Permission : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var functionId: Swift.String
+  public var assignedPrivileges: [AccessControlClient2.Privilege]
+  public init(additions: [Swift.String : Swift.String]? = nil, functionId: Swift.String, assignedPrivileges: [AccessControlClient2.Privilege])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.Permission, rhs: AccessControlClient2.Permission) -> Swift.Bool
+}
+public struct PermissionAllOf : Swift.Codable, Swift.Equatable {
+  public var functionId: Swift.String?
+  public var assignedPrivileges: [AccessControlClient2.Privilege]?
+  public init(functionId: Swift.String? = nil, assignedPrivileges: [AccessControlClient2.Privilege]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PermissionAllOf, rhs: AccessControlClient2.PermissionAllOf) -> Swift.Bool
+}
+public struct PermissionData : Swift.Codable, Swift.Equatable {
+  public var resourceName: Swift.String?
+  public var functionName: Swift.String?
+  public var privileges: [Swift.String]?
+  public init(resourceName: Swift.String? = nil, functionName: Swift.String? = nil, privileges: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PermissionData, rhs: AccessControlClient2.PermissionData) -> Swift.Bool
+}
+public struct PermissionDataGroup : Swift.Codable, Swift.Equatable {
+  public var permissions: [AccessControlClient2.PermissionData]?
+  public var dataGroups: [[AccessControlClient2.PermissionDataGroupData]]?
+  public init(permissions: [AccessControlClient2.PermissionData]? = nil, dataGroups: [[AccessControlClient2.PermissionDataGroupData]]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PermissionDataGroup, rhs: AccessControlClient2.PermissionDataGroup) -> Swift.Bool
+}
+public struct PermissionDataGroupData : Swift.Codable, Swift.Equatable {
+  public var dataGroupType: Swift.String?
+  public var dataGroupIds: [Swift.String]?
+  public init(dataGroupType: Swift.String? = nil, dataGroupIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PermissionDataGroupData, rhs: AccessControlClient2.PermissionDataGroupData) -> Swift.Bool
+}
+public enum PermissionMatrixAction : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case ADDED
+  case REMOVED
+  case CHANGED
+  case UNCHANGED
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [AccessControlClient2.PermissionMatrixAction]
+  public static var allCases: [AccessControlClient2.PermissionMatrixAction] {
+    get
+  }
+}
+public struct PermissionMatrixItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var functionId: Swift.String?
+  public var functionCode: Swift.String?
+  public var resource: Swift.String?
+  public var name: Swift.String?
+  public var action: AccessControlClient2.PermissionMatrixAction?
+  public var privileges: AccessControlClient2.OldNewPrivileges?
+  public init(additions: [Swift.String : Swift.String]? = nil, functionId: Swift.String? = nil, functionCode: Swift.String? = nil, resource: Swift.String? = nil, name: Swift.String? = nil, action: AccessControlClient2.PermissionMatrixAction? = nil, privileges: AccessControlClient2.OldNewPrivileges? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PermissionMatrixItem, rhs: AccessControlClient2.PermissionMatrixItem) -> Swift.Bool
+}
+public struct PermissionMatrixItemAllOf : Swift.Codable, Swift.Equatable {
+  public var functionId: Swift.String?
+  public var functionCode: Swift.String?
+  public var resource: Swift.String?
+  public var name: Swift.String?
+  public var action: AccessControlClient2.PermissionMatrixAction?
+  public var privileges: AccessControlClient2.OldNewPrivileges?
+  public init(functionId: Swift.String? = nil, functionCode: Swift.String? = nil, resource: Swift.String? = nil, name: Swift.String? = nil, action: AccessControlClient2.PermissionMatrixAction? = nil, privileges: AccessControlClient2.OldNewPrivileges? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PermissionMatrixItemAllOf, rhs: AccessControlClient2.PermissionMatrixItemAllOf) -> Swift.Bool
+}
+public struct PermissionsDataGroup : Swift.Codable, Swift.Equatable {
+  public var permissionsData: [AccessControlClient2.PermissionDataGroup]?
+  public var dataGroupsData: [AccessControlClient2.DataGroupData]?
+  public init(permissionsData: [AccessControlClient2.PermissionDataGroup]? = nil, dataGroupsData: [AccessControlClient2.DataGroupData]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PermissionsDataGroup, rhs: AccessControlClient2.PermissionsDataGroup) -> Swift.Bool
+}
+public struct PermissionsRequest : Swift.Codable, Swift.Equatable {
+  public var dataGroupTypes: [Swift.String]
+  public var resourceName: Swift.String?
+  public var functionNames: [Swift.String]?
+  public var privileges: [Swift.String]?
+  public init(dataGroupTypes: [Swift.String], resourceName: Swift.String? = nil, functionNames: [Swift.String]? = nil, privileges: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PermissionsRequest, rhs: AccessControlClient2.PermissionsRequest) -> Swift.Bool
+}
+public struct PersistenceDataGroupState : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public init(name: Swift.String? = nil, description: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PersistenceDataGroupState, rhs: AccessControlClient2.PersistenceDataGroupState) -> Swift.Bool
+}
+public enum PresentationApprovalAction : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case CREATE
+  case EDIT
+  case DELETE
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [AccessControlClient2.PresentationApprovalAction]
+  public static var allCases: [AccessControlClient2.PresentationApprovalAction] {
+    get
+  }
+}
+public enum PresentationApprovalCategory : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case assignPermissions
+  case manageDataGroups
+  case manageLimits
+  case manageShadowLimits
+  case unlockUser
+  case manageFunctionGroups
+  case manageServiceAgreements
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [AccessControlClient2.PresentationApprovalCategory]
+  public static var allCases: [AccessControlClient2.PresentationApprovalCategory] {
+    get
+  }
+}
+public struct PresentationApprovalItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var creatorUserFullName: Swift.String?
+  public var creatorUserId: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var category: AccessControlClient2.PresentationApprovalCategory?
+  public var approvalId: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, creatorUserFullName: Swift.String? = nil, creatorUserId: Swift.String? = nil, createdAt: Foundation.Date? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, category: AccessControlClient2.PresentationApprovalCategory? = nil, approvalId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationApprovalItem, rhs: AccessControlClient2.PresentationApprovalItem) -> Swift.Bool
+}
+public struct PresentationApprovalItemAllOf : Swift.Codable, Swift.Equatable {
+  public var creatorUserFullName: Swift.String?
+  public var creatorUserId: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var category: AccessControlClient2.PresentationApprovalCategory?
+  public var approvalId: Swift.String?
+  public init(creatorUserFullName: Swift.String? = nil, creatorUserId: Swift.String? = nil, createdAt: Foundation.Date? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, category: AccessControlClient2.PresentationApprovalCategory? = nil, approvalId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationApprovalItemAllOf, rhs: AccessControlClient2.PresentationApprovalItemAllOf) -> Swift.Bool
+}
+public struct PresentationApprovalLogItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var approverId: Swift.String?
+  public var approverFullName: Swift.String?
+  public var approvedAt: Foundation.Date?
+  public init(additions: [Swift.String : Swift.String]? = nil, approverId: Swift.String? = nil, approverFullName: Swift.String? = nil, approvedAt: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationApprovalLogItem, rhs: AccessControlClient2.PresentationApprovalLogItem) -> Swift.Bool
+}
+public struct PresentationApprovalLogItemAllOf : Swift.Codable, Swift.Equatable {
+  public var approverId: Swift.String?
+  public var approverFullName: Swift.String?
+  public var approvedAt: Foundation.Date?
+  public init(approverId: Swift.String? = nil, approverFullName: Swift.String? = nil, approvedAt: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationApprovalLogItemAllOf, rhs: AccessControlClient2.PresentationApprovalLogItemAllOf) -> Swift.Bool
+}
+public struct PresentationApprovalPermissions : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var approvalId: Swift.String?
+  public var items: [AccessControlClient2.PresentationFunctionDataGroup]
+  public init(additions: [Swift.String : Swift.String]? = nil, approvalId: Swift.String? = nil, items: [AccessControlClient2.PresentationFunctionDataGroup])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationApprovalPermissions, rhs: AccessControlClient2.PresentationApprovalPermissions) -> Swift.Bool
+}
+public struct PresentationApprovalPermissionsAllOf : Swift.Codable, Swift.Equatable {
+  public var approvalId: Swift.String?
+  public var items: [AccessControlClient2.PresentationFunctionDataGroup]?
+  public init(approvalId: Swift.String? = nil, items: [AccessControlClient2.PresentationFunctionDataGroup]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationApprovalPermissionsAllOf, rhs: AccessControlClient2.PresentationApprovalPermissionsAllOf) -> Swift.Bool
+}
+public struct PresentationApprovalStatus : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var approvalStatus: AccessControlClient2.ApprovalStatus?
+  public init(additions: [Swift.String : Swift.String]? = nil, approvalStatus: AccessControlClient2.ApprovalStatus? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationApprovalStatus, rhs: AccessControlClient2.PresentationApprovalStatus) -> Swift.Bool
+}
+public struct PresentationApprovalStatusAllOf : Swift.Codable, Swift.Equatable {
+  public var approvalStatus: AccessControlClient2.ApprovalStatus?
+  public init(approvalStatus: AccessControlClient2.ApprovalStatus? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationApprovalStatusAllOf, rhs: AccessControlClient2.PresentationApprovalStatusAllOf) -> Swift.Bool
+}
+public struct PresentationAssignUserPermissions : Swift.Codable, Swift.Equatable {
+  public var externalUserId: Swift.String
+  public var externalServiceAgreementId: Swift.String
+  public var functionGroupDataGroups: [AccessControlClient2.PresentationFunctionGroupDataGroup]
+  public init(externalUserId: Swift.String, externalServiceAgreementId: Swift.String, functionGroupDataGroups: [AccessControlClient2.PresentationFunctionGroupDataGroup])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationAssignUserPermissions, rhs: AccessControlClient2.PresentationAssignUserPermissions) -> Swift.Bool
+}
+public struct PresentationDataGroupApprovalDetailsItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var dataGroupId: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var serviceAgreementName: Swift.String?
+  public var type: Swift.String?
+  public var approvalId: Swift.String?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var oldState: AccessControlClient2.PersistenceDataGroupState?
+  public var newState: AccessControlClient2.PersistenceDataGroupState?
+  public var addedDataItems: [Swift.String]?
+  public var removedDataItems: [Swift.String]?
+  public var unmodifiedDataItems: [Swift.String]?
+  public var legalEntityIds: [Swift.String]?
+  public init(additions: [Swift.String : Swift.String]? = nil, dataGroupId: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, serviceAgreementName: Swift.String? = nil, type: Swift.String? = nil, approvalId: Swift.String? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, oldState: AccessControlClient2.PersistenceDataGroupState? = nil, newState: AccessControlClient2.PersistenceDataGroupState? = nil, addedDataItems: [Swift.String]? = nil, removedDataItems: [Swift.String]? = nil, unmodifiedDataItems: [Swift.String]? = nil, legalEntityIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationDataGroupApprovalDetailsItem, rhs: AccessControlClient2.PresentationDataGroupApprovalDetailsItem) -> Swift.Bool
+}
+public struct PresentationDataGroupApprovalDetailsItemAllOf : Swift.Codable, Swift.Equatable {
+  public var dataGroupId: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var serviceAgreementName: Swift.String?
+  public var type: Swift.String?
+  public var approvalId: Swift.String?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var oldState: AccessControlClient2.PersistenceDataGroupState?
+  public var newState: AccessControlClient2.PersistenceDataGroupState?
+  public var addedDataItems: [Swift.String]?
+  public var removedDataItems: [Swift.String]?
+  public var unmodifiedDataItems: [Swift.String]?
+  public var legalEntityIds: [Swift.String]?
+  public init(dataGroupId: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, serviceAgreementName: Swift.String? = nil, type: Swift.String? = nil, approvalId: Swift.String? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, oldState: AccessControlClient2.PersistenceDataGroupState? = nil, newState: AccessControlClient2.PersistenceDataGroupState? = nil, addedDataItems: [Swift.String]? = nil, removedDataItems: [Swift.String]? = nil, unmodifiedDataItems: [Swift.String]? = nil, legalEntityIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationDataGroupApprovalDetailsItemAllOf, rhs: AccessControlClient2.PresentationDataGroupApprovalDetailsItemAllOf) -> Swift.Bool
+}
+public struct PresentationDataGroupApprovalItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var type: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, type: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationDataGroupApprovalItem, rhs: AccessControlClient2.PresentationDataGroupApprovalItem) -> Swift.Bool
+}
+public struct PresentationDataGroupApprovalItemAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var type: Swift.String?
+  public init(id: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, type: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationDataGroupApprovalItemAllOf, rhs: AccessControlClient2.PresentationDataGroupApprovalItemAllOf) -> Swift.Bool
+}
+public struct PresentationDataItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var dataType: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, dataType: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationDataItem, rhs: AccessControlClient2.PresentationDataItem) -> Swift.Bool
+}
+public struct PresentationDataItemAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var dataType: Swift.String?
+  public init(id: Swift.String? = nil, dataType: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationDataItemAllOf, rhs: AccessControlClient2.PresentationDataItemAllOf) -> Swift.Bool
+}
+public struct PresentationFunctionDataGroup : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var functionGroupId: Swift.String
+  public var dataGroupIds: [AccessControlClient2.PresentationGenericObjectId]
+  public init(additions: [Swift.String : Swift.String]? = nil, functionGroupId: Swift.String, dataGroupIds: [AccessControlClient2.PresentationGenericObjectId])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionDataGroup, rhs: AccessControlClient2.PresentationFunctionDataGroup) -> Swift.Bool
+}
+public struct PresentationFunctionDataGroupAllOf : Swift.Codable, Swift.Equatable {
+  public var functionGroupId: Swift.String?
+  public var dataGroupIds: [AccessControlClient2.PresentationGenericObjectId]?
+  public init(functionGroupId: Swift.String? = nil, dataGroupIds: [AccessControlClient2.PresentationGenericObjectId]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionDataGroupAllOf, rhs: AccessControlClient2.PresentationFunctionDataGroupAllOf) -> Swift.Bool
+}
+public struct PresentationFunctionGroupApprovalDetailsItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var functionGroupId: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var serviceAgreementName: Swift.String?
+  public var approvalId: Swift.String?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var oldState: AccessControlClient2.PresentationFunctionGroupState?
+  public var newState: AccessControlClient2.PresentationFunctionGroupState?
+  public var permissionMatrix: [AccessControlClient2.PermissionMatrixItem]?
+  public init(additions: [Swift.String : Swift.String]? = nil, functionGroupId: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, serviceAgreementName: Swift.String? = nil, approvalId: Swift.String? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, oldState: AccessControlClient2.PresentationFunctionGroupState? = nil, newState: AccessControlClient2.PresentationFunctionGroupState? = nil, permissionMatrix: [AccessControlClient2.PermissionMatrixItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupApprovalDetailsItem, rhs: AccessControlClient2.PresentationFunctionGroupApprovalDetailsItem) -> Swift.Bool
+}
+public struct PresentationFunctionGroupApprovalDetailsItemAllOf : Swift.Codable, Swift.Equatable {
+  public var functionGroupId: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var serviceAgreementName: Swift.String?
+  public var approvalId: Swift.String?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var oldState: AccessControlClient2.PresentationFunctionGroupState?
+  public var newState: AccessControlClient2.PresentationFunctionGroupState?
+  public var permissionMatrix: [AccessControlClient2.PermissionMatrixItem]?
+  public init(functionGroupId: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, serviceAgreementName: Swift.String? = nil, approvalId: Swift.String? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, oldState: AccessControlClient2.PresentationFunctionGroupState? = nil, newState: AccessControlClient2.PresentationFunctionGroupState? = nil, permissionMatrix: [AccessControlClient2.PermissionMatrixItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupApprovalDetailsItemAllOf, rhs: AccessControlClient2.PresentationFunctionGroupApprovalDetailsItemAllOf) -> Swift.Bool
+}
+public struct PresentationFunctionGroupDataGroup : Swift.Codable, Swift.Equatable {
+  public var functionGroupIdentifier: AccessControlClient2.PresentationIdentifier
+  public var dataGroupIdentifiers: [AccessControlClient2.PresentationIdentifier]?
+  public init(functionGroupIdentifier: AccessControlClient2.PresentationIdentifier, dataGroupIdentifiers: [AccessControlClient2.PresentationIdentifier]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupDataGroup, rhs: AccessControlClient2.PresentationFunctionGroupDataGroup) -> Swift.Bool
+}
+public struct PresentationFunctionGroupState : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var approvalTypeId: Swift.String?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, description: Swift.String? = nil, approvalTypeId: Swift.String? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupState, rhs: AccessControlClient2.PresentationFunctionGroupState) -> Swift.Bool
+}
+public struct PresentationFunctionGroupStateAllOf : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var approvalTypeId: Swift.String?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(name: Swift.String? = nil, description: Swift.String? = nil, approvalTypeId: Swift.String? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupStateAllOf, rhs: AccessControlClient2.PresentationFunctionGroupStateAllOf) -> Swift.Bool
+}
+public struct PresentationFunctionGroupsDataGroupsExtendedPair : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public var newDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]?
+  public var removedDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]?
+  public var unmodifiedDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil, newDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]? = nil, removedDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]? = nil, unmodifiedDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupsDataGroupsExtendedPair, rhs: AccessControlClient2.PresentationFunctionGroupsDataGroupsExtendedPair) -> Swift.Bool
+}
+public struct PresentationFunctionGroupsDataGroupsExtendedPairAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public var newDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]?
+  public var removedDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]?
+  public var unmodifiedDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]?
+  public init(id: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil, newDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]? = nil, removedDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]? = nil, unmodifiedDataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupsDataGroupsExtendedPairAllOf, rhs: AccessControlClient2.PresentationFunctionGroupsDataGroupsExtendedPairAllOf) -> Swift.Bool
+}
+public struct PresentationFunctionGroupsDataGroupsPair : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public var dataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil, dataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupsDataGroupsPair, rhs: AccessControlClient2.PresentationFunctionGroupsDataGroupsPair) -> Swift.Bool
+}
+public struct PresentationFunctionGroupsDataGroupsPairAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var type: AccessControlClient2.FunctionGroupType?
+  public var dataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]?
+  public init(id: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, type: AccessControlClient2.FunctionGroupType? = nil, dataGroups: [AccessControlClient2.PresentationDataGroupApprovalItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationFunctionGroupsDataGroupsPairAllOf, rhs: AccessControlClient2.PresentationFunctionGroupsDataGroupsPairAllOf) -> Swift.Bool
+}
+public struct PresentationGenericObjectId : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationGenericObjectId, rhs: AccessControlClient2.PresentationGenericObjectId) -> Swift.Bool
+}
+public struct PresentationIdentifier : Swift.Codable, Swift.Equatable {
+  public var idIdentifier: Swift.String?
+  public var nameIdentifier: AccessControlClient2.PresentationIdentifierNameIdentifier?
+  public init(idIdentifier: Swift.String? = nil, nameIdentifier: AccessControlClient2.PresentationIdentifierNameIdentifier? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationIdentifier, rhs: AccessControlClient2.PresentationIdentifier) -> Swift.Bool
+}
+public struct PresentationIdentifierNameIdentifier : Swift.Codable, Swift.Equatable {
+  public var externalServiceAgreementId: Swift.String
+  public var name: Swift.String
+  public init(externalServiceAgreementId: Swift.String, name: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationIdentifierNameIdentifier, rhs: AccessControlClient2.PresentationIdentifierNameIdentifier) -> Swift.Bool
+}
+public struct PresentationPermissionsApprovalDetailsItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var approvalId: Swift.String?
+  public var creatorUserFullName: Swift.String?
+  public var creatorUserId: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var userId: Swift.String?
+  public var userFullName: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var serviceAgreementName: Swift.String?
+  public var serviceAgreementDescription: Swift.String?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var category: AccessControlClient2.PresentationApprovalCategory?
+  public var newFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]?
+  public var removedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]?
+  public var modifiedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsExtendedPair]?
+  public var unmodifiedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]?
+  public var requiredApproves: Swift.Int?
+  public var completedApproves: Swift.Int?
+  public var approvalLog: [AccessControlClient2.PresentationApprovalLogItem]?
+  public init(additions: [Swift.String : Swift.String]? = nil, approvalId: Swift.String? = nil, creatorUserFullName: Swift.String? = nil, creatorUserId: Swift.String? = nil, createdAt: Foundation.Date? = nil, userId: Swift.String? = nil, userFullName: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, serviceAgreementName: Swift.String? = nil, serviceAgreementDescription: Swift.String? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, category: AccessControlClient2.PresentationApprovalCategory? = nil, newFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]? = nil, removedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]? = nil, modifiedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsExtendedPair]? = nil, unmodifiedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]? = nil, requiredApproves: Swift.Int? = nil, completedApproves: Swift.Int? = nil, approvalLog: [AccessControlClient2.PresentationApprovalLogItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationPermissionsApprovalDetailsItem, rhs: AccessControlClient2.PresentationPermissionsApprovalDetailsItem) -> Swift.Bool
+}
+public struct PresentationPermissionsApprovalDetailsItemAllOf : Swift.Codable, Swift.Equatable {
+  public var approvalId: Swift.String?
+  public var creatorUserFullName: Swift.String?
+  public var creatorUserId: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var userId: Swift.String?
+  public var userFullName: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var serviceAgreementName: Swift.String?
+  public var serviceAgreementDescription: Swift.String?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var category: AccessControlClient2.PresentationApprovalCategory?
+  public var newFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]?
+  public var removedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]?
+  public var modifiedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsExtendedPair]?
+  public var unmodifiedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]?
+  public var requiredApproves: Swift.Int?
+  public var completedApproves: Swift.Int?
+  public var approvalLog: [AccessControlClient2.PresentationApprovalLogItem]?
+  public init(approvalId: Swift.String? = nil, creatorUserFullName: Swift.String? = nil, creatorUserId: Swift.String? = nil, createdAt: Foundation.Date? = nil, userId: Swift.String? = nil, userFullName: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, serviceAgreementName: Swift.String? = nil, serviceAgreementDescription: Swift.String? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, category: AccessControlClient2.PresentationApprovalCategory? = nil, newFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]? = nil, removedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]? = nil, modifiedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsExtendedPair]? = nil, unmodifiedFunctionGroups: [AccessControlClient2.PresentationFunctionGroupsDataGroupsPair]? = nil, requiredApproves: Swift.Int? = nil, completedApproves: Swift.Int? = nil, approvalLog: [AccessControlClient2.PresentationApprovalLogItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationPermissionsApprovalDetailsItemAllOf, rhs: AccessControlClient2.PresentationPermissionsApprovalDetailsItemAllOf) -> Swift.Bool
+}
+public struct PresentationPrivilege : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var privilege: Swift.String
+  public var supportsLimit: Swift.Bool
+  public init(additions: [Swift.String : Swift.String]? = nil, privilege: Swift.String, supportsLimit: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationPrivilege, rhs: AccessControlClient2.PresentationPrivilege) -> Swift.Bool
+}
+public struct PresentationPrivilegeAllOf : Swift.Codable, Swift.Equatable {
+  public var privilege: Swift.String?
+  public var supportsLimit: Swift.Bool?
+  public init(privilege: Swift.String? = nil, supportsLimit: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationPrivilegeAllOf, rhs: AccessControlClient2.PresentationPrivilegeAllOf) -> Swift.Bool
+}
+public struct PresentationServiceAgreement : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var creatorLegalEntity: Swift.String
+  public var status: AccessControlClient2.Status
+  public var numberOfParticipants: Swift.Double
+  public var creatorLegalEntityName: Swift.String
+  public var id: Swift.String
+  public var externalId: Swift.String?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var isMaster: Swift.Bool
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, creatorLegalEntity: Swift.String, status: AccessControlClient2.Status, numberOfParticipants: Swift.Double, creatorLegalEntityName: Swift.String, id: Swift.String, externalId: Swift.String? = nil, name: Swift.String, description: Swift.String, isMaster: Swift.Bool, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationServiceAgreement, rhs: AccessControlClient2.PresentationServiceAgreement) -> Swift.Bool
+}
+public struct PresentationServiceAgreementAllOf : Swift.Codable, Swift.Equatable {
+  public var creatorLegalEntity: Swift.String?
+  public var status: AccessControlClient2.Status?
+  public var numberOfParticipants: Swift.Double?
+  public var creatorLegalEntityName: Swift.String?
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var isMaster: Swift.Bool?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(creatorLegalEntity: Swift.String? = nil, status: AccessControlClient2.Status? = nil, numberOfParticipants: Swift.Double? = nil, creatorLegalEntityName: Swift.String? = nil, id: Swift.String? = nil, externalId: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, isMaster: Swift.Bool? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationServiceAgreementAllOf, rhs: AccessControlClient2.PresentationServiceAgreementAllOf) -> Swift.Bool
+}
+public struct PresentationUserDataItemPermission : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var dataItem: AccessControlClient2.PresentationDataItem?
+  public var permissions: [AccessControlClient2.PresentationUserPermission]?
+  public init(additions: [Swift.String : Swift.String]? = nil, dataItem: AccessControlClient2.PresentationDataItem? = nil, permissions: [AccessControlClient2.PresentationUserPermission]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationUserDataItemPermission, rhs: AccessControlClient2.PresentationUserDataItemPermission) -> Swift.Bool
+}
+public struct PresentationUserDataItemPermissionAllOf : Swift.Codable, Swift.Equatable {
+  public var dataItem: AccessControlClient2.PresentationDataItem?
+  public var permissions: [AccessControlClient2.PresentationUserPermission]?
+  public init(dataItem: AccessControlClient2.PresentationDataItem? = nil, permissions: [AccessControlClient2.PresentationUserPermission]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationUserDataItemPermissionAllOf, rhs: AccessControlClient2.PresentationUserDataItemPermissionAllOf) -> Swift.Bool
+}
+public struct PresentationUserPermission : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var resource: Swift.String?
+  public var businessFunction: Swift.String?
+  public var privileges: [Swift.String]?
+  public init(additions: [Swift.String : Swift.String]? = nil, resource: Swift.String? = nil, businessFunction: Swift.String? = nil, privileges: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationUserPermission, rhs: AccessControlClient2.PresentationUserPermission) -> Swift.Bool
+}
+public struct PresentationUserPermissionAllOf : Swift.Codable, Swift.Equatable {
+  public var resource: Swift.String?
+  public var businessFunction: Swift.String?
+  public var privileges: [Swift.String]?
+  public init(resource: Swift.String? = nil, businessFunction: Swift.String? = nil, privileges: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PresentationUserPermissionAllOf, rhs: AccessControlClient2.PresentationUserPermissionAllOf) -> Swift.Bool
+}
+public struct Privilege : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var privilege: Swift.String
+  public init(additions: [Swift.String : Swift.String]? = nil, privilege: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.Privilege, rhs: AccessControlClient2.Privilege) -> Swift.Bool
+}
+public struct PrivilegeAllOf : Swift.Codable, Swift.Equatable {
+  public var privilege: Swift.String?
+  public init(privilege: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PrivilegeAllOf, rhs: AccessControlClient2.PrivilegeAllOf) -> Swift.Bool
+}
+public struct PrivilegesGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var privilege: Swift.String
+  public init(additions: [Swift.String : Swift.String]? = nil, privilege: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.PrivilegesGetResponseBody, rhs: AccessControlClient2.PrivilegesGetResponseBody) -> Swift.Bool
+}
+public struct SearchSubEntitiesParameters : Swift.Codable, Swift.Equatable {
+  public var parentEntityId: Swift.String?
+  public var excludeIds: [Swift.String]?
+  public var query: Swift.String?
+  public var cursor: Swift.String?
+  public var from: Swift.Int?
+  public var size: Swift.Int?
+  public init(parentEntityId: Swift.String? = nil, excludeIds: [Swift.String]? = nil, query: Swift.String? = nil, cursor: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.SearchSubEntitiesParameters, rhs: AccessControlClient2.SearchSubEntitiesParameters) -> Swift.Bool
+}
+public struct ServiceAgreeementApprovalDetailsItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var serviceAgreementId: Swift.String?
+  public var approvalId: Swift.String?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var oldState: AccessControlClient2.ServiceAgreementState?
+  public var newState: AccessControlClient2.ServiceAgreementState?
+  public init(additions: [Swift.String : Swift.String]? = nil, serviceAgreementId: Swift.String? = nil, approvalId: Swift.String? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, oldState: AccessControlClient2.ServiceAgreementState? = nil, newState: AccessControlClient2.ServiceAgreementState? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreeementApprovalDetailsItem, rhs: AccessControlClient2.ServiceAgreeementApprovalDetailsItem) -> Swift.Bool
+}
+public struct ServiceAgreeementApprovalDetailsItemAllOf : Swift.Codable, Swift.Equatable {
+  public var serviceAgreementId: Swift.String?
+  public var approvalId: Swift.String?
+  public var action: AccessControlClient2.PresentationApprovalAction?
+  public var oldState: AccessControlClient2.ServiceAgreementState?
+  public var newState: AccessControlClient2.ServiceAgreementState?
+  public init(serviceAgreementId: Swift.String? = nil, approvalId: Swift.String? = nil, action: AccessControlClient2.PresentationApprovalAction? = nil, oldState: AccessControlClient2.ServiceAgreementState? = nil, newState: AccessControlClient2.ServiceAgreementState? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreeementApprovalDetailsItemAllOf, rhs: AccessControlClient2.ServiceAgreeementApprovalDetailsItemAllOf) -> Swift.Bool
+}
+public protocol ServiceAgreementAPIProtocol {
+  func getServiceAgreementCall(creatorId: Swift.String, cursor: Swift.String?, from: Swift.Int?, size: Swift.Int?, query: Swift.String?) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementItem]>
+  func getServiceAgreementAdminsCall(serviceAgreementId: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementUsersGetResponseBody]>
+  func getServiceAgreementContextCall() throws -> ClientCommon.Call<AccessControlClient2.ServiceAgreementItem>
+  func getServiceAgreementItemCall(serviceAgreementId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.ServiceAgreementItem>
+  @available(*, deprecated)
+  func getServiceAgreementUsersCall(from: Swift.Int?, size: Swift.Int?, cursor: Swift.String?, query: Swift.String?) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementUsersGetResponseBody]>
+  @available(*, deprecated)
+  func getUnexposedUsersCall(query: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[AccessControlClient2.UnexposedUsersGetResponseBody]>
+  func postServiceAgreementCall(serviceAgreementPost: AccessControlClient2.ServiceAgreementPost?) throws -> ClientCommon.Call<AccessControlClient2.IdItem>
+  @available(*, deprecated)
+  func postUsersAddCall(usersForServiceAgreement: AccessControlClient2.UsersForServiceAgreement?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated)
+  func postUsersRemoveCall(usersForServiceAgreement: AccessControlClient2.UsersForServiceAgreement?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func putAdminsCall(id: Swift.String, updateAdmins: AccessControlClient2.UpdateAdmins?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func putServiceAgreementStateCall(serviceAgreementId: Swift.String, serviceAgreementStatePut: AccessControlClient2.ServiceAgreementStatePut?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class ServiceAgreementAPI : ObjectiveC.NSObject, DBSClient, AccessControlClient2.ServiceAgreementAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getServiceAgreementCall(creatorId: Swift.String, cursor: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, query: Swift.String? = nil) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementItem]>
+  open func getServiceAgreementAdminsCall(serviceAgreementId: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementUsersGetResponseBody]>
+  open func getServiceAgreementContextCall() throws -> ClientCommon.Call<AccessControlClient2.ServiceAgreementItem>
+  open func getServiceAgreementItemCall(serviceAgreementId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.ServiceAgreementItem>
+  @available(*, deprecated)
+  open func getServiceAgreementUsersCall(from: Swift.Int? = nil, size: Swift.Int? = nil, cursor: Swift.String? = nil, query: Swift.String? = nil) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementUsersGetResponseBody]>
+  @available(*, deprecated)
+  open func getUnexposedUsersCall(query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[AccessControlClient2.UnexposedUsersGetResponseBody]>
+  open func postServiceAgreementCall(serviceAgreementPost: AccessControlClient2.ServiceAgreementPost? = nil) throws -> ClientCommon.Call<AccessControlClient2.IdItem>
+  @available(*, deprecated)
+  open func postUsersAddCall(usersForServiceAgreement: AccessControlClient2.UsersForServiceAgreement? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated)
+  open func postUsersRemoveCall(usersForServiceAgreement: AccessControlClient2.UsersForServiceAgreement? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func putAdminsCall(id: Swift.String, updateAdmins: AccessControlClient2.UpdateAdmins? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func putServiceAgreementStateCall(serviceAgreementId: Swift.String, serviceAgreementStatePut: AccessControlClient2.ServiceAgreementStatePut? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct ServiceAgreementItem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var creatorLegalEntity: Swift.String
+  public var status: AccessControlClient2.Status
+  public var id: Swift.String
+  public var externalId: Swift.String?
+  public var approvalId: Swift.String?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var isMaster: Swift.Bool
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, creatorLegalEntity: Swift.String, status: AccessControlClient2.Status, id: Swift.String, externalId: Swift.String? = nil, approvalId: Swift.String? = nil, name: Swift.String, description: Swift.String, isMaster: Swift.Bool, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementItem, rhs: AccessControlClient2.ServiceAgreementItem) -> Swift.Bool
+}
+public struct ServiceAgreementItemAllOf : Swift.Codable, Swift.Equatable {
+  public var creatorLegalEntity: Swift.String?
+  public var status: AccessControlClient2.Status?
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var approvalId: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var isMaster: Swift.Bool?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(creatorLegalEntity: Swift.String? = nil, status: AccessControlClient2.Status? = nil, id: Swift.String? = nil, externalId: Swift.String? = nil, approvalId: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, isMaster: Swift.Bool? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementItemAllOf, rhs: AccessControlClient2.ServiceAgreementItemAllOf) -> Swift.Bool
+}
+public struct ServiceAgreementParticipantsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var name: Swift.String
+  public var sharingUsers: Swift.Bool
+  public var sharingAccounts: Swift.Bool
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String, externalId: Swift.String, name: Swift.String, sharingUsers: Swift.Bool, sharingAccounts: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementParticipantsGetResponseBody, rhs: AccessControlClient2.ServiceAgreementParticipantsGetResponseBody) -> Swift.Bool
+}
+public struct ServiceAgreementParticipantsGetResponseBodyAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var name: Swift.String?
+  public var sharingUsers: Swift.Bool?
+  public var sharingAccounts: Swift.Bool?
+  public init(id: Swift.String? = nil, externalId: Swift.String? = nil, name: Swift.String? = nil, sharingUsers: Swift.Bool? = nil, sharingAccounts: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementParticipantsGetResponseBodyAllOf, rhs: AccessControlClient2.ServiceAgreementParticipantsGetResponseBodyAllOf) -> Swift.Bool
+}
+public struct ServiceAgreementPost : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var participants: [AccessControlClient2.Participant]
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var status: AccessControlClient2.Status?
+  public init(additions: [Swift.String : Swift.String]? = nil, name: Swift.String, description: Swift.String, participants: [AccessControlClient2.Participant], validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, status: AccessControlClient2.Status? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementPost, rhs: AccessControlClient2.ServiceAgreementPost) -> Swift.Bool
+}
+public struct ServiceAgreementPostAllOf : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var participants: [AccessControlClient2.Participant]?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var status: AccessControlClient2.Status?
+  public init(name: Swift.String? = nil, description: Swift.String? = nil, participants: [AccessControlClient2.Participant]? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, status: AccessControlClient2.Status? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementPostAllOf, rhs: AccessControlClient2.ServiceAgreementPostAllOf) -> Swift.Bool
+}
+public struct ServiceAgreementSave : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var externalId: Swift.String?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var participants: [AccessControlClient2.Participant]
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var status: AccessControlClient2.Status
+  public var isMaster: Swift.Bool?
+  public init(additions: [Swift.String : Swift.String]? = nil, externalId: Swift.String? = nil, name: Swift.String, description: Swift.String, participants: [AccessControlClient2.Participant], validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, status: AccessControlClient2.Status, isMaster: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementSave, rhs: AccessControlClient2.ServiceAgreementSave) -> Swift.Bool
+}
+public struct ServiceAgreementSaveAllOf : Swift.Codable, Swift.Equatable {
+  public var externalId: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var participants: [AccessControlClient2.Participant]?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var status: AccessControlClient2.Status?
+  public var isMaster: Swift.Bool?
+  public init(externalId: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, participants: [AccessControlClient2.Participant]? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, status: AccessControlClient2.Status? = nil, isMaster: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementSaveAllOf, rhs: AccessControlClient2.ServiceAgreementSaveAllOf) -> Swift.Bool
+}
+public struct ServiceAgreementState : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var legalEntities: [AccessControlClient2.ServiceAgreementStateLegalEntities]?
+  public var admins: [Swift.String]?
+  public init(additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, description: Swift.String? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, legalEntities: [AccessControlClient2.ServiceAgreementStateLegalEntities]? = nil, admins: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementState, rhs: AccessControlClient2.ServiceAgreementState) -> Swift.Bool
+}
+public struct ServiceAgreementStateAllOf : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public var legalEntities: [AccessControlClient2.ServiceAgreementStateLegalEntities]?
+  public var admins: [Swift.String]?
+  public init(name: Swift.String? = nil, description: Swift.String? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, legalEntities: [AccessControlClient2.ServiceAgreementStateLegalEntities]? = nil, admins: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementStateAllOf, rhs: AccessControlClient2.ServiceAgreementStateAllOf) -> Swift.Bool
+}
+public struct ServiceAgreementStateLegalEntities : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var contributeUsers: Swift.Bool?
+  public var contributeAccount: Swift.Bool?
+  public init(additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, id: Swift.String? = nil, externalId: Swift.String? = nil, contributeUsers: Swift.Bool? = nil, contributeAccount: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementStateLegalEntities, rhs: AccessControlClient2.ServiceAgreementStateLegalEntities) -> Swift.Bool
+}
+public struct ServiceAgreementStateLegalEntitiesAllOf : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var contributeUsers: Swift.Bool?
+  public var contributeAccount: Swift.Bool?
+  public init(name: Swift.String? = nil, id: Swift.String? = nil, externalId: Swift.String? = nil, contributeUsers: Swift.Bool? = nil, contributeAccount: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementStateLegalEntitiesAllOf, rhs: AccessControlClient2.ServiceAgreementStateLegalEntitiesAllOf) -> Swift.Bool
+}
+public struct ServiceAgreementStatePut : Swift.Codable, Swift.Equatable {
+  public var state: AccessControlClient2.Status
+  public init(state: AccessControlClient2.Status)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementStatePut, rhs: AccessControlClient2.ServiceAgreementStatePut) -> Swift.Bool
+}
+public struct ServiceAgreementUsersGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var legalEntityId: Swift.String
+  public var fullName: Swift.String
+  public var legalEntityName: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String, externalId: Swift.String, legalEntityId: Swift.String, fullName: Swift.String, legalEntityName: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementUsersGetResponseBody, rhs: AccessControlClient2.ServiceAgreementUsersGetResponseBody) -> Swift.Bool
+}
+public struct ServiceAgreementUsersGetResponseBodyAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var legalEntityId: Swift.String?
+  public var fullName: Swift.String?
+  public var legalEntityName: Swift.String?
+  public init(id: Swift.String? = nil, externalId: Swift.String? = nil, legalEntityId: Swift.String? = nil, fullName: Swift.String? = nil, legalEntityName: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceAgreementUsersGetResponseBodyAllOf, rhs: AccessControlClient2.ServiceAgreementUsersGetResponseBodyAllOf) -> Swift.Bool
+}
+public protocol ServiceAgreementsAPIProtocol {
+  func getAssignUsersPermissionsCall(id: Swift.String, userId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationApprovalPermissions>
+  func getBusinessfunctionsCall(id: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.FunctionsGetResponseBody]>
+  func getContextServiceAgreementParticipantsCall() throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementParticipantsGetResponseBody]>
+  func getServiceAgreementParticipantsCall(id: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementParticipantsGetResponseBody]>
+  func getServiceAgreementUsersSACall(id: Swift.String, query: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementUsersGetResponseBody]>
+  func getServiceAgreementsCall(creatorId: Swift.String?, userId: Swift.String?, query: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[AccessControlClient2.PresentationServiceAgreement]>
+  func getUnexposedUsersSACall(id: Swift.String, query: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[AccessControlClient2.UnexposedUsersGetResponseBody]>
+  func postUsersAddSACall(id: Swift.String, usersForServiceAgreement: AccessControlClient2.UsersForServiceAgreement?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func postUsersRemoveSACall(id: Swift.String, usersForServiceAgreement: AccessControlClient2.UsersForServiceAgreement?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func putAssignUsersPermissionsCall(id: Swift.String, userId: Swift.String, listOfFunctionGroupsWithDataGroups: AccessControlClient2.ListOfFunctionGroupsWithDataGroups?) throws -> ClientCommon.Call<AccessControlClient2.PresentationApprovalStatus>
+  func putServiceAgreementSaveCall(id: Swift.String, serviceAgreementSave: AccessControlClient2.ServiceAgreementSave?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class ServiceAgreementsAPI : ObjectiveC.NSObject, DBSClient, AccessControlClient2.ServiceAgreementsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getAssignUsersPermissionsCall(id: Swift.String, userId: Swift.String) throws -> ClientCommon.Call<AccessControlClient2.PresentationApprovalPermissions>
+  open func getBusinessfunctionsCall(id: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.FunctionsGetResponseBody]>
+  open func getContextServiceAgreementParticipantsCall() throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementParticipantsGetResponseBody]>
+  open func getServiceAgreementParticipantsCall(id: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementParticipantsGetResponseBody]>
+  open func getServiceAgreementUsersSACall(id: Swift.String, query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[AccessControlClient2.ServiceAgreementUsersGetResponseBody]>
+  open func getServiceAgreementsCall(creatorId: Swift.String? = nil, userId: Swift.String? = nil, query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[AccessControlClient2.PresentationServiceAgreement]>
+  open func getUnexposedUsersSACall(id: Swift.String, query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[AccessControlClient2.UnexposedUsersGetResponseBody]>
+  open func postUsersAddSACall(id: Swift.String, usersForServiceAgreement: AccessControlClient2.UsersForServiceAgreement? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func postUsersRemoveSACall(id: Swift.String, usersForServiceAgreement: AccessControlClient2.UsersForServiceAgreement? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func putAssignUsersPermissionsCall(id: Swift.String, userId: Swift.String, listOfFunctionGroupsWithDataGroups: AccessControlClient2.ListOfFunctionGroupsWithDataGroups? = nil) throws -> ClientCommon.Call<AccessControlClient2.PresentationApprovalStatus>
+  open func putServiceAgreementSaveCall(id: Swift.String, serviceAgreementSave: AccessControlClient2.ServiceAgreementSave? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct Serviceagreementpartialitem : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var externalId: Swift.String?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var isMaster: Swift.Bool
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String, externalId: Swift.String? = nil, name: Swift.String, description: Swift.String, isMaster: Swift.Bool, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.Serviceagreementpartialitem, rhs: AccessControlClient2.Serviceagreementpartialitem) -> Swift.Bool
+}
+public struct ServiceagreementpartialitemAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var isMaster: Swift.Bool?
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(id: Swift.String? = nil, externalId: Swift.String? = nil, name: Swift.String? = nil, description: Swift.String? = nil, isMaster: Swift.Bool? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.ServiceagreementpartialitemAllOf, rhs: AccessControlClient2.ServiceagreementpartialitemAllOf) -> Swift.Bool
+}
+public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case ENABLED
+  case DISABLED
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [AccessControlClient2.Status]
+  public static var allCases: [AccessControlClient2.Status] {
+    get
+  }
+}
+public struct UnauthorizedAltError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [AccessControlClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [AccessControlClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UnauthorizedAltError, rhs: AccessControlClient2.UnauthorizedAltError) -> Swift.Bool
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [AccessControlClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [AccessControlClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UnauthorizedError, rhs: AccessControlClient2.UnauthorizedError) -> Swift.Bool
+}
+public struct UnexposedUsersGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var fullName: Swift.String
+  public var legalEntityId: Swift.String
+  public var legalEntityName: Swift.String
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String, externalId: Swift.String, fullName: Swift.String, legalEntityId: Swift.String, legalEntityName: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UnexposedUsersGetResponseBody, rhs: AccessControlClient2.UnexposedUsersGetResponseBody) -> Swift.Bool
+}
+public struct UnexposedUsersGetResponseBodyAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var externalId: Swift.String?
+  public var fullName: Swift.String?
+  public var legalEntityId: Swift.String?
+  public var legalEntityName: Swift.String?
+  public init(id: Swift.String? = nil, externalId: Swift.String? = nil, fullName: Swift.String? = nil, legalEntityId: Swift.String? = nil, legalEntityName: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UnexposedUsersGetResponseBodyAllOf, rhs: AccessControlClient2.UnexposedUsersGetResponseBodyAllOf) -> Swift.Bool
+}
+public struct UnsupportedMediaTypeError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [AccessControlClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [AccessControlClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UnsupportedMediaTypeError, rhs: AccessControlClient2.UnsupportedMediaTypeError) -> Swift.Bool
+}
+public struct UpdateAdmins : Swift.Codable, Swift.Equatable {
+  public var participants: [AccessControlClient2.LegalEntityAdmins]?
+  public init(participants: [AccessControlClient2.LegalEntityAdmins]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UpdateAdmins, rhs: AccessControlClient2.UpdateAdmins) -> Swift.Bool
+}
+public protocol UserContextAPIProtocol {
+  func getUserContextPermissionsCall(permissionsRequest: AccessControlClient2.PermissionsRequest?) throws -> ClientCommon.Call<AccessControlClient2.PermissionsDataGroup>
+  func getUserContextServiceAgreementsCall(query: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[AccessControlClient2.Serviceagreementpartialitem]>
+  func postUserContextCall(userContextPOST: AccessControlClient2.UserContextPOST?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class UserContextAPI : ObjectiveC.NSObject, DBSClient, AccessControlClient2.UserContextAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getUserContextPermissionsCall(permissionsRequest: AccessControlClient2.PermissionsRequest? = nil) throws -> ClientCommon.Call<AccessControlClient2.PermissionsDataGroup>
+  open func getUserContextServiceAgreementsCall(query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[AccessControlClient2.Serviceagreementpartialitem]>
+  open func postUserContextCall(userContextPOST: AccessControlClient2.UserContextPOST? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct UserContextPOST : Swift.Codable, Swift.Equatable {
+  public var serviceAgreementId: Swift.String
+  public init(serviceAgreementId: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UserContextPOST, rhs: AccessControlClient2.UserContextPOST) -> Swift.Bool
+}
+public struct UserPermissionsSummaryGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var resource: Swift.String
+  public var function: Swift.String
+  public var permissions: [Swift.String : Swift.Bool]
+  public init(additions: [Swift.String : Swift.String]? = nil, resource: Swift.String, function: Swift.String, permissions: [Swift.String : Swift.Bool])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UserPermissionsSummaryGetResponseBody, rhs: AccessControlClient2.UserPermissionsSummaryGetResponseBody) -> Swift.Bool
+}
+public struct UserPermissionsSummaryGetResponseBodyAllOf : Swift.Codable, Swift.Equatable {
+  public var resource: Swift.String?
+  public var function: Swift.String?
+  public var permissions: [Swift.String : Swift.Bool]?
+  public init(resource: Swift.String? = nil, function: Swift.String? = nil, permissions: [Swift.String : Swift.Bool]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UserPermissionsSummaryGetResponseBodyAllOf, rhs: AccessControlClient2.UserPermissionsSummaryGetResponseBodyAllOf) -> Swift.Bool
+}
+public protocol UsersAPIProtocol {
+  func getArrangementUserPermissionCheckCall(id: Swift.String, resource: Swift.String, function: Swift.String, privilege: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getArrangementUserPrivilegesCall(functionName: Swift.String, resourceName: Swift.String, privilegeName: Swift.String?) throws -> ClientCommon.Call<[AccessControlClient2.ArrangementPrivilegesGetResponseBody]>
+  func getCheckUserPermissionCall(functionName: Swift.String, resourceName: Swift.String, privileges: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getDataItemPermissionsContextCall(functionName: Swift.String?, resourceName: Swift.String?, privilege: Swift.String?, dataGroupType: Swift.String?, dataItemId: Swift.String?) throws -> ClientCommon.Call<[AccessControlClient2.PresentationUserDataItemPermission]>
+  func getUserPermissionsSummaryCall() throws -> ClientCommon.Call<[AccessControlClient2.UserPermissionsSummaryGetResponseBody]>
+  func getUserPrivilegesCall(functionName: Swift.String, resourceName: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.PrivilegesGetResponseBody]>
+  func getUsersByPermissionsCall(functionName: Swift.String, serviceAgreementId: Swift.String?, privilege: Swift.String?, dataGroupType: Swift.String?, dataItemId: Swift.String?) throws -> ClientCommon.Call<AccessControlClient2.UsersByPermission>
+}
+@objc @_inheritsConvenienceInitializers public class UsersAPI : ObjectiveC.NSObject, DBSClient, AccessControlClient2.UsersAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getArrangementUserPermissionCheckCall(id: Swift.String, resource: Swift.String, function: Swift.String, privilege: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getArrangementUserPrivilegesCall(functionName: Swift.String, resourceName: Swift.String, privilegeName: Swift.String? = nil) throws -> ClientCommon.Call<[AccessControlClient2.ArrangementPrivilegesGetResponseBody]>
+  open func getCheckUserPermissionCall(functionName: Swift.String, resourceName: Swift.String, privileges: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getDataItemPermissionsContextCall(functionName: Swift.String? = nil, resourceName: Swift.String? = nil, privilege: Swift.String? = nil, dataGroupType: Swift.String? = nil, dataItemId: Swift.String? = nil) throws -> ClientCommon.Call<[AccessControlClient2.PresentationUserDataItemPermission]>
+  open func getUserPermissionsSummaryCall() throws -> ClientCommon.Call<[AccessControlClient2.UserPermissionsSummaryGetResponseBody]>
+  open func getUserPrivilegesCall(functionName: Swift.String, resourceName: Swift.String) throws -> ClientCommon.Call<[AccessControlClient2.PrivilegesGetResponseBody]>
+  open func getUsersByPermissionsCall(functionName: Swift.String, serviceAgreementId: Swift.String? = nil, privilege: Swift.String? = nil, dataGroupType: Swift.String? = nil, dataItemId: Swift.String? = nil) throws -> ClientCommon.Call<AccessControlClient2.UsersByPermission>
+  @objc deinit
+}
+public struct UsersByPermission : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var userIds: [Swift.String]?
+  public init(additions: [Swift.String : Swift.String]? = nil, userIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UsersByPermission, rhs: AccessControlClient2.UsersByPermission) -> Swift.Bool
+}
+public struct UsersByPermissionAllOf : Swift.Codable, Swift.Equatable {
+  public var userIds: [Swift.String]?
+  public init(userIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UsersByPermissionAllOf, rhs: AccessControlClient2.UsersByPermissionAllOf) -> Swift.Bool
+}
+public struct UsersForServiceAgreement : Swift.Codable, Swift.Equatable {
+  public var users: [Swift.String]?
+  public init(users: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UsersForServiceAgreement, rhs: AccessControlClient2.UsersForServiceAgreement) -> Swift.Bool
+}
+public struct UsersGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var userId: Swift.String
+  public var serviceAgreementId: Swift.String
+  public var dataAccessGroupsByFunctionAccessGroup: [AccessControlClient2.Dataaccessgroupsforfunctionaccessgroupitem]?
+  public init(id: Swift.String, userId: Swift.String, serviceAgreementId: Swift.String, dataAccessGroupsByFunctionAccessGroup: [AccessControlClient2.Dataaccessgroupsforfunctionaccessgroupitem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccessControlClient2.UsersGetResponseBody, rhs: AccessControlClient2.UsersGetResponseBody) -> Swift.Bool
+}
+extension AccessControlClient2.ApprovalStatus : Swift.Equatable {}
+extension AccessControlClient2.ApprovalStatus : Swift.Hashable {}
+extension AccessControlClient2.ApprovalStatus : Swift.RawRepresentable {}
+extension AccessControlClient2.FunctionGroupType : Swift.Equatable {}
+extension AccessControlClient2.FunctionGroupType : Swift.Hashable {}
+extension AccessControlClient2.FunctionGroupType : Swift.RawRepresentable {}
+extension AccessControlClient2.LegalEntityType : Swift.Equatable {}
+extension AccessControlClient2.LegalEntityType : Swift.Hashable {}
+extension AccessControlClient2.LegalEntityType : Swift.RawRepresentable {}
+extension AccessControlClient2.PermissionMatrixAction : Swift.Equatable {}
+extension AccessControlClient2.PermissionMatrixAction : Swift.Hashable {}
+extension AccessControlClient2.PermissionMatrixAction : Swift.RawRepresentable {}
+extension AccessControlClient2.PresentationApprovalAction : Swift.Equatable {}
+extension AccessControlClient2.PresentationApprovalAction : Swift.Hashable {}
+extension AccessControlClient2.PresentationApprovalAction : Swift.RawRepresentable {}
+extension AccessControlClient2.PresentationApprovalCategory : Swift.Equatable {}
+extension AccessControlClient2.PresentationApprovalCategory : Swift.Hashable {}
+extension AccessControlClient2.PresentationApprovalCategory : Swift.RawRepresentable {}
+extension AccessControlClient2.Status : Swift.Equatable {}
+extension AccessControlClient2.Status : Swift.Hashable {}
+extension AccessControlClient2.Status : Swift.RawRepresentable {}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomWelcomeViewController" customModule="Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="anotherScreenButton" destination="YcV-RX-gA2" id="lFo-RL-fjq"/>
+                <outlet property="oneScreenButton" destination="fWy-eo-x6m" id="zOL-6z-pa3"/>
+                <outlet property="thirdScreenButton" destination="8Bh-qA-bmc" id="s7J-9l-4cv"/>
+                <outlet property="view" destination="iN0-l3-epB" id="akj-zR-34g"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWy-eo-x6m">
+                    <rect key="frame" x="52" y="682" width="314" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="O5M-JE-p6y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Go to one screen"/>
+                    <connections>
+                        <action selector="didTapOneScreenButton" destination="-1" eventType="touchUpInside" id="rXa-Rm-Puy"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Custom Journey 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahB-qC-1Cz">
+                    <rect key="frame" x="52" y="248" width="310" height="26.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bh-qA-bmc">
+                    <rect key="frame" x="126" y="794" width="167" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Go to Third Screen"/>
+                    <connections>
+                        <action selector="didTapThirdScreenButton:" destination="-1" eventType="touchUpInside" id="GxR-mB-N8I"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcV-RX-gA2">
+                    <rect key="frame" x="50" y="730" width="314" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="6Ja-ei-9q7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Go to another screen"/>
+                    <connections>
+                        <action selector="didTapAnotherScreenButton" destination="-1" eventType="touchUpInside" id="Js7-Pc-vAQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fWy-eo-x6m" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="9SF-im-SCH"/>
+                <constraint firstItem="fWy-eo-x6m" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ACs-cT-Hbo"/>
+                <constraint firstItem="YcV-RX-gA2" firstAttribute="top" secondItem="fWy-eo-x6m" secondAttribute="bottom" constant="15" id="AqP-4l-eXY"/>
+                <constraint firstItem="YcV-RX-gA2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="LT2-yG-fqj"/>
+                <constraint firstItem="ahB-qC-1Cz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="R0L-Hf-y3t"/>
+                <constraint firstItem="ahB-qC-1Cz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="200" id="R77-7Q-qpi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fWy-eo-x6m" secondAttribute="trailing" constant="50" id="S1T-9a-vbT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="YcV-RX-gA2" secondAttribute="bottom" constant="30" id="YAa-RJ-Fp4"/>
+                <constraint firstItem="YcV-RX-gA2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cgW-C1-mGG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YcV-RX-gA2" secondAttribute="trailing" constant="50" id="so5-Cp-MhG"/>
+            </constraints>
+            <point key="canvasLocation" x="133" y="78"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

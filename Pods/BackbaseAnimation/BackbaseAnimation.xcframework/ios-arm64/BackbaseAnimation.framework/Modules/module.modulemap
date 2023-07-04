@@ -1,0 +1,4 @@
+framework module BackbaseAnimation {
+  header "BackbaseAnimation-Swift.h"
+  requires objc
+}

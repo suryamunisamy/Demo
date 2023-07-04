@@ -1,0 +1,11 @@
+framework module BackbaseObservability {
+  umbrella header "BackbaseObservability-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module BackbaseObservability.Swift {
+    header "BackbaseObservability-Swift.h"
+    requires objc
+}

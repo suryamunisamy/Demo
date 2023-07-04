@@ -1,0 +1,260 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BusinessWorkspacesJourney
+import Backbase
+import BackbaseDesignSystem
+import BackbaseObservability
+import BusinessDesign
+import BusinessJourneyCommon
+import Combine
+import Foundation
+import Resolver
+import RetailFeatureFilterUseCase
+import Swift
+import UIKit
+import _Concurrency
+extension Foundation.Bundle {
+  public static var workspaces: Foundation.Bundle {
+    get
+  }
+}
+public struct GetWorkspaceListRequest {
+  public let query: Swift.String?
+  public let from: Swift.Int?
+  public let cursor: Swift.String?
+  public let size: Swift.Int?
+  public init(query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil)
+}
+public struct PostUserContextRequest {
+  public let workspace: BusinessWorkspacesJourney.Workspace
+  public init(workspace: BusinessWorkspacesJourney.Workspace)
+}
+public struct Workspace : Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var externalId: Swift.String?
+  public var name: Swift.String
+  public var description: Swift.String
+  public var isMaster: Swift.Bool
+  public var validFromDate: Swift.String?
+  public var validFromTime: Swift.String?
+  public var validUntilDate: Swift.String?
+  public var validUntilTime: Swift.String?
+  public init(id: Swift.String, name: Swift.String, description: Swift.String, isMaster: Swift.Bool, additions: [Swift.String : Swift.String]? = nil, externalId: Swift.String? = nil, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil)
+  public static func == (a: BusinessWorkspacesJourney.Workspace, b: BusinessWorkspacesJourney.Workspace) -> Swift.Bool
+}
+public struct WorkspaceInfo {
+  public var workspace: BusinessWorkspacesJourney.Workspace
+  public var entitlements: Swift.Set<RetailFeatureFilterUseCase.UserEntitlement>?
+  public init(workspace: BusinessWorkspacesJourney.Workspace, entitlements: Swift.Set<RetailFeatureFilterUseCase.UserEntitlement>? = nil)
+}
+@_hasMissingDesignatedInitializers public class WorkspaceSelector {
+  public static func build(navigationController: UIKit.UINavigationController, workspace: BusinessWorkspacesJourney.Workspace? = nil) -> UIKit.UIViewController
+  @available(*, deprecated, message: "Please use the new builder function with the 'Workspace' parameter instead.")
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+  @objc deinit
+}
+extension BusinessWorkspacesJourney.WorkspaceSelector {
+  public struct Configuration {
+    public var supportNumber: Swift.String?
+    public var strings: BusinessWorkspacesJourney.WorkspaceSelector.Strings
+    public var design: BusinessWorkspacesJourney.WorkspaceSelector.Design
+    public var router: BusinessWorkspacesJourney.WorkspaceSelector.Router
+    public var autoSelectSingleWorkspace: Swift.Bool
+    public var uiDataMapper: BusinessWorkspacesJourney.WorkspaceSelector.UIDataMapper
+    public init()
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSelector {
+  public struct Design {
+    public var logoImage: UIKit.UIImage?
+    public var backgroundImage: UIKit.UIImage?
+    public var background: (_ view: UIKit.UIView) -> Swift.Void
+    public var blurOpacity: CoreGraphics.CGFloat
+    public var blurStyle: UIKit.UIBlurEffect.Style
+    public var navigationBar: (_ navigationBar: UIKit.UINavigationBar) -> Swift.Void
+    public var title: (_ label: UIKit.UILabel) -> Swift.Void
+    public var edgeCaseView: (_ edgeCaseView: BusinessDesign.EdgeCaseView) -> Swift.Void
+    public var loadingView: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var primaryButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var linkButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var logo: (_ imageView: UIKit.UIImageView) -> Swift.Void
+    public var stateViewTitle: (_ stateView: BackbaseDesignSystem.StateView) -> Swift.Void
+    public var stateViewSubTitle: (_ stateView: BackbaseDesignSystem.StateView) -> Swift.Void
+    public var paginationLoadingIndicatorColor: UIKit.UIColor {
+      mutating get
+      set
+    }
+    public var paginationFooterIcon: (_ iconView: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var paginationFooterText: (_ label: UIKit.UILabel) -> Swift.Void
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSelector {
+  public struct Router {
+    public var didSelectWorkspaceV2: ((UIKit.UINavigationController) -> (BusinessWorkspacesJourney.WorkspaceInfo) -> Swift.Void)?
+    @available(*, deprecated, message: "This method was deprecated in 3.2.0, please use didSelectWorkspaceV2 instead")
+    public var didSelectWorkspace: ((UIKit.UINavigationController) -> (BusinessWorkspacesJourney.Workspace) -> Swift.Void)?
+    public var logoutUser: ((UIKit.UINavigationController) -> () -> Swift.Void)?
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSelector {
+  public struct Strings {
+    public var workspaceSelectorTitle: BusinessJourneyCommon.LocalizedString
+    public var listItemTitle: BusinessJourneyCommon.LocalizedString
+    public var loggingIntoNewWorkspaceTitle: BusinessJourneyCommon.LocalizedString
+    public func loggingIntoNewWorkspaceTitle(workspaceTitle: Swift.String) -> Swift.String
+    public var noWorkspacesAllocatedErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var unableToSwitchWorkspaceErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var unableToSwitchWorkspaceErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var logoutButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var callSupportButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var noWorkspacesFoundErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var noWorkspacesFoundErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var actionButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var genericErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var genericErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var noWorkspaceDialogButtonDismiss: BusinessJourneyCommon.LocalizedString
+    public var paginationFooterText: BusinessJourneyCommon.LocalizedString
+    public init()
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSelector {
+  public struct UIDataMapper {
+    public init()
+    public var errorView: BusinessWorkspacesJourney.WorkspaceSelector.UIDataMapper.ErrorView
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSelector.UIDataMapper {
+  public struct ErrorView {
+    public var iconName: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+    public var title: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String
+    public var message: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String
+    public var retryButtonText: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+    public var workspaceSelectionTitle: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+    public var workspaceSelectionMessage: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+    public var workspaceSelectionActionText: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+  }
+}
+public struct WorkspaceSwitcher {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension BusinessWorkspacesJourney.WorkspaceSwitcher {
+  public struct Configuration {
+    public var strings: BusinessWorkspacesJourney.WorkspaceSwitcher.Strings
+    public var design: BusinessWorkspacesJourney.WorkspaceSwitcher.Design
+    public var router: BusinessWorkspacesJourney.WorkspaceSwitcher.Router
+    public var uiDataMapper: BusinessWorkspacesJourney.WorkspaceSwitcher.UIDataMapper
+    public init()
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSwitcher {
+  public struct Design {
+    public var background: (_ view: UIKit.UIView) -> Swift.Void
+    public var navigationBar: (_ navbar: UIKit.UINavigationBar) -> Swift.Void
+    public var title: (_ label: UIKit.UILabel) -> Swift.Void
+    public var loadingView: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var paginationLoadingIndicatorColor: UIKit.UIColor {
+      mutating get
+      set
+    }
+    public var paginationFooterIcon: (_ iconView: BackbaseDesignSystem.IconView) -> Swift.Void
+    public var paginationFooterText: (_ label: UIKit.UILabel) -> Swift.Void
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSwitcher {
+  public struct Router {
+    public var didSelectWorkspaceV2: ((UIKit.UINavigationController) -> (BusinessWorkspacesJourney.WorkspaceInfo) -> Swift.Void)?
+    @available(*, deprecated, message: "This method was deprecated in 3.2.0, please use didSelectWorkspaceV2 instead")
+    public var didSelectWorkspace: ((UIKit.UINavigationController) -> (BusinessWorkspacesJourney.Workspace) -> Swift.Void)?
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSwitcher {
+  public struct Strings {
+    public var title: BusinessJourneyCommon.LocalizedString
+    public var loggingIntoNewWorkspaceTitle: BusinessJourneyCommon.LocalizedString
+    public var unableToSwitchWorkspaceErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var unableToSwitchWorkspaceErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var noWorkspacesFoundErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var noWorkspacesAllocatedErrorMessage: BusinessJourneyCommon.LocalizedString
+    public func loggingIntoNewWorkspaceTitle(workspaceTitle: Swift.String) -> Swift.String
+    public var noInternetErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var actionButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var genericErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var genericErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var noWorkspaceDialogButtonDismiss: BusinessJourneyCommon.LocalizedString
+    public var paginationFooterText: BusinessJourneyCommon.LocalizedString
+    public init()
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSwitcher {
+  public struct UIDataMapper {
+    public init()
+    public var errorView: BusinessWorkspacesJourney.WorkspaceSwitcher.UIDataMapper.ErrorView
+  }
+}
+extension BusinessWorkspacesJourney.WorkspaceSwitcher.UIDataMapper {
+  public struct ErrorView {
+    public var iconName: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+    public var title: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String
+    public var message: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String
+    public var retryButtonText: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+    public var workspaceSelectionTitle: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+    public var workspaceSelectionMessage: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+    public var workspaceSelectionActionText: (_ error: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.String?
+  }
+}
+@_hasMissingDesignatedInitializers public class Workspaces {
+  public static func buildSelector(navigationController: UIKit.UINavigationController, workspace: BusinessWorkspacesJourney.Workspace? = nil) -> UIKit.UIViewController
+  @available(*, deprecated, message: "Please use the new builder function with the 'Workspace' parameter instead.")
+  public static func buildSelector(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+  public static func buildSwitcher(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+  @objc deinit
+}
+extension BusinessWorkspacesJourney.Workspaces {
+  public struct Configuration {
+    public var design: BusinessWorkspacesJourney.Workspaces.Design
+    public var selector: BusinessWorkspacesJourney.WorkspaceSelector.Configuration
+    public var switcher: BusinessWorkspacesJourney.WorkspaceSwitcher.Configuration
+    public init()
+  }
+}
+extension BusinessWorkspacesJourney.Workspaces {
+  public struct Design {
+    public var tableView: (_ tableView: UIKit.UITableView) -> Swift.Void
+    public var sectionHeaderStyle: (_ header: BusinessDesign.SectionHeaderView) -> Swift.Void
+    public var background: (_ view: UIKit.UIView) -> Swift.Void
+    public var navigationItem: (_ navigationItem: UIKit.UINavigationItem) -> Swift.Void
+    public var workspaceItem: (_ view: BackbaseDesignSystem.Card) -> Swift.Void
+    public var workspaceName: (_ label: UIKit.UILabel) -> Swift.Void
+    public var workspaceInitials: (_ label: UIKit.UILabel) -> Swift.Void
+    public var masterWorkspaceIcon: (_ icon: UIKit.UIImageView) -> Swift.Void
+    public var workspaceDetail: (_ label: UIKit.UILabel) -> Swift.Void
+    public var workspaceDisclosure: (_ icon: UIKit.UIImageView) -> Swift.Void
+  }
+}
+extension BusinessWorkspacesJourney.Workspaces {
+  public enum Error : Swift.Error {
+    case notConnected
+    case loadingFailed
+    case clientError(Swift.Error)
+    case empty
+  }
+}
+extension BusinessWorkspacesJourney.Workspaces.Error : Swift.Equatable {
+  public static func == (lhs: BusinessWorkspacesJourney.Workspaces.Error, rhs: BusinessWorkspacesJourney.Workspaces.Error) -> Swift.Bool
+}
+public protocol WorkspacesUseCase {
+  typealias PostUserContextResponse = (Swift.Result<Swift.Void, BusinessWorkspacesJourney.Workspaces.Error>) -> Swift.Void
+  typealias GetWorkspaceListResponse = (Swift.Result<[BusinessWorkspacesJourney.Workspace], BusinessWorkspacesJourney.Workspaces.Error>) -> Swift.Void
+  func postUserContext(request: BusinessWorkspacesJourney.PostUserContextRequest, completion: Self.PostUserContextResponse?)
+  func getWorkspaceList(request: BusinessWorkspacesJourney.GetWorkspaceListRequest, completion: @escaping Self.GetWorkspaceListResponse)
+}

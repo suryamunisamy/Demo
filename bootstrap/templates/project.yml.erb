@@ -1,0 +1,29 @@
+name: <%= @name %>
+options:
+  knownRegions:
+    - Base
+    - en
+  deploymentTarget: 
+    iOS: 12.0
+targets:
+  <%= @name %>:
+    type: application
+    platform: iOS
+    deploymentTarget: 
+      iOS: 12.0
+    info: 
+      path: Sources/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UILaunchStoryboardName: LaunchScreen
+    settings:
+      base:
+        MARKETING_VERSION: 0.1.0
+        PRODUCT_BUNDLE_IDENTIFIER: com.backbase.start
+    sources: 
+      - path: Sources
+        excludes: Info.plist
+        createIntermediateGroups: true
+      - path: Assets
+        createIntermediateGroups: true

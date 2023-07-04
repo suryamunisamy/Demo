@@ -1,0 +1,164 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name EngagementBannersTargetingUseCase
+import Backbase
+import ClientCommon
+import Compression
+import ContentServicesClient1
+import CoreFoundation
+import EngagementsClient1
+import Foundation
+import Swift
+import TargetingClient1
+import UIKit
+import _Concurrency
+extension Archive {
+  final public var data: Foundation.Data? {
+    get
+  }
+}
+extension Archive {
+  final public func extract(_ entry: Entry, to url: Foundation.URL, bufferSize: Swift.UInt32 = defaultReadChunkSize, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil) throws -> CRC32
+  final public func extract(_ entry: Entry, bufferSize: Swift.UInt32 = defaultReadChunkSize, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> CRC32
+}
+extension Archive {
+  final public func addEntry(with path: Swift.String, relativeTo baseURL: Foundation.URL, compressionMethod: CompressionMethod = .none, bufferSize: Swift.UInt32 = defaultWriteChunkSize, progress: Foundation.Progress? = nil) throws
+  final public func addEntry(with path: Swift.String, fileURL: Foundation.URL, compressionMethod: CompressionMethod = .none, bufferSize: Swift.UInt32 = defaultWriteChunkSize, progress: Foundation.Progress? = nil) throws
+  final public func addEntry(with path: Swift.String, type: Entry.EntryType, uncompressedSize: Swift.UInt32, modificationDate: Foundation.Date = Date(), permissions: Swift.UInt16? = nil, compressionMethod: CompressionMethod = .none, bufferSize: Swift.UInt32 = defaultWriteChunkSize, progress: Foundation.Progress? = nil, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data) throws
+  final public func remove(_ entry: Entry, bufferSize: Swift.UInt32 = defaultReadChunkSize, progress: Foundation.Progress? = nil) throws
+}
+public let defaultReadChunkSize: Swift.UInt32
+public let defaultWriteChunkSize: Swift.UInt32
+public let defaultFilePermissions: Swift.UInt16
+public let defaultDirectoryPermissions: Swift.UInt16
+public enum CompressionMethod : Swift.UInt16 {
+  case none
+  case deflate
+  public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+final public class Archive : Swift.Sequence {
+  public enum ArchiveError : Swift.Error {
+    case unreadableArchive
+    case unwritableArchive
+    case invalidEntryPath
+    case invalidCompressionMethod
+    case invalidStartOfCentralDirectoryOffset
+    case missingEndOfCentralDirectoryRecord
+    case cancelledOperation
+    case invalidBufferSize
+    public static func == (a: Archive.ArchiveError, b: Archive.ArchiveError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum AccessMode : Swift.UInt {
+    case create
+    case read
+    case update
+    public init?(rawValue: Swift.UInt)
+    public typealias RawValue = Swift.UInt
+    public var rawValue: Swift.UInt {
+      get
+    }
+  }
+  final public let url: Foundation.URL
+  final public let accessMode: Archive.AccessMode
+  public init?(url: Foundation.URL, accessMode mode: Archive.AccessMode, preferredEncoding: Swift.String.Encoding? = nil)
+  public init?(data: Foundation.Data = Data(), accessMode mode: Archive.AccessMode, preferredEncoding: Swift.String.Encoding? = nil)
+  @objc deinit
+  final public func makeIterator() -> Swift.AnyIterator<Entry>
+  final public subscript(path: Swift.String) -> Entry? {
+    get
+  }
+  public typealias Element = Entry
+  public typealias Iterator = Swift.AnyIterator<Entry>
+}
+extension Archive {
+  final public func totalUnitCountForRemoving(_ entry: Entry) -> Swift.Int64
+  final public func totalUnitCountForReading(_ entry: Entry) -> Swift.Int64
+  final public func totalUnitCountForAddingItem(at url: Foundation.URL) -> Swift.Int64
+}
+public typealias CRC32 = Swift.UInt32
+public typealias Consumer = (_ data: Foundation.Data) throws -> Swift.Void
+public typealias Provider = (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data
+public let crcTable: [Swift.UInt32]
+extension Foundation.Data {
+  public func crc32(checksum: CRC32) -> CRC32
+  public static func compress(size: Swift.Int, bufferSize: Swift.Int, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> CRC32
+  public static func decompress(size: Swift.Int, bufferSize: Swift.Int, skipCRC32: Swift.Bool, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> CRC32
+}
+final public class EngagementBannersOrchestratorUseCase {
+  public init(selectBannerAPI: EngagementsClient1.SelectBannerAPIProtocol)
+  final public func getBanner(appName: Swift.String, screenName: Swift.String, campaignSpaceName: Swift.String, campaignSpaceDimensions: Swift.String, appLocale: Foundation.Locale = Locale.current, completion: @escaping (Swift.Result<Swift.String, Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+final public class EngagementBannersTargetingUseCase {
+  public init(selectCampaignAPI: TargetingClient1.SelectCampaignAPIProtocol, contentStreamAPI: ContentServicesClient1.ContentStreamAPIProtocol)
+  final public func getBanner(appName: Swift.String, screenName: Swift.String, campaignSpaceName: Swift.String, campaignSpaceDimensions: Swift.String, appLocale: Foundation.Locale = Locale.current, completion: @escaping (Swift.Result<Swift.String, Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public struct Entry : Swift.Equatable {
+  public enum EntryType : Swift.Int {
+    case file
+    case directory
+    case symlink
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public func path(using encoding: Swift.String.Encoding) -> Swift.String
+  public var path: Swift.String {
+    get
+  }
+  public var fileAttributes: [Foundation.FileAttributeKey : Any] {
+    get
+  }
+  public var checksum: CRC32 {
+    get
+  }
+  public var type: Entry.EntryType {
+    get
+  }
+  public var compressedSize: Swift.Int {
+    get
+  }
+  public var uncompressedSize: Swift.Int {
+    get
+  }
+  public static func == (lhs: Entry, rhs: Entry) -> Swift.Bool
+}
+extension Foundation.FileManager {
+  public func zipItem(at sourceURL: Foundation.URL, to destinationURL: Foundation.URL, shouldKeepParent: Swift.Bool = true, compressionMethod: CompressionMethod = .none, progress: Foundation.Progress? = nil) throws
+  public func unzipItem(at sourceURL: Foundation.URL, to destinationURL: Foundation.URL, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil, preferredEncoding: Swift.String.Encoding? = nil) throws
+}
+extension Foundation.URL {
+  public func isContained(in parentDirectoryURL: Foundation.URL) -> Swift.Bool
+}
+public enum TargetingUseCaseError : Swift.Error {
+  case loadingFailure
+  public static func == (a: TargetingUseCaseError, b: TargetingUseCaseError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension CompressionMethod : Swift.Equatable {}
+extension CompressionMethod : Swift.Hashable {}
+extension CompressionMethod : Swift.RawRepresentable {}
+extension Archive.ArchiveError : Swift.Equatable {}
+extension Archive.ArchiveError : Swift.Hashable {}
+extension Archive.AccessMode : Swift.Equatable {}
+extension Archive.AccessMode : Swift.Hashable {}
+extension Archive.AccessMode : Swift.RawRepresentable {}
+extension Entry.EntryType : Swift.Equatable {}
+extension Entry.EntryType : Swift.Hashable {}
+extension Entry.EntryType : Swift.RawRepresentable {}
+extension TargetingUseCaseError : Swift.Equatable {}
+extension TargetingUseCaseError : Swift.Hashable {}

@@ -1,0 +1,14 @@
+BUILD_LIBRARY_FOR_DISTRIBUTION = YES
+CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
+CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/RetailPocketsJourneyPocketsUseCase
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Differentiator" "${PODS_CONFIGURATION_BUILD_DIR}/Resolver" "${PODS_CONFIGURATION_BUILD_DIR}/RxAnimated" "${PODS_CONFIGURATION_BUILD_DIR}/RxCocoa" "${PODS_CONFIGURATION_BUILD_DIR}/RxDataSources" "${PODS_CONFIGURATION_BUILD_DIR}/RxRelay" "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit" "${PODS_ROOT}/Backbase" "${PODS_ROOT}/BackbaseDesignSystem" "${PODS_ROOT}/BackbaseSDKSwiftWrapper" "${PODS_ROOT}/ClientCommon" "${PODS_ROOT}/PocketsClient2" "${PODS_ROOT}/RetailDesign" "${PODS_ROOT}/RetailJourneyCommon" "${PODS_ROOT}/RetailPocketsJourney" "${PODS_ROOT}/RetailPocketsJourneyPocketsUseCase" "${PODS_XCFRAMEWORKS_BUILD_DIR}/Backbase" "${PODS_XCFRAMEWORKS_BUILD_DIR}/BackbaseDesignSystem" "${PODS_XCFRAMEWORKS_BUILD_DIR}/BackbaseSDKSwiftWrapper" "${PODS_XCFRAMEWORKS_BUILD_DIR}/ClientCommon" "${PODS_XCFRAMEWORKS_BUILD_DIR}/PocketsClient2" "${PODS_XCFRAMEWORKS_BUILD_DIR}/RetailDesign" "${PODS_XCFRAMEWORKS_BUILD_DIR}/RetailJourneyCommon" "${PODS_XCFRAMEWORKS_BUILD_DIR}/RetailPocketsJourney" "${PODS_XCFRAMEWORKS_BUILD_DIR}/RetailPocketsJourneyPocketsUseCase"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+OTHER_LDFLAGS = $(inherited) -framework "Backbase" -framework "BackbaseDesignSystem" -framework "BackbaseSDKSwiftWrapper" -framework "ClientCommon" -framework "PocketsClient2" -framework "RetailDesign" -framework "RetailJourneyCommon" -framework "RetailPocketsJourney"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}
+PODS_TARGET_SRCROOT = ${PODS_ROOT}/RetailPocketsJourneyPocketsUseCase
+PODS_XCFRAMEWORKS_BUILD_DIR = $(PODS_CONFIGURATION_BUILD_DIR)/XCFrameworkIntermediates
+PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.${PRODUCT_NAME:rfc1034identifier}
+SKIP_INSTALL = YES
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

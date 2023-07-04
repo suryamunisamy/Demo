@@ -1,0 +1,4 @@
+framework module RetailUserContextSelectorJourneyAccessControlUseCase {
+  header "RetailUserContextSelectorJourneyAccessControlUseCase-Swift.h"
+  requires objc
+}

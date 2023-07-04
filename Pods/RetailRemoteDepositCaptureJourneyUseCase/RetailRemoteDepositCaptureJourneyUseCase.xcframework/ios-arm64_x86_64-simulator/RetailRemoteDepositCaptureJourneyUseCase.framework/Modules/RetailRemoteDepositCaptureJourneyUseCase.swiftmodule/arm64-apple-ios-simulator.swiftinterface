@@ -1,0 +1,53 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailRemoteDepositCaptureJourneyUseCase
+import ArrangementsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import RemoteDepositCaptureClient2
+import RetailRemoteDepositCaptureJourney
+import Swift
+import UIKit
+import _Concurrency
+public struct DeviceInformation {
+  public init(identifier: Swift.String = Self.identifier, appVersion: Swift.String = Self.appVersion, type: Swift.String = Self.type, osName: Swift.String = Self.osName, osVersion: Swift.String = Self.osVersion, maker: Swift.String = Self.maker, model: Swift.String = Self.model)
+  public static var appVersion: Swift.String {
+    get
+  }
+  public static var identifier: Swift.String {
+    get
+  }
+  public static var type: Swift.String {
+    get
+  }
+  public static var osName: Swift.String {
+    get
+  }
+  public static var osVersion: Swift.String {
+    get
+  }
+  public static var maker: Swift.String {
+    get
+  }
+  public static var model: Swift.String {
+    get
+  }
+}
+final public class RetailRemoteDepositCaptureUseCase {
+  public init(deviceInformation: RetailRemoteDepositCaptureJourneyUseCase.DeviceInformation = .init(), dataProvider: (() -> (DBSDataProvider))? = nil)
+  public init(deviceInformation: RetailRemoteDepositCaptureJourneyUseCase.DeviceInformation = .init(), rdcClient: RemoteDepositCaptureClient2.RemoteDepositCapturerClientAPIProtocol, productSummaryClient: ArrangementsClient2.ProductSummaryAPIProtocol)
+  public init(deviceInformation: RetailRemoteDepositCaptureJourneyUseCase.DeviceInformation = .init(), rdcClient: RemoteDepositCaptureClient2.RemoteDepositCapturerClientAPIProtocol, productSummaryClient: ArrangementsClient2.ProductSummaryAPIProtocol, accountListSizeLimit: Swift.Int = 1000)
+  @objc deinit
+}
+extension RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase : RetailRemoteDepositCaptureJourney.RemoteDepositCaptureUseCase {
+  final public func getSessionInfoAndAccounts(session: RetailRemoteDepositCaptureJourney.SharedSession, completion: @escaping RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase.StartSessionCompletion)
+  final public func startSession(completion: @escaping RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase.StartSessionCompletion)
+  @available(*, deprecated, message: "End session is not called anymore because the session is reused between remote deposit capture and remote deposit history")
+  final public func endSession(session: RetailRemoteDepositCaptureJourney.Session, completion: @escaping RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase.EndSessionCompletion)
+  final public func createDepositBatch(session: RetailRemoteDepositCaptureJourney.Session, account: RetailRemoteDepositCaptureJourney.Account, completion: @escaping RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase.CreateDepositBatchCompletion)
+  final public func uploadDepositItem(session: RetailRemoteDepositCaptureJourney.Session, depositIdentifier: Swift.String, depositItem: RetailRemoteDepositCaptureJourney.DepositItemRequest, completion: @escaping RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase.UploadDepositItemCompletion)
+  final public func submitDepositBatch(session: RetailRemoteDepositCaptureJourney.Session, depositBatchId: Swift.String, depositItemIndexes: [Swift.Int], completion: @escaping RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase.SubmitDepositBatchCompletion)
+  final public func deleteDepositItem(session: RetailRemoteDepositCaptureJourney.Session, depositBatchId: Swift.String, depositItemIndex: Swift.Int, completion: @escaping RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase.DeleteDepositBatchCompletion)
+  final public func updateDepositItem(session: RetailRemoteDepositCaptureJourney.Session, depositIdentifier: Swift.String, depositItem: RetailRemoteDepositCaptureJourney.DepositItemRequest, completion: @escaping RetailRemoteDepositCaptureJourneyUseCase.RetailRemoteDepositCaptureUseCase.UpdateDepositItemCompletion)
+}

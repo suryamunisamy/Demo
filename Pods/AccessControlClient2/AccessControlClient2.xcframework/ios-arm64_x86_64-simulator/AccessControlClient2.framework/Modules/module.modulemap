@@ -1,0 +1,4 @@
+framework module AccessControlClient2 {
+  header "AccessControlClient2-Swift.h"
+  requires objc
+}

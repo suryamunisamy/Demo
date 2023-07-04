@@ -1,0 +1,4 @@
+framework module RetailRemoteDepositCaptureJourney {
+  header "RetailRemoteDepositCaptureJourney-Swift.h"
+  requires objc
+}

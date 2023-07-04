@@ -1,0 +1,4 @@
+framework module RetailJourneyCommon {
+  header "RetailJourneyCommon-Swift.h"
+  requires objc
+}

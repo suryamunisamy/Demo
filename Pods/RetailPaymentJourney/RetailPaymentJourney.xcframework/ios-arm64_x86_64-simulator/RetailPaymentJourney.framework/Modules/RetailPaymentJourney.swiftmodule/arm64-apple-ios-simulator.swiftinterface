@@ -1,0 +1,1467 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailPaymentJourney
+import ArrangementsClient2
+import Backbase
+import BackbaseAnimation
+import BackbaseDesignSystem
+import ClientCommon
+import ContactsClient2
+import Foundation
+import PaymentOrderA2AClient1
+import PaymentOrderClient2
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+@_exported import RetailPaymentJourney
+import RxCocoa
+import RxRelay
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+public struct AddContact {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, paymentOrderInput: RetailPaymentJourney.PaymentOrderInput) -> UIKit.UIViewController
+}
+extension RetailPaymentJourney.AddContact {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPaymentJourney.AddContact.Strings
+    public var router: RetailPaymentJourney.AddContact.Router
+    public var nameValidator: (Swift.String) -> RetailPaymentJourney.FieldState
+    public var phoneEmailValidator: (Swift.String) -> RetailPaymentJourney.FieldState
+  }
+}
+extension RetailPaymentJourney.AddContact {
+  public struct Router {
+    public var onContinue: (_ navigationController: UIKit.UINavigationController, _ paymentOrderInput: RetailPaymentJourney.PaymentOrderInput, _ configuration: RetailPaymentJourney.RetailPayment.Configuration) -> Swift.Void
+    public var onDismiss: (_ navigation: UIKit.UINavigationController) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.AddContact {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var saveContactTitle: RetailJourneyCommon.LocalizedString
+    public var nameFieldTitle: RetailJourneyCommon.LocalizedString
+    public var nameFieldPlaceholder: RetailJourneyCommon.LocalizedString
+    public var emailPhoneFieldTitle: RetailJourneyCommon.LocalizedString
+    public var emailPhoneFieldPlaceholder: RetailJourneyCommon.LocalizedString
+    public var submitButtonTitle: RetailJourneyCommon.LocalizedString
+    public var nameFieldError: RetailJourneyCommon.LocalizedString
+    public var emailPhoneFieldError: RetailJourneyCommon.LocalizedString
+    public var discardAlertTitle: RetailJourneyCommon.LocalizedString
+    public var discardAlertButtonTitle: RetailJourneyCommon.LocalizedString
+    public var discardAlertCancelButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct Amount : Swift.Equatable {
+  public init(value: Foundation.Decimal, currencyCode: Swift.String)
+  public var value: Foundation.Decimal
+  public var currencyCode: Swift.String
+  public static func == (a: RetailPaymentJourney.Amount, b: RetailPaymentJourney.Amount) -> Swift.Bool
+}
+public struct AmountFieldConfiguration {
+  public var strings: RetailPaymentJourney.AmountFieldConfiguration.Strings
+  public var defaultCurrencyCode: Swift.String?
+  public var validate: (RetailPaymentJourney.PaymentOrderInput, Swift.String) -> RetailPaymentJourney.ValidationResult {
+    mutating get
+    set
+  }
+  public var currencySymbol: (_ code: Swift.String) -> Swift.String?
+  public init()
+  public struct Strings {
+    public init()
+    public var amountHeader: RetailJourneyCommon.LocalizedString?
+    public var paymentOptionSelectHeader: RetailJourneyCommon.LocalizedString?
+    public var additionPaymentAmountHeader: RetailJourneyCommon.LocalizedString
+    public var noDueAmountInfo: RetailJourneyCommon.LocalizedString
+    public var selectionError: RetailJourneyCommon.LocalizedString
+    public var p2pMaxLimitViolation: RetailJourneyCommon.LocalizedString
+    public var p2pMinLimitViolation: RetailJourneyCommon.LocalizedString
+    public var p2pDailyLimitViolation: RetailJourneyCommon.LocalizedString
+    public var p2pMonthlyLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aMinLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aMaxIncomingLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aMaxOutgoingLimitViolation: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct AmountOption : Swift.Equatable {
+  public let fieldType: RetailPaymentJourney.PaymentOption.FieldType
+  public let amount: Foundation.Decimal?
+  public init(fieldType: RetailPaymentJourney.PaymentOption.FieldType, amount: Foundation.Decimal? = nil)
+  public static func == (a: RetailPaymentJourney.AmountOption, b: RetailPaymentJourney.AmountOption) -> Swift.Bool
+}
+public enum BalanceDisplayOption : Swift.Equatable {
+  case hide
+  case availableBalance
+  case bookedBalance
+  case remainingCredit
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: RetailPaymentJourney.BalanceDisplayOption, b: RetailPaymentJourney.BalanceDisplayOption) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct BalanceHeaderOptions : Swift.Equatable {
+  public let availableBalance: Swift.String
+  public let bookedBalance: Swift.String
+  public let remainingCredit: Swift.String
+  public init(availableBalance: Swift.String, bookedBalance: Swift.String, remainingCredit: Swift.String)
+  public static func == (a: RetailPaymentJourney.BalanceHeaderOptions, b: RetailPaymentJourney.BalanceHeaderOptions) -> Swift.Bool
+}
+public struct Contact {
+  public var id: Swift.String
+  public var name: Swift.String
+  public var account: RetailPaymentJourney.Contact.Account
+  public init(id: Swift.String, name: Swift.String, account: RetailPaymentJourney.Contact.Account)
+}
+extension RetailPaymentJourney.Contact {
+  public struct Account : Swift.Equatable, Swift.Hashable {
+    public let identifiers: [RetailPaymentJourney.Contact.Account.Identifier]
+    public init(identifiers: [RetailPaymentJourney.Contact.Account.Identifier])
+    public static func == (a: RetailPaymentJourney.Contact.Account, b: RetailPaymentJourney.Contact.Account) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailPaymentJourney.Contact.Account {
+  public struct Identifier : Swift.Equatable, Swift.Hashable {
+    public let value: Swift.String
+    public let type: RetailPaymentJourney.Contact.Account.Identifier.IdentifierType
+    public init(value: Swift.String, type: RetailPaymentJourney.Contact.Account.Identifier.IdentifierType)
+    public enum IdentifierType : Swift.Equatable, Swift.Hashable, Swift.CaseIterable {
+      case accountNumber
+      case IBAN
+      case phoneNumber
+      case email
+      public static func == (a: RetailPaymentJourney.Contact.Account.Identifier.IdentifierType, b: RetailPaymentJourney.Contact.Account.Identifier.IdentifierType) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public typealias AllCases = [RetailPaymentJourney.Contact.Account.Identifier.IdentifierType]
+      public static var allCases: [RetailPaymentJourney.Contact.Account.Identifier.IdentifierType] {
+        get
+      }
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public static func == (a: RetailPaymentJourney.Contact.Account.Identifier, b: RetailPaymentJourney.Contact.Account.Identifier) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailPaymentJourney.Contact : Swift.Equatable, Swift.Hashable {
+  public static func == (a: RetailPaymentJourney.Contact, b: RetailPaymentJourney.Contact) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum FieldState : Swift.Equatable {
+  case valid
+  case invalid
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: RetailPaymentJourney.FieldState, b: RetailPaymentJourney.FieldState) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct ContactList {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, paymentOrderInput: RetailPaymentJourney.PaymentOrderInput) -> UIKit.UIViewController
+}
+extension RetailPaymentJourney.ContactList {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPaymentJourney.ContactList.Strings
+    public var router: RetailPaymentJourney.ContactList.Router
+  }
+}
+extension RetailPaymentJourney.ContactList {
+  public struct Router {
+    public var onAddContactTapped: (_ navigation: UIKit.UINavigationController, _ paymentOrder: RetailPaymentJourney.PaymentOrderInput, _ configuration: RetailPaymentJourney.RetailPayment.Configuration) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.ContactList {
+  public struct Strings {
+    public init()
+    public var endOfListTitle: RetailJourneyCommon.LocalizedString
+    public var title: RetailJourneyCommon.LocalizedString
+    public var loadingFailedTitle: RetailJourneyCommon.LocalizedString
+    public var loadingFailedSubtitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionSubtitle: RetailJourneyCommon.LocalizedString
+    public var tryAgainTitle: RetailJourneyCommon.LocalizedString
+    public var noResultsTitle: RetailJourneyCommon.LocalizedString
+    public var noResultsSubtitle: RetailJourneyCommon.LocalizedString
+    public var noResultsButton: RetailJourneyCommon.LocalizedString
+    public var actionSheetCancelButtonTitle: RetailJourneyCommon.LocalizedString
+    public var actionSheetPhoneTitle: RetailJourneyCommon.LocalizedString
+    public var actionSheetEmailTitle: RetailJourneyCommon.LocalizedString
+    public var actionSheetDescription: (_ name: Swift.CVarArg) -> Swift.String
+  }
+}
+public struct ContactsPage {
+  public let contacts: [RetailPaymentJourney.Contact]
+  public let nextPageCursor: RetailPaymentJourney.ContactsPageCursor?
+  public init(contacts: [RetailPaymentJourney.Contact], nextPageCursor: RetailPaymentJourney.ContactsPageCursor?)
+}
+public protocol ContactsPageCursor {
+}
+public struct ContactsPageFirstCursor : RetailPaymentJourney.ContactsPageCursor {
+  public init()
+}
+public struct ContactsPageRequestParameters {
+}
+public protocol ContactsUseCase {
+  typealias RetrieveContactsCompletion = (Swift.Result<RetailPaymentJourney.ContactsPage, RetailPaymentJourney.ServiceError>) -> Swift.Void
+  typealias SaveContactCompletion = (Swift.Result<Any, RetailPaymentJourney.ServiceError>) -> Swift.Void
+  func retrieveContactsPage(parameters: RetailPaymentJourney.ContactsPageRequestParameters, completion: @escaping Self.RetrieveContactsCompletion)
+  func saveContact(name: Swift.String, email: Swift.String?, phoneNumber: Swift.String?, completion: @escaping Self.SaveContactCompletion)
+}
+public protocol CreatePaymentOrderUseCase {
+  func execute(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>)
+  func updatePaymentOrder(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion whenDone: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>)
+  func pollPaymentOrderStatus(_ orderId: Swift.String, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>)
+  func validatePaymentOrder(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PostValidateResponse, RetailPaymentJourney.ServiceError>)
+}
+extension RetailPaymentJourney.CreatePaymentOrderUseCase {
+  public func execute(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>)
+  public func updatePaymentOrder(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion whenDone: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>)
+  public func validatePaymentOrder(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PostValidateResponse, RetailPaymentJourney.ServiceError>)
+}
+public struct ExternalPaymentParty : Swift.Equatable {
+  public var externalAccountId: Swift.String
+  public var accountType: RetailPaymentJourney.ExternalPaymentParty.AccountType
+  public var status: RetailPaymentJourney.ExternalPaymentParty.AccountStatus
+  public var bankName: Swift.String
+  public var routingNumber: Swift.String
+  public var accountNumber: Swift.String
+  public var maskedAccountNumber: Swift.String?
+  public var accountNickName: Swift.String?
+  public init(externalAccountId: Swift.String, accountType: RetailPaymentJourney.ExternalPaymentParty.AccountType, status: RetailPaymentJourney.ExternalPaymentParty.AccountStatus, bankName: Swift.String, routingNumber: Swift.String, accountNumber: Swift.String, maskedAccountNumber: Swift.String? = nil, accountNickName: Swift.String? = nil)
+  public enum AccountType : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case checking
+    case savings
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RetailPaymentJourney.ExternalPaymentParty.AccountType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RetailPaymentJourney.ExternalPaymentParty.AccountType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum AccountStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case active
+    case inProcess
+    case pendingActivation
+    case failedVerification
+    case rejectedByExternalBank
+    case disabledForExcessiveReturns
+    case disabledForFraud
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RetailPaymentJourney.ExternalPaymentParty.AccountStatus]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RetailPaymentJourney.ExternalPaymentParty.AccountStatus] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public static func == (a: RetailPaymentJourney.ExternalPaymentParty, b: RetailPaymentJourney.ExternalPaymentParty) -> Swift.Bool
+}
+public struct ExternalPaymentPartyResponse : Swift.Equatable {
+  public var accounts: [RetailPaymentJourney.ExternalPaymentParty]
+  public init(accounts: [RetailPaymentJourney.ExternalPaymentParty])
+  public static func == (a: RetailPaymentJourney.ExternalPaymentPartyResponse, b: RetailPaymentJourney.ExternalPaymentPartyResponse) -> Swift.Bool
+}
+public struct Failure {
+  public var errorMessage: Swift.String
+  public var alert: RetailPaymentJourney.ValidationAlert?
+  public init(errorMessage: Swift.String, alert: RetailPaymentJourney.ValidationAlert? = nil)
+}
+public enum FieldError : Swift.Error {
+  case amount(Swift.String)
+}
+public protocol ErrorPresentableFieldViewController : UIKit.UIViewController {
+  func presentFieldErrors(errors: [RetailPaymentJourney.FieldError])
+}
+public protocol FieldViewControllerProtocol : RetailPaymentJourney.ErrorPresentableFieldViewController {
+  var paymentFormDelegate: RetailPaymentJourney.PaymentFormDelegate? { get set }
+  func refresh()
+  func finishEditing()
+  func isValid() -> Swift.Bool
+  func validate()
+  func reset()
+  func shouldShowField() -> Swift.Bool
+}
+extension RetailPaymentJourney.FieldViewControllerProtocol {
+  public func validate()
+  public func reset()
+  public func presentFieldErrors(errors: [RetailPaymentJourney.FieldError])
+  public func shouldShowField() -> Swift.Bool
+}
+public enum FormField {
+  case amount(RetailPaymentJourney.AmountFieldConfiguration)
+  case paymentParty(RetailPaymentJourney.PaymentPartyFieldConfiguration)
+  case schedule(RetailPaymentJourney.ScheduleFieldConfiguration)
+  case toPaymentParty(RetailPaymentJourney.ToPaymentPartyFieldConfiguration)
+  case fromPaymentParty(RetailPaymentJourney.FromPaymentPartyFieldConfiguration)
+  case remittanceInfo(RetailPaymentJourney.RemittanceInfoConfiguration)
+  case custom((RetailPaymentJourney.PaymentOrderInput) -> (RetailPaymentJourney.FieldViewControllerProtocol))
+}
+public struct FormStep {
+}
+extension RetailPaymentJourney.FormStep {
+  public struct Configuration {
+    public var router: RetailPaymentJourney.FormStep.Router
+    public var strings: RetailPaymentJourney.FormStep.Strings
+    public var fields: [RetailPaymentJourney.FormField]
+    public init()
+  }
+}
+extension RetailPaymentJourney.FormStep {
+  public struct Router {
+    public init()
+    public var didTapFromButton: (_ presentingViewController: UIKit.UINavigationController, _ configuration: RetailPaymentJourney.RetailPayment.Configuration, _ selectionHandler: RetailPaymentJourney.PaymentPartyList.SelectionHandler, _ settingsProvider: RetailPaymentJourney.PaymentPartyList.SettingsProvider) -> Swift.Void
+    public var didTapToButton: (_ presentingViewController: UIKit.UINavigationController, _ configuration: RetailPaymentJourney.RetailPayment.Configuration, _ selectionHandler: RetailPaymentJourney.PaymentPartyList.SelectionHandler, _ settingsProvider: RetailPaymentJourney.PaymentPartyList.SettingsProvider) -> Swift.Void
+    public var didTapPaymentOptionButton: (_ presentingViewController: UIKit.UINavigationController, _ configuration: RetailPaymentJourney.RetailPayment.Configuration, _ orderInput: RetailPaymentJourney.PaymentOrderInput, _ selectionHandler: RetailPaymentJourney.PaymentOptionList.SelectionHandler) -> Swift.Void
+    public var exitJourney: () -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.FormStep {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var editModeTitle: RetailJourneyCommon.LocalizedString
+    public var sendActionTitle: RetailJourneyCommon.LocalizedString
+    public var fromPaymentPartyListScreen: RetailJourneyCommon.LocalizedString
+    public var toPaymentPartyListScreen: RetailJourneyCommon.LocalizedString
+    public var fromHeader: RetailJourneyCommon.LocalizedString
+    public var fromPlaceholder: RetailJourneyCommon.LocalizedString
+    public var fromBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var fromRemainingCreditHeader: RetailJourneyCommon.LocalizedString
+    public var fromBookedBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var toHeader: RetailJourneyCommon.LocalizedString
+    public var toPlaceholder: RetailJourneyCommon.LocalizedString
+    public var toBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var toRemainingCreditHeader: RetailJourneyCommon.LocalizedString
+    public var toBookedBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var amountHeader: RetailJourneyCommon.LocalizedString
+    public var errorTitle: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "Not used as cancel option is not required for state view")
+    public var errorCancelActionTitle: RetailJourneyCommon.LocalizedString
+    public var errorMessage: RetailJourneyCommon.LocalizedString
+    public var errorActionTitle: RetailJourneyCommon.LocalizedString
+    public var loadingViewTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionSubtitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionActionTitle: RetailJourneyCommon.LocalizedString
+    public var errorEditFromAccountTitle: RetailJourneyCommon.LocalizedString
+    public var errorEditFromAccountMessage: RetailJourneyCommon.LocalizedString
+    public var errorEditToAccountTitle: RetailJourneyCommon.LocalizedString
+    public var errorEditToAccountMessage: RetailJourneyCommon.LocalizedString
+    public var alertOK: RetailJourneyCommon.LocalizedString
+    public var alertEditCreditCardTitle: RetailJourneyCommon.LocalizedString
+    public var alertEditCreditCardMessage: RetailJourneyCommon.LocalizedString
+    public var alertEditCreditCardExitPayment: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct FromPaymentPartyFieldConfiguration {
+  public init()
+  public var strings: RetailPaymentJourney.FromPaymentPartyFieldConfiguration.Strings
+  public var formatter: RetailPaymentJourney.PaymentSteps.Formatter?
+  public struct Strings {
+    public init()
+    public var header: RetailJourneyCommon.LocalizedString?
+    public var placeholder: RetailJourneyCommon.LocalizedString?
+    public var balanceHeader: RetailJourneyCommon.LocalizedString?
+    public var remainingCreditHeader: RetailJourneyCommon.LocalizedString?
+    public var bookedBalanceHeader: RetailJourneyCommon.LocalizedString?
+    public var selectionError: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct FromPaymentPartyStep {
+  public struct Configuration {
+    public var listFilter: RetailPaymentJourney.FromPaymentPartyStep.Filter
+    public var formatter: RetailPaymentJourney.PaymentSteps.Formatter?
+    public var strings: RetailPaymentJourney.FromPaymentPartyStep.Strings
+    public init()
+  }
+}
+extension RetailPaymentJourney.FromPaymentPartyStep {
+  public struct Filter {
+    public let apply: ((from: RetailPaymentJourney.PaymentParty?, to: RetailPaymentJourney.PaymentParty?)) -> Swift.Bool
+    public init(apply: @escaping ((from: RetailPaymentJourney.PaymentParty?, to: RetailPaymentJourney.PaymentParty?)) -> Swift.Bool)
+  }
+}
+extension RetailPaymentJourney.FromPaymentPartyStep {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var productBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var productRemainingCreditHeader: RetailJourneyCommon.LocalizedString
+    public var productBookedBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var errorTitle: RetailJourneyCommon.LocalizedString
+    public var errorMessage: RetailJourneyCommon.LocalizedString
+    public var errorActionTitle: RetailJourneyCommon.LocalizedString
+    public var errorCancelActionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionMessage: RetailJourneyCommon.LocalizedString
+    public var noConnectionActionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionCancelActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public protocol GetExternalPaymentPartiesUseCase {
+  func execute(completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.ExternalPaymentPartyResponse, RetailPaymentJourney.ServiceError>)
+}
+public enum PaymentPartyRole {
+  case credit
+  case debit
+  public static func == (a: RetailPaymentJourney.PaymentPartyRole, b: RetailPaymentJourney.PaymentPartyRole) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol GetPaymentPartiesServiceUseCase {
+  @available(*, deprecated, message: "    Please use execute(_ parameters: PaymentPartiesRequestParameters, completion: @escaping OnResult<[PaymentParty], ServiceError>)")
+  func execute(role: RetailPaymentJourney.PaymentPartyRole, completion: @escaping RetailPaymentJourney.OnResult<[RetailPaymentJourney.PaymentParty], RetailPaymentJourney.ServiceError>)
+  func execute(with parameters: RetailPaymentJourney.PaymentPartiesRequestParameters, completion: @escaping RetailPaymentJourney.OnResult<[RetailPaymentJourney.PaymentParty], RetailPaymentJourney.ServiceError>)
+  func getArrangmentBy(with parameters: RetailPaymentJourney.ArrangementRequestParameter, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentParty, RetailPaymentJourney.ServiceError>)
+}
+extension RetailPaymentJourney.GetPaymentPartiesServiceUseCase {
+  public func getArrangmentBy(with parameters: RetailPaymentJourney.ArrangementRequestParameter, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentParty, RetailPaymentJourney.ServiceError>)
+}
+public struct ArrangementRequestParameter {
+  public var identifier: Swift.String
+  public init(identifier: Swift.String)
+}
+public struct PaymentPartiesRequestParameters {
+  public init(role: RetailPaymentJourney.PaymentPartyRole, businessFunction: Swift.String = "A2A Transfer", additions: [Swift.String : Any] = [:])
+  public var role: RetailPaymentJourney.PaymentPartyRole
+  public var businessFunction: Swift.String
+  public var additions: [Swift.String : Any]
+}
+public struct OtherAmountForm {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, paymentOrderInput: RetailPaymentJourney.PaymentOrderInput, amount: RetailPaymentJourney.Amount? = nil, selectionHandler: RetailPaymentJourney.OtherAmountForm.SelectionHandler) -> UIKit.UIViewController
+}
+public typealias ValidateOtherAmountBlock = (RetailPaymentJourney.PaymentOrderInput, RetailPaymentJourney.Amount?) -> RetailPaymentJourney.Failure?
+extension RetailPaymentJourney.OtherAmountForm {
+  public struct Configuration {
+    public init()
+    public var validate: RetailPaymentJourney.ValidateOtherAmountBlock {
+      mutating get
+      set
+    }
+    public var strings: RetailPaymentJourney.OtherAmountForm.Strings
+    public var router: RetailPaymentJourney.OtherAmountForm.Router
+    public var defaultCurrencyCode: Swift.String?
+  }
+}
+extension RetailPaymentJourney.OtherAmountForm {
+  public struct Router {
+    public var onSaveAmount: (_ navigationController: UIKit.UINavigationController, _ amount: RetailPaymentJourney.Amount?, _ selectionHandler: RetailPaymentJourney.OtherAmountForm.SelectionHandler?) -> Swift.Void
+    public var onDismiss: (_ navigation: UIKit.UINavigationController) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.OtherAmountForm {
+  public struct SelectionHandler {
+    public init(selectedAmount: @escaping (RetailPaymentJourney.Amount) -> Swift.Void)
+    public let selectedAmount: (RetailPaymentJourney.Amount) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.OtherAmountForm {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var amountFieldHeader: RetailJourneyCommon.LocalizedString
+    public var saveButtonTitle: RetailJourneyCommon.LocalizedString
+    public var alertExceedAmountTitle: RetailJourneyCommon.LocalizedString
+    public var alertExceedAmountDescription: RetailJourneyCommon.LocalizedString
+    public var alertConfirmButtonTitle: RetailJourneyCommon.LocalizedString
+    public var alertCancelButtonTitle: RetailJourneyCommon.LocalizedString
+    public var exceedAmountInlineError: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct PaymentComplete {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, paymentState: RetailPaymentJourney.PaymentState) -> UIKit.UIViewController
+}
+extension RetailPaymentJourney.PaymentComplete {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPaymentJourney.PaymentComplete.Strings
+    public var router: RetailPaymentJourney.PaymentComplete.Router
+    @available(*, deprecated, message: "Use `animation` instead.")
+    public var icon: (RetailPaymentJourney.PaymentState) -> (UIKit.UIImage?)
+    public var animation: (RetailPaymentJourney.PaymentState) -> BackbaseAnimation.AnimationSource?
+    public var onComplete: ((RetailPaymentJourney.PaymentState) -> Swift.Void)?
+  }
+}
+extension RetailPaymentJourney.PaymentComplete {
+  public struct Router {
+    public init()
+    public var exitJourney: (UIKit.UINavigationController, _ configuration: RetailPaymentJourney.RetailPayment.Configuration) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.PaymentComplete {
+  public struct Strings {
+    public init()
+    public var title: (RetailPaymentJourney.PaymentState) -> Swift.String
+    public var subtitle: (RetailPaymentJourney.PaymentState) -> Swift.String
+    public var doneTitle: RetailJourneyCommon.LocalizedString
+    public var contactAddSuccess: RetailJourneyCommon.LocalizedString
+    public var contactAddFailure: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct PaymentFailure {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, serviceError: RetailPaymentJourney.ServiceError) -> UIKit.UIViewController
+}
+extension RetailPaymentJourney.PaymentFailure {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPaymentJourney.PaymentFailure.Strings
+    public var router: RetailPaymentJourney.PaymentFailure.Router
+  }
+}
+extension RetailPaymentJourney.PaymentFailure {
+  public struct Router {
+    public var didDismiss: (UIKit.UINavigationController, RetailPaymentJourney.RetailPayment.Configuration) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.PaymentFailure {
+  public struct Strings {
+    public init()
+    public var failureTitle: RetailJourneyCommon.LocalizedString
+    public var failureMessage: RetailJourneyCommon.LocalizedString
+    public var failureActionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionMessage: RetailJourneyCommon.LocalizedString
+    public var noConnectionActionTitle: RetailJourneyCommon.LocalizedString
+    public var p2pMaxLimitViolation: RetailJourneyCommon.LocalizedString
+    public var p2pMinLimitViolation: RetailJourneyCommon.LocalizedString
+    public var p2pDailyMaxLimitViolation: RetailJourneyCommon.LocalizedString
+    public var p2pMonthlyMaxLimitViolation: RetailJourneyCommon.LocalizedString
+    public var p2pPaymentValidationFailedErrorTitle: RetailJourneyCommon.LocalizedString
+    public var a2aMinLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aMaxIncomingLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aMaxOutgoingingLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aDailyMaxIncomingLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aDailyMaxOutgoingLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aDailyMaxCombinedLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aMonthlyMaxIncomingLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aMonthlyMaxOutgoingLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aMonthlyMaxCombinedLimitViolation: RetailJourneyCommon.LocalizedString
+    public var a2aPaymentValidationFailedErrorTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public protocol PaymentFormDelegate : AnyObject {
+  func didBeginEditing(_ fieldViewController: RetailPaymentJourney.FieldViewControllerProtocol)
+}
+public struct PaymentJourneyType : Swift.Equatable {
+  public let qualifier: Swift.String
+  public static let defaultType: RetailPaymentJourney.PaymentJourneyType
+  public static let externalA2ATransfer: RetailPaymentJourney.PaymentJourneyType
+  public static let externalA2AStepsTransfer: RetailPaymentJourney.PaymentJourneyType
+  public static let p2pTransfer: RetailPaymentJourney.PaymentJourneyType
+  public init(qualifier: Swift.String)
+  public static func == (a: RetailPaymentJourney.PaymentJourneyType, b: RetailPaymentJourney.PaymentJourneyType) -> Swift.Bool
+}
+public struct PaymentOption : Swift.Equatable {
+  public let type: RetailPaymentJourney.PaymentOption.FieldType
+  public let title: Swift.String?
+  public let subTitle: Swift.String?
+  public var amount: Foundation.Decimal?
+  public var isShowInterestLabel: Swift.Bool
+  public init(type: RetailPaymentJourney.PaymentOption.FieldType, title: Swift.String? = nil, subTitle: Swift.String? = nil, isShowInterestLabel: Swift.Bool? = nil)
+  public enum FieldType : Swift.Equatable {
+    case minimumPayment
+    case statementBalance
+    case availableBalance
+    case bookedBalance
+    case outstandingPayment
+    case custom(Swift.String)
+    public static func == (a: RetailPaymentJourney.PaymentOption.FieldType, b: RetailPaymentJourney.PaymentOption.FieldType) -> Swift.Bool
+  }
+  public static func == (a: RetailPaymentJourney.PaymentOption, b: RetailPaymentJourney.PaymentOption) -> Swift.Bool
+}
+public struct PaymentOptionList {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, paymentOrderInput: RetailPaymentJourney.PaymentOrderInput, selectionHandler: RetailPaymentJourney.PaymentOptionList.SelectionHandler? = nil) -> UIKit.UIViewController
+}
+public typealias PaymentOptionsRetrieverBlock = ([RetailPaymentJourney.PaymentOption], RetailPaymentJourney.PaymentParty) -> [RetailPaymentJourney.PaymentOption]
+public typealias SelectedPaymentOptionBlock = (RetailPaymentJourney.PaymentParty) -> RetailPaymentJourney.PaymentOption?
+extension RetailPaymentJourney.PaymentOptionList {
+  public struct Configuration {
+    public init()
+    public var defaultCurrencyCode: Swift.String?
+    public var options: [RetailPaymentJourney.PaymentOption]
+    public var formatter: RetailPaymentJourney.PaymentOptionList.Formatter
+    public var selectedPaymentOption: RetailPaymentJourney.PaymentOption?
+    public var retriverOptionsWithAmountBlock: RetailPaymentJourney.PaymentOptionsRetrieverBlock?
+    public var selectedPaymentOptionBlock: RetailPaymentJourney.SelectedPaymentOptionBlock?
+    public var showDefaultCreditPaymentOption: Swift.Bool
+    public var allowTextInputPaymentOption: Swift.Bool
+    public var strings: RetailPaymentJourney.PaymentOptionList.Strings
+    public var router: RetailPaymentJourney.PaymentOptionList.Router
+  }
+}
+extension RetailPaymentJourney.PaymentOptionList {
+  public struct Formatter {
+    public init()
+    public var amountFormatter: RetailPaymentJourney.PaymentReview.AmountFormatter
+  }
+}
+extension RetailPaymentJourney.PaymentOptionList {
+  public struct AmountFormatter {
+    public init()
+    public var useCurrencyISOCode: Swift.Bool
+    public var enablePositiveSign: Swift.Bool
+  }
+}
+extension RetailPaymentJourney.PaymentOptionList {
+  public struct Router {
+    public var onSelectOptionTapped: (_ navigationController: UIKit.UINavigationController, RetailPaymentJourney.RetailPayment.Configuration, _ selectionHandler: RetailPaymentJourney.PaymentOptionList.SelectionHandler?, _ paymentOption: RetailPaymentJourney.PaymentOption?, _ amount: RetailPaymentJourney.Amount?) -> Swift.Void
+    public var onSelectOtherAmountFormTapped: (_ navigation: UIKit.UINavigationController, _ configuration: RetailPaymentJourney.RetailPayment.Configuration, _ paymentOrder: RetailPaymentJourney.PaymentOrderInput, _ amount: RetailPaymentJourney.Amount?, _ selectionHandler: RetailPaymentJourney.OtherAmountForm.SelectionHandler) -> Swift.Void
+    public var onCancel: (_ navigation: UIKit.UINavigationController, RetailPaymentJourney.RetailPayment.Configuration) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.PaymentOptionList {
+  public struct SelectionHandler {
+    public init(selectedPaymentOption: @escaping (RetailPaymentJourney.PaymentOption, RetailPaymentJourney.Amount) -> Swift.Void)
+    public let selectedPaymentOption: (RetailPaymentJourney.PaymentOption, RetailPaymentJourney.Amount) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.PaymentOptionList {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var stepByStepTitle: RetailJourneyCommon.LocalizedString
+    public var minimumDueSubTitle: RetailJourneyCommon.LocalizedString
+    public var statementBalanceSubtitle: RetailJourneyCommon.LocalizedString
+    public var currentBalanceSubtitle: RetailJourneyCommon.LocalizedString
+    public var otherAmountTitle: RetailJourneyCommon.LocalizedString
+    public var otherSubTitleBeforeEnterAmount: RetailJourneyCommon.LocalizedString
+    public var otherSubTitleAfterEnterAmount: RetailJourneyCommon.LocalizedString
+    public var noInterestTitle: RetailJourneyCommon.LocalizedString
+    public var continueButtonTitle: RetailJourneyCommon.LocalizedString
+    public var selectPaymentOptionTitle: RetailJourneyCommon.LocalizedString
+    public var selectionError: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct PaymentOrder : Swift.Equatable {
+  public init(fromAccount: RetailPaymentJourney.PaymentParty, toAccount: RetailPaymentJourney.PaymentParty, paymentDate: Foundation.Date, amount: RetailPaymentJourney.Amount, paymentType: Swift.String = "", identifier: Swift.String?, remittanceInfo: Swift.String? = nil, frequencyOption: RetailPaymentJourney.FrequencyOption? = nil, securityQuestion: RetailPaymentJourney.SecurityQuestionModel? = nil, paymentOption: RetailPaymentJourney.PaymentOption? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public var fromAccount: RetailPaymentJourney.PaymentParty
+  public var toAccount: RetailPaymentJourney.PaymentParty
+  public var paymentDate: Foundation.Date
+  public var frequencyOption: RetailPaymentJourney.FrequencyOption?
+  public var amount: RetailPaymentJourney.Amount
+  public var paymentType: Swift.String
+  public var identifier: Swift.String?
+  public var remittanceInfo: Swift.String?
+  public var securityQuestion: RetailPaymentJourney.SecurityQuestionModel?
+  public var additions: [Swift.String : Swift.String]?
+  public var paymentOption: RetailPaymentJourney.PaymentOption?
+  public static func == (a: RetailPaymentJourney.PaymentOrder, b: RetailPaymentJourney.PaymentOrder) -> Swift.Bool
+}
+extension RetailPaymentJourney.PaymentOrder {
+  @available(*, deprecated, message: "Use the init(fromAccount:, toAccount:, paymentDate:, amount:, paymentType:, identifier:,\n             remittanceInfo:, frequencyOption:, securityQuestion:, additions:, paymentOption:)")
+  public init(fromAccount: RetailPaymentJourney.PaymentParty, toAccount: RetailPaymentJourney.PaymentParty, paymentDate: Foundation.Date, amount: RetailPaymentJourney.Amount, paymentType: Swift.String = "", additions: [Swift.String : Swift.String]? = nil, remittanceInfo: Swift.String? = nil, frequencyOption: RetailPaymentJourney.FrequencyOption? = nil, securityQuestion: RetailPaymentJourney.SecurityQuestionModel? = nil)
+  public init(fromAccount: RetailPaymentJourney.PaymentParty, toAccount: RetailPaymentJourney.PaymentParty, paymentDate: Foundation.Date, amount: RetailPaymentJourney.Amount, paymentType: Swift.String = "", additions: [Swift.String : Swift.String]? = nil, remittanceInfo: Swift.String? = nil, frequencyOption: RetailPaymentJourney.FrequencyOption? = nil)
+  @available(*, deprecated, message: "Use the init(fromAccount:, toAccount:, paymentDate:, amount:, paymentType:, identifier:,\n             remittanceInfo:, frequencyOption:, securityQuestion:, additions:, paymentOption:)")
+  public init(fromAccount: RetailPaymentJourney.PaymentParty, toAccount: RetailPaymentJourney.PaymentParty, paymentDate: Foundation.Date, amount: RetailPaymentJourney.Amount, paymentType: Swift.String = "", identifier: Swift.String?, remittanceInfo: Swift.String? = nil, frequencyOption: RetailPaymentJourney.FrequencyOption? = nil, securityQuestion: RetailPaymentJourney.SecurityQuestionModel? = nil, additions: [Swift.String : Swift.String]? = nil)
+}
+public protocol PaymentOrderInput {
+  var identifier: Swift.String? { get set }
+  var fromPaymentParty: RetailPaymentJourney.PaymentParty? { get set }
+  var toPaymentParty: RetailPaymentJourney.PaymentParty? { get set }
+  var amount: RetailPaymentJourney.Amount? { get set }
+  var schedule: RetailPaymentJourney.Schedule? { get set }
+  var option: RetailPaymentJourney.PaymentOption? { get set }
+  var paymentType: Swift.String { get }
+  var securityQuestion: RetailPaymentJourney.SecurityQuestionModel? { get set }
+  var remittanceInfo: Swift.String? { get set }
+  var additions: [Swift.String : Swift.String]? { get set }
+}
+extension RetailPaymentJourney.PaymentOrderInput {
+  public var containsExternalAccount: Swift.Bool {
+    get
+  }
+  public var securityQuestion: RetailPaymentJourney.SecurityQuestionModel? {
+    get
+    set
+  }
+  public var identifier: Swift.String? {
+    get
+    set
+  }
+}
+public struct PaymentParty : Swift.Equatable {
+  public enum Identification : Swift.Hashable {
+    case iban
+    case bban
+    case cardNumber
+    case productNumber
+    case externalAccountNumber
+    case custom(Swift.String)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: RetailPaymentJourney.PaymentParty.Identification, b: RetailPaymentJourney.PaymentParty.Identification) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(fromExternalPaymentParty externalPaymentParty: RetailPaymentJourney.ExternalPaymentParty, currencyCode: Swift.String? = nil)
+  public init(identifier: Swift.String, name: Swift.String, type: RetailPaymentJourney.PaymentPartyType, identifications: [RetailPaymentJourney.PaymentParty.Identification : Swift.String], emailAddress: Swift.String? = nil, phoneNumber: Swift.String? = nil, currencyCode: Swift.String? = nil, availableBalance: Foundation.Decimal? = nil, bookedBalance: Foundation.Decimal? = nil, remainingCredit: Foundation.Decimal? = nil, minimumPayment: Foundation.Decimal? = nil, outstandingPayment: Foundation.Decimal? = nil, amountOptions: [RetailPaymentJourney.AmountOption]? = nil, minimumPaymentDueDate: Foundation.Date? = nil, saveContact: Swift.Bool? = nil)
+  public let identifier: Swift.String
+  public let name: Swift.String
+  @available(*, deprecated, message: "Please use identifications for determining what account number to show")
+  public let accountNumber: Swift.String?
+  public let identifications: [RetailPaymentJourney.PaymentParty.Identification : Swift.String]
+  public let emailAddress: Swift.String?
+  public let phoneNumber: Swift.String?
+  public let currencyCode: Swift.String?
+  public let type: RetailPaymentJourney.PaymentPartyType
+  public let availableBalance: Foundation.Decimal?
+  public let bookedBalance: Foundation.Decimal?
+  public let remainingCredit: Foundation.Decimal?
+  public let minimumPayment: Foundation.Decimal?
+  public let outstandingPayment: Foundation.Decimal?
+  public let amountOptions: [RetailPaymentJourney.AmountOption]?
+  public let minimumPaymentDueDate: Foundation.Date?
+  public let saveContact: Swift.Bool?
+}
+extension RetailPaymentJourney.PaymentParty {
+  @available(*, deprecated, message: "Please use the following init function:\ninit(\n    identifier: String,\n    name: String,\n    type: PaymentPartyType,\n    identifications: [Identification: String],\n    emailAddress: String? = nil,\n    phoneNumber: String? = nil,\n    currencyCode: String? = nil,\n    availableBalance: Decimal? = nil,\n    bookedBalance: Decimal? = nil,\n    remainingCredit: Decimal? = nil,\n    minimumPayment: Decimal? = nil,\n    outstandingPayment: Decimal? = nil,\n    amountOptions: [AmountOption]? = nil,\n    minimumPaymentDueDate: Date? = nil,\n    saveContact: Bool? = nil\n)")
+  public init(identifier: Swift.String, name: Swift.String, type: RetailPaymentJourney.PaymentPartyType, accountNumber: Swift.String? = nil, emailAddress: Swift.String? = nil, phoneNumber: Swift.String? = nil, currencyCode: Swift.String? = nil, availableBalance: Foundation.Decimal? = nil, bookedBalance: Foundation.Decimal? = nil, remainingCredit: Foundation.Decimal? = nil, minimumPayment: Foundation.Decimal? = nil, outstandingPayment: Foundation.Decimal? = nil, amountOptions: [RetailPaymentJourney.AmountOption]? = nil, minimumPaymentDueDate: Foundation.Date? = nil, saveContact: Swift.Bool? = nil)
+  @available(*, deprecated, message: "Please use the following init function:\ninit(\n    identifier: String,\n    name: String,\n    type: PaymentPartyType,\n    identifications: [Identification: String],\n    emailAddress: String? = nil,\n    phoneNumber: String? = nil,\n    currencyCode: String? = nil,\n    availableBalance: Decimal? = nil,\n    bookedBalance: Decimal? = nil,\n    remainingCredit: Decimal? = nil,\n    minimumPayment: Decimal? = nil,\n    outstandingPayment: Decimal? = nil,\n    amountOptions: [AmountOption]? = nil,\n    minimumPaymentDueDate: Date? = nil,\n    saveContact: Bool? = nil\n)")
+  public init(identifier: Swift.String, name: Swift.String, accountNumber: Swift.String?, currencyCode: Swift.String?, type: RetailPaymentJourney.PaymentPartyType, availableBalance: Foundation.Decimal?, bookedBalance: Foundation.Decimal?, remainingCredit: Foundation.Decimal?)
+  @available(*, deprecated, message: "Please use the following init function:\ninit(\n    identifier: String,\n    name: String,\n    type: PaymentPartyType,\n    identifications: [Identification: String],\n    emailAddress: String? = nil,\n    phoneNumber: String? = nil,\n    currencyCode: String? = nil,\n    availableBalance: Decimal? = nil,\n    bookedBalance: Decimal? = nil,\n    remainingCredit: Decimal? = nil,\n    minimumPayment: Decimal? = nil,\n    outstandingPayment: Decimal? = nil,\n    amountOptions: [AmountOption]? = nil,\n    minimumPaymentDueDate: Date? = nil,\n    saveContact: Bool? = nil\n)")
+  public init(identifier: Swift.String, name: Swift.String, type: RetailPaymentJourney.PaymentPartyType, accountNumber: Swift.String? = nil, emailAddress: Swift.String? = nil, phoneNumber: Swift.String? = nil, currencyCode: Swift.String? = nil, availableBalance: Foundation.Decimal? = nil, bookedBalance: Foundation.Decimal? = nil, remainingCredit: Foundation.Decimal? = nil, saveContact: Swift.Bool? = nil)
+}
+extension RetailPaymentJourney.PaymentParty {
+  public static func == (lhs: RetailPaymentJourney.PaymentParty, rhs: RetailPaymentJourney.PaymentParty) -> Swift.Bool
+}
+public enum PaymentPartyType {
+  case currentAccount
+  case savingsAccount
+  case loan
+  case creditCard
+  case contact
+  case custom(type: Swift.String)
+  case externalAccount
+}
+public struct PaymentPartyFieldConfiguration {
+  public init()
+  public var strings: RetailPaymentJourney.PaymentPartyFieldConfiguration.Strings
+  public var formatter: RetailPaymentJourney.PaymentSteps.Formatter?
+  public var showSeparatorAndArrow: Swift.Bool
+  public struct Strings {
+    public init()
+    public var fromHeader: RetailJourneyCommon.LocalizedString?
+    public var fromPlaceholder: RetailJourneyCommon.LocalizedString?
+    public var fromBalanceHeader: RetailJourneyCommon.LocalizedString?
+    public var fromRemainingCreditHeader: RetailJourneyCommon.LocalizedString?
+    public var fromBookedBalanceHeader: RetailJourneyCommon.LocalizedString?
+    public var toHeader: RetailJourneyCommon.LocalizedString?
+    public var toPlaceholder: RetailJourneyCommon.LocalizedString?
+    public var toBalanceHeader: RetailJourneyCommon.LocalizedString?
+    public var toRemainingCreditHeader: RetailJourneyCommon.LocalizedString?
+    public var toBookedBalanceHeader: RetailJourneyCommon.LocalizedString?
+    public var selectionError: RetailJourneyCommon.LocalizedString
+    public var noAmountDueAlertTitle: RetailJourneyCommon.LocalizedString
+    public var noAmountDueDesc: RetailJourneyCommon.LocalizedString
+    public var noAmountDueOkButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct PaymentPartyList {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, selectionHandler: RetailPaymentJourney.PaymentPartyList.SelectionHandler, settingsProvider: RetailPaymentJourney.PaymentPartyList.SettingsProvider) -> UIKit.UIViewController
+}
+extension RetailPaymentJourney.PaymentPartyList {
+  public struct Configuration {
+    public init()
+    public var router: RetailPaymentJourney.PaymentPartyList.Router
+    public var strings: RetailPaymentJourney.PaymentPartyList.Strings
+    public var dataMapper: RetailPaymentJourney.PaymentPartyList.DataMapper
+    public var formatter: RetailPaymentJourney.PaymentPartyList.Formatter
+    public var fromPaymentPartyListFilter: RetailPaymentJourney.PaymentPartyList.Filter
+    public var toPaymentPartyListFilter: RetailPaymentJourney.PaymentPartyList.Filter
+  }
+  public struct DataMapper {
+    public var accountNumber: (_ paymentParty: RetailPaymentJourney.PaymentParty) -> Swift.String?
+  }
+}
+extension RetailPaymentJourney.PaymentPartyList {
+  public struct Filter {
+    public let apply: ((from: RetailPaymentJourney.PaymentParty?, to: RetailPaymentJourney.PaymentParty?)) -> Swift.Bool
+    public init(apply: @escaping ((from: RetailPaymentJourney.PaymentParty?, to: RetailPaymentJourney.PaymentParty?)) -> Swift.Bool)
+  }
+}
+extension RetailPaymentJourney.PaymentPartyList {
+  public struct Formatter {
+    public init()
+    public var amountFormatter: RetailPaymentJourney.PaymentPartyList.AmountFormatter
+  }
+}
+extension RetailPaymentJourney.PaymentPartyList {
+  public struct AmountFormatter {
+    public init()
+    public var useCurrencyISOCode: Swift.Bool
+    public var enablePositiveSign: Swift.Bool
+  }
+}
+extension RetailPaymentJourney.PaymentPartyList {
+  public struct Router {
+    public var onSelectPaymentParty: (_ navigation: UIKit.UINavigationController, RetailPaymentJourney.RetailPayment.Configuration, _ selectionHandler: RetailPaymentJourney.PaymentPartyList.SelectionHandler?, _ paymentParty: RetailPaymentJourney.PaymentParty?) -> Swift.Void
+    public var onCancel: (_ navigation: UIKit.UINavigationController, RetailPaymentJourney.RetailPayment.Configuration) -> Swift.Void
+    public var exitJourney: () -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.PaymentPartyList {
+  public struct SelectionHandler {
+    public init(selectedPaymentParty: @escaping (RetailPaymentJourney.PaymentParty) -> Swift.Void)
+    public let selectedPaymentParty: (RetailPaymentJourney.PaymentParty) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.PaymentPartyList {
+  public struct SettingsProvider {
+    public init(title: RetailJourneyCommon.LocalizedString, role: RetailPaymentJourney.PaymentPartyRole, paymentOrderInput: RetailPaymentJourney.PaymentOrderInput? = nil)
+    public let title: RetailJourneyCommon.LocalizedString
+    public let role: RetailPaymentJourney.PaymentPartyRole
+    public var paymentOrderInput: RetailPaymentJourney.PaymentOrderInput?
+    public var fromPaymentParty: RetailPaymentJourney.PaymentParty? {
+      get
+      set
+    }
+    public var toPaymentParty: RetailPaymentJourney.PaymentParty? {
+      get
+      set
+    }
+  }
+}
+extension RetailPaymentJourney.PaymentPartyList.SettingsProvider {
+  @available(*, deprecated, message: "Use the init(title:, role:, paymentOrderInput:)")
+  public init(title: RetailJourneyCommon.LocalizedString, role: RetailPaymentJourney.PaymentPartyRole, fromPaymentParty: RetailPaymentJourney.PaymentParty? = nil, toPaymentParty: RetailPaymentJourney.PaymentParty? = nil)
+}
+extension RetailPaymentJourney.PaymentPartyList {
+  public struct Strings {
+    public init()
+    public var productBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var productRemainingCreditHeader: RetailJourneyCommon.LocalizedString
+    public var productBookedBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var internalAccountsTitle: RetailJourneyCommon.LocalizedString
+    public var externalAccountsTitle: RetailJourneyCommon.LocalizedString
+    public var errorTitle: RetailJourneyCommon.LocalizedString
+    public var errorMessage: RetailJourneyCommon.LocalizedString
+    public var errorActionTitle: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "Not used as cancel option is not required for state view")
+    public var errorCancelActionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionMessage: RetailJourneyCommon.LocalizedString
+    public var noConnectionActionTitle: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "Not used as cancel option is not required for state view")
+    public var noConnectionCancelActionTitle: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "Use `noInternalAccountsTitle` or `noExternalAccountsTitle` instead.")
+    public var noResultsTitle: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "Use `noInternalAccountsMessage` or `noExternalAccountsMessage` instead.")
+    public var noResultsMessage: RetailJourneyCommon.LocalizedString
+    @available(*, deprecated, message: "Not used as there is no action button required.")
+    public var noResultsActionTitle: RetailJourneyCommon.LocalizedString
+    public var noInternalAccountsTitle: RetailJourneyCommon.LocalizedString
+    public var noInternalAccountsMessage: RetailJourneyCommon.LocalizedString
+    public var noExternalAccountsTitle: RetailJourneyCommon.LocalizedString
+    public var noExternalAccountsMessage: RetailJourneyCommon.LocalizedString
+    public var alertChangeFromAccountTitle: RetailJourneyCommon.LocalizedString
+    public var alertChangeFromAccountDescription: RetailJourneyCommon.LocalizedString
+    public var alertChangeToAccountTitle: RetailJourneyCommon.LocalizedString
+    public var alertChangeToAccountDescription: RetailJourneyCommon.LocalizedString
+    public var alertOKButtonTitle: RetailJourneyCommon.LocalizedString
+    public var noAmountDueAlertTitle: RetailJourneyCommon.LocalizedString
+    public var noAmountDueDesc: RetailJourneyCommon.LocalizedString
+    public var noAmountDueOkButtonTitle: RetailJourneyCommon.LocalizedString
+    public var continueButtonTitle: RetailJourneyCommon.LocalizedString
+    public var selectionFromAccountError: RetailJourneyCommon.LocalizedString
+    public var selectionToAccountError: RetailJourneyCommon.LocalizedString
+    public var alertEditCreditCardTitle: RetailJourneyCommon.LocalizedString
+    public var alertEditCreditCardMessage: RetailJourneyCommon.LocalizedString
+    public var alertEditCreditCardExitPayment: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct PaymentPartyMapper {
+}
+public struct PaymentPartyRoleBalanceHeader : Swift.Equatable {
+  public let debit: RetailPaymentJourney.BalanceHeaderOptions
+  public let credit: RetailPaymentJourney.BalanceHeaderOptions
+  public init(debit: RetailPaymentJourney.BalanceHeaderOptions, credit: RetailPaymentJourney.BalanceHeaderOptions)
+  public static func == (a: RetailPaymentJourney.PaymentPartyRoleBalanceHeader, b: RetailPaymentJourney.PaymentPartyRoleBalanceHeader) -> Swift.Bool
+}
+extension RetailPaymentJourney.PaymentPartyType : Swift.Equatable {
+  public static func == (lhs: RetailPaymentJourney.PaymentPartyType, rhs: RetailPaymentJourney.PaymentPartyType) -> Swift.Bool
+}
+public struct PaymentReview {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, paymentOrder: RetailPaymentJourney.PaymentOrder) -> UIKit.UIViewController
+}
+extension RetailPaymentJourney.PaymentReview {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPaymentJourney.PaymentReview.Strings
+    public var formatter: RetailPaymentJourney.PaymentReview.Formatter
+    public var router: RetailPaymentJourney.PaymentReview.Router
+    public var dataMapper: RetailPaymentJourney.PaymentReview.DataMapper
+    public var defaultAccountIcon: UIKit.UIImage?
+    public var showFromAccountNumber: Swift.Bool
+    public var showToAccountNumber: Swift.Bool
+    public var timeIntervalForTransactionSigningPolling: Swift.Double
+    public var reviewScreenElements: [RetailPaymentJourney.PaymentReview.ReviewElement]
+    public var showSelectedCreditCardBalanceType: Swift.Bool
+    public var showSufficientFundsWarning: Swift.Bool
+  }
+  public struct DataMapper {
+    public var accountNumber: (_ paymentParty: RetailPaymentJourney.PaymentParty) -> Swift.String?
+  }
+}
+extension RetailPaymentJourney.PaymentReview {
+  public struct ReviewElement : Swift.Equatable {
+    public static var amountSummary: RetailPaymentJourney.PaymentReview.ReviewElement
+    public static var paymentPartySummary: RetailPaymentJourney.PaymentReview.ReviewElement
+    public static var scheduleSummary: RetailPaymentJourney.PaymentReview.ReviewElement
+    public static var paymentDescription: RetailPaymentJourney.PaymentReview.ReviewElement
+    public static var securityQuestion: RetailPaymentJourney.PaymentReview.ReviewElement
+    public static func customDescription(_ customDescriptionCreator: @escaping (RetailPaymentJourney.PaymentOrder) -> (Swift.String, Swift.String)?) -> RetailPaymentJourney.PaymentReview.ReviewElement
+    public static func customView(_ viewCreator: @escaping (RetailPaymentJourney.PaymentOrder) -> UIKit.UIView?) -> RetailPaymentJourney.PaymentReview.ReviewElement
+    public static func == (a: RetailPaymentJourney.PaymentReview.ReviewElement, b: RetailPaymentJourney.PaymentReview.ReviewElement) -> Swift.Bool
+  }
+}
+extension RetailPaymentJourney.PaymentReview {
+  public struct Formatter {
+    public init()
+    public var amountFormatter: RetailPaymentJourney.PaymentReview.AmountFormatter
+  }
+}
+extension RetailPaymentJourney.PaymentReview {
+  public struct AmountFormatter {
+    public init()
+    public var useCurrencyISOCode: Swift.Bool
+    public var enablePositiveSign: Swift.Bool
+  }
+}
+extension RetailPaymentJourney.PaymentReview {
+  public struct Router {
+    public var onPaymentStateReceived: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailPaymentJourney.RetailPayment.Configuration, _ paymentOrder: RetailPaymentJourney.PaymentOrder, _ response: Swift.Result<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>) -> Swift.Void
+    public var onCancel: (_ navigation: UIKit.UINavigationController, RetailPaymentJourney.RetailPayment.Configuration) -> Swift.Void
+  }
+}
+extension RetailPaymentJourney.PaymentReview {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var amountSummaryTitle: RetailJourneyCommon.LocalizedString
+    public var fromAccountPrefix: (Swift.String) -> (Swift.String)
+    public var toAccountPrefix: (Swift.String) -> (Swift.String)
+    public var scheduleTodayDescription: RetailJourneyCommon.LocalizedString
+    public var scheduleLaterTitle: RetailJourneyCommon.LocalizedString
+    public var scheduleLaterDateTitle: RetailJourneyCommon.LocalizedString
+    public var confirmPaymentButtonTitle: RetailJourneyCommon.LocalizedString
+    public var confirmScheduleButtonTitle: RetailJourneyCommon.LocalizedString
+    public var frequencyTitle: RetailJourneyCommon.LocalizedString
+    public var startingTitle: RetailJourneyCommon.LocalizedString
+    public var endingTitle: RetailJourneyCommon.LocalizedString
+    public var recurringDaily: RetailJourneyCommon.LocalizedString
+    public var recurringWeekly: RetailJourneyCommon.LocalizedString
+    public var recurringBiweekly: RetailJourneyCommon.LocalizedString
+    public var recurringMonthly: RetailJourneyCommon.LocalizedString
+    public var recurringQuarterly: RetailJourneyCommon.LocalizedString
+    public var recurringYearly: RetailJourneyCommon.LocalizedString
+    public var recurringEndingOptionNever: RetailJourneyCommon.LocalizedString
+    public var recurringEndingOptionAfter: (_ times: Swift.CVarArg) -> Swift.String
+    public var recurringOptionOn: (_ date: Swift.CVarArg) -> Swift.String
+    public var paymentDescriptionTitle: RetailJourneyCommon.LocalizedString
+    public var p2pAmountSummaryTitle: RetailJourneyCommon.LocalizedString
+    public var p2pConfirmPaymentButtonTitle: RetailJourneyCommon.LocalizedString
+    public var p2pScheduleTodayDescription: RetailJourneyCommon.LocalizedString
+    public var p2pSecurityQuestionTitle: RetailJourneyCommon.LocalizedString
+    public var paymentPartySufficentWarningMessage: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct PaymentState : Swift.Equatable {
+  public let status: RetailPaymentJourney.PaymentState.Status
+  public let transactionSigningState: RetailPaymentJourney.TransactionSigningState?
+  public let bankStatus: Swift.String?
+  public let reasonCode: Swift.String?
+  public let reasonText: Swift.String?
+  public let errorDescription: Swift.String?
+  public let additions: [Swift.String : Swift.String]?
+  public init(status: RetailPaymentJourney.PaymentState.Status, transactionSigningState: RetailPaymentJourney.TransactionSigningState? = nil, bankStatus: Swift.String? = nil, reasonCode: Swift.String? = nil, reasonText: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil, errorDescription: Swift.String? = nil)
+  public enum Status : Swift.CaseIterable {
+    case draft
+    case entered
+    case ready
+    case accepted
+    case processed
+    case rejected
+    case cancelled
+    case cancellationPending
+    case confirmationPending
+    case confirmationDeclined
+    public static func == (a: RetailPaymentJourney.PaymentState.Status, b: RetailPaymentJourney.PaymentState.Status) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [RetailPaymentJourney.PaymentState.Status]
+    public static var allCases: [RetailPaymentJourney.PaymentState.Status] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static func == (a: RetailPaymentJourney.PaymentState, b: RetailPaymentJourney.PaymentState) -> Swift.Bool
+}
+public typealias NextAction = ((UIKit.UINavigationController, RetailPaymentJourney.PaymentOrderInput) -> Swift.Void)
+public struct PaymentSteps {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, arguments: RetailPaymentJourney.RetailPayment.BuildArguments = .init()) -> UIKit.UIViewController
+}
+extension RetailPaymentJourney.PaymentSteps {
+  public struct Configuration {
+    public init()
+    public var formatter: RetailPaymentJourney.PaymentSteps.Formatter
+    public var steps: [RetailPaymentJourney.Step]
+    public var router: RetailPaymentJourney.PaymentSteps.Router
+    public static let formConfiguration: [RetailPaymentJourney.Step]
+    public static let stepByStepConfiguration: [RetailPaymentJourney.Step]
+    public static let p2pConfiguration: [RetailPaymentJourney.Step]
+    public static let p2pConfigurationWithoutSecurityQuestion: [RetailPaymentJourney.Step]
+  }
+}
+extension RetailPaymentJourney.PaymentSteps {
+  public struct Formatter {
+    public init()
+    public var amountFormatter: RetailPaymentJourney.PaymentSteps.AmountFormatter
+  }
+}
+extension RetailPaymentJourney.PaymentSteps {
+  public struct AmountFormatter {
+    public init()
+    public var useCurrencyISOCode: Swift.Bool
+    public var enablePositiveSign: Swift.Bool
+  }
+}
+extension RetailPaymentJourney.PaymentSteps {
+  public struct Router {
+    public var didTapNextButton: (_ navigationController: UIKit.UINavigationController, RetailPaymentJourney.RetailPayment.Configuration, _ nextViewController: UIKit.UIViewController) -> Swift.Void
+    public var didTapReviewButton: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailPaymentJourney.RetailPayment.Configuration, _ paymentOrder: RetailPaymentJourney.PaymentOrder?) -> Swift.Void
+  }
+}
+public struct PostValidateResponse {
+  public init()
+}
+public struct RemittanceInfoConfiguration {
+  public init()
+  public var showMaxLengthCount: Swift.Bool
+  public var strings: RetailPaymentJourney.RemittanceInfoConfiguration.Strings
+  public var maxLength: Swift.Int
+  public var showPaymentDescriptionForCreditcard: Swift.Bool
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var optionalSuffixText: RetailJourneyCommon.LocalizedString
+    public var placeHolderText: RetailJourneyCommon.LocalizedString
+  }
+}
+public typealias OnResult<V, E> = (Swift.Result<V, E>) -> Swift.Void where E : Swift.Error
+final public class RetailContactsUseCase : RetailPaymentJourney.ContactsUseCase {
+  public init(dataProvider: DBSDataProvider? = nil, pageSize: Swift.Int = 10)
+  final public func retrieveContactsPage(parameters: RetailPaymentJourney.ContactsPageRequestParameters, completion: @escaping RetailPaymentJourney.RetailContactsUseCase.RetrieveContactsCompletion)
+  final public func saveContact(name: Swift.String, email: Swift.String? = nil, phoneNumber: Swift.String? = nil, completion: @escaping RetailPaymentJourney.RetailContactsUseCase.SaveContactCompletion)
+  @objc deinit
+}
+final public class RetailCreatePaymentOrderUseCase : RetailPaymentJourney.CreatePaymentOrderUseCase {
+  public init(dataProvider: DBSDataProvider? = nil)
+  final public func execute(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion whenDone: @escaping RetailPaymentJourney.OnResult<Swift.Void, RetailPaymentJourney.ServiceError>)
+  final public func execute(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion whenDone: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>)
+  final public func updatePaymentOrder(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion whenDone: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>)
+  final public func validatePaymentOrder(_ paymentOrder: RetailPaymentJourney.PaymentOrder, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PostValidateResponse, RetailPaymentJourney.ServiceError>)
+  final public func pollPaymentOrderStatus(_ orderId: Swift.String, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentState, RetailPaymentJourney.ServiceError>)
+  @objc deinit
+}
+final public class RetailGetExternalPaymentPartiesUseCase : RetailPaymentJourney.GetExternalPaymentPartiesUseCase {
+  public init(dataProvider: DBSDataProvider? = nil, client: PaymentOrderA2AClient1.A2aClientAPIProtocol? = nil)
+  final public func execute(completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.ExternalPaymentPartyResponse, RetailPaymentJourney.ServiceError>)
+  @objc deinit
+}
+final public class RetailGetPaymentPartiesServiceUseCase : RetailPaymentJourney.GetPaymentPartiesServiceUseCase {
+  @available(*, deprecated, message: "    Please use init(productSummaryClient: ProductSummaryAPIProtocol, arrangementsClient: ArrangementsAPIProtocol)")
+  public init(dataProvider: DBSDataProvider? = nil)
+  public init(productSummaryClient: ArrangementsClient2.ProductSummaryAPIProtocol, arrangementsClient: ArrangementsClient2.ArrangementsAPIProtocol)
+  @available(*, deprecated, message: "    Please use execute(_ parameters: PaymentPartiesRequestParameters, completion: @escaping OnResult<[PaymentParty], ServiceError>)")
+  final public func execute(role: RetailPaymentJourney.PaymentPartyRole, completion whenDone: @escaping RetailPaymentJourney.OnResult<[RetailPaymentJourney.PaymentParty], RetailPaymentJourney.ServiceError>)
+  final public func execute(with parameters: RetailPaymentJourney.PaymentPartiesRequestParameters, completion: @escaping RetailPaymentJourney.OnResult<[RetailPaymentJourney.PaymentParty], RetailPaymentJourney.ServiceError>)
+  final public func getArrangmentBy(with parameters: RetailPaymentJourney.ArrangementRequestParameter, completion: @escaping RetailPaymentJourney.OnResult<RetailPaymentJourney.PaymentParty, RetailPaymentJourney.ServiceError>)
+  @objc deinit
+}
+extension RetailPaymentJourney.RetailPayment {
+  public enum PaymentType {
+    case internalTransfer
+    case p2pTransfer
+    case a2aTransfer
+    case custom(Swift.String)
+    public func stringValue() -> Swift.String
+  }
+}
+extension RetailPaymentJourney.RetailPayment.PaymentType : Swift.Equatable {
+  public static func == (a: RetailPaymentJourney.RetailPayment.PaymentType, b: RetailPaymentJourney.RetailPayment.PaymentType) -> Swift.Bool
+}
+public struct RetailPayment {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, arguments: RetailPaymentJourney.RetailPayment.BuildArguments = .init()) -> UIKit.UIViewController
+  public struct BuildArguments {
+    public var preConfigurePaymentOrderInput: (RetailPaymentJourney.PaymentOrderInput) -> (RetailPaymentJourney.PaymentOrderInput)
+    public var isFromSelectorEnabledInPaymentForm: Swift.Bool
+    public var isToSelectorEnabledInPaymentForm: Swift.Bool
+    public init()
+  }
+}
+extension RetailPaymentJourney.RetailPayment.Configuration {
+  public func internalTransfer() -> RetailPaymentJourney.RetailPayment.Configuration
+  public func internalStepByStepTransfer() -> RetailPaymentJourney.RetailPayment.Configuration
+  public func p2pTransfer() -> RetailPaymentJourney.RetailPayment.Configuration
+  public func externalA2ATransfer() -> RetailPaymentJourney.RetailPayment.Configuration
+  public func externalA2AStepByStepTransfer() -> RetailPaymentJourney.RetailPayment.Configuration
+}
+extension RetailPaymentJourney.RetailPayment {
+  public enum JourneyMode {
+    case edit
+    case create
+    public static func == (a: RetailPaymentJourney.RetailPayment.JourneyMode, b: RetailPaymentJourney.RetailPayment.JourneyMode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public struct Configuration {
+    @available(*, deprecated, message: "Use `init(createPaymentOrderUseCase: CreatePaymentOrderUseCase,\n          getPaymentPartiesUseCase: GetPaymentPartiesServiceUseCase,\n          contactsUseCase: ContactsUseCase? = nil,\n          getExternalPaymentPartiesUseCase: GetExternalPaymentPartiesUseCase? = nil)` instead")
+    public init(createPaymentOrderUseCase: RetailPaymentJourney.CreatePaymentOrderUseCase, getPaymentPartiesUseCase: RetailPaymentJourney.GetPaymentPartiesServiceUseCase)
+    @available(*, deprecated, message: "Use `init(createPaymentOrderUseCase: CreatePaymentOrderUseCase,\n          getPaymentPartiesUseCase: GetPaymentPartiesServiceUseCase,\n          contactsUseCase: ContactsUseCase? = nil,\n          getExternalPaymentPartiesUseCase: GetExternalPaymentPartiesUseCase? = nil)` instead")
+    public init(createPaymentOrderUseCase: RetailPaymentJourney.CreatePaymentOrderUseCase, getPaymentPartiesUseCase: RetailPaymentJourney.GetPaymentPartiesServiceUseCase, getExternalPaymentPartiesUseCase: RetailPaymentJourney.GetExternalPaymentPartiesUseCase? = nil)
+    public init(createPaymentOrderUseCase: RetailPaymentJourney.CreatePaymentOrderUseCase, getPaymentPartiesUseCase: RetailPaymentJourney.GetPaymentPartiesServiceUseCase, contactsUseCase: RetailPaymentJourney.ContactsUseCase? = nil, getExternalPaymentPartiesUseCase: RetailPaymentJourney.GetExternalPaymentPartiesUseCase? = nil)
+    public var createPaymentOrderUseCase: RetailPaymentJourney.CreatePaymentOrderUseCase
+    public var getPaymentPartiesUseCase: RetailPaymentJourney.GetPaymentPartiesServiceUseCase
+    public var getExternalPaymentPartiesUseCase: RetailPaymentJourney.GetExternalPaymentPartiesUseCase?
+    public var contactsUseCase: RetailPaymentJourney.ContactsUseCase?
+    public var tabItem: RetailJourneyCommon.TabItem
+    @available(*, deprecated, message: "Use `transferType` instead")
+    public var paymentType: Swift.String
+    public var transferType: RetailPaymentJourney.RetailPayment.PaymentType
+    public var journeyMode: RetailPaymentJourney.RetailPayment.JourneyMode
+    public var paymentSteps: RetailPaymentJourney.PaymentSteps.Configuration
+    public var paymentFailure: RetailPaymentJourney.PaymentFailure.Configuration
+    public var paymentReview: RetailPaymentJourney.PaymentReview.Configuration
+    public var paymentComplete: RetailPaymentJourney.PaymentComplete.Configuration
+    public var paymentPartyList: RetailPaymentJourney.PaymentPartyList.Configuration
+    public var contactList: RetailPaymentJourney.ContactList.Configuration
+    public var addContact: RetailPaymentJourney.AddContact.Configuration
+    public var securityQuestion: RetailPaymentJourney.SecurityQuestion.Configuration
+    public var paymentOptionList: RetailPaymentJourney.PaymentOptionList.Configuration
+    public var otherAmountForm: RetailPaymentJourney.OtherAmountForm.Configuration
+    public var balanceHeader: (RetailPaymentJourney.PaymentParty, RetailPaymentJourney.PaymentPartyRole, RetailPaymentJourney.PaymentPartyRoleBalanceHeader, RetailPaymentJourney.BalanceDisplayOption) -> Swift.String?
+    public var balanceDisplayOption: (RetailPaymentJourney.PaymentParty, RetailPaymentJourney.PaymentPartyRole) -> RetailPaymentJourney.BalanceDisplayOption
+  }
+  public struct DataMapper {
+    public static var accountNumber: (_ paymentParty: RetailPaymentJourney.PaymentParty) -> Swift.String?
+  }
+}
+public struct Schedule : Swift.Equatable {
+  public init(requestedExecutionDate: Foundation.Date, frequency: RetailPaymentJourney.FrequencyOption? = nil)
+  public var requestedExecutionDate: Foundation.Date
+  public var frequency: RetailPaymentJourney.FrequencyOption?
+  public static func == (a: RetailPaymentJourney.Schedule, b: RetailPaymentJourney.Schedule) -> Swift.Bool
+}
+public enum FrequencyOption : Swift.Equatable {
+  case daily(option: RetailPaymentJourney.EndRecurringOption = .never)
+  case weekly(option: RetailPaymentJourney.EndRecurringOption = .never)
+  case biweekly(option: RetailPaymentJourney.EndRecurringOption = .never)
+  case monthly(option: RetailPaymentJourney.EndRecurringOption = .never)
+  case quarterly(option: RetailPaymentJourney.EndRecurringOption = .never)
+  case yearly(option: RetailPaymentJourney.EndRecurringOption = .never)
+  public static func == (a: RetailPaymentJourney.FrequencyOption, b: RetailPaymentJourney.FrequencyOption) -> Swift.Bool
+}
+public enum EndRecurringOption : Swift.Equatable {
+  case never
+  case date(Foundation.Date)
+  case numberOfTimes(Swift.Int)
+  public static func == (a: RetailPaymentJourney.EndRecurringOption, b: RetailPaymentJourney.EndRecurringOption) -> Swift.Bool
+}
+public struct ScheduleFieldConfiguration {
+  public init()
+  public var strings: RetailPaymentJourney.ScheduleFieldConfiguration.Strings
+  public var filteredFrequencyOptions: ((RetailPaymentJourney.PaymentOrderInput) -> [RetailPaymentJourney.ScheduleFieldConfiguration.FrequencyOption]) {
+    mutating get
+    set
+  }
+  public var filteredDefaultFrequency: ((RetailPaymentJourney.PaymentOrderInput) -> RetailPaymentJourney.ScheduleFieldConfiguration.FrequencyOption) {
+    mutating get
+    set
+  }
+  @available(*, deprecated, message: "Please use filteredFrequencyOptions instead.")
+  public var frequencyOptions: Swift.Set<RetailPaymentJourney.ScheduleFieldConfiguration.FrequencyOption>
+  @available(*, deprecated, message: "Please use filteredDefaultFrequency instead.")
+  public var defaultFrequency: RetailPaymentJourney.ScheduleFieldConfiguration.FrequencyOption
+  public var showRecurringOption: (_ paymentPartyInput: RetailPaymentJourney.PaymentOrderInput) -> (Swift.Bool)
+  public var recurringEndingOptions: (_ paymentOrderInput: RetailPaymentJourney.PaymentOrderInput) -> [RetailPaymentJourney.ScheduleFieldConfiguration.EndRecurringOption]
+  public var recurringFieldsPreSelected: Swift.Bool
+  public var defaultSelectedEndingOccurances: Swift.Int
+  public var endingOccurances: [Swift.Int]
+  public enum FrequencyOption : Swift.Int {
+    case daily
+    case weekly
+    case biweekly
+    case monthly
+    case quarterly
+    case yearly
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public var showCreditCardDueDateBadge: Swift.Bool
+  public var showCreditCardInfoMessage: Swift.Bool
+  public var showCreditCardScoreMessage: Swift.Bool
+  public var showCreditCardLaterMsgPassedDueDate: Swift.Bool
+  public var showDueDate: (_ configuration: RetailPaymentJourney.ScheduleFieldConfiguration, _ paymentOrderInput: RetailPaymentJourney.PaymentOrderInput) -> (Swift.Bool)
+  public enum EndRecurringOption : Swift.CaseIterable {
+    case never
+    case date
+    case numberOfTimes
+    public static func == (a: RetailPaymentJourney.ScheduleFieldConfiguration.EndRecurringOption, b: RetailPaymentJourney.ScheduleFieldConfiguration.EndRecurringOption) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [RetailPaymentJourney.ScheduleFieldConfiguration.EndRecurringOption]
+    public static var allCases: [RetailPaymentJourney.ScheduleFieldConfiguration.EndRecurringOption] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailPaymentJourney.ScheduleFieldConfiguration {
+  public struct Strings {
+    public init()
+    public var scheduleHeader: RetailJourneyCommon.LocalizedString
+    public var nowHeader: RetailJourneyCommon.LocalizedString
+    public var laterHeader: RetailJourneyCommon.LocalizedString
+    public var laterDescription: RetailJourneyCommon.LocalizedString
+    public var laterPlaceholder: RetailJourneyCommon.LocalizedString
+    public var recurringHeader: RetailJourneyCommon.LocalizedString
+    public var recurringFrequencyDescription: RetailJourneyCommon.LocalizedString
+    public var recurringFrequencyDefaultText: RetailJourneyCommon.LocalizedString
+    public var recurringStartingDateDescription: RetailJourneyCommon.LocalizedString
+    public var recurringEndingDateDescription: RetailJourneyCommon.LocalizedString
+    public var recurringDaily: RetailJourneyCommon.LocalizedString
+    public var recurringWeekly: RetailJourneyCommon.LocalizedString
+    public var recurringBiweekly: RetailJourneyCommon.LocalizedString
+    public var recurringMonthly: RetailJourneyCommon.LocalizedString
+    public var recurringQuarterly: RetailJourneyCommon.LocalizedString
+    public var recurringYearly: RetailJourneyCommon.LocalizedString
+    public var recurringStartingDateFormat: (Foundation.Date) -> (Swift.String)
+    public var recurringStartingDefaultText: RetailJourneyCommon.LocalizedString
+    public var recurringEndingNever: RetailJourneyCommon.LocalizedString
+    public var dateErrorMessage: RetailJourneyCommon.LocalizedString
+    public var recurringEndingAfter: RetailJourneyCommon.LocalizedString
+    public var recurringEndingOn: RetailJourneyCommon.LocalizedString
+    public var recurringEndingOccurrences: RetailJourneyCommon.LocalizedString
+    public var recurringEndingDefaultText: RetailJourneyCommon.LocalizedString
+    public var recurringFrequencyErrorMessage: RetailJourneyCommon.LocalizedString
+    public var recurringStartingDateErrorMessage: RetailJourneyCommon.LocalizedString
+    public var recurringEndingErrorMessage: RetailJourneyCommon.LocalizedString
+    public var recurringEndingOptionAfterOccurrences: (_ times: Swift.CVarArg) -> Swift.String
+    public var dueDatePrefix: RetailJourneyCommon.LocalizedString
+    public var creditCardTopInfo: RetailJourneyCommon.LocalizedString
+    public var pastDueDatePrefix: RetailJourneyCommon.LocalizedString
+    public var creditCardBottomLateFeeInfo: RetailJourneyCommon.LocalizedString
+    public var creditCardLateFeeInfoAfterDueDate: RetailJourneyCommon.LocalizedString
+    public var creditCardLateFeeBottomInfoPassedDueDate: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct SecurityQuestion {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailPaymentJourney.RetailPayment.Configuration, paymentOrderInput: RetailPaymentJourney.PaymentOrderInput) -> UIKit.UIViewController
+}
+extension RetailPaymentJourney.SecurityQuestion {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPaymentJourney.SecurityQuestion.Strings
+    public var router: RetailPaymentJourney.SecurityQuestion.Router
+    public var questionValidator: (Swift.String) -> RetailPaymentJourney.FieldState
+    public var answerValidator: (Swift.String) -> RetailPaymentJourney.FieldState
+  }
+}
+public struct SecurityQuestionModel : Swift.Equatable {
+  public init(question: Swift.String, answer: Swift.String)
+  public static func == (a: RetailPaymentJourney.SecurityQuestionModel, b: RetailPaymentJourney.SecurityQuestionModel) -> Swift.Bool
+}
+extension RetailPaymentJourney.SecurityQuestion {
+  public struct Router {
+  }
+}
+extension RetailPaymentJourney.SecurityQuestion {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+    public var questionFieldTitle: RetailJourneyCommon.LocalizedString
+    public var questionPlaceholder: RetailJourneyCommon.LocalizedString
+    public var answerFieldTitle: RetailJourneyCommon.LocalizedString
+    public var answerFieldPlaceholder: RetailJourneyCommon.LocalizedString
+    public var submitButtonTitle: RetailJourneyCommon.LocalizedString
+    public var skipButtonTitle: RetailJourneyCommon.LocalizedString
+    public var questionFieldError: RetailJourneyCommon.LocalizedString
+    public var answerPhoneFieldError: RetailJourneyCommon.LocalizedString
+  }
+}
+public enum ServiceError : Swift.Error, Swift.Equatable {
+  case failed(error: Swift.Error?)
+  case notConnected
+  public static func == (lhs: RetailPaymentJourney.ServiceError, rhs: RetailPaymentJourney.ServiceError) -> Swift.Bool
+}
+public enum Step {
+  case fromPartySelection(RetailPaymentJourney.FromPaymentPartyStep.Configuration)
+  case toPartySelection(RetailPaymentJourney.ToPaymentPartyStep.Configuration)
+  case form(RetailPaymentJourney.FormStep.Configuration)
+  case toContactSelection
+  case securityQuestion
+  case paymentOptionList(_: ((RetailPaymentJourney.PaymentOrderInput) -> Swift.Bool)? = nil)
+  case customV2((RetailPaymentJourney.NextAction, RetailPaymentJourney.PaymentOrderInput) -> UIKit.UIViewController)
+}
+public struct ToPaymentPartyFieldConfiguration {
+  public init()
+  public var strings: RetailPaymentJourney.ToPaymentPartyFieldConfiguration.Strings
+  public var formatter: RetailPaymentJourney.PaymentSteps.Formatter?
+  public struct Strings {
+    public init()
+    public var header: RetailJourneyCommon.LocalizedString?
+    public var placeholder: RetailJourneyCommon.LocalizedString?
+    public var balanceHeader: RetailJourneyCommon.LocalizedString?
+    public var remainingCreditHeader: RetailJourneyCommon.LocalizedString?
+    public var bookedBalanceHeader: RetailJourneyCommon.LocalizedString?
+    public var selectionError: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct ToPaymentPartyStep {
+  public struct Configuration {
+    public var listFilter: RetailPaymentJourney.ToPaymentPartyStep.Filter
+    public var formatter: RetailPaymentJourney.PaymentSteps.Formatter?
+    public var strings: RetailPaymentJourney.ToPaymentPartyStep.Strings
+    public init()
+  }
+}
+extension RetailPaymentJourney.ToPaymentPartyStep {
+  public struct Filter {
+    public let apply: ((from: RetailPaymentJourney.PaymentParty?, to: RetailPaymentJourney.PaymentParty?)) -> Swift.Bool
+    public init(apply: @escaping ((from: RetailPaymentJourney.PaymentParty?, to: RetailPaymentJourney.PaymentParty?)) -> Swift.Bool)
+  }
+}
+extension RetailPaymentJourney.ToPaymentPartyStep {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var productBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var productRemainingCreditHeader: RetailJourneyCommon.LocalizedString
+    public var productBookedBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var errorTitle: RetailJourneyCommon.LocalizedString
+    public var errorMessage: RetailJourneyCommon.LocalizedString
+    public var errorActionTitle: RetailJourneyCommon.LocalizedString
+    public var errorCancelActionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionMessage: RetailJourneyCommon.LocalizedString
+    public var noConnectionActionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionCancelActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct TransactionSigningState : Swift.Equatable & Swift.Codable {
+  public let data: RetailPaymentJourney.PaymentConfirmationData
+  public let confirmationStatus: Swift.String
+  public init(data: RetailPaymentJourney.PaymentConfirmationData, confirmationStatus: Swift.String)
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (a: RetailPaymentJourney.TransactionSigningState, b: RetailPaymentJourney.TransactionSigningState) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct PaymentConfirmationData : Swift.Equatable & Swift.Codable {
+  public let paymentOrderId: Swift.String
+  public init(paymentOrderId: Swift.String)
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (a: RetailPaymentJourney.PaymentConfirmationData, b: RetailPaymentJourney.PaymentConfirmationData) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct ValidationAlert {
+  public var title: Swift.String
+  public var positiveActionText: Swift.String
+  public var negativeActionText: Swift.String?
+  public init(title: Swift.String, positiveActionText: Swift.String, negativeActionText: Swift.String? = nil)
+}
+public enum ValidationErrorType {
+  case minPaymentAmount
+  case maxPaymentAmount
+  case maximumDailyLimit
+  case maximumMonthlyLimit
+  case minPaymentAmountA2A
+  case maxIncomingPaymentAmount
+  case maxOutGoingPayment
+  case maxIncomingPaymentPerDay
+  case maxOutgoingPaymentPerDay
+  case maxCombinedPaymentPerDay
+  case maxIncomingPaymentPerMonth
+  case maxOutgoingPaymentPerMonth
+  case maxCombinedPaymentPerMonth
+  public static func == (a: RetailPaymentJourney.ValidationErrorType, b: RetailPaymentJourney.ValidationErrorType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct ValidationErrorContext : Swift.Decodable, Swift.Equatable {
+  public let limit: Swift.String
+  public let amount: Swift.String
+  public init(limit: Swift.String, amount: Swift.String)
+  public static func == (a: RetailPaymentJourney.ValidationErrorContext, b: RetailPaymentJourney.ValidationErrorContext) -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ValidationErrorInfo : Swift.Decodable, Swift.Equatable {
+  public let message: Swift.String
+  public let key: Swift.String
+  public let context: RetailPaymentJourney.ValidationErrorContext
+  public init(message: Swift.String, key: Swift.String, context: RetailPaymentJourney.ValidationErrorContext)
+  public static func == (a: RetailPaymentJourney.ValidationErrorInfo, b: RetailPaymentJourney.ValidationErrorInfo) -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ValidationError : Swift.Error, Swift.Decodable, Swift.Equatable {
+  public init(message: Swift.String, errors: [RetailPaymentJourney.ValidationErrorInfo])
+  public static func == (a: RetailPaymentJourney.ValidationError, b: RetailPaymentJourney.ValidationError) -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum ValidationResult {
+  case valid
+  case invalid(Swift.String)
+}
+extension RetailPaymentJourney.BalanceDisplayOption : Swift.Hashable {}
+extension RetailPaymentJourney.FieldState : Swift.Hashable {}
+extension RetailPaymentJourney.ExternalPaymentParty.AccountType : Swift.Equatable {}
+extension RetailPaymentJourney.ExternalPaymentParty.AccountType : Swift.Hashable {}
+extension RetailPaymentJourney.ExternalPaymentParty.AccountType : Swift.RawRepresentable {}
+extension RetailPaymentJourney.ExternalPaymentParty.AccountStatus : Swift.Equatable {}
+extension RetailPaymentJourney.ExternalPaymentParty.AccountStatus : Swift.Hashable {}
+extension RetailPaymentJourney.ExternalPaymentParty.AccountStatus : Swift.RawRepresentable {}
+extension RetailPaymentJourney.PaymentPartyRole : Swift.Equatable {}
+extension RetailPaymentJourney.PaymentPartyRole : Swift.Hashable {}
+extension RetailPaymentJourney.PaymentState.Status : Swift.Equatable {}
+extension RetailPaymentJourney.PaymentState.Status : Swift.Hashable {}
+extension RetailPaymentJourney.RetailPayment.JourneyMode : Swift.Equatable {}
+extension RetailPaymentJourney.RetailPayment.JourneyMode : Swift.Hashable {}
+extension RetailPaymentJourney.ScheduleFieldConfiguration.FrequencyOption : Swift.Equatable {}
+extension RetailPaymentJourney.ScheduleFieldConfiguration.FrequencyOption : Swift.Hashable {}
+extension RetailPaymentJourney.ScheduleFieldConfiguration.FrequencyOption : Swift.RawRepresentable {}
+extension RetailPaymentJourney.ScheduleFieldConfiguration.EndRecurringOption : Swift.Equatable {}
+extension RetailPaymentJourney.ScheduleFieldConfiguration.EndRecurringOption : Swift.Hashable {}
+extension RetailPaymentJourney.ValidationErrorType : Swift.Equatable {}
+extension RetailPaymentJourney.ValidationErrorType : Swift.Hashable {}

@@ -1,0 +1,20 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BackbaseAppUpdaterUseCase
+import Backbase
+import BackbaseAppUpdater
+import Foundation
+import RemoteConfig
+import Resolver
+import Swift
+import _Concurrency
+final public class AppUpdaterUseCase : BackbaseAppUpdater.UpdateAppUseCase {
+  public init()
+  final public func fetchAppStatus(completion: @escaping (BackbaseAppUpdater.AppUpdateStatus?) -> Swift.Void)
+  @objc deinit
+}
+public class ItunesAppChecker {
+  public init(bundleId: Swift.String, appVersion: Swift.String)
+  public func isUpdateAvailable(completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc deinit
+}

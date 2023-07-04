@@ -1,0 +1,1444 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailPocketsJourney
+import Backbase
+import BackbaseDesignSystem
+import Foundation
+import Resolver
+import RetailDesign
+import RetailDesign/*.EdgeCaseView*/
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+public struct AccountIdentification : Swift.Equatable {
+  public var identification: RetailPocketsJourney.Identification
+  public var name: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(identification: RetailPocketsJourney.Identification, name: Swift.String? = nil)
+  public init(identification: RetailPocketsJourney.Identification, name: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.AccountIdentification, b: RetailPocketsJourney.AccountIdentification) -> Swift.Bool
+}
+public typealias DidSelectAccount = (RetailPocketsJourney.ProductSummaryItem) -> Swift.Void
+public struct AccountSelector {
+}
+extension RetailPocketsJourney.AccountSelector {
+  public struct Configuration {
+    public init()
+    public var design: RetailPocketsJourney.AccountSelector.Design
+    public var strings: RetailPocketsJourney.AccountSelector.Strings
+    public var productKindNamesFrom: [Swift.String]
+    public var productKindNamesTo: [Swift.String]
+    public var uiDataMapper: RetailPocketsJourney.AccountSelector.UIDataMapper
+  }
+}
+extension RetailPocketsJourney.AccountSelector {
+  public struct Design {
+    public var styles: RetailPocketsJourney.AccountSelector.Design.Styles
+  }
+}
+extension RetailPocketsJourney.AccountSelector {
+  public struct Strings {
+    public var fromTitle: RetailJourneyCommon.LocalizedString
+    public var toTitle: RetailJourneyCommon.LocalizedString
+    public var savingsAccountBalanceTitle: RetailJourneyCommon.LocalizedString
+    public var currentAccountBalanceTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.AccountSelector.Design {
+  public struct Styles {
+    public var accountListItemView: (_ view: UIKit.UIView) -> Swift.Void
+    public var accountListItemViewHighlighted: (_ view: UIKit.UIView) -> Swift.Void
+    public var listItemTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var listItemSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var listItemSubtitle2Label: (_ label: UIKit.UILabel) -> Swift.Void
+    public var listItemSubtitle3Label: (_ label: UIKit.UILabel) -> Swift.Void
+  }
+}
+extension RetailPocketsJourney.AccountSelector {
+  public struct UIDataMapper {
+    public var listItemTitle: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+    public var listItemSubtitle: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+    public var listItemSubtitle2: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+    public var listItemSubtitle3: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+  }
+}
+public struct AddMoney {
+  public struct EntryParams {
+    public init(pocket: RetailPocketsJourney.Pocket)
+  }
+  public static func build(navigationController: UIKit.UINavigationController, entryParams: RetailPocketsJourney.AddMoney.EntryParams) -> UIKit.UIViewController
+}
+extension RetailPocketsJourney.AddMoney {
+  public struct Configuration {
+    public init()
+    public var design: RetailPocketsJourney.AddMoney.Design
+    public var strings: RetailPocketsJourney.AddMoney.Strings
+    public var uiDataMapper: RetailPocketsJourney.AddMoney.UIDataMapper
+    public var paymentType: Swift.String
+  }
+}
+extension RetailPocketsJourney.AddMoney {
+  public struct Design {
+    public var styles: RetailPocketsJourney.AddMoney.Design.Styles
+    public var errorIcon: (_ error: RetailPocketsJourney.AddMoney.Error) -> UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.AddMoney {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailPocketsJourney.AddMoney.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case missingAllFields
+    case insufficientBalance
+    case notConnected
+    case invalidResponse
+    case loadingFailure(underlying: Swift.Error? = nil)
+    public static func == (lhs: RetailPocketsJourney.AddMoney.Error, rhs: RetailPocketsJourney.AddMoney.Error) -> Swift.Bool
+  }
+}
+extension RetailPocketsJourney.AddMoney.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailPocketsJourney.AddMoney {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var accountSectionTitle: RetailJourneyCommon.LocalizedString
+    public var accountSectionPlaceholder: RetailJourneyCommon.LocalizedString
+    public var amountToolbarAction: RetailJourneyCommon.LocalizedString
+    public var amountSectionTitle: RetailJourneyCommon.LocalizedString
+    public var footNote: RetailJourneyCommon.LocalizedString
+    public var confirmActionTitle: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailPocketsJourney.AddMoney.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailPocketsJourney.AddMoney.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorRetryButtonTitle: (_ error: RetailPocketsJourney.AddMoney.Error) -> RetailJourneyCommon.LocalizedString?
+  }
+}
+extension RetailPocketsJourney.AddMoney.Design {
+  public struct Styles {
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (_ item: UIKit.UINavigationItem) -> Swift.Void
+    public var sectionTitle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accountPlaceholderLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accountNameLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accountBalanceTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accountBalanceLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var amountCurrencyLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var amountTextInput: (_ input: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var immediateTransferNoteLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var transferButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+public struct AddMoneySuccess {
+  public struct EntryParams {
+  }
+}
+extension RetailPocketsJourney.AddMoneySuccess {
+  public struct Configuration {
+    public init()
+    public var design: RetailPocketsJourney.AddMoneySuccess.Design
+    public var strings: RetailPocketsJourney.AddMoneySuccess.Strings
+    public var uiDataMapper: RetailPocketsJourney.AddMoneySuccess.UIDataMapper
+  }
+}
+extension RetailPocketsJourney.AddMoneySuccess {
+  public struct Design {
+    public var styles: RetailPocketsJourney.AddMoneySuccess.Design.Styles
+    public var successIcon: UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.AddMoneySuccess {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var nextActionTitle: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.AddMoneySuccess.Design {
+  public struct Styles {
+    public var nextActionButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var edgeCase: (_ view: RetailDesign.EdgeCaseView) -> Swift.Void
+  }
+}
+extension RetailPocketsJourney.AddMoneySuccess {
+  public struct UIDataMapper {
+    public var subtitle: (_ entryParams: RetailPocketsJourney.AddMoneySuccess.EntryParams) -> Swift.String?
+  }
+}
+extension RetailPocketsJourney.AddMoney {
+  public struct UIDataMapper {
+    public var selectedAccountTitle: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+    public var selectedAccountSubtitle: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+    public var selectedAccountSubtitle2: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+  }
+}
+public protocol ArrangementsServiceUseCase {
+  func getArrangements(requestParams: RetailPocketsJourney.GetArrangementsRequestParams, completion: @escaping (Swift.Result<[RetailPocketsJourney.ProductSummaryItem], RetailPocketsJourney.ErrorResponse>) -> Swift.Void)
+}
+public struct Bank : Swift.Equatable {
+  public var bankBranchCode: Swift.String?
+  public var name: Swift.String?
+  public var postalAddress: RetailPocketsJourney.PostalAddress?
+  public var bic: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(bankBranchCode: Swift.String? = nil, name: Swift.String? = nil, postalAddress: RetailPocketsJourney.PostalAddress? = nil, bic: Swift.String? = nil)
+  public init(bankBranchCode: Swift.String? = nil, name: Swift.String? = nil, postalAddress: RetailPocketsJourney.PostalAddress? = nil, bic: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.Bank, b: RetailPocketsJourney.Bank) -> Swift.Bool
+}
+extension Foundation.Bundle {
+  public static var pockets: Foundation.Bundle? {
+    get
+  }
+}
+public enum ChargeBearer : Swift.String, Swift.CaseIterable {
+  case our
+  case ben
+  case sha
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RetailPocketsJourney.ChargeBearer]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RetailPocketsJourney.ChargeBearer] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct ClosePocketRequestParams {
+  public let pocketId: Swift.String
+  public init(pocketId: Swift.String)
+}
+extension RetailPocketsJourney.Pockets {
+  public struct Configuration {
+    public init(currencyInfo: RetailPocketsJourney.CurrencyInfo)
+    public var strings: RetailPocketsJourney.Pockets.Strings
+    public var design: RetailPocketsJourney.Pockets.Design
+    public var overview: RetailPocketsJourney.Overview.Configuration
+    public var details: RetailPocketsJourney.Details.Configuration
+    public var tutorial: RetailPocketsJourney.Tutorial.Configuration
+    public var createPocketImageAndName: RetailPocketsJourney.CreatePocketImageAndName.Configuration
+    public var createPocketChooseImage: RetailPocketsJourney.CreatePocketChooseImage.Configuration
+    public var createPocketGoal: RetailPocketsJourney.CreatePocketGoal.Configuration
+    public var createPocketReview: RetailPocketsJourney.CreatePocketReview.Configuration
+    public var createPocketSuccess: RetailPocketsJourney.CreatePocketSuccess.Configuration
+    public var accountSelector: RetailPocketsJourney.AccountSelector.Configuration
+    public var addMoney: RetailPocketsJourney.AddMoney.Configuration
+    public var addMoneySuccess: RetailPocketsJourney.AddMoneySuccess.Configuration
+    public var withdrawMoney: RetailPocketsJourney.WithdrawMoney.Configuration
+    public var withdrawMoneySuccess: RetailPocketsJourney.WithdrawMoneySuccess.Configuration
+    public var tabItem: RetailJourneyCommon.TabItem
+    public var defaultPocketItems: [RetailPocketsJourney.PocketConfigurationItem]
+    public var currencyInfo: RetailPocketsJourney.CurrencyInfo
+    public var percentageFormatter: (_ progressPerCent: Swift.Float) -> Swift.String?
+    public var decimalFormatter: (_ amount: Swift.String) -> Swift.String?
+    public var formattedDateProvider: (_ date: Foundation.Date) -> Swift.String
+    public var currencyFormatter: (_ amount: Swift.String, _ currencyCode: Swift.String) -> Swift.String?
+    public var maxFractionDigits: Swift.Int
+  }
+}
+public struct CreatePocketChooseImage {
+}
+extension RetailPocketsJourney.CreatePocketChooseImage {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPocketsJourney.CreatePocketChooseImage.Strings
+    public var design: RetailPocketsJourney.CreatePocketChooseImage.Design
+  }
+}
+extension RetailPocketsJourney.CreatePocketChooseImage {
+  public struct Design {
+    public var styles: RetailPocketsJourney.CreatePocketChooseImage.Design.Styles
+  }
+}
+extension RetailPocketsJourney.CreatePocketChooseImage {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.CreatePocketChooseImage.Design {
+  public struct Styles {
+    public var icon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var iconSelection: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var titleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var titleLabelSelection: (_ label: UIKit.UILabel) -> Swift.Void
+    public var collectionViewFlowLayout: (_ flowLayout: UIKit.UICollectionViewFlowLayout) -> Swift.Void
+    public var collectionView: (_ view: UIKit.UICollectionView) -> Swift.Void
+  }
+}
+public struct CreatePocketGoal {
+}
+extension RetailPocketsJourney.CreatePocketGoal {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPocketsJourney.CreatePocketGoal.Strings
+    public var design: RetailPocketsJourney.CreatePocketGoal.Design
+    public var formattedDateProvider: (Foundation.Date) -> Swift.String
+  }
+}
+extension RetailPocketsJourney.CreatePocketGoal {
+  public struct Design {
+    public var styles: RetailPocketsJourney.CreatePocketGoal.Design.Styles
+    public var deadlineIcon: UIKit.UIImage?
+  }
+}
+public struct CreatePocketGoalRequestParams : Swift.Codable, Swift.Equatable {
+  public var amountCurrency: RetailPocketsJourney.Currency?
+  public var deadline: Foundation.Date?
+  public init(amountCurrency: RetailPocketsJourney.Currency?, deadline: Foundation.Date? = nil)
+  public static func == (a: RetailPocketsJourney.CreatePocketGoalRequestParams, b: RetailPocketsJourney.CreatePocketGoalRequestParams) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RetailPocketsJourney.CreatePocketGoal {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var skipButtonTitle: RetailJourneyCommon.LocalizedString
+    public var headerTitle: RetailJourneyCommon.LocalizedString
+    public var headerSubtitle: RetailJourneyCommon.LocalizedString
+    public var amountTitle: RetailJourneyCommon.LocalizedString
+    public var amountErrorSubtitle: RetailJourneyCommon.LocalizedString
+    public var toolbarActionTitle: RetailJourneyCommon.LocalizedString
+    public var deadlineTitle: RetailJourneyCommon.LocalizedString
+    public var deadlineSubtitle: RetailJourneyCommon.LocalizedString
+    public var deadlineDateTitle: RetailJourneyCommon.LocalizedString
+    public var deadlineEmptyDateTitle: RetailJourneyCommon.LocalizedString
+    public var nextActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.CreatePocketGoal.Design {
+  public struct Styles {
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (_ item: UIKit.UINavigationItem) -> Swift.Void
+    public var headerTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var headerSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var amountTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var currencyLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var amountTextInput: (_ input: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var dateTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var dateSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var dateCalendarIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var dateEndTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var selectDateButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var datePicker: (_ picker: UIKit.UIDatePicker) -> Swift.Void
+    public var nextActionButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+public struct CreatePocketImageAndName {
+}
+extension RetailPocketsJourney.CreatePocketImageAndName {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPocketsJourney.CreatePocketImageAndName.Strings
+    public var design: RetailPocketsJourney.CreatePocketImageAndName.Design
+  }
+}
+extension RetailPocketsJourney.CreatePocketImageAndName {
+  public struct Design {
+    public var styles: RetailPocketsJourney.CreatePocketImageAndName.Design.Styles
+    public var editIcon: UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.CreatePocketImageAndName {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var headerTitle: RetailJourneyCommon.LocalizedString
+    public var headerSubtitle: RetailJourneyCommon.LocalizedString
+    public var pocketNameTitle: RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: RetailJourneyCommon.LocalizedString
+    public var nextActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.CreatePocketImageAndName.Design {
+  public struct Styles {
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (_ item: UIKit.UINavigationItem) -> Swift.Void
+    public var headerTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var headerSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var questionLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var pocketNameTextInputStyle: (_ input: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var nextActionButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var editImageButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var pocketIconButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+public struct CreatePocketPostRequestParams {
+  public var name: Swift.String
+  public var icon: Swift.String
+  public var goal: RetailPocketsJourney.CreatePocketGoalRequestParams?
+  public init(name: Swift.String, icon: Swift.String, goal: RetailPocketsJourney.CreatePocketGoalRequestParams? = nil)
+}
+public struct CreatePocketReview {
+}
+extension RetailPocketsJourney.CreatePocketReview {
+  public struct Configuration {
+    public init()
+    public var design: RetailPocketsJourney.CreatePocketReview.Design
+    public var strings: RetailPocketsJourney.CreatePocketReview.Strings
+    public var formattedDateProvider: (Foundation.Date) -> Swift.String
+  }
+}
+extension RetailPocketsJourney.CreatePocketReview {
+  public struct Design {
+    public var styles: RetailPocketsJourney.CreatePocketReview.Design.Styles
+    public var goalDeadlineIcon: UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.CreatePocketReview {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailPocketsJourney.CreatePocketReview.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case failedToCreatePocket(RetailPocketsJourney.ErrorResponse)
+    public static func == (a: RetailPocketsJourney.CreatePocketReview.Error, b: RetailPocketsJourney.CreatePocketReview.Error) -> Swift.Bool
+  }
+}
+extension RetailPocketsJourney.CreatePocketReview.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailPocketsJourney.CreatePocketReview {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var goalNoAmountTitle: RetailJourneyCommon.LocalizedString
+    public var goalNoDeadlineTitle: RetailJourneyCommon.LocalizedString
+    public var goalDeadlineTitle: RetailJourneyCommon.LocalizedString
+    public var confirmActionTitle: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailPocketsJourney.CreatePocketReview.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailPocketsJourney.CreatePocketReview.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorRetryButtonTitle: (_ error: RetailPocketsJourney.CreatePocketReview.Error) -> RetailJourneyCommon.LocalizedString?
+  }
+}
+extension RetailPocketsJourney.CreatePocketReview.Design {
+  public struct Styles {
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (_ item: UIKit.UINavigationItem) -> Swift.Void
+    public var pocketIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var pocketName: (_ label: UIKit.UILabel) -> Swift.Void
+    public var pocketGoalAmount: (_ label: UIKit.UILabel) -> Swift.Void
+    public var pocketNoGoalAmount: (_ label: UIKit.UILabel) -> Swift.Void
+    public var pocketGoalDate: (_ label: UIKit.UILabel) -> Swift.Void
+    public var pocketGoalDateIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var nextActionButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+public struct CreatePocketSuccess {
+  public struct EntryParams {
+  }
+}
+extension RetailPocketsJourney.CreatePocketSuccess {
+  public struct Configuration {
+    public init()
+    public var design: RetailPocketsJourney.CreatePocketSuccess.Design
+    public var strings: RetailPocketsJourney.CreatePocketSuccess.Strings
+  }
+}
+extension RetailPocketsJourney.CreatePocketSuccess {
+  public struct Design {
+    public var styles: RetailPocketsJourney.CreatePocketSuccess.Design.Styles
+    public var successIcon: UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.CreatePocketSuccess {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var nextActionTitle: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.CreatePocketSuccess.Design {
+  public struct Styles {
+    public var nextActionButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var edgeCase: (_ view: RetailDesign.EdgeCaseView) -> Swift.Void
+  }
+}
+public struct Currency : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.Currency, b: RetailPocketsJourney.Currency) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CurrencyInfo {
+  public let currencyCode: Swift.String
+  public let presentableDescription: Swift.String
+  public init(currencyCode: Swift.String)
+  public init(currencyCode: Swift.String, presentableDescription: Swift.String)
+}
+public struct DebitCardItem : Swift.Equatable {
+  public let number: Swift.String?
+  public let expiryDate: Swift.String?
+  public let cardId: Swift.String?
+  public let cardholderName: Swift.String?
+  public let cardType: Swift.String?
+  public let cardStatus: Swift.String?
+  public let additions: [Swift.String : Swift.String]?
+  public let unmaskableAttributes: [RetailPocketsJourney.MaskableAttribute]?
+  public init(number: Swift.String? = nil, expiryDate: Swift.String? = nil, cardId: Swift.String? = nil, cardholderName: Swift.String? = nil, cardType: Swift.String? = nil, cardStatus: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public init(number: Swift.String? = nil, expiryDate: Swift.String? = nil, cardId: Swift.String? = nil, cardholderName: Swift.String? = nil, cardType: Swift.String? = nil, cardStatus: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil, unmaskableAttributes: [RetailPocketsJourney.MaskableAttribute]? = nil)
+  public static func == (a: RetailPocketsJourney.DebitCardItem, b: RetailPocketsJourney.DebitCardItem) -> Swift.Bool
+}
+extension RetailPocketsJourney.Pockets {
+  public struct Design {
+    public var styles: RetailPocketsJourney.Pockets.Design.Styles
+    public var closeButtonIcon: UIKit.UIImage?
+    public var errorIcon: (_ error: RetailPocketsJourney.Pockets.Error) -> UIKit.UIImage?
+  }
+}
+public struct Details {
+}
+extension RetailPocketsJourney.Details {
+  public struct Configuration {
+    public init()
+    public var design: RetailPocketsJourney.Details.Design
+    public var strings: RetailPocketsJourney.Details.Strings
+    public var formattedDateProvider: (Foundation.Date) -> Swift.String
+  }
+}
+extension RetailPocketsJourney.Details {
+  public struct Design {
+    public var styles: RetailPocketsJourney.Details.Design.Styles
+    public var firstActionItemIcon: UIKit.UIImage?
+    public var secondActionItemIcon: UIKit.UIImage?
+    public var optionsToolbarButtonIcon: UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.Details {
+  public struct Strings {
+    public var goalAmountText: (_ value: Swift.String) -> Swift.String
+    public var goalDeadlineTitle: (_ value: Swift.String) -> Swift.String
+    public var progressValueDescription: (_ percentage: Swift.String) -> Swift.String
+    public var firstActionItemTitle: RetailJourneyCommon.LocalizedString
+    public var secondActionItemTitle: RetailJourneyCommon.LocalizedString
+    public var deleteOptionItemTitle: RetailJourneyCommon.LocalizedString
+    public var cancelOptionItemTitle: RetailJourneyCommon.LocalizedString
+    public var deleteAlertTitle: RetailJourneyCommon.LocalizedString
+    public var deleteAlertMessage: RetailJourneyCommon.LocalizedString
+    public var deleteAlertPositiveActionItemTitle: RetailJourneyCommon.LocalizedString
+    public var deleteAlertNegativeActionItemTitle: RetailJourneyCommon.LocalizedString
+    public var withdrawAlertTitle: RetailJourneyCommon.LocalizedString
+    public var withdrawAlertMessage: RetailJourneyCommon.LocalizedString
+    public var withdrawAlertPositiveActionItemTitle: RetailJourneyCommon.LocalizedString
+    public var withdrawAlertNegativeActionItemTitle: RetailJourneyCommon.LocalizedString
+    public var deletingSpinnerLoadingLabel: RetailJourneyCommon.LocalizedString
+    public var errorAlertTitle: RetailJourneyCommon.LocalizedString
+    public var errorAlertMessage: RetailJourneyCommon.LocalizedString
+    public var errorAlertDismissActionItemTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.Details.Design {
+  public struct Styles {
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (_ item: UIKit.UINavigationItem) -> Swift.Void
+    public var cellPocketIconStyle: (_ pocketIcon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var currentAmountLabelStyle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var goalAmountLabelStyle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var progressBarStyle: (_ progressState: RetailPocketsJourney.PocketGoalProgressState) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.ProgressIndicator>
+    public var progressStatusLabelStyle: (_ progressState: RetailPocketsJourney.PocketGoalProgressState) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var progressCompletionIconStyle: (_ progressState: RetailPocketsJourney.PocketGoalProgressState) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon>
+    public var goalDateLabelStyle: (_ args: (UIKit.UILabel, BackbaseDesignSystem.Icon)) -> Swift.Void
+    public var headerButtonLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var headerButtonIcon: (_ view: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var deletingLoadingLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var deletingLoadingSpinnerBackgroundView: (_ view: UIKit.UIView) -> Swift.Void
+    public var deletingLoadingSpinnerView: (_ view: UIKit.UIActivityIndicatorView) -> Swift.Void
+  }
+}
+extension RetailPocketsJourney.Pockets {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailPocketsJourney.Pockets.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case notConnected
+    case invalidResponse
+    case loadingFailure(underlying: Swift.Error? = nil)
+    public static func == (lhs: RetailPocketsJourney.Pockets.Error, rhs: RetailPocketsJourney.Pockets.Error) -> Swift.Bool
+  }
+}
+extension RetailPocketsJourney.Pockets.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+public struct ErrorResponse : Swift.Error, Swift.Equatable {
+  public let statusCode: Swift.Int?
+  public let data: Foundation.Data?
+  public let error: Swift.Error?
+  public init(statusCode: Swift.Int? = nil, data: Foundation.Data? = nil, error: Swift.Error? = nil)
+  public static func == (lhs: RetailPocketsJourney.ErrorResponse, rhs: RetailPocketsJourney.ErrorResponse) -> Swift.Bool
+}
+public struct ExchangeRateInformation : Swift.Equatable {
+  public enum RateType : Swift.String, Swift.CaseIterable {
+    case actual
+    case indicative
+    case agreed
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RetailPocketsJourney.ExchangeRateInformation.RateType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RetailPocketsJourney.ExchangeRateInformation.RateType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var currencyCode: Swift.String?
+  public var rate: Swift.String?
+  public var rateType: RetailPocketsJourney.ExchangeRateInformation.RateType?
+  public var contractIdentification: Swift.String?
+  public init(currencyCode: Swift.String? = nil, rate: Swift.String? = nil, rateType: RetailPocketsJourney.ExchangeRateInformation.RateType? = nil, contractIdentification: Swift.String? = nil)
+  public static func == (a: RetailPocketsJourney.ExchangeRateInformation, b: RetailPocketsJourney.ExchangeRateInformation) -> Swift.Bool
+}
+public struct GetArrangementsRequestParams : Swift.Equatable {
+  public let businessFunction: Swift.String
+  public let resourceName: Swift.String
+  public let privilege: Swift.String
+  public let contentLanguage: Swift.String?
+  public let withLatestBalances: Swift.Bool?
+  public let maskIndicator: Swift.Bool?
+  public let debitAccount: Swift.Bool?
+  public let creditAccount: Swift.Bool?
+  public let externalTransferAllowed: Swift.Bool?
+  public let productKindName: Swift.String?
+  public let legalEntityIds: [Swift.String]?
+  public let sourceId: Swift.String?
+  public let favorite: Swift.Bool?
+  public let searchTerm: Swift.String?
+  public let customOrder: Swift.Bool?
+  public let favoriteFirst: Swift.Bool?
+  public let from: Swift.Int?
+  public let size: Swift.Int?
+  public let cursor: Swift.String?
+  public let orderBy: [RetailPocketsJourney.OrderByField]?
+  public let direction: RetailPocketsJourney.SortDirection?
+  public let subscriptions: [Swift.String]?
+  public let ignoredProductKindNames: [Swift.String]?
+  public init(businessFunction: Swift.String, resourceName: Swift.String, privilege: Swift.String, contentLanguage: Swift.String? = nil, withLatestBalances: Swift.Bool? = nil, maskIndicator: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, creditAccount: Swift.Bool? = nil, externalTransferAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, legalEntityIds: [Swift.String]? = nil, sourceId: Swift.String? = nil, favorite: Swift.Bool? = nil, searchTerm: Swift.String? = nil, customOrder: Swift.Bool? = nil, favoriteFirst: Swift.Bool? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, cursor: Swift.String? = nil, orderBy: [RetailPocketsJourney.OrderByField]? = nil, direction: RetailPocketsJourney.SortDirection? = nil)
+  public init(businessFunction: Swift.String, resourceName: Swift.String, privilege: Swift.String, contentLanguage: Swift.String? = nil, withLatestBalances: Swift.Bool? = nil, maskIndicator: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, creditAccount: Swift.Bool? = nil, externalTransferAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, legalEntityIds: [Swift.String]? = nil, sourceId: Swift.String? = nil, favorite: Swift.Bool? = nil, searchTerm: Swift.String? = nil, customOrder: Swift.Bool? = nil, favoriteFirst: Swift.Bool? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, cursor: Swift.String? = nil, orderBy: [RetailPocketsJourney.OrderByField]? = nil, direction: RetailPocketsJourney.SortDirection? = nil, subscriptions: [Swift.String]? = nil, ignoredProductKindNames: [Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.GetArrangementsRequestParams, b: RetailPocketsJourney.GetArrangementsRequestParams) -> Swift.Bool
+}
+public struct Identification : Swift.Equatable {
+  public var identification: Swift.String
+  public var schemeName: RetailPocketsJourney.SchemeNames
+  public var additions: [Swift.String : Swift.String]?
+  public init(identification: Swift.String, schemeName: RetailPocketsJourney.SchemeNames)
+  public init(identification: Swift.String, schemeName: RetailPocketsJourney.SchemeNames, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.Identification, b: RetailPocketsJourney.Identification) -> Swift.Bool
+}
+public struct InitiateCounterpartyAccount : Swift.Equatable {
+  public var accountType: Swift.String?
+  public var selectedContact: RetailPocketsJourney.SelectedContactDto?
+  public var identification: RetailPocketsJourney.Identification
+  public var name: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(accountType: Swift.String? = nil, selectedContact: RetailPocketsJourney.SelectedContactDto? = nil, identification: RetailPocketsJourney.Identification, name: Swift.String? = nil)
+  public init(accountType: Swift.String? = nil, selectedContact: RetailPocketsJourney.SelectedContactDto? = nil, identification: RetailPocketsJourney.Identification, name: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.InitiateCounterpartyAccount, b: RetailPocketsJourney.InitiateCounterpartyAccount) -> Swift.Bool
+}
+public struct InitiateTransaction : Swift.Equatable {
+  public var counterparty: RetailPocketsJourney.InvolvedParty
+  public var counterpartyAccount: RetailPocketsJourney.InitiateCounterpartyAccount
+  public var counterpartyBank: RetailPocketsJourney.Bank?
+  public var instructedAmount: RetailPocketsJourney.Currency
+  public var correspondentBank: RetailPocketsJourney.Bank?
+  public var intermediaryBank: RetailPocketsJourney.Bank?
+  public var messageToBank: Swift.String?
+  public var targetCurrency: Swift.String?
+  public var remittanceInformation: Swift.String?
+  public var endToEndIdentification: Swift.String?
+  public var mandateIdentifier: Swift.String?
+  public var chargeBearer: RetailPocketsJourney.ChargeBearer?
+  public var transferFee: RetailPocketsJourney.Currency?
+  public var purposeOfPayment: RetailPocketsJourney.PurposeOfPayment?
+  public var additions: [Swift.String : Swift.String]?
+  public init(counterparty: RetailPocketsJourney.InvolvedParty, counterpartyAccount: RetailPocketsJourney.InitiateCounterpartyAccount, counterpartyBank: RetailPocketsJourney.Bank? = nil, instructedAmount: RetailPocketsJourney.Currency, correspondentBank: RetailPocketsJourney.Bank? = nil, intermediaryBank: RetailPocketsJourney.Bank? = nil, messageToBank: Swift.String? = nil, targetCurrency: Swift.String? = nil, remittanceInformation: Swift.String? = nil, endToEndIdentification: Swift.String? = nil, mandateIdentifier: Swift.String? = nil, chargeBearer: RetailPocketsJourney.ChargeBearer? = nil, transferFee: RetailPocketsJourney.Currency? = nil, purposeOfPayment: RetailPocketsJourney.PurposeOfPayment? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.InitiateTransaction, b: RetailPocketsJourney.InitiateTransaction) -> Swift.Bool
+}
+public enum InstructionPriority : Swift.String, Swift.CaseIterable {
+  case norm
+  case high
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RetailPocketsJourney.InstructionPriority]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RetailPocketsJourney.InstructionPriority] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct InvolvedParty : Swift.Equatable {
+  public var name: Swift.String
+  public var role: RetailPocketsJourney.InvolvedPartyRole?
+  public var postalAddress: RetailPocketsJourney.PostalAddress?
+  public var recipientId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String, role: RetailPocketsJourney.InvolvedPartyRole? = nil, postalAddress: RetailPocketsJourney.PostalAddress? = nil, recipientId: Swift.String? = nil)
+  public init(name: Swift.String, role: RetailPocketsJourney.InvolvedPartyRole? = nil, postalAddress: RetailPocketsJourney.PostalAddress? = nil, recipientId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.InvolvedParty, b: RetailPocketsJourney.InvolvedParty) -> Swift.Bool
+}
+public enum InvolvedPartyRole : Swift.String, Swift.CaseIterable {
+  case creditor
+  case debtor
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RetailPocketsJourney.InvolvedPartyRole]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RetailPocketsJourney.InvolvedPartyRole] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MaskableAttribute : Swift.String {
+  case iban
+  case bban
+  case number
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum OrderByField : Swift.String, Swift.Equatable {
+  case name
+  case bankalias
+  case bookedbalance
+  case availablebalance
+  case creditlimit
+  case iban
+  case bban
+  case bic
+  case currency
+  case externaltransferallowed
+  case urgenttransferallowed
+  case accruedinterest
+  case principalamount
+  case currentinvestmentvalue
+  case productnumber
+  case accountopeningdate
+  case accountinterestrate
+  case valuedatebalance
+  case creditlimitusage
+  case creditlimitinterestrate
+  case creditlimitexpirydate
+  case startdate
+  case termunit
+  case termnumber
+  case maturitydate
+  case maturityamount
+  case autorenewalindicator
+  case interestpaymentfrequencyunit
+  case interestpaymentfrequencynumber
+  case interestsettlementaccount
+  case outstandingprincipalamount
+  case monthlyinstalmentamount
+  case amountinarrear
+  case minimumrequiredbalance
+  case creditcardaccountnumber
+  case validthru
+  case applicableinterestrate
+  case remainingcredit
+  case outstandingpayment
+  case minimumpayment
+  case minimumpaymentduedate
+  case totalinvestmentvalue
+  case accountholderaddressline1
+  case accountholderaddressline2
+  case accountholderstreetname
+  case postcode
+  case town
+  case countrysubdivision
+  case accountholdercountry
+  case creditaccount
+  case debitaccount
+  case productkindname
+  case producttypename
+  case sourceid
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Overview {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailPocketsJourney.Overview {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPocketsJourney.Overview.Strings
+    public var design: RetailPocketsJourney.Overview.Design
+    public var formattedDateProvider: (Foundation.Date) -> Swift.String
+  }
+}
+extension RetailPocketsJourney.Overview {
+  public struct Design {
+    public var styles: RetailPocketsJourney.Overview.Design.Styles
+    public var emptyPocketActionIcon: UIKit.UIImage?
+    public var errorIcon: (_ error: RetailPocketsJourney.Overview.Error) -> UIKit.UIImage?
+    public var pocketCreationActionIcon: UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.Overview {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailPocketsJourney.Overview.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case emptyList
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: RetailPocketsJourney.Overview.Error, b: RetailPocketsJourney.Overview.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension RetailPocketsJourney.Overview.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailPocketsJourney.Overview {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailPocketsJourney.Overview.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailPocketsJourney.Overview.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorRetryButtonTitle: (_ error: RetailPocketsJourney.Overview.Error) -> RetailJourneyCommon.LocalizedString?
+    public var cellGoalAmountText: (_ value: Swift.String) -> Swift.String
+    public var cellNoGoalDescription: RetailJourneyCommon.LocalizedString
+    public var cellProgressValueDescription: (_ percentage: Swift.String) -> Swift.String
+  }
+}
+extension RetailPocketsJourney.Overview.Design {
+  public struct Styles {
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (_ item: UIKit.UINavigationItem) -> Swift.Void
+    public var edgeCase: (_ view: RetailDesign.EdgeCaseView) -> Swift.Void
+    public var cellBackgroundStyle: (_ view: BackbaseDesignSystem.Card) -> Swift.Void
+    public var cellPocketIconStyle: (_ pocketIcon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var cellTitleLabelStyle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var cellCurrentAmountLabelStyle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var cellGoalAmountLabelStyle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var progressBarStyle: (_ progressState: RetailPocketsJourney.PocketGoalProgressState) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.ProgressIndicator>
+    public var progressStatusLabelStyle: (_ progressState: RetailPocketsJourney.PocketGoalProgressState) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var progressCompletionIconStyle: (_ progressState: RetailPocketsJourney.PocketGoalProgressState) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon>
+    public var cellGoalDateLabelStyle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var cellNoGoalDescriptionLabelStyle: (_ label: UIKit.UILabel) -> Swift.Void
+  }
+}
+public enum PaymentMode : Swift.String, Swift.CaseIterable {
+  case single
+  case recurring
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RetailPocketsJourney.PaymentMode]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RetailPocketsJourney.PaymentMode] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct PaymentOrdersPost : Swift.Equatable {
+  public var originatorAccount: RetailPocketsJourney.AccountIdentification
+  public var batchBooking: Swift.Bool?
+  public var instructionPriority: RetailPocketsJourney.InstructionPriority?
+  public var requestedExecutionDate: Foundation.Date
+  public var paymentMode: RetailPocketsJourney.PaymentMode?
+  public var paymentType: Swift.String?
+  public var schedule: RetailPocketsJourney.Schedule?
+  public var entryClass: Swift.String?
+  public var transferTransactionInformation: RetailPocketsJourney.InitiateTransaction
+  public var approved: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(originatorAccount: RetailPocketsJourney.AccountIdentification, batchBooking: Swift.Bool? = nil, instructionPriority: RetailPocketsJourney.InstructionPriority? = nil, requestedExecutionDate: Foundation.Date, paymentMode: RetailPocketsJourney.PaymentMode? = nil, paymentType: Swift.String? = nil, schedule: RetailPocketsJourney.Schedule? = nil, entryClass: Swift.String? = nil, transferTransactionInformation: RetailPocketsJourney.InitiateTransaction, approved: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.PaymentOrdersPost, b: RetailPocketsJourney.PaymentOrdersPost) -> Swift.Bool
+}
+public struct PaymentOrdersPostResponse : Swift.Equatable {
+  public var identifier: Swift.String
+  public var status: RetailPocketsJourney.Status
+  public var bankStatus: Swift.String?
+  public var reasonCode: Swift.String?
+  public var reasonText: Swift.String?
+  public var errorDescription: Swift.String?
+  public var nextExecutionDate: Foundation.Date?
+  public var paymentSetupId: Swift.String?
+  public var paymentSubmissionId: Swift.String?
+  public var approvalStatus: Swift.String?
+  public var transferFee: RetailPocketsJourney.Currency?
+  public var exchangeRateInformation: RetailPocketsJourney.ExchangeRateInformation?
+  public var additions: [Swift.String : Swift.String]?
+  public init(identifier: Swift.String, status: RetailPocketsJourney.Status, bankStatus: Swift.String? = nil, reasonCode: Swift.String? = nil, reasonText: Swift.String? = nil, errorDescription: Swift.String? = nil, nextExecutionDate: Foundation.Date? = nil, paymentSetupId: Swift.String? = nil, paymentSubmissionId: Swift.String? = nil, approvalStatus: Swift.String? = nil, transferFee: RetailPocketsJourney.Currency? = nil, exchangeRateInformation: RetailPocketsJourney.ExchangeRateInformation? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.PaymentOrdersPostResponse, b: RetailPocketsJourney.PaymentOrdersPostResponse) -> Swift.Bool
+}
+public protocol PaymentsServiceUseCase {
+  func postPaymentOrder(_ paymentOrder: RetailPocketsJourney.PaymentOrdersPost, completion: @escaping (Swift.Result<RetailPocketsJourney.PaymentOrdersPostResponse, RetailPocketsJourney.ErrorResponse>) -> Swift.Void)
+}
+public struct Pocket : Swift.Codable, Swift.Equatable {
+  public var identifier: Swift.String
+  public var arrangementId: Swift.String
+  public var name: Swift.String
+  public var icon: Swift.String
+  public var goal: RetailPocketsJourney.PocketGoal?
+  public var balance: RetailPocketsJourney.Currency
+  public init(identifier: Swift.String, arrangementId: Swift.String, name: Swift.String, icon: Swift.String, goal: RetailPocketsJourney.PocketGoal? = nil, balance: RetailPocketsJourney.Currency)
+  public static func == (a: RetailPocketsJourney.Pocket, b: RetailPocketsJourney.Pocket) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct PocketConfigurationItem : Swift.Equatable {
+  public let imageName: Swift.String
+  public let image: UIKit.UIImage?
+  public let name: Swift.String
+  public static func == (lhs: RetailPocketsJourney.PocketConfigurationItem, rhs: RetailPocketsJourney.PocketConfigurationItem) -> Swift.Bool
+}
+public struct PocketGoal : Swift.Codable, Swift.Equatable {
+  public var amountCurrency: RetailPocketsJourney.Currency?
+  public var deadline: Foundation.Date?
+  public var progress: Swift.Double?
+  public init(amountCurrency: RetailPocketsJourney.Currency? = nil, deadline: Foundation.Date? = nil, progress: Swift.Double? = nil)
+  public static func == (a: RetailPocketsJourney.PocketGoal, b: RetailPocketsJourney.PocketGoal) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum PocketGoalProgressState : Swift.Equatable {
+  case hidden
+  case zero
+  case inProgress
+  case completed
+  public static func == (a: RetailPocketsJourney.PocketGoalProgressState, b: RetailPocketsJourney.PocketGoalProgressState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct PocketListResponse : Swift.Codable, Swift.Equatable {
+  public var pockets: [RetailPocketsJourney.Pocket]
+  public init(pockets: [RetailPocketsJourney.Pocket])
+  public static func == (a: RetailPocketsJourney.PocketListResponse, b: RetailPocketsJourney.PocketListResponse) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Pockets {
+}
+public protocol PocketsServiceUseCase {
+  func listPockets(completion: @escaping (Swift.Result<RetailPocketsJourney.PocketListResponse, RetailPocketsJourney.ErrorResponse>) -> Swift.Void)
+  func viewPocket(params: RetailPocketsJourney.ViewPocketGetRequestParams, completion: @escaping (Swift.Result<RetailPocketsJourney.Pocket, RetailPocketsJourney.ErrorResponse>) -> Swift.Void)
+  func createPocket(params: RetailPocketsJourney.CreatePocketPostRequestParams, completion: @escaping (Swift.Result<RetailPocketsJourney.Pocket, RetailPocketsJourney.ErrorResponse>) -> Swift.Void)
+  func closePocket(params: RetailPocketsJourney.ClosePocketRequestParams, completion: @escaping (Swift.Result<Swift.Void, RetailPocketsJourney.ErrorResponse>) -> Swift.Void)
+}
+public struct PostalAddress : Swift.Equatable {
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var streetName: Swift.String?
+  public var postCode: Swift.String?
+  public var town: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, postCode: Swift.String? = nil, town: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil)
+  public init(addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, postCode: Swift.String? = nil, town: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.PostalAddress, b: RetailPocketsJourney.PostalAddress) -> Swift.Bool
+}
+public struct ProductItem : Swift.Equatable {
+  public let externalId: Swift.String?
+  public let externalTypeId: Swift.String?
+  public let typeName: Swift.String?
+  public let productKind: RetailPocketsJourney.SummaryProductKindItem?
+  public let additions: [Swift.String : Swift.String]?
+  public init(externalId: Swift.String?, externalTypeId: Swift.String?, typeName: Swift.String?, productKind: RetailPocketsJourney.SummaryProductKindItem?, additions: [Swift.String : Swift.String]?)
+  public static func == (a: RetailPocketsJourney.ProductItem, b: RetailPocketsJourney.ProductItem) -> Swift.Bool
+}
+public struct ProductSummaryItem : Swift.Equatable {
+  public var identifier: Swift.String
+  public var externalArrangementId: Swift.String?
+  public var externalLegalEntityId: Swift.String?
+  public var externalProductId: Swift.String?
+  public var name: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var bookedBalance: Swift.Double?
+  public var availableBalance: Swift.Double?
+  public var creditLimit: Swift.Double?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var currency: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var accruedInterest: Swift.Double?
+  public var number: Swift.String?
+  public var principalAmount: Swift.Double?
+  public var currentInvestmentValue: Swift.Double?
+  public var legalEntityIds: [Swift.String]
+  public var productId: Swift.String?
+  public var productNumber: Swift.String?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var BIC: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var accountOpeningDate: Foundation.Date?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var startDate: Foundation.Date?
+  public var termUnit: RetailPocketsJourney.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var interestPaymentFrequencyUnit: RetailPocketsJourney.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestSettlementAccount: Swift.String?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var minimumRequiredBalance: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var totalInvestmentValue: Swift.Double?
+  public var debitCards: [RetailPocketsJourney.DebitCardItem]
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: RetailPocketsJourney.UserPreferences?
+  public var product: RetailPocketsJourney.ProductItem?
+  public var state: RetailPocketsJourney.StateItem?
+  public var parentId: Swift.String?
+  public var externalParentId: Swift.String?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var additions: [Swift.String : Swift.String]?
+  public init(identifier: Swift.String, externalArrangementId: Swift.String? = nil, externalLegalEntityId: Swift.String? = nil, externalProductId: Swift.String? = nil, name: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, bookedBalance: Swift.Double? = nil, availableBalance: Swift.Double? = nil, creditLimit: Swift.Double? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, currency: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, accruedInterest: Swift.Double? = nil, number: Swift.String? = nil, principalAmount: Swift.Double? = nil, currentInvestmentValue: Swift.Double? = nil, legalEntityIds: [Swift.String], productId: Swift.String? = nil, productNumber: Swift.String? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, BIC: Swift.String? = nil, bankBranchCode: Swift.String? = nil, accountOpeningDate: Foundation.Date? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, startDate: Foundation.Date? = nil, termUnit: RetailPocketsJourney.TimeUnit? = nil, termNumber: Swift.Double? = nil, interestPaymentFrequencyUnit: RetailPocketsJourney.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestSettlementAccount: Swift.String? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, minimumRequiredBalance: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, totalInvestmentValue: Swift.Double? = nil, debitCards: [RetailPocketsJourney.DebitCardItem], accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderNames: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: RetailPocketsJourney.UserPreferences? = nil, product: RetailPocketsJourney.ProductItem? = nil, state: RetailPocketsJourney.StateItem? = nil, parentId: Swift.String? = nil, externalParentId: Swift.String? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.ProductSummaryItem, b: RetailPocketsJourney.ProductSummaryItem) -> Swift.Bool
+}
+public struct PurposeOfPayment : Swift.Equatable {
+  public var code: Swift.String?
+  public var freeText: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(code: Swift.String? = nil, freeText: Swift.String? = nil)
+  public init(code: Swift.String? = nil, freeText: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.PurposeOfPayment, b: RetailPocketsJourney.PurposeOfPayment) -> Swift.Bool
+}
+public struct Schedule : Swift.Equatable {
+  public enum NonWorkingDayExecutionStrategy : Swift.String, Swift.CaseIterable {
+    case before
+    case after
+    case none
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RetailPocketsJourney.Schedule.NonWorkingDayExecutionStrategy]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RetailPocketsJourney.Schedule.NonWorkingDayExecutionStrategy] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum TransferFrequency : Swift.String, Swift.CaseIterable {
+    case once
+    case daily
+    case weekly
+    case biweekly
+    case monthly
+    case quarterly
+    case yearly
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RetailPocketsJourney.Schedule.TransferFrequency]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RetailPocketsJourney.Schedule.TransferFrequency] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum Every : Swift.String, Swift.CaseIterable {
+    case one
+    case two
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RetailPocketsJourney.Schedule.Every]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RetailPocketsJourney.Schedule.Every] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var nonWorkingDayExecutionStrategy: RetailPocketsJourney.Schedule.NonWorkingDayExecutionStrategy?
+  public var transferFrequency: RetailPocketsJourney.Schedule.TransferFrequency
+  public var onDayNumber: Swift.Int
+  public var startDate: Foundation.Date
+  public var endDate: Foundation.Date?
+  public var `repeat`: Swift.Int?
+  public var every: RetailPocketsJourney.Schedule.Every
+  public var nextExecutionDate: Foundation.Date?
+  public var additions: [Swift.String : Swift.String]?
+  public init(nonWorkingDayExecutionStrategy: RetailPocketsJourney.Schedule.NonWorkingDayExecutionStrategy? = nil, transferFrequency: RetailPocketsJourney.Schedule.TransferFrequency, onDayNumber: Swift.Int, startDate: Foundation.Date, endDate: Foundation.Date? = nil, repeat: Swift.Int? = nil, every: RetailPocketsJourney.Schedule.Every, nextExecutionDate: Foundation.Date? = nil)
+  public init(nonWorkingDayExecutionStrategy: RetailPocketsJourney.Schedule.NonWorkingDayExecutionStrategy? = nil, transferFrequency: RetailPocketsJourney.Schedule.TransferFrequency, onDayNumber: Swift.Int, startDate: Foundation.Date, endDate: Foundation.Date? = nil, repeat: Swift.Int? = nil, every: RetailPocketsJourney.Schedule.Every, nextExecutionDate: Foundation.Date? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.Schedule, b: RetailPocketsJourney.Schedule) -> Swift.Bool
+}
+public enum SchemeNames : Swift.String, Swift.CaseIterable {
+  case iban
+  case bban
+  case id
+  case externalId
+  case email
+  case mobile
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RetailPocketsJourney.SchemeNames]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RetailPocketsJourney.SchemeNames] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SelectedContactDto : Swift.Equatable {
+  public var contactId: Swift.String?
+  public var accountId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(contactId: Swift.String? = nil, accountId: Swift.String? = nil)
+  public init(contactId: Swift.String? = nil, accountId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.SelectedContactDto, b: RetailPocketsJourney.SelectedContactDto) -> Swift.Bool
+}
+public enum SortDirection : Swift.String, Swift.Equatable {
+  case asc
+  case desc
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct StateItem : Swift.Equatable {
+  public let externalStateId: Swift.String?
+  public let state: Swift.String?
+  public let additions: [Swift.String : Swift.String]?
+  public init(externalStateId: Swift.String? = nil, state: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.StateItem, b: RetailPocketsJourney.StateItem) -> Swift.Bool
+}
+public enum Status : Swift.String, Swift.CaseIterable {
+  case draft
+  case entered
+  case ready
+  case accepted
+  case processed
+  case rejected
+  case cancelled
+  case cancellationPending
+  case confirmationPending
+  case confirmationDeclined
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [RetailPocketsJourney.Status]
+  public typealias RawValue = Swift.String
+  public static var allCases: [RetailPocketsJourney.Status] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension RetailPocketsJourney.Pockets {
+  public struct Strings {
+    public var errorTitle: (_ error: RetailPocketsJourney.Pockets.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailPocketsJourney.Pockets.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorRetryButtonTitle: (_ error: RetailPocketsJourney.Pockets.Error) -> RetailJourneyCommon.LocalizedString?
+  }
+}
+extension RetailPocketsJourney.Pockets.Design {
+  public struct Styles {
+  }
+}
+public struct SummaryProductKindItem : Swift.Equatable {
+  public let identifier: Swift.Int
+  public let externalKindId: Swift.String
+  public let kindName: Swift.String
+  public let kindUri: Swift.String
+  public let additions: [Swift.String : Swift.String]?
+  public init(identifier: Swift.Int, externalKindId: Swift.String, kindName: Swift.String, kindUri: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.SummaryProductKindItem, b: RetailPocketsJourney.SummaryProductKindItem) -> Swift.Bool
+}
+public enum TimeUnit : Swift.String, Swift.Equatable {
+  case day
+  case week
+  case month
+  case year
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Tutorial {
+}
+extension RetailPocketsJourney.Tutorial {
+  public struct Configuration {
+    public init()
+    public var strings: RetailPocketsJourney.Tutorial.Strings
+    public var design: RetailPocketsJourney.Tutorial.Design
+  }
+}
+extension RetailPocketsJourney.Tutorial {
+  public struct Design {
+    public var styles: RetailPocketsJourney.Tutorial.Design.Styles
+    public var closeIcon: UIKit.UIImage?
+    public var firstItemIcon: UIKit.UIImage?
+    public var secondItemIcon: UIKit.UIImage?
+    public var thirdItemIcon: UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.Tutorial {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+    public var firstItemTitle: RetailJourneyCommon.LocalizedString
+    public var firstItemSubtitle: RetailJourneyCommon.LocalizedString
+    public var secondItemTitle: RetailJourneyCommon.LocalizedString
+    public var secondItemSubtitle: RetailJourneyCommon.LocalizedString
+    public var thirdItemTitle: RetailJourneyCommon.LocalizedString
+    public var thirdItemSubtitle: RetailJourneyCommon.LocalizedString
+    public var nextActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.Tutorial.Design {
+  public struct Styles {
+    public var backgroundView: (_ view: UIKit.UIView) -> Swift.Void
+    public var navigationBar: (_ navigationBar: UIKit.UINavigationBar?) -> Swift.Void
+    public var titleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var subtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var continueButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var tutorialItemTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var tutorialItemSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var tutorialItemIcon: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+  }
+}
+extension UIKit.UILabel {
+  @_Concurrency.MainActor(unsafe) public func setTrailingTextAlignment()
+  @_Concurrency.MainActor(unsafe) public func setLeadingTextAlignment()
+}
+public struct UserPreferences : Swift.Equatable {
+  public var alias: Swift.String?
+  public var visible: Swift.Bool?
+  public var favorite: Swift.Bool?
+  public let additions: [Swift.String : Swift.String]?
+  public init(alias: Swift.String? = nil, visible: Swift.Bool? = nil, favorite: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailPocketsJourney.UserPreferences, b: RetailPocketsJourney.UserPreferences) -> Swift.Bool
+}
+public struct ViewPocketGetRequestParams {
+  public let pocketId: Swift.String
+  public init(pocketId: Swift.String)
+}
+public struct WithdrawMoney {
+  public struct EntryParams {
+    public init(pocket: RetailPocketsJourney.Pocket)
+  }
+  public static func build(navigationController: UIKit.UINavigationController, entryParams: RetailPocketsJourney.WithdrawMoney.EntryParams) -> UIKit.UIViewController
+}
+extension RetailPocketsJourney.WithdrawMoney {
+  public struct Configuration {
+    public init()
+    public var design: RetailPocketsJourney.WithdrawMoney.Design
+    public var strings: RetailPocketsJourney.WithdrawMoney.Strings
+    public var uiDataMapper: RetailPocketsJourney.WithdrawMoney.UIDataMapper
+    public var paymentType: Swift.String
+  }
+}
+extension RetailPocketsJourney.WithdrawMoney {
+  public struct Design {
+    public var styles: RetailPocketsJourney.WithdrawMoney.Design.Styles
+    public var errorIcon: (_ error: RetailPocketsJourney.WithdrawMoney.Error) -> UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.WithdrawMoney {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailPocketsJourney.WithdrawMoney.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case missingAllFields
+    case insufficientBalance
+    case notConnected
+    case invalidResponse
+    case loadingFailure(underlying: Swift.Error? = nil)
+    public static func == (lhs: RetailPocketsJourney.WithdrawMoney.Error, rhs: RetailPocketsJourney.WithdrawMoney.Error) -> Swift.Bool
+  }
+}
+extension RetailPocketsJourney.WithdrawMoney.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+extension RetailPocketsJourney.WithdrawMoney {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var accountSectionTitle: RetailJourneyCommon.LocalizedString
+    public var accountSectionPlaceholder: RetailJourneyCommon.LocalizedString
+    public var amountToolbarAction: RetailJourneyCommon.LocalizedString
+    public var amountSectionTitle: RetailJourneyCommon.LocalizedString
+    public var amountSectionFootNote: RetailJourneyCommon.LocalizedString
+    public var footNote: RetailJourneyCommon.LocalizedString
+    public var confirmActionTitle: RetailJourneyCommon.LocalizedString
+    public var errorTitle: (_ error: RetailPocketsJourney.WithdrawMoney.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (_ error: RetailPocketsJourney.WithdrawMoney.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorRetryButtonTitle: (_ error: RetailPocketsJourney.WithdrawMoney.Error) -> RetailJourneyCommon.LocalizedString?
+  }
+}
+extension RetailPocketsJourney.WithdrawMoney.Design {
+  public struct Styles {
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (_ item: UIKit.UINavigationItem) -> Swift.Void
+    public var sectionTitle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accountPlaceholderLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accountNameLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accountBalanceTitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var accountBalanceLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var amountCurrencyLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var amountTextInput: (_ input: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var amountSubtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var immediateTransferNoteLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var transferButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+public struct WithdrawMoneySuccess {
+  public struct EntryParams {
+  }
+}
+extension RetailPocketsJourney.WithdrawMoneySuccess {
+  public struct Configuration {
+    public init()
+    public var design: RetailPocketsJourney.WithdrawMoneySuccess.Design
+    public var strings: RetailPocketsJourney.WithdrawMoneySuccess.Strings
+    public var uiDataMapper: RetailPocketsJourney.WithdrawMoneySuccess.UIDataMapper
+  }
+}
+extension RetailPocketsJourney.WithdrawMoneySuccess {
+  public struct Design {
+    public var styles: RetailPocketsJourney.WithdrawMoneySuccess.Design.Styles
+    public var successIcon: UIKit.UIImage?
+  }
+}
+extension RetailPocketsJourney.WithdrawMoneySuccess {
+  public struct Strings {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var nextActionTitle: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPocketsJourney.WithdrawMoneySuccess.Design {
+  public struct Styles {
+    public var nextActionButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+    public var edgeCase: (_ view: RetailDesign.EdgeCaseView) -> Swift.Void
+  }
+}
+extension RetailPocketsJourney.WithdrawMoneySuccess {
+  public struct UIDataMapper {
+    public var subtitle: (_ entryParams: RetailPocketsJourney.WithdrawMoneySuccess.EntryParams) -> Swift.String?
+  }
+}
+extension RetailPocketsJourney.WithdrawMoney {
+  public struct UIDataMapper {
+    public var selectedAccountTitle: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+    public var selectedAccountSubtitle: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+    public var selectedAccountSubtitle2: (_ item: RetailPocketsJourney.ProductSummaryItem) -> Swift.String?
+    public var amountSectionFootNote: (_ item: RetailPocketsJourney.Pocket) -> Swift.String?
+  }
+}
+extension RetailPocketsJourney.ChargeBearer : Swift.Equatable {}
+extension RetailPocketsJourney.ChargeBearer : Swift.Hashable {}
+extension RetailPocketsJourney.ChargeBearer : Swift.RawRepresentable {}
+extension RetailPocketsJourney.ExchangeRateInformation.RateType : Swift.Equatable {}
+extension RetailPocketsJourney.ExchangeRateInformation.RateType : Swift.Hashable {}
+extension RetailPocketsJourney.ExchangeRateInformation.RateType : Swift.RawRepresentable {}
+extension RetailPocketsJourney.InstructionPriority : Swift.Equatable {}
+extension RetailPocketsJourney.InstructionPriority : Swift.Hashable {}
+extension RetailPocketsJourney.InstructionPriority : Swift.RawRepresentable {}
+extension RetailPocketsJourney.InvolvedPartyRole : Swift.Equatable {}
+extension RetailPocketsJourney.InvolvedPartyRole : Swift.Hashable {}
+extension RetailPocketsJourney.InvolvedPartyRole : Swift.RawRepresentable {}
+extension RetailPocketsJourney.MaskableAttribute : Swift.Equatable {}
+extension RetailPocketsJourney.MaskableAttribute : Swift.Hashable {}
+extension RetailPocketsJourney.MaskableAttribute : Swift.RawRepresentable {}
+extension RetailPocketsJourney.OrderByField : Swift.Hashable {}
+extension RetailPocketsJourney.OrderByField : Swift.RawRepresentable {}
+extension RetailPocketsJourney.Overview.Error : Swift.Hashable {}
+extension RetailPocketsJourney.PaymentMode : Swift.Equatable {}
+extension RetailPocketsJourney.PaymentMode : Swift.Hashable {}
+extension RetailPocketsJourney.PaymentMode : Swift.RawRepresentable {}
+extension RetailPocketsJourney.PocketGoalProgressState : Swift.Hashable {}
+extension RetailPocketsJourney.Schedule.NonWorkingDayExecutionStrategy : Swift.Equatable {}
+extension RetailPocketsJourney.Schedule.NonWorkingDayExecutionStrategy : Swift.Hashable {}
+extension RetailPocketsJourney.Schedule.NonWorkingDayExecutionStrategy : Swift.RawRepresentable {}
+extension RetailPocketsJourney.Schedule.TransferFrequency : Swift.Equatable {}
+extension RetailPocketsJourney.Schedule.TransferFrequency : Swift.Hashable {}
+extension RetailPocketsJourney.Schedule.TransferFrequency : Swift.RawRepresentable {}
+extension RetailPocketsJourney.Schedule.Every : Swift.Equatable {}
+extension RetailPocketsJourney.Schedule.Every : Swift.Hashable {}
+extension RetailPocketsJourney.Schedule.Every : Swift.RawRepresentable {}
+extension RetailPocketsJourney.SchemeNames : Swift.Equatable {}
+extension RetailPocketsJourney.SchemeNames : Swift.Hashable {}
+extension RetailPocketsJourney.SchemeNames : Swift.RawRepresentable {}
+extension RetailPocketsJourney.SortDirection : Swift.Hashable {}
+extension RetailPocketsJourney.SortDirection : Swift.RawRepresentable {}
+extension RetailPocketsJourney.Status : Swift.Equatable {}
+extension RetailPocketsJourney.Status : Swift.Hashable {}
+extension RetailPocketsJourney.Status : Swift.RawRepresentable {}
+extension RetailPocketsJourney.TimeUnit : Swift.Hashable {}
+extension RetailPocketsJourney.TimeUnit : Swift.RawRepresentable {}

@@ -1,0 +1,158 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IdentitySelfEnrollmentJourney
+import Backbase
+import BackbaseDesignSystem
+import Combine
+import Foundation
+import Resolver
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+extension Foundation.Bundle {
+  public static var selfEnrollment: Foundation.Bundle? {
+    get
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design {
+  public struct ImageConstraints {
+    public let topSpace: CoreGraphics.CGFloat
+    public let height: CoreGraphics.CGFloat
+    public let sideMargin: CoreGraphics.CGFloat
+    public init(topSpace: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat, sideMargin: CoreGraphics.CGFloat)
+  }
+}
+public struct LocalizedString : Swift.ExpressibleByStringLiteral {
+  public init(value: Swift.String)
+  public init(stringLiteral value: Swift.String)
+  public init(key: Swift.String, in bundles: Foundation.Bundle?...)
+  public func callAsFunction() -> Swift.String
+  public var value: Swift.String {
+    get
+  }
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+public struct MainScreen {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentitySelfEnrollmentJourney.MainScreen {
+  public struct Configuration {
+    public var router: IdentitySelfEnrollmentJourney.MainScreen.Router
+    public var strings: IdentitySelfEnrollmentJourney.MainScreen.Strings
+    public var url: Foundation.URL?
+    public var statusBarStyle: IdentitySelfEnrollmentJourney.SelfEnrollment.StatusBarStyle?
+    public var image: UIKit.UIImage?
+    public var imageConstraints: IdentitySelfEnrollmentJourney.SelfEnrollment.Design.ImageConstraints
+  }
+}
+extension IdentitySelfEnrollmentJourney.MainScreen {
+  public struct Router {
+    public var didTapExistingAccount: ((_ navigationController: UIKit.UINavigationController) -> () -> Swift.Void)?
+    public var didTapNewEnrollment: ((_ navigationController: UIKit.UINavigationController) -> () -> Swift.Void)?
+  }
+}
+extension IdentitySelfEnrollmentJourney.MainScreen {
+  public struct Strings {
+    public var title: IdentitySelfEnrollmentJourney.LocalizedString
+    public var subtitle: IdentitySelfEnrollmentJourney.LocalizedString
+    public var existingAccountButtonTitle: IdentitySelfEnrollmentJourney.LocalizedString
+    public var newEnrollmentButtonTitle: IdentitySelfEnrollmentJourney.LocalizedString
+  }
+}
+public struct SelfEnrollment {
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design {
+  @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BackgroundView : UIKit.UIView {
+    @_Concurrency.MainActor(unsafe) @objc override dynamic open var bounds: CoreGraphics.CGRect {
+      @_Concurrency.MainActor(unsafe) @objc get
+      @_Concurrency.MainActor(unsafe) @objc set
+    }
+    @_Concurrency.MainActor(unsafe) public var background: BackbaseDesignSystem.BackgroundType? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+    @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+    @objc deinit
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design {
+  public struct Colors {
+    public init()
+    public var foundation: IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors.Foundation
+    public var surfacePrimary: IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors.SurfacePrimary
+    public var highContrast: IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors.HighContrast
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors {
+  public struct Foundation {
+    public init()
+    public var defaultColor: UIKit.UIColor
+    public var onFoundation: IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors.Foundation.OnFoundation
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors.Foundation {
+  public struct OnFoundation {
+    public init()
+    public var defaultColor: UIKit.UIColor
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors {
+  public struct SurfacePrimary {
+    public init()
+    public var defaultColor: UIKit.UIColor
+    public var onSurfacePrimary: IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors.SurfacePrimary.OnSurfacePrimary
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors.SurfacePrimary {
+  public struct OnSurfacePrimary {
+    public init()
+    public var defaultColor: UIKit.UIColor
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Colors {
+  public struct HighContrast {
+    public init()
+    public var primary: UIKit.UIColor
+    public var tint: UIKit.UIColor
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment {
+  public struct Configuration {
+    public init()
+    public var mainScreenConfig: IdentitySelfEnrollmentJourney.MainScreen.Configuration
+    public var design: IdentitySelfEnrollmentJourney.SelfEnrollment.Design
+    public var statusBarStyle: IdentitySelfEnrollmentJourney.SelfEnrollment.StatusBarStyle
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment {
+  @_hasMissingDesignatedInitializers public class Design {
+    public var styles: IdentitySelfEnrollmentJourney.SelfEnrollment.Design.Styles {
+      get
+      set
+    }
+    @objc deinit
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment {
+  public enum StatusBarStyleType {
+    case standard
+    case interfaceStyle(light: UIKit.UIStatusBarStyle, dark: UIKit.UIStatusBarStyle)
+    case interfaceStyleLightAndDark(UIKit.UIStatusBarStyle)
+  }
+  public struct StatusBarStyle {
+    public init(type: IdentitySelfEnrollmentJourney.SelfEnrollment.StatusBarStyleType)
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Design {
+  @_hasMissingDesignatedInitializers public class Styles {
+    public var background: BackbaseDesignSystem.Style<IdentitySelfEnrollmentJourney.SelfEnrollment.Design.BackgroundView> {
+      get
+      set
+    }
+    @objc deinit
+  }
+}

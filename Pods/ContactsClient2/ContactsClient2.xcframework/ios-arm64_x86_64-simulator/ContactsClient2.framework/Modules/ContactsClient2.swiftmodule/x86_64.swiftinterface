@@ -1,0 +1,538 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ContactsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public enum AccessContextScope : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case sa
+  case le
+  case user
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ContactsClient2.AccessContextScope]
+  public static var allCases: [ContactsClient2.AccessContextScope] {
+    get
+  }
+}
+public enum AccountIdentifierType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case iban
+  case accountNumber
+  case phoneNumber
+  case email
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ContactsClient2.AccountIdentifierType]
+  public static var allCases: [ContactsClient2.AccountIdentifierType] {
+    get
+  }
+}
+public struct AccountInformation : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var alias: Swift.String?
+  public var accountNumber: Swift.String?
+  public var IBAN: Swift.String?
+  public var phoneNumber: Swift.String?
+  public var email: Swift.String?
+  public var BIC: Swift.String?
+  public var bankCode: Swift.String?
+  public var bankName: Swift.String?
+  public var bankAddressLine1: Swift.String?
+  public var bankAddressLine2: Swift.String?
+  public var bankStreetName: Swift.String?
+  public var bankTown: Swift.String?
+  public var bankPostCode: Swift.String?
+  public var bankCountrySubDivision: Swift.String?
+  public var bankCountry: Swift.String?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var accountHolderTown: Swift.String?
+  public var accountHolderPostCode: Swift.String?
+  public var accountHolderCountrySubDivision: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String? = nil, alias: Swift.String? = nil, accountNumber: Swift.String? = nil, IBAN: Swift.String? = nil, phoneNumber: Swift.String? = nil, email: Swift.String? = nil, BIC: Swift.String? = nil, bankCode: Swift.String? = nil, bankName: Swift.String? = nil, bankAddressLine1: Swift.String? = nil, bankAddressLine2: Swift.String? = nil, bankStreetName: Swift.String? = nil, bankTown: Swift.String? = nil, bankPostCode: Swift.String? = nil, bankCountrySubDivision: Swift.String? = nil, bankCountry: Swift.String? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, accountHolderTown: Swift.String? = nil, accountHolderPostCode: Swift.String? = nil, accountHolderCountrySubDivision: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.AccountInformation, rhs: ContactsClient2.AccountInformation) -> Swift.Bool
+}
+public enum ActiveContactStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case active
+  case pendingApproval
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ContactsClient2.ActiveContactStatus]
+  public static var allCases: [ContactsClient2.ActiveContactStatus] {
+    get
+  }
+}
+public struct ApprovalGetResponseBodyItem : Swift.Codable, Swift.Equatable {
+  public var creationTime: Foundation.Date
+  public var creatorBbId: Swift.String
+  public var data: ContactsClient2.ModelData
+  public var id: Swift.String
+  public var action: ContactsClient2.ApprovalRequestAction
+  public var status: ContactsClient2.ApprovalRequestStatus
+  public var additions: [Swift.String : Swift.String]?
+  public init(creationTime: Foundation.Date, creatorBbId: Swift.String, data: ContactsClient2.ModelData, id: Swift.String, action: ContactsClient2.ApprovalRequestAction, status: ContactsClient2.ApprovalRequestStatus, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ApprovalGetResponseBodyItem, rhs: ContactsClient2.ApprovalGetResponseBodyItem) -> Swift.Bool
+}
+public struct ApprovalPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var status: ContactsClient2.ApprovalResultStatus
+  public var additions: [Swift.String : Swift.String]?
+  public init(status: ContactsClient2.ApprovalResultStatus, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ApprovalPostResponseBody, rhs: ContactsClient2.ApprovalPostResponseBody) -> Swift.Bool
+}
+public enum ApprovalRequestAction : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case create
+  case update
+  case delete
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ContactsClient2.ApprovalRequestAction]
+  public static var allCases: [ContactsClient2.ApprovalRequestAction] {
+    get
+  }
+}
+public enum ApprovalRequestIndicator : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case approvalRequired
+  case requestAccepted
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ContactsClient2.ApprovalRequestIndicator]
+  public static var allCases: [ContactsClient2.ApprovalRequestIndicator] {
+    get
+  }
+}
+public enum ApprovalRequestStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case entered
+  case rejected
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ContactsClient2.ApprovalRequestStatus]
+  public static var allCases: [ContactsClient2.ApprovalRequestStatus] {
+    get
+  }
+}
+public enum ApprovalResultStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case pending
+  case approved
+  case rejected
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ContactsClient2.ApprovalResultStatus]
+  public static var allCases: [ContactsClient2.ApprovalResultStatus] {
+    get
+  }
+}
+public protocol ApprovalsAPIProtocol {
+  func deleteApprovalRequestCall(requestId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getApprovalsCall(from: Swift.Int?, size: Swift.Int?, query: Swift.String?, accountIdentifierTypes: [ContactsClient2.AccountIdentifierType]?) throws -> ClientCommon.Call<[ContactsClient2.ApprovalGetResponseBodyItem]>
+  func getApprovalsCreatedByMeCall(from: Swift.Int?, size: Swift.Int?, query: Swift.String?, accountIdentifierTypes: [ContactsClient2.AccountIdentifierType]?) throws -> ClientCommon.Call<[ContactsClient2.ApprovalsCreatedByMeGetResponseBodyItem]>
+  func postApprovalRecordCall(requestId: Swift.String) throws -> ClientCommon.Call<ContactsClient2.ApprovalPostResponseBody>
+  func postRejectionRecordCall(requestId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class ApprovalsAPI : ObjectiveC.NSObject, DBSClient, ContactsClient2.ApprovalsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteApprovalRequestCall(requestId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getApprovalsCall(from: Swift.Int? = nil, size: Swift.Int? = nil, query: Swift.String? = nil, accountIdentifierTypes: [ContactsClient2.AccountIdentifierType]? = nil) throws -> ClientCommon.Call<[ContactsClient2.ApprovalGetResponseBodyItem]>
+  open func getApprovalsCreatedByMeCall(from: Swift.Int? = nil, size: Swift.Int? = nil, query: Swift.String? = nil, accountIdentifierTypes: [ContactsClient2.AccountIdentifierType]? = nil) throws -> ClientCommon.Call<[ContactsClient2.ApprovalsCreatedByMeGetResponseBodyItem]>
+  open func postApprovalRecordCall(requestId: Swift.String) throws -> ClientCommon.Call<ContactsClient2.ApprovalPostResponseBody>
+  open func postRejectionRecordCall(requestId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct ApprovalsCreatedByMeGetResponseBodyItem : Swift.Codable, Swift.Equatable {
+  public var creationTime: Foundation.Date
+  public var creatorBbId: Swift.String
+  public var data: ContactsClient2.ModelData
+  public var id: Swift.String
+  public var action: ContactsClient2.ApprovalRequestAction
+  public var status: ContactsClient2.ApprovalRequestStatus
+  public var additions: [Swift.String : Swift.String]?
+  public init(creationTime: Foundation.Date, creatorBbId: Swift.String, data: ContactsClient2.ModelData, id: Swift.String, action: ContactsClient2.ApprovalRequestAction, status: ContactsClient2.ApprovalRequestStatus, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ApprovalsCreatedByMeGetResponseBodyItem, rhs: ContactsClient2.ApprovalsCreatedByMeGetResponseBodyItem) -> Swift.Bool
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [ContactsClient2.ErrorItem]?
+  public init(message: Swift.String, errors: [ContactsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.BadRequestError, rhs: ContactsClient2.BadRequestError) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct ConflictError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [ContactsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [ContactsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ConflictError, rhs: ContactsClient2.ConflictError) -> Swift.Bool
+}
+public struct ContactDeleteResponseBody : Swift.Codable, Swift.Equatable {
+  public var status: ContactsClient2.ApprovalRequestIndicator
+  public var approvalId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(status: ContactsClient2.ApprovalRequestIndicator, approvalId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactDeleteResponseBody, rhs: ContactsClient2.ContactDeleteResponseBody) -> Swift.Bool
+}
+public struct ContactGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var accounts: [ContactsClient2.AccountInformation]
+  public var accessContextScope: ContactsClient2.AccessContextScope?
+  public var name: Swift.String
+  public var alias: Swift.String?
+  public var category: Swift.String?
+  public var contactPerson: Swift.String?
+  public var phoneNumber: Swift.String?
+  public var emailId: Swift.String?
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var streetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var activeStatus: ContactsClient2.ActiveContactStatus?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, accounts: [ContactsClient2.AccountInformation], accessContextScope: ContactsClient2.AccessContextScope? = nil, name: Swift.String, alias: Swift.String? = nil, category: Swift.String? = nil, contactPerson: Swift.String? = nil, phoneNumber: Swift.String? = nil, emailId: Swift.String? = nil, addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, activeStatus: ContactsClient2.ActiveContactStatus? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactGetResponseBody, rhs: ContactsClient2.ContactGetResponseBody) -> Swift.Bool
+}
+public struct ContactPutRequestBody : Swift.Codable, Swift.Equatable {
+  public var accounts: [ContactsClient2.AccountInformation]
+  public var accessContextScope: ContactsClient2.AccessContextScope?
+  public var name: Swift.String
+  public var alias: Swift.String?
+  public var category: Swift.String?
+  public var contactPerson: Swift.String?
+  public var phoneNumber: Swift.String?
+  public var emailId: Swift.String?
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var streetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var activeStatus: ContactsClient2.ActiveContactStatus?
+  public var additions: [Swift.String : Swift.String]?
+  public init(accounts: [ContactsClient2.AccountInformation], accessContextScope: ContactsClient2.AccessContextScope? = nil, name: Swift.String, alias: Swift.String? = nil, category: Swift.String? = nil, contactPerson: Swift.String? = nil, phoneNumber: Swift.String? = nil, emailId: Swift.String? = nil, addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, activeStatus: ContactsClient2.ActiveContactStatus? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactPutRequestBody, rhs: ContactsClient2.ContactPutRequestBody) -> Swift.Bool
+}
+public struct ContactPutResponseBody : Swift.Codable, Swift.Equatable {
+  public var status: ContactsClient2.ApprovalRequestIndicator
+  public var approvalId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(status: ContactsClient2.ApprovalRequestIndicator, approvalId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactPutResponseBody, rhs: ContactsClient2.ContactPutResponseBody) -> Swift.Bool
+}
+public protocol ContactsAPIProtocol {
+  func deleteContactCall(contactId: Swift.String) throws -> ClientCommon.Call<ContactsClient2.ContactDeleteResponseBody>
+  func getContactCall(contactId: Swift.String) throws -> ClientCommon.Call<ContactsClient2.ContactGetResponseBody>
+  func getContactsCall(from: Swift.Int?, size: Swift.Int?, query: Swift.String?, accountIdentifierTypes: [ContactsClient2.AccountIdentifierType]?, targetSaId: Swift.String?) throws -> ClientCommon.Call<[ContactsClient2.ContactsGetResponseBodyItem]>
+  func postContactsCall(contactsPostRequestBody: ContactsClient2.ContactsPostRequestBody?) throws -> ClientCommon.Call<ContactsClient2.ContactsPostResponseBody>
+  func postContactsFilterCall(from: Swift.Int?, size: Swift.Int?, query: Swift.String?, targetSaId: Swift.String?, contactsPostFilterRequestBody: ContactsClient2.ContactsPostFilterRequestBody?) throws -> ClientCommon.Call<[ContactsClient2.ContactsGetResponseBodyItem]>
+  func putContactCall(contactId: Swift.String, contactPutRequestBody: ContactsClient2.ContactPutRequestBody?) throws -> ClientCommon.Call<ContactsClient2.ContactPutResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class ContactsAPI : ObjectiveC.NSObject, DBSClient, ContactsClient2.ContactsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteContactCall(contactId: Swift.String) throws -> ClientCommon.Call<ContactsClient2.ContactDeleteResponseBody>
+  open func getContactCall(contactId: Swift.String) throws -> ClientCommon.Call<ContactsClient2.ContactGetResponseBody>
+  open func getContactsCall(from: Swift.Int? = nil, size: Swift.Int? = nil, query: Swift.String? = nil, accountIdentifierTypes: [ContactsClient2.AccountIdentifierType]? = nil, targetSaId: Swift.String? = nil) throws -> ClientCommon.Call<[ContactsClient2.ContactsGetResponseBodyItem]>
+  open func postContactsCall(contactsPostRequestBody: ContactsClient2.ContactsPostRequestBody? = nil) throws -> ClientCommon.Call<ContactsClient2.ContactsPostResponseBody>
+  open func postContactsFilterCall(from: Swift.Int? = nil, size: Swift.Int? = nil, query: Swift.String? = nil, targetSaId: Swift.String? = nil, contactsPostFilterRequestBody: ContactsClient2.ContactsPostFilterRequestBody? = nil) throws -> ClientCommon.Call<[ContactsClient2.ContactsGetResponseBodyItem]>
+  open func putContactCall(contactId: Swift.String, contactPutRequestBody: ContactsClient2.ContactPutRequestBody? = nil) throws -> ClientCommon.Call<ContactsClient2.ContactPutResponseBody>
+  @objc deinit
+}
+public struct ContactsGetResponseBodyItem : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var accounts: [ContactsClient2.AccountInformation]
+  public var accessContextScope: ContactsClient2.AccessContextScope?
+  public var name: Swift.String
+  public var alias: Swift.String?
+  public var category: Swift.String?
+  public var contactPerson: Swift.String?
+  public var phoneNumber: Swift.String?
+  public var emailId: Swift.String?
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var streetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var activeStatus: ContactsClient2.ActiveContactStatus?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, accounts: [ContactsClient2.AccountInformation], accessContextScope: ContactsClient2.AccessContextScope? = nil, name: Swift.String, alias: Swift.String? = nil, category: Swift.String? = nil, contactPerson: Swift.String? = nil, phoneNumber: Swift.String? = nil, emailId: Swift.String? = nil, addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, activeStatus: ContactsClient2.ActiveContactStatus? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactsGetResponseBodyItem, rhs: ContactsClient2.ContactsGetResponseBodyItem) -> Swift.Bool
+}
+public struct ContactsPostFilterRequestBody : Swift.Codable, Swift.Equatable {
+  public var contactIds: [Swift.String]
+  public init(contactIds: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactsPostFilterRequestBody, rhs: ContactsClient2.ContactsPostFilterRequestBody) -> Swift.Bool
+}
+public struct ContactsPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var approved: Swift.Bool?
+  public var accessContext: ContactsClient2.ContactsPostRequestBodyAccessContext?
+  public var accounts: [ContactsClient2.AccountInformation]
+  public var accessContextScope: ContactsClient2.AccessContextScope?
+  public var name: Swift.String
+  public var alias: Swift.String?
+  public var category: Swift.String?
+  public var contactPerson: Swift.String?
+  public var phoneNumber: Swift.String?
+  public var emailId: Swift.String?
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var streetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var activeStatus: ContactsClient2.ActiveContactStatus?
+  public var additions: [Swift.String : Swift.String]?
+  public init(approved: Swift.Bool? = nil, accessContext: ContactsClient2.ContactsPostRequestBodyAccessContext? = nil, accounts: [ContactsClient2.AccountInformation], accessContextScope: ContactsClient2.AccessContextScope? = nil, name: Swift.String, alias: Swift.String? = nil, category: Swift.String? = nil, contactPerson: Swift.String? = nil, phoneNumber: Swift.String? = nil, emailId: Swift.String? = nil, addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, activeStatus: ContactsClient2.ActiveContactStatus? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactsPostRequestBody, rhs: ContactsClient2.ContactsPostRequestBody) -> Swift.Bool
+}
+public struct ContactsPostRequestBodyAccessContext : Swift.Codable, Swift.Equatable {
+  public var legalEntityId: Swift.String?
+  public var serviceAgreementId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(legalEntityId: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactsPostRequestBodyAccessContext, rhs: ContactsClient2.ContactsPostRequestBodyAccessContext) -> Swift.Bool
+}
+public struct ContactsPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var status: ContactsClient2.ActiveContactStatus?
+  public init(id: Swift.String, status: ContactsClient2.ActiveContactStatus? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ContactsPostResponseBody, rhs: ContactsClient2.ContactsPostResponseBody) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ErrorItem, rhs: ContactsClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [ContactsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [ContactsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ForbiddenError, rhs: ContactsClient2.ForbiddenError) -> Swift.Bool
+}
+public struct IbanRestrictionGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var ibanLength: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(ibanLength: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.IbanRestrictionGetResponseBody, rhs: ContactsClient2.IbanRestrictionGetResponseBody) -> Swift.Bool
+}
+public protocol IbanRestrictionsAPIProtocol {
+  func getIbanRestrictionCall(code: Swift.String) throws -> ClientCommon.Call<ContactsClient2.IbanRestrictionGetResponseBody>
+  func getIbanRestrictionsCall() throws -> ClientCommon.Call<[ContactsClient2.IbanRestrictionsGetResponseBodyItem]>
+}
+@objc @_inheritsConvenienceInitializers public class IbanRestrictionsAPI : ObjectiveC.NSObject, DBSClient, ContactsClient2.IbanRestrictionsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getIbanRestrictionCall(code: Swift.String) throws -> ClientCommon.Call<ContactsClient2.IbanRestrictionGetResponseBody>
+  open func getIbanRestrictionsCall() throws -> ClientCommon.Call<[ContactsClient2.IbanRestrictionsGetResponseBodyItem]>
+  @objc deinit
+}
+public struct IbanRestrictionsGetResponseBodyItem : Swift.Codable, Swift.Equatable {
+  public var countryCode: Swift.String
+  public var ibanLength: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public init(countryCode: Swift.String, ibanLength: Swift.Int, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.IbanRestrictionsGetResponseBodyItem, rhs: ContactsClient2.IbanRestrictionsGetResponseBodyItem) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public init(message: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.InternalServerError, rhs: ContactsClient2.InternalServerError) -> Swift.Bool
+}
+public struct ModelData : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var accounts: [ContactsClient2.AccountInformation]
+  public var accessContextScope: ContactsClient2.AccessContextScope?
+  public var name: Swift.String
+  public var alias: Swift.String?
+  public var category: Swift.String?
+  public var contactPerson: Swift.String?
+  public var phoneNumber: Swift.String?
+  public var emailId: Swift.String?
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var streetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var activeStatus: ContactsClient2.ActiveContactStatus?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, accounts: [ContactsClient2.AccountInformation], accessContextScope: ContactsClient2.AccessContextScope? = nil, name: Swift.String, alias: Swift.String? = nil, category: Swift.String? = nil, contactPerson: Swift.String? = nil, phoneNumber: Swift.String? = nil, emailId: Swift.String? = nil, addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, activeStatus: ContactsClient2.ActiveContactStatus? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.ModelData, rhs: ContactsClient2.ModelData) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [ContactsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [ContactsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.NotFoundError, rhs: ContactsClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [ContactsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [ContactsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContactsClient2.UnauthorizedError, rhs: ContactsClient2.UnauthorizedError) -> Swift.Bool
+}
+extension ContactsClient2.AccessContextScope : Swift.Equatable {}
+extension ContactsClient2.AccessContextScope : Swift.Hashable {}
+extension ContactsClient2.AccessContextScope : Swift.RawRepresentable {}
+extension ContactsClient2.AccountIdentifierType : Swift.Equatable {}
+extension ContactsClient2.AccountIdentifierType : Swift.Hashable {}
+extension ContactsClient2.AccountIdentifierType : Swift.RawRepresentable {}
+extension ContactsClient2.ActiveContactStatus : Swift.Equatable {}
+extension ContactsClient2.ActiveContactStatus : Swift.Hashable {}
+extension ContactsClient2.ActiveContactStatus : Swift.RawRepresentable {}
+extension ContactsClient2.ApprovalRequestAction : Swift.Equatable {}
+extension ContactsClient2.ApprovalRequestAction : Swift.Hashable {}
+extension ContactsClient2.ApprovalRequestAction : Swift.RawRepresentable {}
+extension ContactsClient2.ApprovalRequestIndicator : Swift.Equatable {}
+extension ContactsClient2.ApprovalRequestIndicator : Swift.Hashable {}
+extension ContactsClient2.ApprovalRequestIndicator : Swift.RawRepresentable {}
+extension ContactsClient2.ApprovalRequestStatus : Swift.Equatable {}
+extension ContactsClient2.ApprovalRequestStatus : Swift.Hashable {}
+extension ContactsClient2.ApprovalRequestStatus : Swift.RawRepresentable {}
+extension ContactsClient2.ApprovalResultStatus : Swift.Equatable {}
+extension ContactsClient2.ApprovalResultStatus : Swift.Hashable {}
+extension ContactsClient2.ApprovalResultStatus : Swift.RawRepresentable {}

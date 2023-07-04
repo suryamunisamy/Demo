@@ -1,0 +1,633 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MessagesJourney
+import AVFoundation
+import BackbaseDesignSystem
+import Foundation
+import PureLayout
+import Resolver
+import Swift
+import SystemConfiguration
+import UIKit
+import WebKit
+import _Concurrency
+public struct Attachment : Swift.Equatable, Swift.Codable {
+  public let id: Swift.String
+  public let filename: Swift.String
+  public let size: Swift.Int
+  public let createdAt: Foundation.Date
+  public init(id: Swift.String, filename: Swift.String, size: Swift.Int, createdAt: Foundation.Date)
+  public static func == (a: MessagesJourney.Attachment, b: MessagesJourney.Attachment) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct AttachmentPreview {
+  public static func build(attachment: MessagesJourney.Attachment, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+public typealias AttachmentPreviewErrorFormatter<T> = MessagesJourney.ErrorFormatter<MessagesJourney.AttachmentPreview.Error, T>
+extension MessagesJourney.AttachmentPreview {
+  public enum Error : Swift.Error, Swift.Equatable {
+    case unsupportedFormat(Swift.String)
+    public static func == (a: MessagesJourney.AttachmentPreview.Error, b: MessagesJourney.AttachmentPreview.Error) -> Swift.Bool
+  }
+  public struct Configuration {
+    public var errorIcon: (_ error: MessagesJourney.AttachmentPreview.Error) -> UIKit.UIImage?
+    public var design: MessagesJourney.AttachmentPreview.Design
+    public var strings: MessagesJourney.AttachmentPreview.Strings
+    public var router: MessagesJourney.AttachmentPreview.Router
+  }
+}
+extension MessagesJourney.AttachmentPreview {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+  }
+}
+extension MessagesJourney.AttachmentPreview {
+  public struct Router {
+  }
+}
+extension MessagesJourney.AttachmentPreview {
+  public struct Strings {
+    public var errorTitle: (_ error: MessagesJourney.AttachmentPreview.Error) -> MessagesJourney.LocalizedString
+    public var errorSubtitle: (_ error: MessagesJourney.AttachmentPreview.Error) -> MessagesJourney.LocalizedString
+    public var errorActionButtonTitle: (MessagesJourney.AttachmentPreview.Error) -> MessagesJourney.LocalizedString?
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class BBBadgeView : UIKit.UIView {
+  public enum Style {
+    case small
+    case large
+    public static func == (a: MessagesJourney.BBBadgeView.Style, b: MessagesJourney.BBBadgeView.Style) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) public var count: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var style: MessagesJourney.BBBadgeView.Style {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public init(style: MessagesJourney.BBBadgeView.Style = .large)
+  @_Concurrency.MainActor(unsafe) public func pinToSuperviewTopRight()
+  @objc deinit
+}
+public protocol ComposeMessageDelegate : AnyObject {
+  func didComposeNewMessage()
+}
+public struct ComposeMessage {
+  public static func build(draftInfo: MessagesJourney.DraftInfo? = nil, composeDelegate: MessagesJourney.ComposeMessageDelegate? = nil) -> UIKit.UIViewController
+  public static func build(replyingTo conversationThread: MessagesJourney.ConversationThread, draftInfo: MessagesJourney.DraftInfo? = nil, delegate: MessagesJourney.ComposeMessageDelegate? = nil) -> UIKit.UIViewController
+}
+extension MessagesJourney.ComposeMessage {
+  public enum AttachmentType : Swift.String {
+    case image
+    case file
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public struct Configuration {
+    public init()
+    public var errorIcon: (_ error: MessagesJourney.ComposeMessage.Error) -> UIKit.UIImage?
+    public var subjectCharactersLimit: Swift.Int
+    public var bodyCharactersLimit: Swift.Int
+    public var imageCompressionQuality: Swift.Double
+    public var maximumAttachmentFileSize: Swift.Int
+    public var strings: MessagesJourney.ComposeMessage.Strings
+    public var design: MessagesJourney.ComposeMessage.Design
+  }
+}
+extension MessagesJourney.ComposeMessage {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (Swift.Bool) -> BackbaseDesignSystem.Style<UIKit.UINavigationBar>
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var subjectTextInput: (_ input: BackbaseDesignSystem.TextInput) -> Swift.Void
+    public var bodyTextInput: (_ textArea: BackbaseDesignSystem.TextArea) -> Swift.Void
+    public var topicLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var subjectLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var messageLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var attachmentLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+  }
+}
+extension MessagesJourney.ComposeMessage {
+  public typealias ComposeMessageErrorFormatter<T> = MessagesJourney.ErrorFormatter<MessagesJourney.ComposeMessage.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case emptyTopic
+    case emptySubject
+    case charactersLimitExceededSubject
+    case emptyBody
+    case loadingTopicsFailed
+    @available(*, deprecated, message: "Instead configure this through `DesignSystem.TextArea`")
+    case charactersLimitExceededBody
+    case sendingMessageFailed
+    case uploadFailed
+    case loadingDraftsFailed
+    case attachmentSizeNotAccepted(Swift.Int, MessagesJourney.ComposeMessage.AttachmentType)
+    case storeImageForAttachmentFailed
+    case attachmentsNotUploaded
+    public static func == (a: MessagesJourney.ComposeMessage.Error, b: MessagesJourney.ComposeMessage.Error) -> Swift.Bool
+  }
+}
+extension MessagesJourney.ComposeMessage {
+  public struct Strings {
+    public init()
+    public var navigationTitle: MessagesJourney.LocalizedString
+    public var topic: MessagesJourney.LocalizedString
+    public var topicCancel: MessagesJourney.LocalizedString
+    public var topicDone: MessagesJourney.LocalizedString
+    public var topicPlaceholder: MessagesJourney.LocalizedString
+    public var subject: MessagesJourney.LocalizedString
+    public var message: MessagesJourney.LocalizedString
+    public var attachment: MessagesJourney.LocalizedString
+    public var addAttachmentTitle: MessagesJourney.LocalizedString
+    public var addAttachmentCamera: MessagesJourney.LocalizedString
+    public var addAttachmentLibrary: MessagesJourney.LocalizedString
+    public var addAttachmentFiles: MessagesJourney.LocalizedString
+    public var addAttachmentCancel: MessagesJourney.LocalizedString
+    public var noCameraPermissionTitle: MessagesJourney.LocalizedString
+    public var noCameraPermissionSubtitle: MessagesJourney.LocalizedString
+    public var noCameraPermissionSettings: MessagesJourney.LocalizedString
+    public var noCameraPermissionClose: MessagesJourney.LocalizedString
+    public var errorTitle: (_ error: MessagesJourney.ComposeMessage.Error) -> MessagesJourney.LocalizedString
+    public var errorSubtitle: (_ error: MessagesJourney.ComposeMessage.Error) -> MessagesJourney.LocalizedString?
+    public var errorActionButtonTitle: (_ error: MessagesJourney.ComposeMessage.Error) -> MessagesJourney.LocalizedString?
+  }
+}
+public struct ComposeRequest : Swift.Codable {
+  public let topicId: Swift.String
+  public let subject: Swift.String
+  public let body: Swift.String
+  public let attachmentIds: [Swift.String]?
+  public init(topicId: Swift.String, subject: Swift.String, body: Swift.String, attachmentIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Conversation {
+  public static func build(rootMessageId: Swift.String, conversationDelegate: MessagesJourney.ConversationDelegate? = nil, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+public protocol ConversationDelegate : AnyObject {
+  func didRemoveConversation(with rootMessageId: Swift.String)
+  func didSuccessfullyLoadConversation(with rootMessageId: Swift.String)
+}
+extension MessagesJourney.Conversation {
+  public struct Configuration {
+    public init()
+    public var useMessageIcon: Swift.Bool
+    public var errorIcon: (_ error: MessagesJourney.Conversation.Error) -> UIKit.UIImage?
+    public var groupedAttachmentsIcon: UIKit.UIImage?
+    public var strings: MessagesJourney.Conversation.Strings
+    public var design: MessagesJourney.Conversation.Design
+    public var router: MessagesJourney.Conversation.Router
+  }
+}
+extension MessagesJourney.Conversation {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var messageIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var draftIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var messageSenderLabel: (UIKit.UILabel) -> Swift.Void
+    public var draftLabel: (UIKit.UILabel) -> Swift.Void
+    public var messageDateTimeLabel: (UIKit.UILabel) -> Swift.Void
+    public var messageBodyTextView: (UIKit.UITextView) -> Swift.Void
+    public var messageBodyFormatter: (Foundation.NSMutableAttributedString) -> Foundation.NSMutableAttributedString
+    public var messageCardView: BackbaseDesignSystem.Style<BackbaseDesignSystem.Card>
+    public var largeTitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var largeTitleFormatter: (Foundation.NSMutableAttributedString) -> Foundation.NSMutableAttributedString
+    public var smallTitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var messageAttachmentsIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+  }
+}
+public struct ConversationDraft : Swift.Equatable {
+  public var id: Swift.String
+  public let body: Swift.String?
+  public var timestamp: Foundation.Date
+  public var attachments: [MessagesJourney.Attachment]
+  public init(id: Swift.String, createdAt: Foundation.Date, body: Swift.String? = nil, attachments: [MessagesJourney.Attachment] = [])
+  public static func == (a: MessagesJourney.ConversationDraft, b: MessagesJourney.ConversationDraft) -> Swift.Bool
+}
+extension MessagesJourney.Conversation {
+  public typealias ConversationErrorFormatter<T> = MessagesJourney.ErrorFormatter<MessagesJourney.Conversation.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case loadingFailed
+    case refreshingFailed
+    case notFound
+    case deleteMessages
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MessagesJourney.Conversation.Error, b: MessagesJourney.Conversation.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public struct ConversationInfo : Swift.Equatable {
+  public let id: Swift.String
+  public let isRead: Swift.Bool
+  public let sender: MessagesJourney.Sender
+  public let subject: Swift.String
+  public let timestamp: Foundation.Date
+  public let topic: MessagesJourney.Topic
+  public let hasAttachments: Swift.Bool
+  public let hasDraft: Swift.Bool
+  public init(id: Swift.String, isRead: Swift.Bool, sender: MessagesJourney.Sender, subject: Swift.String, timestamp: Foundation.Date, topic: MessagesJourney.Topic, hasAttachments: Swift.Bool = false, hasDraft: Swift.Bool = false)
+  @available(*, deprecated, message: "`ConversationInfo` don't contain body property any more")
+  public let body: Swift.String
+  @available(*, deprecated, message: "Use another initializer instead")
+  public init(id: Swift.String, isRead: Swift.Bool, sender: MessagesJourney.Sender, subject: Swift.String, timestamp: Foundation.Date, body: Swift.String, topic: MessagesJourney.Topic, hasAttachments: Swift.Bool = false, hasDraft: Swift.Bool = false)
+  public static func == (a: MessagesJourney.ConversationInfo, b: MessagesJourney.ConversationInfo) -> Swift.Bool
+}
+public struct ConversationReadStatusRequest {
+  public enum ReadStatus {
+    case read
+    case unread
+    public static func == (a: MessagesJourney.ConversationReadStatusRequest.ReadStatus, b: MessagesJourney.ConversationReadStatusRequest.ReadStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let ids: [Swift.String]
+  public let status: MessagesJourney.ConversationReadStatusRequest.ReadStatus
+  public init(ids: [Swift.String], status: MessagesJourney.ConversationReadStatusRequest.ReadStatus)
+}
+public struct ConversationReadStatusResponse {
+  public let changedItems: [Swift.String]
+  public let failedItems: [Swift.String]
+  public init(changedItems: [Swift.String], failedItems: [Swift.String])
+}
+extension MessagesJourney.Conversation {
+  public struct Router {
+    public var didSelectAttachment: (UIKit.UINavigationController) -> (MessagesJourney.Attachment) -> Swift.Void
+    public var didSelectReply: (UIKit.UINavigationController) -> (MessagesJourney.ConversationThread, MessagesJourney.ComposeMessageDelegate?) -> Swift.Void
+    public var didSelectDraft: (UIKit.UINavigationController) -> (MessagesJourney.ConversationThread, MessagesJourney.DraftInfo, MessagesJourney.ComposeMessageDelegate?) -> Swift.Void
+  }
+}
+extension MessagesJourney.Conversation {
+  public struct Strings {
+    public init()
+    public var navigationTitle: MessagesJourney.LocalizedString
+    public var me: MessagesJourney.LocalizedString
+    public var draft: MessagesJourney.LocalizedString
+    public var groupedAttachments: (Swift.Int) -> Swift.String
+    public var deleteConversationTitle: MessagesJourney.LocalizedString
+    public var deleteConversationAccept: MessagesJourney.LocalizedString
+    public var deleteConversationCancel: MessagesJourney.LocalizedString
+    public var deleteDraftTitle: MessagesJourney.LocalizedString
+    public var deleteDraftAccept: MessagesJourney.LocalizedString
+    public var deleteDraftCancel: MessagesJourney.LocalizedString
+    public var errorTitle: (_ error: MessagesJourney.Conversation.Error) -> MessagesJourney.LocalizedString
+    public var errorSubtitle: (_ error: MessagesJourney.Conversation.Error) -> MessagesJourney.LocalizedString
+    public var errorActionButtonTitle: (_ error: MessagesJourney.Conversation.Error) -> MessagesJourney.LocalizedString
+  }
+}
+public struct ConversationThread : Swift.Equatable {
+  public let rootMessageId: Swift.String
+  public let messages: [MessagesJourney.Message]
+  public let subject: Swift.String
+  public let topic: MessagesJourney.Topic
+  public let isDeletable: Swift.Bool
+  public let isReadOnly: Swift.Bool
+  public let draft: MessagesJourney.ConversationDraft?
+  public init(rootMessageId: Swift.String, messages: [MessagesJourney.Message], subject: Swift.String, topic: MessagesJourney.Topic, isDeletable: Swift.Bool, isReadOnly: Swift.Bool = false, draft: MessagesJourney.ConversationDraft? = nil)
+  public static func == (a: MessagesJourney.ConversationThread, b: MessagesJourney.ConversationThread) -> Swift.Bool
+}
+public struct CreateConversationDraftRequest : Swift.Equatable {
+  public let conversationId: Swift.String
+  public let body: Swift.String?
+  public let attachmentIds: [Swift.String]?
+  public init(conversationId: Swift.String, body: Swift.String?, attachmentIds: [Swift.String]? = nil)
+  public static func == (a: MessagesJourney.CreateConversationDraftRequest, b: MessagesJourney.CreateConversationDraftRequest) -> Swift.Bool
+}
+public struct CreateDraftRequest : Swift.Equatable {
+  public let topicId: Swift.String?
+  public let subject: Swift.String?
+  public let body: Swift.String?
+  public let attachmentIds: [Swift.String]?
+  public init(topicId: Swift.String?, subject: Swift.String?, body: Swift.String?, attachmentIds: [Swift.String]? = nil)
+  public static func == (a: MessagesJourney.CreateDraftRequest, b: MessagesJourney.CreateDraftRequest) -> Swift.Bool
+}
+public struct DeleteConversationsResponse {
+  public let deletedItems: [Swift.String]
+  public let failedItems: [Swift.String]
+  public init(deletedItems: [Swift.String], failedItems: [Swift.String])
+}
+public struct DeleteDraftsResponse {
+  public let deletedItems: [Swift.String]
+  public let failedItems: [Swift.String]
+  public init(deleted: [Swift.String], failed: [Swift.String])
+}
+public struct Draft : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var body: Swift.String?
+  public var subject: Swift.String?
+  public var topic: MessagesJourney.Topic?
+  public var timestamp: Foundation.Date
+  public var conversationId: Swift.String?
+  public var attachments: [MessagesJourney.Attachment]
+  public init(id: Swift.String, body: Swift.String?, subject: Swift.String?, topic: MessagesJourney.Topic?, timestamp: Foundation.Date, conversationId: Swift.String?, attachments: [MessagesJourney.Attachment])
+  public static func == (a: MessagesJourney.Draft, b: MessagesJourney.Draft) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct DraftInfo : Swift.Equatable {
+  public var hasAttachments: Swift.Bool
+  public var id: Swift.String
+  public var body: Swift.String?
+  public var subject: Swift.String?
+  public var topic: MessagesJourney.Topic?
+  public var timestamp: Foundation.Date
+  public var conversationId: Swift.String?
+  public init(hasAttachments: Swift.Bool, id: Swift.String, body: Swift.String?, subject: Swift.String?, topic: MessagesJourney.Topic?, timestamp: Foundation.Date, conversationId: Swift.String?)
+  public static func == (a: MessagesJourney.DraftInfo, b: MessagesJourney.DraftInfo) -> Swift.Bool
+}
+public typealias ErrorFormatter<E, T> = (E) -> T where E : Swift.Error
+public enum DataSourceState {
+  case loading
+  case completed
+  case error(Swift.Error)
+  case empty
+}
+public protocol GenericDataSource : AnyObject {
+}
+public protocol GenericDataSourceDelegate : AnyObject {
+  func stateChanged(_ state: MessagesJourney.DataSourceState)
+}
+public struct GetConversationsRequest : Swift.Equatable {
+  public enum MailBoxType : Swift.String {
+    case inbox
+    case outbox
+    case draft
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let page: Swift.Int?
+  public let size: Swift.Int?
+  public let mailboxType: MessagesJourney.GetConversationsRequest.MailBoxType?
+  public init(page: Swift.Int?, size: Swift.Int?, mailboxType: MessagesJourney.GetConversationsRequest.MailBoxType?)
+  public static func == (a: MessagesJourney.GetConversationsRequest, b: MessagesJourney.GetConversationsRequest) -> Swift.Bool
+}
+public struct GetDraftsRequest {
+  public let size: Swift.Int?
+  public let page: Swift.Int?
+}
+public struct LocalizedString : Swift.ExpressibleByStringLiteral {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public init(stringLiteral value: Swift.String)
+  public init(key: Swift.String, prefix: Swift.String? = nil, formatArguments: [Swift.CVarArg] = [], in bundles: Foundation.Bundle?...)
+  public func callAsFunction() -> Swift.String
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+public struct Message : Swift.Equatable {
+  public let id: Swift.String
+  public let isMyMessage: Swift.Bool
+  public let sender: MessagesJourney.Sender
+  public let createdAt: Foundation.Date
+  public let body: Swift.String
+  public let isBodyHTML: Swift.Bool
+  public let attachments: [MessagesJourney.Attachment]
+  public init(id: Swift.String, isMyMessage: Swift.Bool, sender: MessagesJourney.Sender, createdAt: Foundation.Date, body: Swift.String, isBodyHTML: Swift.Bool, attachments: [MessagesJourney.Attachment] = [])
+  public static func == (a: MessagesJourney.Message, b: MessagesJourney.Message) -> Swift.Bool
+}
+public struct MessageList {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension MessagesJourney.MessageList {
+  public struct Configuration {
+    public init()
+    public var errorIcon: (_ error: MessagesJourney.MessageList.Error) -> UIKit.UIImage?
+    public var strings: MessagesJourney.MessageList.Strings
+    public var design: MessagesJourney.MessageList.Design
+    public var router: MessagesJourney.MessageList.Router
+  }
+}
+extension MessagesJourney.MessageList {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var messagesTypeSegment: (UIKit.UISegmentedControl) -> Swift.Void
+    public var messageSenderLabel: (_ conversation: MessagesJourney.ConversationInfo) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var messageTitleLabel: (MessagesJourney.ConversationInfo) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var messageTitleFormatter: (MessagesJourney.ConversationInfo) -> Foundation.NSMutableAttributedString
+    public var messageDateLabel: (_ conversation: MessagesJourney.ConversationInfo) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    @available(*, deprecated, message: "Do not use body config anymore.")
+    public var messageBodyLabel: (MessagesJourney.ConversationInfo) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var messageAttachmentsIcon: (_ conversation: MessagesJourney.ConversationInfo) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon>
+    @available(*, deprecated, message: "Do not use body config anymore.")
+    public var messageBodyFormatter: (MessagesJourney.ConversationInfo) -> Foundation.NSMutableAttributedString
+    public var selectedIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var draftIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var draftTitleFormatter: (MessagesJourney.DraftInfo) -> Foundation.NSMutableAttributedString
+    public var draftBodyFormatter: (MessagesJourney.DraftInfo) -> Foundation.NSMutableAttributedString
+    public var draftDateLabel: (_ conversation: MessagesJourney.DraftInfo) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var draftBodyLabel: (MessagesJourney.DraftInfo) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var draftAttachmentsIcon: (_ conversation: MessagesJourney.DraftInfo) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon>
+    public var draftTitleLabel: (MessagesJourney.DraftInfo) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var draftMarkLabel: (UIKit.UILabel) -> Swift.Void
+    public var unreadBadgeGradientColors: [UIKit.UIColor]
+  }
+}
+extension Swift.String {
+  public func hasPrefixIgnoringCase(_ prefix: Swift.String) -> Swift.Bool
+}
+extension MessagesJourney.MessageList {
+  public typealias MessagesErrorFormatter<T> = MessagesJourney.ErrorFormatter<MessagesJourney.MessageList.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case noInboxMessages
+    case noSentMessages
+    case noDraftMessages
+    case deleteMessage(Swift.String)
+    case deleteFewMessages(Swift.Int)
+    case markMessageAsRead(Swift.String)
+    case markFewMessagesAsRead(Swift.Int)
+    public static func == (a: MessagesJourney.MessageList.Error, b: MessagesJourney.MessageList.Error) -> Swift.Bool
+  }
+}
+extension MessagesJourney.MessageList {
+  public struct Router {
+    public var didSelectConversation: (UIKit.UINavigationController) -> (MessagesJourney.ConversationInfo, MessagesJourney.ConversationDelegate?) -> Swift.Void
+    public var didSelectCompose: (UIKit.UINavigationController) -> (MessagesJourney.ComposeMessageDelegate?) -> Swift.Void
+    public var didSelectDraft: (UIKit.UINavigationController) -> (MessagesJourney.DraftInfo, MessagesJourney.ComposeMessageDelegate?) -> Swift.Void
+  }
+}
+extension MessagesJourney.MessageList {
+  public struct Strings {
+    public var navigationTitle: MessagesJourney.LocalizedString
+    public var listFooter: MessagesJourney.LocalizedString
+    public var inboxSegment: MessagesJourney.LocalizedString
+    public var sentSegment: MessagesJourney.LocalizedString
+    public var draftSegment: MessagesJourney.LocalizedString
+    public var draftText: MessagesJourney.LocalizedString
+    public var draftMissingSubjectText: MessagesJourney.LocalizedString
+    public var draftMissingBodyText: MessagesJourney.LocalizedString
+    public var bulkDeleteTitle: MessagesJourney.LocalizedString
+    public var bulkDeleteConversationAccept: MessagesJourney.LocalizedString
+    public var bulkDeleteConversationCancel: MessagesJourney.LocalizedString
+    public var bulkDeleteDraftsTitle: MessagesJourney.LocalizedString
+    public var bulkDeleteDraftsAccept: MessagesJourney.LocalizedString
+    public var bulkDeleteDraftsCancel: MessagesJourney.LocalizedString
+    public var errorTitle: (_ error: MessagesJourney.MessageList.Error) -> MessagesJourney.LocalizedString
+    public var errorSubtitle: (_ error: MessagesJourney.MessageList.Error) -> MessagesJourney.LocalizedString
+    public var errorActionButtonTitle: (_ error: MessagesJourney.MessageList.Error) -> MessagesJourney.LocalizedString?
+    public var selectedItemsTitle: (Swift.Int) -> (Swift.String)
+  }
+}
+public struct Messages {
+}
+extension MessagesJourney.Messages {
+  public struct Configuration {
+    public init()
+    public var messageIcon: UIKit.UIImage?
+    public var messageAttachmentTypeIcon: (_ attachment: MessagesJourney.Attachment) -> UIKit.UIImage?
+    public var errorIcon: (_ error: MessagesJourney.Messages.Error) -> UIKit.UIImage?
+    public var strings: MessagesJourney.Messages.Strings
+    public var messageList: MessagesJourney.MessageList.Configuration
+    public var conversation: MessagesJourney.Conversation.Configuration
+    public var composeMessage: MessagesJourney.ComposeMessage.Configuration
+    public var attachmentPreview: MessagesJourney.AttachmentPreview.Configuration
+  }
+}
+extension MessagesJourney.Messages {
+  public struct Strings {
+    public init()
+    public var errorTitle: (_ error: MessagesJourney.Messages.Error) -> MessagesJourney.LocalizedString
+    public var errorSubtitle: (_ error: MessagesJourney.Messages.Error) -> MessagesJourney.LocalizedString
+    public var errorActionButtonTitle: (_ error: MessagesJourney.Messages.Error) -> MessagesJourney.LocalizedString?
+  }
+}
+extension MessagesJourney.Messages {
+  public typealias MessageCenterErrorFormatter<T> = MessagesJourney.ErrorFormatter<MessagesJourney.Messages.Error, T>
+  public enum Error : Swift.Error {
+    case notConnected
+    case refreshFailure
+    case loadingFailure
+    case webCallError(Swift.Int)
+  }
+}
+public protocol MessagesUseCase : AnyObject {
+  typealias GetConversationsHandler = (Swift.Result<[MessagesJourney.ConversationInfo], MessagesJourney.Messages.Error>) -> Swift.Void
+  typealias DeleteConversationsHandler = (Swift.Result<MessagesJourney.DeleteConversationsResponse, MessagesJourney.Messages.Error>) -> Swift.Void
+  typealias GetConversationHandler = (Swift.Result<MessagesJourney.ConversationThread, MessagesJourney.Messages.Error>) -> Swift.Void
+  typealias UpdateConversationReadStatusHandler = (Swift.Result<MessagesJourney.ConversationReadStatusResponse, MessagesJourney.Messages.Error>) -> Swift.Void
+  typealias GetTopicsHandler = (Swift.Result<[MessagesJourney.Topic], MessagesJourney.Messages.Error>) -> Swift.Void
+  typealias ComposeMessageHandler = (Swift.Result<Swift.String, MessagesJourney.Messages.Error>) -> Swift.Void
+  typealias UploadAttachmentHandler = (Swift.Result<MessagesJourney.Attachment, MessagesJourney.Messages.Error>) -> Swift.Void
+  typealias DownloadAttachmentHandler = (Swift.Result<Foundation.Data, MessagesJourney.Messages.Error>) -> Swift.Void
+  typealias DraftMessageHandler = (Swift.Result<Swift.String, Swift.Error>) -> Swift.Void
+  typealias UpdateDraftHandler = (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void
+  typealias RetrieveDraftsHandler = (Swift.Result<[MessagesJourney.DraftInfo], Swift.Error>) -> Swift.Void
+  typealias RetrieveDraftHandler = (Swift.Result<MessagesJourney.Draft, Swift.Error>) -> Swift.Void
+  typealias DeleteDraftsHandler = (Swift.Result<MessagesJourney.DeleteDraftsResponse, Swift.Error>) -> Swift.Void
+  func getConversations(request: MessagesJourney.GetConversationsRequest, completion: @escaping Self.GetConversationsHandler)
+  func deleteConversations(_ ids: [Swift.String], completion: Self.DeleteConversationsHandler?)
+  func getConversation(by rootMessageId: Swift.String, completion: @escaping Self.GetConversationHandler)
+  func updateConversationReadStatus(with request: MessagesJourney.ConversationReadStatusRequest, completion: Self.UpdateConversationReadStatusHandler?)
+  func getTopics(completion: @escaping Self.GetTopicsHandler)
+  func composeMessage(composeRequest: MessagesJourney.ComposeRequest, completion: @escaping Self.ComposeMessageHandler)
+  func uploadAttachment(url: Foundation.URL, completion: @escaping Self.UploadAttachmentHandler)
+  func downloadAttachment(by attachmentId: Swift.String, completion: @escaping Self.DownloadAttachmentHandler)
+  func reply(to thread: MessagesJourney.ConversationThread, with replyRequest: MessagesJourney.ReplyRequest, completion: @escaping Self.ComposeMessageHandler)
+  func createDraft(request: MessagesJourney.CreateDraftRequest, completion: @escaping Self.DraftMessageHandler)
+  func updateDraft(request: MessagesJourney.UpdateDraftRequest, completion: @escaping Self.UpdateDraftHandler)
+  func createConversationDraft(request: MessagesJourney.CreateConversationDraftRequest, completion: @escaping Self.DraftMessageHandler)
+  func updateConversationDraft(request: MessagesJourney.UpdateConversationDraftRequest, completion: @escaping Self.UpdateDraftHandler)
+  func getDrafts(request: MessagesJourney.GetDraftsRequest, completion: @escaping Self.RetrieveDraftsHandler)
+  func getDraft(by draftId: Swift.String, completion: @escaping Self.RetrieveDraftHandler)
+  func deleteDrafts(_ ids: [Swift.String], completion: Self.DeleteDraftsHandler?)
+}
+public class PaginationData {
+  public var page: Swift.Int
+  public var size: Swift.Int
+  public var cursor: Swift.String?
+  public var canLoadMore: Swift.Bool
+  public init()
+  public func asDictionary() -> [Swift.String : Swift.String]
+  public func increment()
+  public func reset()
+  @objc deinit
+}
+extension MessagesJourney.PaginatorLayoutable {
+  public var paginationView: UIKit.UIView {
+    get
+  }
+  public var paginationCompletedView: UIKit.UIView {
+    get
+  }
+}
+public func paginationLoadingView() -> UIKit.UIView
+public func paginationCompletedViewCreator(text: Swift.String) -> UIKit.UIView
+public protocol PaginatorLayoutable : AnyObject {
+  var paginationView: UIKit.UIView { get }
+  var paginationCompletedView: UIKit.UIView { get }
+  func loadMoreStarted()
+  func loadMoreFinished()
+}
+public struct ReplyRequest : Swift.Codable {
+  public let body: Swift.String
+  public let attachmentIds: [Swift.String]?
+  public init(body: Swift.String, attachmentIds: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public class Section<T> {
+  final public let title: Swift.String
+  public var items: [T]
+  public init(title: Swift.String, items: [T])
+  @objc deinit
+}
+public struct Sender : Swift.Codable, Swift.Equatable {
+  public let name: Swift.String
+  public init(name: Swift.String)
+  public static func == (a: MessagesJourney.Sender, b: MessagesJourney.Sender) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Topic : Swift.Equatable, Swift.Codable {
+  public let id: Swift.String
+  public let name: Swift.String
+  public init(id: Swift.String, name: Swift.String)
+  public static func == (a: MessagesJourney.Topic, b: MessagesJourney.Topic) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct UpdateConversationDraftRequest : Swift.Equatable {
+  public let conversationId: Swift.String
+  public let body: Swift.String?
+  public let attachmentIds: [Swift.String]?
+  public init(conversationId: Swift.String, body: Swift.String?, attachmentIds: [Swift.String]? = nil)
+  public static func == (a: MessagesJourney.UpdateConversationDraftRequest, b: MessagesJourney.UpdateConversationDraftRequest) -> Swift.Bool
+}
+public struct UpdateDraftRequest : Swift.Equatable {
+  public let id: Swift.String
+  public let topicId: Swift.String?
+  public let subject: Swift.String?
+  public let body: Swift.String?
+  public let attachmentIds: [Swift.String]?
+  public init(id: Swift.String, topicId: Swift.String?, subject: Swift.String?, body: Swift.String?, attachmentIds: [Swift.String]? = nil)
+  public static func == (a: MessagesJourney.UpdateDraftRequest, b: MessagesJourney.UpdateDraftRequest) -> Swift.Bool
+}
+extension MessagesJourney.BBBadgeView.Style : Swift.Equatable {}
+extension MessagesJourney.BBBadgeView.Style : Swift.Hashable {}
+extension MessagesJourney.ComposeMessage.AttachmentType : Swift.Equatable {}
+extension MessagesJourney.ComposeMessage.AttachmentType : Swift.Hashable {}
+extension MessagesJourney.ComposeMessage.AttachmentType : Swift.RawRepresentable {}
+extension MessagesJourney.Conversation.Error : Swift.Hashable {}
+extension MessagesJourney.ConversationReadStatusRequest.ReadStatus : Swift.Equatable {}
+extension MessagesJourney.ConversationReadStatusRequest.ReadStatus : Swift.Hashable {}
+extension MessagesJourney.GetConversationsRequest.MailBoxType : Swift.Equatable {}
+extension MessagesJourney.GetConversationsRequest.MailBoxType : Swift.Hashable {}
+extension MessagesJourney.GetConversationsRequest.MailBoxType : Swift.RawRepresentable {}

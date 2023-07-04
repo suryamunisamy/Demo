@@ -1,0 +1,4 @@
+framework module UserManagerClient2 {
+  header "UserManagerClient2-Swift.h"
+  requires objc
+}

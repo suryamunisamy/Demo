@@ -1,0 +1,4 @@
+framework module MobileNotificationsPresentation {
+  header "MobileNotificationsPresentation-Swift.h"
+  requires objc
+}

@@ -1,0 +1,602 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailRemoteDepositCaptureJourney
+import AVFoundation
+import BackbaseDesignSystem
+import Foundation
+import Photos
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+public struct Account : Swift.Equatable {
+  public init(identifier: Swift.String, identifierRDC: Swift.String, name: Swift.String, accountNumber: Swift.String? = nil, currencyCode: Swift.String? = nil, type: RetailRemoteDepositCaptureJourney.AccountType, availableBalance: Foundation.Decimal? = nil, bookedBalance: Foundation.Decimal? = nil, remainingCredit: Foundation.Decimal? = nil)
+  public let identifier: Swift.String
+  public let identifierRDC: Swift.String
+  public let name: Swift.String
+  public let accountNumber: Swift.String?
+  public let currencyCode: Swift.String?
+  public let type: RetailRemoteDepositCaptureJourney.AccountType
+  public let availableBalance: Foundation.Decimal?
+  public let bookedBalance: Foundation.Decimal?
+  public let remainingCredit: Foundation.Decimal?
+  public static func == (a: RetailRemoteDepositCaptureJourney.Account, b: RetailRemoteDepositCaptureJourney.Account) -> Swift.Bool
+}
+public struct AccountList {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, accounts: [RetailRemoteDepositCaptureJourney.Account], selectionHandler: RetailRemoteDepositCaptureJourney.AccountList.SelectionHandler) -> UIKit.UIViewController
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.AccountList {
+  public struct Configuration {
+    public init()
+    public var router: RetailRemoteDepositCaptureJourney.AccountList.Router
+    public var strings: RetailRemoteDepositCaptureJourney.AccountList.Strings
+    public var balanceHeader: (RetailRemoteDepositCaptureJourney.BalanceHeaderOptions, RetailRemoteDepositCaptureJourney.BalanceDisplayOption) -> Swift.String?
+    public var balanceDisplayOption: (RetailRemoteDepositCaptureJourney.Account) -> RetailRemoteDepositCaptureJourney.BalanceDisplayOption
+    public var noAccountErrorIcon: UIKit.UIImage
+  }
+}
+extension RetailRemoteDepositCaptureJourney.AccountList {
+  public struct Router {
+    public init()
+    public var didSelectAccount: (_ navigationController: UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ selectionHandler: RetailRemoteDepositCaptureJourney.AccountList.SelectionHandler, _ account: RetailRemoteDepositCaptureJourney.Account) -> Swift.Void
+    public var didSelectAnAccount: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ buildParameters: RetailRemoteDepositCaptureJourney.Form.BuildParameters) -> Swift.Void
+    public var dismiss: (_ navigationController: UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositCaptureJourney.AccountList {
+  public struct SelectionHandler {
+    public init(selectedAccount: @escaping (RetailRemoteDepositCaptureJourney.Account) -> Swift.Void)
+    public let selectedAccount: (RetailRemoteDepositCaptureJourney.Account) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositCaptureJourney.AccountList {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var titleLong: RetailJourneyCommon.LocalizedString
+    public var productBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var productBookedBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var productRemainingCreditHeader: RetailJourneyCommon.LocalizedString
+    public var loadFailureTitle: RetailJourneyCommon.LocalizedString
+    public var loadFailureMessage: RetailJourneyCommon.LocalizedString
+    public var loadFailureActionTitle: RetailJourneyCommon.LocalizedString
+    public var loadFailureTryAgainActionTitle: RetailJourneyCommon.LocalizedString
+    public var continueActionTitle: RetailJourneyCommon.LocalizedString
+    public var selectAnAccountError: RetailJourneyCommon.LocalizedString
+    public var noAccountTitle: RetailJourneyCommon.LocalizedString
+    public var noAccountMessage: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct AccountType : Swift.Equatable {
+  public static var currentAccount: RetailRemoteDepositCaptureJourney.AccountType
+  public static var savingsAccount: RetailRemoteDepositCaptureJourney.AccountType
+  public static var loan: RetailRemoteDepositCaptureJourney.AccountType
+  public static var creditCard: RetailRemoteDepositCaptureJourney.AccountType
+  public static func custom(type: Swift.String) -> RetailRemoteDepositCaptureJourney.AccountType
+  public static func == (a: RetailRemoteDepositCaptureJourney.AccountType, b: RetailRemoteDepositCaptureJourney.AccountType) -> Swift.Bool
+}
+public struct Amount : Swift.Equatable {
+  public init(value: Foundation.Decimal, currencyCode: Swift.String)
+  public var value: Foundation.Decimal
+  public var currencyCode: Swift.String
+  public static func == (a: RetailRemoteDepositCaptureJourney.Amount, b: RetailRemoteDepositCaptureJourney.Amount) -> Swift.Bool
+}
+public struct AmountInput {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositCaptureJourney.AmountInput.Strings
+    public var validate: (RetailRemoteDepositCaptureJourney.Amount) -> RetailRemoteDepositCaptureJourney.ValidationResult {
+      mutating get
+      set
+    }
+    public var defaultCurrencyCode: Swift.String
+  }
+  public struct Strings {
+    public init()
+    public var amountTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public enum BalanceDisplayOption : Swift.Equatable {
+  case hide
+  case availableBalance
+  case bookedBalance
+  case remainingCredit
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: RetailRemoteDepositCaptureJourney.BalanceDisplayOption, b: RetailRemoteDepositCaptureJourney.BalanceDisplayOption) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct BalanceHeaderOptions : Swift.Equatable {
+  public let availableBalance: Swift.String
+  public let bookedBalance: Swift.String
+  public let remainingCredit: Swift.String
+  public init(availableBalance: Swift.String, bookedBalance: Swift.String, remainingCredit: Swift.String)
+  public static func == (a: RetailRemoteDepositCaptureJourney.BalanceHeaderOptions, b: RetailRemoteDepositCaptureJourney.BalanceHeaderOptions) -> Swift.Bool
+}
+extension Foundation.Bundle {
+  public static var remoteDepositCapture: Foundation.Bundle? {
+    get
+  }
+}
+public struct Capture {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, selectionHandler: RetailRemoteDepositCaptureJourney.Capture.SelectionHandler) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.Capture {
+  public struct SelectionHandler {
+    public init(selectedImage: @escaping (UIKit.UIImage) -> Swift.Void)
+    public let selectedImage: (UIKit.UIImage) -> Swift.Void
+  }
+}
+public struct Complete {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, data: RetailRemoteDepositCaptureJourney.CompletionData) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.Complete {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositCaptureJourney.Complete.Strings
+    public var successIcon: UIKit.UIImage?
+    public var failureIcon: UIKit.UIImage?
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Complete {
+  public struct Strings {
+    public init()
+    public var successTitle: RetailJourneyCommon.LocalizedString
+    public var successMessage: RetailJourneyCommon.LocalizedString
+    public var failureTitle: RetailJourneyCommon.LocalizedString
+    public var failureMessage: RetailJourneyCommon.LocalizedString
+    public var submitAction: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct CompletionData {
+  public let isSuccess: Swift.Bool
+  public let errorMessage: Swift.String?
+  public init(isSuccess: Swift.Bool, errorMessage: Swift.String? = nil)
+}
+public struct DepositBatch : Swift.Equatable {
+  public let identifier: Swift.String
+  public let recognizedAmount: RetailRemoteDepositCaptureJourney.Amount?
+  public var items: [RetailRemoteDepositCaptureJourney.ValidatedDepositItem]
+  public init(identifier: Swift.String, amount: RetailRemoteDepositCaptureJourney.Amount?, items: [RetailRemoteDepositCaptureJourney.ValidatedDepositItem])
+  public static func == (a: RetailRemoteDepositCaptureJourney.DepositBatch, b: RetailRemoteDepositCaptureJourney.DepositBatch) -> Swift.Bool
+}
+public enum DepositFlowType : Swift.Equatable {
+  case single
+  case multiple(limit: Swift.Int = 15)
+  public static func == (lhs: RetailRemoteDepositCaptureJourney.DepositFlowType, rhs: RetailRemoteDepositCaptureJourney.DepositFlowType) -> Swift.Bool
+}
+public struct DepositImage : Swift.Equatable {
+  public let image: UIKit.UIImage
+  public init(image: UIKit.UIImage)
+  public static func == (a: RetailRemoteDepositCaptureJourney.DepositImage, b: RetailRemoteDepositCaptureJourney.DepositImage) -> Swift.Bool
+}
+public class DepositItem : Swift.Equatable {
+  @available(*, deprecated, message: "Use init(index:, batchSize:, frontImage:, backImage:, amount:) instead")
+  public init(index: Swift.Int, frontImage: RetailRemoteDepositCaptureJourney.DepositImage? = nil, backImage: RetailRemoteDepositCaptureJourney.DepositImage? = nil, amount: RetailRemoteDepositCaptureJourney.Amount? = nil)
+  public init(index: Swift.Int, batchSize: Swift.Int, frontImage: RetailRemoteDepositCaptureJourney.DepositImage? = nil, backImage: RetailRemoteDepositCaptureJourney.DepositImage? = nil, amount: RetailRemoteDepositCaptureJourney.Amount? = nil)
+  public var index: Swift.Int
+  public var batchSize: Swift.Int
+  public var frontImage: RetailRemoteDepositCaptureJourney.DepositImage?
+  public var backImage: RetailRemoteDepositCaptureJourney.DepositImage?
+  public var amount: RetailRemoteDepositCaptureJourney.Amount?
+  public static func == (lhs: RetailRemoteDepositCaptureJourney.DepositItem, rhs: RetailRemoteDepositCaptureJourney.DepositItem) -> Swift.Bool
+  @objc deinit
+}
+public struct DepositItemInput {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositCaptureJourney.DepositItemInput.Strings
+  }
+  public struct Strings {
+    public init()
+    public var frontTitle: RetailJourneyCommon.LocalizedString
+    public var backTitle: RetailJourneyCommon.LocalizedString
+    public var retake: RetailJourneyCommon.LocalizedString
+    public var placeholder: RetailJourneyCommon.LocalizedString
+    public var errorFrontAndBackImage: RetailJourneyCommon.LocalizedString
+    public var errorFrontImage: RetailJourneyCommon.LocalizedString
+    public var errorBackImage: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct DepositItemRequest : Swift.Equatable {
+  @available(*, deprecated, message: "Use init(index:, batchSize:, frontImage:, backImage:, amount:) instead")
+  public init(index: Swift.Int, frontImage: RetailRemoteDepositCaptureJourney.DepositImage, backImage: RetailRemoteDepositCaptureJourney.DepositImage, amount: RetailRemoteDepositCaptureJourney.Amount)
+  public init(index: Swift.Int, batchSize: Swift.Int, frontImage: RetailRemoteDepositCaptureJourney.DepositImage, backImage: RetailRemoteDepositCaptureJourney.DepositImage, amount: RetailRemoteDepositCaptureJourney.Amount)
+  public var index: Swift.Int
+  public var frontImage: RetailRemoteDepositCaptureJourney.DepositImage
+  public var batchSize: Swift.Int
+  public var backImage: RetailRemoteDepositCaptureJourney.DepositImage
+  public var amount: RetailRemoteDepositCaptureJourney.Amount
+  public static func == (a: RetailRemoteDepositCaptureJourney.DepositItemRequest, b: RetailRemoteDepositCaptureJourney.DepositItemRequest) -> Swift.Bool
+}
+public struct DepositStatus : Swift.Equatable {
+  public static func rejected(reasons: [Swift.String]) -> RetailRemoteDepositCaptureJourney.DepositStatus
+  public static func unverified(reasons: [Swift.String]) -> RetailRemoteDepositCaptureJourney.DepositStatus
+  public static var verified: RetailRemoteDepositCaptureJourney.DepositStatus {
+    get
+  }
+  public static func == (a: RetailRemoteDepositCaptureJourney.DepositStatus, b: RetailRemoteDepositCaptureJourney.DepositStatus) -> Swift.Bool
+}
+public struct Edit {
+  public static func build(navigation: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, depositItemToEdit: RetailRemoteDepositCaptureJourney.ValidatedDepositItem, reviewData: RetailRemoteDepositCaptureJourney.ReviewData, onUpdateDepositItem: @escaping (RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.Edit {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositCaptureJourney.Edit.Strings
+    public var router: RetailRemoteDepositCaptureJourney.Edit.Router
+    public var amountInput: RetailRemoteDepositCaptureJourney.AmountInput.Configuration
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Edit {
+  public struct Router {
+    public var dismiss: (_ navigation: UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Edit {
+  public struct Strings {
+    public init()
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var submitActionTitle: RetailJourneyCommon.LocalizedString
+    public var submitFailureTitle: RetailJourneyCommon.LocalizedString
+    public var submitFailureMessage: RetailJourneyCommon.LocalizedString
+    public var submitFailureActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct ErrorResponse : Swift.Error, Swift.Equatable {
+  public init(statusCode: Swift.Int, message: Swift.String? = nil)
+  public static func == (lhs: RetailRemoteDepositCaptureJourney.ErrorResponse, rhs: RetailRemoteDepositCaptureJourney.ErrorResponse) -> Swift.Bool
+}
+extension RetailRemoteDepositCaptureJourney.ErrorResponse {
+  public static let noInternet: RetailRemoteDepositCaptureJourney.ErrorResponse
+  public static let failed: RetailRemoteDepositCaptureJourney.ErrorResponse
+  public static let sessionExpired: RetailRemoteDepositCaptureJourney.ErrorResponse
+  public static let badRequest: RetailRemoteDepositCaptureJourney.ErrorResponse
+  public static let internalServerError: RetailRemoteDepositCaptureJourney.ErrorResponse
+}
+public struct Form {
+  public struct BuildParameters {
+    public init(session: RetailRemoteDepositCaptureJourney.Session? = nil, account: RetailRemoteDepositCaptureJourney.Account, depositBatch: RetailRemoteDepositCaptureJourney.DepositBatch? = nil, reviewData: RetailRemoteDepositCaptureJourney.ReviewData? = nil, prepopulatedData: RetailRemoteDepositCaptureJourney.DepositItem? = nil, delegate: RetailRemoteDepositCaptureJourney.FormScreenDelegate? = nil)
+  }
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> UIKit.UIViewController
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, buildParameters: RetailRemoteDepositCaptureJourney.Form.BuildParameters) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.Form {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositCaptureJourney.Form.Strings
+    public var router: RetailRemoteDepositCaptureJourney.Form.Router
+    public var balanceHeader: (RetailRemoteDepositCaptureJourney.BalanceHeaderOptions, RetailRemoteDepositCaptureJourney.BalanceDisplayOption) -> Swift.String?
+    public var balanceDisplayOption: (RetailRemoteDepositCaptureJourney.Account) -> RetailRemoteDepositCaptureJourney.BalanceDisplayOption
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Form {
+  public struct Router {
+    public typealias AccountSelectionCompletion = (UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, [RetailRemoteDepositCaptureJourney.Account], RetailRemoteDepositCaptureJourney.AccountList.SelectionHandler) -> Swift.Void
+    public typealias ImageCaptureCompletion = ((UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, RetailRemoteDepositCaptureJourney.Capture.SelectionHandler) -> Swift.Void)
+    public typealias VerifiedCompletion = (UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void
+    public typealias RejectedCompletion = (UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void
+    public typealias UnverifiedCompletion = (UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, RetailRemoteDepositCaptureJourney.ReviewData, @escaping (RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void, @escaping (RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void) -> Swift.Void
+    public typealias CameraPermissionDenied = (UIKit.UINavigationController, UIKit.UIAlertController) -> Swift.Void
+    public init()
+    public var didTapSelectToAccount: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ accounts: [RetailRemoteDepositCaptureJourney.Account], _ selectionHandler: RetailRemoteDepositCaptureJourney.AccountList.SelectionHandler) -> Swift.Void
+    public var didTapCaptureFrontImage: (UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, RetailRemoteDepositCaptureJourney.Capture.SelectionHandler) -> ()
+    public var didTapCaptureBackImage: (UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, RetailRemoteDepositCaptureJourney.Capture.SelectionHandler) -> ()
+    public var onReviewVerified: (_ navigationController: UIKit.UINavigationController, _ config: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ reviewData: RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void
+    public var onReviewUnverified: (_ navigationController: UIKit.UINavigationController, _ config: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ reviewData: RetailRemoteDepositCaptureJourney.ReviewData, _ updateDepositItemClosure: @escaping (RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void, _ acceptUnverifiedCompletion: @escaping (RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void) -> Swift.Void
+    public var onReviewRejected: (_ navigationController: UIKit.UINavigationController, _ config: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ reviewData: RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void
+    public var dismiss: (_ navigationController: UIKit.UINavigationController) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Form {
+  public struct Strings {
+    public init()
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var submitActionTitle: RetailJourneyCommon.LocalizedString
+    public var submitFailureTitle: RetailJourneyCommon.LocalizedString
+    public var submitFailureMessage: RetailJourneyCommon.LocalizedString
+    public var submitFailureActionTitle: RetailJourneyCommon.LocalizedString
+    public var discardActionDescription: RetailJourneyCommon.LocalizedString
+    public var discardActionConfirm: RetailJourneyCommon.LocalizedString
+    public var discardActionCancel: RetailJourneyCommon.LocalizedString
+    public var accountSelectorTitle: RetailJourneyCommon.LocalizedString
+    public var accountSelectorPlaceholder: RetailJourneyCommon.LocalizedString
+    public var errorAccountSelector: RetailJourneyCommon.LocalizedString
+    public var productBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var productBookedBalanceHeader: RetailJourneyCommon.LocalizedString
+    public var productRemainingCreditHeader: RetailJourneyCommon.LocalizedString
+    public var rejectedCameraPermissionTitle: RetailJourneyCommon.LocalizedString
+    public var rejectedCameraPermissionMessage: RetailJourneyCommon.LocalizedString
+    public var rejectedCameraPermissionOkButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public protocol FormScreenDelegate : AnyObject {
+  func save(depositItem: RetailRemoteDepositCaptureJourney.DepositItem?)
+}
+public struct Rejected {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, reviewData: RetailRemoteDepositCaptureJourney.ReviewData) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.Rejected {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositCaptureJourney.Rejected.Strings
+    public var router: RetailRemoteDepositCaptureJourney.Rejected.Router
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Rejected {
+  public struct Router {
+    public init()
+    public var dismiss: (_ navigationController: UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Rejected {
+  public struct Strings {
+    public init()
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var reasonTitle: RetailJourneyCommon.LocalizedString
+    public var reasonMessage: RetailJourneyCommon.LocalizedString
+    public var confirmAction: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct RemoteDepositCapture {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.RemoteDepositCapture {
+  public struct Configuration {
+    public typealias UseCaseProvider = () -> (RetailRemoteDepositCaptureJourney.RemoteDepositCaptureUseCase)
+    public init(useCaseProvider: @escaping RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration.UseCaseProvider)
+    public var depositFlowType: RetailRemoteDepositCaptureJourney.DepositFlowType
+    public var strings: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Strings
+    public var router: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Router
+    public var amountInput: RetailRemoteDepositCaptureJourney.AmountInput.Configuration
+    public var depositItemInput: RetailRemoteDepositCaptureJourney.DepositItemInput.Configuration
+    public var form: RetailRemoteDepositCaptureJourney.Form.Configuration
+    public var rejected: RetailRemoteDepositCaptureJourney.Rejected.Configuration
+    public var accountList: RetailRemoteDepositCaptureJourney.AccountList.Configuration
+    public var review: RetailRemoteDepositCaptureJourney.Review.Configuration
+    public var complete: RetailRemoteDepositCaptureJourney.Complete.Configuration
+    public var unverified: RetailRemoteDepositCaptureJourney.Unverified.Configuration
+    public var edit: RetailRemoteDepositCaptureJourney.Edit.Configuration
+  }
+}
+extension RetailRemoteDepositCaptureJourney.RemoteDepositCapture {
+  public struct Router {
+    public var dismissJourney: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositCaptureJourney.RemoteDepositCapture {
+  public struct Strings {
+    public init()
+    public var errorTitle: RetailJourneyCommon.LocalizedString
+    public var errorButtonOk: RetailJourneyCommon.LocalizedString
+    public var errorButtonCancel: RetailJourneyCommon.LocalizedString
+    public var errorMessage: RetailJourneyCommon.LocalizedString
+    public var noInternetTitle: RetailJourneyCommon.LocalizedString
+    public var noInternetMessage: RetailJourneyCommon.LocalizedString
+    public var noInternetButtonOk: RetailJourneyCommon.LocalizedString
+    public var noInternetButtonRetry: RetailJourneyCommon.LocalizedString
+    public var sessionExpiredTitle: RetailJourneyCommon.LocalizedString
+    public var sessionExpiredMessage: RetailJourneyCommon.LocalizedString
+    public var sessionExpiredButtonOk: RetailJourneyCommon.LocalizedString
+    public var transactionLimitErrorTitle: RetailJourneyCommon.LocalizedString
+    public var transactionLimitErrorMessage: (Swift.Int, RetailRemoteDepositCaptureJourney.LimitType) -> Swift.String
+    public var depositLimitErrorTitle: (RetailRemoteDepositCaptureJourney.LimitType) -> Swift.String
+    public var depositLimitErrorMessage: (RetailRemoteDepositCaptureJourney.Amount, RetailRemoteDepositCaptureJourney.LimitType) -> Swift.String
+    public var depositLimitInfoMessage: (RetailRemoteDepositCaptureJourney.Amount, RetailRemoteDepositCaptureJourney.Amount, RetailRemoteDepositCaptureJourney.LimitType) -> Swift.String
+  }
+}
+public protocol RemoteDepositCaptureUseCase {
+  typealias StartSessionCompletion = (Swift.Result<RetailRemoteDepositCaptureJourney.Session, RetailRemoteDepositCaptureJourney.ErrorResponse>) -> Swift.Void
+  typealias EndSessionCompletion = (Swift.Result<Any, RetailRemoteDepositCaptureJourney.ErrorResponse>) -> Swift.Void
+  typealias CreateDepositBatchCompletion = (Swift.Result<RetailRemoteDepositCaptureJourney.DepositBatch, RetailRemoteDepositCaptureJourney.ErrorResponse>) -> Swift.Void
+  typealias UploadDepositItemCompletion = (Swift.Result<RetailRemoteDepositCaptureJourney.UploadDepositItemResponse, RetailRemoteDepositCaptureJourney.ErrorResponse>) -> Swift.Void
+  typealias UpdateDepositItemCompletion = (Swift.Result<RetailRemoteDepositCaptureJourney.UploadDepositItemResponse, RetailRemoteDepositCaptureJourney.ErrorResponse>) -> Swift.Void
+  typealias GetSessionInfoCompletion = (Swift.Result<RetailRemoteDepositCaptureJourney.SessionInfo, RetailRemoteDepositCaptureJourney.ErrorResponse>) -> Swift.Void
+  typealias SubmitDepositBatchCompletion = (Swift.Result<Any, RetailRemoteDepositCaptureJourney.ErrorResponse>) -> Swift.Void
+  typealias DeleteDepositBatchCompletion = (Swift.Result<Any, RetailRemoteDepositCaptureJourney.ErrorResponse>) -> Swift.Void
+  func startSession(completion: @escaping Self.StartSessionCompletion)
+  func getSessionInfoAndAccounts(session: RetailRemoteDepositCaptureJourney.SharedSession, completion: @escaping Self.StartSessionCompletion)
+  @available(*, deprecated, message: "End session is not called anymore because the session is reused between remote deposit capture and remote deposit history")
+  func endSession(session: RetailRemoteDepositCaptureJourney.Session, completion: @escaping Self.EndSessionCompletion)
+  func createDepositBatch(session: RetailRemoteDepositCaptureJourney.Session, account: RetailRemoteDepositCaptureJourney.Account, completion: @escaping Self.CreateDepositBatchCompletion)
+  func uploadDepositItem(session: RetailRemoteDepositCaptureJourney.Session, depositIdentifier: Swift.String, depositItem: RetailRemoteDepositCaptureJourney.DepositItemRequest, completion: @escaping Self.UploadDepositItemCompletion)
+  func submitDepositBatch(session: RetailRemoteDepositCaptureJourney.Session, depositBatchId: Swift.String, depositItemIndexes: [Swift.Int], completion: @escaping Self.SubmitDepositBatchCompletion)
+  func deleteDepositItem(session: RetailRemoteDepositCaptureJourney.Session, depositBatchId: Swift.String, depositItemIndex: Swift.Int, completion: @escaping Self.DeleteDepositBatchCompletion)
+  func updateDepositItem(session: RetailRemoteDepositCaptureJourney.Session, depositIdentifier: Swift.String, depositItem: RetailRemoteDepositCaptureJourney.DepositItemRequest, completion: @escaping Self.UpdateDepositItemCompletion)
+}
+extension RetailRemoteDepositCaptureJourney.RemoteDepositCaptureUseCase {
+  public func getSessionInfoAndAccounts(session: RetailRemoteDepositCaptureJourney.SharedSession, completion: @escaping Self.StartSessionCompletion)
+}
+public struct Review {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, reviewData: RetailRemoteDepositCaptureJourney.ReviewData) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.Review {
+  public struct Configuration {
+    public init()
+    public var dataMapper: RetailRemoteDepositCaptureJourney.Review.DataMapper
+    public var strings: RetailRemoteDepositCaptureJourney.Review.Strings
+    public var router: RetailRemoteDepositCaptureJourney.Review.Router
+    public var depositItemDeleteIcon: UIKit.UIImage
+    public var shouldShowInfoMessage: (RetailRemoteDepositCaptureJourney.DepositFlowType, RetailRemoteDepositCaptureJourney.DepositLimit) -> Swift.Bool
+  }
+}
+public struct ReviewData : Swift.Equatable {
+  public let session: RetailRemoteDepositCaptureJourney.Session
+  public let account: RetailRemoteDepositCaptureJourney.Account
+  public let depositBatch: RetailRemoteDepositCaptureJourney.DepositBatch
+  public init(session: RetailRemoteDepositCaptureJourney.Session, account: RetailRemoteDepositCaptureJourney.Account, depositBatch: RetailRemoteDepositCaptureJourney.DepositBatch)
+  public static func == (lhs: RetailRemoteDepositCaptureJourney.ReviewData, rhs: RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Bool
+}
+extension RetailRemoteDepositCaptureJourney.Review {
+  public struct DataMapper {
+    public var accountIcon: (RetailRemoteDepositCaptureJourney.Account) -> UIKit.UIImage?
+    public var accountName: (_ account: RetailRemoteDepositCaptureJourney.Account, _ strings: RetailRemoteDepositCaptureJourney.Review.Strings) -> Swift.String
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Review {
+  public struct Router {
+    public var addCheque: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ data: RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void
+    public var dismissReview: (_ navigationController: UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> Swift.Void
+    public var dismissAddCheque: (_ navigationController: UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> Swift.Void
+    public var onSuccess: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ data: RetailRemoteDepositCaptureJourney.CompletionData) -> Swift.Void
+    public var onFailure: (_ navigationController: UIKit.UINavigationController, _ configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ data: RetailRemoteDepositCaptureJourney.CompletionData) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Review {
+  public struct Strings {
+    public init()
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var title: RetailJourneyCommon.LocalizedString
+    public var submitActionTitle: RetailJourneyCommon.LocalizedString
+    public var depositItemTitle: RetailJourneyCommon.LocalizedString
+    public var depositItemFront: RetailJourneyCommon.LocalizedString
+    public var depositItemBack: RetailJourneyCommon.LocalizedString
+    public var accountTitle: RetailJourneyCommon.LocalizedString
+    public var multiDepositItemTitleFormat: RetailJourneyCommon.LocalizedString
+    public var addChequeActionTitle: RetailJourneyCommon.LocalizedString
+    public var maxChequesTitle: RetailJourneyCommon.LocalizedString
+    public var maxChequesFooterText: RetailJourneyCommon.LocalizedString
+    public var dismissAlertTitle: RetailJourneyCommon.LocalizedString
+    public var dismissAlertMessage: RetailJourneyCommon.LocalizedString
+    public var dismissAlertConfirm: RetailJourneyCommon.LocalizedString
+    public var deleteCheckAlertTitle: RetailJourneyCommon.LocalizedString
+    public var deleteCheckAlertMessage: RetailJourneyCommon.LocalizedString
+    public var deleteCheckAlertCancelTitle: RetailJourneyCommon.LocalizedString
+    public var deleteCheckAlertDeleteTitle: RetailJourneyCommon.LocalizedString
+    public var retryDeleteCheckAlertTitle: RetailJourneyCommon.LocalizedString
+    public var retryDeleteCheckAlertMessage: RetailJourneyCommon.LocalizedString
+    public var retryDeleteCheckAlertCancelTitle: RetailJourneyCommon.LocalizedString
+    public var retrtyDeleteCheckAlertTryTitle: RetailJourneyCommon.LocalizedString
+    public var deleteCheckFailureAlertMessage: RetailJourneyCommon.LocalizedString
+    public var deleteCheckFailureAlertExitTitle: RetailJourneyCommon.LocalizedString
+    public var loadingViewTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct Session : Swift.Equatable {
+  public let context: Swift.String
+  public let accounts: [RetailRemoteDepositCaptureJourney.Account]
+  public let accountIDs: [RetailRemoteDepositCaptureJourney.RDCAccountIdentifier]
+  public let sessionInfo: RetailRemoteDepositCaptureJourney.SessionInfo
+  public init(context: Swift.String, accounts: [RetailRemoteDepositCaptureJourney.Account])
+  public init(context: Swift.String, sessionInfo: RetailRemoteDepositCaptureJourney.SessionInfo, accounts: [RetailRemoteDepositCaptureJourney.Account])
+  public init(context: Swift.String, sessionInfo: RetailRemoteDepositCaptureJourney.SessionInfo, accounts: [RetailRemoteDepositCaptureJourney.Account], accountIDs: [RetailRemoteDepositCaptureJourney.RDCAccountIdentifier])
+  public static func == (a: RetailRemoteDepositCaptureJourney.Session, b: RetailRemoteDepositCaptureJourney.Session) -> Swift.Bool
+}
+public struct SessionInfo : Swift.Equatable {
+  public let depositLimit: RetailRemoteDepositCaptureJourney.DepositLimit?
+  public let transactionLimit: RetailRemoteDepositCaptureJourney.TransactionLimit?
+  public init(depositLimit: RetailRemoteDepositCaptureJourney.DepositLimit?, transactionLimit: RetailRemoteDepositCaptureJourney.TransactionLimit?)
+  public static func == (a: RetailRemoteDepositCaptureJourney.SessionInfo, b: RetailRemoteDepositCaptureJourney.SessionInfo) -> Swift.Bool
+}
+public struct DepositLimit : Swift.Equatable {
+  public let limitType: RetailRemoteDepositCaptureJourney.LimitType
+  public let remainingAmount: RetailRemoteDepositCaptureJourney.Amount
+  public let totalAmount: RetailRemoteDepositCaptureJourney.Amount
+  public init(limitType: RetailRemoteDepositCaptureJourney.LimitType, remainingAmount: RetailRemoteDepositCaptureJourney.Amount, totalAmount: RetailRemoteDepositCaptureJourney.Amount)
+  public static func == (a: RetailRemoteDepositCaptureJourney.DepositLimit, b: RetailRemoteDepositCaptureJourney.DepositLimit) -> Swift.Bool
+}
+public struct TransactionLimit : Swift.Equatable {
+  public let limitType: RetailRemoteDepositCaptureJourney.LimitType
+  public let remainingTransactions: Swift.Int
+  public let totalTransactions: Swift.Int
+  public init(limitType: RetailRemoteDepositCaptureJourney.LimitType, remainingTransactions: Swift.Int, totalTransactions: Swift.Int)
+  public static func == (a: RetailRemoteDepositCaptureJourney.TransactionLimit, b: RetailRemoteDepositCaptureJourney.TransactionLimit) -> Swift.Bool
+}
+public enum LimitType {
+  case calendarDay
+  case businessDay
+  case week
+  case biWeek
+  case month
+  case quarter
+  case year
+  case generic
+  public static func == (a: RetailRemoteDepositCaptureJourney.LimitType, b: RetailRemoteDepositCaptureJourney.LimitType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct SharedSession : Swift.Equatable, Swift.Codable {
+  public let context: Swift.String
+  public let accountIDs: [RetailRemoteDepositCaptureJourney.RDCAccountIdentifier]
+  public init(context: Swift.String, accountIDs: [RetailRemoteDepositCaptureJourney.RDCAccountIdentifier])
+  public static func == (a: RetailRemoteDepositCaptureJourney.SharedSession, b: RetailRemoteDepositCaptureJourney.SharedSession) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RDCAccountIdentifier : Swift.Equatable, Swift.Codable {
+  public var id: Swift.String
+  public var rdcId: Swift.String
+  public init(id: Swift.String, rdcId: Swift.String)
+  public static func == (a: RetailRemoteDepositCaptureJourney.RDCAccountIdentifier, b: RetailRemoteDepositCaptureJourney.RDCAccountIdentifier) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+}
+public struct Unverified {
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, reviewData: RetailRemoteDepositCaptureJourney.ReviewData, updateDepositItemClosure: @escaping (RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void, acceptDepositItemClosure: @escaping (RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void) -> UIKit.UIViewController
+}
+extension RetailRemoteDepositCaptureJourney.Unverified {
+  public struct Configuration {
+    public init()
+    public var strings: RetailRemoteDepositCaptureJourney.Unverified.Strings
+    public var router: RetailRemoteDepositCaptureJourney.Unverified.Router
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Unverified {
+  public struct Router {
+    public var dismiss: (_ navigationController: UIKit.UINavigationController, RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration) -> Swift.Void
+    public var onEditDeposit: (_ navigationController: UIKit.UINavigationController, _ config: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration, _ depositItemToEdit: RetailRemoteDepositCaptureJourney.ValidatedDepositItem, _ reviewData: RetailRemoteDepositCaptureJourney.ReviewData, _ onUpdate: @escaping (RetailRemoteDepositCaptureJourney.ReviewData) -> Swift.Void) -> Swift.Void
+  }
+}
+extension RetailRemoteDepositCaptureJourney.Unverified {
+  public struct Strings {
+    public init()
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var reasonTitle: RetailJourneyCommon.LocalizedString
+    public var loading: RetailJourneyCommon.LocalizedString
+    public var reasonMessage: RetailJourneyCommon.LocalizedString
+    public var confirmAction: RetailJourneyCommon.LocalizedString
+    public var editAction: RetailJourneyCommon.LocalizedString
+  }
+}
+public struct UploadDepositItemResponse {
+  public init(validatedDepositItem: RetailRemoteDepositCaptureJourney.ValidatedDepositItem?)
+  public let validatedDepositItem: RetailRemoteDepositCaptureJourney.ValidatedDepositItem?
+}
+public struct ValidatedDepositItem : Swift.Equatable {
+  @available(*, deprecated, message: "Use init(index:, batchSize:, frontImage:, backImage:, amount:) instead")
+  public init(index: Swift.Int, frontImage: RetailRemoteDepositCaptureJourney.DepositImage, backImage: RetailRemoteDepositCaptureJourney.DepositImage, userAmount: RetailRemoteDepositCaptureJourney.Amount, recognizedAmount: RetailRemoteDepositCaptureJourney.Amount?, depositStatus: RetailRemoteDepositCaptureJourney.DepositStatus)
+  public init(index: Swift.Int, batchSize: Swift.Int, frontImage: RetailRemoteDepositCaptureJourney.DepositImage, backImage: RetailRemoteDepositCaptureJourney.DepositImage, userAmount: RetailRemoteDepositCaptureJourney.Amount, recognizedAmount: RetailRemoteDepositCaptureJourney.Amount?, depositStatus: RetailRemoteDepositCaptureJourney.DepositStatus)
+  public var index: Swift.Int
+  public var batchSize: Swift.Int
+  public var frontImage: RetailRemoteDepositCaptureJourney.DepositImage
+  public var backImage: RetailRemoteDepositCaptureJourney.DepositImage
+  public var userAmount: RetailRemoteDepositCaptureJourney.Amount
+  public var recognizedAmount: RetailRemoteDepositCaptureJourney.Amount?
+  public var depositStatus: RetailRemoteDepositCaptureJourney.DepositStatus
+  public static func == (a: RetailRemoteDepositCaptureJourney.ValidatedDepositItem, b: RetailRemoteDepositCaptureJourney.ValidatedDepositItem) -> Swift.Bool
+}
+public enum ValidationResult : Swift.Equatable {
+  case valid
+  case invalid(Swift.String)
+  public static func == (a: RetailRemoteDepositCaptureJourney.ValidationResult, b: RetailRemoteDepositCaptureJourney.ValidationResult) -> Swift.Bool
+}
+extension RetailRemoteDepositCaptureJourney.BalanceDisplayOption : Swift.Hashable {}
+extension RetailRemoteDepositCaptureJourney.LimitType : Swift.Equatable {}
+extension RetailRemoteDepositCaptureJourney.LimitType : Swift.Hashable {}

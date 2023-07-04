@@ -1,0 +1,4 @@
+framework module EngagementBannersTargetingUseCase {
+  header "EngagementBannersTargetingUseCase-Swift.h"
+  requires objc
+}

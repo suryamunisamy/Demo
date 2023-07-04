@@ -1,0 +1,243 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailDesign
+import BackbaseDesignSystem
+import Foundation
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+@available(*, deprecated, message: "Use views from design system instead")
+public enum Background {
+  case solid(UIKit.UIColor?)
+  case gradient(RetailDesign.Gradient)
+  case image(UIKit.UIImage?)
+}
+@objc @_inheritsConvenienceInitializers @available(*, deprecated, message: "Use views from design system instead")
+@_Concurrency.MainActor(unsafe) open class BackgroundView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var bounds: CoreGraphics.CGRect {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var background: RetailDesign.Background? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Foundation.Bundle {
+  @available(*, deprecated, message: "Ensure you are not dependent on RetailDesign bundle.")
+  public static var retailDesign: Foundation.Bundle? {
+    get
+  }
+}
+@available(*, deprecated, message: "Use `Button` from design system instead")
+public enum ButtonType {
+  case primary
+  case secondary
+  case success
+  case warning
+  case danger
+  case info
+  case plain
+  public static func == (a: RetailDesign.ButtonType, b: RetailDesign.ButtonType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension QuartzCore.CALayer {
+  @available(*, deprecated, message: "Use `DesignSystem.shared.styles.shadow` instead")
+  public var shadow: BackbaseDesignSystem.DesignSystem.Shadow? {
+    get
+    set
+  }
+}
+@available(*, deprecated, message: "Use `StateView` from design system instead")
+public protocol EdgeCase {
+  var icon: UIKit.UIImage? { get }
+  var title: Swift.String { get }
+  var subtitle: Swift.String? { get }
+  var actionButtonTitle: Swift.String? { get }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Use `StateView` from design system instead")
+@_Concurrency.MainActor(unsafe) final public class EdgeCaseView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) convenience public init(edgeCase: RetailDesign.EdgeCase)
+  @_Concurrency.MainActor(unsafe) final public var edgeCase: RetailDesign.EdgeCase? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var imageView: UIKit.UIImageView
+  @_Concurrency.MainActor(unsafe) final public var titleLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public var subtitleLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public var actionButton: RetailDesign.LoadingButton
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Use `TextInput` from design system instead")
+@_Concurrency.MainActor(unsafe) final public class FormTextInput : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public var defaultStyle: BackbaseDesignSystem.Style<RetailDesign.FormTextInput>?
+  @_Concurrency.MainActor(unsafe) final public var errorStyle: BackbaseDesignSystem.Style<RetailDesign.FormTextInput>?
+  @_Concurrency.MainActor(unsafe) final public var placeholderLabel: UIKit.UILabel {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var textField: UIKit.UITextField {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var errorLabel: UIKit.UILabel {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc override final public func becomeFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override final public var accessibilityIdentifier: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc deinit
+}
+@available(*, deprecated, message: "Use `DesignSystem.Gradient` instead")
+public struct Gradient {
+  public struct Point {
+    public let point: CoreGraphics.CGPoint
+    public let color: UIKit.UIColor
+    public init(point: CoreGraphics.CGPoint, color: UIKit.UIColor)
+  }
+  public struct Location {
+    public let location: CoreGraphics.CGFloat
+    public let color: UIKit.UIColor
+    public init(location: CoreGraphics.CGFloat, color: UIKit.UIColor)
+  }
+  public let startPoint: RetailDesign.Gradient.Point
+  public let endPoint: RetailDesign.Gradient.Point
+  public let locations: [RetailDesign.Gradient.Location]
+  public init(startPoint: RetailDesign.Gradient.Point, endPoint: RetailDesign.Gradient.Point, locations: [RetailDesign.Gradient.Location] = [])
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Use `Button` from design system instead")
+@_Concurrency.MainActor(unsafe) final public class LoadingButton : UIKit.UIButton {
+  @_Concurrency.MainActor(unsafe) final public var indicator: UIKit.UIActivityIndicatorView {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override final public func setTitle(_ title: Swift.String?, for state: UIKit.UIControl.State)
+  @objc deinit
+}
+@objc @available(*, deprecated, message: "Create custom view instead")
+@_Concurrency.MainActor(unsafe) final public class OTPInput : UIKit.UIControl {
+  @_Concurrency.MainActor(unsafe) required public init(length: Swift.Int)
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc override final public func becomeFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) final public var isSecureTextEntry: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var text: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var fieldsBorderWidth: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var fieldsBorderColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var fieldsBackgroundColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var fieldsTextColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @objc deinit
+}
+extension RetailDesign.OTPInput : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc final public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+}
+extension BackbaseDesignSystem.DesignSystem.Shadow {
+  @available(*, deprecated, message: "Use UIGraphicsContext API to convert design system's shadow to an image.")
+  public func image(startPoint: CoreGraphics.CGPoint, endPoint: CoreGraphics.CGPoint) -> UIKit.UIImage?
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Use `ShimmerView` from design system instead.")
+@_Concurrency.MainActor(unsafe) final public class ShimmerView : UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?, highlightedImage: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) final public var hidesWhenStopped: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public func startAnimating()
+  @_Concurrency.MainActor(unsafe) @objc override final public func stopAnimating()
+  @_Concurrency.MainActor(unsafe) final public func startShimmering(speed: Foundation.TimeInterval = 1.5, repeatCount: Swift.Float = .infinity)
+  @_Concurrency.MainActor(unsafe) final public func stopShimmering()
+  @objc deinit
+}
+extension BackbaseDesignSystem.DesignSystem {
+  @available(*, deprecated, message: "Use `DesignSystem.shared.styles` instead")
+  public var retailStyles: BackbaseDesignSystem.DesignSystem.RetailStyles {
+    get
+    set
+  }
+  public struct RetailStyles {
+    @available(*, deprecated, message: "Style window manually instead")
+    public var window: (_ window: UIKit.UIWindow) -> Swift.Void
+    @available(*, deprecated, message: "Style view manually instead")
+    public var background: (_ view: UIKit.UIView) -> Swift.Void
+    @available(*, deprecated, message: "Use views from design system instead")
+    public var backgroundView: (_ view: RetailDesign.BackgroundView) -> Swift.Void
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.label` instead")
+    public var title: (_ label: UIKit.UILabel) -> Swift.Void
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.label` instead")
+    public var subtitle: (_ label: UIKit.UILabel) -> Swift.Void
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.label` instead")
+    public var body: (_ label: UIKit.UILabel) -> Swift.Void
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.loadingIndicator` instead")
+    public var activityIndicator: (_ style: UIKit.UIActivityIndicatorView.Style) -> BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView>
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.button` instead")
+    public var button: (_ type: RetailDesign.ButtonType) -> BackbaseDesignSystem.Style<UIKit.UIButton>
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.button` instead")
+    public var loadingButton: (_ type: RetailDesign.ButtonType) -> BackbaseDesignSystem.Style<RetailDesign.LoadingButton>
+    @available(*, deprecated, message: "Set style manually instead")
+    public var image: (_ view: UIKit.UIImageView) -> Swift.Void
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.textInput` instead")
+    public var formTextInput: (_ type: UIKit.UITextContentType) -> BackbaseDesignSystem.Style<RetailDesign.FormTextInput>
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.navigationBar` instead")
+    public var navigationBar: (_ bar: UIKit.UINavigationBar) -> Swift.Void
+    @available(*, deprecated, message: "Use `DesignSystem.shared.styles.tabBar` instead")
+    public var tabBar: (_ bar: UIKit.UITabBar) -> Swift.Void
+    @available(*, deprecated, message: "Create custom view instead")
+    public var otpInput: (_ input: RetailDesign.OTPInput) -> Swift.Void
+    @available(*, deprecated, message: "Use the `StateView`/`style.stateView` combination from design system instead.")
+    public var edgeCase: (_ view: RetailDesign.EdgeCaseView) -> Swift.Void
+    @available(*, deprecated, message: "Use `shimmerView` style from design system instead.")
+    public var shimmerView: (_ view: RetailDesign.ShimmerView) -> Swift.Void
+  }
+}
+extension UIKit.UIColor {
+  @available(*, deprecated, message: "Use `SolidColorBackgroundView` from design system instead")
+  public func image(withSize size: CoreGraphics.CGSize = .init(width: 1, height: 1)) -> UIKit.UIImage?
+}
+extension UIKit.UIImage {
+  @available(*, deprecated, message: "Use `UIImage.scale(targetSize:, renderingMode:)` from design system instead")
+  public func resized(to newSize: CoreGraphics.CGSize) -> UIKit.UIImage
+}
+extension UIKit.UIView {
+  @available(*, deprecated, message: "Use `UIView.addSubview(_:)` instead")
+  @_Concurrency.MainActor(unsafe) public func addSubviews(_ subviews: UIKit.UIView...)
+}
+@available(*, deprecated, message: "Use `Button` from design system instead")
+extension RetailDesign.ButtonType : Swift.Equatable {}
+@available(*, deprecated, message: "Use `Button` from design system instead")
+extension RetailDesign.ButtonType : Swift.Hashable {}

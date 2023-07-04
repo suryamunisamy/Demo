@@ -1,0 +1,29 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailCardsManagementJourneyCardsUseCase
+import Backbase
+import CardsClient2
+import ClientCommon
+import Foundation
+import Resolver
+import RetailCardsManagementJourney
+import Swift
+import _Concurrency
+final public class CardsUseCase : RetailCardsManagementJourney.CardsServiceUseCase {
+  public typealias GetCardsResultHandler = (Swift.Result<[RetailCardsManagementJourney.CardItem], RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public typealias PostLockStatusResultHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public typealias RequestPINResultHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public typealias ResetPINResultHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public typealias RequestReplacementResultHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public typealias ActivateCardResultHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public typealias ChangeLimitsResultHandler = (Swift.Result<RetailCardsManagementJourney.CardItem, RetailCardsManagementJourney.ErrorResponse>) -> Swift.Void
+  public init(client: CardsClient2.CardsAPIProtocol)
+  final public func getCards(requestParams: RetailCardsManagementJourney.GetCardsRequestParams?, completion: @escaping RetailCardsManagementJourneyCardsUseCase.CardsUseCase.GetCardsResultHandler)
+  final public func updateLockStatus(identifier: Swift.String, lockStatusPost: RetailCardsManagementJourney.LockStatusPost?, completion: @escaping RetailCardsManagementJourneyCardsUseCase.CardsUseCase.PostLockStatusResultHandler)
+  final public func requestPIN(identifier: Swift.String, requestPINPost: RetailCardsManagementJourney.RequestPINPost?, completion: @escaping RetailCardsManagementJourneyCardsUseCase.CardsUseCase.RequestPINResultHandler)
+  final public func resetPIN(identifier: Swift.String, resetPINPost: RetailCardsManagementJourney.ResetPINPost?, completion: @escaping RetailCardsManagementJourneyCardsUseCase.CardsUseCase.ResetPINResultHandler)
+  final public func requestReplacement(identifier: Swift.String, requestReplacementPost: RetailCardsManagementJourney.RequestReplacementPost?, completion: @escaping RetailCardsManagementJourneyCardsUseCase.CardsUseCase.RequestReplacementResultHandler)
+  final public func activateCard(identifier: Swift.String, activatePost: RetailCardsManagementJourney.ActivatePost?, completion: @escaping RetailCardsManagementJourneyCardsUseCase.CardsUseCase.ActivateCardResultHandler)
+  final public func changeLimits(postParams: RetailCardsManagementJourney.ChangeLimitPostParams, completion: @escaping RetailCardsManagementJourneyCardsUseCase.CardsUseCase.ChangeLimitsResultHandler)
+  @objc deinit
+}

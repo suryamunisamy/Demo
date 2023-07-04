@@ -1,0 +1,4 @@
+framework module ContactsClient2 {
+  header "ContactsClient2-Swift.h"
+  requires objc
+}

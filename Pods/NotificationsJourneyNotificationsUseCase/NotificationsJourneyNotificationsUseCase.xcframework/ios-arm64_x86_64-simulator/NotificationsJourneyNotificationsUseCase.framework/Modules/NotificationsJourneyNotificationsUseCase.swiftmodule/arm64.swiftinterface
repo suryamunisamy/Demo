@@ -1,0 +1,21 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NotificationsJourneyNotificationsUseCase
+import Backbase
+import ClientCommon
+import Foundation
+import NotificationsClient2
+import NotificationsJourney
+import Swift
+import UIKit
+import _Concurrency
+public class NotificationsJourneyNotificationsUseCase : NotificationsJourney.NotificationsUseCase {
+  convenience public init()
+  public init(notificationsAPI: NotificationsClient2.NotificationsAPIProtocol)
+  public func getNotifications(request: NotificationsJourney.GetNotificationsRequest, completion: @escaping GetNotificationsHandler)
+  public func deleteNotification(_ notificationId: Swift.String, completion: @escaping VoidErrorCompletionHandler)
+  public func markReadNotification(_ notificationId: Swift.String, read: Swift.Bool, completion: @escaping VoidErrorCompletionHandler)
+  public func markReadAllNotifications(completion: @escaping VoidErrorCompletionHandler)
+  public func getUnreadNotificationsCount(completion: @escaping GetUnreadNotificationsCountHandler)
+  @objc deinit
+}

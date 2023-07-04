@@ -1,0 +1,11 @@
+framework module BackbaseAnimation {
+  umbrella header "BackbaseAnimation-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module BackbaseAnimation.Swift {
+    header "BackbaseAnimation-Swift.h"
+    requires objc
+}

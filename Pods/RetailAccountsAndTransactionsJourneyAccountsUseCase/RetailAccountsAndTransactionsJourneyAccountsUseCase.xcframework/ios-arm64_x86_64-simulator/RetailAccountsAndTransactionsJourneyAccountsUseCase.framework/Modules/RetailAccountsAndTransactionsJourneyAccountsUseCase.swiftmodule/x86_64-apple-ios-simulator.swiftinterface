@@ -1,0 +1,24 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailAccountsAndTransactionsJourneyAccountsUseCase
+import ArrangementsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Resolver
+import RetailAccountsAndTransactionsJourney
+import RetailJourneyCommon
+import RxSwift
+import Swift
+import _Concurrency
+final public class RetailAccountsUseCase : RetailAccountsAndTransactionsJourney.AccountsUseCase, RetailAccountsAndTransactionsJourney.ArrangementsUseCase {
+  public init(client: ArrangementsClient2.ProductSummaryAPIProtocol)
+  public init(productSummarClient: ArrangementsClient2.ProductSummaryAPIProtocol, accountsClient: ArrangementsClient2.ArrangementsAPIProtocol)
+  @objc deinit
+}
+extension RetailAccountsAndTransactionsJourneyAccountsUseCase.RetailAccountsUseCase {
+  final public func retrieveArrangement(params: RetailAccountsAndTransactionsJourney.AccountArrangementItem.GetRequestParameters, completion: @escaping RetailAccountsAndTransactionsJourneyAccountsUseCase.RetailAccountsUseCase.RetrieveArrangementHandler)
+  final public func retrieveAccounts(params: RetailAccountsAndTransactionsJourney.ProductSummary.GetRequestParameters?, completion: @escaping RetailAccountsAndTransactionsJourneyAccountsUseCase.RetailAccountsUseCase.RetrieveAccountsHandler)
+  final public func retrieveUnmaskedAttribute(arrangementId: Swift.String, attributeName: RetailAccountsAndTransactionsJourney.MaskableAttribute, completion: @escaping RetailAccountsAndTransactionsJourneyAccountsUseCase.RetailAccountsUseCase.RetrieveUnmaskedAttributeHandler)
+  final public func updateUserPreferences(userPreferences: RetailAccountsAndTransactionsJourney.AccountUserPreferences, completion: @escaping RetailAccountsAndTransactionsJourneyAccountsUseCase.RetailAccountsUseCase.UpdateUserPreferencesHandler)
+}

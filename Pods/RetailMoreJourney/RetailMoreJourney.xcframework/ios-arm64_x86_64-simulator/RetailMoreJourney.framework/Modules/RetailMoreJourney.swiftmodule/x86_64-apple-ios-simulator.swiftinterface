@@ -1,0 +1,122 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailMoreJourney
+import BackbaseDesignSystem
+import Foundation
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+extension RetailMoreJourney.More.Design {
+  public enum Background {
+    case solid(UIKit.UIColor?)
+    case gradient(RetailMoreJourney.More.Design.Gradient)
+    case image(UIKit.UIImage?)
+  }
+  @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BackgroundView : UIKit.UIView {
+    @_Concurrency.MainActor(unsafe) @objc override dynamic open var bounds: CoreGraphics.CGRect {
+      @_Concurrency.MainActor(unsafe) @objc get
+      @_Concurrency.MainActor(unsafe) @objc set
+    }
+    @_Concurrency.MainActor(unsafe) open var background: RetailMoreJourney.More.Design.Background? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+    @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+    @objc deinit
+  }
+}
+extension Foundation.Bundle {
+  public static let more: Foundation.Bundle?
+}
+extension RetailMoreJourney.More.Design {
+  public struct Gradient {
+    public struct Point {
+      public let point: CoreGraphics.CGPoint
+      public let color: UIKit.UIColor
+      public init(point: CoreGraphics.CGPoint, color: UIKit.UIColor)
+    }
+    public struct Location {
+      public let location: CoreGraphics.CGFloat
+      public let color: UIKit.UIColor
+      public init(location: CoreGraphics.CGFloat, color: UIKit.UIColor)
+    }
+    public let startPoint: RetailMoreJourney.More.Design.Gradient.Point
+    public let endPoint: RetailMoreJourney.More.Design.Gradient.Point
+    public let locations: [RetailMoreJourney.More.Design.Gradient.Location]
+    public init(startPoint: RetailMoreJourney.More.Design.Gradient.Point, endPoint: RetailMoreJourney.More.Design.Gradient.Point, locations: [RetailMoreJourney.More.Design.Gradient.Location] = [])
+  }
+}
+public struct More {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+  public static func build(identifier: Swift.String) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+  public static func build(navigationController: UIKit.UINavigationController, configuration: RetailMoreJourney.More.Configuration) -> UIKit.UIViewController
+}
+extension RetailMoreJourney.More {
+  public struct Configuration {
+    public init()
+    public var tabItem: RetailJourneyCommon.TabItem
+    public var strings: RetailMoreJourney.More.Strings
+    public var design: RetailMoreJourney.More.Design
+    public var menu: RetailMoreJourney.More.Menu
+    public var router: RetailMoreJourney.More.Router
+    public var supplementaryBarButtons: ((UIKit.UINavigationController) -> [UIKit.UIBarButtonItem]?)?
+  }
+}
+extension RetailMoreJourney.More {
+  public struct Design {
+    public init()
+    public var background: (_ view: RetailMoreJourney.More.Design.BackgroundView) -> Swift.Void
+    public var itemBackground: (_ view: UIKit.UIView) -> Swift.Void
+    public var itemButton: (_ button: UIKit.UIButton) -> Swift.Void
+    public var itemIconWithBackground: (_ icon: BackbaseDesignSystem.Icon) -> Swift.Void
+    public var itemTitle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var itemSubtitle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var navigationItemTitleDisplayMode: UIKit.UINavigationItem.LargeTitleDisplayMode
+  }
+}
+extension RetailMoreJourney.More {
+  public struct Menu {
+    public init(showIcons: Swift.Bool = true, sections: [RetailMoreJourney.More.MenuSection] = [])
+    public init(showIcons: Swift.Bool = true, deferredSections: @autoclosure @escaping () -> [RetailMoreJourney.More.MenuSection])
+    public var showIcons: Swift.Bool
+    public var sections: [RetailMoreJourney.More.MenuSection]
+    public var deferredSections: (() -> [RetailMoreJourney.More.MenuSection])?
+  }
+}
+extension RetailMoreJourney.More {
+  public struct MenuItem {
+    public var title: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString?
+    public var icon: UIKit.UIImage?
+    public var iconBackgroundColor: UIKit.UIColor
+    public var action: ((UIKit.UINavigationController) -> Swift.Void)?
+    public init(title: RetailJourneyCommon.LocalizedString, subtitle: RetailJourneyCommon.LocalizedString? = nil, icon: UIKit.UIImage? = nil, iconBackgroundColor: UIKit.UIColor, action: ((UIKit.UINavigationController) -> Swift.Void)? = nil)
+  }
+}
+extension RetailMoreJourney.More {
+  public struct MenuSection {
+    public init(title: RetailJourneyCommon.LocalizedString? = nil, items: [RetailMoreJourney.More.MenuItem] = [])
+    public var title: RetailJourneyCommon.LocalizedString?
+    public var items: [RetailMoreJourney.More.MenuItem]
+  }
+}
+extension RetailMoreJourney.More {
+  public struct Router {
+    public init()
+    public var didTapItem: ((UIKit.UINavigationController) -> (RetailMoreJourney.More.MenuItem) -> Swift.Void)?
+  }
+}
+extension RetailMoreJourney.More {
+  public struct Strings {
+    public init()
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var tabTitle: RetailJourneyCommon.LocalizedString
+  }
+}

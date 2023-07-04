@@ -1,0 +1,662 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TransactionsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [TransactionsClient2.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [TransactionsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.BadRequestError, rhs: TransactionsClient2.BadRequestError) -> Swift.Bool
+}
+public protocol CategoryPeriodTotalsAPIProtocol {
+  func getCategoryPeriodTotalsCall(categories: [Swift.String], creditDebitIndicator: TransactionsClient2.CategoryPeriodTotalsAPI.CreditDebitIndicator_getCategoryPeriodTotals, periodStartDate: Swift.String, periodEndDate: Swift.String, intervalStartDay: Swift.Double?, arrangementIds: [Swift.String]?, intervalDuration: TransactionsClient2.CategoryPeriodTotalsAPI.IntervalDuration_getCategoryPeriodTotals?, parentCategory: Swift.String?) throws -> ClientCommon.Call<TransactionsClient2.CategoryPeriodTotalsGetResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class CategoryPeriodTotalsAPI : ObjectiveC.NSObject, DBSClient, TransactionsClient2.CategoryPeriodTotalsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  public enum CreditDebitIndicator_getCategoryPeriodTotals : Swift.String, Swift.CaseIterable {
+    case dbit
+    case crdt
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TransactionsClient2.CategoryPeriodTotalsAPI.CreditDebitIndicator_getCategoryPeriodTotals]
+    public static var allCases: [TransactionsClient2.CategoryPeriodTotalsAPI.CreditDebitIndicator_getCategoryPeriodTotals] {
+      get
+    }
+  }
+  public enum IntervalDuration_getCategoryPeriodTotals : Swift.String, Swift.CaseIterable {
+    case day
+    case week
+    case month
+    case year
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TransactionsClient2.CategoryPeriodTotalsAPI.IntervalDuration_getCategoryPeriodTotals]
+    public static var allCases: [TransactionsClient2.CategoryPeriodTotalsAPI.IntervalDuration_getCategoryPeriodTotals] {
+      get
+    }
+  }
+  open func getCategoryPeriodTotalsCall(categories: [Swift.String], creditDebitIndicator: TransactionsClient2.CategoryPeriodTotalsAPI.CreditDebitIndicator_getCategoryPeriodTotals, periodStartDate: Swift.String, periodEndDate: Swift.String, intervalStartDay: Swift.Double? = nil, arrangementIds: [Swift.String]? = nil, intervalDuration: TransactionsClient2.CategoryPeriodTotalsAPI.IntervalDuration_getCategoryPeriodTotals? = nil, parentCategory: Swift.String? = nil) throws -> ClientCommon.Call<TransactionsClient2.CategoryPeriodTotalsGetResponseBody>
+  @objc deinit
+}
+public struct CategoryPeriodTotalsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var total: TransactionsClient2.Currency?
+  public var intervalDuration: TransactionsClient2.Duration?
+  public var periods: [TransactionsClient2.Period]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(total: TransactionsClient2.Currency? = nil, intervalDuration: TransactionsClient2.Duration? = nil, periods: [TransactionsClient2.Period]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.CategoryPeriodTotalsGetResponseBody, rhs: TransactionsClient2.CategoryPeriodTotalsGetResponseBody) -> Swift.Bool
+}
+public protocol CategoryTotalsAPIProtocol {
+  func getCategorytotalsCall(creditDebitIndicator: TransactionsClient2.CategoryTotalsAPI.CreditDebitIndicator_getCategorytotals, periodStartDate: Swift.String, periodEndDate: Swift.String, arrangementIds: [Swift.String]?, intervalDuration: TransactionsClient2.CategoryTotalsAPI.IntervalDuration_getCategorytotals?, parentCategory: Swift.String?) throws -> ClientCommon.Call<TransactionsClient2.CategoryTotalsGetResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class CategoryTotalsAPI : ObjectiveC.NSObject, DBSClient, TransactionsClient2.CategoryTotalsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  public enum CreditDebitIndicator_getCategorytotals : Swift.String, Swift.CaseIterable {
+    case dbit
+    case crdt
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TransactionsClient2.CategoryTotalsAPI.CreditDebitIndicator_getCategorytotals]
+    public static var allCases: [TransactionsClient2.CategoryTotalsAPI.CreditDebitIndicator_getCategorytotals] {
+      get
+    }
+  }
+  public enum IntervalDuration_getCategorytotals : Swift.String, Swift.CaseIterable {
+    case day
+    case week
+    case month
+    case year
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TransactionsClient2.CategoryTotalsAPI.IntervalDuration_getCategorytotals]
+    public static var allCases: [TransactionsClient2.CategoryTotalsAPI.IntervalDuration_getCategorytotals] {
+      get
+    }
+  }
+  open func getCategorytotalsCall(creditDebitIndicator: TransactionsClient2.CategoryTotalsAPI.CreditDebitIndicator_getCategorytotals, periodStartDate: Swift.String, periodEndDate: Swift.String, arrangementIds: [Swift.String]? = nil, intervalDuration: TransactionsClient2.CategoryTotalsAPI.IntervalDuration_getCategorytotals? = nil, parentCategory: Swift.String? = nil) throws -> ClientCommon.Call<TransactionsClient2.CategoryTotalsGetResponseBody>
+  @objc deinit
+}
+public struct CategoryTotalsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var total: TransactionsClient2.Currency?
+  public var items: [TransactionsClient2.Item]
+  public var additions: [Swift.String : Swift.String]?
+  public init(total: TransactionsClient2.Currency? = nil, items: [TransactionsClient2.Item], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.CategoryTotalsGetResponseBody, rhs: TransactionsClient2.CategoryTotalsGetResponseBody) -> Swift.Bool
+}
+public enum CheckImageAvailability : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case available
+  case unavailable
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TransactionsClient2.CheckImageAvailability]
+  public static var allCases: [TransactionsClient2.CheckImageAvailability] {
+    get
+  }
+}
+public enum CheckImageSide : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case front
+  case back
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TransactionsClient2.CheckImageSide]
+  public static var allCases: [TransactionsClient2.CheckImageSide] {
+    get
+  }
+}
+public enum CheckImageType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case png
+  case jpeg
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TransactionsClient2.CheckImageType]
+  public static var allCases: [TransactionsClient2.CheckImageType] {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public enum CreditDebitIndicator : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case crdt
+  case dbit
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TransactionsClient2.CreditDebitIndicator]
+  public static var allCases: [TransactionsClient2.CreditDebitIndicator] {
+    get
+  }
+}
+public struct Currency : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.Currency, rhs: TransactionsClient2.Currency) -> Swift.Bool
+}
+public enum DisputeStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case undisputed
+  case pending
+  case rejected
+  case refunded
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TransactionsClient2.DisputeStatus]
+  public static var allCases: [TransactionsClient2.DisputeStatus] {
+    get
+  }
+}
+public enum Duration : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case day
+  case week
+  case month
+  case year
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TransactionsClient2.Duration]
+  public static var allCases: [TransactionsClient2.Duration] {
+    get
+  }
+}
+public struct EnumValuesByAttributeNameGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var value: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(value: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.EnumValuesByAttributeNameGetResponseBody, rhs: TransactionsClient2.EnumValuesByAttributeNameGetResponseBody) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String, key: Swift.String, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.ErrorItem, rhs: TransactionsClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [TransactionsClient2.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [TransactionsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.ForbiddenError, rhs: TransactionsClient2.ForbiddenError) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.InternalServerError, rhs: TransactionsClient2.InternalServerError) -> Swift.Bool
+}
+public struct Item : Swift.Codable, Swift.Equatable {
+  public var category: Swift.String
+  public var totalAmount: TransactionsClient2.Currency
+  public var trend: Swift.Double
+  public var portion: Swift.Double
+  public var additions: [Swift.String : Swift.String]?
+  public init(category: Swift.String, totalAmount: TransactionsClient2.Currency, trend: Swift.Double, portion: Swift.Double, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.Item, rhs: TransactionsClient2.Item) -> Swift.Bool
+}
+public protocol LeftToSpendAPIProtocol {
+  func getLeftToSpendCall(date: Foundation.Date, arrangementIds: [Swift.String]) throws -> ClientCommon.Call<TransactionsClient2.LeftToSpendGetResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class LeftToSpendAPI : ObjectiveC.NSObject, DBSClient, TransactionsClient2.LeftToSpendAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getLeftToSpendCall(date: Foundation.Date, arrangementIds: [Swift.String]) throws -> ClientCommon.Call<TransactionsClient2.LeftToSpendGetResponseBody>
+  @objc deinit
+}
+public struct LeftToSpendGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var daysLeft: Swift.Int?
+  public var incomeToDate: TransactionsClient2.Currency?
+  public var spentToDate: TransactionsClient2.Currency?
+  public var schedulePayments: TransactionsClient2.SchedulePayments?
+  public var leftToSpend: TransactionsClient2.Currency?
+  public var additions: [Swift.String : Swift.String]?
+  public init(daysLeft: Swift.Int? = nil, incomeToDate: TransactionsClient2.Currency? = nil, spentToDate: TransactionsClient2.Currency? = nil, schedulePayments: TransactionsClient2.SchedulePayments? = nil, leftToSpend: TransactionsClient2.Currency? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.LeftToSpendGetResponseBody, rhs: TransactionsClient2.LeftToSpendGetResponseBody) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [TransactionsClient2.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [TransactionsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.NotFoundError, rhs: TransactionsClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct PaymentItem : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var total: TransactionsClient2.Currency?
+  public init(name: Swift.String? = nil, total: TransactionsClient2.Currency? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.PaymentItem, rhs: TransactionsClient2.PaymentItem) -> Swift.Bool
+}
+public struct Period : Swift.Codable, Swift.Equatable {
+  public var total: TransactionsClient2.Currency?
+  public var intervalStartDate: Swift.String?
+  public var items: [TransactionsClient2.Item]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(total: TransactionsClient2.Currency? = nil, intervalStartDate: Swift.String? = nil, items: [TransactionsClient2.Item]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.Period, rhs: TransactionsClient2.Period) -> Swift.Bool
+}
+public struct SchedulePayments : Swift.Codable, Swift.Equatable {
+  public var paymentItems: [TransactionsClient2.PaymentItem]?
+  public var total: TransactionsClient2.Currency?
+  public init(paymentItems: [TransactionsClient2.PaymentItem]? = nil, total: TransactionsClient2.Currency? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.SchedulePayments, rhs: TransactionsClient2.SchedulePayments) -> Swift.Bool
+}
+public enum SortDirection : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case asc
+  case desc
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TransactionsClient2.SortDirection]
+  public static var allCases: [TransactionsClient2.SortDirection] {
+    get
+  }
+}
+public struct TransactionCheckImagesItem : Swift.Codable, Swift.Equatable {
+  public var side: TransactionsClient2.CheckImageSide
+  public var mimeType: TransactionsClient2.CheckImageType
+  public var content: Foundation.Data
+  public init(side: TransactionsClient2.CheckImageSide, mimeType: TransactionsClient2.CheckImageType, content: Foundation.Data)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.TransactionCheckImagesItem, rhs: TransactionsClient2.TransactionCheckImagesItem) -> Swift.Bool
+}
+public struct TransactionCheckImagesResponse : Swift.Codable, Swift.Equatable {
+  public var images: [TransactionsClient2.TransactionCheckImagesItem]
+  public init(images: [TransactionsClient2.TransactionCheckImagesItem])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.TransactionCheckImagesResponse, rhs: TransactionsClient2.TransactionCheckImagesResponse) -> Swift.Bool
+}
+public protocol TransactionClientAPIProtocol {
+  func getEnumValuesByAttributeNameCall(attributeName: Swift.String, subDomain: Swift.String?) throws -> ClientCommon.Call<[TransactionsClient2.EnumValuesByAttributeNameGetResponseBody]>
+  func getTransactionCheckImagesCall(transactionId: Swift.String) throws -> ClientCommon.Call<TransactionsClient2.TransactionCheckImagesResponse>
+  func getTransactionsCall(amountGreaterThan: Swift.Double?, amountLessThan: Swift.Double?, bookingDateGreaterThan: Swift.String?, bookingDateLessThan: Swift.String?, types: [Swift.String]?, description: Swift.String?, reference: Swift.String?, typeGroups: [Swift.String]?, counterPartyName: Swift.String?, counterPartyAccountNumber: Swift.String?, creditDebitIndicator: TransactionsClient2.CreditDebitIndicator?, categories: [Swift.String]?, billingStatus: Swift.String?, state: TransactionsClient2.TransactionState?, currency: Swift.String?, notes: Swift.Int?, id: Swift.String?, arrangementId: Swift.String?, arrangementsIds: [Swift.String]?, fromCheckSerialNumber: Swift.Int64?, toCheckSerialNumber: Swift.Int64?, checkSerialNumbers: [Swift.Int64]?, query: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?, orderBy: Swift.String?, direction: TransactionsClient2.SortDirection?, secDirection: TransactionsClient2.SortDirection?) throws -> ClientCommon.Call<[TransactionsClient2.TransactionItem]>
+  func getTransactionsExportCall(amountGreaterThan: Swift.Double?, amountLessThan: Swift.Double?, bookingDateGreaterThan: Swift.String?, bookingDateLessThan: Swift.String?, types: [Swift.String]?, categories: [Swift.String]?, description: Swift.String?, reference: Swift.String?, typeGroups: [Swift.String]?, counterPartyName: Swift.String?, counterPartyAccountNumber: Swift.String?, creditDebitIndicator: TransactionsClient2.CreditDebitIndicator?, billingStatus: Swift.String?, state: TransactionsClient2.TransactionState?, currency: Swift.String?, notes: Swift.Int?, id: Swift.String?, arrangementId: Swift.String?, arrangementsIds: [Swift.String]?, fromCheckSerialNumber: Swift.Int64?, toCheckSerialNumber: Swift.Int64?, checkSerialNumbers: [Swift.Int64]?, query: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?, orderBy: Swift.String?, direction: TransactionsClient2.SortDirection?, secDirection: TransactionsClient2.SortDirection?, exportType: Swift.String?, locale: Swift.String?) throws -> ClientCommon.Call<Foundation.Data>
+  func getTransactionsExportWithPostCall(transactionListRequest: TransactionsClient2.TransactionListRequest) throws -> ClientCommon.Call<Foundation.Data>
+  func getTransactionsWithPostCall(transactionListRequest: TransactionsClient2.TransactionListRequest) throws -> ClientCommon.Call<[TransactionsClient2.TransactionItem]>
+  func patchTransactionsCall(transactionsClientPatchRequestBody: [TransactionsClient2.TransactionsClientPatchRequestBody]) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class TransactionClientAPI : ObjectiveC.NSObject, DBSClient, TransactionsClient2.TransactionClientAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getEnumValuesByAttributeNameCall(attributeName: Swift.String, subDomain: Swift.String? = nil) throws -> ClientCommon.Call<[TransactionsClient2.EnumValuesByAttributeNameGetResponseBody]>
+  open func getTransactionCheckImagesCall(transactionId: Swift.String) throws -> ClientCommon.Call<TransactionsClient2.TransactionCheckImagesResponse>
+  open func getTransactionsCall(amountGreaterThan: Swift.Double? = nil, amountLessThan: Swift.Double? = nil, bookingDateGreaterThan: Swift.String? = nil, bookingDateLessThan: Swift.String? = nil, types: [Swift.String]? = nil, description: Swift.String? = nil, reference: Swift.String? = nil, typeGroups: [Swift.String]? = nil, counterPartyName: Swift.String? = nil, counterPartyAccountNumber: Swift.String? = nil, creditDebitIndicator: TransactionsClient2.CreditDebitIndicator? = nil, categories: [Swift.String]? = nil, billingStatus: Swift.String? = nil, state: TransactionsClient2.TransactionState? = nil, currency: Swift.String? = nil, notes: Swift.Int? = nil, id: Swift.String? = nil, arrangementId: Swift.String? = nil, arrangementsIds: [Swift.String]? = nil, fromCheckSerialNumber: Swift.Int64? = nil, toCheckSerialNumber: Swift.Int64? = nil, checkSerialNumbers: [Swift.Int64]? = nil, query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: TransactionsClient2.SortDirection? = nil, secDirection: TransactionsClient2.SortDirection? = nil) throws -> ClientCommon.Call<[TransactionsClient2.TransactionItem]>
+  open func getTransactionsExportCall(amountGreaterThan: Swift.Double? = nil, amountLessThan: Swift.Double? = nil, bookingDateGreaterThan: Swift.String? = nil, bookingDateLessThan: Swift.String? = nil, types: [Swift.String]? = nil, categories: [Swift.String]? = nil, description: Swift.String? = nil, reference: Swift.String? = nil, typeGroups: [Swift.String]? = nil, counterPartyName: Swift.String? = nil, counterPartyAccountNumber: Swift.String? = nil, creditDebitIndicator: TransactionsClient2.CreditDebitIndicator? = nil, billingStatus: Swift.String? = nil, state: TransactionsClient2.TransactionState? = nil, currency: Swift.String? = nil, notes: Swift.Int? = nil, id: Swift.String? = nil, arrangementId: Swift.String? = nil, arrangementsIds: [Swift.String]? = nil, fromCheckSerialNumber: Swift.Int64? = nil, toCheckSerialNumber: Swift.Int64? = nil, checkSerialNumbers: [Swift.Int64]? = nil, query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: TransactionsClient2.SortDirection? = nil, secDirection: TransactionsClient2.SortDirection? = nil, exportType: Swift.String? = nil, locale: Swift.String? = nil) throws -> ClientCommon.Call<Foundation.Data>
+  open func getTransactionsExportWithPostCall(transactionListRequest: TransactionsClient2.TransactionListRequest) throws -> ClientCommon.Call<Foundation.Data>
+  open func getTransactionsWithPostCall(transactionListRequest: TransactionsClient2.TransactionListRequest) throws -> ClientCommon.Call<[TransactionsClient2.TransactionItem]>
+  open func patchTransactionsCall(transactionsClientPatchRequestBody: [TransactionsClient2.TransactionsClientPatchRequestBody]) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct TransactionItem : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var arrangementId: Swift.String
+  public var reference: Swift.String?
+  public var description: Swift.String
+  public var originalDescription: Swift.String?
+  public var typeGroup: Swift.String
+  public var type: Swift.String
+  public var category: Swift.String?
+  public var categoryId: Swift.Int?
+  public var location: TransactionsClient2.TransactionLocation?
+  public var merchant: TransactionsClient2.TransactionMerchant?
+  public var bookingDate: Foundation.Date
+  public var valueDate: Foundation.Date?
+  public var creditDebitIndicator: TransactionsClient2.CreditDebitIndicator
+  public var transactionAmountCurrency: TransactionsClient2.Currency
+  public var instructedAmountCurrency: TransactionsClient2.Currency?
+  public var currencyExchangeRate: Swift.Double?
+  public var counterPartyName: Swift.String?
+  public var counterPartyAccountNumber: Swift.String?
+  public var counterPartyBIC: Swift.String?
+  public var counterPartyCity: Swift.String?
+  public var counterPartyAddress: Swift.String?
+  public var counterPartyCountry: Swift.String?
+  public var counterPartyBankName: Swift.String?
+  public var creditorId: Swift.String?
+  public var mandateReference: Swift.String?
+  public var billingStatus: Swift.String?
+  public var checkSerialNumber: Swift.Int64?
+  public var notes: Swift.String?
+  public var runningBalance: Swift.Double?
+  public var additions: [Swift.String : Swift.String]?
+  public var checkImageAvailability: TransactionsClient2.CheckImageAvailability?
+  public var creationTime: Foundation.Date?
+  public var disputeStatus: TransactionsClient2.DisputeStatus?
+  public var batchOrderId: Swift.String?
+  public var state: TransactionsClient2.TransactionState
+  public init(id: Swift.String, arrangementId: Swift.String, reference: Swift.String? = nil, description: Swift.String, originalDescription: Swift.String? = nil, typeGroup: Swift.String, type: Swift.String, category: Swift.String? = nil, categoryId: Swift.Int? = nil, location: TransactionsClient2.TransactionLocation? = nil, merchant: TransactionsClient2.TransactionMerchant? = nil, bookingDate: Foundation.Date, valueDate: Foundation.Date? = nil, creditDebitIndicator: TransactionsClient2.CreditDebitIndicator, transactionAmountCurrency: TransactionsClient2.Currency, instructedAmountCurrency: TransactionsClient2.Currency? = nil, currencyExchangeRate: Swift.Double? = nil, counterPartyName: Swift.String? = nil, counterPartyAccountNumber: Swift.String? = nil, counterPartyBIC: Swift.String? = nil, counterPartyCity: Swift.String? = nil, counterPartyAddress: Swift.String? = nil, counterPartyCountry: Swift.String? = nil, counterPartyBankName: Swift.String? = nil, creditorId: Swift.String? = nil, mandateReference: Swift.String? = nil, billingStatus: Swift.String? = nil, checkSerialNumber: Swift.Int64? = nil, notes: Swift.String? = nil, runningBalance: Swift.Double? = nil, additions: [Swift.String : Swift.String]? = nil, checkImageAvailability: TransactionsClient2.CheckImageAvailability? = nil, creationTime: Foundation.Date? = nil, disputeStatus: TransactionsClient2.DisputeStatus? = nil, batchOrderId: Swift.String? = nil, state: TransactionsClient2.TransactionState)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.TransactionItem, rhs: TransactionsClient2.TransactionItem) -> Swift.Bool
+}
+public struct TransactionListRequest : Swift.Codable, Swift.Equatable {
+  public var amountGreaterThan: Swift.Double?
+  public var amountLessThan: Swift.Double?
+  public var bookingDateGreaterThan: Foundation.Date?
+  public var bookingDateLessThan: Foundation.Date?
+  public var types: [Swift.String]?
+  public var description: Swift.String?
+  public var reference: Swift.String?
+  public var typeGroups: [Swift.String]?
+  public var counterPartyName: Swift.String?
+  public var counterPartyAccountNumber: Swift.String?
+  public var creditDebitIndicator: TransactionsClient2.CreditDebitIndicator?
+  public var categories: [Swift.String]?
+  public var billingStatus: Swift.String?
+  public var state: TransactionsClient2.TransactionState?
+  public var currency: Swift.String?
+  public var notes: Swift.Int?
+  public var id: Swift.String?
+  public var arrangementId: Swift.String?
+  public var arrangementsIds: [Swift.String]?
+  public var fromCheckSerialNumber: Swift.Int64?
+  public var toCheckSerialNumber: Swift.Int64?
+  public var checkSerialNumbers: [Swift.Int64]?
+  public var query: Swift.String?
+  public var from: Swift.Int?
+  public var cursor: Swift.String?
+  public var size: Swift.Int?
+  public var orderBy: Swift.String?
+  public var direction: TransactionsClient2.SortDirection?
+  public var secDirection: TransactionsClient2.SortDirection?
+  public var exportType: Swift.String?
+  public var locale: Swift.String?
+  public init(amountGreaterThan: Swift.Double? = nil, amountLessThan: Swift.Double? = nil, bookingDateGreaterThan: Foundation.Date? = nil, bookingDateLessThan: Foundation.Date? = nil, types: [Swift.String]? = nil, description: Swift.String? = nil, reference: Swift.String? = nil, typeGroups: [Swift.String]? = nil, counterPartyName: Swift.String? = nil, counterPartyAccountNumber: Swift.String? = nil, creditDebitIndicator: TransactionsClient2.CreditDebitIndicator? = nil, categories: [Swift.String]? = nil, billingStatus: Swift.String? = nil, state: TransactionsClient2.TransactionState? = nil, currency: Swift.String? = nil, notes: Swift.Int? = nil, id: Swift.String? = nil, arrangementId: Swift.String? = nil, arrangementsIds: [Swift.String]? = nil, fromCheckSerialNumber: Swift.Int64? = nil, toCheckSerialNumber: Swift.Int64? = nil, checkSerialNumbers: [Swift.Int64]? = nil, query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: TransactionsClient2.SortDirection? = nil, secDirection: TransactionsClient2.SortDirection? = nil, exportType: Swift.String? = nil, locale: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.TransactionListRequest, rhs: TransactionsClient2.TransactionListRequest) -> Swift.Bool
+}
+public struct TransactionLocation : Swift.Codable, Swift.Equatable {
+  public var id: Swift.Int
+  public var latitude: Swift.Double?
+  public var longitude: Swift.Double?
+  public var address: Swift.String?
+  public init(id: Swift.Int, latitude: Swift.Double? = nil, longitude: Swift.Double? = nil, address: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.TransactionLocation, rhs: TransactionsClient2.TransactionLocation) -> Swift.Bool
+}
+public struct TransactionMerchant : Swift.Codable, Swift.Equatable {
+  public var id: Swift.Int
+  public var name: Swift.String
+  public var logo: Swift.String?
+  public var website: Swift.String?
+  public init(id: Swift.Int, name: Swift.String, logo: Swift.String? = nil, website: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.TransactionMerchant, rhs: TransactionsClient2.TransactionMerchant) -> Swift.Bool
+}
+public enum TransactionState : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case completed
+  case uncompleted
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TransactionsClient2.TransactionState]
+  public static var allCases: [TransactionsClient2.TransactionState] {
+    get
+  }
+}
+public struct TransactionsClientPatchRequestBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var arrangementId: Swift.String
+  public var category: Swift.String?
+  public var categoryId: Swift.Int?
+  public var billingStatus: Swift.String?
+  public var notes: Swift.String?
+  public var disputeStatus: TransactionsClient2.DisputeStatus?
+  public var additions: [Swift.String : Swift.String]?
+  public var creationTime: Foundation.Date?
+  public init(id: Swift.String, arrangementId: Swift.String, category: Swift.String? = nil, categoryId: Swift.Int? = nil, billingStatus: Swift.String? = nil, notes: Swift.String? = nil, disputeStatus: TransactionsClient2.DisputeStatus? = nil, additions: [Swift.String : Swift.String]? = nil, creationTime: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.TransactionsClientPatchRequestBody, rhs: TransactionsClient2.TransactionsClientPatchRequestBody) -> Swift.Bool
+}
+public struct Turnover : Swift.Codable, Swift.Equatable {
+  public var intervalStartDate: Foundation.Date
+  public var creditAmount: TransactionsClient2.Currency
+  public var debitAmount: TransactionsClient2.Currency
+  public var balance: TransactionsClient2.Currency
+  public var additions: [Swift.String : Swift.String]?
+  public init(intervalStartDate: Foundation.Date, creditAmount: TransactionsClient2.Currency, debitAmount: TransactionsClient2.Currency, balance: TransactionsClient2.Currency, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.Turnover, rhs: TransactionsClient2.Turnover) -> Swift.Bool
+}
+public protocol TurnoversAPIProtocol {
+  func getTurnoversCall(periodStartDate: Swift.String, periodEndDate: Swift.String, intervalDuration: TransactionsClient2.TurnoversAPI.IntervalDuration_getTurnovers, arrangementIds: [Swift.String]?, intervalStartDay: Swift.Double?, forecast: TransactionsClient2.TurnoversAPI.Forecast_getTurnovers?) throws -> ClientCommon.Call<TransactionsClient2.TurnoversGetResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class TurnoversAPI : ObjectiveC.NSObject, DBSClient, TransactionsClient2.TurnoversAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  public enum IntervalDuration_getTurnovers : Swift.String, Swift.CaseIterable {
+    case day
+    case week
+    case month
+    case year
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TransactionsClient2.TurnoversAPI.IntervalDuration_getTurnovers]
+    public static var allCases: [TransactionsClient2.TurnoversAPI.IntervalDuration_getTurnovers] {
+      get
+    }
+  }
+  public enum Forecast_getTurnovers : Swift.String, Swift.CaseIterable {
+    case _none
+    case avg
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TransactionsClient2.TurnoversAPI.Forecast_getTurnovers]
+    public static var allCases: [TransactionsClient2.TurnoversAPI.Forecast_getTurnovers] {
+      get
+    }
+  }
+  open func getTurnoversCall(periodStartDate: Swift.String, periodEndDate: Swift.String, intervalDuration: TransactionsClient2.TurnoversAPI.IntervalDuration_getTurnovers, arrangementIds: [Swift.String]? = nil, intervalStartDay: Swift.Double? = nil, forecast: TransactionsClient2.TurnoversAPI.Forecast_getTurnovers? = nil) throws -> ClientCommon.Call<TransactionsClient2.TurnoversGetResponseBody>
+  @objc deinit
+}
+public struct TurnoversGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var arrangementIds: [Swift.String]?
+  public var intervalDuration: TransactionsClient2.Duration?
+  public var avgCreditAmount: TransactionsClient2.Currency?
+  public var avgDebitAmount: TransactionsClient2.Currency?
+  public var turnovers: [TransactionsClient2.Turnover]
+  public var forecast: [TransactionsClient2.Turnover]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(arrangementIds: [Swift.String]? = nil, intervalDuration: TransactionsClient2.Duration? = nil, avgCreditAmount: TransactionsClient2.Currency? = nil, avgDebitAmount: TransactionsClient2.Currency? = nil, turnovers: [TransactionsClient2.Turnover], forecast: [TransactionsClient2.Turnover]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.TurnoversGetResponseBody, rhs: TransactionsClient2.TurnoversGetResponseBody) -> Swift.Bool
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [TransactionsClient2.ErrorItem]?
+  public init(message: Swift.String, key: Swift.String, errors: [TransactionsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TransactionsClient2.UnauthorizedError, rhs: TransactionsClient2.UnauthorizedError) -> Swift.Bool
+}
+extension TransactionsClient2.CategoryPeriodTotalsAPI.CreditDebitIndicator_getCategoryPeriodTotals : Swift.Equatable {}
+extension TransactionsClient2.CategoryPeriodTotalsAPI.CreditDebitIndicator_getCategoryPeriodTotals : Swift.Hashable {}
+extension TransactionsClient2.CategoryPeriodTotalsAPI.CreditDebitIndicator_getCategoryPeriodTotals : Swift.RawRepresentable {}
+extension TransactionsClient2.CategoryPeriodTotalsAPI.IntervalDuration_getCategoryPeriodTotals : Swift.Equatable {}
+extension TransactionsClient2.CategoryPeriodTotalsAPI.IntervalDuration_getCategoryPeriodTotals : Swift.Hashable {}
+extension TransactionsClient2.CategoryPeriodTotalsAPI.IntervalDuration_getCategoryPeriodTotals : Swift.RawRepresentable {}
+extension TransactionsClient2.CategoryTotalsAPI.CreditDebitIndicator_getCategorytotals : Swift.Equatable {}
+extension TransactionsClient2.CategoryTotalsAPI.CreditDebitIndicator_getCategorytotals : Swift.Hashable {}
+extension TransactionsClient2.CategoryTotalsAPI.CreditDebitIndicator_getCategorytotals : Swift.RawRepresentable {}
+extension TransactionsClient2.CategoryTotalsAPI.IntervalDuration_getCategorytotals : Swift.Equatable {}
+extension TransactionsClient2.CategoryTotalsAPI.IntervalDuration_getCategorytotals : Swift.Hashable {}
+extension TransactionsClient2.CategoryTotalsAPI.IntervalDuration_getCategorytotals : Swift.RawRepresentable {}
+extension TransactionsClient2.CheckImageAvailability : Swift.Equatable {}
+extension TransactionsClient2.CheckImageAvailability : Swift.Hashable {}
+extension TransactionsClient2.CheckImageAvailability : Swift.RawRepresentable {}
+extension TransactionsClient2.CheckImageSide : Swift.Equatable {}
+extension TransactionsClient2.CheckImageSide : Swift.Hashable {}
+extension TransactionsClient2.CheckImageSide : Swift.RawRepresentable {}
+extension TransactionsClient2.CheckImageType : Swift.Equatable {}
+extension TransactionsClient2.CheckImageType : Swift.Hashable {}
+extension TransactionsClient2.CheckImageType : Swift.RawRepresentable {}
+extension TransactionsClient2.CreditDebitIndicator : Swift.Equatable {}
+extension TransactionsClient2.CreditDebitIndicator : Swift.Hashable {}
+extension TransactionsClient2.CreditDebitIndicator : Swift.RawRepresentable {}
+extension TransactionsClient2.DisputeStatus : Swift.Equatable {}
+extension TransactionsClient2.DisputeStatus : Swift.Hashable {}
+extension TransactionsClient2.DisputeStatus : Swift.RawRepresentable {}
+extension TransactionsClient2.Duration : Swift.Equatable {}
+extension TransactionsClient2.Duration : Swift.Hashable {}
+extension TransactionsClient2.Duration : Swift.RawRepresentable {}
+extension TransactionsClient2.SortDirection : Swift.Equatable {}
+extension TransactionsClient2.SortDirection : Swift.Hashable {}
+extension TransactionsClient2.SortDirection : Swift.RawRepresentable {}
+extension TransactionsClient2.TransactionState : Swift.Equatable {}
+extension TransactionsClient2.TransactionState : Swift.Hashable {}
+extension TransactionsClient2.TransactionState : Swift.RawRepresentable {}
+extension TransactionsClient2.TurnoversAPI.IntervalDuration_getTurnovers : Swift.Equatable {}
+extension TransactionsClient2.TurnoversAPI.IntervalDuration_getTurnovers : Swift.Hashable {}
+extension TransactionsClient2.TurnoversAPI.IntervalDuration_getTurnovers : Swift.RawRepresentable {}
+extension TransactionsClient2.TurnoversAPI.Forecast_getTurnovers : Swift.Equatable {}
+extension TransactionsClient2.TurnoversAPI.Forecast_getTurnovers : Swift.Hashable {}
+extension TransactionsClient2.TurnoversAPI.Forecast_getTurnovers : Swift.RawRepresentable {}

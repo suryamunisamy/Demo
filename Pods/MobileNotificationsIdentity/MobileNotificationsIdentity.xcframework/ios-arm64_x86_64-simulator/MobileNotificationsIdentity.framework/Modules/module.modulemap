@@ -1,0 +1,11 @@
+framework module MobileNotificationsIdentity {
+  umbrella header "MobileNotificationsIdentity.h"
+
+  export *
+  module * { export * }
+}
+
+module MobileNotificationsIdentity.Swift {
+    header "MobileNotificationsIdentity-Swift.h"
+    requires objc
+}

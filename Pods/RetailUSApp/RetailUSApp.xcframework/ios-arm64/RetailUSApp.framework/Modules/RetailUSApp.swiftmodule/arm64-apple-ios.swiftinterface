@@ -1,0 +1,279 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailUSApp
+import AccessControlClient2
+import AccountStatementsClient2
+import ArrangementsClient2
+import Backbase
+import BackbaseAnimation
+import BackbaseAppUpdater
+import BackbaseAppUpdaterUseCase
+import BackbaseDesignSystem
+import BackbaseLottieAnimation
+import BusinessJourneyCommon
+import BusinessWorkspacesJourney
+import BusinessWorkspacesJourneyWorkspacesUseCase2
+import CardsClient2
+import ContentServicesClient1
+import EngagementBannersTargetingUseCase
+import EngagementsClient1
+import Foundation
+import IdentityAuthenticationJourney
+import IdentitySelfEnrollmentJourney
+import LocalAuthentication
+import MessagesJourney
+import MessagesJourneyMessagesUseCase
+import MobileNotificationsCore
+import MobileNotificationsIdentity
+import MobileNotificationsPresentation
+import NotificationsJourney
+import NotificationsJourneyNotificationSettingsUseCase
+import NotificationsJourneyNotificationsUseCase
+import PaymentOrderClient2
+import PlacesClient2
+import PocketsClient2
+import PushTokenClient
+import Resolver
+import RetailAccountStatementsJourney
+import RetailAccountStatementsJourneyAccountStatementsUseCase
+import RetailAccountsAndTransactionsFinancialInstitutionsUseCase
+import RetailAccountsAndTransactionsJourney
+import RetailAccountsAndTransactionsJourneyAccountsUseCase
+import RetailAccountsAndTransactionsJourneyTransactionsUseCase
+import RetailAppCommon
+import RetailCardsManagementJourney
+import RetailCardsManagementJourneyCardsUseCase
+import RetailCardsManagementJourneyTravelNoticesUseCase
+import RetailContactsJourney
+import RetailContactsJourneyUseCase
+import RetailFeatureFilterAccessControlEntitlementsUseCase
+import RetailFeatureFilterUseCase
+import RetailFinancialInsightsJourney
+import RetailFinancialInsightsJourneyIncomeExpenseAnalyzerUseCase
+import RetailJourneyCommon
+import RetailLocaleSelectorJourney
+import RetailLocaleSelectorJourneyPersistentUseCase
+import RetailMoreJourney
+import RetailPaymentJourney
+import RetailPlacesJourney
+import RetailPlacesJourneyUseCase
+import RetailPocketsJourney
+import RetailPocketsJourneyArrangementsUseCase
+import RetailPocketsJourneyPaymentsUseCase
+import RetailPocketsJourneyPocketsUseCase
+import RetailRemoteDepositCaptureJourney
+import RetailRemoteDepositCaptureJourneyUseCase
+import RetailRemoteDepositHistoryJourney
+import RetailRemoteDepositHistoryJourneyUseCase
+import RetailUpcomingPaymentsJourney
+import RetailUpcomingPaymentsJourneyUseCase
+import RetailUserContextSelectorJourney
+import RetailUserContextSelectorJourneyAccessControlUseCase
+import RxCocoa
+import RxSwift
+import Swift
+import TransactionsClient2
+import UIKit
+import UserManagerClient2
+import UserManagerUserProfileUseCase
+import UserProfileJourney
+import _Concurrency
+extension RetailAccountStatementsJourney.RetailAccountStatements.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailAccountsAndTransactionsJourney.AccountsAndTransactions.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension EngagementBannersOrchestratorUseCase : RetailAccountsAndTransactionsJourney.AccountsBannerUseCase {
+}
+extension BackbaseAppUpdater.AppUpdater.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension IdentityAuthenticationJourney.Authentication.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension IdentityAuthenticationJourney.IdentityAuthenticationUseCase : RetailAppCommon.AppDependency {
+  final public func register()
+}
+extension Foundation.Bundle {
+  public static var app: Foundation.Bundle? {
+    get
+  }
+}
+extension RetailCardsManagementJourney.CardsManagement.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailContactsJourney.Contacts.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+@_hasMissingDesignatedInitializers final public class FeatureFilter {
+  final public var features: [RetailUSApp.FeatureFilter.Feature]? {
+    get
+  }
+  public enum Feature : Swift.CaseIterable {
+    case accountsAndTransactions
+    case cards
+    case contacts
+    case financialInsights
+    case makeTransfer
+    case messages
+    case moveMoney
+    case notifications
+    case remoteDepositCapture
+    case scheduledTransfer
+    public static func == (a: RetailUSApp.FeatureFilter.Feature, b: RetailUSApp.FeatureFilter.Feature) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [RetailUSApp.FeatureFilter.Feature]
+    public static var allCases: [RetailUSApp.FeatureFilter.Feature] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+extension RetailUSApp.FeatureFilter : RetailAppCommon.AppDependency {
+  final public func register()
+}
+extension RetailFinancialInsightsJourney.FinancialInsights.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailLocaleSelectorJourney.LocaleSelector.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension MessagesJourney.Messages.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailMoreJourney.More.Configuration : RetailAppCommon.AppDependency {
+}
+extension NotificationsJourney.Notifications.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension MobileNotificationsCore.NotificationsFramework : RetailAppCommon.AppDependency {
+}
+extension RetailPaymentJourney.RetailPayment.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+public struct PaymentHub {
+  public var configuration: RetailMoreJourney.More.Configuration
+  public static let identifier: Swift.String
+}
+extension RetailUSApp.PaymentHub : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailPlacesJourney.Places.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailPocketsJourney.Pockets.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+public struct RetailUSAppConfiguration : RetailAppCommon.AppConfiguration {
+  public typealias State = RetailUSApp.RetailUSAppState
+  public typealias Router = RetailUSApp.RetailUSAppRouter
+  public init()
+  public var router: RetailUSApp.RetailUSAppRouter
+  public var security: RetailAppCommon.Security.Configuration
+  public var splash: RetailAppCommon.Splash.Configuration
+  public var contacts: RetailContactsJourney.Contacts.Configuration
+  public var localeSelector: RetailLocaleSelectorJourney.LocaleSelector.Configuration
+  public var authentication: IdentityAuthenticationJourney.Authentication.Configuration
+  public var accountsAndTransactions: RetailAccountsAndTransactionsJourney.AccountsAndTransactions.Configuration
+  public var accountStatements: RetailAccountStatementsJourney.RetailAccountStatements.Configuration
+  public var payment: RetailPaymentJourney.RetailPayment.Configuration
+  public var p2pPayment: RetailPaymentJourney.RetailPayment.Configuration
+  public var paymentHub: RetailUSApp.PaymentHub {
+    get
+    set
+  }
+  public var more: RetailMoreJourney.More.Configuration {
+    get
+    set
+  }
+  public var upcomingPayments: RetailUpcomingPaymentsJourney.UpcomingPayments.Configuration
+  public var notifications: NotificationsJourney.Notifications.Configuration
+  public var messages: MessagesJourney.Messages.Configuration
+  public var cardsManagement: RetailCardsManagementJourney.CardsManagement.Configuration
+  public var pockets: RetailPocketsJourney.Pockets.Configuration
+  @available(*, deprecated, message: "Use the `workspaces` instead.")
+  public var userContextSelector: RetailUserContextSelectorJourney.UserContextSelector.Configuration
+  public var remoteDepositCapture: RetailRemoteDepositCaptureJourney.RemoteDepositCapture.Configuration
+  public var remoteDepositHistory: RetailRemoteDepositHistoryJourney.RemoteDepositHistory.Configuration
+  public var workspaces: BusinessWorkspacesJourney.Workspaces.Configuration
+  public var featureFlags: RetailUSApp.RetailUSAppFeatureFlags
+  public var userProfile: UserProfileJourney.UserProfile.Configuration
+  public var selfEnrollment: IdentitySelfEnrollmentJourney.SelfEnrollment.Configuration
+  public var appUpdater: BackbaseAppUpdater.AppUpdater.Configuration
+  public var places: RetailPlacesJourney.Places.Configuration
+  public var financialInsights: RetailFinancialInsightsJourney.FinancialInsights.Configuration
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class RetailUSAppDelegate : RetailAppCommon.AppDelegate<RetailUSApp.RetailUSAppConfiguration> {
+  @objc override open func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) open func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @objc @_Concurrency.MainActor(unsafe) open func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  @objc @_Concurrency.MainActor(unsafe) open func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var notificationsFramework: MobileNotificationsCore.NotificationsFramework {
+    get
+    set
+  }
+  @objc override dynamic public init()
+  override public init(configuration: RetailAppCommon.AppDelegate<RetailUSApp.RetailUSAppConfiguration>.Configuration? = nil)
+  @objc deinit
+}
+public struct RetailUSAppFeatureFlags : RetailAppCommon.AppDependency {
+  public var useWorkspacesJourney: Swift.Bool
+  public var useAppUpdaterJourney: Swift.Bool
+  public var useSelfEnrollmentJourney: Swift.Bool
+  public var useNotificationsJourney: Swift.Bool
+  public var useMessagesJourney: Swift.Bool
+  public var showRDCInMoreMenu: Swift.Bool
+}
+open class RetailUSAppRouter : RetailAppCommon.AppRouter {
+  public typealias State = RetailUSApp.RetailUSAppState
+  required public init()
+  public var didStartApp: RetailAppCommon.AppWindowUpdater?
+  public var didUpdateState: ((RetailUSApp.RetailUSAppState) -> RetailAppCommon.AppWindowUpdater)?
+  public var didSelectNotifications: ((UIKit.UINavigationController) -> () -> Swift.Void)?
+  public var didSelectPushNotification: ((MobileNotificationsCore.PushNotification) -> Swift.Void)?
+  public static func navigationController(startingWith screenBuilder: (UIKit.UINavigationController) -> UIKit.UIViewController) -> UIKit.UINavigationController
+  @objc deinit
+}
+public enum RetailUSAppState : RetailAppCommon.AppState {
+  case splash
+  case notLoggedInNotEnrolled
+  case notLoggedInEnrolled
+  case loggedInEnrolled
+  case sessionExpired
+  case accountLocked
+  public var entryPoint: RetailAppCommon.EntryPoint {
+    get
+  }
+  public static func == (a: RetailUSApp.RetailUSAppState, b: RetailUSApp.RetailUSAppState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension IdentitySelfEnrollmentJourney.SelfEnrollment.Configuration : RetailAppCommon.AppDependency {
+}
+extension RetailUpcomingPaymentsJourney.UpcomingPayments.Configuration : RetailAppCommon.AppDependency {
+}
+extension RetailUserContextSelectorJourney.UserContextSelector.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension UserProfileJourney.UserProfile.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension BusinessWorkspacesJourney.Workspaces.Configuration : RetailAppCommon.AppDependency {
+  public func register()
+}
+extension RetailUSApp.FeatureFilter.Feature : Swift.Equatable {}
+extension RetailUSApp.FeatureFilter.Feature : Swift.Hashable {}
+extension RetailUSApp.RetailUSAppState : Swift.Equatable {}
+extension RetailUSApp.RetailUSAppState : Swift.Hashable {}

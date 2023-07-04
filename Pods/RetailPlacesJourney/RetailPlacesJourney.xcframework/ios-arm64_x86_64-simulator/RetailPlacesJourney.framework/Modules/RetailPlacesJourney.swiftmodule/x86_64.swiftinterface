@@ -1,0 +1,235 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailPlacesJourney
+import BackbaseDesignSystem
+import CoreLocation
+import Foundation
+import MapKit
+import Resolver
+import RetailJourneyCommon
+import RxCocoa
+import RxRelay
+import RxSwift
+import Swift
+import UIKit
+import _Concurrency
+extension Foundation.Bundle {
+  public static var placesBundle: Foundation.Bundle? {
+    get
+  }
+}
+public struct ErrorResponse : Swift.Error, Swift.Equatable {
+  public let statusCode: Swift.Int?
+  public let data: Foundation.Data?
+  public let error: Swift.Error?
+  public init(statusCode: Swift.Int? = nil, data: Foundation.Data? = nil, error: Swift.Error? = nil)
+  public static func == (lhs: RetailPlacesJourney.ErrorResponse, rhs: RetailPlacesJourney.ErrorResponse) -> Swift.Bool
+}
+public struct Hour {
+  public var day: Swift.Int
+  public var open: Swift.String
+  public var close: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(day: Swift.Int, open: Swift.String, close: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+}
+public struct Place {
+  public var id: Swift.String
+  public var name: Swift.String?
+  public var address: RetailPlacesJourney.PlaceAddress?
+  public var hours: [RetailPlacesJourney.Hour]?
+  public var latitude: Swift.Double
+  public var longitude: Swift.Double
+  public var placeType: Swift.String?
+  public var services: [Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, name: Swift.String? = nil, address: RetailPlacesJourney.PlaceAddress? = nil, hours: [RetailPlacesJourney.Hour]? = nil, latitude: Swift.Double, longitude: Swift.Double, placeType: Swift.String? = nil, services: [Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+}
+public struct PlaceAddress {
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var addressLine3: Swift.String?
+  public var postalCode: Swift.String?
+  public var country: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, addressLine3: Swift.String? = nil, postalCode: Swift.String? = nil, country: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+}
+public struct PlaceDetails {
+  public static func build(navigationController: UIKit.UINavigationController, place: RetailPlacesJourney.Place) -> UIKit.UIViewController
+}
+extension RetailPlacesJourney.PlaceDetails {
+  public struct Configuration {
+    public init()
+    public var design: RetailPlacesJourney.PlaceDetails.Design
+    public var strings: RetailPlacesJourney.PlaceDetails.Strings
+    public var router: RetailPlacesJourney.PlaceDetails.Router
+  }
+}
+extension RetailPlacesJourney.PlaceDetails {
+  public struct Design {
+    public var styles: RetailPlacesJourney.PlaceDetails.Design.Styles
+    public var closeButtonIcon: UIKit.UIImage?
+    public var openingHoursHeaderIcon: UIKit.UIImage?
+    public var availableServicesHeaderIcon: UIKit.UIImage?
+    public var atmPlaceIcon: UIKit.UIImage?
+    public var branchPlaceIcon: UIKit.UIImage?
+  }
+}
+extension RetailPlacesJourney.PlaceDetails {
+  public struct Router {
+    public var didSelectGetDirections: ((UIKit.UINavigationController) -> (RetailPlacesJourney.Place, RetailPlacesJourney.Places.Configuration) -> Swift.Void)
+    public var didSelectDismiss: ((UIKit.UINavigationController) -> Swift.Void)
+  }
+}
+extension RetailPlacesJourney.PlaceDetails {
+  public struct Strings {
+    public var placeTypeAtmTitle: RetailJourneyCommon.LocalizedString
+    public var placeTypeBranchTitle: RetailJourneyCommon.LocalizedString
+    public var openingHoursTitle: RetailJourneyCommon.LocalizedString
+    public var availableServicesTitle: RetailJourneyCommon.LocalizedString
+    public var getDirectionsButtonTitle: RetailJourneyCommon.LocalizedString
+    public var notAvailableTitle: RetailJourneyCommon.LocalizedString
+    public var openBadgeTitle: RetailJourneyCommon.LocalizedString
+    public var openInMapsActionTitle: RetailJourneyCommon.LocalizedString
+    public var cancelActionTitle: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPlacesJourney.PlaceDetails.Design {
+  public struct Styles {
+    public var placeName: (_ label: UIKit.UILabel) -> Swift.Void
+    public var placeType: (_ label: UIKit.UILabel) -> Swift.Void
+    public var placeAddress: (_ label: UIKit.UILabel) -> Swift.Void
+    public var headerTitle: (_ label: UIKit.UILabel) -> Swift.Void
+    public var placeOpeningHours: (_ label: UIKit.UILabel) -> Swift.Void
+    public var placeOpeningHoursForToday: (_ label: UIKit.UILabel) -> Swift.Void
+    public var placeAvailableServices: (_ label: UIKit.UILabel) -> Swift.Void
+    public var placeTypeIcon: (_ view: BackbaseDesignSystem.IconView) -> Swift.Void
+  }
+}
+public struct Places {
+}
+extension RetailPlacesJourney.Places {
+  public struct Configuration {
+    public init()
+    public var placesMap: RetailPlacesJourney.PlacesMap.Configuration
+    public var placeDetails: RetailPlacesJourney.PlaceDetails.Configuration
+    public var placesSearch: RetailPlacesJourney.PlacesSearch.Configuration
+  }
+}
+extension RetailPlacesJourney.Places {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailPlacesJourney.Places.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    public static func == (lhs: RetailPlacesJourney.Places.Error, rhs: RetailPlacesJourney.Places.Error) -> Swift.Bool
+    case notConnected
+    case invalidResponse
+    case emptyList
+    case loadingFailure(underlying: Swift.Error?)
+  }
+}
+public struct PlacesMap {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailPlacesJourney.PlacesMap {
+  public struct Configuration {
+    public init()
+    public var design: RetailPlacesJourney.PlacesMap.Design
+    public var strings: RetailPlacesJourney.PlacesMap.Strings
+    public var router: RetailPlacesJourney.PlacesMap.Router
+    public var defaultLatitude: Swift.Double
+    public var defaultLongitude: Swift.Double
+    public var radius: Swift.Double
+    public var showLocationPermissionDeniedAlert: Swift.Bool
+  }
+}
+extension RetailPlacesJourney.PlacesMap {
+  public struct Design {
+    public var styles: RetailPlacesJourney.PlacesMap.Design.Styles
+    public var searchButtonIcon: UIKit.UIImage?
+  }
+}
+extension RetailPlacesJourney.PlacesMap {
+  public struct Router {
+    public var didSelectPlaceDetails: ((UIKit.UINavigationController) -> (RetailPlacesJourney.Place) -> Swift.Void)
+    public var didSelectSearchAction: ((UIKit.UINavigationController) -> Swift.Void)
+  }
+}
+extension RetailPlacesJourney.PlacesMap {
+  public struct Strings {
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var searchThisAreaButtonTitle: RetailJourneyCommon.LocalizedString
+    public var errorTitle: RetailJourneyCommon.LocalizedString
+    public var errorMessage: RetailJourneyCommon.LocalizedString
+    public var errorActionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionMessage: RetailJourneyCommon.LocalizedString
+    public var noConnectionActionTitle: RetailJourneyCommon.LocalizedString
+    public var noResultsTitle: RetailJourneyCommon.LocalizedString
+    public var noResultsMessage: RetailJourneyCommon.LocalizedString
+    public var noResultsAlertOkOption: RetailJourneyCommon.LocalizedString
+    public var locationPermissionDeniedAlertTitle: RetailJourneyCommon.LocalizedString
+    public var locationPermissionDeniedAlertMessage: RetailJourneyCommon.LocalizedString
+    public var locationServicesDisabledAlertTitle: RetailJourneyCommon.LocalizedString
+    public var locationServicesDisabledAlertMessage: RetailJourneyCommon.LocalizedString
+    public var locationPermissionDeniedAlertSettingsOption: RetailJourneyCommon.LocalizedString
+    public var locationPermissionDeniedAlertCancelOption: RetailJourneyCommon.LocalizedString
+    public var locationServicesDisabledAlertSettingsOption: RetailJourneyCommon.LocalizedString
+    public var locationServicesDisabledAlertCancelOption: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPlacesJourney.PlacesMap.Design {
+  public struct Styles {
+  }
+}
+public struct PlacesRequestParameters {
+  public let latitude: Swift.Double
+  public let longitude: Swift.Double
+  public let radius: Swift.Double
+  public let type: Swift.String?
+  public let types: [Swift.String]?
+  public init(latitude: Swift.Double, longitude: Swift.Double, radius: Swift.Double, type: Swift.String? = nil, types: [Swift.String]? = nil)
+}
+public struct PlacesSearch {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailPlacesJourney.PlacesSearch {
+  public struct Configuration {
+    public init()
+    public var design: RetailPlacesJourney.PlacesSearch.Design
+    public var strings: RetailPlacesJourney.PlacesSearch.Strings
+    public var router: RetailPlacesJourney.PlacesSearch.Router
+  }
+}
+extension RetailPlacesJourney.PlacesSearch {
+  public struct Design {
+    public var styles: RetailPlacesJourney.PlacesSearch.Design.Styles
+  }
+}
+extension RetailPlacesJourney.PlacesSearch {
+  public struct Router {
+    public var didSelectSearchedLocation: ((UIKit.UINavigationController) -> (CoreLocation.CLLocation) -> Swift.Void)
+    public var didSelectCancel: ((UIKit.UINavigationController) -> Swift.Void)
+  }
+}
+extension RetailPlacesJourney.PlacesSearch {
+  public struct Strings {
+    public var placeholderHeaderText: RetailJourneyCommon.LocalizedString
+    public var placeholderBodyText: RetailJourneyCommon.LocalizedString
+    public var errorTitle: RetailJourneyCommon.LocalizedString
+    public var errorMessage: RetailJourneyCommon.LocalizedString
+    public var errorActionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionTitle: RetailJourneyCommon.LocalizedString
+    public var noConnectionMessage: RetailJourneyCommon.LocalizedString
+    public var noConnectionActionTitle: RetailJourneyCommon.LocalizedString
+    public var noResultsTitle: RetailJourneyCommon.LocalizedString
+    public var noResultsMessage: RetailJourneyCommon.LocalizedString
+  }
+}
+extension RetailPlacesJourney.PlacesSearch.Design {
+  public struct Styles {
+    public var placeholderHeader: (_ label: UIKit.UILabel) -> Swift.Void
+    public var placeholderBody: (_ label: UIKit.UILabel) -> Swift.Void
+  }
+}
+public protocol PlacesUseCase {
+  typealias RetrievePlacesCompletion = (Swift.Result<[RetailPlacesJourney.Place], RetailPlacesJourney.ErrorResponse>) -> Swift.Void
+  func retrievePlaces(parameters: RetailPlacesJourney.PlacesRequestParameters, completion: @escaping Self.RetrievePlacesCompletion)
+}

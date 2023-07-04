@@ -1,0 +1,665 @@
+PODS:
+  - AccessControlClient2 (1.1.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - AccountStatementsClient2 (2.0.1):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - ActionsClient2 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - AppAuth (1.6.0):
+    - AppAuth/Core (= 1.6.0)
+    - AppAuth/ExternalUserAgent (= 1.6.0)
+  - AppAuth/Core (1.6.0)
+  - AppAuth/ExternalUserAgent (1.6.0):
+    - AppAuth/Core
+  - ArrangementsClient2 (1.5.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - Backbase (9.1.2):
+    - BackbaseSDKSwiftWrapper (>= 1.0.0)
+  - BackbaseAnimation (2.0.0)
+  - BackbaseAppUpdater (2.1.1):
+    - Backbase (>= 8.5)
+    - BackbaseDesignSystem (~> 2.0)
+    - BackbaseRemoteConfig
+    - Resolver
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - BackbaseAppUpdaterUseCase (2.1.1):
+    - BackbaseAppUpdater (~> 2)
+    - BackbaseRemoteConfig
+    - Resolver
+  - BackbaseDesignSystem (2.4.2)
+  - BackbaseIdentity (4.1.0):
+    - AppAuth (~> 1.3)
+    - Backbase (>= 9.0.0)
+  - BackbaseLottieAnimation (2.0.0):
+    - BackbaseAnimation (~> 2.0)
+    - lottie-ios (~> 3.2.3)
+  - BackbaseObservability (1.0.0):
+    - BackbaseObservability/Sources (= 1.0.0)
+  - BackbaseObservability/Sources (1.0.0)
+  - BackbaseRemoteConfig (1.2.2):
+    - Backbase (>= 6.11.0)
+  - BackbaseSDKSwiftWrapper (1.0.0)
+  - BusinessDesign (2.0.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - BusinessDesign/Sources (= 2.0.0)
+    - UIScrollView-InfiniteScroll (= 1.1.0)
+    - VGParallaxHeader (= 0.0.6)
+  - BusinessDesign/Sources (2.0.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - UIScrollView-InfiniteScroll (= 1.1.0)
+    - VGParallaxHeader (= 0.0.6)
+  - BusinessJourneyCommon (2.0.0):
+    - Backbase (>= 7.9.0)
+    - BackbaseIdentity (>= 2.3.0)
+    - BusinessJourneyCommon/Sources (= 2.0.0)
+  - BusinessJourneyCommon/Sources (2.0.0):
+    - Backbase (>= 7.9.0)
+    - BackbaseIdentity (>= 2.3.0)
+  - BusinessWorkspacesJourney (3.3.0):
+    - BackbaseObservability (~> 1.0)
+    - BusinessDesign (~> 2.0)
+    - BusinessJourneyCommon (~> 2.0)
+    - BusinessWorkspacesJourney/Sources (= 3.3.0)
+    - Resolver (~> 1.2.1)
+    - RetailFeatureFilterUseCase (~> 2.1.0)
+  - BusinessWorkspacesJourney/Sources (3.3.0):
+    - BackbaseObservability (~> 1.0)
+    - BusinessDesign (~> 2.0)
+    - BusinessJourneyCommon (~> 2.0)
+    - Resolver (~> 1.2.1)
+    - RetailFeatureFilterUseCase (~> 2.1.0)
+  - BusinessWorkspacesJourneyWorkspacesUseCase2 (3.3.0):
+    - AccessControlClient2 (~> 1.1.0)
+    - BusinessWorkspacesJourney (~> 3.3.0)
+    - BusinessWorkspacesJourneyWorkspacesUseCase2/Sources (= 3.3.0)
+  - BusinessWorkspacesJourneyWorkspacesUseCase2/Sources (3.3.0):
+    - AccessControlClient2 (~> 1.1.0)
+    - BusinessWorkspacesJourney (~> 3.3.0)
+  - CardsClient2 (1.1.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - ClientCommon (1.1.5):
+    - Backbase (>= 7.8.0)
+  - ContactsClient2 (1.4.1):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - ContentServicesClient1 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - Differentiator (4.0.1)
+  - EngagementBannersTargetingUseCase (3.5.0):
+    - Backbase (>= 7.9)
+    - ContentServicesClient1 (~> 1.0)
+    - EngagementsClient1 (~> 1.0.0)
+    - TargetingClient1 (~> 1.0)
+  - EngagementsClient1 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - FinancialInstitutionManagerClient1 (1.1.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - IdentityAuthenticationJourney (3.3.1):
+    - BackbaseDesignSystem (>= 2.0)
+    - BackbaseIdentity (>= 4.1.0)
+    - Resolver (~> 1.2.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+    - SnapKit (~> 5)
+  - IdentitySelfEnrollmentJourney (1.0.0):
+    - Backbase (>= 9.0.0)
+    - BackbaseDesignSystem (>= 2.0)
+    - Resolver (~> 1.2.1)
+    - SnapKit (~> 5)
+  - IncomeExpenseAnalyzerClient1 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - lottie-ios (3.2.3)
+  - MessagesClient4 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - MessagesClient5 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - MessagesJourney (3.5.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - PureLayout (~> 3.1)
+    - Resolver (= 1.2.1)
+  - MessagesJourneyMessagesUseCase (3.5.0):
+    - Backbase (>= 7.9)
+    - MessagesClient4 (~> 1)
+    - MessagesClient5 (~> 1)
+    - MessagesJourney (~> 3.5.0)
+  - MobileNotificationsCore (2.1.0):
+    - Backbase (>= 7.9)
+  - MobileNotificationsIdentity (2.1.0):
+    - Backbase (>= 7.9)
+    - BackbaseIdentity (>= 3.3)
+    - MobileNotificationsCore (~> 2.1.0)
+    - PushTokenClient (>= 2.0)
+  - MobileNotificationsPresentation (2.1.0):
+    - MobileNotificationsCore (~> 2.1.0)
+  - NotificationsClient2 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - NotificationsJourney (3.5.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - PureLayout (~> 3.1)
+    - Resolver (= 1.2.1)
+  - NotificationsJourneyNotificationSettingsUseCase (3.5.0):
+    - ActionsClient2 (~> 1)
+    - ArrangementsClient2 (~> 1.5)
+    - Backbase (>= 7.9)
+    - EngagementsClient1 (~> 1.0.0)
+    - NotificationsJourney (~> 3.5.0)
+  - NotificationsJourneyNotificationsUseCase (3.5.0):
+    - Backbase (>= 7.9)
+    - EngagementsClient1 (~> 1.0.0)
+    - NotificationsClient2 (~> 1)
+    - NotificationsJourney (~> 3.5.0)
+  - PaymentOrderA2AClient1 (1.0.1):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.0)
+  - PaymentOrderClient2 (2.12.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - PlacesClient2 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - PocketsClient2 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - PureLayout (3.1.9)
+  - PushTokenClient (2.0.0):
+    - Backbase (>= 7.9)
+  - RemoteDepositCaptureClient2 (2.5.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - Resolver (1.2.1)
+  - RetailAccountsAndTransactionsFinancialInstitutionsUseCase (3.7.0):
+    - FinancialInstitutionManagerClient1 (~> 1.1.0)
+    - RetailAccountsAndTransactionsJourney (~> 3.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailAccountsAndTransactionsJourney (3.7.0):
+    - ArrangementsClient2 (~> 1.5)
+    - BackbaseDesignSystem (~> 2.4)
+    - Resolver (= 1.2.1)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+    - RxAnimated (~> 0.7)
+    - RxDataSources (~> 4.0)
+    - TransactionsClient2 (~> 1.5.0)
+  - RetailAccountsAndTransactionsJourneyAccountsUseCase (3.7.0):
+    - ArrangementsClient2 (~> 1.5)
+    - RetailAccountsAndTransactionsJourney (~> 3.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailAccountsAndTransactionsJourneyTransactionsUseCase (3.7.0):
+    - RetailAccountsAndTransactionsJourney (~> 3.0)
+    - RetailJourneyCommon (~> 2.0)
+    - TransactionsClient2 (~> 1.5.0)
+  - RetailAccountStatementsJourney (3.1.0):
+    - AccountStatementsClient2 (~> 2.0.1)
+    - BackbaseDesignSystem (~> 2.0)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailAccountStatementsJourneyAccountStatementsUseCase (3.1.0):
+    - AccountStatementsClient2 (~> 2.0.1)
+  - RetailAppCommon (2.0.0):
+    - Backbase
+    - BackbaseDesignSystem (~> 2.0)
+    - Resolver (= 1.2.1)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailCardsManagementJourney (2.2.6):
+    - BackbaseDesignSystem (~> 2.3)
+    - CardsClient2 (~> 1.1)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+    - RxAnimated (~> 0.7)
+    - RxDataSources (~> 4.0)
+    - UserManagerClient2 (~> 1.0.0)
+  - RetailCardsManagementJourneyCardsUseCase (2.2.6):
+    - Backbase (>= 7)
+    - CardsClient2 (~> 1.1.0)
+    - RetailCardsManagementJourney (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailCardsManagementJourneyTravelNoticesUseCase (2.2.6):
+    - Backbase (>= 7)
+    - CardsClient2 (~> 1.1.0)
+    - RetailCardsManagementJourney (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailContactsJourney (2.0.1):
+    - Backbase (>= 7)
+    - BackbaseDesignSystem (~> 2.0)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailContactsJourneyUseCase (2.0.1):
+    - ContactsClient2 (~> 1.4.1)
+    - RetailContactsJourney (~> 2.0)
+  - RetailDesign (2.0.1):
+    - BackbaseDesignSystem (~> 2.0)
+    - SnapKit (~> 5.0.0)
+  - RetailFeatureFilterAccessControlEntitlementsUseCase (2.1.0):
+    - AccessControlClient2 (~> 1.1.0)
+    - RetailFeatureFilterUseCase (~> 2.0)
+  - RetailFeatureFilterUseCase (2.1.0)
+  - RetailFinancialInsightsJourney (1.1.0):
+    - Backbase (>= 9)
+    - BackbaseDesignSystem (~> 2.3)
+    - BackbaseObservability (~> 1.0)
+    - ClientCommon (~> 1.0)
+    - Resolver (~> 1.2.1)
+    - RetailJourneyCommon (~> 2.0)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+    - SnapKit (~> 5.0.1)
+  - RetailFinancialInsightsJourneyIncomeExpenseAnalyzerUseCase (1.1.0):
+    - Backbase (>= 9)
+    - ClientCommon (~> 1.0)
+    - IncomeExpenseAnalyzerClient1 (~> 1.0)
+    - Resolver (~> 1.2.1)
+    - RetailFinancialInsightsJourney (~> 1.0)
+  - RetailJourneyCommon (2.0.0):
+    - Resolver (= 1.2.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - RetailLocaleSelectorJourney (2.0.1):
+    - Backbase (>= 7)
+    - BackbaseDesignSystem (~> 2.0)
+    - Resolver (~> 1)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - RetailLocaleSelectorJourneyPersistentUseCase (2.0.1):
+    - RetailLocaleSelectorJourney (~> 2.0)
+  - RetailMoreJourney (2.1.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailPaymentJourney (2.1.8):
+    - ArrangementsClient2 (= 1.5.0)
+    - BackbaseAnimation (~> 2.0)
+    - BackbaseDesignSystem (~> 2.0)
+    - ContactsClient2 (= 1.4.1)
+    - PaymentOrderA2AClient1 (= 1.0.1)
+    - PaymentOrderClient2 (= 2.12.0)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailPlacesJourney (1.0.0):
+    - Backbase (~> 9)
+    - BackbaseDesignSystem (~> 2.0)
+    - PlacesClient2 (~> 1.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailPlacesJourneyUseCase (1.0.0):
+    - PlacesClient2 (~> 1.0)
+    - RetailPlacesJourney (~> 1.0)
+  - RetailPocketsJourney (2.0.2):
+    - Backbase (>= 7)
+    - BackbaseDesignSystem (~> 2.0)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+    - RxAnimated (~> 0.7)
+    - RxDataSources (~> 4.0)
+  - RetailPocketsJourneyArrangementsUseCase (2.0.2):
+    - ArrangementsClient2 (~> 1.5.0)
+    - RetailPocketsJourney (~> 2.0)
+  - RetailPocketsJourneyPaymentsUseCase (2.0.2):
+    - PaymentOrderClient2 (= 2.12.0)
+    - RetailPocketsJourney (~> 2.0)
+  - RetailPocketsJourneyPocketsUseCase (2.0.2):
+    - PocketsClient2 (~> 1.0.0)
+    - RetailPocketsJourney (~> 2.0)
+  - RetailRemoteDepositCaptureJourney (2.2.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - RetailRemoteDepositCaptureJourneyUseCase (2.2.0):
+    - ArrangementsClient2 (= 1.5.0)
+    - RemoteDepositCaptureClient2 (= 2.5.0)
+    - RetailRemoteDepositCaptureJourney (~> 2.0)
+  - RetailRemoteDepositHistoryJourney (1.0.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+    - SnapKit (~> 5.0.0)
+  - RetailRemoteDepositHistoryJourneyUseCase (1.0.0):
+    - RemoteDepositCaptureClient2 (= 2.5.0)
+    - RetailRemoteDepositHistoryJourney (~> 1.0)
+  - RetailUpcomingPaymentsJourney (2.1.4):
+    - BackbaseDesignSystem (~> 2.0)
+    - PaymentOrderClient2 (= 2.12.0)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+    - RxDataSources (~> 4.0)
+  - RetailUpcomingPaymentsJourneyUseCase (2.1.4):
+    - PaymentOrderClient2 (= 2.12.0)
+    - RetailUpcomingPaymentsJourney (~> 2.0)
+  - RetailUSApp (4.12.0):
+    - BackbaseAppUpdater (~> 2.1.1)
+    - BackbaseAppUpdaterUseCase (~> 2.1.1)
+    - BackbaseDesignSystem (~> 2.4.0)
+    - BackbaseIdentity (~> 4)
+    - BackbaseLottieAnimation (~> 2.0.0)
+    - BusinessWorkspacesJourney (~> 3.3.0)
+    - BusinessWorkspacesJourneyWorkspacesUseCase2 (~> 3.3.0)
+    - EngagementBannersTargetingUseCase (~> 3.5.0)
+    - IdentityAuthenticationJourney (~> 3.3.1)
+    - IdentitySelfEnrollmentJourney (~> 1.0.0)
+    - MessagesJourney (~> 3.5.0)
+    - MessagesJourneyMessagesUseCase (~> 3.5.0)
+    - MobileNotificationsCore (~> 2.1.0)
+    - MobileNotificationsIdentity (~> 2.1.0)
+    - MobileNotificationsPresentation (~> 2.1.0)
+    - NotificationsJourney (~> 3.5.0)
+    - NotificationsJourneyNotificationSettingsUseCase (~> 3.5.0)
+    - NotificationsJourneyNotificationsUseCase (~> 3.5.0)
+    - PushTokenClient (= 2.0.0)
+    - RetailAccountsAndTransactionsFinancialInstitutionsUseCase (~> 3.7.0)
+    - RetailAccountsAndTransactionsJourney (~> 3.7.0)
+    - RetailAccountsAndTransactionsJourneyAccountsUseCase (~> 3.7.0)
+    - RetailAccountsAndTransactionsJourneyTransactionsUseCase (~> 3.7.0)
+    - RetailAccountStatementsJourney (~> 3.1.0)
+    - RetailAccountStatementsJourneyAccountStatementsUseCase (~> 3.1.0)
+    - RetailAppCommon (~> 2.0.0)
+    - RetailCardsManagementJourney (~> 2.2.6)
+    - RetailCardsManagementJourneyCardsUseCase (~> 2.2.6)
+    - RetailCardsManagementJourneyTravelNoticesUseCase (~> 2.2.6)
+    - RetailContactsJourney (~> 2.0.1)
+    - RetailContactsJourneyUseCase (~> 2.0.1)
+    - RetailDesign (~> 2.0.1)
+    - RetailFeatureFilterAccessControlEntitlementsUseCase (~> 2.1.0)
+    - RetailFeatureFilterUseCase (~> 2.1.0)
+    - RetailFinancialInsightsJourney (~> 1.1.0)
+    - RetailFinancialInsightsJourneyIncomeExpenseAnalyzerUseCase (~> 1.1.0)
+    - RetailJourneyCommon (~> 2.0.0)
+    - RetailLocaleSelectorJourney (~> 2.0.1)
+    - RetailLocaleSelectorJourneyPersistentUseCase (~> 2.0.1)
+    - RetailMoreJourney (~> 2.1.0)
+    - RetailPaymentJourney (~> 2.1.7)
+    - RetailPlacesJourney (~> 1.0.0)
+    - RetailPlacesJourneyUseCase (~> 1.0.0)
+    - RetailPocketsJourney (~> 2.0.1)
+    - RetailPocketsJourneyArrangementsUseCase (~> 2.0.1)
+    - RetailPocketsJourneyPaymentsUseCase (~> 2.0.1)
+    - RetailPocketsJourneyPocketsUseCase (~> 2.0.1)
+    - RetailRemoteDepositCaptureJourney (~> 2.2.0)
+    - RetailRemoteDepositCaptureJourneyUseCase (~> 2.2.0)
+    - RetailRemoteDepositHistoryJourney (~> 1.0.0)
+    - RetailRemoteDepositHistoryJourneyUseCase (~> 1.0.0)
+    - RetailUpcomingPaymentsJourney (~> 2.1.3)
+    - RetailUpcomingPaymentsJourneyUseCase (~> 2.1.3)
+    - RetailUserContextSelectorJourney (~> 2.0.0)
+    - RetailUserContextSelectorJourneyAccessControlUseCase (~> 2.0.0)
+    - SnapKit (~> 5.0.0)
+    - UserManagerUserProfileUseCase (~> 2.3.0)
+    - UserProfileJourney (~> 2.3.0)
+  - RetailUserContextSelectorJourney (2.0.0):
+    - Backbase (>= 7)
+    - BackbaseDesignSystem (~> 2.0)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+    - RxAnimated (~> 0.7)
+    - RxDataSources (~> 4.0)
+  - RetailUserContextSelectorJourneyAccessControlUseCase (2.0.0):
+    - AccessControlClient2 (~> 1.1.0)
+    - RetailJourneyCommon (~> 2.0)
+    - RetailUserContextSelectorJourney (~> 2.0)
+  - RxAnimated (0.7.0):
+    - RxAnimated/Core (= 0.7.0)
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
+  - RxAnimated/Core (0.7.0):
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.3)
+  - SnapKit (5.0.1)
+  - TargetingClient1 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - TransactionsClient2 (1.5.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - UIScrollView-InfiniteScroll (1.1.0)
+  - UserManagerClient2 (1.0.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - UserManagerUserProfileUseCase (2.3.0):
+    - UserManagerClient2 (~> 1.0)
+    - UserProfileJourney (= 2.3.0)
+  - UserProfileJourney (2.3.0):
+    - BackbaseDesignSystem (~> 2.2)
+    - RetailDesign (~> 2.0)
+    - RetailJourneyCommon (~> 2.0)
+  - VGParallaxHeader (0.0.6):
+    - PureLayout
+
+DEPENDENCIES:
+  - RetailUSApp (= 4.12.0)
+
+SPEC REPOS:
+  https://repo.backbase.com/api/pods/ios-business/:
+    - BackbaseObservability
+    - BusinessDesign
+    - BusinessJourneyCommon
+    - BusinessWorkspacesJourney
+    - BusinessWorkspacesJourneyWorkspacesUseCase2
+  https://repo.backbase.com/api/pods/ios-engagement-channels:
+    - EngagementBannersTargetingUseCase
+    - MessagesJourney
+    - MessagesJourneyMessagesUseCase
+    - NotificationsJourney
+    - NotificationsJourneyNotificationSettingsUseCase
+    - NotificationsJourneyNotificationsUseCase
+  https://repo.backbase.com/api/pods/ios-identity:
+    - BackbaseIdentity
+    - IdentityAuthenticationJourney
+    - IdentitySelfEnrollmentJourney
+    - UserManagerUserProfileUseCase
+    - UserProfileJourney
+  https://repo.backbase.com/api/pods/ios-mobile-notifications:
+    - MobileNotificationsCore
+    - MobileNotificationsIdentity
+    - MobileNotificationsPresentation
+  https://repo.backbase.com/api/pods/ios-retail3:
+    - AccessControlClient2
+    - AccountStatementsClient2
+    - ActionsClient2
+    - ArrangementsClient2
+    - BackbaseDesignSystem
+    - CardsClient2
+    - ClientCommon
+    - ContactsClient2
+    - ContentServicesClient1
+    - EngagementsClient1
+    - FinancialInstitutionManagerClient1
+    - IncomeExpenseAnalyzerClient1
+    - MessagesClient4
+    - MessagesClient5
+    - NotificationsClient2
+    - PaymentOrderA2AClient1
+    - PaymentOrderClient2
+    - PlacesClient2
+    - PocketsClient2
+    - RemoteDepositCaptureClient2
+    - RetailAccountsAndTransactionsFinancialInstitutionsUseCase
+    - RetailAccountsAndTransactionsJourney
+    - RetailAccountsAndTransactionsJourneyAccountsUseCase
+    - RetailAccountsAndTransactionsJourneyTransactionsUseCase
+    - RetailAccountStatementsJourney
+    - RetailAccountStatementsJourneyAccountStatementsUseCase
+    - RetailAppCommon
+    - RetailCardsManagementJourney
+    - RetailCardsManagementJourneyCardsUseCase
+    - RetailCardsManagementJourneyTravelNoticesUseCase
+    - RetailContactsJourney
+    - RetailContactsJourneyUseCase
+    - RetailDesign
+    - RetailFeatureFilterAccessControlEntitlementsUseCase
+    - RetailFeatureFilterUseCase
+    - RetailFinancialInsightsJourney
+    - RetailFinancialInsightsJourneyIncomeExpenseAnalyzerUseCase
+    - RetailJourneyCommon
+    - RetailLocaleSelectorJourney
+    - RetailLocaleSelectorJourneyPersistentUseCase
+    - RetailMoreJourney
+    - RetailPaymentJourney
+    - RetailPlacesJourney
+    - RetailPlacesJourneyUseCase
+    - RetailPocketsJourney
+    - RetailPocketsJourneyArrangementsUseCase
+    - RetailPocketsJourneyPaymentsUseCase
+    - RetailPocketsJourneyPocketsUseCase
+    - RetailRemoteDepositCaptureJourney
+    - RetailRemoteDepositCaptureJourneyUseCase
+    - RetailRemoteDepositHistoryJourney
+    - RetailRemoteDepositHistoryJourneyUseCase
+    - RetailUpcomingPaymentsJourney
+    - RetailUpcomingPaymentsJourneyUseCase
+    - RetailUSApp
+    - RetailUserContextSelectorJourney
+    - RetailUserContextSelectorJourneyAccessControlUseCase
+    - TargetingClient1
+    - TransactionsClient2
+    - UserManagerClient2
+  https://repo.backbase.com/api/pods/ios3:
+    - Backbase
+    - BackbaseAnimation
+    - BackbaseAppUpdater
+    - BackbaseAppUpdaterUseCase
+    - BackbaseLottieAnimation
+    - BackbaseRemoteConfig
+    - BackbaseSDKSwiftWrapper
+    - PushTokenClient
+  trunk:
+    - AppAuth
+    - Differentiator
+    - lottie-ios
+    - PureLayout
+    - Resolver
+    - RxAnimated
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - UIScrollView-InfiniteScroll
+    - VGParallaxHeader
+
+SPEC CHECKSUMS:
+  AccessControlClient2: 9fb741b81ded6bcfb7cdac9c6f9c528a519fe840
+  AccountStatementsClient2: 0cef510e6836e2528ec240fa747815548f428877
+  ActionsClient2: 0f6069cac24a65445c4481b7fd7497e9458ab749
+  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  ArrangementsClient2: b4d92f897b6d9917c2673c91b334c93476fa180a
+  Backbase: d740d1cfc5c6402b40a8de49e5c66a006315872c
+  BackbaseAnimation: 95c37a006f1b67d777994fcd3335f53116bfcefb
+  BackbaseAppUpdater: acb9c31a18477153c7308b337e76b5db2982e7a3
+  BackbaseAppUpdaterUseCase: 9eea091a0abf80f8bf69168c4df8bde2b5e3a5f4
+  BackbaseDesignSystem: 59bab1bbb92f29627fb06bb9ac90aafaf19888ea
+  BackbaseIdentity: 6c2132d20727348264e1deaadefd6564744bdbc8
+  BackbaseLottieAnimation: ba916fab2ad0620cc434a7dd09430b3f8f03719f
+  BackbaseObservability: 5881fd8f1d7ecf71799914a63a9785af4ce4cfb9
+  BackbaseRemoteConfig: d6915d3c655eeb1f1c5b02937c51e2db86ad6258
+  BackbaseSDKSwiftWrapper: 2be4e69bc0be1b8c0b3f733b9357123ca83a0384
+  BusinessDesign: 602a0a26d45a62060263cc1b309209b7eb413fde
+  BusinessJourneyCommon: 8e3713f6c484a5d50d3e5f3d957a56094509bcdc
+  BusinessWorkspacesJourney: d61afa5ec1ee2e53fe4910ee4be777a3fde3640d
+  BusinessWorkspacesJourneyWorkspacesUseCase2: 453e84207d8d0874c2a7b151ec4276dee2aa0c0a
+  CardsClient2: 8cb0c6d1d12db3b703921c65126aa050c39d2c97
+  ClientCommon: 3b305ed1d4c94dbe4955f53b2e3c102ec7892776
+  ContactsClient2: b9b110251c0bc5608fa0d2c14ed8c0cc83215493
+  ContentServicesClient1: aa0af5e014660420d90f7cf87056f8cdfa75d898
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  EngagementBannersTargetingUseCase: f3e1461cbbea4b3c33f111a344c6e0080edf44ad
+  EngagementsClient1: a03d76409ffc699ca593eeb9556d86892af138f6
+  FinancialInstitutionManagerClient1: cc4b4a2e394930c0083081b03e44d9e7ba437dfc
+  IdentityAuthenticationJourney: f1d853526a040f12f01351fc8b4652645557069d
+  IdentitySelfEnrollmentJourney: 3a72177f4f77d1506671e28c8df40f6833ad2099
+  IncomeExpenseAnalyzerClient1: 32ca70c5cae5c5fd638523969d38096f17edbc14
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  MessagesClient4: 00be66a3525cf9a33b20e94b03049c413fe0be2f
+  MessagesClient5: cb5ecb7b12f41f00f88454ad901879348e295b33
+  MessagesJourney: 7f18cbfe2251336e0db954fcbb4889359b1b5a7a
+  MessagesJourneyMessagesUseCase: 991d8cd835217b52928f19eda97a29108a29efff
+  MobileNotificationsCore: 762df9799f7a5c8b86c4e2357ae4680405551a9a
+  MobileNotificationsIdentity: c820be84d06fa113523976aa0b3f965600bf93e7
+  MobileNotificationsPresentation: c63bb4f4c105a3515ddcf2cb282752550fb9129f
+  NotificationsClient2: d96264e7bfe69f2e58690d2f59a15e9d176874e4
+  NotificationsJourney: 6852162cc0b5caa4f246145dc8434d87a81fd9c8
+  NotificationsJourneyNotificationSettingsUseCase: c587933eebf1c05085d0adfd993f66c5f179077f
+  NotificationsJourneyNotificationsUseCase: b5f5af2f3458094865e6ed01c2c42486c8f6866f
+  PaymentOrderA2AClient1: 44e052d6d8b5305901f708ecd17b7248822f25f0
+  PaymentOrderClient2: df7c4dc18d1d584057623029dc8ff17c22eab91c
+  PlacesClient2: 98022e13762ede922a26acb17a4e8301475fc2ae
+  PocketsClient2: 028bbf29da9b1c791203dc515b4dc29af5dd33b7
+  PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
+  PushTokenClient: f4b444d95ac0951381589ca4349b9f9f5d6c8d10
+  RemoteDepositCaptureClient2: bb66c4c662ad2147e5b8d30e03b64a4169b93ef9
+  Resolver: 764e380b2ddb26bba48c6e45ab393c968894a156
+  RetailAccountsAndTransactionsFinancialInstitutionsUseCase: 8b5674593490c81e1175ba96e08c81972f72246d
+  RetailAccountsAndTransactionsJourney: ad3cc8ba84693dbf3234d8a7de44aa3b1262e798
+  RetailAccountsAndTransactionsJourneyAccountsUseCase: 1fde05499d53f57d515bd1952c4ef61fb74f671b
+  RetailAccountsAndTransactionsJourneyTransactionsUseCase: 2816e16390b8ef8b9aa8ff7dd19cb82bf5126f67
+  RetailAccountStatementsJourney: c9f236f5f94849f91d373ecc20bc97a57e9f0933
+  RetailAccountStatementsJourneyAccountStatementsUseCase: 92a34478cb4ba2566ce1304b23f2d30268b37023
+  RetailAppCommon: 32abca4e4058fbd68f1774e3922bd2e83e9b56e5
+  RetailCardsManagementJourney: 8b6931bb4f7c921160d9f4e2c6e6d99eb339f8fa
+  RetailCardsManagementJourneyCardsUseCase: a31b5508f80d0fcc3ccdffeafb6a70b7ae4ee0c4
+  RetailCardsManagementJourneyTravelNoticesUseCase: fac1299912a8a02b9870ab9a37f65fcac7140f4c
+  RetailContactsJourney: ac59979dc35e93b6384163c2d9c07c22756024b3
+  RetailContactsJourneyUseCase: 50564dac1ef1044393a65d58bd71dc0f8bd64e92
+  RetailDesign: a9834eabc33a15baecfe5ba2312416047f3dc857
+  RetailFeatureFilterAccessControlEntitlementsUseCase: ffffccf676506997f43957bf8c298ebe49a5ed55
+  RetailFeatureFilterUseCase: 61731461024ef1e76eb2f47889954ce8bceb824e
+  RetailFinancialInsightsJourney: 56a95542e6560524ed4449bef1117d687bbb991a
+  RetailFinancialInsightsJourneyIncomeExpenseAnalyzerUseCase: 285aa3e9535e248f72953094741c454705a75742
+  RetailJourneyCommon: 70d9b079ccf338ae85ff312dfbe9afcb770e77e9
+  RetailLocaleSelectorJourney: c01114930d9cbd61d1167aebf6e5868a0ace54ba
+  RetailLocaleSelectorJourneyPersistentUseCase: b43a810e878c3e0bf933cd829454a7b07ce53c0a
+  RetailMoreJourney: 5339fd72b1b6b0de4140f2963663bc2e3a6f0486
+  RetailPaymentJourney: 2a26f34dddad7206ce8a0291c896c3000af32858
+  RetailPlacesJourney: 1c217803677368531d5aa527766c02a00d082b5f
+  RetailPlacesJourneyUseCase: 55751fe85b6b342bed99ce5f3bc2d84ae0817d4e
+  RetailPocketsJourney: 7a502ff6a92011e1e054da0c6979d2b06fdc2a0e
+  RetailPocketsJourneyArrangementsUseCase: 4a507a9df0825fafb37f3dec8178cc8ba82c809c
+  RetailPocketsJourneyPaymentsUseCase: 03ee91bdeb6689249e7e89bfc69102cd4a27b551
+  RetailPocketsJourneyPocketsUseCase: 8b534bae1b5a3f2db6bffddb2382957daeac922a
+  RetailRemoteDepositCaptureJourney: f7e72bed88b79fdecc51ac5b4095e1c2f78758df
+  RetailRemoteDepositCaptureJourneyUseCase: 6255dc1498a5ead9a28ef2e1a1ce4311bbf9ad84
+  RetailRemoteDepositHistoryJourney: 43e043116c58bcd9f4691884cd72e8c63ff2e186
+  RetailRemoteDepositHistoryJourneyUseCase: aa1ad824828845d2f758f3eeeaa8bd36f657900d
+  RetailUpcomingPaymentsJourney: 909cf40f96f74fdea5a5361d56cc87e2749db02c
+  RetailUpcomingPaymentsJourneyUseCase: 4f938b041d38656e7d3eb63678d9d316fe2a903e
+  RetailUSApp: 3100d009fb6d3a4cb3ac4c2fef5c8ce6ce158e15
+  RetailUserContextSelectorJourney: aa14c21ccffc40f8d32c4b61aaddea82608a691f
+  RetailUserContextSelectorJourneyAccessControlUseCase: a6b1bfbe9b939d3c8b6d6c5fd7e7d48406542139
+  RxAnimated: 8540892468e906e7404595bc51ed4b36b3737ab5
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
+  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  TargetingClient1: e9e69eabe903a47c910d25e1150abade0f6f70e6
+  TransactionsClient2: 63c4772c26e47f7b84413b1a700195f2c8618e5e
+  UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
+  UserManagerClient2: 9851ed8619099ea9f6ec79d17acdcb7c310018e5
+  UserManagerUserProfileUseCase: ba76619ec97ebd57cb78d89ebca13d9de1a33cb8
+  UserProfileJourney: 96d6a62411348e6cf88bd9c0aba173be929d27b0
+  VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48
+
+PODFILE CHECKSUM: 4ea43b3c845667723b89da0f4d5a32a7b4aa5641
+
+COCOAPODS: 1.11.3

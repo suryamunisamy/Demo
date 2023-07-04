@@ -1,0 +1,4 @@
+framework module BackbaseLottieAnimation {
+  header "BackbaseLottieAnimation-Swift.h"
+  requires objc
+}

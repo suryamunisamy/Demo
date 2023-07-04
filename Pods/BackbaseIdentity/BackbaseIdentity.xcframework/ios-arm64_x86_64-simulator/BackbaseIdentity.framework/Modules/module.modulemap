@@ -1,0 +1,11 @@
+framework module BackbaseIdentity {
+  umbrella header "BackbaseIdentity.h"
+
+  export *
+  module * { export * }
+}
+
+module BackbaseIdentity.Swift {
+    header "BackbaseIdentity-Swift.h"
+    requires objc
+}

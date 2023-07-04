@@ -1,0 +1,4 @@
+framework module BusinessWorkspacesJourney {
+  header "BusinessWorkspacesJourney-Swift.h"
+  requires objc
+}

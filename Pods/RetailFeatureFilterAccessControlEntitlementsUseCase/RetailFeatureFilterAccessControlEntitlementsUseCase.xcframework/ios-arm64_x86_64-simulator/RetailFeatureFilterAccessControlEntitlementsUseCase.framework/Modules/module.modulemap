@@ -1,0 +1,4 @@
+framework module RetailFeatureFilterAccessControlEntitlementsUseCase {
+  header "RetailFeatureFilterAccessControlEntitlementsUseCase-Swift.h"
+  requires objc
+}

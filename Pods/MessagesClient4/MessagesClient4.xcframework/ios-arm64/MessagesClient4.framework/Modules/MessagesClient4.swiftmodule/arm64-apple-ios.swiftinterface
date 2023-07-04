@@ -1,0 +1,1316 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MessagesClient4
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [MessagesClient4.ErrorItem]?
+  public init(message: Swift.String, errors: [MessagesClient4.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.BadRequestError, rhs: MessagesClient4.BadRequestError) -> Swift.Bool
+}
+public struct Client : Swift.Codable, Swift.Equatable {
+  public var internalId: Swift.String
+  public var fullName: Swift.String
+  public init(internalId: Swift.String, fullName: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.Client, rhs: MessagesClient4.Client) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct ConversationAssignmentDeleteResponseBody : Swift.Codable, Swift.Equatable {
+  public var unassignedItems: [Swift.String]
+  public var failedItems: [Swift.String]
+  public init(unassignedItems: [Swift.String], failedItems: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationAssignmentDeleteResponseBody, rhs: MessagesClient4.ConversationAssignmentDeleteResponseBody) -> Swift.Bool
+}
+public struct ConversationCounterResponseBody : Swift.Codable, Swift.Equatable {
+  public var unassigned: Swift.Double
+  public var unreadAssigned: Swift.Double
+  public init(unassigned: Swift.Double, unreadAssigned: Swift.Double)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationCounterResponseBody, rhs: MessagesClient4.ConversationCounterResponseBody) -> Swift.Bool
+}
+public struct ConversationDraft : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var body: Swift.String?
+  public var createdAt: Foundation.Date
+  public var attachments: [MessagesClient4.Metadata]?
+  public init(id: Swift.String, body: Swift.String? = nil, createdAt: Foundation.Date, attachments: [MessagesClient4.Metadata]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationDraft, rhs: MessagesClient4.ConversationDraft) -> Swift.Bool
+}
+public struct ConversationDraftRequest : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String?
+  public var attachments: [Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(body: Swift.String? = nil, attachments: [Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationDraftRequest, rhs: MessagesClient4.ConversationDraftRequest) -> Swift.Bool
+}
+public struct ConversationMessageDraftPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String?
+  public var attachments: [Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(body: Swift.String? = nil, attachments: [Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationMessageDraftPostRequestBody, rhs: MessagesClient4.ConversationMessageDraftPostRequestBody) -> Swift.Bool
+}
+public struct ConversationMessageDraftPutRequestBody : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String?
+  public var attachments: [Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(body: Swift.String? = nil, attachments: [Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationMessageDraftPutRequestBody, rhs: MessagesClient4.ConversationMessageDraftPutRequestBody) -> Swift.Bool
+}
+public struct ConversationThread : Swift.Codable, Swift.Equatable {
+  public var hasDraft: Swift.Bool?
+  public var id: Swift.String
+  public var sender: MessagesClient4.MessageSender
+  public var topic: MessagesClient4.Topic
+  public var body: Swift.String
+  public var subject: Swift.String?
+  public var read: Swift.Bool
+  public var important: Swift.Bool
+  public var readOnly: Swift.Bool
+  public var deletable: Swift.Bool
+  public var timestamp: Foundation.Date
+  public var hasAttachments: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(hasDraft: Swift.Bool? = nil, id: Swift.String, sender: MessagesClient4.MessageSender, topic: MessagesClient4.Topic, body: Swift.String, subject: Swift.String? = nil, read: Swift.Bool, important: Swift.Bool, readOnly: Swift.Bool, deletable: Swift.Bool, timestamp: Foundation.Date, hasAttachments: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationThread, rhs: MessagesClient4.ConversationThread) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case hasDraft
+    case id
+    case sender
+    case topic
+    case body
+    case subject
+    case read
+    case important
+    case readOnly
+    case deletable
+    case timestamp
+    case hasAttachments
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.ConversationThread.CodingKeys]
+    public static var allCases: [MessagesClient4.ConversationThread.CodingKeys] {
+      get
+    }
+  }
+}
+public struct ConversationThreadsDeleteResponseBody : Swift.Codable, Swift.Equatable {
+  public var deletedItems: [Swift.String]
+  public var failedItems: [Swift.String]
+  public init(deletedItems: [Swift.String], failedItems: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationThreadsDeleteResponseBody, rhs: MessagesClient4.ConversationThreadsDeleteResponseBody) -> Swift.Bool
+}
+public struct ConversationThreadsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var sender: MessagesClient4.MessageSender
+  public var topic: MessagesClient4.Topic
+  public var body: Swift.String
+  public var subject: Swift.String?
+  public var read: Swift.Bool
+  public var important: Swift.Bool
+  public var readOnly: Swift.Bool
+  public var deletable: Swift.Bool
+  public var timestamp: Foundation.Date
+  public var hasAttachments: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, sender: MessagesClient4.MessageSender, topic: MessagesClient4.Topic, body: Swift.String, subject: Swift.String? = nil, read: Swift.Bool, important: Swift.Bool, readOnly: Swift.Bool, deletable: Swift.Bool, timestamp: Foundation.Date, hasAttachments: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationThreadsGetResponseBody, rhs: MessagesClient4.ConversationThreadsGetResponseBody) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case id
+    case sender
+    case topic
+    case body
+    case subject
+    case read
+    case important
+    case readOnly
+    case deletable
+    case timestamp
+    case hasAttachments
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.ConversationThreadsGetResponseBody.CodingKeys]
+    public static var allCases: [MessagesClient4.ConversationThreadsGetResponseBody.CodingKeys] {
+      get
+    }
+  }
+}
+public struct ConversationsThread : Swift.Codable, Swift.Equatable {
+  public var messages: [MessagesClient4.MessageGetResponseBody]
+  public var assignee: MessagesClient4.Employee
+  public var workflowStatus: MessagesClient4.WorkflowStatus
+  public var topic: MessagesClient4.Topic
+  public var subject: Swift.String?
+  public var rootMessageId: Swift.String
+  public var read: Swift.Bool
+  public var important: Swift.Bool
+  public var readOnly: Swift.Bool
+  public var deletable: Swift.Bool
+  public var attachments: [MessagesClient4.Metadata]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(messages: [MessagesClient4.MessageGetResponseBody], assignee: MessagesClient4.Employee, workflowStatus: MessagesClient4.WorkflowStatus, topic: MessagesClient4.Topic, subject: Swift.String? = nil, rootMessageId: Swift.String, read: Swift.Bool, important: Swift.Bool, readOnly: Swift.Bool, deletable: Swift.Bool, attachments: [MessagesClient4.Metadata]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ConversationsThread, rhs: MessagesClient4.ConversationsThread) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case messages
+    case assignee
+    case workflowStatus
+    case topic
+    case subject
+    case rootMessageId
+    case read
+    case important
+    case readOnly
+    case deletable
+    case attachments
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.ConversationsThread.CodingKeys]
+    public static var allCases: [MessagesClient4.ConversationsThread.CodingKeys] {
+      get
+    }
+  }
+}
+public struct DeleteDraftsResponseBody : Swift.Codable, Swift.Equatable {
+  public var deleted: [Swift.String]
+  public var failed: [Swift.String]
+  public init(deleted: [Swift.String], failed: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.DeleteDraftsResponseBody, rhs: MessagesClient4.DeleteDraftsResponseBody) -> Swift.Bool
+}
+public struct DeleteResponseBody : Swift.Codable, Swift.Equatable {
+  public var deleted: [Swift.String]
+  public var failed: [Swift.String]
+  public init(deleted: [Swift.String], failed: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.DeleteResponseBody, rhs: MessagesClient4.DeleteResponseBody) -> Swift.Bool
+}
+public struct DraftBaseRequest : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String?
+  public var attachments: [Swift.String]?
+  public var subject: Swift.String?
+  public var topic: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(body: Swift.String? = nil, attachments: [Swift.String]? = nil, subject: Swift.String? = nil, topic: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.DraftBaseRequest, rhs: MessagesClient4.DraftBaseRequest) -> Swift.Bool
+}
+public struct DraftBaseResponse : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var body: Swift.String?
+  public var subject: Swift.String?
+  public var topic: MessagesClient4.Topic?
+  public var timestamp: Foundation.Date
+  public var conversationId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, body: Swift.String? = nil, subject: Swift.String? = nil, topic: MessagesClient4.Topic? = nil, timestamp: Foundation.Date, conversationId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.DraftBaseResponse, rhs: MessagesClient4.DraftBaseResponse) -> Swift.Bool
+}
+public struct DraftPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public init(id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.DraftPostResponseBody, rhs: MessagesClient4.DraftPostResponseBody) -> Swift.Bool
+}
+public struct Employee : Swift.Codable, Swift.Equatable {
+  public var internalId: Swift.String
+  public var fullName: Swift.String
+  public var isRequester: Swift.Bool
+  public init(internalId: Swift.String, fullName: Swift.String, isRequester: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.Employee, rhs: MessagesClient4.Employee) -> Swift.Bool
+}
+public protocol EmployeeAPIProtocol {
+  func deleteConversationAssignmentCall(ids: [Swift.String]) throws -> ClientCommon.Call<MessagesClient4.ConversationAssignmentDeleteResponseBody>
+  func deleteMessageAttachmentsEmployeeCall(ids: [Swift.String]) throws -> ClientCommon.Call<MessagesClient4.DeleteResponseBody>
+  func deleteSubscriptionCall(subscriptionId: Swift.String, topicId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteTopicCall(topicId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getConversationThreadsEmployeeCall(mailboxType: Swift.String?, viewType: Swift.String?, from: Swift.Int?, size: Swift.Int?, orderBy: Swift.String?, direction: MessagesClient4.EmployeeAPI.Direction_getConversationThreadsEmployee?) throws -> ClientCommon.Call<[MessagesClient4.EmployeeConversationThread]>
+  func getConversationsCounterCall() throws -> ClientCommon.Call<MessagesClient4.ConversationCounterResponseBody>
+  func getEmployeeMessageThreadCall(messageId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.ConversationsThread>
+  func getMessageAttachmentEmployeeCall(attachmentId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  func getSearchConversationsCall(userId: Swift.String?, topicId: Swift.String?, startDate: Foundation.Date?, endDate: Foundation.Date?, from: Swift.Int?, size: Swift.Int?) throws -> ClientCommon.Call<[MessagesClient4.EmployeeConversationThread]>
+  func getSubscriptionsCall(topicId: Swift.String, subscriberName: Swift.String?, from: Swift.Int?, size: Swift.Int?) throws -> ClientCommon.Call<[MessagesClient4.SubscriptionsGetResponseBody]>
+  func getTopicCall(topicId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.TopicGetResponseBody>
+  func getTopicsEmployeeCall(subscribed: Swift.Bool?, deleted: Swift.Bool?, topicType: Swift.String?, from: Swift.Int?, size: Swift.Int?) throws -> ClientCommon.Call<[MessagesClient4.TopicsGetEmployeeResponseBody]>
+  func postMessageAttachmentsEmployeeCall(attachment: Foundation.URL?) throws -> ClientCommon.Call<MessagesClient4.Metadata>
+  func postMessageReplyEmployeeCall(messageId: Swift.String, messageReplyPostRequestBody: MessagesClient4.MessageReplyPostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.PresentationMessagePostResponseBody>
+  func postMessagesEmployeeCall(presentationMessageEmployeePostRequestBody: MessagesClient4.PresentationMessageEmployeePostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.PresentationMessagePostResponseBody>
+  func postSubscribersCall(topicId: Swift.String, subscribersPostRequestBody: MessagesClient4.SubscribersPostRequestBody?) throws -> ClientCommon.Call<[MessagesClient4.SubscribersPostResponseBody]>
+  func postSubscriptionsCall(topicId: Swift.String, subscriptionsPostRequestBody: MessagesClient4.SubscriptionsPostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.SubscriptionsPostResponseBody>
+  func postTopicsCall(topicsPostRequestBody: MessagesClient4.TopicsPostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.ExtendedTopicsPostResponseBody>
+  func putAssignConversationCall(messageId: Swift.String, messageThreadAssignmentRequestBody: MessagesClient4.MessageThreadAssignmentRequestBody?) throws -> ClientCommon.Call<MessagesClient4.MessageThreadAssignmentResponseBody>
+  func putConversationAssignmentCall(messageThreadBulkAssignmentRequestBody: MessagesClient4.MessageThreadBulkAssignmentRequestBody?) throws -> ClientCommon.Call<MessagesClient4.MessageThreadBulkAssignmentResponseBody>
+  func putConversationResolutionCall(messageId: Swift.String, messageThreadResolutionRequestBody: MessagesClient4.MessageThreadResolutionRequestBody?) throws -> ClientCommon.Call<MessagesClient4.MessageThreadResolutionResponseBody>
+  func putConversationResolutionEmployeeCall(messageThreadBulkResolutionRequestBody: MessagesClient4.MessageThreadBulkResolutionRequestBody?) throws -> ClientCommon.Call<MessagesClient4.MessageThreadBulkResolutionResponseBody>
+  func putMarkAsReadUnreadEmployeeCall(markAsReadUnreadPutRequestBody: MessagesClient4.MarkAsReadUnreadPutRequestBody?) throws -> ClientCommon.Call<MessagesClient4.MarkAsReadUnreadPutResponseBody>
+  func putMessageThreadTopicCall(messageId: Swift.String, updateMessageTopicRequestBody: MessagesClient4.UpdateMessageTopicRequestBody?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func putTopicCall(topicId: Swift.String, xBBSVCRequestId: Swift.String?, topicPutRequestBody: MessagesClient4.TopicPutRequestBody?) throws -> ClientCommon.Call<MessagesClient4.TopicPutResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class EmployeeAPI : ObjectiveC.NSObject, DBSClient, MessagesClient4.EmployeeAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteConversationAssignmentCall(ids: [Swift.String]) throws -> ClientCommon.Call<MessagesClient4.ConversationAssignmentDeleteResponseBody>
+  open func deleteMessageAttachmentsEmployeeCall(ids: [Swift.String]) throws -> ClientCommon.Call<MessagesClient4.DeleteResponseBody>
+  open func deleteSubscriptionCall(subscriptionId: Swift.String, topicId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteTopicCall(topicId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  public enum Direction_getConversationThreadsEmployee : Swift.String, Swift.CaseIterable {
+    case asc
+    case desc
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [MessagesClient4.EmployeeAPI.Direction_getConversationThreadsEmployee]
+    public static var allCases: [MessagesClient4.EmployeeAPI.Direction_getConversationThreadsEmployee] {
+      get
+    }
+  }
+  open func getConversationThreadsEmployeeCall(mailboxType: Swift.String? = nil, viewType: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: MessagesClient4.EmployeeAPI.Direction_getConversationThreadsEmployee? = nil) throws -> ClientCommon.Call<[MessagesClient4.EmployeeConversationThread]>
+  open func getConversationsCounterCall() throws -> ClientCommon.Call<MessagesClient4.ConversationCounterResponseBody>
+  open func getEmployeeMessageThreadCall(messageId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.ConversationsThread>
+  open func getMessageAttachmentEmployeeCall(attachmentId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  open func getSearchConversationsCall(userId: Swift.String? = nil, topicId: Swift.String? = nil, startDate: Foundation.Date? = nil, endDate: Foundation.Date? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[MessagesClient4.EmployeeConversationThread]>
+  open func getSubscriptionsCall(topicId: Swift.String, subscriberName: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[MessagesClient4.SubscriptionsGetResponseBody]>
+  open func getTopicCall(topicId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.TopicGetResponseBody>
+  open func getTopicsEmployeeCall(subscribed: Swift.Bool? = nil, deleted: Swift.Bool? = nil, topicType: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[MessagesClient4.TopicsGetEmployeeResponseBody]>
+  open func postMessageAttachmentsEmployeeCall(attachment: Foundation.URL? = nil) throws -> ClientCommon.Call<MessagesClient4.Metadata>
+  open func postMessageReplyEmployeeCall(messageId: Swift.String, messageReplyPostRequestBody: MessagesClient4.MessageReplyPostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.PresentationMessagePostResponseBody>
+  open func postMessagesEmployeeCall(presentationMessageEmployeePostRequestBody: MessagesClient4.PresentationMessageEmployeePostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.PresentationMessagePostResponseBody>
+  open func postSubscribersCall(topicId: Swift.String, subscribersPostRequestBody: MessagesClient4.SubscribersPostRequestBody? = nil) throws -> ClientCommon.Call<[MessagesClient4.SubscribersPostResponseBody]>
+  open func postSubscriptionsCall(topicId: Swift.String, subscriptionsPostRequestBody: MessagesClient4.SubscriptionsPostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.SubscriptionsPostResponseBody>
+  open func postTopicsCall(topicsPostRequestBody: MessagesClient4.TopicsPostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.ExtendedTopicsPostResponseBody>
+  open func putAssignConversationCall(messageId: Swift.String, messageThreadAssignmentRequestBody: MessagesClient4.MessageThreadAssignmentRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.MessageThreadAssignmentResponseBody>
+  open func putConversationAssignmentCall(messageThreadBulkAssignmentRequestBody: MessagesClient4.MessageThreadBulkAssignmentRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.MessageThreadBulkAssignmentResponseBody>
+  open func putConversationResolutionCall(messageId: Swift.String, messageThreadResolutionRequestBody: MessagesClient4.MessageThreadResolutionRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.MessageThreadResolutionResponseBody>
+  open func putConversationResolutionEmployeeCall(messageThreadBulkResolutionRequestBody: MessagesClient4.MessageThreadBulkResolutionRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.MessageThreadBulkResolutionResponseBody>
+  open func putMarkAsReadUnreadEmployeeCall(markAsReadUnreadPutRequestBody: MessagesClient4.MarkAsReadUnreadPutRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.MarkAsReadUnreadPutResponseBody>
+  open func putMessageThreadTopicCall(messageId: Swift.String, updateMessageTopicRequestBody: MessagesClient4.UpdateMessageTopicRequestBody? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func putTopicCall(topicId: Swift.String, xBBSVCRequestId: Swift.String? = nil, topicPutRequestBody: MessagesClient4.TopicPutRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.TopicPutResponseBody>
+  @objc deinit
+}
+public struct EmployeeConversationThread : Swift.Codable, Swift.Equatable {
+  public var client: MessagesClient4.Client
+  public var assignee: MessagesClient4.Employee?
+  public var id: Swift.String
+  public var sender: MessagesClient4.MessageSender
+  public var topic: MessagesClient4.Topic
+  public var body: Swift.String
+  public var subject: Swift.String?
+  public var read: Swift.Bool
+  public var important: Swift.Bool
+  public var readOnly: Swift.Bool
+  public var deletable: Swift.Bool
+  public var timestamp: Foundation.Date
+  public var hasAttachments: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(client: MessagesClient4.Client, assignee: MessagesClient4.Employee? = nil, id: Swift.String, sender: MessagesClient4.MessageSender, topic: MessagesClient4.Topic, body: Swift.String, subject: Swift.String? = nil, read: Swift.Bool, important: Swift.Bool, readOnly: Swift.Bool, deletable: Swift.Bool, timestamp: Foundation.Date, hasAttachments: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.EmployeeConversationThread, rhs: MessagesClient4.EmployeeConversationThread) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case client
+    case assignee
+    case id
+    case sender
+    case topic
+    case body
+    case subject
+    case read
+    case important
+    case readOnly
+    case deletable
+    case timestamp
+    case hasAttachments
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.EmployeeConversationThread.CodingKeys]
+    public static var allCases: [MessagesClient4.EmployeeConversationThread.CodingKeys] {
+      get
+    }
+  }
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ErrorItem, rhs: MessagesClient4.ErrorItem) -> Swift.Bool
+}
+public struct ExtendedTopicsPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var subscribers: [Swift.String]?
+  public var failedSubscriberIds: [Swift.String]?
+  public var mailoutTopic: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public init(name: Swift.String, subscribers: [Swift.String]? = nil, failedSubscriberIds: [Swift.String]? = nil, mailoutTopic: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ExtendedTopicsPostResponseBody, rhs: MessagesClient4.ExtendedTopicsPostResponseBody) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [MessagesClient4.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [MessagesClient4.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.ForbiddenError, rhs: MessagesClient4.ForbiddenError) -> Swift.Bool
+}
+public struct InlineObject : Swift.Codable, Swift.Equatable {
+  public var attachment: Foundation.URL?
+  public init(attachment: Foundation.URL? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.InlineObject, rhs: MessagesClient4.InlineObject) -> Swift.Bool
+}
+public struct InlineObject1 : Swift.Codable, Swift.Equatable {
+  public var attachment: Foundation.URL?
+  public init(attachment: Foundation.URL? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.InlineObject1, rhs: MessagesClient4.InlineObject1) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public init(message: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.InternalServerError, rhs: MessagesClient4.InternalServerError) -> Swift.Bool
+}
+public protocol MailoutAPIProtocol {
+  func deleteMailoutCall(mailoutId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getMailoutCall(mailoutId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.MailoutGetResponseBody>
+  func getMailoutsCall(from: Swift.Int?, size: Swift.Int?) throws -> ClientCommon.Call<[MessagesClient4.MailoutBase]>
+  func postMailoutCall(mailoutPostRequestBody: MessagesClient4.MailoutPostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.MailoutPostResponseBody>
+  func postMailoutPreviewCall(mailoutPreviewRequestBody: MessagesClient4.MailoutPreviewRequestBody?) throws -> ClientCommon.Call<MessagesClient4.MailoutPreviewResponseBody>
+}
+@objc @_inheritsConvenienceInitializers public class MailoutAPI : ObjectiveC.NSObject, DBSClient, MessagesClient4.MailoutAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteMailoutCall(mailoutId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getMailoutCall(mailoutId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.MailoutGetResponseBody>
+  open func getMailoutsCall(from: Swift.Int? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[MessagesClient4.MailoutBase]>
+  open func postMailoutCall(mailoutPostRequestBody: MessagesClient4.MailoutPostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.MailoutPostResponseBody>
+  open func postMailoutPreviewCall(mailoutPreviewRequestBody: MessagesClient4.MailoutPreviewRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.MailoutPreviewResponseBody>
+  @objc deinit
+}
+public struct MailoutBase : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var mailoutName: Swift.String?
+  public var subject: Swift.String
+  public var topic: MessagesClient4.Topic
+  public var senderDisplayName: Swift.String
+  public var initiationDate: Foundation.Date
+  public var status: MessagesClient4.MailoutStatus
+  public init(id: Swift.String, mailoutName: Swift.String? = nil, subject: Swift.String, topic: MessagesClient4.Topic, senderDisplayName: Swift.String, initiationDate: Foundation.Date, status: MessagesClient4.MailoutStatus)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MailoutBase, rhs: MessagesClient4.MailoutBase) -> Swift.Bool
+}
+public struct MailoutGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var sender: MessagesClient4.MessageSender
+  public var totalRecipientsCount: Swift.Int?
+  public var deliveredMessagesNumber: Swift.Int?
+  public var readMessagesNumber: Swift.Int?
+  public var important: Swift.Bool
+  public var deletable: Swift.Bool
+  public var body: Swift.String
+  public var isBodyHtml: Swift.Bool?
+  public var attachments: [MessagesClient4.Metadata]?
+  public var id: Swift.String
+  public var mailoutName: Swift.String?
+  public var subject: Swift.String
+  public var topic: MessagesClient4.Topic
+  public var senderDisplayName: Swift.String
+  public var initiationDate: Foundation.Date
+  public var status: MessagesClient4.MailoutStatus
+  public init(sender: MessagesClient4.MessageSender, totalRecipientsCount: Swift.Int? = nil, deliveredMessagesNumber: Swift.Int? = nil, readMessagesNumber: Swift.Int? = nil, important: Swift.Bool, deletable: Swift.Bool, body: Swift.String, isBodyHtml: Swift.Bool? = nil, attachments: [MessagesClient4.Metadata]? = nil, id: Swift.String, mailoutName: Swift.String? = nil, subject: Swift.String, topic: MessagesClient4.Topic, senderDisplayName: Swift.String, initiationDate: Foundation.Date, status: MessagesClient4.MailoutStatus)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MailoutGetResponseBody, rhs: MessagesClient4.MailoutGetResponseBody) -> Swift.Bool
+}
+public struct MailoutPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var mailoutName: Swift.String?
+  public var recipientsData: MessagesClient4.RecipientsData
+  public var body: Swift.String
+  public var isBodyHtml: Swift.Bool?
+  public var subject: Swift.String
+  public var topic: Swift.String
+  public var senderDisplayName: Swift.String
+  public var important: Swift.Bool?
+  public var deletable: Swift.Bool?
+  public var attachments: [Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(mailoutName: Swift.String? = nil, recipientsData: MessagesClient4.RecipientsData, body: Swift.String, isBodyHtml: Swift.Bool? = nil, subject: Swift.String, topic: Swift.String, senderDisplayName: Swift.String, important: Swift.Bool? = nil, deletable: Swift.Bool? = nil, attachments: [Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MailoutPostRequestBody, rhs: MessagesClient4.MailoutPostRequestBody) -> Swift.Bool
+}
+public struct MailoutPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public init(id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MailoutPostResponseBody, rhs: MessagesClient4.MailoutPostResponseBody) -> Swift.Bool
+}
+public struct MailoutPreviewRequestBody : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String
+  public init(body: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MailoutPreviewRequestBody, rhs: MessagesClient4.MailoutPreviewRequestBody) -> Swift.Bool
+}
+public struct MailoutPreviewResponseBody : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String
+  public init(body: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MailoutPreviewResponseBody, rhs: MessagesClient4.MailoutPreviewResponseBody) -> Swift.Bool
+}
+public enum MailoutStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case created
+  case preparing
+  case ready
+  case processing
+  case done
+  case error
+  case cancellationInProcess
+  case cancelled
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [MessagesClient4.MailoutStatus]
+  public static var allCases: [MessagesClient4.MailoutStatus] {
+    get
+  }
+}
+public struct MarkAsReadUnreadPutRequestBody : Swift.Codable, Swift.Equatable {
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case read
+    case unread
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [MessagesClient4.MarkAsReadUnreadPutRequestBody.Status]
+    public static var allCases: [MessagesClient4.MarkAsReadUnreadPutRequestBody.Status] {
+      get
+    }
+  }
+  public var status: MessagesClient4.MarkAsReadUnreadPutRequestBody.Status
+  public var ids: [Swift.String]
+  public var additions: [Swift.String : Swift.String]?
+  public init(status: MessagesClient4.MarkAsReadUnreadPutRequestBody.Status, ids: [Swift.String], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MarkAsReadUnreadPutRequestBody, rhs: MessagesClient4.MarkAsReadUnreadPutRequestBody) -> Swift.Bool
+}
+public struct MarkAsReadUnreadPutResponseBody : Swift.Codable, Swift.Equatable {
+  public var changedItems: [Swift.String]
+  public var failedItems: [Swift.String]
+  public init(changedItems: [Swift.String], failedItems: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MarkAsReadUnreadPutResponseBody, rhs: MessagesClient4.MarkAsReadUnreadPutResponseBody) -> Swift.Bool
+}
+public struct MessageDraftGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var attachments: [MessagesClient4.Metadata]?
+  public var id: Swift.String
+  public var body: Swift.String?
+  public var subject: Swift.String?
+  public var topic: MessagesClient4.Topic?
+  public var timestamp: Foundation.Date
+  public var conversationId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(attachments: [MessagesClient4.Metadata]? = nil, id: Swift.String, body: Swift.String? = nil, subject: Swift.String? = nil, topic: MessagesClient4.Topic? = nil, timestamp: Foundation.Date, conversationId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageDraftGetResponseBody, rhs: MessagesClient4.MessageDraftGetResponseBody) -> Swift.Bool
+}
+public struct MessageDraftPutRequestBody : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String?
+  public var attachments: [Swift.String]?
+  public var subject: Swift.String?
+  public var topic: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(body: Swift.String? = nil, attachments: [Swift.String]? = nil, subject: Swift.String? = nil, topic: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageDraftPutRequestBody, rhs: MessagesClient4.MessageDraftPutRequestBody) -> Swift.Bool
+}
+public struct MessageDraftsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var hasAttachments: Swift.Bool?
+  public var id: Swift.String
+  public var body: Swift.String?
+  public var subject: Swift.String?
+  public var topic: MessagesClient4.Topic?
+  public var timestamp: Foundation.Date
+  public var conversationId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(hasAttachments: Swift.Bool? = nil, id: Swift.String, body: Swift.String? = nil, subject: Swift.String? = nil, topic: MessagesClient4.Topic? = nil, timestamp: Foundation.Date, conversationId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageDraftsGetResponseBody, rhs: MessagesClient4.MessageDraftsGetResponseBody) -> Swift.Bool
+}
+public struct MessageDraftsPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String?
+  public var attachments: [Swift.String]?
+  public var subject: Swift.String?
+  public var topic: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(body: Swift.String? = nil, attachments: [Swift.String]? = nil, subject: Swift.String? = nil, topic: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageDraftsPostRequestBody, rhs: MessagesClient4.MessageDraftsPostRequestBody) -> Swift.Bool
+}
+public struct MessageGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var isMyMessage: Swift.Bool
+  public var id: Swift.String
+  public var body: Swift.String
+  public var isBodyHtml: Swift.Bool?
+  public var sender: MessagesClient4.MessageSender
+  public var recipient: Swift.String?
+  public var createdAt: Foundation.Date
+  public var attachments: [MessagesClient4.Metadata]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(isMyMessage: Swift.Bool, id: Swift.String, body: Swift.String, isBodyHtml: Swift.Bool? = nil, sender: MessagesClient4.MessageSender, recipient: Swift.String? = nil, createdAt: Foundation.Date, attachments: [MessagesClient4.Metadata]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageGetResponseBody, rhs: MessagesClient4.MessageGetResponseBody) -> Swift.Bool
+}
+public struct MessageGetResponseBodyAllOf : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var body: Swift.String
+  public var isBodyHtml: Swift.Bool?
+  public var sender: MessagesClient4.MessageSender
+  public var recipient: Swift.String?
+  public var createdAt: Foundation.Date
+  public var attachments: [MessagesClient4.Metadata]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, body: Swift.String, isBodyHtml: Swift.Bool? = nil, sender: MessagesClient4.MessageSender, recipient: Swift.String? = nil, createdAt: Foundation.Date, attachments: [MessagesClient4.Metadata]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageGetResponseBodyAllOf, rhs: MessagesClient4.MessageGetResponseBodyAllOf) -> Swift.Bool
+}
+public struct MessageReplyPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var body: Swift.String
+  public var sender: MessagesClient4.MessageSender?
+  public var attachments: [Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(body: Swift.String, sender: MessagesClient4.MessageSender? = nil, attachments: [Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageReplyPostRequestBody, rhs: MessagesClient4.MessageReplyPostRequestBody) -> Swift.Bool
+}
+public struct MessageSender : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var name: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String? = nil, name: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageSender, rhs: MessagesClient4.MessageSender) -> Swift.Bool
+}
+public struct MessageThreadAssignmentRequestBody : Swift.Codable, Swift.Equatable {
+  public var assigneeId: Swift.String?
+  public init(assigneeId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadAssignmentRequestBody, rhs: MessagesClient4.MessageThreadAssignmentRequestBody) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case assigneeId
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.MessageThreadAssignmentRequestBody.CodingKeys]
+    public static var allCases: [MessagesClient4.MessageThreadAssignmentRequestBody.CodingKeys] {
+      get
+    }
+  }
+}
+public struct MessageThreadAssignmentResponseBody : Swift.Codable, Swift.Equatable {
+  public var internalId: Swift.String
+  public var fullName: Swift.String
+  public var isRequester: Swift.Bool
+  public init(internalId: Swift.String, fullName: Swift.String, isRequester: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadAssignmentResponseBody, rhs: MessagesClient4.MessageThreadAssignmentResponseBody) -> Swift.Bool
+}
+public struct MessageThreadBulkAssignmentRequestBody : Swift.Codable, Swift.Equatable {
+  public var messageThreads: [Swift.String]
+  public var assigneeId: Swift.String?
+  public init(messageThreads: [Swift.String], assigneeId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadBulkAssignmentRequestBody, rhs: MessagesClient4.MessageThreadBulkAssignmentRequestBody) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case messageThreads
+    case assigneeId
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.MessageThreadBulkAssignmentRequestBody.CodingKeys]
+    public static var allCases: [MessagesClient4.MessageThreadBulkAssignmentRequestBody.CodingKeys] {
+      get
+    }
+  }
+}
+public struct MessageThreadBulkAssignmentResponseBody : Swift.Codable, Swift.Equatable {
+  public var assignedItems: [Swift.String]
+  public var failedItems: [Swift.String]
+  public var internalId: Swift.String
+  public var fullName: Swift.String
+  public var isRequester: Swift.Bool
+  public init(assignedItems: [Swift.String], failedItems: [Swift.String], internalId: Swift.String, fullName: Swift.String, isRequester: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadBulkAssignmentResponseBody, rhs: MessagesClient4.MessageThreadBulkAssignmentResponseBody) -> Swift.Bool
+}
+public struct MessageThreadBulkResolutionRequestBody : Swift.Codable, Swift.Equatable {
+  public var messageThreads: [Swift.String]
+  public var resolved: Swift.Bool
+  public init(messageThreads: [Swift.String], resolved: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadBulkResolutionRequestBody, rhs: MessagesClient4.MessageThreadBulkResolutionRequestBody) -> Swift.Bool
+}
+public struct MessageThreadBulkResolutionResponseBody : Swift.Codable, Swift.Equatable {
+  public var resolutionStatus: MessagesClient4.WorkflowStatus?
+  public var successfulItems: [Swift.String]?
+  public var failedItems: [Swift.String]?
+  public init(resolutionStatus: MessagesClient4.WorkflowStatus? = nil, successfulItems: [Swift.String]? = nil, failedItems: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadBulkResolutionResponseBody, rhs: MessagesClient4.MessageThreadBulkResolutionResponseBody) -> Swift.Bool
+}
+public struct MessageThreadGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var messages: [MessagesClient4.MessageGetResponseBody]
+  public var draft: MessagesClient4.ConversationDraft?
+  public var topic: MessagesClient4.Topic
+  public var subject: Swift.String?
+  public var rootMessageId: Swift.String
+  public var read: Swift.Bool
+  public var important: Swift.Bool
+  public var readOnly: Swift.Bool
+  public var deletable: Swift.Bool
+  public var attachments: [MessagesClient4.Metadata]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(messages: [MessagesClient4.MessageGetResponseBody], draft: MessagesClient4.ConversationDraft? = nil, topic: MessagesClient4.Topic, subject: Swift.String? = nil, rootMessageId: Swift.String, read: Swift.Bool, important: Swift.Bool, readOnly: Swift.Bool, deletable: Swift.Bool, attachments: [MessagesClient4.Metadata]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadGetResponseBody, rhs: MessagesClient4.MessageThreadGetResponseBody) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case messages
+    case draft
+    case topic
+    case subject
+    case rootMessageId
+    case read
+    case important
+    case readOnly
+    case deletable
+    case attachments
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.MessageThreadGetResponseBody.CodingKeys]
+    public static var allCases: [MessagesClient4.MessageThreadGetResponseBody.CodingKeys] {
+      get
+    }
+  }
+}
+public struct MessageThreadGetResponseBodyParent : Swift.Codable, Swift.Equatable {
+  public var topic: MessagesClient4.Topic
+  public var subject: Swift.String?
+  public var rootMessageId: Swift.String
+  public var read: Swift.Bool
+  public var important: Swift.Bool
+  public var readOnly: Swift.Bool
+  public var deletable: Swift.Bool
+  public var attachments: [MessagesClient4.Metadata]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(topic: MessagesClient4.Topic, subject: Swift.String? = nil, rootMessageId: Swift.String, read: Swift.Bool, important: Swift.Bool, readOnly: Swift.Bool, deletable: Swift.Bool, attachments: [MessagesClient4.Metadata]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadGetResponseBodyParent, rhs: MessagesClient4.MessageThreadGetResponseBodyParent) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case topic
+    case subject
+    case rootMessageId
+    case read
+    case important
+    case readOnly
+    case deletable
+    case attachments
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.MessageThreadGetResponseBodyParent.CodingKeys]
+    public static var allCases: [MessagesClient4.MessageThreadGetResponseBodyParent.CodingKeys] {
+      get
+    }
+  }
+}
+public struct MessageThreadResolutionRequestBody : Swift.Codable, Swift.Equatable {
+  public var resolved: Swift.Bool
+  public init(resolved: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadResolutionRequestBody, rhs: MessagesClient4.MessageThreadResolutionRequestBody) -> Swift.Bool
+}
+public struct MessageThreadResolutionResponseBody : Swift.Codable, Swift.Equatable {
+  public var resolutionStatus: MessagesClient4.WorkflowStatus?
+  public init(resolutionStatus: MessagesClient4.WorkflowStatus? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.MessageThreadResolutionResponseBody, rhs: MessagesClient4.MessageThreadResolutionResponseBody) -> Swift.Bool
+}
+public protocol MessagecenterAPIProtocol {
+  func deleteConversationThreadsCall(ids: [Swift.String], xBBSVCRequestId: Swift.String?) throws -> ClientCommon.Call<MessagesClient4.ConversationThreadsDeleteResponseBody>
+  func deleteMessageAttachmentsCall(ids: [Swift.String]) throws -> ClientCommon.Call<MessagesClient4.DeleteResponseBody>
+  func deleteMessageDraftsCall(ids: [Swift.String]) throws -> ClientCommon.Call<MessagesClient4.DeleteDraftsResponseBody>
+  func getConversationThreadsCall(mailboxType: Swift.String?, from: Swift.Int?, size: Swift.Int?, orderBy: Swift.String?, direction: MessagesClient4.MessagecenterAPI.Direction_getConversationThreads?) throws -> ClientCommon.Call<[MessagesClient4.ConversationThread]>
+  func getMessageAttachmentCall(attachmentId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  func getMessageDraftCall(draftId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.MessageDraftGetResponseBody>
+  func getMessageDraftsCall(from: Swift.Int?, size: Swift.Int?) throws -> ClientCommon.Call<[MessagesClient4.MessageDraftsGetResponseBody]>
+  func getMessageThreadCall(messageId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.MessageThreadGetResponseBody>
+  func getTopicsCall() throws -> ClientCommon.Call<[MessagesClient4.TopicsGetResponseBody]>
+  func getUnreadConversationsCountCall() throws -> ClientCommon.Call<MessagesClient4.UnreadConversationsGetResponseBody>
+  func postConversationMessageDraftCall(messageId: Swift.String, conversationMessageDraftPostRequestBody: MessagesClient4.ConversationMessageDraftPostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.DraftPostResponseBody>
+  func postMessageAttachmentsCall(messageId: Swift.String?, attachment: Foundation.URL?) throws -> ClientCommon.Call<MessagesClient4.Metadata>
+  func postMessageDraftsCall(messageDraftsPostRequestBody: MessagesClient4.MessageDraftsPostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.DraftPostResponseBody>
+  func postMessageReplyCall(messageId: Swift.String, messageReplyPostRequestBody: MessagesClient4.MessageReplyPostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.PresentationMessagePostResponseBody>
+  func postMessagesCall(presentationMessagePostRequestBody: MessagesClient4.PresentationMessagePostRequestBody?) throws -> ClientCommon.Call<MessagesClient4.PresentationMessagePostResponseBody>
+  func putConversationMessageDraftCall(messageId: Swift.String, conversationMessageDraftPutRequestBody: MessagesClient4.ConversationMessageDraftPutRequestBody?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func putMarkAsReadUnreadCall(markAsReadUnreadPutRequestBody: MessagesClient4.MarkAsReadUnreadPutRequestBody?) throws -> ClientCommon.Call<MessagesClient4.MarkAsReadUnreadPutResponseBody>
+  func putMessageDraftCall(draftId: Swift.String, messageDraftPutRequestBody: MessagesClient4.MessageDraftPutRequestBody?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class MessagecenterAPI : ObjectiveC.NSObject, DBSClient, MessagesClient4.MessagecenterAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func deleteConversationThreadsCall(ids: [Swift.String], xBBSVCRequestId: Swift.String? = nil) throws -> ClientCommon.Call<MessagesClient4.ConversationThreadsDeleteResponseBody>
+  open func deleteMessageAttachmentsCall(ids: [Swift.String]) throws -> ClientCommon.Call<MessagesClient4.DeleteResponseBody>
+  open func deleteMessageDraftsCall(ids: [Swift.String]) throws -> ClientCommon.Call<MessagesClient4.DeleteDraftsResponseBody>
+  public enum Direction_getConversationThreads : Swift.String, Swift.CaseIterable {
+    case asc
+    case desc
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [MessagesClient4.MessagecenterAPI.Direction_getConversationThreads]
+    public static var allCases: [MessagesClient4.MessagecenterAPI.Direction_getConversationThreads] {
+      get
+    }
+  }
+  open func getConversationThreadsCall(mailboxType: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: MessagesClient4.MessagecenterAPI.Direction_getConversationThreads? = nil) throws -> ClientCommon.Call<[MessagesClient4.ConversationThread]>
+  open func getMessageAttachmentCall(attachmentId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  open func getMessageDraftCall(draftId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.MessageDraftGetResponseBody>
+  open func getMessageDraftsCall(from: Swift.Int? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[MessagesClient4.MessageDraftsGetResponseBody]>
+  open func getMessageThreadCall(messageId: Swift.String) throws -> ClientCommon.Call<MessagesClient4.MessageThreadGetResponseBody>
+  open func getTopicsCall() throws -> ClientCommon.Call<[MessagesClient4.TopicsGetResponseBody]>
+  open func getUnreadConversationsCountCall() throws -> ClientCommon.Call<MessagesClient4.UnreadConversationsGetResponseBody>
+  open func postConversationMessageDraftCall(messageId: Swift.String, conversationMessageDraftPostRequestBody: MessagesClient4.ConversationMessageDraftPostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.DraftPostResponseBody>
+  open func postMessageAttachmentsCall(messageId: Swift.String? = nil, attachment: Foundation.URL? = nil) throws -> ClientCommon.Call<MessagesClient4.Metadata>
+  open func postMessageDraftsCall(messageDraftsPostRequestBody: MessagesClient4.MessageDraftsPostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.DraftPostResponseBody>
+  open func postMessageReplyCall(messageId: Swift.String, messageReplyPostRequestBody: MessagesClient4.MessageReplyPostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.PresentationMessagePostResponseBody>
+  open func postMessagesCall(presentationMessagePostRequestBody: MessagesClient4.PresentationMessagePostRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.PresentationMessagePostResponseBody>
+  open func putConversationMessageDraftCall(messageId: Swift.String, conversationMessageDraftPutRequestBody: MessagesClient4.ConversationMessageDraftPutRequestBody? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func putMarkAsReadUnreadCall(markAsReadUnreadPutRequestBody: MessagesClient4.MarkAsReadUnreadPutRequestBody? = nil) throws -> ClientCommon.Call<MessagesClient4.MarkAsReadUnreadPutResponseBody>
+  open func putMessageDraftCall(draftId: Swift.String, messageDraftPutRequestBody: MessagesClient4.MessageDraftPutRequestBody? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct Metadata : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var filename: Swift.String
+  public var size: Swift.Double
+  public var createdAt: Foundation.Date
+  public init(id: Swift.String, filename: Swift.String, size: Swift.Double, createdAt: Foundation.Date)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.Metadata, rhs: MessagesClient4.Metadata) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [MessagesClient4.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [MessagesClient4.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.NotFoundError, rhs: MessagesClient4.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct PresentationBaseMessagePostRequestBody : Swift.Codable, Swift.Equatable {
+  public var subject: Swift.String
+  public var body: Swift.String
+  public var topic: Swift.String
+  public var sender: MessagesClient4.MessageSender?
+  public var additions: [Swift.String : Swift.String]?
+  public init(subject: Swift.String, body: Swift.String, topic: Swift.String, sender: MessagesClient4.MessageSender? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.PresentationBaseMessagePostRequestBody, rhs: MessagesClient4.PresentationBaseMessagePostRequestBody) -> Swift.Bool
+}
+public struct PresentationMessageEmployeePostRequestBody : Swift.Codable, Swift.Equatable {
+  public var recipient: Swift.String
+  public var important: Swift.Bool?
+  public var readOnly: Swift.Bool?
+  public var deletable: Swift.Bool?
+  public var attachments: [Swift.String]?
+  public var subject: Swift.String
+  public var body: Swift.String
+  public var topic: Swift.String
+  public var sender: MessagesClient4.MessageSender?
+  public var additions: [Swift.String : Swift.String]?
+  public init(recipient: Swift.String, important: Swift.Bool? = nil, readOnly: Swift.Bool? = nil, deletable: Swift.Bool? = nil, attachments: [Swift.String]? = nil, subject: Swift.String, body: Swift.String, topic: Swift.String, sender: MessagesClient4.MessageSender? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.PresentationMessageEmployeePostRequestBody, rhs: MessagesClient4.PresentationMessageEmployeePostRequestBody) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case recipient
+    case important
+    case readOnly
+    case deletable
+    case attachments
+    case subject
+    case body
+    case topic
+    case sender
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [MessagesClient4.PresentationMessageEmployeePostRequestBody.CodingKeys]
+    public static var allCases: [MessagesClient4.PresentationMessageEmployeePostRequestBody.CodingKeys] {
+      get
+    }
+  }
+}
+public struct PresentationMessagePostRequestBody : Swift.Codable, Swift.Equatable {
+  public var attachments: [Swift.String]?
+  public var subject: Swift.String
+  public var body: Swift.String
+  public var topic: Swift.String
+  public var sender: MessagesClient4.MessageSender?
+  public var additions: [Swift.String : Swift.String]?
+  public init(attachments: [Swift.String]? = nil, subject: Swift.String, body: Swift.String, topic: Swift.String, sender: MessagesClient4.MessageSender? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.PresentationMessagePostRequestBody, rhs: MessagesClient4.PresentationMessagePostRequestBody) -> Swift.Bool
+}
+public struct PresentationMessagePostResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public init(id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.PresentationMessagePostResponseBody, rhs: MessagesClient4.PresentationMessagePostResponseBody) -> Swift.Bool
+}
+public struct RecipientsData : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public init(id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.RecipientsData, rhs: MessagesClient4.RecipientsData) -> Swift.Bool
+}
+public struct SubscribersPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var subscriberId: [Swift.String]
+  public init(subscriberId: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.SubscribersPostRequestBody, rhs: MessagesClient4.SubscribersPostRequestBody) -> Swift.Bool
+}
+public struct SubscribersPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var subscriberId: Swift.String
+  public var isSubscribed: Swift.Bool
+  public init(subscriberId: Swift.String, isSubscribed: Swift.Bool)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.SubscribersPostResponseBody, rhs: MessagesClient4.SubscribersPostResponseBody) -> Swift.Bool
+}
+public struct SubscriptionsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var internalUserId: Swift.String
+  public var subscriberName: Swift.String?
+  public var subscriptionDate: Swift.String
+  public init(id: Swift.String, internalUserId: Swift.String, subscriberName: Swift.String? = nil, subscriptionDate: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.SubscriptionsGetResponseBody, rhs: MessagesClient4.SubscriptionsGetResponseBody) -> Swift.Bool
+}
+public struct SubscriptionsPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var internalUserId: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(internalUserId: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.SubscriptionsPostRequestBody, rhs: MessagesClient4.SubscriptionsPostRequestBody) -> Swift.Bool
+}
+public struct SubscriptionsPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public init(id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.SubscriptionsPostResponseBody, rhs: MessagesClient4.SubscriptionsPostResponseBody) -> Swift.Bool
+}
+public struct Topic : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var name: Swift.String
+  public var deleted: Swift.Bool
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, name: Swift.String, deleted: Swift.Bool, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.Topic, rhs: MessagesClient4.Topic) -> Swift.Bool
+}
+public struct TopicGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var mailoutTopic: Swift.Bool
+  public var id: Swift.String
+  public var code: Swift.String?
+  public var name: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(mailoutTopic: Swift.Bool, id: Swift.String, code: Swift.String? = nil, name: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.TopicGetResponseBody, rhs: MessagesClient4.TopicGetResponseBody) -> Swift.Bool
+}
+public struct TopicPutRequestBody : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.TopicPutRequestBody, rhs: MessagesClient4.TopicPutRequestBody) -> Swift.Bool
+}
+public struct TopicPutResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var code: Swift.String?
+  public var name: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, code: Swift.String? = nil, name: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.TopicPutResponseBody, rhs: MessagesClient4.TopicPutResponseBody) -> Swift.Bool
+}
+public struct TopicsGetEmployeeResponseBody : Swift.Codable, Swift.Equatable {
+  public var subscribersCount: Swift.Double
+  public var mailoutTopic: Swift.Bool
+  public var id: Swift.String
+  public var code: Swift.String?
+  public var name: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(subscribersCount: Swift.Double, mailoutTopic: Swift.Bool, id: Swift.String, code: Swift.String? = nil, name: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.TopicsGetEmployeeResponseBody, rhs: MessagesClient4.TopicsGetEmployeeResponseBody) -> Swift.Bool
+}
+public struct TopicsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var code: Swift.String?
+  public var name: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, code: Swift.String? = nil, name: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.TopicsGetResponseBody, rhs: MessagesClient4.TopicsGetResponseBody) -> Swift.Bool
+}
+public struct TopicsPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var subscribers: [Swift.String]?
+  public var mailoutTopic: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String, subscribers: [Swift.String]? = nil, mailoutTopic: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.TopicsPostRequestBody, rhs: MessagesClient4.TopicsPostRequestBody) -> Swift.Bool
+}
+public struct TopicsPostResponseBody : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public init(id: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.TopicsPostResponseBody, rhs: MessagesClient4.TopicsPostResponseBody) -> Swift.Bool
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [MessagesClient4.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [MessagesClient4.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.UnauthorizedError, rhs: MessagesClient4.UnauthorizedError) -> Swift.Bool
+}
+public struct UnreadConversationsGetResponseBody : Swift.Codable, Swift.Equatable {
+  public var unreadCount: Swift.Double
+  public init(unreadCount: Swift.Double)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.UnreadConversationsGetResponseBody, rhs: MessagesClient4.UnreadConversationsGetResponseBody) -> Swift.Bool
+}
+public struct UpdateMessageTopicRequestBody : Swift.Codable, Swift.Equatable {
+  public var topicId: Swift.String
+  public init(topicId: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: MessagesClient4.UpdateMessageTopicRequestBody, rhs: MessagesClient4.UpdateMessageTopicRequestBody) -> Swift.Bool
+}
+public enum WorkflowStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case new
+  case inProgress
+  case resolved
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [MessagesClient4.WorkflowStatus]
+  public static var allCases: [MessagesClient4.WorkflowStatus] {
+    get
+  }
+}
+extension MessagesClient4.ConversationThread.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.ConversationThread.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.ConversationThread.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.ConversationThreadsGetResponseBody.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.ConversationThreadsGetResponseBody.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.ConversationThreadsGetResponseBody.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.ConversationsThread.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.ConversationsThread.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.ConversationsThread.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.EmployeeAPI.Direction_getConversationThreadsEmployee : Swift.Equatable {}
+extension MessagesClient4.EmployeeAPI.Direction_getConversationThreadsEmployee : Swift.Hashable {}
+extension MessagesClient4.EmployeeAPI.Direction_getConversationThreadsEmployee : Swift.RawRepresentable {}
+extension MessagesClient4.EmployeeConversationThread.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.EmployeeConversationThread.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.EmployeeConversationThread.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.MailoutStatus : Swift.Equatable {}
+extension MessagesClient4.MailoutStatus : Swift.Hashable {}
+extension MessagesClient4.MailoutStatus : Swift.RawRepresentable {}
+extension MessagesClient4.MarkAsReadUnreadPutRequestBody.Status : Swift.Equatable {}
+extension MessagesClient4.MarkAsReadUnreadPutRequestBody.Status : Swift.Hashable {}
+extension MessagesClient4.MarkAsReadUnreadPutRequestBody.Status : Swift.RawRepresentable {}
+extension MessagesClient4.MessageThreadAssignmentRequestBody.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.MessageThreadAssignmentRequestBody.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.MessageThreadAssignmentRequestBody.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.MessageThreadBulkAssignmentRequestBody.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.MessageThreadBulkAssignmentRequestBody.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.MessageThreadBulkAssignmentRequestBody.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.MessageThreadGetResponseBody.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.MessageThreadGetResponseBody.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.MessageThreadGetResponseBody.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.MessageThreadGetResponseBodyParent.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.MessageThreadGetResponseBodyParent.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.MessageThreadGetResponseBodyParent.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.MessagecenterAPI.Direction_getConversationThreads : Swift.Equatable {}
+extension MessagesClient4.MessagecenterAPI.Direction_getConversationThreads : Swift.Hashable {}
+extension MessagesClient4.MessagecenterAPI.Direction_getConversationThreads : Swift.RawRepresentable {}
+extension MessagesClient4.PresentationMessageEmployeePostRequestBody.CodingKeys : Swift.Equatable {}
+extension MessagesClient4.PresentationMessageEmployeePostRequestBody.CodingKeys : Swift.Hashable {}
+extension MessagesClient4.PresentationMessageEmployeePostRequestBody.CodingKeys : Swift.RawRepresentable {}
+extension MessagesClient4.WorkflowStatus : Swift.Equatable {}
+extension MessagesClient4.WorkflowStatus : Swift.Hashable {}
+extension MessagesClient4.WorkflowStatus : Swift.RawRepresentable {}

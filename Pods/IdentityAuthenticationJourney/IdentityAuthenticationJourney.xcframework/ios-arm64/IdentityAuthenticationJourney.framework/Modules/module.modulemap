@@ -1,0 +1,4 @@
+framework module IdentityAuthenticationJourney {
+  header "IdentityAuthenticationJourney-Swift.h"
+  requires objc
+}

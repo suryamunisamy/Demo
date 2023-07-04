@@ -1,0 +1,4 @@
+framework module RetailUSApp {
+  header "RetailUSApp-Swift.h"
+  requires objc
+}

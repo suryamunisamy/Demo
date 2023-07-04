@@ -1,0 +1,4 @@
+framework module TransactionsClient2 {
+  header "TransactionsClient2-Swift.h"
+  requires objc
+}

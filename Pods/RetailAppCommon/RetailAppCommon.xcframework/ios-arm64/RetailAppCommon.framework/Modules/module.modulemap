@@ -1,0 +1,4 @@
+framework module RetailAppCommon {
+  header "RetailAppCommon-Swift.h"
+  requires objc
+}

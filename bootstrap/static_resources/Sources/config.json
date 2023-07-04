@@ -1,0 +1,20 @@
+{
+  "backbase": {
+    "serverURL": "https://app.prd.sdbx.live.backbaseservices.com",
+    "localModelPath": "$(contextRoot)/localModel.json",
+    "experience": "",
+    "version": "6.1.5",
+    "identity": {
+      "baseURL": "https://identity.prd.sdbx.live.backbaseservices.com",
+      "realm": "retail",
+      "clientId": "mobile-client",
+      "applicationKey": "retail"
+    }
+  },
+  "security": {
+    "allowedDomains": ["*"]
+  },
+  "development": {
+    "debugEnable": true
+  }
+}

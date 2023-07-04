@@ -1,0 +1,4 @@
+framework module RetailRemoteDepositHistoryJourneyUseCase {
+  header "RetailRemoteDepositHistoryJourneyUseCase-Swift.h"
+  requires objc
+}

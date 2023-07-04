@@ -1,0 +1,4 @@
+framework module RetailFinancialInsightsJourney {
+  header "RetailFinancialInsightsJourney-Swift.h"
+  requires objc
+}

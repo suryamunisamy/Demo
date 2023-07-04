@@ -1,0 +1,4 @@
+framework module BackbaseAppUpdater {
+  header "BackbaseAppUpdater-Swift.h"
+  requires objc
+}

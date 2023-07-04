@@ -1,0 +1,4 @@
+framework module RetailFeatureFilterUseCase {
+  header "RetailFeatureFilterUseCase-Swift.h"
+  requires objc
+}

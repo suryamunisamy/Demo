@@ -1,0 +1,1043 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RemoteDepositCaptureClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct Account : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var rdcId: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Account.Builder class.")
+  public init(id: Swift.String, rdcId: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let rdcId: Swift.String
+    public init(id: Swift.String, rdcId: Swift.String)
+    final public func build() -> RemoteDepositCaptureClient2.Account
+    public static func == (lhs: RemoteDepositCaptureClient2.Account.Builder, rhs: RemoteDepositCaptureClient2.Account.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.Account, rhs: RemoteDepositCaptureClient2.Account) -> Swift.Bool
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [RemoteDepositCaptureClient2.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of BadRequestError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [RemoteDepositCaptureClient2.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [RemoteDepositCaptureClient2.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [RemoteDepositCaptureClient2.ErrorItem]?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.BadRequestError
+    public static func == (lhs: RemoteDepositCaptureClient2.BadRequestError.Builder, rhs: RemoteDepositCaptureClient2.BadRequestError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.BadRequestError, rhs: RemoteDepositCaptureClient2.BadRequestError) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct CreateDepositBatchRequest : Swift.Codable, Swift.Equatable {
+  public var account: RemoteDepositCaptureClient2.Account
+  public var description: Swift.String?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of CreateDepositBatchRequest.Builder class.")
+  public init(account: RemoteDepositCaptureClient2.Account, description: Swift.String? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let account: RemoteDepositCaptureClient2.Account
+    final public var description: Swift.String? {
+      get
+    }
+    public init(account: RemoteDepositCaptureClient2.Account)
+    final public func set(description: Swift.String?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.CreateDepositBatchRequest
+    public static func == (lhs: RemoteDepositCaptureClient2.CreateDepositBatchRequest.Builder, rhs: RemoteDepositCaptureClient2.CreateDepositBatchRequest.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.CreateDepositBatchRequest, rhs: RemoteDepositCaptureClient2.CreateDepositBatchRequest) -> Swift.Bool
+}
+public struct CreateSessionRequest : Swift.Codable, Swift.Equatable {
+  public var device: RemoteDepositCaptureClient2.Device
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of CreateSessionRequest.Builder class.")
+  public init(device: RemoteDepositCaptureClient2.Device)
+  final public class Builder : Swift.Equatable {
+    final public let device: RemoteDepositCaptureClient2.Device
+    public init(device: RemoteDepositCaptureClient2.Device)
+    final public func build() -> RemoteDepositCaptureClient2.CreateSessionRequest
+    public static func == (lhs: RemoteDepositCaptureClient2.CreateSessionRequest.Builder, rhs: RemoteDepositCaptureClient2.CreateSessionRequest.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.CreateSessionRequest, rhs: RemoteDepositCaptureClient2.CreateSessionRequest) -> Swift.Bool
+}
+public struct Currency : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Currency.Builder class.")
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let amount: Swift.String
+    final public let currencyCode: Swift.String
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(amount: Swift.String, currencyCode: Swift.String)
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.Currency
+    public static func == (lhs: RemoteDepositCaptureClient2.Currency.Builder, rhs: RemoteDepositCaptureClient2.Currency.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.Currency, rhs: RemoteDepositCaptureClient2.Currency) -> Swift.Bool
+}
+public struct DepositBatch : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var description: Swift.String?
+  public var recognizedAmount: RemoteDepositCaptureClient2.Currency?
+  public var upsertedItem: RemoteDepositCaptureClient2.DepositItem?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of DepositBatch.Builder class.")
+  public init(id: Swift.String, description: Swift.String? = nil, recognizedAmount: RemoteDepositCaptureClient2.Currency? = nil, upsertedItem: RemoteDepositCaptureClient2.DepositItem? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public var description: Swift.String? {
+      get
+    }
+    final public var recognizedAmount: RemoteDepositCaptureClient2.Currency? {
+      get
+    }
+    final public var upsertedItem: RemoteDepositCaptureClient2.DepositItem? {
+      get
+    }
+    public init(id: Swift.String)
+    final public func set(description: Swift.String?) -> Self
+    final public func set(recognizedAmount: RemoteDepositCaptureClient2.Currency?) -> Self
+    final public func set(upsertedItem: RemoteDepositCaptureClient2.DepositItem?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.DepositBatch
+    public static func == (lhs: RemoteDepositCaptureClient2.DepositBatch.Builder, rhs: RemoteDepositCaptureClient2.DepositBatch.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.DepositBatch, rhs: RemoteDepositCaptureClient2.DepositBatch) -> Swift.Bool
+}
+public struct DepositImages : Swift.Codable, Swift.Equatable {
+  public var frontImage: RemoteDepositCaptureClient2.Image
+  public var backImage: RemoteDepositCaptureClient2.Image
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of DepositImages.Builder class.")
+  public init(frontImage: RemoteDepositCaptureClient2.Image, backImage: RemoteDepositCaptureClient2.Image)
+  final public class Builder : Swift.Equatable {
+    final public let frontImage: RemoteDepositCaptureClient2.Image
+    final public let backImage: RemoteDepositCaptureClient2.Image
+    public init(frontImage: RemoteDepositCaptureClient2.Image, backImage: RemoteDepositCaptureClient2.Image)
+    final public func build() -> RemoteDepositCaptureClient2.DepositImages
+    public static func == (lhs: RemoteDepositCaptureClient2.DepositImages.Builder, rhs: RemoteDepositCaptureClient2.DepositImages.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.DepositImages, rhs: RemoteDepositCaptureClient2.DepositImages) -> Swift.Bool
+}
+public struct DepositItem : Swift.Codable, Swift.Equatable {
+  public var index: Swift.Int
+  public var recognizedCheckNumber: Swift.String?
+  public var userAmount: RemoteDepositCaptureClient2.Currency
+  public var recognizedAmount: RemoteDepositCaptureClient2.Currency?
+  public var message: Swift.String?
+  public var riskFactors: [RemoteDepositCaptureClient2.RiskFactor]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of DepositItem.Builder class.")
+  public init(index: Swift.Int, recognizedCheckNumber: Swift.String? = nil, userAmount: RemoteDepositCaptureClient2.Currency, recognizedAmount: RemoteDepositCaptureClient2.Currency? = nil, message: Swift.String? = nil, riskFactors: [RemoteDepositCaptureClient2.RiskFactor]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let index: Swift.Int
+    final public var recognizedCheckNumber: Swift.String? {
+      get
+    }
+    final public let userAmount: RemoteDepositCaptureClient2.Currency
+    final public var recognizedAmount: RemoteDepositCaptureClient2.Currency? {
+      get
+    }
+    final public var message: Swift.String? {
+      get
+    }
+    final public var riskFactors: [RemoteDepositCaptureClient2.RiskFactor]? {
+      get
+    }
+    public init(index: Swift.Int, userAmount: RemoteDepositCaptureClient2.Currency)
+    final public func set(recognizedCheckNumber: Swift.String?) -> Self
+    final public func set(recognizedAmount: RemoteDepositCaptureClient2.Currency?) -> Self
+    final public func set(message: Swift.String?) -> Self
+    final public func set(riskFactors: [RemoteDepositCaptureClient2.RiskFactor]?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.DepositItem
+    public static func == (lhs: RemoteDepositCaptureClient2.DepositItem.Builder, rhs: RemoteDepositCaptureClient2.DepositItem.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.DepositItem, rhs: RemoteDepositCaptureClient2.DepositItem) -> Swift.Bool
+}
+public struct DepositItemRequest : Swift.Codable, Swift.Equatable {
+  public var index: Swift.Int
+  public var amount: RemoteDepositCaptureClient2.Currency
+  public var frontImage: RemoteDepositCaptureClient2.Image?
+  public var backImage: RemoteDepositCaptureClient2.Image?
+  public var batchSize: Swift.Int
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of DepositItemRequest.Builder class.")
+  public init(index: Swift.Int, amount: RemoteDepositCaptureClient2.Currency, frontImage: RemoteDepositCaptureClient2.Image? = nil, backImage: RemoteDepositCaptureClient2.Image? = nil, batchSize: Swift.Int)
+  final public class Builder : Swift.Equatable {
+    final public let index: Swift.Int
+    final public let amount: RemoteDepositCaptureClient2.Currency
+    final public var frontImage: RemoteDepositCaptureClient2.Image? {
+      get
+    }
+    final public var backImage: RemoteDepositCaptureClient2.Image? {
+      get
+    }
+    final public let batchSize: Swift.Int
+    public init(index: Swift.Int, amount: RemoteDepositCaptureClient2.Currency, batchSize: Swift.Int)
+    final public func set(frontImage: RemoteDepositCaptureClient2.Image?) -> Self
+    final public func set(backImage: RemoteDepositCaptureClient2.Image?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.DepositItemRequest
+    public static func == (lhs: RemoteDepositCaptureClient2.DepositItemRequest.Builder, rhs: RemoteDepositCaptureClient2.DepositItemRequest.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.DepositItemRequest, rhs: RemoteDepositCaptureClient2.DepositItemRequest) -> Swift.Bool
+}
+public struct DepositLimit : Swift.Codable, Swift.Equatable {
+  public var limitType: RemoteDepositCaptureClient2.LimitType
+  public var remainingAmount: RemoteDepositCaptureClient2.Currency
+  public var totalAmount: RemoteDepositCaptureClient2.Currency
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of DepositLimit.Builder class.")
+  public init(limitType: RemoteDepositCaptureClient2.LimitType, remainingAmount: RemoteDepositCaptureClient2.Currency, totalAmount: RemoteDepositCaptureClient2.Currency)
+  final public class Builder : Swift.Equatable {
+    final public let limitType: RemoteDepositCaptureClient2.LimitType
+    final public let remainingAmount: RemoteDepositCaptureClient2.Currency
+    final public let totalAmount: RemoteDepositCaptureClient2.Currency
+    public init(limitType: RemoteDepositCaptureClient2.LimitType, remainingAmount: RemoteDepositCaptureClient2.Currency, totalAmount: RemoteDepositCaptureClient2.Currency)
+    final public func build() -> RemoteDepositCaptureClient2.DepositLimit
+    public static func == (lhs: RemoteDepositCaptureClient2.DepositLimit.Builder, rhs: RemoteDepositCaptureClient2.DepositLimit.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.DepositLimit, rhs: RemoteDepositCaptureClient2.DepositLimit) -> Swift.Bool
+}
+public struct Device : Swift.Codable, Swift.Equatable {
+  public var identifier: Swift.String
+  public var type: Swift.String
+  public var osName: Swift.String
+  public var osVersion: Swift.String
+  public var appVersion: Swift.String
+  public var maker: Swift.String
+  public var model: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Device.Builder class.")
+  public init(identifier: Swift.String, type: Swift.String, osName: Swift.String, osVersion: Swift.String, appVersion: Swift.String, maker: Swift.String, model: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let identifier: Swift.String
+    final public let type: Swift.String
+    final public let osName: Swift.String
+    final public let osVersion: Swift.String
+    final public let appVersion: Swift.String
+    final public let maker: Swift.String
+    final public let model: Swift.String
+    public init(identifier: Swift.String, type: Swift.String, osName: Swift.String, osVersion: Swift.String, appVersion: Swift.String, maker: Swift.String, model: Swift.String)
+    final public func build() -> RemoteDepositCaptureClient2.Device
+    public static func == (lhs: RemoteDepositCaptureClient2.Device.Builder, rhs: RemoteDepositCaptureClient2.Device.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.Device, rhs: RemoteDepositCaptureClient2.Device) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var context: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ErrorItem.Builder class.")
+  public init(message: Swift.String, key: Swift.String, context: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var context: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(context: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.ErrorItem
+    public static func == (lhs: RemoteDepositCaptureClient2.ErrorItem.Builder, rhs: RemoteDepositCaptureClient2.ErrorItem.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.ErrorItem, rhs: RemoteDepositCaptureClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [RemoteDepositCaptureClient2.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ForbiddenError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [RemoteDepositCaptureClient2.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [RemoteDepositCaptureClient2.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [RemoteDepositCaptureClient2.ErrorItem]?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.ForbiddenError
+    public static func == (lhs: RemoteDepositCaptureClient2.ForbiddenError.Builder, rhs: RemoteDepositCaptureClient2.ForbiddenError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.ForbiddenError, rhs: RemoteDepositCaptureClient2.ForbiddenError) -> Swift.Bool
+}
+public struct Image : Swift.Codable, Swift.Equatable {
+  public var content: Swift.String
+  public var type: Swift.String?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Image.Builder class.")
+  public init(content: Swift.String, type: Swift.String? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let content: Swift.String
+    final public var type: Swift.String? {
+      get
+    }
+    public init(content: Swift.String)
+    final public func set(type: Swift.String?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.Image
+    public static func == (lhs: RemoteDepositCaptureClient2.Image.Builder, rhs: RemoteDepositCaptureClient2.Image.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.Image, rhs: RemoteDepositCaptureClient2.Image) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of InternalServerError.Builder class.")
+  public init(message: Swift.String? = nil, key: Swift.String? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var message: Swift.String? {
+      get
+    }
+    final public var key: Swift.String? {
+      get
+    }
+    public init()
+    final public func set(message: Swift.String?) -> Self
+    final public func set(key: Swift.String?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.InternalServerError
+    public static func == (lhs: RemoteDepositCaptureClient2.InternalServerError.Builder, rhs: RemoteDepositCaptureClient2.InternalServerError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.InternalServerError, rhs: RemoteDepositCaptureClient2.InternalServerError) -> Swift.Bool
+}
+public enum LimitType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case calendarDay
+  case businessDay
+  case week
+  case biWeek
+  case month
+  case quarter
+  case year
+  case generic
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [RemoteDepositCaptureClient2.LimitType]
+  public static var allCases: [RemoteDepositCaptureClient2.LimitType] {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public protocol RemoteDepositCapturerClientAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateDepositBatchRequestParams class.")
+  func createDepositBatchCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, createDepositBatchRequest: RemoteDepositCaptureClient2.CreateDepositBatchRequest) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  func createDepositBatchCall(params: RemoteDepositCaptureClient2.CreateDepositBatchRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateDepositItemRequestParams class.")
+  func createDepositItemCall(id: Swift.String, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  func createDepositItemCall(params: RemoteDepositCaptureClient2.CreateDepositItemRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateSessionRequestParams class.")
+  func createSessionCall(xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, createSessionRequest: RemoteDepositCaptureClient2.CreateSessionRequest) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SessionCreatedResponse>
+  func createSessionCall(params: RemoteDepositCaptureClient2.CreateSessionRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SessionCreatedResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with DeleteDepositBatchRequestParams class.")
+  func deleteDepositBatchCall(id: Swift.String, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteDepositBatchCall(params: RemoteDepositCaptureClient2.DeleteDepositBatchRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with DeleteDepositItemRequestParams class.")
+  func deleteDepositItemCall(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteDepositItemCall(params: RemoteDepositCaptureClient2.DeleteDepositItemRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with DeleteSessionRequestParams class.")
+  func deleteSessionCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteSessionCall(params: RemoteDepositCaptureClient2.DeleteSessionRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetDepositItemImagesRequestParams class.")
+  func getDepositItemImagesCall(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositImages>
+  func getDepositItemImagesCall(params: RemoteDepositCaptureClient2.GetDepositItemImagesRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositImages>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetSessionInfoRequestParams class.")
+  func getSessionInfoCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SessionInfo>
+  func getSessionInfoCall(params: RemoteDepositCaptureClient2.GetSessionInfoRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SessionInfo>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetSubmittedDepositBatchesRequestParams class.")
+  func getSubmittedDepositBatchesCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, statusKind: RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind?) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse>
+  func getSubmittedDepositBatchesCall(params: RemoteDepositCaptureClient2.GetSubmittedDepositBatchesRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetSubmittedDepositItemImagesRequestParams class.")
+  func getSubmittedDepositItemImagesCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, id: Swift.String, index: Swift.Int) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositImages>
+  func getSubmittedDepositItemImagesCall(params: RemoteDepositCaptureClient2.GetSubmittedDepositItemImagesRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositImages>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with SubmitDepositBatchRequestParams class.")
+  func submitDepositBatchCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, submitDepositBatchRequest: RemoteDepositCaptureClient2.SubmitDepositBatchRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func submitDepositBatchCall(params: RemoteDepositCaptureClient2.SubmitDepositBatchRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with UpdateDepositItemRequestParams class.")
+  func updateDepositItemCall(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  func updateDepositItemCall(params: RemoteDepositCaptureClient2.UpdateDepositItemRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+}
+@objc @_inheritsConvenienceInitializers public class RemoteDepositCapturerClientAPI : ObjectiveC.NSObject, DBSClient, RemoteDepositCaptureClient2.RemoteDepositCapturerClientAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateDepositBatchRequestParams class.")
+  open func createDepositBatchCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, createDepositBatchRequest: RemoteDepositCaptureClient2.CreateDepositBatchRequest) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  open func createDepositBatchCall(params: RemoteDepositCaptureClient2.CreateDepositBatchRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateDepositItemRequestParams class.")
+  open func createDepositItemCall(id: Swift.String, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  open func createDepositItemCall(params: RemoteDepositCaptureClient2.CreateDepositItemRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with CreateSessionRequestParams class.")
+  open func createSessionCall(xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, createSessionRequest: RemoteDepositCaptureClient2.CreateSessionRequest) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SessionCreatedResponse>
+  open func createSessionCall(params: RemoteDepositCaptureClient2.CreateSessionRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SessionCreatedResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with DeleteDepositBatchRequestParams class.")
+  open func deleteDepositBatchCall(id: Swift.String, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteDepositBatchCall(params: RemoteDepositCaptureClient2.DeleteDepositBatchRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with DeleteDepositItemRequestParams class.")
+  open func deleteDepositItemCall(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteDepositItemCall(params: RemoteDepositCaptureClient2.DeleteDepositItemRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with DeleteSessionRequestParams class.")
+  open func deleteSessionCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteSessionCall(params: RemoteDepositCaptureClient2.DeleteSessionRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetDepositItemImagesRequestParams class.")
+  open func getDepositItemImagesCall(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositImages>
+  open func getDepositItemImagesCall(params: RemoteDepositCaptureClient2.GetDepositItemImagesRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositImages>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetSessionInfoRequestParams class.")
+  open func getSessionInfoCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SessionInfo>
+  open func getSessionInfoCall(params: RemoteDepositCaptureClient2.GetSessionInfoRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SessionInfo>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetSubmittedDepositBatchesRequestParams class.")
+  open func getSubmittedDepositBatchesCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, statusKind: RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind? = nil) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse>
+  open func getSubmittedDepositBatchesCall(params: RemoteDepositCaptureClient2.GetSubmittedDepositBatchesRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetSubmittedDepositItemImagesRequestParams class.")
+  open func getSubmittedDepositItemImagesCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, id: Swift.String, index: Swift.Int) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositImages>
+  open func getSubmittedDepositItemImagesCall(params: RemoteDepositCaptureClient2.GetSubmittedDepositItemImagesRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositImages>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with SubmitDepositBatchRequestParams class.")
+  open func submitDepositBatchCall(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, submitDepositBatchRequest: RemoteDepositCaptureClient2.SubmitDepositBatchRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func submitDepositBatchCall(params: RemoteDepositCaptureClient2.SubmitDepositBatchRequestParams) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with UpdateDepositItemRequestParams class.")
+  open func updateDepositItemCall(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  open func updateDepositItemCall(params: RemoteDepositCaptureClient2.UpdateDepositItemRequestParams) throws -> ClientCommon.Call<RemoteDepositCaptureClient2.DepositBatch>
+  @objc deinit
+}
+public struct CreateDepositBatchRequestParams : Swift.Equatable {
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  public let createDepositBatchRequest: RemoteDepositCaptureClient2.CreateDepositBatchRequest
+  final public class Builder : Swift.Equatable {
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    final public let createDepositBatchRequest: RemoteDepositCaptureClient2.CreateDepositBatchRequest
+    public init(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, createDepositBatchRequest: RemoteDepositCaptureClient2.CreateDepositBatchRequest)
+    final public func build() -> RemoteDepositCaptureClient2.CreateDepositBatchRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.CreateDepositBatchRequestParams.Builder, rhs: RemoteDepositCaptureClient2.CreateDepositBatchRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.CreateDepositBatchRequestParams, rhs: RemoteDepositCaptureClient2.CreateDepositBatchRequestParams) -> Swift.Bool
+}
+public struct CreateDepositItemRequestParams : Swift.Equatable {
+  public let id: Swift.String
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  public let depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    final public let depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest
+    public init(id: Swift.String, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest)
+    final public func build() -> RemoteDepositCaptureClient2.CreateDepositItemRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.CreateDepositItemRequestParams.Builder, rhs: RemoteDepositCaptureClient2.CreateDepositItemRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.CreateDepositItemRequestParams, rhs: RemoteDepositCaptureClient2.CreateDepositItemRequestParams) -> Swift.Bool
+}
+public struct CreateSessionRequestParams : Swift.Equatable {
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  public let createSessionRequest: RemoteDepositCaptureClient2.CreateSessionRequest
+  final public class Builder : Swift.Equatable {
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    final public let createSessionRequest: RemoteDepositCaptureClient2.CreateSessionRequest
+    public init(xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, createSessionRequest: RemoteDepositCaptureClient2.CreateSessionRequest)
+    final public func build() -> RemoteDepositCaptureClient2.CreateSessionRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.CreateSessionRequestParams.Builder, rhs: RemoteDepositCaptureClient2.CreateSessionRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.CreateSessionRequestParams, rhs: RemoteDepositCaptureClient2.CreateSessionRequestParams) -> Swift.Bool
+}
+public struct DeleteDepositBatchRequestParams : Swift.Equatable {
+  public let id: Swift.String
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    public init(id: Swift.String, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String)
+    final public func build() -> RemoteDepositCaptureClient2.DeleteDepositBatchRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.DeleteDepositBatchRequestParams.Builder, rhs: RemoteDepositCaptureClient2.DeleteDepositBatchRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.DeleteDepositBatchRequestParams, rhs: RemoteDepositCaptureClient2.DeleteDepositBatchRequestParams) -> Swift.Bool
+}
+public struct DeleteDepositItemRequestParams : Swift.Equatable {
+  public let id: Swift.String
+  public let index: Swift.Int
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let index: Swift.Int
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    public init(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String)
+    final public func build() -> RemoteDepositCaptureClient2.DeleteDepositItemRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.DeleteDepositItemRequestParams.Builder, rhs: RemoteDepositCaptureClient2.DeleteDepositItemRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.DeleteDepositItemRequestParams, rhs: RemoteDepositCaptureClient2.DeleteDepositItemRequestParams) -> Swift.Bool
+}
+public struct DeleteSessionRequestParams : Swift.Equatable {
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  final public class Builder : Swift.Equatable {
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    public init(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String)
+    final public func build() -> RemoteDepositCaptureClient2.DeleteSessionRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.DeleteSessionRequestParams.Builder, rhs: RemoteDepositCaptureClient2.DeleteSessionRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.DeleteSessionRequestParams, rhs: RemoteDepositCaptureClient2.DeleteSessionRequestParams) -> Swift.Bool
+}
+public struct GetDepositItemImagesRequestParams : Swift.Equatable {
+  public let id: Swift.String
+  public let index: Swift.Int
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let index: Swift.Int
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    public init(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String)
+    final public func build() -> RemoteDepositCaptureClient2.GetDepositItemImagesRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.GetDepositItemImagesRequestParams.Builder, rhs: RemoteDepositCaptureClient2.GetDepositItemImagesRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.GetDepositItemImagesRequestParams, rhs: RemoteDepositCaptureClient2.GetDepositItemImagesRequestParams) -> Swift.Bool
+}
+public struct GetSessionInfoRequestParams : Swift.Equatable {
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  final public class Builder : Swift.Equatable {
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    public init(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String)
+    final public func build() -> RemoteDepositCaptureClient2.GetSessionInfoRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.GetSessionInfoRequestParams.Builder, rhs: RemoteDepositCaptureClient2.GetSessionInfoRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.GetSessionInfoRequestParams, rhs: RemoteDepositCaptureClient2.GetSessionInfoRequestParams) -> Swift.Bool
+}
+public struct GetSubmittedDepositBatchesRequestParams : Swift.Equatable {
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  public let statusKind: RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind?
+  final public class Builder : Swift.Equatable {
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    final public var statusKind: RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind? {
+      get
+    }
+    public init(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String)
+    final public func set(statusKind: RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.GetSubmittedDepositBatchesRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.GetSubmittedDepositBatchesRequestParams.Builder, rhs: RemoteDepositCaptureClient2.GetSubmittedDepositBatchesRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.GetSubmittedDepositBatchesRequestParams, rhs: RemoteDepositCaptureClient2.GetSubmittedDepositBatchesRequestParams) -> Swift.Bool
+}
+public struct GetSubmittedDepositItemImagesRequestParams : Swift.Equatable {
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  public let id: Swift.String
+  public let index: Swift.Int
+  final public class Builder : Swift.Equatable {
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    final public let id: Swift.String
+    final public let index: Swift.Int
+    public init(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, id: Swift.String, index: Swift.Int)
+    final public func build() -> RemoteDepositCaptureClient2.GetSubmittedDepositItemImagesRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.GetSubmittedDepositItemImagesRequestParams.Builder, rhs: RemoteDepositCaptureClient2.GetSubmittedDepositItemImagesRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.GetSubmittedDepositItemImagesRequestParams, rhs: RemoteDepositCaptureClient2.GetSubmittedDepositItemImagesRequestParams) -> Swift.Bool
+}
+public struct SubmitDepositBatchRequestParams : Swift.Equatable {
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  public let submitDepositBatchRequest: RemoteDepositCaptureClient2.SubmitDepositBatchRequest
+  final public class Builder : Swift.Equatable {
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    final public let submitDepositBatchRequest: RemoteDepositCaptureClient2.SubmitDepositBatchRequest
+    public init(xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, submitDepositBatchRequest: RemoteDepositCaptureClient2.SubmitDepositBatchRequest)
+    final public func build() -> RemoteDepositCaptureClient2.SubmitDepositBatchRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequestParams.Builder, rhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequestParams, rhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequestParams) -> Swift.Bool
+}
+public struct UpdateDepositItemRequestParams : Swift.Equatable {
+  public let id: Swift.String
+  public let index: Swift.Int
+  public let xRdsContext: Swift.String
+  public let xRdsLocalTime: Foundation.Date
+  public let xRdsTimeZone: Swift.String
+  public let depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let index: Swift.Int
+    final public let xRdsContext: Swift.String
+    final public let xRdsLocalTime: Foundation.Date
+    final public let xRdsTimeZone: Swift.String
+    final public let depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest
+    public init(id: Swift.String, index: Swift.Int, xRdsContext: Swift.String, xRdsLocalTime: Foundation.Date, xRdsTimeZone: Swift.String, depositItemRequest: RemoteDepositCaptureClient2.DepositItemRequest)
+    final public func build() -> RemoteDepositCaptureClient2.UpdateDepositItemRequestParams
+    public static func == (lhs: RemoteDepositCaptureClient2.UpdateDepositItemRequestParams.Builder, rhs: RemoteDepositCaptureClient2.UpdateDepositItemRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: RemoteDepositCaptureClient2.UpdateDepositItemRequestParams, rhs: RemoteDepositCaptureClient2.UpdateDepositItemRequestParams) -> Swift.Bool
+}
+public struct RiskFactor : Swift.Codable, Swift.Equatable {
+  public var description: Swift.String
+  public var blocker: Swift.Bool
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of RiskFactor.Builder class.")
+  public init(description: Swift.String, blocker: Swift.Bool)
+  final public class Builder : Swift.Equatable {
+    final public let description: Swift.String
+    final public let blocker: Swift.Bool
+    public init(description: Swift.String, blocker: Swift.Bool)
+    final public func build() -> RemoteDepositCaptureClient2.RiskFactor
+    public static func == (lhs: RemoteDepositCaptureClient2.RiskFactor.Builder, rhs: RemoteDepositCaptureClient2.RiskFactor.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.RiskFactor, rhs: RemoteDepositCaptureClient2.RiskFactor) -> Swift.Bool
+}
+public struct SessionCreatedResponse : Swift.Codable, Swift.Equatable {
+  public var context: Swift.String
+  public var accounts: [RemoteDepositCaptureClient2.Account]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SessionCreatedResponse.Builder class.")
+  public init(context: Swift.String, accounts: [RemoteDepositCaptureClient2.Account]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let context: Swift.String
+    final public var accounts: [RemoteDepositCaptureClient2.Account]? {
+      get
+    }
+    public init(context: Swift.String)
+    final public func set(accounts: [RemoteDepositCaptureClient2.Account]?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.SessionCreatedResponse
+    public static func == (lhs: RemoteDepositCaptureClient2.SessionCreatedResponse.Builder, rhs: RemoteDepositCaptureClient2.SessionCreatedResponse.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.SessionCreatedResponse, rhs: RemoteDepositCaptureClient2.SessionCreatedResponse) -> Swift.Bool
+}
+public struct SessionExpiredError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SessionExpiredError.Builder class.")
+  public init(message: Swift.String)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    public init(message: Swift.String)
+    final public func build() -> RemoteDepositCaptureClient2.SessionExpiredError
+    public static func == (lhs: RemoteDepositCaptureClient2.SessionExpiredError.Builder, rhs: RemoteDepositCaptureClient2.SessionExpiredError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.SessionExpiredError, rhs: RemoteDepositCaptureClient2.SessionExpiredError) -> Swift.Bool
+}
+public struct SessionInfo : Swift.Codable, Swift.Equatable {
+  public var depositLimit: RemoteDepositCaptureClient2.DepositLimit?
+  public var transactionLimit: RemoteDepositCaptureClient2.TransactionLimit?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SessionInfo.Builder class.")
+  public init(depositLimit: RemoteDepositCaptureClient2.DepositLimit? = nil, transactionLimit: RemoteDepositCaptureClient2.TransactionLimit? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var depositLimit: RemoteDepositCaptureClient2.DepositLimit? {
+      get
+    }
+    final public var transactionLimit: RemoteDepositCaptureClient2.TransactionLimit? {
+      get
+    }
+    public init()
+    final public func set(depositLimit: RemoteDepositCaptureClient2.DepositLimit?) -> Self
+    final public func set(transactionLimit: RemoteDepositCaptureClient2.TransactionLimit?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.SessionInfo
+    public static func == (lhs: RemoteDepositCaptureClient2.SessionInfo.Builder, rhs: RemoteDepositCaptureClient2.SessionInfo.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.SessionInfo, rhs: RemoteDepositCaptureClient2.SessionInfo) -> Swift.Bool
+}
+public struct SubmitDepositBatchRequest : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var items: [RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SubmitDepositBatchRequest.Builder class.")
+  public init(id: Swift.String, items: [RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public var items: [RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem]? {
+      get
+    }
+    public init(id: Swift.String)
+    final public func set(items: [RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem]?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.SubmitDepositBatchRequest
+    public static func == (lhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequest.Builder, rhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequest.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequest, rhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequest) -> Swift.Bool
+}
+public struct SubmitDepositBatchRequestItem : Swift.Codable, Swift.Equatable {
+  public var index: Swift.Int
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SubmitDepositBatchRequestItem.Builder class.")
+  public init(index: Swift.Int)
+  final public class Builder : Swift.Equatable {
+    final public let index: Swift.Int
+    public init(index: Swift.Int)
+    final public func build() -> RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem
+    public static func == (lhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem.Builder, rhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem, rhs: RemoteDepositCaptureClient2.SubmitDepositBatchRequestItem) -> Swift.Bool
+}
+public struct SubmittedDepositBatch : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var submissionDate: Foundation.Date
+  public var submittedById: Swift.String?
+  public var submittedByUsername: Swift.String?
+  public var arrangementId: Swift.String?
+  public var arrangementAccountNumber: Swift.String?
+  public var description: Swift.String?
+  public var confirmationNumber: Swift.Int64?
+  public var status: RemoteDepositCaptureClient2.SubmittedDepositBatchStatus
+  public var userAmount: RemoteDepositCaptureClient2.Currency
+  public var actualAmount: RemoteDepositCaptureClient2.Currency?
+  public var items: [RemoteDepositCaptureClient2.SubmittedDepositItem]
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SubmittedDepositBatch.Builder class.")
+  public init(id: Swift.String, submissionDate: Foundation.Date, submittedById: Swift.String? = nil, submittedByUsername: Swift.String? = nil, arrangementId: Swift.String? = nil, arrangementAccountNumber: Swift.String? = nil, description: Swift.String? = nil, confirmationNumber: Swift.Int64? = nil, status: RemoteDepositCaptureClient2.SubmittedDepositBatchStatus, userAmount: RemoteDepositCaptureClient2.Currency, actualAmount: RemoteDepositCaptureClient2.Currency? = nil, items: [RemoteDepositCaptureClient2.SubmittedDepositItem])
+  final public class Builder : Swift.Equatable {
+    final public let id: Swift.String
+    final public let submissionDate: Foundation.Date
+    final public var submittedById: Swift.String? {
+      get
+    }
+    final public var submittedByUsername: Swift.String? {
+      get
+    }
+    final public var arrangementId: Swift.String? {
+      get
+    }
+    final public var arrangementAccountNumber: Swift.String? {
+      get
+    }
+    final public var description: Swift.String? {
+      get
+    }
+    final public var confirmationNumber: Swift.Int64? {
+      get
+    }
+    final public let status: RemoteDepositCaptureClient2.SubmittedDepositBatchStatus
+    final public let userAmount: RemoteDepositCaptureClient2.Currency
+    final public var actualAmount: RemoteDepositCaptureClient2.Currency? {
+      get
+    }
+    final public let items: [RemoteDepositCaptureClient2.SubmittedDepositItem]
+    public init(id: Swift.String, submissionDate: Foundation.Date, status: RemoteDepositCaptureClient2.SubmittedDepositBatchStatus, userAmount: RemoteDepositCaptureClient2.Currency, items: [RemoteDepositCaptureClient2.SubmittedDepositItem])
+    final public func set(submittedById: Swift.String?) -> Self
+    final public func set(submittedByUsername: Swift.String?) -> Self
+    final public func set(arrangementId: Swift.String?) -> Self
+    final public func set(arrangementAccountNumber: Swift.String?) -> Self
+    final public func set(description: Swift.String?) -> Self
+    final public func set(confirmationNumber: Swift.Int64?) -> Self
+    final public func set(actualAmount: RemoteDepositCaptureClient2.Currency?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.SubmittedDepositBatch
+    public static func == (lhs: RemoteDepositCaptureClient2.SubmittedDepositBatch.Builder, rhs: RemoteDepositCaptureClient2.SubmittedDepositBatch.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.SubmittedDepositBatch, rhs: RemoteDepositCaptureClient2.SubmittedDepositBatch) -> Swift.Bool
+}
+public enum SubmittedDepositBatchStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case pending
+  case processed
+  case cancelled
+  case rejected
+  case expired
+  case mixed
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [RemoteDepositCaptureClient2.SubmittedDepositBatchStatus]
+  public static var allCases: [RemoteDepositCaptureClient2.SubmittedDepositBatchStatus] {
+    get
+  }
+}
+public enum SubmittedDepositBatchStatusKind : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case pending
+  case completed
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind]
+  public static var allCases: [RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind] {
+    get
+  }
+}
+public struct SubmittedDepositBatchesResponse : Swift.Codable, Swift.Equatable {
+  public var batches: [RemoteDepositCaptureClient2.SubmittedDepositBatch]
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SubmittedDepositBatchesResponse.Builder class.")
+  public init(batches: [RemoteDepositCaptureClient2.SubmittedDepositBatch])
+  final public class Builder : Swift.Equatable {
+    final public let batches: [RemoteDepositCaptureClient2.SubmittedDepositBatch]
+    public init(batches: [RemoteDepositCaptureClient2.SubmittedDepositBatch])
+    final public func build() -> RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse
+    public static func == (lhs: RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse.Builder, rhs: RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse, rhs: RemoteDepositCaptureClient2.SubmittedDepositBatchesResponse) -> Swift.Bool
+}
+public struct SubmittedDepositItem : Swift.Codable, Swift.Equatable {
+  public var index: Swift.Int
+  public var recognizedCheckNumber: Swift.String?
+  public var userAmount: RemoteDepositCaptureClient2.Currency
+  public var actualAmount: RemoteDepositCaptureClient2.Currency?
+  public var message: Swift.String?
+  public var status: RemoteDepositCaptureClient2.SubmittedDepositItemStatus
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of SubmittedDepositItem.Builder class.")
+  public init(index: Swift.Int, recognizedCheckNumber: Swift.String? = nil, userAmount: RemoteDepositCaptureClient2.Currency, actualAmount: RemoteDepositCaptureClient2.Currency? = nil, message: Swift.String? = nil, status: RemoteDepositCaptureClient2.SubmittedDepositItemStatus)
+  final public class Builder : Swift.Equatable {
+    final public let index: Swift.Int
+    final public var recognizedCheckNumber: Swift.String? {
+      get
+    }
+    final public let userAmount: RemoteDepositCaptureClient2.Currency
+    final public var actualAmount: RemoteDepositCaptureClient2.Currency? {
+      get
+    }
+    final public var message: Swift.String? {
+      get
+    }
+    final public let status: RemoteDepositCaptureClient2.SubmittedDepositItemStatus
+    public init(index: Swift.Int, userAmount: RemoteDepositCaptureClient2.Currency, status: RemoteDepositCaptureClient2.SubmittedDepositItemStatus)
+    final public func set(recognizedCheckNumber: Swift.String?) -> Self
+    final public func set(actualAmount: RemoteDepositCaptureClient2.Currency?) -> Self
+    final public func set(message: Swift.String?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.SubmittedDepositItem
+    public static func == (lhs: RemoteDepositCaptureClient2.SubmittedDepositItem.Builder, rhs: RemoteDepositCaptureClient2.SubmittedDepositItem.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.SubmittedDepositItem, rhs: RemoteDepositCaptureClient2.SubmittedDepositItem) -> Swift.Bool
+}
+public enum SubmittedDepositItemStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case pending
+  case processed
+  case cancelled
+  case rejected
+  case expired
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [RemoteDepositCaptureClient2.SubmittedDepositItemStatus]
+  public static var allCases: [RemoteDepositCaptureClient2.SubmittedDepositItemStatus] {
+    get
+  }
+}
+public struct TransactionLimit : Swift.Codable, Swift.Equatable {
+  public var limitType: RemoteDepositCaptureClient2.LimitType?
+  public var remainingAmount: Swift.Int
+  public var totalAmount: Swift.Int
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of TransactionLimit.Builder class.")
+  public init(limitType: RemoteDepositCaptureClient2.LimitType? = nil, remainingAmount: Swift.Int, totalAmount: Swift.Int)
+  final public class Builder : Swift.Equatable {
+    final public var limitType: RemoteDepositCaptureClient2.LimitType? {
+      get
+    }
+    final public let remainingAmount: Swift.Int
+    final public let totalAmount: Swift.Int
+    public init(remainingAmount: Swift.Int, totalAmount: Swift.Int)
+    final public func set(limitType: RemoteDepositCaptureClient2.LimitType?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.TransactionLimit
+    public static func == (lhs: RemoteDepositCaptureClient2.TransactionLimit.Builder, rhs: RemoteDepositCaptureClient2.TransactionLimit.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.TransactionLimit, rhs: RemoteDepositCaptureClient2.TransactionLimit) -> Swift.Bool
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [RemoteDepositCaptureClient2.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of UnauthorizedError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [RemoteDepositCaptureClient2.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [RemoteDepositCaptureClient2.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [RemoteDepositCaptureClient2.ErrorItem]?) -> Self
+    final public func build() -> RemoteDepositCaptureClient2.UnauthorizedError
+    public static func == (lhs: RemoteDepositCaptureClient2.UnauthorizedError.Builder, rhs: RemoteDepositCaptureClient2.UnauthorizedError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: RemoteDepositCaptureClient2.UnauthorizedError, rhs: RemoteDepositCaptureClient2.UnauthorizedError) -> Swift.Bool
+}
+extension RemoteDepositCaptureClient2.LimitType : Swift.Equatable {}
+extension RemoteDepositCaptureClient2.LimitType : Swift.Hashable {}
+extension RemoteDepositCaptureClient2.LimitType : Swift.RawRepresentable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositBatchStatus : Swift.Equatable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositBatchStatus : Swift.Hashable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositBatchStatus : Swift.RawRepresentable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind : Swift.Equatable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind : Swift.Hashable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositBatchStatusKind : Swift.RawRepresentable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositItemStatus : Swift.Equatable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositItemStatus : Swift.Hashable {}
+extension RemoteDepositCaptureClient2.SubmittedDepositItemStatus : Swift.RawRepresentable {}

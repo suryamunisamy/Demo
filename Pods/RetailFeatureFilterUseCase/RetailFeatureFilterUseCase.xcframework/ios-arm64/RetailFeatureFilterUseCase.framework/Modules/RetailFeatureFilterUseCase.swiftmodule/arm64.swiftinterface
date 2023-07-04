@@ -1,0 +1,72 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailFeatureFilterUseCase
+import Foundation
+import Swift
+public struct CompoundFeatureCondition {
+  public let left: RetailFeatureFilterUseCase.FeatureCondition
+  public let right: RetailFeatureFilterUseCase.FeatureCondition
+  public let `operator`: RetailFeatureFilterUseCase.CompoundFeatureCondition.Operator
+  public init(left: RetailFeatureFilterUseCase.FeatureCondition, right: RetailFeatureFilterUseCase.FeatureCondition, operator: RetailFeatureFilterUseCase.CompoundFeatureCondition.Operator)
+  public enum Operator {
+    case and
+    case or
+    public static func == (a: RetailFeatureFilterUseCase.CompoundFeatureCondition.Operator, b: RetailFeatureFilterUseCase.CompoundFeatureCondition.Operator) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public func && (lhs: RetailFeatureFilterUseCase.FeatureCondition, rhs: RetailFeatureFilterUseCase.FeatureCondition) -> RetailFeatureFilterUseCase.FeatureCondition
+public func || (lhs: RetailFeatureFilterUseCase.FeatureCondition, rhs: RetailFeatureFilterUseCase.FeatureCondition) -> RetailFeatureFilterUseCase.FeatureCondition
+public protocol EntitlementsUseCase {
+  func getCurrentUserEntitlements(completion: @escaping (Swift.Result<Swift.Set<RetailFeatureFilterUseCase.UserEntitlement>, RetailFeatureFilterUseCase.ErrorResponse>) -> Swift.Void)
+}
+public struct ErrorResponse : Swift.Error, Swift.Equatable {
+  public let statusCode: Swift.Int?
+  public let data: Foundation.Data?
+  public let error: Swift.Error?
+  public init(statusCode: Swift.Int? = nil, data: Foundation.Data? = nil, error: Swift.Error? = nil)
+  public static func == (lhs: RetailFeatureFilterUseCase.ErrorResponse, rhs: RetailFeatureFilterUseCase.ErrorResponse) -> Swift.Bool
+}
+extension ErrorResponse {
+  public static let noInternet: RetailFeatureFilterUseCase.ErrorResponse
+  public static let failed: RetailFeatureFilterUseCase.ErrorResponse
+}
+public protocol FeatureCondition {
+  func isSatisfiedBy<T>(_ entitlements: Swift.Set<T>) -> Swift.Bool where T : RetailFeatureFilterUseCase.IdentifiableEntitlement
+}
+extension UserEntitlement : RetailFeatureFilterUseCase.FeatureCondition {
+  public func isSatisfiedBy<T>(_ entitlements: Swift.Set<T>) -> Swift.Bool where T : RetailFeatureFilterUseCase.IdentifiableEntitlement
+}
+extension CompoundFeatureCondition : RetailFeatureFilterUseCase.FeatureCondition {
+  public func isSatisfiedBy<T>(_ entitlements: Swift.Set<T>) -> Swift.Bool where T : RetailFeatureFilterUseCase.IdentifiableEntitlement
+}
+public protocol FeatureFilterUseCase {
+  func filterToAllowedFeatures<F>(_ featureToEntitlementMap: [F : RetailFeatureFilterUseCase.FeatureCondition], completion: @escaping (Swift.Result<[F], RetailFeatureFilterUseCase.ErrorResponse>) -> Swift.Void) where F : Swift.Hashable
+}
+public protocol IdentifiableEntitlement : Swift.Hashable {
+  var identifier: Swift.String { get }
+}
+public struct UserEntitlement : RetailFeatureFilterUseCase.IdentifiableEntitlement {
+  public let resource: Swift.String
+  public let function: Swift.String
+  public let privilege: Swift.String
+  public var identifier: Swift.String {
+    get
+  }
+  public init(resource: Swift.String, function: Swift.String, privilege: Swift.String)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: RetailFeatureFilterUseCase.UserEntitlement, b: RetailFeatureFilterUseCase.UserEntitlement) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class UserEntitlementFeatureFilterUseCase : RetailFeatureFilterUseCase.FeatureFilterUseCase {
+  public init(entitlementUseCase: RetailFeatureFilterUseCase.EntitlementsUseCase)
+  public func filterToAllowedFeatures<F>(_ featureToEntitlementMap: [F : RetailFeatureFilterUseCase.FeatureCondition], completion: @escaping (Swift.Result<[F], RetailFeatureFilterUseCase.ErrorResponse>) -> Swift.Void) where F : Swift.Hashable
+  @objc deinit
+}
+extension RetailFeatureFilterUseCase.CompoundFeatureCondition.Operator : Swift.Equatable {}
+extension RetailFeatureFilterUseCase.CompoundFeatureCondition.Operator : Swift.Hashable {}

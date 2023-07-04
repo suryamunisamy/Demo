@@ -1,0 +1,4 @@
+framework module RetailContactsJourney {
+  header "RetailContactsJourney-Swift.h"
+  requires objc
+}

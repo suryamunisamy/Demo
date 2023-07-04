@@ -1,0 +1,4 @@
+framework module RetailLocaleSelectorJourney {
+  header "RetailLocaleSelectorJourney-Swift.h"
+  requires objc
+}

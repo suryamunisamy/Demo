@@ -1,0 +1,180 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MobileNotificationsCore
+import Backbase
+import Foundation
+@_exported import MobileNotificationsCore
+import Swift
+import UIKit
+import UserNotifications
+import _Concurrency
+public protocol AppStateProvider {
+  var isAuthenticationGranted: Swift.Bool { get }
+  func canDisplayInApp() -> Swift.Bool
+}
+public struct PushNotification : Swift.Codable, Swift.Equatable {
+  public let id: Swift.String
+  public let title: Swift.String?
+  public let body: Swift.String?
+  public var level: MobileNotificationsCore.PushNotification.Level {
+    get
+  }
+  public var routing: MobileNotificationsCore.Routing? {
+    get
+  }
+  public enum Level : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case alert
+    case warning
+    case success
+    case info
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [MobileNotificationsCore.PushNotification.Level]
+    public typealias RawValue = Swift.String
+    public static var allCases: [MobileNotificationsCore.PushNotification.Level] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public static func == (a: MobileNotificationsCore.PushNotification, b: MobileNotificationsCore.PushNotification) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public class BackbaseEventLogger : MobileNotificationsCore.EventLogger {
+  public init()
+  public func logDebug(_ object: Any?, message: Swift.String?)
+  public func logInfo(_ object: Any?, message: Swift.String?)
+  public func logWarning(_ object: Any?, message: Swift.String?)
+  public func logError(_ object: Any?, message: Swift.String?)
+  @objc deinit
+}
+public protocol MNNotificationCenter : AnyObject {
+  var delegate: UserNotifications.UNUserNotificationCenterDelegate? { get set }
+  func requestAuthorization(options: UserNotifications.UNAuthorizationOptions, completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  func getDeliveredNotifications(completionHandler: @escaping ([MobileNotificationsCore.MNUNNotification]) -> Swift.Void)
+  func removeDeliveredNotifications(withIdentifiers identifiers: [Swift.String])
+  func add(_ request: UserNotifications.UNNotificationRequest, withCompletionHandler completionHandler: ((Swift.Error?) -> Swift.Void)?)
+  func setNotificationCategories(_ categories: Swift.Set<UserNotifications.UNNotificationCategory>)
+}
+extension UserNotifications.UNUserNotificationCenter : MobileNotificationsCore.MNNotificationCenter {
+  public func getDeliveredNotifications(completionHandler: @escaping ([MobileNotificationsCore.MNUNNotification]) -> Swift.Void)
+}
+public protocol MNUNNotification {
+  var request: UserNotifications.UNNotificationRequest { get }
+}
+extension UserNotifications.UNNotification : MobileNotificationsCore.MNUNNotification {
+}
+public protocol EventLogger {
+  func logDebug(_ object: Any?, message: Swift.String?)
+  func logInfo(_ object: Any?, message: Swift.String?)
+  func logWarning(_ object: Any?, message: Swift.String?)
+  func logError(_ object: Any?, message: Swift.String?)
+}
+public protocol NotificationHandlerProvider {
+  var routingForCategoryList: [MobileNotificationsCore.Routing] { get }
+  func provide(for routing: MobileNotificationsCore.Routing?) -> MobileNotificationsCore.NotificationHandler?
+}
+@objc public protocol NotificationReceiveObserver {
+  @objc func notificationReceived()
+}
+public protocol InAppNotificationPresenter {
+  func display(notification: MobileNotificationsCore.UINotification) -> MobileNotificationsCore.DisplayResult
+  func clear()
+}
+public enum DisplayResult {
+  case success
+  case failure
+  public static func == (a: MobileNotificationsCore.DisplayResult, b: MobileNotificationsCore.DisplayResult) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol TokenSynchronizerClient {
+  func synchronizePushToken(token: Swift.String)
+}
+public protocol PushTokenListener {
+  func setDeviceToken(token: Foundation.Data)
+  func setDeviceToken(token: Swift.String)
+}
+public protocol AuthenticationListener {
+  func userAuthenticationDone()
+}
+public protocol UINotification {
+  var notification: MobileNotificationsCore.PushNotification { get }
+  var icon: UIKit.UIImage { get }
+  var configuration: MobileNotificationsCore.UINotificationConfiguration? { get }
+}
+public struct UINotificationConfiguration {
+  public let iconStyler: ((UIKit.UIImageView) -> Swift.Void)?
+  public let backgroundStyler: ((UIKit.UIView) -> Swift.Void)?
+  public let titleStyler: ((UIKit.UILabel, Swift.String) -> Swift.Void)?
+  public let bodyStyler: ((UIKit.UILabel, Swift.String) -> Swift.Void)?
+  public let closeButtonStyler: ((UIKit.UIButton) -> Swift.Void)?
+  public let expandIndicatorImageStyler: ((UIKit.UIImageView) -> Swift.Void)?
+  public init(iconStyler: ((UIKit.UIImageView) -> Swift.Void)? = nil, backgroundStyler: ((UIKit.UIView) -> Swift.Void)? = nil, titleStyler: ((UIKit.UILabel, Swift.String) -> Swift.Void)? = nil, bodyStyler: ((UIKit.UILabel, Swift.String) -> Swift.Void)? = nil, closeButtonStyler: ((UIKit.UIButton) -> Swift.Void)? = nil, expandIndicatorImageStyler: ((UIKit.UIImageView) -> Swift.Void)? = nil)
+}
+extension MobileNotificationsCore.UINotification {
+  public var title: Swift.String? {
+    get
+  }
+  public var body: Swift.String? {
+    get
+  }
+  public var routing: MobileNotificationsCore.Routing? {
+    get
+  }
+}
+public class SimulateTokenSynchronizerClient : MobileNotificationsCore.TokenSynchronizerClient {
+  public var userId: Swift.String
+  public init(url: Swift.String, appName: Swift.String, bundleIdentifier: Swift.String, isDebug: Swift.Bool, eventLogger: MobileNotificationsCore.EventLogger = BackbaseEventLogger())
+  public func synchronizePushToken(token: Swift.String)
+  @objc deinit
+}
+public struct Routing {
+  public let whereTo: Swift.String?
+  public let data: [Swift.String : Any?]?
+  public init(whereTo: Swift.String?, data: [Swift.String : Any?]?)
+}
+public protocol NotificationHandler {
+  func canHandle(routing: MobileNotificationsCore.Routing?) -> Swift.Bool
+  func createUINotification(notification: MobileNotificationsCore.PushNotification, completion: @escaping (MobileNotificationsCore.UINotification?, Swift.Error?) -> Swift.Void)
+  func getNotificationCategory(for routing: MobileNotificationsCore.Routing?) -> UserNotifications.UNNotificationCategory?
+  func handleNotificationAction(response: MobileNotificationsCore.MNNotificationResponse, notification: MobileNotificationsCore.PushNotification)
+}
+public protocol MNNotificationResponse {
+  var notification: UserNotifications.UNNotification { get }
+  var actionIdentifier: Swift.String { get }
+}
+extension UserNotifications.UNNotificationResponse : MobileNotificationsCore.MNNotificationResponse {
+}
+public protocol NotificationListener {
+  func notificationReceived(notification: [Swift.AnyHashable : Any], completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  func notificationReceived(notification: UserNotifications.UNNotification, completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  func notificationResponseReceived(response: MobileNotificationsCore.MNNotificationResponse, completionHandler: @escaping () -> Swift.Void)
+}
+@objc public class NotificationsFramework : ObjectiveC.NSObject {
+  public var inAppNotificationPresenter: MobileNotificationsCore.InAppNotificationPresenter? {
+    get
+    set
+  }
+  public var authenticationListener: MobileNotificationsCore.AuthenticationListener
+  public var pushTokenListener: MobileNotificationsCore.PushTokenListener
+  public var notificationListener: MobileNotificationsCore.NotificationListener {
+    get
+  }
+  public var tokenClient: MobileNotificationsCore.TokenSynchronizerClient {
+    get
+  }
+  required public init(appStateProvider: MobileNotificationsCore.AppStateProvider, notificationHandlerProvider: MobileNotificationsCore.NotificationHandlerProvider, inAppNotificationPresenter: MobileNotificationsCore.InAppNotificationPresenter?, tokenClient: MobileNotificationsCore.TokenSynchronizerClient, notificationCenter: MobileNotificationsCore.MNNotificationCenter = UNUserNotificationCenter.current(), eventLogger: MobileNotificationsCore.EventLogger = BackbaseEventLogger())
+  public func start()
+  public func add(observer: MobileNotificationsCore.NotificationReceiveObserver)
+  public func remove(observer: MobileNotificationsCore.NotificationReceiveObserver)
+  @objc deinit
+}
+extension MobileNotificationsCore.PushNotification.Level : Swift.Equatable {}
+extension MobileNotificationsCore.PushNotification.Level : Swift.Hashable {}
+extension MobileNotificationsCore.PushNotification.Level : Swift.RawRepresentable {}
+extension MobileNotificationsCore.DisplayResult : Swift.Equatable {}
+extension MobileNotificationsCore.DisplayResult : Swift.Hashable {}

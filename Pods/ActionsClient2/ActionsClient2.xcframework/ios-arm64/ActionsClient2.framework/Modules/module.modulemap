@@ -1,0 +1,4 @@
+framework module ActionsClient2 {
+  header "ActionsClient2-Swift.h"
+  requires objc
+}

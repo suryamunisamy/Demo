@@ -1,0 +1,4 @@
+framework module PushTokenClient {
+  header "PushTokenClient-Swift.h"
+  requires objc
+}

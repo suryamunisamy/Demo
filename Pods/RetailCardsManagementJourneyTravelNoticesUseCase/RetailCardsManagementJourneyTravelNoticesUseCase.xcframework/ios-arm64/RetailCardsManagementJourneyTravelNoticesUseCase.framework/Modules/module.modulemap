@@ -1,0 +1,4 @@
+framework module RetailCardsManagementJourneyTravelNoticesUseCase {
+  header "RetailCardsManagementJourneyTravelNoticesUseCase-Swift.h"
+  requires objc
+}

@@ -1,0 +1,4 @@
+framework module CardsClient2 {
+  header "CardsClient2-Swift.h"
+  requires objc
+}

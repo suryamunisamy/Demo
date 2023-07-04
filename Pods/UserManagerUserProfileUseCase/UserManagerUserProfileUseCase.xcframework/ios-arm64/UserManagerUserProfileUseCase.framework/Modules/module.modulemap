@@ -1,0 +1,4 @@
+framework module UserManagerUserProfileUseCase {
+  header "UserManagerUserProfileUseCase-Swift.h"
+  requires objc
+}

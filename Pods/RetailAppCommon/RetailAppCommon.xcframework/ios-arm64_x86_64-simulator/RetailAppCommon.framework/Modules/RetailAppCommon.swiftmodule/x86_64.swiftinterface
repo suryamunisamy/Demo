@@ -1,0 +1,146 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailAppCommon
+import Backbase
+import BackbaseDesignSystem
+import Foundation
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import Swift
+import UIKit
+public protocol AppConfiguration {
+  associatedtype State : RetailAppCommon.AppState
+  associatedtype Router : RetailAppCommon.AppRouter
+  init()
+  var security: RetailAppCommon.Security.Configuration { get set }
+  var splash: RetailAppCommon.Splash.Configuration { get set }
+  var router: Self.Router { get set }
+  var dependencies: [RetailAppCommon.AppDependency] { get }
+}
+extension AppConfiguration {
+  public var dependencies: [RetailAppCommon.AppDependency] {
+    get
+  }
+}
+@_inheritsConvenienceInitializers open class AppDelegate<Config> : UIKit.UIResponder, UIKit.UIApplicationDelegate where Config : RetailAppCommon.AppConfiguration {
+  @objc open func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
+  @objc open func application(_ application: UIKit.UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: UIKit.UIApplication.ExtensionPointIdentifier) -> Swift.Bool
+  @objc open func applicationDidEnterBackground(_ application: UIKit.UIApplication)
+  @objc open func applicationWillEnterForeground(_ application: UIKit.UIApplication)
+  public typealias Configuration = (inout RetailAppCommon.BackbaseConfiguration, inout BackbaseDesignSystem.DesignSystem) -> (inout Config) -> Swift.Void
+  @objc public var window: UIKit.UIWindow?
+  @objc override dynamic public init()
+  public init(configuration: RetailAppCommon.AppDelegate<Config>.Configuration? = nil)
+  public var sdkConfiguration: RetailAppCommon.BackbaseConfiguration {
+    get
+  }
+  public var configuration: Config {
+    get
+  }
+  @objc deinit
+}
+public protocol AppDependency {
+  func register()
+}
+extension AppDependency {
+  public func register()
+}
+public protocol AppRouter : RetailAppCommon.AppDependency {
+  associatedtype State : RetailAppCommon.AppState
+  init()
+  var didStartApp: RetailAppCommon.AppWindowUpdater? { get set }
+  var didUpdateState: ((Self.State) -> RetailAppCommon.AppWindowUpdater)? { get set }
+  static func viewController(for screenBuilder: (UIKit.UINavigationController) -> UIKit.UIViewController) -> UIKit.UIViewController
+  static func screenBuilder(for entryPoint: RetailAppCommon.EntryPoint) -> RetailAppCommon.AppScreenBuilder
+  static func navigationController(startingWith screenBuilder: (UIKit.UINavigationController) -> UIKit.UIViewController) -> UIKit.UINavigationController
+}
+extension AppRouter {
+  public static func viewController(for screenBuilder: (UIKit.UINavigationController) -> UIKit.UIViewController) -> UIKit.UIViewController
+  public static func screenBuilder(for entryPoint: RetailAppCommon.EntryPoint) -> RetailAppCommon.AppScreenBuilder
+  public static func navigationController(startingWith screenBuilder: (UIKit.UINavigationController) -> UIKit.UIViewController) -> UIKit.UINavigationController
+}
+public typealias AppScreenBuilder = (UIKit.UINavigationController) -> UIKit.UIViewController
+public protocol AppState {
+  var entryPoint: RetailAppCommon.EntryPoint { get }
+}
+public typealias AppWindowUpdater = (UIKit.UIWindow) -> Swift.Void
+public enum EntryPoint {
+  case single(RetailAppCommon.AppScreenBuilder)
+  case tabbedMenu([RetailAppCommon.AppScreenBuilder])
+}
+public struct BackbaseConfiguration {
+  public typealias Setup = ((Backbase.Type) -> Swift.Void)
+  public var configPath: Swift.String
+  public var forceDecryption: Swift.Bool
+  public var additionalSetup: RetailAppCommon.BackbaseConfiguration.Setup?
+}
+extension Backbase {
+  public static func initialize(configuration: RetailAppCommon.BackbaseConfiguration) throws
+}
+public struct Security {
+  public enum PrivacyMode {
+    case blur(_: UIKit.UIBlurEffect.Style = .extraLight)
+    case launchScreen(UIKit.UIStoryboard)
+    case image(UIKit.UIImage, _: UIKit.UIView.ContentMode = .scaleAspectFill)
+    case view(UIKit.UIView)
+  }
+}
+extension Security {
+  public struct Configuration {
+    public init()
+    public var privacyMode: RetailAppCommon.Security.PrivacyMode?
+    public var allowThirdPartyKeyboards: Swift.Bool
+  }
+}
+extension Security.Configuration : RetailAppCommon.AppDependency {
+}
+public struct Splash {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension Splash.Configuration : RetailAppCommon.AppDependency {
+}
+extension Splash {
+  public struct Configuration {
+    public init()
+    public var waitHandler: (() -> Swift.Void)?
+    public var router: RetailAppCommon.Splash.Router
+    public var backgroundImage: UIKit.UIImage?
+    public var logoImage: UIKit.UIImage?
+    public var design: RetailAppCommon.Splash.Design
+    public var strings: RetailAppCommon.Splash.Strings
+  }
+}
+extension Splash {
+  public struct Design {
+    public init()
+    public var logo: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var indicator: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+  }
+}
+extension Splash {
+  public struct Router {
+    public var didFinishWaiting: (() -> Swift.Void)?
+  }
+}
+extension Splash {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString?
+    public var subtitle: RetailJourneyCommon.LocalizedString?
+  }
+}

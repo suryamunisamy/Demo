@@ -1,0 +1,11 @@
+framework module BusinessDesign {
+  umbrella header "BusinessDesign.h"
+
+  export *
+  module * { export * }
+}
+
+module BusinessDesign.Swift {
+    header "BusinessDesign-Swift.h"
+    requires objc
+}

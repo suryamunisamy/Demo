@@ -1,0 +1,21 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UserManagerUserProfileUseCase
+import Swift
+import UserManagerClient2
+import UserProfileJourney
+import _Concurrency
+final public class UserManagerUserProfileUseCase : UserProfileJourney.UserProfileUseCase {
+  public init(client: UserManagerClient2.UserProfileManagementAPIProtocol)
+  final public func retrieveUserProfile(callback: ((Swift.Result<UserProfileJourney.UserRepresenting, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func addPhoneAddress(phoneAddress: UserProfileJourney.PhoneNumberCreating, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func updatePhoneAddress(phoneAddress: UserProfileJourney.PhoneNumberCreating, with id: Swift.String, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func deletePhoneAddress(with id: Swift.String, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func addEmailAddress(emailAddress: UserProfileJourney.EmailCreating, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func updateEmailAddress(emailAddress: UserProfileJourney.EmailCreating, with id: Swift.String, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func deleteEmailAddress(with id: Swift.String, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func addPostalAddress(postalAddress: UserProfileJourney.AddressCreating, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func updatePostalAddress(postalAddress: UserProfileJourney.AddressCreating, with id: Swift.String, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  final public func deletePostalAddress(with id: Swift.String, callback: ((Swift.Result<Swift.Void, UserProfileJourney.UserProfileUseCaseError>) -> Swift.Void)?)
+  @objc deinit
+}

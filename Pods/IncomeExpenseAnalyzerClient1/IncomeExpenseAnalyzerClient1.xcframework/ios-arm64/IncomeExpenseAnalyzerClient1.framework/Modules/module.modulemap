@@ -1,0 +1,4 @@
+framework module IncomeExpenseAnalyzerClient1 {
+  header "IncomeExpenseAnalyzerClient1-Swift.h"
+  requires objc
+}

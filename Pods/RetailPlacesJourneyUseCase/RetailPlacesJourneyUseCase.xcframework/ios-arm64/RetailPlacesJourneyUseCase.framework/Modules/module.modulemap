@@ -1,0 +1,4 @@
+framework module RetailPlacesJourneyUseCase {
+  header "RetailPlacesJourneyUseCase-Swift.h"
+  requires objc
+}

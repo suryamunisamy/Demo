@@ -1,0 +1,20 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BackbaseLottieAnimation
+import BackbaseAnimation
+import Lottie
+import Swift
+import UIKit
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class LottieAnimationView : UIKit.UIView {
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc override final public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @objc deinit
+}
+extension LottieAnimationView : BackbaseAnimation.AnimationView {
+  final public func load(from animationSource: BackbaseAnimation.AnimationSource) throws
+  final public func start()
+  final public func stop()
+}
+public struct LottieAnimationViewFactory : BackbaseAnimation.AnimationViewFactory {
+  public static func view() -> BackbaseAnimation.AnimationView
+}

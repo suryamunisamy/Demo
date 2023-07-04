@@ -1,0 +1,2514 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IdentityAuthenticationJourney
+import AppAuth
+import Backbase
+import BackbaseDesignSystem
+import BackbaseDesignSystem/*.TextInput*/
+import BackbaseIdentity
+import Foundation
+import LocalAuthentication
+import ObjectiveC
+import Resolver
+import RxCocoa
+import RxRelay
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import WebKit
+import _Concurrency
+public struct Authentication {
+  public enum Navigation {
+    case dismissCurrent
+    case present((UIKit.UINavigationController) -> UIKit.UIViewController)
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design {
+  public enum Background {
+    case solid(UIKit.UIColor?)
+    case gradient(IdentityAuthenticationJourney.Authentication.Design.Gradient)
+    case image(UIKit.UIImage?)
+  }
+  @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BackgroundView : UIKit.UIView {
+    @_Concurrency.MainActor(unsafe) @objc override dynamic open var bounds: CoreGraphics.CGRect {
+      @_Concurrency.MainActor(unsafe) @objc get
+      @_Concurrency.MainActor(unsafe) @objc set
+    }
+    @_Concurrency.MainActor(unsafe) open var background: IdentityAuthenticationJourney.Authentication.Design.Background? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+    @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+    @objc deinit
+  }
+}
+extension RxSwift.Reactive where Base : IdentityAuthenticationJourney.Authentication.Design.BackgroundView {
+  public var backgroundImage: RxCocoa.Binder<UIKit.UIImage?> {
+    get
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design {
+  public enum ButtonType : Swift.CaseIterable {
+    case primary
+    case secondary
+    case success
+    case warning
+    case danger
+    case info
+    case plain
+    public static func == (a: IdentityAuthenticationJourney.Authentication.Design.ButtonType, b: IdentityAuthenticationJourney.Authentication.Design.ButtonType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [IdentityAuthenticationJourney.Authentication.Design.ButtonType]
+    public static var allCases: [IdentityAuthenticationJourney.Authentication.Design.ButtonType] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design {
+  public struct Colors {
+    public init()
+    public var foundation: IdentityAuthenticationJourney.Authentication.Design.Colors.Foundation
+    public var surfacePrimary: IdentityAuthenticationJourney.Authentication.Design.Colors.SurfacePrimary
+    public var highContrast: IdentityAuthenticationJourney.Authentication.Design.Colors.HighContrast
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design.Colors {
+  public struct Foundation {
+    public init()
+    public var `default`: UIKit.UIColor
+    public var onFoundation: IdentityAuthenticationJourney.Authentication.Design.Colors.Foundation.OnFoundation
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design.Colors.Foundation {
+  public struct OnFoundation {
+    public init()
+    public var `default`: UIKit.UIColor
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design.Colors {
+  public struct SurfacePrimary {
+    public init()
+    public var `default`: UIKit.UIColor
+    public var onSurfacePrimary: IdentityAuthenticationJourney.Authentication.Design.Colors.SurfacePrimary.OnSurfacePrimary
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design.Colors.SurfacePrimary {
+  public struct OnSurfacePrimary {
+    public init()
+    public var `default`: UIKit.UIColor
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design.Colors {
+  public struct HighContrast {
+    public init()
+    public var primary: UIKit.UIColor
+    public var tint: UIKit.UIColor
+  }
+}
+extension IdentityAuthenticationJourney.Authentication {
+  public struct Configuration {
+    public init()
+    public var register: IdentityAuthenticationJourney.Register.Configuration {
+      mutating get
+      set
+    }
+    public var forgotCredentials: IdentityAuthenticationJourney.ForgotCredentials.Configuration {
+      mutating get
+      set
+    }
+    public var forgotUsername: IdentityAuthenticationJourney.ForgotUsername.Configuration {
+      mutating get
+      set
+    }
+    public var forgotPasswordUsernameInput: IdentityAuthenticationJourney.ForgotPasswordUsernameInputScreen.Configuration {
+      mutating get
+      set
+    }
+    public var forgotPasswordOTPInput: IdentityAuthenticationJourney.ForgotPasswordOTPInputScreen.Configuration {
+      mutating get
+      set
+    }
+    public var forgotPasswordUpdatePassword: IdentityAuthenticationJourney.UpdatePassword.Configuration {
+      mutating get
+      set
+    }
+    public var loginFlowUpdatePassword: IdentityAuthenticationJourney.UpdatePassword.RequiredActionConfiguration {
+      mutating get
+      set
+    }
+    public var registrationFlowUpdatePassword: IdentityAuthenticationJourney.UpdatePassword.RequiredActionConfiguration {
+      mutating get
+      set
+    }
+    public var login: IdentityAuthenticationJourney.Login.Configuration {
+      mutating get
+      set
+    }
+    public var passcode: IdentityAuthenticationJourney.Passcode.Configuration {
+      mutating get
+      set
+    }
+    public var passwordChangeComplete: IdentityAuthenticationJourney.PasswordChangeCompleteScreen.Configuration {
+      mutating get
+      set
+    }
+    public var biometric: IdentityAuthenticationJourney.Biometric.Configuration {
+      mutating get
+      set
+    }
+    public var lateEnrollBiometric: IdentityAuthenticationJourney.Biometric.LateEnrollBiometricConfiguration {
+      mutating get
+      set
+    }
+    public var inputRequired: IdentityAuthenticationJourney.InputRequired.Configuration {
+      mutating get
+      set
+    }
+    public var emailSent: IdentityAuthenticationJourney.EmailSent.Configuration {
+      mutating get
+      set
+    }
+    public var setupComplete: IdentityAuthenticationJourney.SetupComplete.Configuration {
+      mutating get
+      set
+    }
+    public var otp: IdentityAuthenticationJourney.OTP.Configuration {
+      mutating get
+      set
+    }
+    public var outOfBandTS: IdentityAuthenticationJourney.OutOfBandTransactionSigning.Configuration {
+      mutating get
+      set
+    }
+    public var outOfBandTSComplete: IdentityAuthenticationJourney.OutOfBandTransactionSigningComplete.Configuration {
+      mutating get
+      set
+    }
+    public var inbandTS: IdentityAuthenticationJourney.InbandTransactionSigning.Configuration {
+      mutating get
+      set
+    }
+    public var outOfBandAuthentication: IdentityAuthenticationJourney.OutOfBandAuthentication.Configuration {
+      mutating get
+      set
+    }
+    public var loginFlowTermsAndConditions: IdentityAuthenticationJourney.TermsAndConditions.Configuration {
+      mutating get
+      set
+    }
+    public var registrationFlowTermsAndConditions: IdentityAuthenticationJourney.TermsAndConditions.Configuration {
+      mutating get
+      set
+    }
+    public var forgotPasscodeOTPMethodChoice: IdentityAuthenticationJourney.ForgotPasscodeOTPMethodChoice.Configuration {
+      mutating get
+      set
+    }
+    public var forgotPasscodeOTPInput: IdentityAuthenticationJourney.ForgotPasscodeOTPInput.Configuration {
+      mutating get
+      set
+    }
+    public var forgotPasscode: IdentityAuthenticationJourney.ForgotPasscode.Configuration {
+      mutating get
+      set
+    }
+    public var forgotPasscodeCreatePasscode: IdentityAuthenticationJourney.CreatePasscode.Configuration {
+      mutating get
+      set
+    }
+    public var forgotPasscodeSuccessScreen: IdentityAuthenticationJourney.ForgotPasscodeSuccessScreen.Configuration {
+      mutating get
+      set
+    }
+    public var changePasscodeSuccessScreen: IdentityAuthenticationJourney.PasscodeChangeSuccessScreen.Configuration {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.Authentication.Strings
+    public var design: IdentityAuthenticationJourney.Authentication.Design
+    public var statusBarStyle: IdentityAuthenticationJourney.Authentication.StatusBarStyle
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0,\nat which time the default behaviour will be changed to call precompletion handler after authentication and before validating session.")
+    public var callPrecompletionWhenAuthenticated: Swift.Bool
+  }
+}
+extension IdentityAuthenticationJourney.Authentication {
+  @_hasMissingDesignatedInitializers public class Design {
+    public var colors: IdentityAuthenticationJourney.Authentication.Design.Colors
+    public var styles: IdentityAuthenticationJourney.Authentication.Design.Styles {
+      get
+      set
+    }
+    @objc deinit
+  }
+}
+extension IdentityAuthenticationJourney.Authentication {
+  public enum Error : Swift.Error {
+    case notConnected
+    case invalidCredentials
+    case invalidPasscode
+    case sessionExpired
+    case accountLocked
+    case cancelledByUser
+    case incompleteEnrollment
+    case passcodeMismatch
+    case registrationTimeOut
+    case passcodeTooManyRepeatingNumbers
+    case passcodeTooManyConsecutiveNumbers
+    case newPasscodeSameAsOld
+    case biometricUsageDenied
+    case biometricLockout
+    case invalidEmail
+    case invalidForgotPasswordOTPCode
+    case confirmationIsNotPending
+    case confirmationFailed
+    case confirmationFailedExpiredSession
+    case confirmationFailedNoAuthenticators
+    case confirmationUserDeclined
+    case biometricsInvalidated
+    case biometricsAuthenticationFailed
+    case confirmationNotFound
+    case userDisabled
+    case userTemporarilyDisabled
+    case deviceSuspended
+    case deviceDoesNotExist
+    case oobAuthConfirmationIsNotPending
+    case oobAuthConfirmationFailed
+    case oobAuthConfirmationFailedNoAuthenticator
+    case oobAuthConfirmationUserDeclined
+    case oobAuthConfirmationNotFound
+    case oobAuthConfirmationOutdatedSecret
+    case noPoliciesWereSatisfied
+    case otpMethodSelectionFailed
+    case otpMaxAttemptsReached
+    case otpAuthIncorrectOTP
+    case otpResendLimitExceeded(seconds: Swift.Int)
+    case invalidPasswordMinLengthMessage(count: Swift.Int)
+    case invalidPasswordMinLowerCaseCharsMessage(count: Swift.Int)
+    case invalidPasswordMinDigitsMessage(count: Swift.Int)
+    case invalidPasswordMinUpperCaseCharsMessage(count: Swift.Int)
+    case invalidPasswordMinSpecialCharsMessage(count: Swift.Int)
+    case invalidPasswordNotUsernameMessage
+    case invalidPasswordNotEmailMessage
+    case invalidPasswordRegexPatternMessage
+    case invalidPasswordHistoryMessage
+    case invalidPasswordDenylistedMessage
+    case invalidPasswordGenericMessage
+    case tokenIsNotActive
+    case unexpectedError
+    case invalidFIDOCredentials
+    case sdk(Swift.Error)
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Error : Swift.Equatable {
+  public static func == (lhs: IdentityAuthenticationJourney.Authentication.Error, rhs: IdentityAuthenticationJourney.Authentication.Error) -> Swift.Bool
+}
+extension IdentityAuthenticationJourney.Authentication.Error : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+extension IdentityAuthenticationJourney.Authentication {
+  public typealias ErrorFormatter<T> = (IdentityAuthenticationJourney.Authentication.Error) -> T
+}
+extension IdentityAuthenticationJourney.Authentication.Design {
+  public struct Gradient {
+    public struct Point {
+      public let point: CoreGraphics.CGPoint
+      public let color: UIKit.UIColor
+      public init(point: CoreGraphics.CGPoint, color: UIKit.UIColor)
+    }
+    public struct Location {
+      public let location: CoreGraphics.CGFloat
+      public let color: UIKit.UIColor
+      public init(location: CoreGraphics.CGFloat, color: UIKit.UIColor)
+    }
+    public let startPoint: IdentityAuthenticationJourney.Authentication.Design.Gradient.Point
+    public let endPoint: IdentityAuthenticationJourney.Authentication.Design.Gradient.Point
+    public let locations: [IdentityAuthenticationJourney.Authentication.Design.Gradient.Location]
+    public init(startPoint: IdentityAuthenticationJourney.Authentication.Design.Gradient.Point, endPoint: IdentityAuthenticationJourney.Authentication.Design.Gradient.Point, locations: [IdentityAuthenticationJourney.Authentication.Design.Gradient.Location] = [])
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design {
+  @objc @_Concurrency.MainActor(unsafe) final public class OTPInput : UIKit.UIControl {
+    @_Concurrency.MainActor(unsafe) required public init(length: Swift.Int)
+    @available(*, unavailable)
+    @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+    @discardableResult
+    @_Concurrency.MainActor(unsafe) @objc override final public func becomeFirstResponder() -> Swift.Bool
+    @_Concurrency.MainActor(unsafe) final public var isSecureTextEntry: Swift.Bool {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) final public var text: Swift.String? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) final public var fieldsBorderWidth: CoreGraphics.CGFloat {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) final public var fieldsBorderColor: UIKit.UIColor? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) final public var fieldsBackgroundColor: UIKit.UIColor? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) final public var fieldsTextColor: UIKit.UIColor? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) final public var fieldsCornerRadius: CoreGraphics.CGFloat {
+      get
+      set
+    }
+    @objc deinit
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design.OTPInput : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc final public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+}
+extension IdentityAuthenticationJourney.Authentication {
+  public enum StatusBarStyleType {
+    case standard
+    case interfaceStyle(light: UIKit.UIStatusBarStyle, dark: UIKit.UIStatusBarStyle)
+    case interfaceStyleLightAndDark(UIKit.UIStatusBarStyle)
+  }
+  public struct StatusBarStyle {
+    public init(type: IdentityAuthenticationJourney.Authentication.StatusBarStyleType)
+  }
+}
+extension IdentityAuthenticationJourney.Authentication {
+  public struct Strings {
+    public init()
+    public var alertTitle: (_ error: IdentityAuthenticationJourney.Authentication.Error) -> IdentityAuthenticationJourney.LocalizedString
+    public var alertMessage: (_ error: IdentityAuthenticationJourney.Authentication.Error) -> IdentityAuthenticationJourney.LocalizedString
+    public var alertConfirmOption: IdentityAuthenticationJourney.LocalizedString
+    public var alertRetryOption: IdentityAuthenticationJourney.LocalizedString
+    public var alertCancelOption: IdentityAuthenticationJourney.LocalizedString
+    public var alertCloseOption: IdentityAuthenticationJourney.LocalizedString
+    public var alertSettingsOption: IdentityAuthenticationJourney.LocalizedString
+    public var alertRestartOption: IdentityAuthenticationJourney.LocalizedString
+    public var alertTryAgainOption: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+extension IdentityAuthenticationJourney.Authentication.Design {
+  @_hasMissingDesignatedInitializers public class Styles {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var inlineErrorLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var tipText: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var footnote: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      get
+      set
+    }
+    public var formLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var listFieldLabelTitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var listFieldLabelSubtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      get
+      set
+    }
+    public var containerBackground: BackbaseDesignSystem.Style<UIKit.UIView> {
+      get
+      set
+    }
+    public var whiteBackgroundContainer: BackbaseDesignSystem.Style<UIKit.UIView> {
+      get
+      set
+    }
+    public var containerStack: BackbaseDesignSystem.Style<UIKit.UIStackView> {
+      get
+      set
+    }
+    public var checkMarkButton: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.CheckmarkButton> {
+      get
+      set
+    }
+    public var disclosureButton: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.DisclosureButton> {
+      get
+      set
+    }
+    public var listRowView: BackbaseDesignSystem.Style<UIKit.UIStackView> {
+      get
+      set
+    }
+    public var formTextInput: BackbaseDesignSystem.StyleSelector<UIKit.UITextContentType, BackbaseDesignSystem.TextInput> {
+      get
+      set
+    }
+    public var otpInput: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.OTPInput> {
+      get
+      set
+    }
+    public var loading: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      get
+      set
+    }
+    public var checkbox: BackbaseDesignSystem.Style<BackbaseDesignSystem.Checkbox> {
+      get
+      set
+    }
+    public var button: BackbaseDesignSystem.StyleSelector<IdentityAuthenticationJourney.Authentication.Design.ButtonType, BackbaseDesignSystem.Button> {
+      get
+      set
+    }
+    @objc deinit
+  }
+}
+public protocol AuthenticationUseCase {
+  typealias Headers = [Swift.String : Swift.String]
+  typealias AuthenticationResult = Swift.Result<Self.Headers, IdentityAuthenticationJourney.Authentication.Error>
+  typealias AuthenticationHandler = (Self.AuthenticationResult) -> Swift.Void
+  typealias ForgottenCredentialsResult = Swift.Result<Foundation.Data, IdentityAuthenticationJourney.Authentication.Error>
+  typealias ForgottenCredentialsHandler = (Self.ForgottenCredentialsResult) -> Swift.Void
+  typealias PasscodeChangeResult = Swift.Result<Swift.Void, IdentityAuthenticationJourney.Authentication.Error>
+  typealias PasscodeChangeHandler = (Self.PasscodeChangeResult) -> Swift.Void
+  typealias SessionHandler = (IdentityAuthenticationJourney.Session) -> Swift.Void
+  @available(*, deprecated, message: "This function has been deprecated and will be removed in 4.0.0,\nthis function is replaced by `authenticate(user:shouldValidateSession:preCompletion:postCompletion:)`.")
+  func authenticate(user: IdentityAuthenticationJourney.User, preCompletion: (() -> Swift.Void)?, postCompletion: Self.AuthenticationHandler?)
+  func authenticate(user: IdentityAuthenticationJourney.User, shouldValidateSession: Swift.Bool, preCompletion: (() -> Swift.Void)?, postCompletion: Self.AuthenticationHandler?)
+  func authenticateWithBiometrics(callback: Self.AuthenticationHandler?)
+  func authenticateWithPasscode(callback: Self.AuthenticationHandler?)
+  func completeRegistration(callback: Self.AuthenticationHandler?)
+  func lateEnrollBiometrics(callback: ((IdentityAuthenticationJourney.Authentication.Error?) -> Swift.Void)?)
+  func changePasscode(callback: Self.PasscodeChangeHandler?)
+  func forgotUsername(callback: Self.ForgottenCredentialsHandler?)
+  func forgotPassword(callback: Self.ForgottenCredentialsHandler?)
+  func forgotPasscode(user: IdentityAuthenticationJourney.User, callback: Self.ForgottenCredentialsHandler?)
+  func endSession(callback: Self.SessionHandler?)
+  func logOut(callback: Self.SessionHandler?)
+  func expireSession(callback: Self.SessionHandler?)
+  func lockAccount(callback: Self.SessionHandler?)
+  func validateSession(callback: Self.SessionHandler?)
+  @available(*, deprecated, message: "This function has been deprecated and will be removed in 4.0.0")
+  func enableBuiltInForgotPasswordHandling()
+  func enableBuiltInTermsAndConditionsHandling()
+  var cachedUsername: Swift.String? { get }
+  var isEnrolled: Swift.Bool { get }
+  var isBiometricEnrolled: Swift.Bool { get }
+  var isPasscodeEnrolled: Swift.Bool { get }
+  var lastSession: IdentityAuthenticationJourney.Session? { get }
+  var cachedName: Swift.String? { get }
+  var isUserRegistered: Swift.Bool { get }
+}
+extension IdentityAuthenticationJourney.AuthenticationUseCase {
+  public var cachedName: Swift.String? {
+    get
+  }
+  public func enableBuiltInTermsAndConditionsHandling()
+  public var isUserRegistered: Swift.Bool {
+    get
+  }
+  public func authenticate(user _: IdentityAuthenticationJourney.User, shouldValidateSession _: Swift.Bool, preCompletion _: (() -> Swift.Void)?, postCompletion _: Self.AuthenticationHandler?)
+  public func enableBuiltInForgotPasswordHandling()
+  public func lateEnrollBiometrics(callback _: ((IdentityAuthenticationJourney.Authentication.Error?) -> Swift.Void)?)
+  public func forgotPasscode(user _: IdentityAuthenticationJourney.User, callback _: Self.ForgottenCredentialsHandler?)
+}
+public struct Biometric {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.Biometric {
+  public struct Configuration : IdentityAuthenticationJourney.BiometricConfigurationProtocol {
+    public var design: IdentityAuthenticationJourney.Biometric.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.Biometric.Strings
+    public var promptImage: (_ type: IdentityAuthenticationJourney.BiometryType) -> UIKit.UIImage?
+    public var cancelButtonIcon: UIKit.UIImage?
+  }
+}
+public protocol BiometricConfigurationProtocol {
+  var promptImage: (IdentityAuthenticationJourney.BiometryType) -> UIKit.UIImage? { get }
+  var cancelButtonIcon: UIKit.UIImage? { get }
+}
+extension IdentityAuthenticationJourney.Biometric {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var allowUsageButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var denyUsageButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.Biometric {
+  public struct Strings {
+    public init()
+    public var title: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var subtitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var promptButtonTitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var denyUsageButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public enum BiometryType {
+  case none
+  case faceID
+  case touchID
+  case passcode
+  case denied
+  case lockedOut
+  public static var supported: IdentityAuthenticationJourney.BiometryType {
+    get
+  }
+  public static var supportedByDevice: IdentityAuthenticationJourney.BiometryType {
+    get
+  }
+  public static var allowed: IdentityAuthenticationJourney.BiometryType {
+    get
+  }
+  public static func == (a: IdentityAuthenticationJourney.BiometryType, b: IdentityAuthenticationJourney.BiometryType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Foundation.Bundle {
+  public static var authentication: Foundation.Bundle? {
+    get
+  }
+}
+extension BackbaseDesignSystem.Checkbox {
+  @_Concurrency.MainActor(unsafe) @objc override final public var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+}
+public protocol CheckmarkButton : UIKit.UIButton {
+  var primaryLabel: UIKit.UILabel { get set }
+  var checkmarkImageView: UIKit.UIImageView { get set }
+  var stackView: UIKit.UIStackView { get set }
+}
+public struct CreatePasscode {
+}
+extension IdentityAuthenticationJourney.CreatePasscode {
+  public struct Configuration {
+    public var strings: IdentityAuthenticationJourney.CreatePasscode.Strings
+  }
+}
+extension IdentityAuthenticationJourney.CreatePasscode {
+  public struct Strings {
+    public init()
+    public var createPasscodeStep1Title: IdentityAuthenticationJourney.LocalizedString
+    public var createPasscodeStep1Subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var createPasscodeStep2Title: IdentityAuthenticationJourney.LocalizedString
+    public var createPasscodeStep2Subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var tip: IdentityAuthenticationJourney.LocalizedString
+    public var passcodeMismatchInlineErrorTitle: IdentityAuthenticationJourney.LocalizedString
+    public var passcodeTooManyRepeatingNumbers: IdentityAuthenticationJourney.LocalizedString
+    public var passcodeTooManyConsecutiveNumbers: IdentityAuthenticationJourney.LocalizedString
+    public var createPasscodeProblemsButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var createPasscodeProblemsAlertTitle: IdentityAuthenticationJourney.LocalizedString
+    public var createPasscodeProblemsAlertMessage: IdentityAuthenticationJourney.LocalizedString
+    public var createPasscodeProblemsAlertCancelOption: IdentityAuthenticationJourney.LocalizedString
+    public var createPasscodeProblemsAlertRetryOption: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public enum Mode {
+  case createPasscode
+  case confirmPasscode
+  public static func == (a: IdentityAuthenticationJourney.Mode, b: IdentityAuthenticationJourney.Mode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol DisclosureButton : UIKit.UIButton {
+  var primaryLabel: UIKit.UILabel { get set }
+  var disclosureImageView: UIKit.UIImageView { get set }
+  var stackView: UIKit.UIStackView { get set }
+}
+public struct EmailSent {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.EmailSent {
+  public struct Animation {
+    public struct Animatable {
+      public let imageView: UIKit.UIImageView
+    }
+    public init()
+    public var viewWillAppear: ((IdentityAuthenticationJourney.EmailSent.Animation.Animatable) -> Swift.Void)?
+    public var viewDidAppear: ((IdentityAuthenticationJourney.EmailSent.Animation.Animatable) -> Swift.Void)?
+  }
+}
+extension IdentityAuthenticationJourney.EmailSent {
+  public struct Configuration {
+    public var image: UIKit.UIImage?
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.EmailSent.Design {
+      mutating get
+      set
+    }
+    public var animation: IdentityAuthenticationJourney.EmailSent.Animation?
+    public var strings: IdentityAuthenticationJourney.EmailSent.Strings
+  }
+}
+extension IdentityAuthenticationJourney.EmailSent {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var dismissButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.EmailSent {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var dismissButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct ForgotCredentials {
+  public static func build() -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.ForgotCredentials {
+  public struct Configuration {
+    public enum Options {
+      case forgotUsername
+      case forgotPassword
+      public static func == (a: IdentityAuthenticationJourney.ForgotCredentials.Configuration.Options, b: IdentityAuthenticationJourney.ForgotCredentials.Configuration.Options) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public var statusBarStyle: IdentityAuthenticationJourney.Authentication.StatusBarStyle?
+    public var showOptions: [IdentityAuthenticationJourney.ForgotCredentials.Configuration.Options]
+    public var strings: IdentityAuthenticationJourney.ForgotCredentials.Strings
+    public var design: IdentityAuthenticationJourney.ForgotCredentials.Design {
+      mutating get
+      set
+    }
+    public var disclosureIcon: UIKit.UIImage?
+    public var backIcon: UIKit.UIImage?
+  }
+}
+extension IdentityAuthenticationJourney.ForgotCredentials {
+  public struct Design {
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var choiceContainer: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var choiceButton: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.DisclosureButton> {
+      mutating get
+      set
+    }
+  }
+  public struct InputScreenDesign : IdentityAuthenticationJourney.InputScreenDesignProtocol {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var input: BackbaseDesignSystem.StyleSelector<UIKit.UITextContentType, BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var formLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var submitButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+public protocol InputScreenDesignProtocol {
+  var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> { mutating get set }
+  var title: BackbaseDesignSystem.Style<UIKit.UILabel> { mutating get set }
+  var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> { mutating get set }
+  var input: BackbaseDesignSystem.StyleSelector<UIKit.UITextContentType, BackbaseDesignSystem.TextInput> { mutating get set }
+  var formLabel: BackbaseDesignSystem.Style<UIKit.UILabel> { mutating get set }
+  var submitButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> { mutating get set }
+  var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> { mutating get set }
+}
+extension IdentityAuthenticationJourney.ForgotCredentials {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var forgotUsernameOption: IdentityAuthenticationJourney.LocalizedString
+    public var forgotPasswordOption: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct ForgotPasscode {
+  public static func build(session: IdentityAuthenticationJourney.Session = .none) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.ForgotPasscode {
+  public struct Configuration {
+    public var statusBarStyle: IdentityAuthenticationJourney.Authentication.StatusBarStyle?
+    public var strings: IdentityAuthenticationJourney.ForgotPasscode.Strings
+    public var animation: IdentityAuthenticationJourney.Register.Animation?
+    public var showForgotCredentials: Swift.Bool
+    public var image: UIKit.UIImage? {
+      mutating get
+      set
+    }
+    public var router: IdentityAuthenticationJourney.ForgotPasscode.Router
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasscode {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var imageConstraints: IdentityAuthenticationJourney.Authentication.Design.ImageConstraints
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var usernameInputLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var usernameInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var passwordInputLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var passwordInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var forgotCredentialsButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var loginButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var backIcon: UIKit.UIImage?
+  }
+}
+public struct ForgotPasscodeOTPInput {
+}
+extension IdentityAuthenticationJourney.ForgotPasscodeOTPInput {
+  public struct Configuration {
+    public var strings: IdentityAuthenticationJourney.ForgotPasscodeOTPInput.Strings
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasscodeOTPInput {
+  public struct Strings {
+    public init()
+    public var submitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var otpPlaceholder: IdentityAuthenticationJourney.LocalizedString
+    public var inputSubtitle: IdentityAuthenticationJourney.LocalizedString
+    public var inputTitle: IdentityAuthenticationJourney.LocalizedString
+    public var resendOTPDisabled: IdentityAuthenticationJourney.LocalizedString
+    public var resendOTP: IdentityAuthenticationJourney.LocalizedString
+    public var otpEmpty: IdentityAuthenticationJourney.LocalizedString
+    public var problemsTitle: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsMessage: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsTitle: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsAlertConfirmOption: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct ForgotPasscodeOTPMethodChoice {
+}
+extension IdentityAuthenticationJourney.ForgotPasscodeOTPMethodChoice {
+  public struct Configuration {
+    public var checkMarkIcon: UIKit.UIImage?
+    public var strings: IdentityAuthenticationJourney.ForgotPasscodeOTPMethodChoice.Strings
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasscodeOTPMethodChoice {
+  public struct Strings {
+    public init()
+    public var continueButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var methodChoiceTitle: IdentityAuthenticationJourney.LocalizedString
+    public var methodChoiceSubtitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasscode {
+  public struct Router {
+    public var didTapForgotCredentials: ((UIKit.UINavigationController) -> () -> Swift.Void)?
+    public var didTapBack: ((UIKit.UINavigationController) -> () -> Swift.Void)?
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasscode {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var usernamePlaceholder: IdentityAuthenticationJourney.LocalizedString
+    public var emptyUsernameError: IdentityAuthenticationJourney.LocalizedString
+    public var passwordPlaceholder: IdentityAuthenticationJourney.LocalizedString
+    public var emptyPasswordError: IdentityAuthenticationJourney.LocalizedString
+    public var forgotCredentialsButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var loginButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct ForgotPasscodeSuccessScreen {
+  public static func build(onDismiss: @escaping (() -> Swift.Void)) -> () -> UIKit.UIViewController?
+}
+extension IdentityAuthenticationJourney.ForgotPasscodeSuccessScreen {
+  public struct Configuration {
+    public var image: UIKit.UIImage?
+    public var strings: IdentityAuthenticationJourney.ForgotPasscodeSuccessScreen.Strings
+    public var design: IdentityAuthenticationJourney.ForgotPasscodeSuccessScreen.Design {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasscodeSuccessScreen {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var doneButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasscodeSuccessScreen {
+  public struct Strings {
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var doneButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct ForgotPasswordOTPInputScreen {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.ForgotPasswordOTPInputScreen {
+  public struct Configuration {
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.ForgotCredentials.InputScreenDesign {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.ForgotPasswordOTPInputScreen.Strings
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasswordOTPInputScreen {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var placeholder: IdentityAuthenticationJourney.LocalizedString
+    public var emptyError: IdentityAuthenticationJourney.LocalizedString
+    public var submitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsTitle: IdentityAuthenticationJourney.LocalizedString
+    public var otpInputInvalidError: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsAlertTitle: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsAlertMessage: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct ForgotPasswordUsernameInputScreen {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.ForgotPasswordUsernameInputScreen {
+  public struct Configuration {
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.ForgotCredentials.InputScreenDesign {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.ForgotPasswordUsernameInputScreen.Strings
+  }
+}
+extension IdentityAuthenticationJourney.ForgotPasswordUsernameInputScreen {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var placeholder: IdentityAuthenticationJourney.LocalizedString
+    public var emptyError: IdentityAuthenticationJourney.LocalizedString
+    public var invalidError: IdentityAuthenticationJourney.LocalizedString
+    public var submitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct ForgotUsername {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.ForgotUsername {
+  public struct Configuration {
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.ForgotCredentials.InputScreenDesign {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.ForgotUsername.Strings
+  }
+}
+extension IdentityAuthenticationJourney.ForgotUsername {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var placeholder: IdentityAuthenticationJourney.LocalizedString
+    public var emptyError: IdentityAuthenticationJourney.LocalizedString
+    public var submitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+@objc final public class IdentityAuthenticationUseCase : BackbaseIdentity.BBIDAuthClient {
+  required public init(clientSecret: Swift.String? = nil, sessionChangeHandler: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.SessionHandler?)
+  final public var lastSession: IdentityAuthenticationJourney.Session? {
+    get
+  }
+  final public func initializeNavigationEventListener()
+  final public func navigation(for notification: Foundation.Notification) -> IdentityAuthenticationJourney.Authentication.Navigation?
+  @objc override final public func reset()
+  final public func enableBuiltInForgotPasswordHandling()
+  final public func enableBuiltInTermsAndConditionsHandling()
+  final public var isUserRegistered: Swift.Bool
+  @objc deinit
+}
+extension IdentityAuthenticationJourney.IdentityAuthenticationUseCase : IdentityAuthenticationJourney.AuthenticationUseCase {
+  final public func authenticate(user: IdentityAuthenticationJourney.User, preCompletion: (() -> Swift.Void)? = nil, postCompletion: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.AuthenticationHandler?)
+  final public func authenticate(user: IdentityAuthenticationJourney.User, shouldValidateSession: Swift.Bool, preCompletion: (() -> Swift.Void)? = nil, postCompletion: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.AuthenticationHandler?)
+  final public func authenticateWithBiometrics(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.AuthenticationHandler? = nil)
+  final public func authenticateWithPasscode(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.AuthenticationHandler? = nil)
+  final public func completeRegistration(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.AuthenticationHandler?)
+  final public func lateEnrollBiometrics(callback: ((IdentityAuthenticationJourney.Authentication.Error?) -> Swift.Void)?)
+  final public func changePasscode(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.PasscodeChangeHandler? = nil)
+  final public func forgotUsername(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.ForgottenCredentialsHandler? = nil)
+  final public func forgotPassword(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.ForgottenCredentialsHandler?)
+  final public func forgotPasscode(user: IdentityAuthenticationJourney.User, callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.ForgottenCredentialsHandler?)
+  final public func endSession(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.SessionHandler? = nil)
+  final public func logOut(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.SessionHandler?)
+  final public func expireSession(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.SessionHandler? = nil)
+  final public func lockAccount(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.SessionHandler? = nil)
+  final public func validateSession(callback: IdentityAuthenticationJourney.IdentityAuthenticationUseCase.SessionHandler? = nil)
+  final public var cachedUsername: Swift.String? {
+    get
+  }
+  final public var cachedName: Swift.String? {
+    get
+  }
+  final public var isEnrolled: Swift.Bool {
+    get
+  }
+  final public var isBiometricEnrolled: Swift.Bool {
+    get
+  }
+  final public var isPasscodeEnrolled: Swift.Bool {
+    get
+  }
+}
+final public class IdentityOutOfBandAuthenticationUseCase : IdentityAuthenticationJourney.OutOfBandAuthenticationUseCase {
+  public init()
+  final public func resolveOOBAuthentication(payload: IdentityAuthenticationJourney.OutOfBandAuthentication.Payload, username: Swift.String, callback: IdentityAuthenticationJourney.IdentityOutOfBandAuthenticationUseCase.OutOfBandAuthenticationHandler?)
+  @objc deinit
+}
+final public class IdentityOutOfBandTransactionSigningUseCase : IdentityAuthenticationJourney.OutOfBandTransactionSigningUseCase {
+  public init()
+  final public func resolveOOBTransactionSigning(payload: IdentityAuthenticationJourney.OutOfBandTransactionSigning.Payload, approve: Swift.Bool = true, callback: IdentityAuthenticationJourney.IdentityOutOfBandTransactionSigningUseCase.OutOfBandTransactionSigningHandler?)
+  @objc deinit
+}
+extension IdentityAuthenticationJourney.Authentication.Design {
+  public struct ImageConstraints {
+    public init(topSpace: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat, sideMargin: CoreGraphics.CGFloat)
+  }
+}
+extension IdentityAuthenticationJourney.InbandTransactionSigning {
+  public struct Configuration {
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.InbandTransactionSigning.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.InbandTransactionSigning.Strings
+  }
+}
+extension IdentityAuthenticationJourney.InbandTransactionSigning {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var input: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.OTPInput> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var loading: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var dismissButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var authoriseButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.InbandTransactionSigning {
+  public struct Strings {
+    public init()
+    public var title: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    @available(*, deprecated, message: "This property is not used and will be removed in 3.0.0")
+    public var transactionText: IdentityAuthenticationJourney.LocalizedString
+    public var cancelButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var authoriseButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct InbandTransactionSigning {
+}
+public struct InputRequired {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.InputRequired {
+  public struct Configuration {
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.InputRequired.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.InputRequired.Strings
+    public var checkForEmptyFields: Swift.Bool
+  }
+}
+extension IdentityAuthenticationJourney.InputRequired {
+  public struct Design : IdentityAuthenticationJourney.InputScreenDesignProtocol {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var input: BackbaseDesignSystem.StyleSelector<UIKit.UITextContentType, BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var formLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var submitButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.InputRequired {
+  public struct Strings {
+    public init()
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var emailTitle: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var emailSubtitle: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var emailPlaceholder: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var emailEmptyError: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var emailSubmitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var unknownTitle: IdentityAuthenticationJourney.LocalizedString
+    public var unknownSubtitle: IdentityAuthenticationJourney.LocalizedString
+    public var unknownSubmitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var unknownEmptyError: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+extension IdentityAuthenticationJourney.Biometric {
+  public struct LateEnrollBiometricConfiguration : IdentityAuthenticationJourney.BiometricConfigurationProtocol {
+    public var design: IdentityAuthenticationJourney.Biometric.LateEnrollBiometricDesign {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.Biometric.LateEnrollBiometricStrings
+    public var successScreen: IdentityAuthenticationJourney.LateEnrollBiometricSuccessScreen.Configuration {
+      mutating get
+      set
+    }
+    public var promptImage: (_ type: IdentityAuthenticationJourney.BiometryType) -> UIKit.UIImage?
+    public var cancelButtonIcon: UIKit.UIImage?
+  }
+}
+extension IdentityAuthenticationJourney.Biometric {
+  public struct LateEnrollBiometricDesign {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var allowUsageButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.Biometric {
+  public struct LateEnrollBiometricStrings {
+    public init()
+    public var title: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var subtitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var promptButtonTitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var deviceBiometricsNotEnabledAlertTitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var deviceBiometricsNotEnabledAlertSubtitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var deviceBiometricsNotEnabledCancelOption: IdentityAuthenticationJourney.LocalizedString
+    public var deviceBiometricsNotEnabledSettingsOption: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct LateEnrollBiometricSuccessScreen {
+  public struct Configuration {
+    public var image: UIKit.UIImage?
+    public var strings: IdentityAuthenticationJourney.LateEnrollBiometricSuccessScreen.Strings
+    public var design: IdentityAuthenticationJourney.LateEnrollBiometricSuccessScreen.Design {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.LateEnrollBiometricSuccessScreen {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var doneButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.LateEnrollBiometricSuccessScreen {
+  public struct Strings {
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var doneButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public protocol ListContainer : UIKit.UIView {
+  var scrollView: UIKit.UIScrollView { get set }
+  var containerView: UIKit.UIView { get set }
+  var stackView: UIKit.UIStackView { get set }
+}
+public struct LocalizedString : Swift.ExpressibleByStringLiteral {
+  public init(value: Swift.String)
+  public init(stringLiteral value: Swift.String)
+  public init(key: Swift.String, in bundles: Foundation.Bundle?...)
+  public func callAsFunction() -> Swift.String
+  public var value: Swift.String {
+    get
+  }
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+public struct Login {
+  public static func build(session: IdentityAuthenticationJourney.Session = .none, shouldAutoLogin: Swift.Bool = false) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.Login {
+  public struct Configuration {
+    public var statusBarStyle: IdentityAuthenticationJourney.Authentication.StatusBarStyle?
+    public var biometricEnabled: Swift.Bool
+    public var autoLoginEnabled: Swift.Bool
+    public var image: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.Login.Design {
+      mutating get
+      set
+    }
+    @available(*, deprecated, message: "            This property has been deprecated and will be removed in 4.0.0,\n            at that time the default behaviour is as if the flag is enabled")
+    public var autoLoginEnabledWhenOnlyPasscodeIsSet: Swift.Bool
+    public var strings: IdentityAuthenticationJourney.Login.Strings
+    public var showUsersName: Swift.Bool
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0, when the specific error will be displayed automatically")
+    public var showInvalidFIDOCredentialsError: Swift.Bool
+  }
+}
+extension IdentityAuthenticationJourney.Login {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var biometricButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var passcodeButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var imageConstraints: IdentityAuthenticationJourney.Authentication.Design.ImageConstraints
+  }
+}
+extension IdentityAuthenticationJourney.Login {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var titleWithName: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString
+    public var biometricButtonTitle: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var passcodeButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public protocol AuthenticationNavigationCoordinator {
+  func present(_ presentedVC: UIKit.UIViewController, on presentingVC: UIKit.UIViewController?)
+  func dismiss(_ viewController: UIKit.UIViewController)
+  func push(_ viewController: UIKit.UIViewController, on navigationController: UIKit.UINavigationController?)
+  func pop(_ navigationController: UIKit.UINavigationController)
+  func popToRootViewController(_ navigationController: UIKit.UINavigationController)
+  func pop(to viewController: UIKit.UIViewController, on navigationController: UIKit.UINavigationController?)
+}
+extension IdentityAuthenticationJourney.Authentication {
+  final public class NavigationCoordinator : IdentityAuthenticationJourney.AuthenticationNavigationCoordinator {
+    public init(window: UIKit.UIWindow)
+    final public func present(_ presentedVC: UIKit.UIViewController, on presentingVC: UIKit.UIViewController?)
+    final public func dismiss(_ viewController: UIKit.UIViewController)
+    final public func push(_ viewController: UIKit.UIViewController, on navigationController: UIKit.UINavigationController?)
+    final public func pop(_ navigationController: UIKit.UINavigationController)
+    final public func pop(to viewController: UIKit.UIViewController, on navigationController: UIKit.UINavigationController?)
+    final public func popToRootViewController(_ navigationController: UIKit.UINavigationController)
+    @objc deinit
+  }
+}
+public struct OTP {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.OTP {
+  public struct Configuration {
+    public var methodChoice: IdentityAuthenticationJourney.OTPMethodChoice.Configuration {
+      mutating get
+      set
+    }
+    public var input: IdentityAuthenticationJourney.OTPInput.Configuration {
+      mutating get
+      set
+    }
+    public var enableAddressMasking: Swift.Bool
+  }
+}
+public struct OTPInput {
+}
+extension IdentityAuthenticationJourney.OTPInput {
+  public struct Configuration {
+    public var maxOTPDigits: Swift.Int
+    public var design: IdentityAuthenticationJourney.OTPInput.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.OTPInput.Strings
+  }
+}
+extension IdentityAuthenticationJourney.OTPInput {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var titleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var submitButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var resendButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var problemsButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var otpInputField: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OTPInput {
+  public struct Strings {
+    public init()
+    public var otpPlaceholder: IdentityAuthenticationJourney.LocalizedString
+    public var submitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var inputTitle: IdentityAuthenticationJourney.LocalizedString
+    public var inputSubtitle: IdentityAuthenticationJourney.LocalizedString
+    public var resendOTP: IdentityAuthenticationJourney.LocalizedString
+    public var resendOTPDisabled: IdentityAuthenticationJourney.LocalizedString
+    public var problemsTitle: IdentityAuthenticationJourney.LocalizedString
+    public var otpEmpty: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsTitle: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsMessage: IdentityAuthenticationJourney.LocalizedString
+    public var experiencingProblemsAlertConfirmOption: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct OTPMethodChoice {
+}
+extension IdentityAuthenticationJourney.OTPMethodChoice {
+  public struct Configuration {
+    public var checkMarkIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.OTPMethodChoice.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.OTPMethodChoice.Strings
+  }
+}
+extension IdentityAuthenticationJourney.OTPMethodChoice {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var titleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var otpMethodChoiceContainer: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var otpMethodChoiceButton: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.CheckmarkButton> {
+      mutating get
+      set
+    }
+    public var continueButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OTPMethodChoice {
+  public struct Strings {
+    public init()
+    public var continueButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var methodChoiceTitle: IdentityAuthenticationJourney.LocalizedString
+    public var methodChoiceSubtitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct OutOfBandAuthentication {
+  public struct Payload {
+    public let confirmationId: Swift.String
+    public let acrValues: Swift.String
+    public let secret: Swift.String
+    public init(confirmationId: Swift.String, acrValues: Swift.String, secret: Swift.String)
+  }
+  public static func build(payload: IdentityAuthenticationJourney.OutOfBandAuthentication.Payload) -> UIKit.UIViewController
+}
+public struct OutOfBandAuthenticationComplete {
+  public struct Configuration {
+    public var image: (_ action: IdentityAuthenticationJourney.OutOfBandAuthenticationAction) -> UIKit.UIImage?
+    public var strings: IdentityAuthenticationJourney.OutOfBandAuthenticationComplete.Strings
+    public var design: IdentityAuthenticationJourney.OutOfBandAuthenticationComplete.Design {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationComplete {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var doneButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationComplete {
+  public struct Strings {
+    public init()
+    public var doneButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: (_ action: IdentityAuthenticationJourney.OutOfBandAuthenticationAction) -> IdentityAuthenticationJourney.LocalizedString?
+    public var title: (_ action: IdentityAuthenticationJourney.OutOfBandAuthenticationAction) -> IdentityAuthenticationJourney.LocalizedString?
+  }
+}
+public enum OutOfBandAuthenticationAction {
+  case accepted
+  case declined
+  public static func == (a: IdentityAuthenticationJourney.OutOfBandAuthenticationAction, b: IdentityAuthenticationJourney.OutOfBandAuthenticationAction) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthentication {
+  public struct Configuration {
+    public var statusBarStyle: IdentityAuthenticationJourney.Authentication.StatusBarStyle?
+    public var design: IdentityAuthenticationJourney.OutOfBandAuthentication.Design {
+      mutating get
+      set
+    }
+    public var confirmLogin: IdentityAuthenticationJourney.OutOfBandAuthenticationConfirmLogin.Configuration {
+      mutating get
+      set
+    }
+    public var passcode: IdentityAuthenticationJourney.OutOfBandAuthenticationPasscode.Configuration {
+      mutating get
+      set
+    }
+    public var completeScreen: IdentityAuthenticationJourney.OutOfBandAuthenticationComplete.Configuration {
+      mutating get
+      set
+    }
+  }
+}
+public struct OutOfBandAuthenticationConfirmLogin {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationConfirmLogin {
+  public struct Configuration {
+    public var image: UIKit.UIImage?
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.OutOfBandAuthenticationConfirmLogin.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.OutOfBandAuthenticationConfirmLogin.Strings
+    public var locationFieldDisplayEnabled: Swift.Bool
+    public var dateFieldDisplayEnabled: Swift.Bool
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationConfirmLogin {
+  public struct Design {
+    public var loading: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var imageConstraints: IdentityAuthenticationJourney.Authentication.Design.ImageConstraints {
+      mutating get
+      set
+    }
+    public var approveButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var rejectButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var authenticationIdFootnoteLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var authenticationIdTitleLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var sessionInfoContainerView: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+    public var sessionInfoContainer: BackbaseDesignSystem.Style<UIKit.UIStackView> {
+      mutating get
+      set
+    }
+    public var sessionInfoRow: BackbaseDesignSystem.Style<UIKit.UIStackView> {
+      mutating get
+      set
+    }
+    public var sessionInfoRowTitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var sessionInfoRowSubtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationConfirmLogin {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var location: IdentityAuthenticationJourney.LocalizedString
+    public var dateTime: IdentityAuthenticationJourney.LocalizedString
+    public var approveButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var rejectButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var codeSubtitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthentication {
+  public struct Design {
+    public var loading: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+  }
+}
+public struct OutOfBandAuthenticationPasscode {
+  public struct Configuration {
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.OutOfBandAuthenticationPasscode.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.OutOfBandAuthenticationPasscode.Strings
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationPasscode {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var loading: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var input: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.OTPInput> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationPasscode {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public protocol OutOfBandAuthenticationUseCase {
+  typealias OutOfBandAuthenticationResult = Swift.Result<Swift.String, IdentityAuthenticationJourney.Authentication.Error>
+  typealias OutOfBandAuthenticationHandler = (Self.OutOfBandAuthenticationResult) -> Swift.Void
+  func resolveOOBAuthentication(payload: IdentityAuthenticationJourney.OutOfBandAuthentication.Payload, username: Swift.String, callback: Self.OutOfBandAuthenticationHandler?)
+}
+public struct OutOfBandTransactionSigning {
+  public struct Payload {
+    public let confirmationId: Swift.String
+    public let acrValues: Swift.String
+    public init(confirmationId: Swift.String, acrValues: Swift.String)
+  }
+  public enum Error : Swift.Error {
+    case invalidSession
+    public static func == (a: IdentityAuthenticationJourney.OutOfBandTransactionSigning.Error, b: IdentityAuthenticationJourney.OutOfBandTransactionSigning.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static func build(payload: IdentityAuthenticationJourney.OutOfBandTransactionSigning.Payload) throws -> UIKit.UIViewController
+}
+public struct OutOfBandTransactionSigningComplete {
+  public struct Configuration {
+    public var image: (_ action: IdentityAuthenticationJourney.OutOfBandTransactionSigningAction) -> UIKit.UIImage?
+    public var strings: IdentityAuthenticationJourney.OutOfBandTransactionSigningComplete.Strings
+    public var design: IdentityAuthenticationJourney.OutOfBandTransactionSigningComplete.Design {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigningComplete {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var doneButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigningComplete {
+  public struct Strings {
+    public init()
+    public var title: (_ action: IdentityAuthenticationJourney.OutOfBandTransactionSigningAction) -> IdentityAuthenticationJourney.LocalizedString?
+    public var subtitle: (_ action: IdentityAuthenticationJourney.OutOfBandTransactionSigningAction) -> IdentityAuthenticationJourney.LocalizedString?
+    public var doneButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public enum OutOfBandTransactionSigningAction {
+  case accepted
+  case declined
+  public static func == (a: IdentityAuthenticationJourney.OutOfBandTransactionSigningAction, b: IdentityAuthenticationJourney.OutOfBandTransactionSigningAction) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigning {
+  public struct Configuration {
+    public var statusBarStyle: IdentityAuthenticationJourney.Authentication.StatusBarStyle?
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var strings: IdentityAuthenticationJourney.OutOfBandTransactionSigning.Strings
+    public var design: IdentityAuthenticationJourney.OutOfBandTransactionSigning.Design {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigning {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var loading: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var input: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.OTPInput> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var useAnotherButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var authoriseButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var rejectButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigning {
+  public struct Strings {
+    public init()
+    public var title: (_ type: IdentityAuthenticationJourney.BiometryType) -> IdentityAuthenticationJourney.LocalizedString?
+    public var rejectButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var authoriseButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var useAnotherButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public protocol OutOfBandTransactionSigningUseCase {
+  typealias OutOfBandTransactionSigningResult = Swift.Result<Swift.String, IdentityAuthenticationJourney.Authentication.Error>
+  typealias OutOfBandTransactionSigningHandler = (Self.OutOfBandTransactionSigningResult) -> Swift.Void
+  func resolveOOBTransactionSigning(payload: IdentityAuthenticationJourney.OutOfBandTransactionSigning.Payload, approve: Swift.Bool, callback: Self.OutOfBandTransactionSigningHandler?)
+}
+public struct Passcode {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+public struct PasscodeChangeSuccessScreen {
+  public static func build() -> () -> UIKit.UIViewController?
+}
+extension IdentityAuthenticationJourney.PasscodeChangeSuccessScreen {
+  public struct Configuration {
+    public var image: UIKit.UIImage?
+    public var strings: IdentityAuthenticationJourney.PasscodeChangeSuccessScreen.Strings
+  }
+}
+extension IdentityAuthenticationJourney.PasscodeChangeSuccessScreen {
+  public struct Strings {
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var doneButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+extension IdentityAuthenticationJourney.Passcode {
+  public struct Configuration {
+    public var length: Swift.Int
+    @available(*, deprecated, message: "This flag will be removed in version 4.0, at which time the default behaviour will be changed to use tip text,\n            message that is currently only displayed when this flag is true.")
+    public var displayTipText: Swift.Bool
+    @available(*, deprecated, message: "This flag will be removed in version 4.0, at which time the default behaviour will be changed to use all passcode specified errors\n            messages that are currently only displayed when this flag is true.")
+    public var displayPasscodeErrorsInline: Swift.Bool
+    public var errorIcon: UIKit.UIImage?
+    public var loginImage: UIKit.UIImage?
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var showDismissButton: Swift.Bool
+    public var design: IdentityAuthenticationJourney.Passcode.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.Passcode.Strings
+    @available(*, deprecated, message: "This flag will be removed in version 5.0, at which time the default behaviour will be changed to trigger forgot passcode flow when forgot passcode CTA is tapped.")
+    public var enableForgotPasscode: Swift.Bool
+    public var router: IdentityAuthenticationJourney.Passcode.Router
+  }
+}
+extension IdentityAuthenticationJourney.Passcode {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var inlineErrorTitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var inlineTipTitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var input: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.OTPInput> {
+      mutating get
+      set
+    }
+    public var loading: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var resetButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var troubleshootButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.Passcode {
+  public struct Router {
+    public typealias ConfirmButtonHandler = () -> Swift.Void
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var didTapTroubleshoot: (UIKit.UINavigationController) -> (@escaping IdentityAuthenticationJourney.Passcode.Router.ConfirmButtonHandler) -> Swift.Void
+    public var didTapForgotPasscode: (UIKit.UINavigationController) -> (@escaping IdentityAuthenticationJourney.Passcode.Router.ConfirmButtonHandler) -> Swift.Void
+  }
+}
+extension IdentityAuthenticationJourney.Passcode {
+  public struct Strings {
+    public init()
+    public var registrationStep1Title: IdentityAuthenticationJourney.LocalizedString
+    public var registrationStep1Subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var registrationStep2Title: IdentityAuthenticationJourney.LocalizedString
+    public var registrationStep2Subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var registrationResetButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var changeStep1Title: IdentityAuthenticationJourney.LocalizedString
+    public var changeStep1Subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var changeStep2Title: IdentityAuthenticationJourney.LocalizedString
+    public var changeStep2Subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var changeStep3Title: IdentityAuthenticationJourney.LocalizedString
+    public var changeStep3Subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var changeTip: IdentityAuthenticationJourney.LocalizedString
+    public var loginTitle: IdentityAuthenticationJourney.LocalizedString
+    public var loginSubtitle: IdentityAuthenticationJourney.LocalizedString
+    public var loginForgotPasscodeButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var loginTroubleshootButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var loginTroubleshootAlertTitle: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var loginTroubleshootAlertMessage: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var loginTroubleshootAlertConfirmOption: IdentityAuthenticationJourney.LocalizedString
+    public var cancelButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var passcodeMismatchInlineErrorTitle: IdentityAuthenticationJourney.LocalizedString
+    public var tip: IdentityAuthenticationJourney.LocalizedString
+    public var passcodeTooManyRepeatingNumbers: IdentityAuthenticationJourney.LocalizedString
+    public var passcodeTooManyConsecutiveNumbers: IdentityAuthenticationJourney.LocalizedString
+    public var invalidPasscode: IdentityAuthenticationJourney.LocalizedString
+    public var newPasscodeSameAsOld: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct PasswordChangeCompleteScreen {
+  public static func build(onDismiss: (() -> Swift.Void)? = nil) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.PasswordChangeCompleteScreen {
+  public struct Configuration {
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var image: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.PasswordChangeCompleteScreen.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.PasswordChangeCompleteScreen.Strings
+  }
+}
+extension IdentityAuthenticationJourney.PasswordChangeCompleteScreen {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var dismissButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.PasswordChangeCompleteScreen {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var dismissButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct Register {
+  public static func build(session: IdentityAuthenticationJourney.Session = .none) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.Register {
+  public struct Animation {
+    public struct Animatable {
+      @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+      public let forgotUsernameButton: UIKit.UIButton
+      public let forgotCredentialsButton: UIKit.UIButton?
+    }
+    public init()
+    public var onLoading: ((Swift.Bool) -> (IdentityAuthenticationJourney.Register.Animation.Animatable) -> Swift.Void)?
+  }
+}
+extension IdentityAuthenticationJourney.Register {
+  public struct Configuration {
+    public var statusBarStyle: IdentityAuthenticationJourney.Authentication.StatusBarStyle?
+    public var design: IdentityAuthenticationJourney.Register.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.Register.Strings
+    public var animation: IdentityAuthenticationJourney.Register.Animation?
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var showForgotUsername: Swift.Bool
+    public var showForgotCredentials: Swift.Bool
+    public var showBackButton: Swift.Bool
+    public var image: UIKit.UIImage? {
+      mutating get
+      set
+    }
+    public var backIcon: UIKit.UIImage?
+    @available(*, deprecated, message: "    This flag will be removed in version 4.0, at which time the default behaviour will be changed to show buttons at the bottom,\n                        buttons that is currently displayed at the bottom only when this flag is true.")
+    public var bottomAlignedButtons: Swift.Bool
+    public var router: IdentityAuthenticationJourney.Register.Router
+    public var showRegistrationTimeoutError: Swift.Bool
+  }
+}
+extension IdentityAuthenticationJourney.Register {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var imageConstraints: IdentityAuthenticationJourney.Authentication.Design.ImageConstraints {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var usernameInputLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var usernameInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var passwordInputLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var passwordInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var forgotUsernameButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var forgotCredentialsButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var loginButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.Register {
+  public struct Router {
+    public typealias InputRequiredResult = Swift.Result<Foundation.Data, IdentityAuthenticationJourney.Authentication.Error>
+    public var preCompletion: ((UIKit.UINavigationController) -> (IdentityAuthenticationJourney.User) -> Swift.Void)?
+    public var didTapForgotCredentials: ((UIKit.UINavigationController) -> () -> Swift.Void)?
+    public var didTapBack: ((UIKit.UINavigationController) -> () -> Swift.Void)?
+    public var didTapRegistrationBack: ((UIKit.UINavigationController) -> () -> Swift.Void)?
+  }
+}
+extension IdentityAuthenticationJourney.Register {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var usernamePlaceholder: IdentityAuthenticationJourney.LocalizedString
+    public var emptyUsernameError: IdentityAuthenticationJourney.LocalizedString
+    public var passwordPlaceholder: IdentityAuthenticationJourney.LocalizedString
+    public var emptyPasswordError: IdentityAuthenticationJourney.LocalizedString
+    @available(*, deprecated, message: "This property has been deprecated and will be removed in 4.0.0")
+    public var forgotUsernameButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var forgotCredentialsButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var loginButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public enum Session {
+  case none
+  case valid
+  case expired
+  case locked
+  public static func == (a: IdentityAuthenticationJourney.Session, b: IdentityAuthenticationJourney.Session) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct SetupComplete {
+  public static func build(navigationController: UIKit.UINavigationController) -> (IdentityAuthenticationJourney.User) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.SetupComplete {
+  public struct Configuration {
+    public var image: UIKit.UIImage?
+    public var logoImage: UIKit.UIImage? {
+      mutating get
+      set
+    }
+    public var backgroundImage: UIKit.UIImage?
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var displayTime: Swift.Double
+    public var design: IdentityAuthenticationJourney.SetupComplete.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.SetupComplete.Strings
+  }
+}
+extension IdentityAuthenticationJourney.SetupComplete {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var backgroundImage: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var image: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var logoImage: BackbaseDesignSystem.Style<UIKit.UIImageView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var dismissButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var logoImageConstraints: IdentityAuthenticationJourney.Authentication.Design.ImageConstraints {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.SetupComplete {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var dismissButtonTitle: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct TermsAndConditions {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.TermsAndConditions {
+  public struct Configuration {
+    public var design: IdentityAuthenticationJourney.TermsAndConditions.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.TermsAndConditions.Strings
+    public var cancelButtonIcon: UIKit.UIImage?
+  }
+}
+extension IdentityAuthenticationJourney.TermsAndConditions {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var doneButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var checkbox: BackbaseDesignSystem.Style<BackbaseDesignSystem.Checkbox> {
+      mutating get
+      set
+    }
+    public var termsAndConditionsBackground: BackbaseDesignSystem.Style<UIKit.UIView> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.TermsAndConditions {
+  public struct Strings {
+    public init()
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var checkboxText: IdentityAuthenticationJourney.LocalizedString
+    public var doneButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var loadFailedAlertTitle: IdentityAuthenticationJourney.LocalizedString
+    public var loadFailedAlertMessage: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct UpdatePassword {
+  public static func build(item: Renderable) -> (UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension IdentityAuthenticationJourney.UpdatePassword {
+  public struct Configuration {
+    public var design: IdentityAuthenticationJourney.UpdatePassword.Design {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.UpdatePassword.Strings
+    public var tipIcon: UIKit.UIImage?
+  }
+}
+extension IdentityAuthenticationJourney.UpdatePassword {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var submitButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var problemsButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var passwordInputField: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var passwordInputLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var inlineTipTitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.UpdatePassword {
+  public struct RequiredActionConfiguration {
+    public var cancelButtonIcon: UIKit.UIImage?
+    public var design: IdentityAuthenticationJourney.UpdatePassword.RequiredActionDesign {
+      mutating get
+      set
+    }
+    public var strings: IdentityAuthenticationJourney.UpdatePassword.RequiredActionStrings
+    public var tipIcon: UIKit.UIImage?
+  }
+}
+extension IdentityAuthenticationJourney.UpdatePassword {
+  public struct RequiredActionDesign {
+    public var background: BackbaseDesignSystem.Style<IdentityAuthenticationJourney.Authentication.Design.BackgroundView> {
+      mutating get
+      set
+    }
+    public var title: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var subtitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var submitButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var problemsButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var passwordInputField: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput> {
+      mutating get
+      set
+    }
+    public var passwordInputLabel: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var cancelButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button> {
+      mutating get
+      set
+    }
+    public var inlineTipTitle: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+  }
+}
+extension IdentityAuthenticationJourney.UpdatePassword {
+  public struct RequiredActionStrings {
+    public var submitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var tip: IdentityAuthenticationJourney.LocalizedString
+    public var problems: IdentityAuthenticationJourney.LocalizedString
+    public var problemsAlertTitle: IdentityAuthenticationJourney.LocalizedString
+    public var problemsAlertMessage: IdentityAuthenticationJourney.LocalizedString
+    public var emptyPasswordError: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+extension IdentityAuthenticationJourney.UpdatePassword {
+  public struct Strings {
+    public var submitButtonTitle: IdentityAuthenticationJourney.LocalizedString
+    public var title: IdentityAuthenticationJourney.LocalizedString
+    public var subtitle: IdentityAuthenticationJourney.LocalizedString
+    public var tip: IdentityAuthenticationJourney.LocalizedString
+    public var problems: IdentityAuthenticationJourney.LocalizedString
+    public var problemsAlertTitle: IdentityAuthenticationJourney.LocalizedString
+    public var problemsAlertMessage: IdentityAuthenticationJourney.LocalizedString
+    public var emptyPasswordError: IdentityAuthenticationJourney.LocalizedString
+    public var passwordPlaceholder: IdentityAuthenticationJourney.LocalizedString
+    public var cancelledAlertTitle: IdentityAuthenticationJourney.LocalizedString
+    public var cancelledAlertMessage: IdentityAuthenticationJourney.LocalizedString
+  }
+}
+public struct User : Swift.Equatable {
+  public let username: Swift.String
+  public let password: Swift.String
+  public init(username: Swift.String, password: Swift.String)
+  public static func == (a: IdentityAuthenticationJourney.User, b: IdentityAuthenticationJourney.User) -> Swift.Bool
+}
+extension IdentityAuthenticationJourney.Authentication.Design.ButtonType : Swift.Equatable {}
+extension IdentityAuthenticationJourney.Authentication.Design.ButtonType : Swift.Hashable {}
+extension IdentityAuthenticationJourney.BiometryType : Swift.Equatable {}
+extension IdentityAuthenticationJourney.BiometryType : Swift.Hashable {}
+extension IdentityAuthenticationJourney.Mode : Swift.Equatable {}
+extension IdentityAuthenticationJourney.Mode : Swift.Hashable {}
+extension IdentityAuthenticationJourney.ForgotCredentials.Configuration.Options : Swift.Equatable {}
+extension IdentityAuthenticationJourney.ForgotCredentials.Configuration.Options : Swift.Hashable {}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationAction : Swift.Equatable {}
+extension IdentityAuthenticationJourney.OutOfBandAuthenticationAction : Swift.Hashable {}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigning.Error : Swift.Equatable {}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigning.Error : Swift.Hashable {}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigningAction : Swift.Equatable {}
+extension IdentityAuthenticationJourney.OutOfBandTransactionSigningAction : Swift.Hashable {}
+extension IdentityAuthenticationJourney.Session : Swift.Equatable {}
+extension IdentityAuthenticationJourney.Session : Swift.Hashable {}

@@ -1,0 +1,4 @@
+framework module RetailDesign {
+  header "RetailDesign-Swift.h"
+  requires objc
+}

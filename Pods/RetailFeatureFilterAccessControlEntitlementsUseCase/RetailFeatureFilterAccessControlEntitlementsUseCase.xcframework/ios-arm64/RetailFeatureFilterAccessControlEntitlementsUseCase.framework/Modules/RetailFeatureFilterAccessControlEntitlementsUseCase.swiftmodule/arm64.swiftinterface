@@ -1,0 +1,14 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailFeatureFilterAccessControlEntitlementsUseCase
+import AccessControlClient2
+import Backbase
+import ClientCommon
+import Foundation
+import RetailFeatureFilterUseCase
+import Swift
+public class AccessControlEntitlementsUseCase : RetailFeatureFilterUseCase.EntitlementsUseCase {
+  public init(client: AccessControlClient2.UsersAPIProtocol)
+  public func getCurrentUserEntitlements(completion: @escaping (Swift.Result<Swift.Set<RetailFeatureFilterUseCase.UserEntitlement>, RetailFeatureFilterUseCase.ErrorResponse>) -> Swift.Void)
+  @objc deinit
+}

@@ -1,0 +1,4 @@
+framework module FinancialInstitutionManagerClient1 {
+  header "FinancialInstitutionManagerClient1-Swift.h"
+  requires objc
+}

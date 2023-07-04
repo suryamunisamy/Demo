@@ -1,0 +1,4 @@
+framework module RetailAccountStatementsJourney {
+  header "RetailAccountStatementsJourney-Swift.h"
+  requires objc
+}

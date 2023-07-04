@@ -1,0 +1,683 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NotificationsJourney
+import BackbaseDesignSystem
+import Foundation
+import PhotosUI
+import PureLayout
+import Resolver
+import Swift
+import SystemConfiguration
+import UIKit
+import _Concurrency
+public struct Account {
+  public let id: Swift.String
+  public let name: Swift.String?
+  public let bban: Swift.String?
+  public let iban: Swift.String?
+  public let number: Swift.String?
+  public let currencyCode: Swift.String?
+  public let type: NotificationsJourney.AccountType
+  public let actionRecipes: [NotificationsJourney.ActionRecipe]
+  public init(id: Swift.String, name: Swift.String? = nil, bban: Swift.String? = nil, iban: Swift.String? = nil, number: Swift.String? = nil, currencyCode: Swift.String? = nil, actionRecipes: [NotificationsJourney.ActionRecipe] = [], type: NotificationsJourney.AccountType)
+}
+public struct AccountInfo {
+  public let id: Swift.String
+  public let name: Swift.String?
+  public let bban: Swift.String?
+  public let iban: Swift.String?
+  public let number: Swift.String?
+  public let currencyCode: Swift.String?
+  public let type: NotificationsJourney.AccountType
+  public init(id: Swift.String, name: Swift.String? = nil, bban: Swift.String? = nil, iban: Swift.String? = nil, number: Swift.String? = nil, currencyCode: Swift.String? = nil, type: NotificationsJourney.AccountType)
+}
+public struct AccountNotificationPreferences {
+  public let accountInfo: NotificationsJourney.AccountInfo
+  public let notificationPreferences: [NotificationsJourney.NotificationPreference]
+  public init(accountInfo: NotificationsJourney.AccountInfo, notificationPreferences: [NotificationsJourney.NotificationPreference] = [])
+}
+public struct AccountNotificationSettings {
+  public static func build(account: NotificationsJourney.Account, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+  public static func build(accountNotificationPreferences: NotificationsJourney.AccountNotificationPreferences, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension NotificationsJourney.AccountNotificationSettings {
+  public struct Configuration {
+    public var strings: NotificationsJourney.AccountNotificationSettings.Strings
+    public var design: NotificationsJourney.AccountNotificationSettings.Design
+    public var router: NotificationsJourney.AccountNotificationSettings.Router
+  }
+}
+extension NotificationsJourney.AccountNotificationSettings {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var accountIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var accountNameLabel: (UIKit.UILabel) -> Swift.Void
+    public var accountNumberLabel: (UIKit.UILabel) -> Swift.Void
+    public var notificationSettingsTitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var notificationSettingsSubtitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var notificationSettingsStatusLabel: (UIKit.UILabel) -> Swift.Void
+    public var navigationIndicatorIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+  }
+}
+extension NotificationsJourney.AccountNotificationSettings {
+  public struct Router {
+    public var didSelectActionRecipeForAccount: ((UIKit.UINavigationController) -> (_ actionRecipeSpecificationId: Swift.String, _ account: NotificationsJourney.Account) -> Swift.Void)?
+    public var didSelectNotificationPreferenceForAccount: ((UIKit.UINavigationController) -> (_ notificationPreference: NotificationsJourney.NotificationPreference, _ account: NotificationsJourney.AccountInfo) -> Swift.Void)?
+  }
+}
+extension NotificationsJourney.AccountNotificationSettings {
+  public struct Strings {
+    public init()
+    public var navigationTitle: NotificationsJourney.LocalizedString
+    public var balanceTitle: NotificationsJourney.LocalizedString
+    public var balanceSubtitle: NotificationsJourney.LocalizedString
+    public var debitsAndCreditsTitle: NotificationsJourney.LocalizedString
+    public var debitsAndCreditsSubtitle: NotificationsJourney.LocalizedString
+    public var pushNotification: NotificationsJourney.LocalizedString
+    public var email: NotificationsJourney.LocalizedString
+    public var sms: NotificationsJourney.LocalizedString
+    public var off: NotificationsJourney.LocalizedString
+  }
+}
+public enum AccountType {
+  case current
+  case savings
+  case termDeposit
+  case loan
+  case creditCard
+  case debitCard
+  case investment
+  case general
+  public static func == (a: NotificationsJourney.AccountType, b: NotificationsJourney.AccountType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct Accounts {
+  public let type: NotificationsJourney.AccountType
+  public let name: Swift.String
+  public let accounts: [NotificationsJourney.Account]
+  public init(type: NotificationsJourney.AccountType, name: Swift.String, accounts: [NotificationsJourney.Account])
+}
+public struct AccountsEO {
+  public let type: NotificationsJourney.AccountType
+  public let name: Swift.String
+  public let accountNotificationPreferences: [NotificationsJourney.AccountNotificationPreferences]
+  public init(type: NotificationsJourney.AccountType, name: Swift.String, accountNotificationPreferences: [NotificationsJourney.AccountNotificationPreferences])
+}
+public struct Action : Swift.Equatable {
+  public let enabled: Swift.Bool
+  public let type: Swift.String
+  public init(enabled: Swift.Bool, type: Swift.String)
+  public static func == (a: NotificationsJourney.Action, b: NotificationsJourney.Action) -> Swift.Bool
+}
+public struct ActionRecipe {
+  public let id: Swift.String
+  public let specificationId: Swift.String
+  public let active: Swift.Bool
+  public let amount: Foundation.Decimal?
+  public let arrangementId: Swift.String?
+  public let actions: [NotificationsJourney.Action]
+  public init(id: Swift.String, specificationId: Swift.String, active: Swift.Bool, actions: [NotificationsJourney.Action], amount: Foundation.Decimal? = nil, arrangementId: Swift.String? = nil)
+}
+public struct ActionRecipeUpsertRequest {
+  public let id: Swift.String?
+  public let name: Swift.String?
+  public let specificationId: Swift.String
+  public let active: Swift.Bool
+  public let actions: [Swift.String]
+  public let amount: Foundation.Decimal?
+  public let arrangementId: Swift.String?
+  public init(specificationId: Swift.String, active: Swift.Bool, actions: [Swift.String], id: Swift.String? = nil, name: Swift.String? = nil, amount: Foundation.Decimal? = nil, arrangementId: Swift.String? = nil)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class BBBadgeView : UIKit.UIView {
+  public enum Style {
+    case small
+    case large
+    public static func == (a: NotificationsJourney.BBBadgeView.Style, b: NotificationsJourney.BBBadgeView.Style) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) public var count: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var style: NotificationsJourney.BBBadgeView.Style {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public init(style: NotificationsJourney.BBBadgeView.Style = .large)
+  @_Concurrency.MainActor(unsafe) public func pinToSuperviewTopRight()
+  @objc deinit
+}
+public struct DeliveryChannel {
+  public var channel: Swift.String
+  public var enabled: Swift.Bool
+  public var userCanChange: Swift.Bool
+  public init(channel: Swift.String, enabled: Swift.Bool, userCanChange: Swift.Bool)
+}
+public typealias ErrorFormatter<E, T> = (E) -> T where E : Swift.Error
+public enum DataSourceState {
+  case loading
+  case completed
+  case error(Swift.Error)
+  case empty
+}
+public protocol GenericDataSource : AnyObject {
+}
+public protocol GenericDataSourceDelegate : AnyObject {
+  func stateChanged(_ state: NotificationsJourney.DataSourceState)
+}
+public struct GetNotificationsRequest {
+  public let size: Swift.Int?
+  public let page: Swift.Int?
+  public init(size: Swift.Int?, page: Swift.Int?)
+}
+public struct LocalizedString : Swift.ExpressibleByStringLiteral {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public init(stringLiteral value: Swift.String)
+  public init(key: Swift.String, prefix: Swift.String? = nil, formatArguments: [Swift.CVarArg] = [], in bundles: Foundation.Bundle?...)
+  public func callAsFunction() -> Swift.String
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+public struct LowBalanceNotificationSettings {
+  public static func build(actionRecipeSpecificationId: Swift.String, account: NotificationsJourney.Account, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+  public static func build(notificationPreference: NotificationsJourney.NotificationPreference, accountInfo: NotificationsJourney.AccountInfo, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension NotificationsJourney.LowBalanceNotificationSettings {
+  public struct Configuration {
+    public var strings: NotificationsJourney.LowBalanceNotificationSettings.Strings
+    public var design: NotificationsJourney.LowBalanceNotificationSettings.Design
+    public var smsMonthlyCostWarning: Swift.Bool
+    public var notificationConfirmationDialogEnabled: Swift.Bool
+    public var router: NotificationsJourney.LowBalanceNotificationSettings.Router
+  }
+}
+extension NotificationsJourney.LowBalanceNotificationSettings {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var amountLabel: (UIKit.UILabel) -> Swift.Void
+    public var amountTitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var amountSubtitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var amountFormatter: (_ currencyCode: Swift.String?) -> BackbaseDesignSystem.Style<Foundation.NumberFormatter>
+    public var smsIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var emailIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var pushIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var navigationIndicatorIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var allowNotificationsSwitch: (UIKit.UISwitch) -> Swift.Void
+    public var allowNotificationsTitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var channelsLabel: (UIKit.UILabel) -> Swift.Void
+    public var channelSwitch: (UIKit.UISwitch) -> Swift.Void
+    public var channelTitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var channelSubtitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var allowNotificationsCardView: BackbaseDesignSystem.Style<BackbaseDesignSystem.Card>
+    public var amountCardView: BackbaseDesignSystem.Style<BackbaseDesignSystem.Card>
+    public var channelsCardView: BackbaseDesignSystem.Style<BackbaseDesignSystem.Card>
+  }
+}
+extension NotificationsJourney.LowBalanceNotificationSettings {
+  public struct Router {
+    public var didInitiateSetAmount: (UIKit.UINavigationController) -> (_ initialAmount: Foundation.Decimal, _ currencyCode: Swift.String?, _ didSetAmount: @escaping (Foundation.Decimal) -> Swift.Void) -> Swift.Void
+  }
+}
+extension NotificationsJourney.LowBalanceNotificationSettings {
+  public struct Strings {
+    public init()
+    public var navigationTitle: NotificationsJourney.LocalizedString
+    public var turnOffNotificationsTitle: NotificationsJourney.LocalizedString
+    public var turnOffNotificationsSubtitle: NotificationsJourney.LocalizedString
+    public var turnOffNotificationsAccept: NotificationsJourney.LocalizedString
+    public var turnOffNotificationsCancel: NotificationsJourney.LocalizedString
+    public var smsMonthlyFeeTitle: NotificationsJourney.LocalizedString
+    public var smsMonthlyFeeSubtitle: NotificationsJourney.LocalizedString
+    public var smsMonthlyFeeAccept: NotificationsJourney.LocalizedString
+    public var smsMonthlyFeeCancel: NotificationsJourney.LocalizedString
+  }
+}
+public struct NewTransactionNotificationSettings {
+  public static func build(actionRecipeSpecificationId: Swift.String, account: NotificationsJourney.Account, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+  public static func build(notificationPreference: NotificationsJourney.NotificationPreference, accountInfo: NotificationsJourney.AccountInfo, navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension NotificationsJourney.NewTransactionNotificationSettings {
+  public struct Configuration {
+    public var strings: NotificationsJourney.NewTransactionNotificationSettings.Strings
+    public var design: NotificationsJourney.NewTransactionNotificationSettings.Design
+    public var smsMonthlyCostWarning: Swift.Bool
+    public var notificationConfirmationDialogEnabled: Swift.Bool
+    public var router: NotificationsJourney.NewTransactionNotificationSettings.Router
+  }
+}
+extension NotificationsJourney.NewTransactionNotificationSettings {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var smsIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var emailIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var pushIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var navigationIndicatorIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var allowNotificationsSwitch: (UIKit.UISwitch) -> Swift.Void
+    public var allowNotificationsTitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var channelsLabel: (UIKit.UILabel) -> Swift.Void
+    public var channelSwitch: (UIKit.UISwitch) -> Swift.Void
+    public var channelTitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var channelSubtitleLabel: (UIKit.UILabel) -> Swift.Void
+    public var allowNotificationsCardView: BackbaseDesignSystem.Style<BackbaseDesignSystem.Card>
+    public var amountCardView: BackbaseDesignSystem.Style<BackbaseDesignSystem.Card>
+    public var channelsCardView: BackbaseDesignSystem.Style<BackbaseDesignSystem.Card>
+  }
+}
+extension NotificationsJourney.NewTransactionNotificationSettings {
+  public struct Router {
+  }
+}
+extension NotificationsJourney.NewTransactionNotificationSettings {
+  public struct Strings {
+    public init()
+    public var navigationTitle: NotificationsJourney.LocalizedString
+    public var turnOffNotificationsTitle: NotificationsJourney.LocalizedString
+    public var turnOffNotificationsSubtitle: NotificationsJourney.LocalizedString
+    public var turnOffNotificationsAccept: NotificationsJourney.LocalizedString
+    public var turnOffNotificationsCancel: NotificationsJourney.LocalizedString
+    public var smsMonthlyFeeTitle: NotificationsJourney.LocalizedString
+    public var smsMonthlyFeeSubtitle: NotificationsJourney.LocalizedString
+    public var smsMonthlyFeeAccept: NotificationsJourney.LocalizedString
+    public var smsMonthlyFeeCancel: NotificationsJourney.LocalizedString
+  }
+}
+public struct Notification {
+  public struct Routing {
+    public let whereTo: Swift.String?
+    public let data: [Swift.AnyHashable : Any]?
+    public init(whereTo: Swift.String? = nil, data: [Swift.AnyHashable : Any]? = nil)
+  }
+  public enum Level {
+    case alert
+    case warning
+    case info
+    case success
+    public static func == (a: NotificationsJourney.Notification.Level, b: NotificationsJourney.Notification.Level) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let id: Swift.String
+  public let isRead: Swift.Bool
+  public let title: Swift.String?
+  public let message: Swift.String
+  public let createdOn: Foundation.Date?
+  public let origin: Swift.String
+  public let level: NotificationsJourney.Notification.Level
+  public let routing: NotificationsJourney.Notification.Routing
+  public init(id: Swift.String, message: Swift.String, isRead: Swift.Bool, origin: Swift.String, level: NotificationsJourney.Notification.Level, routing: NotificationsJourney.Notification.Routing, title: Swift.String? = nil, createdOn: Foundation.Date? = nil)
+}
+public struct NotificationList {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension NotificationsJourney.NotificationList {
+  public struct Configuration {
+    public var errorIcon: (_ error: NotificationsJourney.NotificationList.Error) -> UIKit.UIImage?
+    public var levelIcon: (NotificationsJourney.Notification) -> UIKit.UIImage?
+    public var originIcon: (NotificationsJourney.Notification) -> UIKit.UIImage?
+    public var strings: NotificationsJourney.NotificationList.Strings
+    public var design: NotificationsJourney.NotificationList.Design
+    public var router: NotificationsJourney.NotificationList.Router
+  }
+}
+extension NotificationsJourney.NotificationList {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var tabBarItem: (UIKit.UITabBarItem?) -> Swift.Void
+    public var levelIcon: (_ level: NotificationsJourney.Notification.Level) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon>
+    public var originIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var markAsReadBarItem: (UIKit.UIBarButtonItem) -> Swift.Void
+    public var originLabel: (_ notification: NotificationsJourney.Notification) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var notificationTitleLabel: (_ notification: NotificationsJourney.Notification) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var notificationTitleFormatter: (NotificationsJourney.Notification) -> Foundation.NSMutableAttributedString
+    public var notificationMessageLabel: (_ notification: NotificationsJourney.Notification) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var notificationMessageFormatter: (NotificationsJourney.Notification) -> Foundation.NSMutableAttributedString
+    public var notificationDateLabel: (_ notification: NotificationsJourney.Notification) -> BackbaseDesignSystem.Style<UIKit.UILabel>
+    public var unreadBadgeGradientColors: [UIKit.UIColor]
+  }
+}
+extension NotificationsJourney.NotificationList {
+  public typealias NotificationListErrorFormatter<T> = NotificationsJourney.ErrorFormatter<NotificationsJourney.NotificationList.Error, T>
+  public enum Error : Swift.Error, Swift.Equatable {
+    case noNotifications
+    case markAllAsReadFailure
+    case deleteFailure
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: NotificationsJourney.NotificationList.Error, b: NotificationsJourney.NotificationList.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension NotificationsJourney.NotificationList {
+  public struct Router {
+    public var didSelectNotification: ((UIKit.UINavigationController) -> (NotificationsJourney.Notification) -> Swift.Void)?
+    public var didSelectNotificationSettings: (UIKit.UINavigationController) -> () -> Swift.Void
+  }
+}
+extension NotificationsJourney.NotificationList {
+  public struct Strings {
+    public init()
+    public var navigationTitle: NotificationsJourney.LocalizedString
+    public var listFooter: NotificationsJourney.LocalizedString
+    public var transactions: NotificationsJourney.LocalizedString
+    public var messages: NotificationsJourney.LocalizedString
+    public var payments: NotificationsJourney.LocalizedString
+    public var contacts: NotificationsJourney.LocalizedString
+    public var limits: NotificationsJourney.LocalizedString
+    public var savingGoals: NotificationsJourney.LocalizedString
+    public var accountStatement: NotificationsJourney.LocalizedString
+    public var actionMarkedAllAsRead: NotificationsJourney.LocalizedString
+    public var markAllAsReadAccessibility: NotificationsJourney.LocalizedString
+    public var errorTitle: (_ error: NotificationsJourney.NotificationList.Error) -> NotificationsJourney.LocalizedString
+    public var errorSubtitle: (_ error: NotificationsJourney.NotificationList.Error) -> NotificationsJourney.LocalizedString?
+    public var errorActionButtonTitle: (_ error: NotificationsJourney.NotificationList.Error) -> NotificationsJourney.LocalizedString?
+  }
+}
+public struct NotificationPreference {
+  public var id: Foundation.UUID?
+  public var generalNotificationId: Swift.String
+  public var active: Swift.Bool
+  public var createdOn: Foundation.Date?
+  public var lastUpdatedAt: Foundation.Date?
+  public var channels: [NotificationsJourney.DeliveryChannel]
+  public var userConditions: NotificationsJourney.UserConditions?
+  public init(id: Foundation.UUID? = nil, generalNotificationId: Swift.String, active: Swift.Bool, createdOn: Foundation.Date? = nil, lastUpdatedAt: Foundation.Date? = nil, channels: [NotificationsJourney.DeliveryChannel], userConditions: NotificationsJourney.UserConditions? = nil)
+}
+public struct NotificationSettings {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+public typealias NotificationSettingsErrorFormatter<T> = NotificationsJourney.ErrorFormatter<NotificationsJourney.NotificationSettings.Error, T>
+extension NotificationsJourney.NotificationSettings {
+  public enum Error : Swift.Error {
+    case noAccounts
+    public static func == (a: NotificationsJourney.NotificationSettings.Error, b: NotificationsJourney.NotificationSettings.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public struct Configuration {
+    public var errorIcon: (_ error: NotificationsJourney.NotificationSettings.Error) -> UIKit.UIImage?
+    public var strings: NotificationsJourney.NotificationSettings.Strings
+    public var design: NotificationsJourney.NotificationSettings.Design
+    public var router: NotificationsJourney.NotificationSettings.Router
+  }
+}
+extension NotificationsJourney.NotificationSettings {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var accountIcon: (BackbaseDesignSystem.Icon) -> Swift.Void
+    public var notificationIcon: (_ enabled: Swift.Bool) -> BackbaseDesignSystem.Style<BackbaseDesignSystem.Icon>
+    public var headerLabel: (UIKit.UILabel) -> Swift.Void
+    public var sectionLabel: (UIKit.UILabel) -> Swift.Void
+    public var accountNameLabel: (UIKit.UILabel) -> Swift.Void
+    public var accountNumberLabel: (UIKit.UILabel) -> Swift.Void
+  }
+}
+extension NotificationsJourney.NotificationSettings {
+  public struct Router {
+    public var didSelectAccount: ((UIKit.UINavigationController) -> (NotificationsJourney.Account) -> Swift.Void)?
+    public var didSelectAccountNotificationPreferneces: ((UIKit.UINavigationController) -> (NotificationsJourney.AccountNotificationPreferences) -> Swift.Void)?
+  }
+}
+extension NotificationsJourney.NotificationSettings {
+  public struct Strings {
+    public init()
+    public var navigationTitle: NotificationsJourney.LocalizedString
+    public var selectAnAccount: NotificationsJourney.LocalizedString
+    public var errorTitle: (_ error: NotificationsJourney.NotificationSettings.Error) -> NotificationsJourney.LocalizedString
+    public var errorSubtitle: (_ error: NotificationsJourney.NotificationSettings.Error) -> NotificationsJourney.LocalizedString
+    public var errorActionButtonTitle: (_ error: NotificationsJourney.NotificationSettings.Error) -> NotificationsJourney.LocalizedString?
+    public var creditCardTitle: NotificationsJourney.LocalizedString
+    public var currentAccountTitle: NotificationsJourney.LocalizedString
+    public var debitCardTitle: NotificationsJourney.LocalizedString
+    public var investmentAccountTitle: NotificationsJourney.LocalizedString
+    public var loanAccountTitle: NotificationsJourney.LocalizedString
+    public var savingsAccountTitle: NotificationsJourney.LocalizedString
+    public var termDepositTitle: NotificationsJourney.LocalizedString
+    public var generalAccountTitle: NotificationsJourney.LocalizedString
+  }
+}
+public protocol NotificationSettingsUseCase : AnyObject {
+  typealias GetAccountsHandler = (Swift.Result<[NotificationsJourney.Accounts], Swift.Error>) -> Swift.Void
+  typealias UpsertAccountNotificationSettingsHandler = (Swift.Result<NotificationsJourney.ActionRecipe, Swift.Error>) -> Swift.Void
+  func getAccounts(specificationIds: [Swift.String], completion: @escaping Self.GetAccountsHandler)
+  func upsertActionRecipe(with request: NotificationsJourney.ActionRecipeUpsertRequest, completion: @escaping Self.UpsertAccountNotificationSettingsHandler)
+}
+public protocol NotificationSettingsUseCaseEO : AnyObject {
+  typealias GetAccountsNotificationPreferencesHandler = (Swift.Result<[NotificationsJourney.AccountsEO], Swift.Error>) -> Swift.Void
+  typealias NotificationPreferencesHandler = (Swift.Result<NotificationsJourney.NotificationPreference, Swift.Error>) -> Swift.Void
+  func getAccountsNotificationPreferences(completion: @escaping Self.GetAccountsNotificationPreferencesHandler)
+  func updateNotificationPreferences(_ notificationPreferences: NotificationsJourney.NotificationPreference, for arrangementId: Foundation.UUID, completion: @escaping Self.NotificationPreferencesHandler)
+}
+public struct Notifications {
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class NotificationsBadgeView : UIKit.UIButton {
+  @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func willMove(toWindow newWindow: UIKit.UIWindow?)
+  @objc deinit
+}
+extension NotificationsJourney.Notifications {
+  public enum AccountsGrouping {
+    case none
+    case accountType
+    public static func == (a: NotificationsJourney.Notifications.AccountsGrouping, b: NotificationsJourney.Notifications.AccountsGrouping) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum AccountNumberType : Swift.String {
+    case iban
+    case bban
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum NotificationSettingsAPI {
+    case actions
+    case engagements
+    public static func == (a: NotificationsJourney.Notifications.NotificationSettingsAPI, b: NotificationsJourney.Notifications.NotificationSettingsAPI) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public struct Configuration {
+    public init()
+    public var newTransactionSpecificationId: Swift.String
+    public var accountLowBalanceSpecificationId: Swift.String
+    public var activeSpecificationIds: [Swift.String] {
+      mutating get
+      set
+    }
+    public var accountsGrouping: NotificationsJourney.Notifications.AccountsGrouping
+    public var preferredAccountNumberType: NotificationsJourney.Notifications.AccountNumberType
+    public var accountNumberMasked: Swift.Bool
+    public var accountNameTruncated: Swift.Bool
+    public var displayedAccounts: [NotificationsJourney.AccountType]
+    public var validateNotificationSettingsPrivacy: (() -> Swift.Bool)?
+    public var notificationSettingsAPI: NotificationsJourney.Notifications.NotificationSettingsAPI
+    public var accountIcon: (NotificationsJourney.AccountType) -> UIKit.UIImage?
+    public var errorIcon: (_ error: NotificationsJourney.Notifications.Error) -> UIKit.UIImage?
+    public var strings: NotificationsJourney.Notifications.Strings
+    public var notificationList: NotificationsJourney.NotificationList.Configuration {
+      mutating get
+      set
+    }
+    public var notificationSettings: NotificationsJourney.NotificationSettings.Configuration {
+      mutating get
+      set
+    }
+    public var accountNotificationsSettings: NotificationsJourney.AccountNotificationSettings.Configuration {
+      mutating get
+      set
+    }
+    public var newTransactionNotificationSettings: NotificationsJourney.NewTransactionNotificationSettings.Configuration {
+      mutating get
+      set
+    }
+    public var lowBalanceNotificationSettings: NotificationsJourney.LowBalanceNotificationSettings.Configuration {
+      mutating get
+      set
+    }
+    public var setLowBalanceAmount: NotificationsJourney.SetLowBalanceAmount.Configuration {
+      mutating get
+      set
+    }
+  }
+}
+extension NotificationsJourney.Notifications {
+  public struct Strings {
+    public init()
+    public var allowNotifications: NotificationsJourney.LocalizedString
+    public var channels: NotificationsJourney.LocalizedString
+    public var pushTitle: NotificationsJourney.LocalizedString
+    public var pushSubtitle: NotificationsJourney.LocalizedString
+    public var smsTitle: NotificationsJourney.LocalizedString
+    public var smsSubtitle: NotificationsJourney.LocalizedString
+    public var emailTitle: NotificationsJourney.LocalizedString
+    public var emailSubtitle: NotificationsJourney.LocalizedString
+    public var amountTitle: NotificationsJourney.LocalizedString
+    public var amountSubtitle: NotificationsJourney.LocalizedString
+    public var errorTitle: (_ error: NotificationsJourney.Notifications.Error) -> NotificationsJourney.LocalizedString
+    public var errorSubtitle: (_ error: NotificationsJourney.Notifications.Error) -> NotificationsJourney.LocalizedString
+    public var errorActionButtonTitle: (_ error: NotificationsJourney.Notifications.Error) -> NotificationsJourney.LocalizedString?
+  }
+}
+extension NotificationsJourney.Notifications {
+  public typealias NotificationsErrorFormatter<T> = NotificationsJourney.ErrorFormatter<NotificationsJourney.Notifications.Error, T>
+  public enum Error : Swift.Error {
+    case notConnected
+    case refreshFailure
+    case loadingFailure
+    public static func == (a: NotificationsJourney.Notifications.Error, b: NotificationsJourney.Notifications.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public protocol NotificationsUseCase : AnyObject {
+  typealias GetNotificationsHandler = (Swift.Result<[NotificationsJourney.Notification], NotificationsJourney.Notifications.Error>) -> Swift.Void
+  typealias VoidErrorCompletionHandler = (Swift.Result<Swift.Void, NotificationsJourney.Notifications.Error>) -> Swift.Void
+  typealias GetUnreadNotificationsCountHandler = (Swift.Result<Swift.Int, NotificationsJourney.Notifications.Error>) -> Swift.Void
+  func getNotifications(request: NotificationsJourney.GetNotificationsRequest, completion: @escaping Self.GetNotificationsHandler)
+  func deleteNotification(_ notificationId: Swift.String, completion: @escaping Self.VoidErrorCompletionHandler)
+  func markReadNotification(_ notificationId: Swift.String, read: Swift.Bool, completion: @escaping Self.VoidErrorCompletionHandler)
+  func markReadAllNotifications(completion: @escaping Self.VoidErrorCompletionHandler)
+  func getUnreadNotificationsCount(completion: @escaping Self.GetUnreadNotificationsCountHandler)
+}
+public class PaginationData {
+  public var page: Swift.Int
+  public var size: Swift.Int
+  public var cursor: Swift.String?
+  public var canLoadMore: Swift.Bool
+  public init()
+  public func asDictionary() -> [Swift.String : Swift.String]
+  public func increment()
+  public func reset()
+  @objc deinit
+}
+extension NotificationsJourney.PaginatorLayoutable {
+  public var paginationView: UIKit.UIView {
+    get
+  }
+  public var paginationCompletedView: UIKit.UIView {
+    get
+  }
+}
+public func paginationLoadingView() -> UIKit.UIView
+public func paginationCompletedViewCreator(text: Swift.String) -> UIKit.UIView
+public protocol PaginatorLayoutable : AnyObject {
+  var paginationView: UIKit.UIView { get }
+  var paginationCompletedView: UIKit.UIView { get }
+  func loadMoreStarted()
+  func loadMoreFinished()
+}
+public class Section<T> {
+  final public let title: Swift.String
+  public var items: [T]
+  public init(title: Swift.String, items: [T])
+  @objc deinit
+}
+public struct SetLowBalanceAmount {
+  public static func build(initialAmount: Foundation.Decimal, currencyCode: Swift.String?, didSetAmount: @escaping (Foundation.Decimal) -> Swift.Void) -> UIKit.UIViewController
+}
+extension NotificationsJourney.SetLowBalanceAmount {
+  public struct Configuration {
+    public var strings: NotificationsJourney.SetLowBalanceAmount.Strings
+    public var design: NotificationsJourney.SetLowBalanceAmount.Design
+  }
+}
+extension NotificationsJourney.SetLowBalanceAmount {
+  public struct Design {
+    public var background: BackbaseDesignSystem.Style<UIKit.UIView>
+    public var navigationBar: (UIKit.UINavigationBar) -> Swift.Void
+    public var navigationItem: (UIKit.UINavigationItem) -> Swift.Void
+    public var saveButton: BackbaseDesignSystem.Style<BackbaseDesignSystem.Button>
+    public var amountTextInput: BackbaseDesignSystem.Style<BackbaseDesignSystem.TextInput>
+    public var amountFormatter: BackbaseDesignSystem.StyleSelector<Swift.String?, Foundation.NumberFormatter>
+    public var descriptionLabel: BackbaseDesignSystem.Style<UIKit.UILabel>
+  }
+}
+extension NotificationsJourney.SetLowBalanceAmount {
+  public struct Strings {
+    public init()
+    public var navigationTitle: NotificationsJourney.LocalizedString
+    public var description: NotificationsJourney.LocalizedString
+    public var saveButton: NotificationsJourney.LocalizedString
+  }
+}
+extension UIKit.UIBarButtonItem {
+  @_Concurrency.MainActor(unsafe) public class func getActivityIndicatorButton() -> UIKit.UIBarButtonItem
+}
+extension UIKit.UITableView {
+  @_Concurrency.MainActor(unsafe) public func sizeHeaderToFit()
+}
+public struct UserConditions {
+  public var eType: Swift.String
+  public var eRef: Foundation.UUID?
+  public var conditions: [Swift.String : Any]?
+  public init(eType: Swift.String, eRef: Foundation.UUID? = nil, conditions: [Swift.String : Any]? = nil)
+}
+extension NotificationsJourney.AccountType : Swift.Equatable {}
+extension NotificationsJourney.AccountType : Swift.Hashable {}
+extension NotificationsJourney.BBBadgeView.Style : Swift.Equatable {}
+extension NotificationsJourney.BBBadgeView.Style : Swift.Hashable {}
+extension NotificationsJourney.Notification.Level : Swift.Equatable {}
+extension NotificationsJourney.Notification.Level : Swift.Hashable {}
+extension NotificationsJourney.NotificationList.Error : Swift.Hashable {}
+extension NotificationsJourney.NotificationSettings.Error : Swift.Equatable {}
+extension NotificationsJourney.NotificationSettings.Error : Swift.Hashable {}
+extension NotificationsJourney.Notifications.AccountsGrouping : Swift.Equatable {}
+extension NotificationsJourney.Notifications.AccountsGrouping : Swift.Hashable {}
+extension NotificationsJourney.Notifications.AccountNumberType : Swift.Equatable {}
+extension NotificationsJourney.Notifications.AccountNumberType : Swift.Hashable {}
+extension NotificationsJourney.Notifications.AccountNumberType : Swift.RawRepresentable {}
+extension NotificationsJourney.Notifications.NotificationSettingsAPI : Swift.Equatable {}
+extension NotificationsJourney.Notifications.NotificationSettingsAPI : Swift.Hashable {}
+extension NotificationsJourney.Notifications.Error : Swift.Equatable {}
+extension NotificationsJourney.Notifications.Error : Swift.Hashable {}

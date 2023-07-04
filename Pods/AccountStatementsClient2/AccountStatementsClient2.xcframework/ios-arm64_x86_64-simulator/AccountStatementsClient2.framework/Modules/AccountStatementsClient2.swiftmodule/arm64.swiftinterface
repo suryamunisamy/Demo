@@ -1,0 +1,216 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AccountStatementsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct AccountStatement : Swift.Codable, Swift.Equatable {
+  public var accountId: Swift.String?
+  public var accountName: Swift.String?
+  public var accountNumber: Swift.String?
+  public var date: Foundation.Date
+  public var description: Swift.String?
+  public var category: Swift.String?
+  public var documents: [AccountStatementsClient2.AccountStatementDocument]
+  public var additions: [Swift.String : Swift.String]?
+  public init(accountId: Swift.String? = nil, accountName: Swift.String? = nil, accountNumber: Swift.String? = nil, date: Foundation.Date, description: Swift.String? = nil, category: Swift.String? = nil, documents: [AccountStatementsClient2.AccountStatementDocument], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.AccountStatement, rhs: AccountStatementsClient2.AccountStatement) -> Swift.Bool
+}
+public protocol AccountStatementAPIProtocol {
+  func downloadAccountStatementsCall(uid: Swift.String, inline: Swift.Bool?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @available(*, deprecated, message: "| From DBS 2.21.0 this endpoint will no longer be exposed. Please use POST /client-api/v2/account/statements endpoint instead.")
+  func getAccountStatementsCall(accountId: Swift.String?, dateFrom: Swift.String?, dateTo: Swift.String?, category: [Swift.String]?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?, orderBy: Swift.String?, direction: AccountStatementsClient2.AccountStatementAPI.Direction_getAccountStatements?) throws -> ClientCommon.Call<[AccountStatementsClient2.AccountStatement]>
+  func getCategoriesCall() throws -> ClientCommon.Call<AccountStatementsClient2.AccountStatementsCategoriesResponse>
+  func postAccountStatementsCall(accountStatementsPostRequest: AccountStatementsClient2.AccountStatementsPostRequest?) throws -> ClientCommon.Call<[AccountStatementsClient2.AccountStatement]>
+}
+@objc @_inheritsConvenienceInitializers public class AccountStatementAPI : ObjectiveC.NSObject, DBSClient, AccountStatementsClient2.AccountStatementAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func downloadAccountStatementsCall(uid: Swift.String, inline: Swift.Bool? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  public enum Direction_getAccountStatements : Swift.String, Swift.CaseIterable {
+    case asc
+    case desc
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [AccountStatementsClient2.AccountStatementAPI.Direction_getAccountStatements]
+    public static var allCases: [AccountStatementsClient2.AccountStatementAPI.Direction_getAccountStatements] {
+      get
+    }
+  }
+  @available(*, deprecated, message: "| From DBS 2.21.0 this endpoint will no longer be exposed. Please use POST /client-api/v2/account/statements endpoint instead.")
+  open func getAccountStatementsCall(accountId: Swift.String? = nil, dateFrom: Swift.String? = nil, dateTo: Swift.String? = nil, category: [Swift.String]? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: AccountStatementsClient2.AccountStatementAPI.Direction_getAccountStatements? = nil) throws -> ClientCommon.Call<[AccountStatementsClient2.AccountStatement]>
+  open func getCategoriesCall() throws -> ClientCommon.Call<AccountStatementsClient2.AccountStatementsCategoriesResponse>
+  open func postAccountStatementsCall(accountStatementsPostRequest: AccountStatementsClient2.AccountStatementsPostRequest? = nil) throws -> ClientCommon.Call<[AccountStatementsClient2.AccountStatement]>
+  @objc deinit
+}
+public struct AccountStatementDocument : Swift.Codable, Swift.Equatable {
+  public var uid: Swift.String?
+  public var url: Swift.String?
+  public var contentType: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(uid: Swift.String? = nil, url: Swift.String? = nil, contentType: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.AccountStatementDocument, rhs: AccountStatementsClient2.AccountStatementDocument) -> Swift.Bool
+}
+public struct AccountStatementsCategoriesResponse : Swift.Codable, Swift.Equatable {
+  public var categories: [Swift.String]
+  public var additions: [Swift.String : Swift.String]?
+  public init(categories: [Swift.String], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.AccountStatementsCategoriesResponse, rhs: AccountStatementsClient2.AccountStatementsCategoriesResponse) -> Swift.Bool
+}
+public struct AccountStatementsPostRequest : Swift.Codable, Swift.Equatable {
+  public enum Direction : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case asc
+    case desc
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [AccountStatementsClient2.AccountStatementsPostRequest.Direction]
+    public static var allCases: [AccountStatementsClient2.AccountStatementsPostRequest.Direction] {
+      get
+    }
+  }
+  public var accountIds: [Swift.String]?
+  public var dateFrom: Swift.String?
+  public var dateTo: Swift.String?
+  public var category: [Swift.String]?
+  public var from: Swift.Int?
+  public var cursor: Swift.String?
+  public var size: Swift.Int?
+  public var orderBy: Swift.String?
+  public var direction: AccountStatementsClient2.AccountStatementsPostRequest.Direction?
+  public var additions: [Swift.String : Swift.String]?
+  public init(accountIds: [Swift.String]? = nil, dateFrom: Swift.String? = nil, dateTo: Swift.String? = nil, category: [Swift.String]? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil, orderBy: Swift.String? = nil, direction: AccountStatementsClient2.AccountStatementsPostRequest.Direction? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.AccountStatementsPostRequest, rhs: AccountStatementsClient2.AccountStatementsPostRequest) -> Swift.Bool
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [AccountStatementsClient2.ErrorItem]?
+  public init(message: Swift.String, errors: [AccountStatementsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.BadRequestError, rhs: AccountStatementsClient2.BadRequestError) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.ErrorItem, rhs: AccountStatementsClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [AccountStatementsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [AccountStatementsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.ForbiddenError, rhs: AccountStatementsClient2.ForbiddenError) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public init(message: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.InternalServerError, rhs: AccountStatementsClient2.InternalServerError) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [AccountStatementsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [AccountStatementsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.NotFoundError, rhs: AccountStatementsClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [AccountStatementsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [AccountStatementsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: AccountStatementsClient2.UnauthorizedError, rhs: AccountStatementsClient2.UnauthorizedError) -> Swift.Bool
+}
+extension AccountStatementsClient2.AccountStatementAPI.Direction_getAccountStatements : Swift.Equatable {}
+extension AccountStatementsClient2.AccountStatementAPI.Direction_getAccountStatements : Swift.Hashable {}
+extension AccountStatementsClient2.AccountStatementAPI.Direction_getAccountStatements : Swift.RawRepresentable {}
+extension AccountStatementsClient2.AccountStatementsPostRequest.Direction : Swift.Equatable {}
+extension AccountStatementsClient2.AccountStatementsPostRequest.Direction : Swift.Hashable {}
+extension AccountStatementsClient2.AccountStatementsPostRequest.Direction : Swift.RawRepresentable {}

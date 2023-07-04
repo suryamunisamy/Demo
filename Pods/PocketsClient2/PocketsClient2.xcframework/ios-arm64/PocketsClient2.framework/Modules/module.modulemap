@@ -1,0 +1,4 @@
+framework module PocketsClient2 {
+  header "PocketsClient2-Swift.h"
+  requires objc
+}

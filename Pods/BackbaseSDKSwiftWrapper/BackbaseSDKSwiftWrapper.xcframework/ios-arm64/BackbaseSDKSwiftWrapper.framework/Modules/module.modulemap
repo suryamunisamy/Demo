@@ -1,0 +1,11 @@
+framework module BackbaseSDKSwiftWrapper {
+  umbrella header "BackbaseSDKSwiftWrapper.h"
+
+  export *
+  module * { export * }
+}
+
+module BackbaseSDKSwiftWrapper.Swift {
+    header "BackbaseSDKSwiftWrapper-Swift.h"
+    requires objc
+}

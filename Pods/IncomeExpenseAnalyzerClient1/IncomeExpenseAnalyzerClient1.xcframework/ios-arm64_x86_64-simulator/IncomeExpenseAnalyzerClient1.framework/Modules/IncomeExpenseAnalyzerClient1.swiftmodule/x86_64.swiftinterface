@@ -1,0 +1,702 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IncomeExpenseAnalyzerClient1
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [IncomeExpenseAnalyzerClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of BadRequestError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [IncomeExpenseAnalyzerClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [IncomeExpenseAnalyzerClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [IncomeExpenseAnalyzerClient1.ErrorItem]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.BadRequestError
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.BadRequestError.Builder, rhs: IncomeExpenseAnalyzerClient1.BadRequestError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.BadRequestError, rhs: IncomeExpenseAnalyzerClient1.BadRequestError) -> Swift.Bool
+}
+public struct CategoryItem : Swift.Codable, Swift.Equatable {
+  public var category: Swift.String
+  public var totalAmount: IncomeExpenseAnalyzerClient1.Currency
+  public var trend: Swift.Double
+  public var portion: Swift.Double
+  public var transactionCount: Swift.Int64?
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of CategoryItem.Builder class.")
+  public init(category: Swift.String, totalAmount: IncomeExpenseAnalyzerClient1.Currency, trend: Swift.Double, portion: Swift.Double, transactionCount: Swift.Int64? = nil, additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let category: Swift.String
+    final public let totalAmount: IncomeExpenseAnalyzerClient1.Currency
+    final public let trend: Swift.Double
+    final public let portion: Swift.Double
+    final public var transactionCount: Swift.Int64? {
+      get
+    }
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(category: Swift.String, totalAmount: IncomeExpenseAnalyzerClient1.Currency, trend: Swift.Double, portion: Swift.Double)
+    final public func set(transactionCount: Swift.Int64?) -> Self
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.CategoryItem
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.CategoryItem.Builder, rhs: IncomeExpenseAnalyzerClient1.CategoryItem.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.CategoryItem, rhs: IncomeExpenseAnalyzerClient1.CategoryItem) -> Swift.Bool
+}
+public protocol CategoryPeriodTotalsAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetCategoryPeriodTotalsRequestParams class.")
+  func getCategoryPeriodTotalsCall(creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator, periodStartDate: Foundation.Date, periodEndDate: Foundation.Date, categories: [Swift.String]?, intervalStartDay: Swift.Int?, arrangementIds: [Swift.String]?, intervalDuration: IncomeExpenseAnalyzerClient1.Duration?, parentCategory: Swift.String?) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse>
+  func getCategoryPeriodTotalsCall(params: IncomeExpenseAnalyzerClient1.GetCategoryPeriodTotalsRequestParams) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse>
+}
+@objc @_inheritsConvenienceInitializers public class CategoryPeriodTotalsAPI : ObjectiveC.NSObject, DBSClient, IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetCategoryPeriodTotalsRequestParams class.")
+  open func getCategoryPeriodTotalsCall(creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator, periodStartDate: Foundation.Date, periodEndDate: Foundation.Date, categories: [Swift.String]? = nil, intervalStartDay: Swift.Int? = nil, arrangementIds: [Swift.String]? = nil, intervalDuration: IncomeExpenseAnalyzerClient1.Duration? = nil, parentCategory: Swift.String? = nil) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse>
+  open func getCategoryPeriodTotalsCall(params: IncomeExpenseAnalyzerClient1.GetCategoryPeriodTotalsRequestParams) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse>
+  @objc deinit
+}
+public struct GetCategoryPeriodTotalsRequestParams : Swift.Equatable {
+  public let creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator
+  public let periodStartDate: Foundation.Date
+  public let periodEndDate: Foundation.Date
+  public let categories: [Swift.String]?
+  public let intervalStartDay: Swift.Int?
+  public let arrangementIds: [Swift.String]?
+  public let intervalDuration: IncomeExpenseAnalyzerClient1.Duration?
+  public let parentCategory: Swift.String?
+  final public class Builder : Swift.Equatable {
+    final public let creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator
+    final public let periodStartDate: Foundation.Date
+    final public let periodEndDate: Foundation.Date
+    final public var categories: [Swift.String]? {
+      get
+    }
+    final public var intervalStartDay: Swift.Int? {
+      get
+    }
+    final public var arrangementIds: [Swift.String]? {
+      get
+    }
+    final public var intervalDuration: IncomeExpenseAnalyzerClient1.Duration? {
+      get
+    }
+    final public var parentCategory: Swift.String? {
+      get
+    }
+    public init(creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator, periodStartDate: Foundation.Date, periodEndDate: Foundation.Date)
+    final public func set(categories: [Swift.String]?) -> Self
+    final public func set(intervalStartDay: Swift.Int?) -> Self
+    final public func set(arrangementIds: [Swift.String]?) -> Self
+    final public func set(intervalDuration: IncomeExpenseAnalyzerClient1.Duration?) -> Self
+    final public func set(parentCategory: Swift.String?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.GetCategoryPeriodTotalsRequestParams
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.GetCategoryPeriodTotalsRequestParams.Builder, rhs: IncomeExpenseAnalyzerClient1.GetCategoryPeriodTotalsRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.GetCategoryPeriodTotalsRequestParams, rhs: IncomeExpenseAnalyzerClient1.GetCategoryPeriodTotalsRequestParams) -> Swift.Bool
+}
+public struct CategoryPeriodTotalsResponse : Swift.Codable, Swift.Equatable {
+  public var total: IncomeExpenseAnalyzerClient1.Currency
+  public var intervalDuration: IncomeExpenseAnalyzerClient1.Duration
+  public var periods: [IncomeExpenseAnalyzerClient1.Period]
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of CategoryPeriodTotalsResponse.Builder class.")
+  public init(total: IncomeExpenseAnalyzerClient1.Currency, intervalDuration: IncomeExpenseAnalyzerClient1.Duration, periods: [IncomeExpenseAnalyzerClient1.Period], additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let total: IncomeExpenseAnalyzerClient1.Currency
+    final public let intervalDuration: IncomeExpenseAnalyzerClient1.Duration
+    final public let periods: [IncomeExpenseAnalyzerClient1.Period]
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(total: IncomeExpenseAnalyzerClient1.Currency, intervalDuration: IncomeExpenseAnalyzerClient1.Duration, periods: [IncomeExpenseAnalyzerClient1.Period])
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse.Builder, rhs: IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse, rhs: IncomeExpenseAnalyzerClient1.CategoryPeriodTotalsResponse) -> Swift.Bool
+}
+public protocol CategoryTotalsAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetCategorytotalsRequestParams class.")
+  func getCategorytotalsCall(creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator, periodStartDate: Foundation.Date, periodEndDate: Foundation.Date, arrangementIds: [Swift.String]?, intervalDuration: IncomeExpenseAnalyzerClient1.Duration?, parentCategory: Swift.String?) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.CategoryTotalsResponse>
+  func getCategorytotalsCall(params: IncomeExpenseAnalyzerClient1.GetCategorytotalsRequestParams) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.CategoryTotalsResponse>
+}
+@objc @_inheritsConvenienceInitializers public class CategoryTotalsAPI : ObjectiveC.NSObject, DBSClient, IncomeExpenseAnalyzerClient1.CategoryTotalsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetCategorytotalsRequestParams class.")
+  open func getCategorytotalsCall(creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator, periodStartDate: Foundation.Date, periodEndDate: Foundation.Date, arrangementIds: [Swift.String]? = nil, intervalDuration: IncomeExpenseAnalyzerClient1.Duration? = nil, parentCategory: Swift.String? = nil) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.CategoryTotalsResponse>
+  open func getCategorytotalsCall(params: IncomeExpenseAnalyzerClient1.GetCategorytotalsRequestParams) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.CategoryTotalsResponse>
+  @objc deinit
+}
+public struct GetCategorytotalsRequestParams : Swift.Equatable {
+  public let creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator
+  public let periodStartDate: Foundation.Date
+  public let periodEndDate: Foundation.Date
+  public let arrangementIds: [Swift.String]?
+  public let intervalDuration: IncomeExpenseAnalyzerClient1.Duration?
+  public let parentCategory: Swift.String?
+  final public class Builder : Swift.Equatable {
+    final public let creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator
+    final public let periodStartDate: Foundation.Date
+    final public let periodEndDate: Foundation.Date
+    final public var arrangementIds: [Swift.String]? {
+      get
+    }
+    final public var intervalDuration: IncomeExpenseAnalyzerClient1.Duration? {
+      get
+    }
+    final public var parentCategory: Swift.String? {
+      get
+    }
+    public init(creditDebitIndicator: IncomeExpenseAnalyzerClient1.CreditDebitIndicator, periodStartDate: Foundation.Date, periodEndDate: Foundation.Date)
+    final public func set(arrangementIds: [Swift.String]?) -> Self
+    final public func set(intervalDuration: IncomeExpenseAnalyzerClient1.Duration?) -> Self
+    final public func set(parentCategory: Swift.String?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.GetCategorytotalsRequestParams
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.GetCategorytotalsRequestParams.Builder, rhs: IncomeExpenseAnalyzerClient1.GetCategorytotalsRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.GetCategorytotalsRequestParams, rhs: IncomeExpenseAnalyzerClient1.GetCategorytotalsRequestParams) -> Swift.Bool
+}
+public struct CategoryTotalsResponse : Swift.Codable, Swift.Equatable {
+  public var total: IncomeExpenseAnalyzerClient1.Currency
+  public var categoryItems: [IncomeExpenseAnalyzerClient1.CategoryItem]
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of CategoryTotalsResponse.Builder class.")
+  public init(total: IncomeExpenseAnalyzerClient1.Currency, categoryItems: [IncomeExpenseAnalyzerClient1.CategoryItem], additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let total: IncomeExpenseAnalyzerClient1.Currency
+    final public let categoryItems: [IncomeExpenseAnalyzerClient1.CategoryItem]
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(total: IncomeExpenseAnalyzerClient1.Currency, categoryItems: [IncomeExpenseAnalyzerClient1.CategoryItem])
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.CategoryTotalsResponse
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.CategoryTotalsResponse.Builder, rhs: IncomeExpenseAnalyzerClient1.CategoryTotalsResponse.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.CategoryTotalsResponse, rhs: IncomeExpenseAnalyzerClient1.CategoryTotalsResponse) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public enum CreditDebitIndicator : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case dbit
+  case crdt
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [IncomeExpenseAnalyzerClient1.CreditDebitIndicator]
+  public static var allCases: [IncomeExpenseAnalyzerClient1.CreditDebitIndicator] {
+    get
+  }
+}
+public struct Currency : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Currency.Builder class.")
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let amount: Swift.String
+    final public let currencyCode: Swift.String
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(amount: Swift.String, currencyCode: Swift.String)
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.Currency
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.Currency.Builder, rhs: IncomeExpenseAnalyzerClient1.Currency.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.Currency, rhs: IncomeExpenseAnalyzerClient1.Currency) -> Swift.Bool
+}
+public enum Duration : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case day
+  case week
+  case month
+  case year
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [IncomeExpenseAnalyzerClient1.Duration]
+  public static var allCases: [IncomeExpenseAnalyzerClient1.Duration] {
+    get
+  }
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var context: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ErrorItem.Builder class.")
+  public init(message: Swift.String, key: Swift.String, context: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var context: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(context: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.ErrorItem
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.ErrorItem.Builder, rhs: IncomeExpenseAnalyzerClient1.ErrorItem.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.ErrorItem, rhs: IncomeExpenseAnalyzerClient1.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [IncomeExpenseAnalyzerClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ForbiddenError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [IncomeExpenseAnalyzerClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [IncomeExpenseAnalyzerClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [IncomeExpenseAnalyzerClient1.ErrorItem]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.ForbiddenError
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.ForbiddenError.Builder, rhs: IncomeExpenseAnalyzerClient1.ForbiddenError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.ForbiddenError, rhs: IncomeExpenseAnalyzerClient1.ForbiddenError) -> Swift.Bool
+}
+public enum Forecast : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case _none
+  case avg
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [IncomeExpenseAnalyzerClient1.Forecast]
+  public static var allCases: [IncomeExpenseAnalyzerClient1.Forecast] {
+    get
+  }
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of InternalServerError.Builder class.")
+  public init(message: Swift.String? = nil, key: Swift.String? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var message: Swift.String? {
+      get
+    }
+    final public var key: Swift.String? {
+      get
+    }
+    public init()
+    final public func set(message: Swift.String?) -> Self
+    final public func set(key: Swift.String?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.InternalServerError
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.InternalServerError.Builder, rhs: IncomeExpenseAnalyzerClient1.InternalServerError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.InternalServerError, rhs: IncomeExpenseAnalyzerClient1.InternalServerError) -> Swift.Bool
+}
+public protocol LeftToSpendAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetLeftToSpendRequestParams class.")
+  func getLeftToSpendCall(date: Foundation.Date, arrangementIds: [Swift.String]) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.LeftToSpendResponse>
+  func getLeftToSpendCall(params: IncomeExpenseAnalyzerClient1.GetLeftToSpendRequestParams) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.LeftToSpendResponse>
+}
+@objc @_inheritsConvenienceInitializers public class LeftToSpendAPI : ObjectiveC.NSObject, DBSClient, IncomeExpenseAnalyzerClient1.LeftToSpendAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetLeftToSpendRequestParams class.")
+  open func getLeftToSpendCall(date: Foundation.Date, arrangementIds: [Swift.String]) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.LeftToSpendResponse>
+  open func getLeftToSpendCall(params: IncomeExpenseAnalyzerClient1.GetLeftToSpendRequestParams) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.LeftToSpendResponse>
+  @objc deinit
+}
+public struct GetLeftToSpendRequestParams : Swift.Equatable {
+  public let date: Foundation.Date
+  public let arrangementIds: [Swift.String]
+  final public class Builder : Swift.Equatable {
+    final public let date: Foundation.Date
+    final public let arrangementIds: [Swift.String]
+    public init(date: Foundation.Date, arrangementIds: [Swift.String])
+    final public func build() -> IncomeExpenseAnalyzerClient1.GetLeftToSpendRequestParams
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.GetLeftToSpendRequestParams.Builder, rhs: IncomeExpenseAnalyzerClient1.GetLeftToSpendRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.GetLeftToSpendRequestParams, rhs: IncomeExpenseAnalyzerClient1.GetLeftToSpendRequestParams) -> Swift.Bool
+}
+public struct LeftToSpendResponse : Swift.Codable, Swift.Equatable {
+  public var daysLeft: Swift.Int
+  public var incomeToDate: IncomeExpenseAnalyzerClient1.Currency
+  public var spentToDate: IncomeExpenseAnalyzerClient1.Currency
+  public var scheduledPayments: IncomeExpenseAnalyzerClient1.ScheduledPayments
+  public var leftToSpend: IncomeExpenseAnalyzerClient1.Currency
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of LeftToSpendResponse.Builder class.")
+  public init(daysLeft: Swift.Int, incomeToDate: IncomeExpenseAnalyzerClient1.Currency, spentToDate: IncomeExpenseAnalyzerClient1.Currency, scheduledPayments: IncomeExpenseAnalyzerClient1.ScheduledPayments, leftToSpend: IncomeExpenseAnalyzerClient1.Currency, additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let daysLeft: Swift.Int
+    final public let incomeToDate: IncomeExpenseAnalyzerClient1.Currency
+    final public let spentToDate: IncomeExpenseAnalyzerClient1.Currency
+    final public let scheduledPayments: IncomeExpenseAnalyzerClient1.ScheduledPayments
+    final public let leftToSpend: IncomeExpenseAnalyzerClient1.Currency
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(daysLeft: Swift.Int, incomeToDate: IncomeExpenseAnalyzerClient1.Currency, spentToDate: IncomeExpenseAnalyzerClient1.Currency, scheduledPayments: IncomeExpenseAnalyzerClient1.ScheduledPayments, leftToSpend: IncomeExpenseAnalyzerClient1.Currency)
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.LeftToSpendResponse
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.LeftToSpendResponse.Builder, rhs: IncomeExpenseAnalyzerClient1.LeftToSpendResponse.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.LeftToSpendResponse, rhs: IncomeExpenseAnalyzerClient1.LeftToSpendResponse) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [IncomeExpenseAnalyzerClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of NotFoundError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [IncomeExpenseAnalyzerClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [IncomeExpenseAnalyzerClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [IncomeExpenseAnalyzerClient1.ErrorItem]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.NotFoundError
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.NotFoundError.Builder, rhs: IncomeExpenseAnalyzerClient1.NotFoundError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.NotFoundError, rhs: IncomeExpenseAnalyzerClient1.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct PaymentItem : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var total: IncomeExpenseAnalyzerClient1.Currency?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of PaymentItem.Builder class.")
+  public init(name: Swift.String? = nil, total: IncomeExpenseAnalyzerClient1.Currency? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var name: Swift.String? {
+      get
+    }
+    final public var total: IncomeExpenseAnalyzerClient1.Currency? {
+      get
+    }
+    public init()
+    final public func set(name: Swift.String?) -> Self
+    final public func set(total: IncomeExpenseAnalyzerClient1.Currency?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.PaymentItem
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.PaymentItem.Builder, rhs: IncomeExpenseAnalyzerClient1.PaymentItem.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.PaymentItem, rhs: IncomeExpenseAnalyzerClient1.PaymentItem) -> Swift.Bool
+}
+public struct Period : Swift.Codable, Swift.Equatable {
+  public var total: IncomeExpenseAnalyzerClient1.Currency?
+  public var intervalStartDate: Swift.String?
+  public var categoryItems: [IncomeExpenseAnalyzerClient1.CategoryItem]?
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Period.Builder class.")
+  public init(total: IncomeExpenseAnalyzerClient1.Currency? = nil, intervalStartDate: Swift.String? = nil, categoryItems: [IncomeExpenseAnalyzerClient1.CategoryItem]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var total: IncomeExpenseAnalyzerClient1.Currency? {
+      get
+    }
+    final public var intervalStartDate: Swift.String? {
+      get
+    }
+    final public var categoryItems: [IncomeExpenseAnalyzerClient1.CategoryItem]? {
+      get
+    }
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init()
+    final public func set(total: IncomeExpenseAnalyzerClient1.Currency?) -> Self
+    final public func set(intervalStartDate: Swift.String?) -> Self
+    final public func set(categoryItems: [IncomeExpenseAnalyzerClient1.CategoryItem]?) -> Self
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.Period
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.Period.Builder, rhs: IncomeExpenseAnalyzerClient1.Period.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.Period, rhs: IncomeExpenseAnalyzerClient1.Period) -> Swift.Bool
+}
+public struct ScheduledPayments : Swift.Codable, Swift.Equatable {
+  public var paymentItems: [IncomeExpenseAnalyzerClient1.PaymentItem]?
+  public var total: IncomeExpenseAnalyzerClient1.Currency?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of ScheduledPayments.Builder class.")
+  public init(paymentItems: [IncomeExpenseAnalyzerClient1.PaymentItem]? = nil, total: IncomeExpenseAnalyzerClient1.Currency? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var paymentItems: [IncomeExpenseAnalyzerClient1.PaymentItem]? {
+      get
+    }
+    final public var total: IncomeExpenseAnalyzerClient1.Currency? {
+      get
+    }
+    public init()
+    final public func set(paymentItems: [IncomeExpenseAnalyzerClient1.PaymentItem]?) -> Self
+    final public func set(total: IncomeExpenseAnalyzerClient1.Currency?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.ScheduledPayments
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.ScheduledPayments.Builder, rhs: IncomeExpenseAnalyzerClient1.ScheduledPayments.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.ScheduledPayments, rhs: IncomeExpenseAnalyzerClient1.ScheduledPayments) -> Swift.Bool
+}
+public struct Turnover : Swift.Codable, Swift.Equatable {
+  public var intervalStartDate: Foundation.Date
+  public var creditAmount: IncomeExpenseAnalyzerClient1.Currency
+  public var debitAmount: IncomeExpenseAnalyzerClient1.Currency
+  public var balance: IncomeExpenseAnalyzerClient1.Currency
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of Turnover.Builder class.")
+  public init(intervalStartDate: Foundation.Date, creditAmount: IncomeExpenseAnalyzerClient1.Currency, debitAmount: IncomeExpenseAnalyzerClient1.Currency, balance: IncomeExpenseAnalyzerClient1.Currency, additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let intervalStartDate: Foundation.Date
+    final public let creditAmount: IncomeExpenseAnalyzerClient1.Currency
+    final public let debitAmount: IncomeExpenseAnalyzerClient1.Currency
+    final public let balance: IncomeExpenseAnalyzerClient1.Currency
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(intervalStartDate: Foundation.Date, creditAmount: IncomeExpenseAnalyzerClient1.Currency, debitAmount: IncomeExpenseAnalyzerClient1.Currency, balance: IncomeExpenseAnalyzerClient1.Currency)
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.Turnover
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.Turnover.Builder, rhs: IncomeExpenseAnalyzerClient1.Turnover.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.Turnover, rhs: IncomeExpenseAnalyzerClient1.Turnover) -> Swift.Bool
+}
+public protocol TurnoversAPIProtocol {
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetTurnoversRequestParams class.")
+  func getTurnoversCall(periodStartDate: Foundation.Date, periodEndDate: Foundation.Date, intervalDuration: IncomeExpenseAnalyzerClient1.Duration, arrangementIds: [Swift.String]?, intervalStartDay: Swift.Int?, forecast: IncomeExpenseAnalyzerClient1.Forecast?) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.TurnoversResponse>
+  func getTurnoversCall(params: IncomeExpenseAnalyzerClient1.GetTurnoversRequestParams) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.TurnoversResponse>
+}
+@objc @_inheritsConvenienceInitializers public class TurnoversAPI : ObjectiveC.NSObject, DBSClient, IncomeExpenseAnalyzerClient1.TurnoversAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  @available(*, deprecated, message: "This method is deprecated in favor of the alternative method with GetTurnoversRequestParams class.")
+  open func getTurnoversCall(periodStartDate: Foundation.Date, periodEndDate: Foundation.Date, intervalDuration: IncomeExpenseAnalyzerClient1.Duration, arrangementIds: [Swift.String]? = nil, intervalStartDay: Swift.Int? = nil, forecast: IncomeExpenseAnalyzerClient1.Forecast? = nil) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.TurnoversResponse>
+  open func getTurnoversCall(params: IncomeExpenseAnalyzerClient1.GetTurnoversRequestParams) throws -> ClientCommon.Call<IncomeExpenseAnalyzerClient1.TurnoversResponse>
+  @objc deinit
+}
+public struct GetTurnoversRequestParams : Swift.Equatable {
+  public let periodStartDate: Foundation.Date
+  public let periodEndDate: Foundation.Date
+  public let intervalDuration: IncomeExpenseAnalyzerClient1.Duration
+  public let arrangementIds: [Swift.String]?
+  public let intervalStartDay: Swift.Int?
+  public let forecast: IncomeExpenseAnalyzerClient1.Forecast?
+  final public class Builder : Swift.Equatable {
+    final public let periodStartDate: Foundation.Date
+    final public let periodEndDate: Foundation.Date
+    final public let intervalDuration: IncomeExpenseAnalyzerClient1.Duration
+    final public var arrangementIds: [Swift.String]? {
+      get
+    }
+    final public var intervalStartDay: Swift.Int? {
+      get
+    }
+    final public var forecast: IncomeExpenseAnalyzerClient1.Forecast? {
+      get
+    }
+    public init(periodStartDate: Foundation.Date, periodEndDate: Foundation.Date, intervalDuration: IncomeExpenseAnalyzerClient1.Duration)
+    final public func set(arrangementIds: [Swift.String]?) -> Self
+    final public func set(intervalStartDay: Swift.Int?) -> Self
+    final public func set(forecast: IncomeExpenseAnalyzerClient1.Forecast?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.GetTurnoversRequestParams
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.GetTurnoversRequestParams.Builder, rhs: IncomeExpenseAnalyzerClient1.GetTurnoversRequestParams.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.GetTurnoversRequestParams, rhs: IncomeExpenseAnalyzerClient1.GetTurnoversRequestParams) -> Swift.Bool
+}
+public struct TurnoversResponse : Swift.Codable, Swift.Equatable {
+  public var arrangementIds: [Swift.String]?
+  public var intervalDuration: IncomeExpenseAnalyzerClient1.Duration?
+  public var avgCreditAmount: IncomeExpenseAnalyzerClient1.Currency?
+  public var avgDebitAmount: IncomeExpenseAnalyzerClient1.Currency?
+  public var turnovers: [IncomeExpenseAnalyzerClient1.Turnover]
+  public var forecast: [IncomeExpenseAnalyzerClient1.Turnover]?
+  public var additions: [Swift.String : Swift.String]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of TurnoversResponse.Builder class.")
+  public init(arrangementIds: [Swift.String]? = nil, intervalDuration: IncomeExpenseAnalyzerClient1.Duration? = nil, avgCreditAmount: IncomeExpenseAnalyzerClient1.Currency? = nil, avgDebitAmount: IncomeExpenseAnalyzerClient1.Currency? = nil, turnovers: [IncomeExpenseAnalyzerClient1.Turnover], forecast: [IncomeExpenseAnalyzerClient1.Turnover]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public var arrangementIds: [Swift.String]? {
+      get
+    }
+    final public var intervalDuration: IncomeExpenseAnalyzerClient1.Duration? {
+      get
+    }
+    final public var avgCreditAmount: IncomeExpenseAnalyzerClient1.Currency? {
+      get
+    }
+    final public var avgDebitAmount: IncomeExpenseAnalyzerClient1.Currency? {
+      get
+    }
+    final public let turnovers: [IncomeExpenseAnalyzerClient1.Turnover]
+    final public var forecast: [IncomeExpenseAnalyzerClient1.Turnover]? {
+      get
+    }
+    final public var additions: [Swift.String : Swift.String]? {
+      get
+    }
+    public init(turnovers: [IncomeExpenseAnalyzerClient1.Turnover])
+    final public func set(arrangementIds: [Swift.String]?) -> Self
+    final public func set(intervalDuration: IncomeExpenseAnalyzerClient1.Duration?) -> Self
+    final public func set(avgCreditAmount: IncomeExpenseAnalyzerClient1.Currency?) -> Self
+    final public func set(avgDebitAmount: IncomeExpenseAnalyzerClient1.Currency?) -> Self
+    final public func set(forecast: [IncomeExpenseAnalyzerClient1.Turnover]?) -> Self
+    final public func set(additions: [Swift.String : Swift.String]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.TurnoversResponse
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.TurnoversResponse.Builder, rhs: IncomeExpenseAnalyzerClient1.TurnoversResponse.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.TurnoversResponse, rhs: IncomeExpenseAnalyzerClient1.TurnoversResponse) -> Swift.Bool
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var key: Swift.String
+  public var errors: [IncomeExpenseAnalyzerClient1.ErrorItem]?
+  @available(*, deprecated, message: "This initializer is deprecated, use the initializer and the setters of UnauthorizedError.Builder class.")
+  public init(message: Swift.String, key: Swift.String, errors: [IncomeExpenseAnalyzerClient1.ErrorItem]? = nil)
+  final public class Builder : Swift.Equatable {
+    final public let message: Swift.String
+    final public let key: Swift.String
+    final public var errors: [IncomeExpenseAnalyzerClient1.ErrorItem]? {
+      get
+    }
+    public init(message: Swift.String, key: Swift.String)
+    final public func set(errors: [IncomeExpenseAnalyzerClient1.ErrorItem]?) -> Self
+    final public func build() -> IncomeExpenseAnalyzerClient1.UnauthorizedError
+    public static func == (lhs: IncomeExpenseAnalyzerClient1.UnauthorizedError.Builder, rhs: IncomeExpenseAnalyzerClient1.UnauthorizedError.Builder) -> Swift.Bool
+    @objc deinit
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: IncomeExpenseAnalyzerClient1.UnauthorizedError, rhs: IncomeExpenseAnalyzerClient1.UnauthorizedError) -> Swift.Bool
+}
+extension IncomeExpenseAnalyzerClient1.CreditDebitIndicator : Swift.Equatable {}
+extension IncomeExpenseAnalyzerClient1.CreditDebitIndicator : Swift.Hashable {}
+extension IncomeExpenseAnalyzerClient1.CreditDebitIndicator : Swift.RawRepresentable {}
+extension IncomeExpenseAnalyzerClient1.Duration : Swift.Equatable {}
+extension IncomeExpenseAnalyzerClient1.Duration : Swift.Hashable {}
+extension IncomeExpenseAnalyzerClient1.Duration : Swift.RawRepresentable {}
+extension IncomeExpenseAnalyzerClient1.Forecast : Swift.Equatable {}
+extension IncomeExpenseAnalyzerClient1.Forecast : Swift.Hashable {}
+extension IncomeExpenseAnalyzerClient1.Forecast : Swift.RawRepresentable {}

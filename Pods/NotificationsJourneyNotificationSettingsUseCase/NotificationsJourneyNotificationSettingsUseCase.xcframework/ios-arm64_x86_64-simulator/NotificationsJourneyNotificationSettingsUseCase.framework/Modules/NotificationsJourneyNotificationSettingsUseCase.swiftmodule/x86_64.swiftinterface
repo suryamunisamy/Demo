@@ -1,0 +1,27 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NotificationsJourneyNotificationSettingsUseCase
+import ActionsClient2
+import ArrangementsClient2
+import Backbase
+import ClientCommon
+import EngagementsClient1
+import Foundation
+import NotificationsJourney
+import Swift
+import UIKit
+import _Concurrency
+public class NotificationsJourneyNotificationSettingsUseCase : NotificationsJourney.NotificationSettingsUseCase {
+  convenience public init()
+  public init(actionsAPI: ActionsClient2.ActionRecipesAPIProtocol, productsAPI: ArrangementsClient2.ProductSummaryAPIProtocol)
+  public func getAccounts(specificationIds: [Swift.String], completion: @escaping GetAccountsHandler)
+  public func upsertActionRecipe(with request: NotificationsJourney.ActionRecipeUpsertRequest, completion: @escaping UpsertAccountNotificationSettingsHandler)
+  @objc deinit
+}
+public class NotificationsJourneyNotificationSettingsUseCaseEO : NotificationsJourney.NotificationSettingsUseCaseEO {
+  convenience public init()
+  public init(notificationPreferenceAPI: EngagementsClient1.NotificationPreferenceAPIProtocol, productsAPI: ArrangementsClient2.ProductSummaryAPIProtocol)
+  public func getAccountsNotificationPreferences(completion: @escaping NotificationsJourneyNotificationSettingsUseCaseEO.GetAccountsNotificationPreferencesHandler)
+  public func updateNotificationPreferences(_ notificationPreferences: NotificationsJourney.NotificationPreference, for arrangementId: Foundation.UUID, completion: @escaping NotificationsJourneyNotificationSettingsUseCaseEO.NotificationPreferencesHandler)
+  @objc deinit
+}

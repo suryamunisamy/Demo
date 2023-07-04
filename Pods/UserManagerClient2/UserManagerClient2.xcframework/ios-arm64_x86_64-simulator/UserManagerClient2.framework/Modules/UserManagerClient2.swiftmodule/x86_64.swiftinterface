@@ -1,0 +1,742 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UserManagerClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct ApprovalChangelogItem : Swift.Codable, Swift.Equatable {
+  public var type: Swift.String
+  public var key: Swift.String
+  public var from: Swift.String
+  public var to: Swift.String
+  public init(type: Swift.String, key: Swift.String, from: Swift.String, to: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.ApprovalChangelogItem, rhs: UserManagerClient2.ApprovalChangelogItem) -> Swift.Bool
+}
+public struct ApprovalUserDetails : Swift.Codable, Swift.Equatable {
+  public var username: Swift.String
+  public var legalEntityName: Swift.String
+  public var fullName: Swift.String
+  public var emailAddress: Swift.String?
+  public var mobileNumber: Swift.String?
+  public var dateCreated: Foundation.Date
+  public init(username: Swift.String, legalEntityName: Swift.String, fullName: Swift.String, emailAddress: Swift.String? = nil, mobileNumber: Swift.String? = nil, dateCreated: Foundation.Date)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.ApprovalUserDetails, rhs: UserManagerClient2.ApprovalUserDetails) -> Swift.Bool
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [UserManagerClient2.ErrorItem]?
+  public init(message: Swift.String, errors: [UserManagerClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.BadRequestError, rhs: UserManagerClient2.BadRequestError) -> Swift.Bool
+}
+public struct ChangePasswordRequest : Swift.Codable, Swift.Equatable {
+  public var existingPassword: Swift.String
+  public var newPassword: Swift.String
+  public init(existingPassword: Swift.String, newPassword: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.ChangePasswordRequest, rhs: UserManagerClient2.ChangePasswordRequest) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct Conflict : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [UserManagerClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [UserManagerClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.Conflict, rhs: UserManagerClient2.Conflict) -> Swift.Bool
+}
+public struct CreateIdentityRequest : Swift.Codable, Swift.Equatable {
+  public var externalId: Swift.String?
+  public var legalEntityInternalId: Swift.String
+  public var fullName: Swift.String?
+  public var emailAddress: Swift.String
+  public var mobileNumber: Swift.String?
+  public var givenName: Swift.String?
+  public var familyName: Swift.String?
+  public var attributes: [Swift.String : Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(externalId: Swift.String? = nil, legalEntityInternalId: Swift.String, fullName: Swift.String? = nil, emailAddress: Swift.String, mobileNumber: Swift.String? = nil, givenName: Swift.String? = nil, familyName: Swift.String? = nil, attributes: [Swift.String : Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.CreateIdentityRequest, rhs: UserManagerClient2.CreateIdentityRequest) -> Swift.Bool
+}
+public struct CreateIdentityResponse : Swift.Codable, Swift.Equatable {
+  public var internalId: Swift.String
+  public var externalId: Swift.String
+  public init(internalId: Swift.String, externalId: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.CreateIdentityResponse, rhs: UserManagerClient2.CreateIdentityResponse) -> Swift.Bool
+}
+public struct ElectronicAddress : Swift.Codable, Swift.Equatable {
+  public var type: Swift.String
+  public var primary: Swift.Bool?
+  public var address: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(type: Swift.String, primary: Swift.Bool? = nil, address: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.ElectronicAddress, rhs: UserManagerClient2.ElectronicAddress) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.ErrorItem, rhs: UserManagerClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [UserManagerClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [UserManagerClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.ForbiddenError, rhs: UserManagerClient2.ForbiddenError) -> Swift.Bool
+}
+public struct GetApprovalUserDetails : Swift.Codable, Swift.Equatable {
+  public var changelogDetails: [UserManagerClient2.ApprovalChangelogItem]
+  public var userDetails: UserManagerClient2.ApprovalUserDetails
+  public init(changelogDetails: [UserManagerClient2.ApprovalChangelogItem], userDetails: UserManagerClient2.ApprovalUserDetails)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetApprovalUserDetails, rhs: UserManagerClient2.GetApprovalUserDetails) -> Swift.Bool
+}
+public struct GetElectronicAddress : Swift.Codable, Swift.Equatable {
+  public var key: Swift.String
+  public var type: Swift.String
+  public var primary: Swift.Bool?
+  public var address: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(key: Swift.String, type: Swift.String, primary: Swift.Bool? = nil, address: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetElectronicAddress, rhs: UserManagerClient2.GetElectronicAddress) -> Swift.Bool
+}
+public struct GetElectronicAddresses : Swift.Codable, Swift.Equatable {
+  public var electronicAddresses: [UserManagerClient2.GetElectronicAddress]?
+  public init(electronicAddresses: [UserManagerClient2.GetElectronicAddress]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetElectronicAddresses, rhs: UserManagerClient2.GetElectronicAddresses) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case electronicAddresses
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [UserManagerClient2.GetElectronicAddresses.CodingKeys]
+    public static var allCases: [UserManagerClient2.GetElectronicAddresses.CodingKeys] {
+      get
+    }
+  }
+}
+public struct GetIdentities : Swift.Codable, Swift.Equatable {
+  public var totalElements: Swift.Int64
+  public var identities: [UserManagerClient2.IdentityListedItem]
+  public init(totalElements: Swift.Int64, identities: [UserManagerClient2.IdentityListedItem])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetIdentities, rhs: UserManagerClient2.GetIdentities) -> Swift.Bool
+}
+public struct GetIdentity : Swift.Codable, Swift.Equatable {
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case enabled
+    case disabled
+    case temporarilyLocked
+    case dormant
+    case inactive
+    case accessRevoked
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [UserManagerClient2.GetIdentity.Status]
+    public static var allCases: [UserManagerClient2.GetIdentity.Status] {
+      get
+    }
+  }
+  public var externalId: Swift.String
+  public var legalEntityInternalId: Swift.String
+  public var fullName: Swift.String
+  public var preferredLanguage: Swift.String?
+  public var emailAddress: Swift.String?
+  public var mobileNumber: Swift.String?
+  public var status: UserManagerClient2.GetIdentity.Status?
+  public var emailVerified: Swift.Bool?
+  public var createdDate: Foundation.Date?
+  public var requiredActions: [Swift.String]?
+  public var givenName: Swift.String
+  public var familyName: Swift.String
+  public var attributes: [Swift.String : Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(externalId: Swift.String, legalEntityInternalId: Swift.String, fullName: Swift.String, preferredLanguage: Swift.String? = nil, emailAddress: Swift.String? = nil, mobileNumber: Swift.String? = nil, status: UserManagerClient2.GetIdentity.Status? = nil, emailVerified: Swift.Bool? = nil, createdDate: Foundation.Date? = nil, requiredActions: [Swift.String]? = nil, givenName: Swift.String, familyName: Swift.String, attributes: [Swift.String : Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetIdentity, rhs: UserManagerClient2.GetIdentity) -> Swift.Bool
+}
+public struct GetIdentitySessions : Swift.Codable, Swift.Equatable {
+  public var sessions: [UserManagerClient2.IdentitySession]?
+  public init(sessions: [UserManagerClient2.IdentitySession]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetIdentitySessions, rhs: UserManagerClient2.GetIdentitySessions) -> Swift.Bool
+}
+public struct GetOwnUser : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var preferredLanguage: Swift.String?
+  public var legalEntityId: Swift.String
+  public var fullName: Swift.String
+  public var legalEntityName: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, externalId: Swift.String, preferredLanguage: Swift.String? = nil, legalEntityId: Swift.String, fullName: Swift.String, legalEntityName: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetOwnUser, rhs: UserManagerClient2.GetOwnUser) -> Swift.Bool
+}
+public struct GetPendingApproval : Swift.Codable, Swift.Equatable {
+  public enum ModelType : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case unlock
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [UserManagerClient2.GetPendingApproval.ModelType]
+    public static var allCases: [UserManagerClient2.GetPendingApproval.ModelType] {
+      get
+    }
+  }
+  public var approvalId: Swift.String?
+  public var type: UserManagerClient2.GetPendingApproval.ModelType?
+  public init(approvalId: Swift.String? = nil, type: UserManagerClient2.GetPendingApproval.ModelType? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetPendingApproval, rhs: UserManagerClient2.GetPendingApproval) -> Swift.Bool
+}
+public struct GetPhoneAddress : Swift.Codable, Swift.Equatable {
+  public var key: Swift.String
+  public var type: Swift.String
+  public var primary: Swift.Bool?
+  public var number: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(key: Swift.String, type: Swift.String, primary: Swift.Bool? = nil, number: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetPhoneAddress, rhs: UserManagerClient2.GetPhoneAddress) -> Swift.Bool
+}
+public struct GetPhoneAddresses : Swift.Codable, Swift.Equatable {
+  public var phoneAddresses: [UserManagerClient2.GetPhoneAddress]?
+  public init(phoneAddresses: [UserManagerClient2.GetPhoneAddress]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetPhoneAddresses, rhs: UserManagerClient2.GetPhoneAddresses) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case phoneAddresses
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [UserManagerClient2.GetPhoneAddresses.CodingKeys]
+    public static var allCases: [UserManagerClient2.GetPhoneAddresses.CodingKeys] {
+      get
+    }
+  }
+}
+public struct GetPostalAddress : Swift.Codable, Swift.Equatable {
+  public var key: Swift.String
+  public var type: Swift.String
+  public var primary: Swift.Bool?
+  public var department: Swift.String?
+  public var subDepartment: Swift.String?
+  public var addressLine: Swift.String?
+  public var buildingNumber: Swift.String?
+  public var streetName: Swift.String?
+  public var townName: Swift.String?
+  public var postalCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(key: Swift.String, type: Swift.String, primary: Swift.Bool? = nil, department: Swift.String? = nil, subDepartment: Swift.String? = nil, addressLine: Swift.String? = nil, buildingNumber: Swift.String? = nil, streetName: Swift.String? = nil, townName: Swift.String? = nil, postalCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetPostalAddress, rhs: UserManagerClient2.GetPostalAddress) -> Swift.Bool
+}
+public struct GetPostalAddresses : Swift.Codable, Swift.Equatable {
+  public var postalAddresses: [UserManagerClient2.GetPostalAddress]?
+  public init(postalAddresses: [UserManagerClient2.GetPostalAddress]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetPostalAddresses, rhs: UserManagerClient2.GetPostalAddresses) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case postalAddresses
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [UserManagerClient2.GetPostalAddresses.CodingKeys]
+    public static var allCases: [UserManagerClient2.GetPostalAddresses.CodingKeys] {
+      get
+    }
+  }
+}
+public struct GetUser : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var preferredLanguage: Swift.String?
+  public var legalEntityId: Swift.String
+  public var fullName: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, externalId: Swift.String, preferredLanguage: Swift.String? = nil, legalEntityId: Swift.String, fullName: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetUser, rhs: UserManagerClient2.GetUser) -> Swift.Bool
+}
+public struct GetUsersByLegalEntityIdsRequest : Swift.Codable, Swift.Equatable {
+  public var legalEntityIds: [Swift.String]
+  public var excludeIds: [Swift.String]?
+  public var query: Swift.String?
+  public var externalId: Swift.String?
+  public var cursor: Swift.String?
+  public var from: Swift.Int?
+  public var size: Swift.Int?
+  public var sortOrder: Swift.String?
+  public init(legalEntityIds: [Swift.String], excludeIds: [Swift.String]? = nil, query: Swift.String? = nil, externalId: Swift.String? = nil, cursor: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, sortOrder: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetUsersByLegalEntityIdsRequest, rhs: UserManagerClient2.GetUsersByLegalEntityIdsRequest) -> Swift.Bool
+}
+public struct GetUsersList : Swift.Codable, Swift.Equatable {
+  public var totalElements: Swift.Int64
+  public var users: [UserManagerClient2.GetUser]
+  public init(totalElements: Swift.Int64, users: [UserManagerClient2.GetUser])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.GetUsersList, rhs: UserManagerClient2.GetUsersList) -> Swift.Bool
+}
+public struct IdentityListedItem : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var legalEntityId: Swift.String
+  public var fullName: Swift.String
+  public var legalEntityName: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, externalId: Swift.String, legalEntityId: Swift.String, fullName: Swift.String, legalEntityName: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.IdentityListedItem, rhs: UserManagerClient2.IdentityListedItem) -> Swift.Bool
+}
+public struct IdentityLogoutRequest : Swift.Codable, Swift.Equatable {
+  public var sessionIds: [Swift.String]
+  public init(sessionIds: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.IdentityLogoutRequest, rhs: UserManagerClient2.IdentityLogoutRequest) -> Swift.Bool
+}
+public protocol IdentityManagementAPIProtocol {
+  func changePasswordCall(changePasswordRequest: UserManagerClient2.ChangePasswordRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func createIdentityCall(createIdentityRequest: UserManagerClient2.CreateIdentityRequest) throws -> ClientCommon.Call<UserManagerClient2.CreateIdentityResponse>
+  func getIdentitiesCall(externalId: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<UserManagerClient2.GetIdentities>
+  func getIdentityCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetIdentity>
+  func getIdentityPendingApprovalsCall(internalId: Swift.String) throws -> ClientCommon.Call<[UserManagerClient2.GetPendingApproval]>
+  func getSessionsCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetIdentitySessions>
+  func logoutSessionsCall(internalId: Swift.String, identityLogoutRequest: UserManagerClient2.IdentityLogoutRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func revokeIdentityAccessCall(internalId: Swift.String, revokeIdentityAccessRequest: UserManagerClient2.RevokeIdentityAccessRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func sendRequiredActionsCall(internalId: Swift.String, identityRequiredActionsRequest: UserManagerClient2.IdentityRequiredActionsRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func updateIdentityCall(internalId: Swift.String, updateIdentityRequest: UserManagerClient2.UpdateIdentityRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func updateIdentityStatusCall(internalId: Swift.String, updateIdentityStatusRequest: UserManagerClient2.UpdateIdentityStatusRequest) throws -> ClientCommon.Call<UserManagerClient2.IdentityStatusApprovalPending>
+}
+@objc @_inheritsConvenienceInitializers public class IdentityManagementAPI : ObjectiveC.NSObject, DBSClient, UserManagerClient2.IdentityManagementAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func changePasswordCall(changePasswordRequest: UserManagerClient2.ChangePasswordRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func createIdentityCall(createIdentityRequest: UserManagerClient2.CreateIdentityRequest) throws -> ClientCommon.Call<UserManagerClient2.CreateIdentityResponse>
+  open func getIdentitiesCall(externalId: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<UserManagerClient2.GetIdentities>
+  open func getIdentityCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetIdentity>
+  open func getIdentityPendingApprovalsCall(internalId: Swift.String) throws -> ClientCommon.Call<[UserManagerClient2.GetPendingApproval]>
+  open func getSessionsCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetIdentitySessions>
+  open func logoutSessionsCall(internalId: Swift.String, identityLogoutRequest: UserManagerClient2.IdentityLogoutRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func revokeIdentityAccessCall(internalId: Swift.String, revokeIdentityAccessRequest: UserManagerClient2.RevokeIdentityAccessRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func sendRequiredActionsCall(internalId: Swift.String, identityRequiredActionsRequest: UserManagerClient2.IdentityRequiredActionsRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func updateIdentityCall(internalId: Swift.String, updateIdentityRequest: UserManagerClient2.UpdateIdentityRequest) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func updateIdentityStatusCall(internalId: Swift.String, updateIdentityStatusRequest: UserManagerClient2.UpdateIdentityStatusRequest) throws -> ClientCommon.Call<UserManagerClient2.IdentityStatusApprovalPending>
+  @objc deinit
+}
+public struct IdentityRequiredActionsRequest : Swift.Codable, Swift.Equatable {
+  public var actions: [Swift.String]?
+  public init(actions: [Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.IdentityRequiredActionsRequest, rhs: UserManagerClient2.IdentityRequiredActionsRequest) -> Swift.Bool
+}
+public struct IdentitySession : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var ipAddress: Swift.String?
+  public var start: Foundation.Date?
+  public var lastAccess: Foundation.Date?
+  public var client: Swift.String?
+  public init(id: Swift.String? = nil, ipAddress: Swift.String? = nil, start: Foundation.Date? = nil, lastAccess: Foundation.Date? = nil, client: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.IdentitySession, rhs: UserManagerClient2.IdentitySession) -> Swift.Bool
+}
+public struct IdentityStatusApprovalPending : Swift.Codable, Swift.Equatable {
+  public var approvalId: Swift.String
+  public init(approvalId: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.IdentityStatusApprovalPending, rhs: UserManagerClient2.IdentityStatusApprovalPending) -> Swift.Bool
+}
+public struct LegalEntity : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var externalId: Swift.String
+  public var name: Swift.String
+  public var parentId: Swift.String?
+  public var isParent: Swift.Bool?
+  public var type: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, externalId: Swift.String, name: Swift.String, parentId: Swift.String? = nil, isParent: Swift.Bool? = nil, type: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.LegalEntity, rhs: UserManagerClient2.LegalEntity) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [UserManagerClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [UserManagerClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.NotFoundError, rhs: UserManagerClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct PhoneAddress : Swift.Codable, Swift.Equatable {
+  public var type: Swift.String
+  public var primary: Swift.Bool?
+  public var number: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(type: Swift.String, primary: Swift.Bool? = nil, number: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.PhoneAddress, rhs: UserManagerClient2.PhoneAddress) -> Swift.Bool
+}
+public struct PostalAddress : Swift.Codable, Swift.Equatable {
+  public var type: Swift.String
+  public var primary: Swift.Bool?
+  public var department: Swift.String?
+  public var subDepartment: Swift.String?
+  public var addressLine: Swift.String?
+  public var buildingNumber: Swift.String?
+  public var streetName: Swift.String?
+  public var townName: Swift.String?
+  public var postalCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(type: Swift.String, primary: Swift.Bool? = nil, department: Swift.String? = nil, subDepartment: Swift.String? = nil, addressLine: Swift.String? = nil, buildingNumber: Swift.String? = nil, streetName: Swift.String? = nil, townName: Swift.String? = nil, postalCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.PostalAddress, rhs: UserManagerClient2.PostalAddress) -> Swift.Bool
+}
+public struct ReplaceUserProfileAttributes : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public init(additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.ReplaceUserProfileAttributes, rhs: UserManagerClient2.ReplaceUserProfileAttributes) -> Swift.Bool
+}
+public struct RevokeIdentityAccessRequest : Swift.Codable, Swift.Equatable {
+  public var comment: Swift.String
+  public init(comment: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.RevokeIdentityAccessRequest, rhs: UserManagerClient2.RevokeIdentityAccessRequest) -> Swift.Bool
+}
+public struct UpdateIdentityRequest : Swift.Codable, Swift.Equatable {
+  public var fullName: Swift.String?
+  public var emailAddress: Swift.String?
+  public var mobileNumber: Swift.String?
+  public var requiredActions: [Swift.String]?
+  public var givenName: Swift.String?
+  public var familyName: Swift.String?
+  public var attributes: [Swift.String : Swift.String]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(fullName: Swift.String? = nil, emailAddress: Swift.String? = nil, mobileNumber: Swift.String? = nil, requiredActions: [Swift.String]? = nil, givenName: Swift.String? = nil, familyName: Swift.String? = nil, attributes: [Swift.String : Swift.String]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.UpdateIdentityRequest, rhs: UserManagerClient2.UpdateIdentityRequest) -> Swift.Bool
+}
+public struct UpdateIdentityStatusRequest : Swift.Codable, Swift.Equatable {
+  public var enabled: Swift.Bool
+  public var comment: Swift.String?
+  public init(enabled: Swift.Bool, comment: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.UpdateIdentityStatusRequest, rhs: UserManagerClient2.UpdateIdentityStatusRequest) -> Swift.Bool
+}
+public protocol UserApprovalsAPIProtocol {
+  func approveApprovalCall(approvalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getApprovalDetailsCall(approvalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetApprovalUserDetails>
+  func rejectApprovalCall(approvalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class UserApprovalsAPI : ObjectiveC.NSObject, DBSClient, UserManagerClient2.UserApprovalsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func approveApprovalCall(approvalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getApprovalDetailsCall(approvalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetApprovalUserDetails>
+  open func rejectApprovalCall(approvalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public protocol UserManagementAPIProtocol {
+  func checkUserExistsCall(externalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getLegalEntityByExternalIdCall(externalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.LegalEntity>
+  func getOwnUserCall() throws -> ClientCommon.Call<UserManagerClient2.GetOwnUser>
+  func getUserByExternalIdCall(externalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetUser>
+  func getUserByIdCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetUser>
+  func getUsersCall(entityId: Swift.String, query: Swift.String?, from: Swift.Int?, cursor: Swift.String?, size: Swift.Int?) throws -> ClientCommon.Call<[UserManagerClient2.GetUser]>
+  func getUsersByLegalEntityIdsCall(getUsersByLegalEntityIdsRequest: UserManagerClient2.GetUsersByLegalEntityIdsRequest) throws -> ClientCommon.Call<UserManagerClient2.GetUsersList>
+}
+@objc @_inheritsConvenienceInitializers public class UserManagementAPI : ObjectiveC.NSObject, DBSClient, UserManagerClient2.UserManagementAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func checkUserExistsCall(externalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getLegalEntityByExternalIdCall(externalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.LegalEntity>
+  open func getOwnUserCall() throws -> ClientCommon.Call<UserManagerClient2.GetOwnUser>
+  open func getUserByExternalIdCall(externalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetUser>
+  open func getUserByIdCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetUser>
+  open func getUsersCall(entityId: Swift.String, query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[UserManagerClient2.GetUser]>
+  open func getUsersByLegalEntityIdsCall(getUsersByLegalEntityIdsRequest: UserManagerClient2.GetUsersByLegalEntityIdsRequest) throws -> ClientCommon.Call<UserManagerClient2.GetUsersList>
+  @objc deinit
+}
+public struct UserProfile : Swift.Codable, Swift.Equatable {
+  public var fullName: Swift.String
+  public var phoneAddresses: [UserManagerClient2.GetPhoneAddress]?
+  public var electronicAddresses: [UserManagerClient2.GetElectronicAddress]?
+  public var postalAddresses: [UserManagerClient2.GetPostalAddress]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(fullName: Swift.String, phoneAddresses: [UserManagerClient2.GetPhoneAddress]? = nil, electronicAddresses: [UserManagerClient2.GetElectronicAddress]? = nil, postalAddresses: [UserManagerClient2.GetPostalAddress]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: UserManagerClient2.UserProfile, rhs: UserManagerClient2.UserProfile) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case fullName
+    case phoneAddresses
+    case electronicAddresses
+    case postalAddresses
+    case additions
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [UserManagerClient2.UserProfile.CodingKeys]
+    public static var allCases: [UserManagerClient2.UserProfile.CodingKeys] {
+      get
+    }
+  }
+}
+public protocol UserProfileManagementAPIProtocol {
+  func addElectronicAddressCall(internalId: Swift.String, electronicAddress: UserManagerClient2.ElectronicAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func addOwnElectronicAddressCall(electronicAddress: UserManagerClient2.ElectronicAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func addOwnPhoneAddressCall(phoneAddress: UserManagerClient2.PhoneAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func addOwnPostalAddressCall(postalAddress: UserManagerClient2.PostalAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func addPhoneAddressCall(internalId: Swift.String, phoneAddress: UserManagerClient2.PhoneAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func addPostalAddressCall(internalId: Swift.String, postalAddress: UserManagerClient2.PostalAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteElectronicAddressCall(electronicAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteOwnElectronicAddressCall(electronicAddressKey: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteOwnPhoneAddressCall(phoneAddressKey: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteOwnPostalAddressCall(postalAddressKey: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deletePhoneAddressCall(phoneAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deletePostalAddressCall(postalAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getElectronicAddressCall(electronicAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetElectronicAddress>
+  func getElectronicAddressesCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetElectronicAddresses>
+  func getOwnElectronicAddressCall(electronicAddressKey: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetElectronicAddress>
+  func getOwnElectronicAddressesCall() throws -> ClientCommon.Call<UserManagerClient2.GetElectronicAddresses>
+  func getOwnPhoneAddressCall(phoneAddressKey: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPhoneAddress>
+  func getOwnPhoneAddressesCall() throws -> ClientCommon.Call<UserManagerClient2.GetPhoneAddresses>
+  func getOwnPostalAddressCall(postalAddressKey: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPostalAddress>
+  func getOwnPostalAddressesCall() throws -> ClientCommon.Call<UserManagerClient2.GetPostalAddresses>
+  func getOwnUserProfileCall() throws -> ClientCommon.Call<UserManagerClient2.UserProfile>
+  func getPhoneAddressCall(phoneAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPhoneAddress>
+  func getPhoneAddressesCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPhoneAddresses>
+  func getPostalAddressCall(postalAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPostalAddress>
+  func getPostalAddressesCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPostalAddresses>
+  func getUserProfileCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.UserProfile>
+  func replaceOwnUserProfileAttributesCall(replaceUserProfileAttributes: UserManagerClient2.ReplaceUserProfileAttributes) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func replaceUserProfileAttributesCall(internalId: Swift.String, replaceUserProfileAttributes: UserManagerClient2.ReplaceUserProfileAttributes) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func updateElectronicAddressCall(electronicAddressKey: Swift.String, internalId: Swift.String, electronicAddress: UserManagerClient2.ElectronicAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func updateOwnElectronicAddressCall(electronicAddressKey: Swift.String, electronicAddress: UserManagerClient2.ElectronicAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func updateOwnPhoneAddressCall(phoneAddressKey: Swift.String, phoneAddress: UserManagerClient2.PhoneAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func updateOwnPostalAddressCall(postalAddressKey: Swift.String, postalAddress: UserManagerClient2.PostalAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func updatePhoneAddressCall(phoneAddressKey: Swift.String, internalId: Swift.String, phoneAddress: UserManagerClient2.PhoneAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func updatePostalAddressCall(postalAddressKey: Swift.String, internalId: Swift.String, postalAddress: UserManagerClient2.PostalAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class UserProfileManagementAPI : ObjectiveC.NSObject, DBSClient, UserManagerClient2.UserProfileManagementAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func addElectronicAddressCall(internalId: Swift.String, electronicAddress: UserManagerClient2.ElectronicAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func addOwnElectronicAddressCall(electronicAddress: UserManagerClient2.ElectronicAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func addOwnPhoneAddressCall(phoneAddress: UserManagerClient2.PhoneAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func addOwnPostalAddressCall(postalAddress: UserManagerClient2.PostalAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func addPhoneAddressCall(internalId: Swift.String, phoneAddress: UserManagerClient2.PhoneAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func addPostalAddressCall(internalId: Swift.String, postalAddress: UserManagerClient2.PostalAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteElectronicAddressCall(electronicAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteOwnElectronicAddressCall(electronicAddressKey: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteOwnPhoneAddressCall(phoneAddressKey: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteOwnPostalAddressCall(postalAddressKey: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deletePhoneAddressCall(phoneAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deletePostalAddressCall(postalAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getElectronicAddressCall(electronicAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetElectronicAddress>
+  open func getElectronicAddressesCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetElectronicAddresses>
+  open func getOwnElectronicAddressCall(electronicAddressKey: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetElectronicAddress>
+  open func getOwnElectronicAddressesCall() throws -> ClientCommon.Call<UserManagerClient2.GetElectronicAddresses>
+  open func getOwnPhoneAddressCall(phoneAddressKey: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPhoneAddress>
+  open func getOwnPhoneAddressesCall() throws -> ClientCommon.Call<UserManagerClient2.GetPhoneAddresses>
+  open func getOwnPostalAddressCall(postalAddressKey: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPostalAddress>
+  open func getOwnPostalAddressesCall() throws -> ClientCommon.Call<UserManagerClient2.GetPostalAddresses>
+  open func getOwnUserProfileCall() throws -> ClientCommon.Call<UserManagerClient2.UserProfile>
+  open func getPhoneAddressCall(phoneAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPhoneAddress>
+  open func getPhoneAddressesCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPhoneAddresses>
+  open func getPostalAddressCall(postalAddressKey: Swift.String, internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPostalAddress>
+  open func getPostalAddressesCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.GetPostalAddresses>
+  open func getUserProfileCall(internalId: Swift.String) throws -> ClientCommon.Call<UserManagerClient2.UserProfile>
+  open func replaceOwnUserProfileAttributesCall(replaceUserProfileAttributes: UserManagerClient2.ReplaceUserProfileAttributes) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func replaceUserProfileAttributesCall(internalId: Swift.String, replaceUserProfileAttributes: UserManagerClient2.ReplaceUserProfileAttributes) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func updateElectronicAddressCall(electronicAddressKey: Swift.String, internalId: Swift.String, electronicAddress: UserManagerClient2.ElectronicAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func updateOwnElectronicAddressCall(electronicAddressKey: Swift.String, electronicAddress: UserManagerClient2.ElectronicAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func updateOwnPhoneAddressCall(phoneAddressKey: Swift.String, phoneAddress: UserManagerClient2.PhoneAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func updateOwnPostalAddressCall(postalAddressKey: Swift.String, postalAddress: UserManagerClient2.PostalAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func updatePhoneAddressCall(phoneAddressKey: Swift.String, internalId: Swift.String, phoneAddress: UserManagerClient2.PhoneAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func updatePostalAddressCall(postalAddressKey: Swift.String, internalId: Swift.String, postalAddress: UserManagerClient2.PostalAddress) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+extension UserManagerClient2.GetElectronicAddresses.CodingKeys : Swift.Equatable {}
+extension UserManagerClient2.GetElectronicAddresses.CodingKeys : Swift.Hashable {}
+extension UserManagerClient2.GetElectronicAddresses.CodingKeys : Swift.RawRepresentable {}
+extension UserManagerClient2.GetIdentity.Status : Swift.Equatable {}
+extension UserManagerClient2.GetIdentity.Status : Swift.Hashable {}
+extension UserManagerClient2.GetIdentity.Status : Swift.RawRepresentable {}
+extension UserManagerClient2.GetPendingApproval.ModelType : Swift.Equatable {}
+extension UserManagerClient2.GetPendingApproval.ModelType : Swift.Hashable {}
+extension UserManagerClient2.GetPendingApproval.ModelType : Swift.RawRepresentable {}
+extension UserManagerClient2.GetPhoneAddresses.CodingKeys : Swift.Equatable {}
+extension UserManagerClient2.GetPhoneAddresses.CodingKeys : Swift.Hashable {}
+extension UserManagerClient2.GetPhoneAddresses.CodingKeys : Swift.RawRepresentable {}
+extension UserManagerClient2.GetPostalAddresses.CodingKeys : Swift.Equatable {}
+extension UserManagerClient2.GetPostalAddresses.CodingKeys : Swift.Hashable {}
+extension UserManagerClient2.GetPostalAddresses.CodingKeys : Swift.RawRepresentable {}
+extension UserManagerClient2.UserProfile.CodingKeys : Swift.Equatable {}
+extension UserManagerClient2.UserProfile.CodingKeys : Swift.Hashable {}
+extension UserManagerClient2.UserProfile.CodingKeys : Swift.RawRepresentable {}

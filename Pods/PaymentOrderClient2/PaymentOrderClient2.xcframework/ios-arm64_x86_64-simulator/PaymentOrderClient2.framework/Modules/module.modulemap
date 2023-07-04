@@ -1,0 +1,4 @@
+framework module PaymentOrderClient2 {
+  header "PaymentOrderClient2-Swift.h"
+  requires objc
+}

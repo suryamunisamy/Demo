@@ -1,0 +1,123 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailUserContextSelectorJourney
+import BackbaseDesignSystem
+import Foundation
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import Swift
+import UIKit
+@available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+public protocol AccessControlServiceUseCase {
+  func getServiceAgreements(requestParams: RetailUserContextSelectorJourney.GetServiceAgreementsRequestParams, completion: @escaping (Swift.Result<[RetailUserContextSelectorJourney.ServiceAgreementPartialItem], RetailUserContextSelectorJourney.ErrorResponse>) -> Swift.Void)
+  func postUserContext(requestParams: RetailUserContextSelectorJourney.PostUserContextRequestParams, completion: @escaping (Swift.Result<Swift.Bool, RetailUserContextSelectorJourney.ErrorResponse>) -> Swift.Void)
+}
+extension Bundle {
+  public static var userContextSelector: Foundation.Bundle? {
+    get
+  }
+}
+extension UserContextSelector {
+  @available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+  public struct Configuration {
+    public init()
+    public var strings: RetailUserContextSelectorJourney.UserContextSelector.Strings
+    public var design: RetailUserContextSelectorJourney.UserContextSelector.Design
+    public var router: RetailUserContextSelectorJourney.UserContextSelector.Router
+  }
+}
+extension UserContextSelector {
+  @available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+  public struct Design {
+    public var styles: RetailUserContextSelectorJourney.UserContextSelector.Design.Styles
+    public var errorIcon: (RetailUserContextSelectorJourney.UserContextSelector.Error) -> UIKit.UIImage?
+  }
+}
+extension UserContextSelector {
+  public typealias ErrorFormatter<T> = RetailJourneyCommon.ErrorFormatter<RetailUserContextSelectorJourney.UserContextSelector.Error, T>
+  @available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+  public enum Error : Swift.Error, Swift.Equatable {
+    case emptyList
+    case notConnected
+    case invalidResponse
+    case loadingFailure(underlying: Swift.Error? = nil)
+    case missingMasterUserAgreement
+    public static func == (lhs: RetailUserContextSelectorJourney.UserContextSelector.Error, rhs: RetailUserContextSelectorJourney.UserContextSelector.Error) -> Swift.Bool
+  }
+}
+extension UserContextSelector.Error : RetailDesign.EdgeCase {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var actionButtonTitle: Swift.String? {
+    get
+  }
+}
+@available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+public struct ErrorResponse : Swift.Error, Swift.Equatable {
+  public let statusCode: Swift.Int?
+  public let data: Foundation.Data?
+  public let error: Swift.Error?
+  public init(statusCode: Swift.Int? = nil, data: Foundation.Data? = nil, error: Swift.Error? = nil)
+  public static func == (lhs: RetailUserContextSelectorJourney.ErrorResponse, rhs: RetailUserContextSelectorJourney.ErrorResponse) -> Swift.Bool
+}
+@available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+public struct GetServiceAgreementsRequestParams {
+  public let query: Swift.String?
+  public let from: Swift.Int?
+  public let cursor: Swift.String?
+  public let size: Swift.Int?
+  public init(query: Swift.String? = nil, from: Swift.Int? = nil, cursor: Swift.String? = nil, size: Swift.Int? = nil)
+}
+@available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+public struct PostUserContextRequestParams {
+  public let serviceAgreementId: Swift.String
+  public init(serviceAgreementId: Swift.String)
+}
+extension UserContextSelector {
+  @available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+  public struct Router {
+    public var didGenerateUserContext: (UIKit.UINavigationController?) -> (UIKit.UIViewController?) -> Swift.Void
+  }
+}
+@available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+public struct ServiceAgreementPartialItem : Swift.Equatable {
+  public let identifier: Swift.String
+  public let externalId: Swift.String?
+  public let name: Swift.String
+  public let description: Swift.String
+  public let isMaster: Swift.Bool
+  public let validFromDate: Swift.String?
+  public let validFromTime: Swift.String?
+  public let validUntilDate: Swift.String?
+  public let validUntilTime: Swift.String?
+  public let additions: [Swift.String : Swift.String]?
+  public init(identifier: Swift.String, externalId: Swift.String? = nil, name: Swift.String, description: Swift.String, isMaster: Swift.Bool, validFromDate: Swift.String? = nil, validFromTime: Swift.String? = nil, validUntilDate: Swift.String? = nil, validUntilTime: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: RetailUserContextSelectorJourney.ServiceAgreementPartialItem, b: RetailUserContextSelectorJourney.ServiceAgreementPartialItem) -> Swift.Bool
+}
+extension UserContextSelector {
+  @available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+  public struct Strings {
+    public var errorTitle: (RetailUserContextSelectorJourney.UserContextSelector.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorSubtitle: (RetailUserContextSelectorJourney.UserContextSelector.Error) -> RetailJourneyCommon.LocalizedString
+    public var errorRetryButtonTitle: (RetailUserContextSelectorJourney.UserContextSelector.Error) -> RetailJourneyCommon.LocalizedString?
+  }
+}
+extension UserContextSelector.Design {
+  @available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+  public struct Styles {
+  }
+}
+@available(*, deprecated, message: "`RetailUserContextSelectorJourney` is deprecated. You can use `BusinessWorkspacesJourney` instead.")
+public struct UserContextSelector {
+  public static func build(navigationController: UIKit.UINavigationController? = nil, switchTo viewController: UIKit.UIViewController? = nil) -> UIKit.UIViewController
+}

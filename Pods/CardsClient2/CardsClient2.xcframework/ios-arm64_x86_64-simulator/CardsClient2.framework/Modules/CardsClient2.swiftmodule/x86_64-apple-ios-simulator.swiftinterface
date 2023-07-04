@@ -1,0 +1,347 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CardsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct ActivatePost : Swift.Codable, Swift.Equatable {
+  public var token: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(token: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.ActivatePost, rhs: CardsClient2.ActivatePost) -> Swift.Bool
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [CardsClient2.ErrorItem]?
+  public init(message: Swift.String, errors: [CardsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.BadRequestError, rhs: CardsClient2.BadRequestError) -> Swift.Bool
+}
+public struct CardHolder : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.CardHolder, rhs: CardsClient2.CardHolder) -> Swift.Bool
+}
+public struct CardItem : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var brand: Swift.String
+  public var type: Swift.String
+  public var subType: Swift.String?
+  public var name: Swift.String?
+  public var status: Swift.String
+  public var lockStatus: CardsClient2.LockStatus?
+  public var replacement: CardsClient2.Replacement?
+  public var delivery: CardsClient2.Delivery?
+  public var holder: CardsClient2.CardHolder?
+  public var expiryDate: CardsClient2.YearMonth?
+  public var currency: Swift.String?
+  public var maskedNumber: Swift.String
+  public var limits: [CardsClient2.CardLimit]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, brand: Swift.String, type: Swift.String, subType: Swift.String? = nil, name: Swift.String? = nil, status: Swift.String, lockStatus: CardsClient2.LockStatus? = nil, replacement: CardsClient2.Replacement? = nil, delivery: CardsClient2.Delivery? = nil, holder: CardsClient2.CardHolder? = nil, expiryDate: CardsClient2.YearMonth? = nil, currency: Swift.String? = nil, maskedNumber: Swift.String, limits: [CardsClient2.CardLimit]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.CardItem, rhs: CardsClient2.CardItem) -> Swift.Bool
+}
+public struct CardLimit : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var channel: Swift.String?
+  public var frequency: Swift.String?
+  public var amount: Swift.Double
+  public var maxAmount: Swift.Double
+  public var minAmount: Swift.Double?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, channel: Swift.String? = nil, frequency: Swift.String? = nil, amount: Swift.Double, maxAmount: Swift.Double, minAmount: Swift.Double? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.CardLimit, rhs: CardsClient2.CardLimit) -> Swift.Bool
+}
+public protocol CardsAPIProtocol {
+  func activateCall(id: Swift.String, activatePost: CardsClient2.ActivatePost?) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  func changeLimitsCall(id: Swift.String, changeLimitsPostItem: [CardsClient2.ChangeLimitsPostItem]?) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  func getCardByIdCall(id: Swift.String) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  func getCardsCall(ids: [Swift.String]?, status: [Swift.String]?, types: [Swift.String]?) throws -> ClientCommon.Call<[CardsClient2.CardItem]>
+  func requestPinCall(id: Swift.String, requestPinPost: CardsClient2.RequestPinPost?) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  func requestReplacementCall(id: Swift.String, requestReplacementPost: CardsClient2.RequestReplacementPost?) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  func resetPinCall(id: Swift.String, resetPinPost: CardsClient2.ResetPinPost?) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  func updateLockStatusCall(id: Swift.String, lockStatusPost: CardsClient2.LockStatusPost?) throws -> ClientCommon.Call<CardsClient2.CardItem>
+}
+@objc @_inheritsConvenienceInitializers public class CardsAPI : ObjectiveC.NSObject, DBSClient, CardsClient2.CardsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func activateCall(id: Swift.String, activatePost: CardsClient2.ActivatePost? = nil) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  open func changeLimitsCall(id: Swift.String, changeLimitsPostItem: [CardsClient2.ChangeLimitsPostItem]? = nil) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  open func getCardByIdCall(id: Swift.String) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  open func getCardsCall(ids: [Swift.String]? = nil, status: [Swift.String]? = nil, types: [Swift.String]? = nil) throws -> ClientCommon.Call<[CardsClient2.CardItem]>
+  open func requestPinCall(id: Swift.String, requestPinPost: CardsClient2.RequestPinPost? = nil) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  open func requestReplacementCall(id: Swift.String, requestReplacementPost: CardsClient2.RequestReplacementPost? = nil) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  open func resetPinCall(id: Swift.String, resetPinPost: CardsClient2.ResetPinPost? = nil) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  open func updateLockStatusCall(id: Swift.String, lockStatusPost: CardsClient2.LockStatusPost? = nil) throws -> ClientCommon.Call<CardsClient2.CardItem>
+  @objc deinit
+}
+public struct ChangeLimitsPostItem : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var amount: Swift.Double
+  public var frequency: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, amount: Swift.Double, frequency: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.ChangeLimitsPostItem, rhs: CardsClient2.ChangeLimitsPostItem) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct Contact : Swift.Codable, Swift.Equatable {
+  public var phoneNumber: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(phoneNumber: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.Contact, rhs: CardsClient2.Contact) -> Swift.Bool
+}
+public struct Delivery : Swift.Codable, Swift.Equatable {
+  public var transitSteps: [CardsClient2.DeliveryTransitStep]
+  public var additions: [Swift.String : Swift.String]?
+  public init(transitSteps: [CardsClient2.DeliveryTransitStep], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.Delivery, rhs: CardsClient2.Delivery) -> Swift.Bool
+}
+public struct DeliveryTransitStep : Swift.Codable, Swift.Equatable {
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case success
+    case failed
+    case pending
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [CardsClient2.DeliveryTransitStep.Status]
+    public static var allCases: [CardsClient2.DeliveryTransitStep.Status] {
+      get
+    }
+  }
+  public var name: Swift.String
+  public var status: CardsClient2.DeliveryTransitStep.Status
+  public var stepDateTime: Foundation.Date?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String, status: CardsClient2.DeliveryTransitStep.Status, stepDateTime: Foundation.Date? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.DeliveryTransitStep, rhs: CardsClient2.DeliveryTransitStep) -> Swift.Bool
+}
+public struct Destination : Swift.Codable, Swift.Equatable {
+  public var country: Swift.String
+  public var region: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(country: Swift.String, region: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.Destination, rhs: CardsClient2.Destination) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.ErrorItem, rhs: CardsClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [CardsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [CardsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.ForbiddenError, rhs: CardsClient2.ForbiddenError) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public init(message: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.InternalServerError, rhs: CardsClient2.InternalServerError) -> Swift.Bool
+}
+public enum LockStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case locked
+  case unlocked
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [CardsClient2.LockStatus]
+  public static var allCases: [CardsClient2.LockStatus] {
+    get
+  }
+}
+public struct LockStatusPost : Swift.Codable, Swift.Equatable {
+  public var lockStatus: CardsClient2.LockStatus
+  public var additions: [Swift.String : Swift.String]?
+  public init(lockStatus: CardsClient2.LockStatus, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.LockStatusPost, rhs: CardsClient2.LockStatusPost) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [CardsClient2.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [CardsClient2.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.NotFoundError, rhs: CardsClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct Replacement : Swift.Codable, Swift.Equatable {
+  public var status: Swift.String
+  public var reason: Swift.String?
+  public var replacedById: Swift.String?
+  public var replacingId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(status: Swift.String, reason: Swift.String? = nil, replacedById: Swift.String? = nil, replacingId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.Replacement, rhs: CardsClient2.Replacement) -> Swift.Bool
+}
+public struct RequestPinPost : Swift.Codable, Swift.Equatable {
+  public var token: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(token: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.RequestPinPost, rhs: CardsClient2.RequestPinPost) -> Swift.Bool
+}
+public struct RequestReplacementPost : Swift.Codable, Swift.Equatable {
+  public var replacementReason: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(replacementReason: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.RequestReplacementPost, rhs: CardsClient2.RequestReplacementPost) -> Swift.Bool
+}
+public struct ResetPinPost : Swift.Codable, Swift.Equatable {
+  public var token: Swift.String
+  public var pin: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(token: Swift.String, pin: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.ResetPinPost, rhs: CardsClient2.ResetPinPost) -> Swift.Bool
+}
+public struct TravelNotice : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var cardIds: [Swift.String]
+  public var departureDate: Swift.String
+  public var arrivalDate: Swift.String
+  public var destinations: [CardsClient2.Destination]
+  public var contact: CardsClient2.Contact?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String? = nil, cardIds: [Swift.String], departureDate: Swift.String, arrivalDate: Swift.String, destinations: [CardsClient2.Destination], contact: CardsClient2.Contact? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.TravelNotice, rhs: CardsClient2.TravelNotice) -> Swift.Bool
+}
+public protocol TravelNoticesAPIProtocol {
+  func createTravelNoticeCall(travelNotice: CardsClient2.TravelNotice?) throws -> ClientCommon.Call<CardsClient2.TravelNotice>
+  func deleteTravelNoticeByIdCall(id: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getTravelNoticeByIdCall(id: Swift.String) throws -> ClientCommon.Call<CardsClient2.TravelNotice>
+  func getTravelNoticesCall() throws -> ClientCommon.Call<[CardsClient2.TravelNotice]>
+  func updateTravelNoticeCall(id: Swift.String, travelNotice: CardsClient2.TravelNotice?) throws -> ClientCommon.Call<CardsClient2.TravelNotice>
+}
+@objc @_inheritsConvenienceInitializers public class TravelNoticesAPI : ObjectiveC.NSObject, DBSClient, CardsClient2.TravelNoticesAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func createTravelNoticeCall(travelNotice: CardsClient2.TravelNotice? = nil) throws -> ClientCommon.Call<CardsClient2.TravelNotice>
+  open func deleteTravelNoticeByIdCall(id: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getTravelNoticeByIdCall(id: Swift.String) throws -> ClientCommon.Call<CardsClient2.TravelNotice>
+  open func getTravelNoticesCall() throws -> ClientCommon.Call<[CardsClient2.TravelNotice]>
+  open func updateTravelNoticeCall(id: Swift.String, travelNotice: CardsClient2.TravelNotice? = nil) throws -> ClientCommon.Call<CardsClient2.TravelNotice>
+  @objc deinit
+}
+public struct YearMonth : Swift.Codable, Swift.Equatable {
+  public var year: Swift.String?
+  public var month: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(year: Swift.String? = nil, month: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: CardsClient2.YearMonth, rhs: CardsClient2.YearMonth) -> Swift.Bool
+}
+extension CardsClient2.DeliveryTransitStep.Status : Swift.Equatable {}
+extension CardsClient2.DeliveryTransitStep.Status : Swift.Hashable {}
+extension CardsClient2.DeliveryTransitStep.Status : Swift.RawRepresentable {}
+extension CardsClient2.LockStatus : Swift.Equatable {}
+extension CardsClient2.LockStatus : Swift.Hashable {}
+extension CardsClient2.LockStatus : Swift.RawRepresentable {}

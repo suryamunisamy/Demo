@@ -1,0 +1,91 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailJourneyCommon
+import Foundation
+import RxCocoa
+import RxSwift
+import Swift
+import UIKit
+extension Bundle {
+  public static var common: Foundation.Bundle? {
+    get
+  }
+}
+public typealias ErrorFormatter<E, T> = (E) -> T where E : Swift.Error
+public struct LocalizedString : Swift.ExpressibleByStringLiteral {
+  public init(value: Swift.String)
+  public init(deferredValue: @autoclosure @escaping () -> Swift.String)
+  public init(stringLiteral value: Swift.String)
+  public init(key: Swift.String, in bundles: Foundation.Bundle?...)
+  public func callAsFunction() -> Swift.String
+  public var value: Swift.String {
+    get
+  }
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+extension ObservableType {
+  public func unwrapped<Value>() -> RxSwift.Observable<Value> where Self.Element == Value?
+}
+extension String {
+  public func masked(uptoLast offset: Swift.Int = 4, withCharacter character: Swift.Character = "•") -> Swift.String
+}
+public struct TabItem {
+  public var title: RetailJourneyCommon.LocalizedString?
+  public var image: UIKit.UIImage?
+  public var selectedImage: UIKit.UIImage?
+  public init(title: RetailJourneyCommon.LocalizedString?, image: UIKit.UIImage? = nil, selectedImage: UIKit.UIImage? = nil)
+  public var barItem: UIKit.UITabBarItem {
+    get
+  }
+}
+extension Reactive where Base : UIKit.UITextField {
+  public var placeholder: RxCocoa.ControlProperty<Swift.String?> {
+    get
+  }
+  public var becomeFirstResponder: RxCocoa.ControlProperty<Swift.Void> {
+    get
+  }
+}
+extension Reactive where Base : UIKit.UIViewController {
+  public var viewDidLoad: RxCocoa.ControlEvent<Swift.Void> {
+    get
+  }
+  public var viewWillAppear: RxCocoa.ControlEvent<Swift.Bool> {
+    get
+  }
+  public var viewDidAppear: RxCocoa.ControlEvent<Swift.Bool> {
+    get
+  }
+  public var viewWillDisappear: RxCocoa.ControlEvent<Swift.Bool> {
+    get
+  }
+  public var viewDidDisappear: RxCocoa.ControlEvent<Swift.Bool> {
+    get
+  }
+  public var viewWillLayoutSubviews: RxCocoa.ControlEvent<Swift.Void> {
+    get
+  }
+  public var viewDidLayoutSubviews: RxCocoa.ControlEvent<Swift.Void> {
+    get
+  }
+  public var willMoveToParentViewController: RxCocoa.ControlEvent<UIKit.UIViewController?> {
+    get
+  }
+  public var didMoveToParentViewController: RxCocoa.ControlEvent<UIKit.UIViewController?> {
+    get
+  }
+  public var didReceiveMemoryWarning: RxCocoa.ControlEvent<Swift.Void> {
+    get
+  }
+  public var isVisible: RxSwift.Observable<Swift.Bool> {
+    get
+  }
+  public var isDismissing: RxCocoa.ControlEvent<Swift.Bool> {
+    get
+  }
+  public var keyboardHeight: RxSwift.Observable<CoreGraphics.CGFloat> {
+    get
+  }
+}

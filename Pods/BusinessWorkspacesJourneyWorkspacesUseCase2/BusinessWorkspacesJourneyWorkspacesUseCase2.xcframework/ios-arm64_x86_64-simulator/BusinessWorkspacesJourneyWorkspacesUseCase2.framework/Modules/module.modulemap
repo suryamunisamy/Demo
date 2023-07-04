@@ -1,0 +1,4 @@
+framework module BusinessWorkspacesJourneyWorkspacesUseCase2 {
+  header "BusinessWorkspacesJourneyWorkspacesUseCase2-Swift.h"
+  requires objc
+}

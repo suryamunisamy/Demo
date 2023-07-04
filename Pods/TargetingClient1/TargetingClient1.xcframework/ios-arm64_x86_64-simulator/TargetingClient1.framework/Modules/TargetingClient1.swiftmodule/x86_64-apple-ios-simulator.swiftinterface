@@ -1,0 +1,673 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TargetingClient1
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct AdSpaceResource : Swift.Codable, Swift.Equatable {
+  public var portalName: Swift.String?
+  public var pageName: Swift.String?
+  public var widgetName: Swift.String?
+  public init(portalName: Swift.String? = nil, pageName: Swift.String? = nil, widgetName: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.AdSpaceResource, rhs: TargetingClient1.AdSpaceResource) -> Swift.Bool
+}
+public protocol AudienceAPIProtocol {
+  func getCollectorsContextsCall() throws -> ClientCommon.Call<TargetingClient1.CollectorsDefinitionResource>
+}
+@objc @_inheritsConvenienceInitializers public class AudienceAPI : ObjectiveC.NSObject, DBSClient, TargetingClient1.AudienceAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getCollectorsContextsCall() throws -> ClientCommon.Call<TargetingClient1.CollectorsDefinitionResource>
+  @objc deinit
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [TargetingClient1.ErrorItem]?
+  public init(message: Swift.String, errors: [TargetingClient1.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.BadRequestError, rhs: TargetingClient1.BadRequestError) -> Swift.Bool
+}
+public protocol CampaignAPIProtocol {
+  func createCampaignCall(campaignRequestResource: TargetingClient1.CampaignRequestResource) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  func deleteCampaignCall(campaignId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func disableCampaignCall(campaignId: Swift.String) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  func enableCampaignCall(campaignId: Swift.String) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  func finalizeCampaignCall(campaignId: Swift.String) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  func getCampaignByCampaignIdCall(campaignId: Swift.String, status: [Swift.String]?, version: Swift.Int?) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  func getCampaignsCall() throws -> ClientCommon.Call<[TargetingClient1.CampaignToDisplayResource]>
+  func updateCampaignCall(campaignRequestResource: TargetingClient1.CampaignRequestResource) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+}
+@objc @_inheritsConvenienceInitializers public class CampaignAPI : ObjectiveC.NSObject, DBSClient, TargetingClient1.CampaignAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func createCampaignCall(campaignRequestResource: TargetingClient1.CampaignRequestResource) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  open func deleteCampaignCall(campaignId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func disableCampaignCall(campaignId: Swift.String) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  open func enableCampaignCall(campaignId: Swift.String) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  open func finalizeCampaignCall(campaignId: Swift.String) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  open func getCampaignByCampaignIdCall(campaignId: Swift.String, status: [Swift.String]? = nil, version: Swift.Int? = nil) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  open func getCampaignsCall() throws -> ClientCommon.Call<[TargetingClient1.CampaignToDisplayResource]>
+  open func updateCampaignCall(campaignRequestResource: TargetingClient1.CampaignRequestResource) throws -> ClientCommon.Call<TargetingClient1.CampaignResource>
+  @objc deinit
+}
+public protocol CampaignCreativesAPIProtocol {
+  func addCampaignCreativeCall(campaignId: Swift.String, dimensions: Swift.String, file: Foundation.Data?) throws -> ClientCommon.Call<TargetingClient1.CreativeResource>
+  func deleteCreativeCall(creativeId: Swift.String, campaignId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class CampaignCreativesAPI : ObjectiveC.NSObject, DBSClient, TargetingClient1.CampaignCreativesAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func addCampaignCreativeCall(campaignId: Swift.String, dimensions: Swift.String, file: Foundation.Data? = nil) throws -> ClientCommon.Call<TargetingClient1.CreativeResource>
+  open func deleteCreativeCall(creativeId: Swift.String, campaignId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public protocol CampaignMetricsAPIProtocol {
+  func getCampaignMetricsCall(campaignId: Swift.String) throws -> ClientCommon.Call<TargetingClient1.MetricsResource>
+  func redirectCampaignCall(utmContent: Swift.String, utmCampaign: Swift.String, key: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class CampaignMetricsAPI : ObjectiveC.NSObject, DBSClient, TargetingClient1.CampaignMetricsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getCampaignMetricsCall(campaignId: Swift.String) throws -> ClientCommon.Call<TargetingClient1.MetricsResource>
+  open func redirectCampaignCall(utmContent: Swift.String, utmCampaign: Swift.String, key: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct CampaignRequestResource : Swift.Codable, Swift.Equatable {
+  public enum Priority : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case low
+    case medium
+    case high
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.CampaignRequestResource.Priority]
+    public static var allCases: [TargetingClient1.CampaignRequestResource.Priority] {
+      get
+    }
+  }
+  public var name: Swift.String
+  public var uuid: Foundation.UUID?
+  public var ruleSet: Swift.String?
+  public var locale: Swift.String?
+  public var version: Swift.Int?
+  public var targetUrl: Swift.String
+  public var targetUrlDisplayMode: TargetingClient1.TargetUrlDisplayModeResource?
+  public var startDate: Foundation.Date?
+  public var endDate: Foundation.Date?
+  public var priority: TargetingClient1.CampaignRequestResource.Priority?
+  public var creatives: [TargetingClient1.CreativeResource]?
+  public var spaces: [TargetingClient1.AdSpaceResource]?
+  public init(name: Swift.String, uuid: Foundation.UUID? = nil, ruleSet: Swift.String? = nil, locale: Swift.String? = nil, version: Swift.Int? = nil, targetUrl: Swift.String, targetUrlDisplayMode: TargetingClient1.TargetUrlDisplayModeResource? = nil, startDate: Foundation.Date? = nil, endDate: Foundation.Date? = nil, priority: TargetingClient1.CampaignRequestResource.Priority? = nil, creatives: [TargetingClient1.CreativeResource]? = nil, spaces: [TargetingClient1.AdSpaceResource]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.CampaignRequestResource, rhs: TargetingClient1.CampaignRequestResource) -> Swift.Bool
+}
+public struct CampaignResource : Swift.Codable, Swift.Equatable {
+  public enum Priority : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case low
+    case medium
+    case high
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.CampaignResource.Priority]
+    public static var allCases: [TargetingClient1.CampaignResource.Priority] {
+      get
+    }
+  }
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case draft
+    case _final
+    case superseded
+    case archived
+    case paused
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.CampaignResource.Status]
+    public static var allCases: [TargetingClient1.CampaignResource.Status] {
+      get
+    }
+  }
+  public var name: Swift.String
+  public var uuid: Foundation.UUID
+  public var version: Swift.Int
+  public var ruleSet: Swift.String?
+  public var comment: Swift.String?
+  public var locale: Swift.String?
+  public var targetUrl: Swift.String
+  public var targetUrlDisplayMode: TargetingClient1.TargetUrlDisplayModeResource?
+  public var startDate: Foundation.Date
+  public var endDate: Foundation.Date
+  public var priority: TargetingClient1.CampaignResource.Priority
+  public var status: TargetingClient1.CampaignResource.Status
+  public var creatives: [TargetingClient1.CreativeResource]?
+  public var spaces: [TargetingClient1.AdSpaceResource]?
+  public init(name: Swift.String, uuid: Foundation.UUID, version: Swift.Int, ruleSet: Swift.String? = nil, comment: Swift.String? = nil, locale: Swift.String? = nil, targetUrl: Swift.String, targetUrlDisplayMode: TargetingClient1.TargetUrlDisplayModeResource? = nil, startDate: Foundation.Date, endDate: Foundation.Date, priority: TargetingClient1.CampaignResource.Priority, status: TargetingClient1.CampaignResource.Status, creatives: [TargetingClient1.CreativeResource]? = nil, spaces: [TargetingClient1.AdSpaceResource]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.CampaignResource, rhs: TargetingClient1.CampaignResource) -> Swift.Bool
+}
+public struct CampaignToDisplayResource : Swift.Codable, Swift.Equatable {
+  public enum Priority : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case low
+    case medium
+    case high
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.CampaignToDisplayResource.Priority]
+    public static var allCases: [TargetingClient1.CampaignToDisplayResource.Priority] {
+      get
+    }
+  }
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case draft
+    case _final
+    case archived
+    case superseded
+    case paused
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.CampaignToDisplayResource.Status]
+    public static var allCases: [TargetingClient1.CampaignToDisplayResource.Status] {
+      get
+    }
+  }
+  public var name: Swift.String
+  public var uuid: Swift.String
+  public var version: Swift.Int
+  public var ruleSet: Swift.String?
+  public var comment: Swift.String?
+  public var locale: Swift.String?
+  public var targetUrl: Swift.String
+  public var targetUrlDisplayMode: TargetingClient1.TargetUrlDisplayModeResource?
+  public var startDate: Foundation.Date
+  public var endDate: Foundation.Date
+  public var priority: TargetingClient1.CampaignToDisplayResource.Priority
+  public var status: TargetingClient1.CampaignToDisplayResource.Status
+  public var creatives: [TargetingClient1.CreativeResource]?
+  public var spaces: [TargetingClient1.AdSpaceResource]?
+  public var hasChanges: Swift.Bool?
+  public var metrics: TargetingClient1.ConsolidatedMetricsResource?
+  public init(name: Swift.String, uuid: Swift.String, version: Swift.Int, ruleSet: Swift.String? = nil, comment: Swift.String? = nil, locale: Swift.String? = nil, targetUrl: Swift.String, targetUrlDisplayMode: TargetingClient1.TargetUrlDisplayModeResource? = nil, startDate: Foundation.Date, endDate: Foundation.Date, priority: TargetingClient1.CampaignToDisplayResource.Priority, status: TargetingClient1.CampaignToDisplayResource.Status, creatives: [TargetingClient1.CreativeResource]? = nil, spaces: [TargetingClient1.AdSpaceResource]? = nil, hasChanges: Swift.Bool? = nil, metrics: TargetingClient1.ConsolidatedMetricsResource? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.CampaignToDisplayResource, rhs: TargetingClient1.CampaignToDisplayResource) -> Swift.Bool
+}
+public struct ClicksAndImpressionsResource : Swift.Codable, Swift.Equatable {
+  public var clicks: Swift.Int?
+  public var impressions: Swift.Int?
+  public init(clicks: Swift.Int? = nil, impressions: Swift.Int? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.ClicksAndImpressionsResource, rhs: TargetingClient1.ClicksAndImpressionsResource) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+public struct CollectorDefinitionResource : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var icon: Swift.String?
+  public var label: Swift.String?
+  public var description: Swift.String?
+  public var selectors: [TargetingClient1.SelectorResource]?
+  public init(id: Swift.String? = nil, icon: Swift.String? = nil, label: Swift.String? = nil, description: Swift.String? = nil, selectors: [TargetingClient1.SelectorResource]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.CollectorDefinitionResource, rhs: TargetingClient1.CollectorDefinitionResource) -> Swift.Bool
+}
+public struct CollectorsDefinitionResource : Swift.Codable, Swift.Equatable {
+  public var collectors: [TargetingClient1.CollectorDefinitionResource]?
+  public var types: [TargetingClient1.SelectorTypeResource]?
+  public init(collectors: [TargetingClient1.CollectorDefinitionResource]? = nil, types: [TargetingClient1.SelectorTypeResource]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.CollectorsDefinitionResource, rhs: TargetingClient1.CollectorsDefinitionResource) -> Swift.Bool
+}
+public struct CommandExecutionResource : Swift.Codable, Swift.Equatable {
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case success
+    case failure
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.CommandExecutionResource.Status]
+    public static var allCases: [TargetingClient1.CommandExecutionResource.Status] {
+      get
+    }
+  }
+  public var status: TargetingClient1.CommandExecutionResource.Status
+  public var detail: Swift.String?
+  public var userId: Swift.String?
+  public var entries: [Swift.String : [Swift.String]]?
+  public var collectorId: Swift.String?
+  public init(status: TargetingClient1.CommandExecutionResource.Status, detail: Swift.String? = nil, userId: Swift.String? = nil, entries: [Swift.String : [Swift.String]]? = nil, collectorId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.CommandExecutionResource, rhs: TargetingClient1.CommandExecutionResource) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct ConsolidatedMetricsResource : Swift.Codable, Swift.Equatable {
+  public var clicks: Swift.Int?
+  public var impressions: Swift.Int?
+  public init(clicks: Swift.Int? = nil, impressions: Swift.Int? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.ConsolidatedMetricsResource, rhs: TargetingClient1.ConsolidatedMetricsResource) -> Swift.Bool
+}
+public struct CreativeResource : Swift.Codable, Swift.Equatable {
+  public enum ModelType : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case html
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.CreativeResource.ModelType]
+    public static var allCases: [TargetingClient1.CreativeResource.ModelType] {
+      get
+    }
+  }
+  public enum EntryAsset : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case indexHtml
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.CreativeResource.EntryAsset]
+    public static var allCases: [TargetingClient1.CreativeResource.EntryAsset] {
+      get
+    }
+  }
+  public var uuid: Foundation.UUID
+  public var type: TargetingClient1.CreativeResource.ModelType?
+  public var dimensions: Swift.String
+  public var filename: Swift.String?
+  public var basePath: Swift.String?
+  public var bundle: Swift.String?
+  public var entryAsset: TargetingClient1.CreativeResource.EntryAsset?
+  public init(uuid: Foundation.UUID, type: TargetingClient1.CreativeResource.ModelType? = nil, dimensions: Swift.String, filename: Swift.String? = nil, basePath: Swift.String? = nil, bundle: Swift.String? = nil, entryAsset: TargetingClient1.CreativeResource.EntryAsset? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.CreativeResource, rhs: TargetingClient1.CreativeResource) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.ErrorItem, rhs: TargetingClient1.ErrorItem) -> Swift.Bool
+}
+public struct ErrorResource : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public init(message: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.ErrorResource, rhs: TargetingClient1.ErrorResource) -> Swift.Bool
+}
+public protocol ExecuteAPIProtocol {
+  func executeCall(cookie: Swift.String?) throws -> ClientCommon.Call<TargetingClient1.CommandExecutionResource>
+}
+@objc @_inheritsConvenienceInitializers public class ExecuteAPI : ObjectiveC.NSObject, DBSClient, TargetingClient1.ExecuteAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func executeCall(cookie: Swift.String? = nil) throws -> ClientCommon.Call<TargetingClient1.CommandExecutionResource>
+  @objc deinit
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct FileUploadRequest : Swift.Codable, Swift.Equatable {
+  public var file: Foundation.Data?
+  public init(file: Foundation.Data? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.FileUploadRequest, rhs: TargetingClient1.FileUploadRequest) -> Swift.Bool
+}
+public struct MetricsResource : Swift.Codable, Swift.Equatable {
+  public var unit: Swift.String
+  public var metrics: [Swift.String : TargetingClient1.ClicksAndImpressionsResource]
+  public var consolidated: TargetingClient1.ClicksAndImpressionsResource
+  public var creatives: [Swift.String : TargetingClient1.ClicksAndImpressionsResource]
+  public init(unit: Swift.String, metrics: [Swift.String : TargetingClient1.ClicksAndImpressionsResource], consolidated: TargetingClient1.ClicksAndImpressionsResource, creatives: [Swift.String : TargetingClient1.ClicksAndImpressionsResource])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.MetricsResource, rhs: TargetingClient1.MetricsResource) -> Swift.Bool
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [TargetingClient1.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [TargetingClient1.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.NotFoundError, rhs: TargetingClient1.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct PossibleValueResource : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var label: Swift.String?
+  public init(id: Swift.String? = nil, label: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.PossibleValueResource, rhs: TargetingClient1.PossibleValueResource) -> Swift.Bool
+}
+public struct RuleSetResource : Swift.Codable, Swift.Equatable {
+  public var alternativeId: Foundation.UUID
+  public var ruleSetXml: Swift.String
+  public init(alternativeId: Foundation.UUID, ruleSetXml: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.RuleSetResource, rhs: TargetingClient1.RuleSetResource) -> Swift.Bool
+}
+public struct RuleSetSelectionRequestResource : Swift.Codable, Swift.Equatable {
+  public var alternativeRuleSets: [TargetingClient1.RuleSetResource]
+  public var entries: [Swift.String : [Swift.String]]?
+  public var portalName: Swift.String?
+  public init(alternativeRuleSets: [TargetingClient1.RuleSetResource], entries: [Swift.String : [Swift.String]]? = nil, portalName: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.RuleSetSelectionRequestResource, rhs: TargetingClient1.RuleSetSelectionRequestResource) -> Swift.Bool
+}
+public protocol SelectAPIProtocol {
+  func selectCall(ruleSetSelectionRequestResource: TargetingClient1.RuleSetSelectionRequestResource, cookie: Swift.String?) throws -> ClientCommon.Call<TargetingClient1.SelectedRuleSetResource>
+}
+@objc @_inheritsConvenienceInitializers public class SelectAPI : ObjectiveC.NSObject, DBSClient, TargetingClient1.SelectAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func selectCall(ruleSetSelectionRequestResource: TargetingClient1.RuleSetSelectionRequestResource, cookie: Swift.String? = nil) throws -> ClientCommon.Call<TargetingClient1.SelectedRuleSetResource>
+  @objc deinit
+}
+public protocol SelectCampaignAPIProtocol {
+  func selectCampaignCall(spaceId: Swift.String, dimensions: Swift.String, locale: Swift.String, cookie: Swift.String?) throws -> ClientCommon.Call<TargetingClient1.SelectedCampaignResource>
+  func selectCampaignWithEntriesCall(spaceId: Swift.String, dimensions: Swift.String, locale: Swift.String, cookie: Swift.String?, requestBody: [Swift.String : [Swift.String]]?) throws -> ClientCommon.Call<TargetingClient1.SelectedCampaignResource>
+}
+@objc @_inheritsConvenienceInitializers public class SelectCampaignAPI : ObjectiveC.NSObject, DBSClient, TargetingClient1.SelectCampaignAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func selectCampaignCall(spaceId: Swift.String, dimensions: Swift.String, locale: Swift.String, cookie: Swift.String? = nil) throws -> ClientCommon.Call<TargetingClient1.SelectedCampaignResource>
+  open func selectCampaignWithEntriesCall(spaceId: Swift.String, dimensions: Swift.String, locale: Swift.String, cookie: Swift.String? = nil, requestBody: [Swift.String : [Swift.String]]? = nil) throws -> ClientCommon.Call<TargetingClient1.SelectedCampaignResource>
+  @objc deinit
+}
+public struct SelectedCampaignResource : Swift.Codable, Swift.Equatable {
+  public var targetUrl: Swift.String
+  public var targetUrlDisplayMode: TargetingClient1.TargetUrlDisplayModeResource?
+  public var creative: TargetingClient1.CreativeResource
+  public init(targetUrl: Swift.String, targetUrlDisplayMode: TargetingClient1.TargetUrlDisplayModeResource? = nil, creative: TargetingClient1.CreativeResource)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.SelectedCampaignResource, rhs: TargetingClient1.SelectedCampaignResource) -> Swift.Bool
+}
+public struct SelectedRuleSetResource : Swift.Codable, Swift.Equatable {
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case found
+    case notFound
+    case error
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [TargetingClient1.SelectedRuleSetResource.Status]
+    public static var allCases: [TargetingClient1.SelectedRuleSetResource.Status] {
+      get
+    }
+  }
+  public var status: TargetingClient1.SelectedRuleSetResource.Status
+  public var detail: Swift.String?
+  public var selected: Foundation.UUID?
+  public init(status: TargetingClient1.SelectedRuleSetResource.Status, detail: Swift.String? = nil, selected: Foundation.UUID? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.SelectedRuleSetResource, rhs: TargetingClient1.SelectedRuleSetResource) -> Swift.Bool
+}
+public struct SelectorOperatorResource : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var label: Swift.String?
+  public var description: Swift.String?
+  public init(id: Swift.String? = nil, label: Swift.String? = nil, description: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.SelectorOperatorResource, rhs: TargetingClient1.SelectorOperatorResource) -> Swift.Bool
+}
+public struct SelectorResource : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var type: Swift.String?
+  public var label: Swift.String?
+  public var description: Swift.String?
+  public var display: Swift.String?
+  public var unit: Swift.String?
+  public var step: Swift.Int?
+  public var min: Swift.Int?
+  public var max: Swift.Int?
+  public var defaultValueId: Swift.String?
+  public var possibleValues: [TargetingClient1.PossibleValueResource]?
+  public init(id: Swift.String? = nil, type: Swift.String? = nil, label: Swift.String? = nil, description: Swift.String? = nil, display: Swift.String? = nil, unit: Swift.String? = nil, step: Swift.Int? = nil, min: Swift.Int? = nil, max: Swift.Int? = nil, defaultValueId: Swift.String? = nil, possibleValues: [TargetingClient1.PossibleValueResource]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.SelectorResource, rhs: TargetingClient1.SelectorResource) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case id
+    case type
+    case label
+    case description
+    case display
+    case unit
+    case step
+    case min
+    case max
+    case defaultValueId
+    case possibleValues
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [TargetingClient1.SelectorResource.CodingKeys]
+    public static var allCases: [TargetingClient1.SelectorResource.CodingKeys] {
+      get
+    }
+  }
+}
+public struct SelectorTypeResource : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var defaultOperatorId: Swift.String?
+  public var operators: [TargetingClient1.SelectorOperatorResource]?
+  public init(id: Swift.String? = nil, defaultOperatorId: Swift.String? = nil, operators: [TargetingClient1.SelectorOperatorResource]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.SelectorTypeResource, rhs: TargetingClient1.SelectorTypeResource) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case id
+    case defaultOperatorId
+    case operators
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [TargetingClient1.SelectorTypeResource.CodingKeys]
+    public static var allCases: [TargetingClient1.SelectorTypeResource.CodingKeys] {
+      get
+    }
+  }
+}
+public protocol SpacesAPIProtocol {
+  func spacesCall() throws -> ClientCommon.Call<TargetingClient1.SpacesConfigurationResource>
+}
+@objc @_inheritsConvenienceInitializers public class SpacesAPI : ObjectiveC.NSObject, DBSClient, TargetingClient1.SpacesAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func spacesCall() throws -> ClientCommon.Call<TargetingClient1.SpacesConfigurationResource>
+  @objc deinit
+}
+public struct SpacesConfigurationResource : Swift.Codable, Swift.Equatable {
+  public var enabled: Swift.Bool?
+  public init(enabled: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.SpacesConfigurationResource, rhs: TargetingClient1.SpacesConfigurationResource) -> Swift.Bool
+}
+public enum TargetUrlDisplayModeResource : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case _self
+  case blank
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [TargetingClient1.TargetUrlDisplayModeResource]
+  public static var allCases: [TargetingClient1.TargetUrlDisplayModeResource] {
+    get
+  }
+}
+public struct UnauthorizedError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var errors: [TargetingClient1.ErrorItem]?
+  public init(message: Swift.String? = nil, errors: [TargetingClient1.ErrorItem]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: TargetingClient1.UnauthorizedError, rhs: TargetingClient1.UnauthorizedError) -> Swift.Bool
+}
+extension TargetingClient1.CampaignRequestResource.Priority : Swift.Equatable {}
+extension TargetingClient1.CampaignRequestResource.Priority : Swift.Hashable {}
+extension TargetingClient1.CampaignRequestResource.Priority : Swift.RawRepresentable {}
+extension TargetingClient1.CampaignResource.Priority : Swift.Equatable {}
+extension TargetingClient1.CampaignResource.Priority : Swift.Hashable {}
+extension TargetingClient1.CampaignResource.Priority : Swift.RawRepresentable {}
+extension TargetingClient1.CampaignResource.Status : Swift.Equatable {}
+extension TargetingClient1.CampaignResource.Status : Swift.Hashable {}
+extension TargetingClient1.CampaignResource.Status : Swift.RawRepresentable {}
+extension TargetingClient1.CampaignToDisplayResource.Priority : Swift.Equatable {}
+extension TargetingClient1.CampaignToDisplayResource.Priority : Swift.Hashable {}
+extension TargetingClient1.CampaignToDisplayResource.Priority : Swift.RawRepresentable {}
+extension TargetingClient1.CampaignToDisplayResource.Status : Swift.Equatable {}
+extension TargetingClient1.CampaignToDisplayResource.Status : Swift.Hashable {}
+extension TargetingClient1.CampaignToDisplayResource.Status : Swift.RawRepresentable {}
+extension TargetingClient1.CommandExecutionResource.Status : Swift.Equatable {}
+extension TargetingClient1.CommandExecutionResource.Status : Swift.Hashable {}
+extension TargetingClient1.CommandExecutionResource.Status : Swift.RawRepresentable {}
+extension TargetingClient1.CreativeResource.ModelType : Swift.Equatable {}
+extension TargetingClient1.CreativeResource.ModelType : Swift.Hashable {}
+extension TargetingClient1.CreativeResource.ModelType : Swift.RawRepresentable {}
+extension TargetingClient1.CreativeResource.EntryAsset : Swift.Equatable {}
+extension TargetingClient1.CreativeResource.EntryAsset : Swift.Hashable {}
+extension TargetingClient1.CreativeResource.EntryAsset : Swift.RawRepresentable {}
+extension TargetingClient1.SelectedRuleSetResource.Status : Swift.Equatable {}
+extension TargetingClient1.SelectedRuleSetResource.Status : Swift.Hashable {}
+extension TargetingClient1.SelectedRuleSetResource.Status : Swift.RawRepresentable {}
+extension TargetingClient1.SelectorResource.CodingKeys : Swift.Equatable {}
+extension TargetingClient1.SelectorResource.CodingKeys : Swift.Hashable {}
+extension TargetingClient1.SelectorResource.CodingKeys : Swift.RawRepresentable {}
+extension TargetingClient1.SelectorTypeResource.CodingKeys : Swift.Equatable {}
+extension TargetingClient1.SelectorTypeResource.CodingKeys : Swift.Hashable {}
+extension TargetingClient1.SelectorTypeResource.CodingKeys : Swift.RawRepresentable {}
+extension TargetingClient1.TargetUrlDisplayModeResource : Swift.Equatable {}
+extension TargetingClient1.TargetUrlDisplayModeResource : Swift.Hashable {}
+extension TargetingClient1.TargetUrlDisplayModeResource : Swift.RawRepresentable {}

@@ -1,0 +1,4 @@
+framework module NotificationsClient2 {
+  header "NotificationsClient2-Swift.h"
+  requires objc
+}

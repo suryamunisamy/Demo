@@ -1,0 +1,4 @@
+framework module NotificationsJourneyNotificationSettingsUseCase {
+  header "NotificationsJourneyNotificationSettingsUseCase-Swift.h"
+  requires objc
+}

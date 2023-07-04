@@ -1,0 +1,4 @@
+framework module UserProfileJourney {
+  header "UserProfileJourney-Swift.h"
+  requires objc
+}

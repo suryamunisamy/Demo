@@ -1,0 +1,4 @@
+framework module RetailAccountsAndTransactionsJourneyTransactionsUseCase {
+  header "RetailAccountsAndTransactionsJourneyTransactionsUseCase-Swift.h"
+  requires objc
+}

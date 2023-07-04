@@ -1,0 +1,4 @@
+framework module RetailAccountsAndTransactionsFinancialInstitutionsUseCase {
+  header "RetailAccountsAndTransactionsFinancialInstitutionsUseCase-Swift.h"
+  requires objc
+}

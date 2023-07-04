@@ -1,0 +1,421 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ContentServicesClient1
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct ApiContentRemovePostResponse : Swift.Codable, Swift.Equatable {
+  public var repositoryId: Swift.String
+  public var ids: [Swift.String]
+  public init(repositoryId: Swift.String, ids: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.ApiContentRemovePostResponse, rhs: ContentServicesClient1.ApiContentRemovePostResponse) -> Swift.Bool
+}
+public struct BundleImportPostRequestBody : Swift.Codable, Swift.Equatable {
+  public var file: Foundation.URL?
+  public init(file: Foundation.URL? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.BundleImportPostRequestBody, rhs: ContentServicesClient1.BundleImportPostRequestBody) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public protocol ContentExportAPIProtocol {
+  func writeExportContentBundleOnClientCallCall(repositoryId: Swift.String, optionalMeta: Swift.String?, requestBody: [Swift.String]?) throws -> ClientCommon.Call<Foundation.Data>
+}
+@objc @_inheritsConvenienceInitializers public class ContentExportAPI : ObjectiveC.NSObject, DBSClient, ContentServicesClient1.ContentExportAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func writeExportContentBundleOnClientCallCall(repositoryId: Swift.String, optionalMeta: Swift.String? = nil, requestBody: [Swift.String]? = nil) throws -> ClientCommon.Call<Foundation.Data>
+  @objc deinit
+}
+public protocol ContentImportAPIProtocol {
+  func importContentCall(repositoryId: Swift.String, parentPath: Swift.String?, createPath: Swift.Bool?, overwrite: Swift.Bool?, createRepository: Swift.Bool?, file: Foundation.URL?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class ContentImportAPI : ObjectiveC.NSObject, DBSClient, ContentServicesClient1.ContentImportAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func importContentCall(repositoryId: Swift.String, parentPath: Swift.String? = nil, createPath: Swift.Bool? = nil, overwrite: Swift.Bool? = nil, createRepository: Swift.Bool? = nil, file: Foundation.URL? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public protocol ContentManagementAPIProtocol {
+  func handleContentUploadCall(repositoryId: Swift.String, targetPath: Swift.String, file: Foundation.URL, name: Swift.String, cmisobjectTypeId: ContentServicesClient1.ContentManagementAPI.CmisobjectTypeId_handleContentUpload?, cmiscreatedBy: Swift.String?, cmislastModifiedBy: Swift.String?, bbtitle: Swift.String?, cmischangeToken: Swift.String?) throws -> ClientCommon.Call<ContentServicesClient1.Document>
+  func moveContentCall(requestBody: [Any]?) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  func queryContentCall(queryRequest: ContentServicesClient1.QueryRequest?) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  func removeContentCall(contentRemoveRequest: ContentServicesClient1.ContentRemoveRequest?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func revertContentCall(itemToRevert: [ContentServicesClient1.ItemToRevert]?) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  func saveContentCall(document: [ContentServicesClient1.Document]?) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  func searchContentCall(searchRequest: ContentServicesClient1.SearchRequest?) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+}
+@objc @_inheritsConvenienceInitializers public class ContentManagementAPI : ObjectiveC.NSObject, DBSClient, ContentServicesClient1.ContentManagementAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  public enum CmisobjectTypeId_handleContentUpload : Swift.String, Swift.CaseIterable {
+    case cmisDocument
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [ContentServicesClient1.ContentManagementAPI.CmisobjectTypeId_handleContentUpload]
+    public static var allCases: [ContentServicesClient1.ContentManagementAPI.CmisobjectTypeId_handleContentUpload] {
+      get
+    }
+  }
+  open func handleContentUploadCall(repositoryId: Swift.String, targetPath: Swift.String, file: Foundation.URL, name: Swift.String, cmisobjectTypeId: ContentServicesClient1.ContentManagementAPI.CmisobjectTypeId_handleContentUpload? = nil, cmiscreatedBy: Swift.String? = nil, cmislastModifiedBy: Swift.String? = nil, bbtitle: Swift.String? = nil, cmischangeToken: Swift.String? = nil) throws -> ClientCommon.Call<ContentServicesClient1.Document>
+  open func moveContentCall(requestBody: [Any]? = nil) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  open func queryContentCall(queryRequest: ContentServicesClient1.QueryRequest? = nil) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  open func removeContentCall(contentRemoveRequest: ContentServicesClient1.ContentRemoveRequest? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func revertContentCall(itemToRevert: [ContentServicesClient1.ItemToRevert]? = nil) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  open func saveContentCall(document: [ContentServicesClient1.Document]? = nil) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  open func searchContentCall(searchRequest: ContentServicesClient1.SearchRequest? = nil) throws -> ClientCommon.Call<[ContentServicesClient1.Document]>
+  @objc deinit
+}
+public struct ContentRemoveRequest : Swift.Codable, Swift.Equatable {
+  public var repositoryId: Swift.String
+  public var ids: [Swift.String]
+  public init(repositoryId: Swift.String, ids: [Swift.String])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.ContentRemoveRequest, rhs: ContentServicesClient1.ContentRemoveRequest) -> Swift.Bool
+}
+public protocol ContentStreamAPIProtocol {
+  func renderContentStreamByIdCall(repositoryId: Swift.String, objectId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  func renderContentStreamByPathCall(repositoryId: Swift.String, objectPath: Swift.String, versionLabel: Swift.String?) throws -> ClientCommon.Call<Foundation.Data>
+  func renderContentStreamByPathClientApiCall(repositoryId: Swift.String, objectPath: Swift.String, versionLabel: Swift.String?) throws -> ClientCommon.Call<Foundation.Data>
+  func renderContentStreamByRelationshipIdCall(relationshipId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+}
+@objc @_inheritsConvenienceInitializers public class ContentStreamAPI : ObjectiveC.NSObject, DBSClient, ContentServicesClient1.ContentStreamAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func renderContentStreamByIdCall(repositoryId: Swift.String, objectId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  open func renderContentStreamByPathCall(repositoryId: Swift.String, objectPath: Swift.String, versionLabel: Swift.String? = nil) throws -> ClientCommon.Call<Foundation.Data>
+  open func renderContentStreamByPathClientApiCall(repositoryId: Swift.String, objectPath: Swift.String, versionLabel: Swift.String? = nil) throws -> ClientCommon.Call<Foundation.Data>
+  open func renderContentStreamByRelationshipIdCall(relationshipId: Swift.String) throws -> ClientCommon.Call<Foundation.Data>
+  @objc deinit
+}
+public struct Document : Swift.Codable, Swift.Equatable {
+  public var path: Swift.String?
+  public var id: Swift.String?
+  public var repositoryId: Swift.String?
+  public var type: Swift.String?
+  public var creationDate: Swift.String?
+  public var lastModifiationDate: Swift.String?
+  public var properties: [Swift.String : Swift.String]?
+  public var renditions: [ContentServicesClient1.Rendition]?
+  public var children: [Swift.String]?
+  public var relationships: [Swift.String]?
+  public var versions: [Swift.String]?
+  public var links: Any?
+  public init(path: Swift.String? = nil, id: Swift.String? = nil, repositoryId: Swift.String? = nil, type: Swift.String? = nil, creationDate: Swift.String? = nil, lastModifiationDate: Swift.String? = nil, properties: [Swift.String : Swift.String]? = nil, renditions: [ContentServicesClient1.Rendition]? = nil, children: [Swift.String]? = nil, relationships: [Swift.String]? = nil, versions: [Swift.String]? = nil, links: Any? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.Document, rhs: ContentServicesClient1.Document) -> Swift.Bool
+}
+public struct DocumentFormRequestBody : Swift.Codable, Swift.Equatable {
+  public enum CmisobjectTypeId : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case cmisDocument
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [ContentServicesClient1.DocumentFormRequestBody.CmisobjectTypeId]
+    public static var allCases: [ContentServicesClient1.DocumentFormRequestBody.CmisobjectTypeId] {
+      get
+    }
+  }
+  public var targetPath: Swift.String?
+  public var file: Foundation.URL?
+  public var name: Swift.String?
+  public var cmisobjectTypeId: ContentServicesClient1.DocumentFormRequestBody.CmisobjectTypeId?
+  public var cmiscreatedBy: Swift.String?
+  public var cmislastModifiedBy: Swift.String?
+  public var bbtitle: Swift.String?
+  public var cmischangeToken: Swift.String?
+  public var repositoryId: Swift.String?
+  public init(targetPath: Swift.String? = nil, file: Foundation.URL? = nil, name: Swift.String? = nil, cmisobjectTypeId: ContentServicesClient1.DocumentFormRequestBody.CmisobjectTypeId? = nil, cmiscreatedBy: Swift.String? = nil, cmislastModifiedBy: Swift.String? = nil, bbtitle: Swift.String? = nil, cmischangeToken: Swift.String? = nil, repositoryId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.DocumentFormRequestBody, rhs: ContentServicesClient1.DocumentFormRequestBody) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case targetPath
+    case file
+    case name
+    case cmisobjectTypeId
+    case cmiscreatedBy
+    case cmislastModifiedBy
+    case bbtitle
+    case cmischangeToken
+    case repositoryId
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [ContentServicesClient1.DocumentFormRequestBody.CodingKeys]
+    public static var allCases: [ContentServicesClient1.DocumentFormRequestBody.CodingKeys] {
+      get
+    }
+  }
+}
+public struct DocumentToCreateOrUpdate : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var path: Swift.String?
+  public var repositoryId: Swift.String
+  public var type: Swift.String?
+  public var content: Swift.String?
+  public var mimeType: Swift.String?
+  public var length: Swift.Int?
+  public var properties: [Swift.String : Swift.String]?
+  public init(id: Swift.String? = nil, path: Swift.String? = nil, repositoryId: Swift.String, type: Swift.String? = nil, content: Swift.String? = nil, mimeType: Swift.String? = nil, length: Swift.Int? = nil, properties: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.DocumentToCreateOrUpdate, rhs: ContentServicesClient1.DocumentToCreateOrUpdate) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct InlineObject : Swift.Codable, Swift.Equatable {
+  public enum CmisobjectTypeId : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case cmisDocument
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [ContentServicesClient1.InlineObject.CmisobjectTypeId]
+    public static var allCases: [ContentServicesClient1.InlineObject.CmisobjectTypeId] {
+      get
+    }
+  }
+  public var targetPath: Swift.String
+  public var file: Foundation.URL
+  public var name: Swift.String
+  public var cmisobjectTypeId: ContentServicesClient1.InlineObject.CmisobjectTypeId?
+  public var cmiscreatedBy: Swift.String?
+  public var cmislastModifiedBy: Swift.String?
+  public var bbtitle: Swift.String?
+  public var cmischangeToken: Swift.String?
+  public init(targetPath: Swift.String, file: Foundation.URL, name: Swift.String, cmisobjectTypeId: ContentServicesClient1.InlineObject.CmisobjectTypeId? = nil, cmiscreatedBy: Swift.String? = nil, cmislastModifiedBy: Swift.String? = nil, bbtitle: Swift.String? = nil, cmischangeToken: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.InlineObject, rhs: ContentServicesClient1.InlineObject) -> Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case targetPath
+    case file
+    case name
+    case cmisobjectTypeId
+    case cmiscreatedBy
+    case cmislastModifiedBy
+    case bbtitle
+    case cmischangeToken
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+    public typealias AllCases = [ContentServicesClient1.InlineObject.CodingKeys]
+    public static var allCases: [ContentServicesClient1.InlineObject.CodingKeys] {
+      get
+    }
+  }
+}
+public struct ItemToRevert : Swift.Codable, Swift.Equatable {
+  public var repositoryId: Swift.String
+  public var id: Swift.String
+  public var version: Swift.String
+  public init(repositoryId: Swift.String, id: Swift.String, version: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.ItemToRevert, rhs: ContentServicesClient1.ItemToRevert) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public struct QueryRequest : Swift.Codable, Swift.Equatable {
+  public var ids: [Swift.String]?
+  public var inlineRelationshipsContent: Swift.Bool?
+  public var loadChildren: Swift.Bool?
+  public var loadContentForMimeTypes: [Swift.String]?
+  public var loadContentForTypes: [Swift.String]?
+  public var loadProperties: Swift.Bool?
+  public var loadRecursiveRelationships: Swift.Bool?
+  public var loadRenditions: Swift.Bool?
+  public var loadSourceRelationships: Swift.Bool?
+  public var loadTargetRelationships: Swift.Bool?
+  public var paths: [Swift.String]?
+  public var repositories: [Swift.String]?
+  public var loadVersions: Swift.Bool?
+  public init(ids: [Swift.String]? = nil, inlineRelationshipsContent: Swift.Bool? = nil, loadChildren: Swift.Bool? = nil, loadContentForMimeTypes: [Swift.String]? = nil, loadContentForTypes: [Swift.String]? = nil, loadProperties: Swift.Bool? = nil, loadRecursiveRelationships: Swift.Bool? = nil, loadRenditions: Swift.Bool? = nil, loadSourceRelationships: Swift.Bool? = nil, loadTargetRelationships: Swift.Bool? = nil, paths: [Swift.String]? = nil, repositories: [Swift.String]? = nil, loadVersions: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.QueryRequest, rhs: ContentServicesClient1.QueryRequest) -> Swift.Bool
+}
+public struct Rendition : Swift.Codable, Swift.Equatable {
+  public var streamId: Swift.String?
+  public var mimeType: Swift.String?
+  public var length: Swift.Int?
+  public var title: Swift.String?
+  public var kind: Swift.String?
+  public var height: Swift.Int?
+  public var width: Swift.Int?
+  public var renditionDocumentId: Swift.String?
+  public init(streamId: Swift.String? = nil, mimeType: Swift.String? = nil, length: Swift.Int? = nil, title: Swift.String? = nil, kind: Swift.String? = nil, height: Swift.Int? = nil, width: Swift.Int? = nil, renditionDocumentId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.Rendition, rhs: ContentServicesClient1.Rendition) -> Swift.Bool
+}
+public struct Repository : Swift.Codable, Swift.Equatable {
+  public var repositoryId: Swift.String
+  public var name: Swift.String
+  public var description: Swift.String
+  public var isPrivate: Swift.Bool?
+  public var implementation: Swift.String?
+  public var versioningEnabled: Swift.Bool?
+  public var configData: Swift.String?
+  public init(repositoryId: Swift.String, name: Swift.String, description: Swift.String, isPrivate: Swift.Bool? = nil, implementation: Swift.String? = nil, versioningEnabled: Swift.Bool? = nil, configData: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.Repository, rhs: ContentServicesClient1.Repository) -> Swift.Bool
+}
+public protocol RepositoryManagementAPIProtocol {
+  func copyRepositoryCall(srcRepositoryId: Swift.String, dstRepositoryId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func createRepositoriesCall(repository: [ContentServicesClient1.Repository]?) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func deleteRepositoryCall(repositoryId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func getRepositoryCall(repositoryId: Swift.String) throws -> ClientCommon.Call<ContentServicesClient1.Repository>
+}
+@objc @_inheritsConvenienceInitializers public class RepositoryManagementAPI : ObjectiveC.NSObject, DBSClient, ContentServicesClient1.RepositoryManagementAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func copyRepositoryCall(srcRepositoryId: Swift.String, dstRepositoryId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func createRepositoriesCall(repository: [ContentServicesClient1.Repository]? = nil) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func deleteRepositoryCall(repositoryId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func getRepositoryCall(repositoryId: Swift.String) throws -> ClientCommon.Call<ContentServicesClient1.Repository>
+  @objc deinit
+}
+public protocol ResourceImportAPIProtocol {
+  func importResourceBundleCall(rootPath: Swift.String?, file: Foundation.URL?) throws -> ClientCommon.Call<[Swift.String]>
+}
+@objc @_inheritsConvenienceInitializers public class ResourceImportAPI : ObjectiveC.NSObject, DBSClient, ContentServicesClient1.ResourceImportAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func importResourceBundleCall(rootPath: Swift.String? = nil, file: Foundation.URL? = nil) throws -> ClientCommon.Call<[Swift.String]>
+  @objc deinit
+}
+public struct SearchRequest : Swift.Codable, Swift.Equatable {
+  public var searchTerm: Swift.String?
+  public var paths: [Swift.String]?
+  public var repositories: [Swift.String]?
+  public var properties: Any?
+  public init(searchTerm: Swift.String? = nil, paths: [Swift.String]? = nil, repositories: [Swift.String]? = nil, properties: Any? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.SearchRequest, rhs: ContentServicesClient1.SearchRequest) -> Swift.Bool
+}
+public struct StatusMessage : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public init(message: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ContentServicesClient1.StatusMessage, rhs: ContentServicesClient1.StatusMessage) -> Swift.Bool
+}
+extension ContentServicesClient1.ContentManagementAPI.CmisobjectTypeId_handleContentUpload : Swift.Equatable {}
+extension ContentServicesClient1.ContentManagementAPI.CmisobjectTypeId_handleContentUpload : Swift.Hashable {}
+extension ContentServicesClient1.ContentManagementAPI.CmisobjectTypeId_handleContentUpload : Swift.RawRepresentable {}
+extension ContentServicesClient1.DocumentFormRequestBody.CmisobjectTypeId : Swift.Equatable {}
+extension ContentServicesClient1.DocumentFormRequestBody.CmisobjectTypeId : Swift.Hashable {}
+extension ContentServicesClient1.DocumentFormRequestBody.CmisobjectTypeId : Swift.RawRepresentable {}
+extension ContentServicesClient1.DocumentFormRequestBody.CodingKeys : Swift.Equatable {}
+extension ContentServicesClient1.DocumentFormRequestBody.CodingKeys : Swift.Hashable {}
+extension ContentServicesClient1.DocumentFormRequestBody.CodingKeys : Swift.RawRepresentable {}
+extension ContentServicesClient1.InlineObject.CmisobjectTypeId : Swift.Equatable {}
+extension ContentServicesClient1.InlineObject.CmisobjectTypeId : Swift.Hashable {}
+extension ContentServicesClient1.InlineObject.CmisobjectTypeId : Swift.RawRepresentable {}
+extension ContentServicesClient1.InlineObject.CodingKeys : Swift.Equatable {}
+extension ContentServicesClient1.InlineObject.CodingKeys : Swift.Hashable {}
+extension ContentServicesClient1.InlineObject.CodingKeys : Swift.RawRepresentable {}

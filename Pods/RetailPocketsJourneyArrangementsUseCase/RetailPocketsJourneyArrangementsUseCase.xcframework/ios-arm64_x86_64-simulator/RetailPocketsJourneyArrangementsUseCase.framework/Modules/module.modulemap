@@ -1,0 +1,4 @@
+framework module RetailPocketsJourneyArrangementsUseCase {
+  header "RetailPocketsJourneyArrangementsUseCase-Swift.h"
+  requires objc
+}

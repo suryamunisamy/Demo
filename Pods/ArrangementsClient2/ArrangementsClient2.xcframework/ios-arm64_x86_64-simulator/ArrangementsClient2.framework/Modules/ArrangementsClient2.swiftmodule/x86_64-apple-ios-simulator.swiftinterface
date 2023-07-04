@@ -1,0 +1,1929 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ArrangementsClient2
+import Backbase
+import ClientCommon
+import Foundation
+import Swift
+public struct APIHelper {
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+}
+public struct AbstractArrangementItemBase : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var bookedBalance: Swift.Double?
+  public var availableBalance: Swift.Double?
+  public var creditLimit: Swift.Double?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var accruedInterest: Swift.Double?
+  public var number: Swift.String?
+  public var principalAmount: Swift.Double?
+  public var currentInvestmentValue: Swift.Double?
+  public var productNumber: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var accountOpeningDate: Foundation.Date?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var startDate: Foundation.Date?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestSettlementAccount: Swift.String?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var minimumRequiredBalance: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var totalInvestmentValue: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var lastUpdateDate: Foundation.Date?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var externalStateId: Swift.String?
+  public var externalParentId: Swift.String?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String? = nil, bookedBalance: Swift.Double? = nil, availableBalance: Swift.Double? = nil, creditLimit: Swift.Double? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, accruedInterest: Swift.Double? = nil, number: Swift.String? = nil, principalAmount: Swift.Double? = nil, currentInvestmentValue: Swift.Double? = nil, productNumber: Swift.String? = nil, bankBranchCode: Swift.String? = nil, accountOpeningDate: Foundation.Date? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, startDate: Foundation.Date? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestSettlementAccount: Swift.String? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, minimumRequiredBalance: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, totalInvestmentValue: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderNames: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, lastUpdateDate: Foundation.Date? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, externalStateId: Swift.String? = nil, externalParentId: Swift.String? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractArrangementItemBase, rhs: ArrangementsClient2.AbstractArrangementItemBase) -> Swift.Bool
+}
+public struct AbstractCardDetails : Swift.Codable, Swift.Equatable {
+  public var cardProvider: Swift.String
+  public var secured: Swift.Bool?
+  public var availableCashCredit: Swift.Double?
+  public var cashCreditLimit: Swift.Double?
+  public var lastPaymentDate: Foundation.Date?
+  public var lastPaymentAmount: Swift.Double?
+  public var latePaymentFee: Swift.String?
+  public var previousStatementDate: Foundation.Date?
+  public var previousStatementBalance: Swift.Double?
+  public var statementBalance: Swift.Double?
+  public var additions: [Swift.String : Swift.String]?
+  public init(cardProvider: Swift.String, secured: Swift.Bool? = nil, availableCashCredit: Swift.Double? = nil, cashCreditLimit: Swift.Double? = nil, lastPaymentDate: Foundation.Date? = nil, lastPaymentAmount: Swift.Double? = nil, latePaymentFee: Swift.String? = nil, previousStatementDate: Foundation.Date? = nil, previousStatementBalance: Swift.Double? = nil, statementBalance: Swift.Double? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractCardDetails, rhs: ArrangementsClient2.AbstractCardDetails) -> Swift.Bool
+}
+public struct AbstractDebitCardItem : Swift.Codable, Swift.Equatable {
+  public var number: Swift.String?
+  public var expiryDate: Swift.String?
+  public var cardId: Swift.String?
+  public var cardholderName: Swift.String?
+  public var cardType: Swift.String?
+  public var cardStatus: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(number: Swift.String? = nil, expiryDate: Swift.String? = nil, cardId: Swift.String? = nil, cardholderName: Swift.String? = nil, cardType: Swift.String? = nil, cardStatus: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractDebitCardItem, rhs: ArrangementsClient2.AbstractDebitCardItem) -> Swift.Bool
+}
+public struct AbstractInterestDetails : Swift.Codable, Swift.Equatable {
+  public var lastYearAccruedInterest: Swift.Double?
+  public var dividendWithheldYTD: Swift.String?
+  public var annualPercentageYield: Swift.Double?
+  public var cashAdvanceInterestRate: Swift.Double?
+  public var penaltyInterestRate: Swift.Double?
+  public var additions: [Swift.String : Swift.String]?
+  public init(lastYearAccruedInterest: Swift.Double? = nil, dividendWithheldYTD: Swift.String? = nil, annualPercentageYield: Swift.Double? = nil, cashAdvanceInterestRate: Swift.Double? = nil, penaltyInterestRate: Swift.Double? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractInterestDetails, rhs: ArrangementsClient2.AbstractInterestDetails) -> Swift.Bool
+}
+public struct AbstractLimitedArrangement : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var legalEntityIds: [Swift.String]
+  public var name: Swift.String?
+  public var bankAlias: Swift.String?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var currency: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var number: Swift.String?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var BIC: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var sourceId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, legalEntityIds: [Swift.String], name: Swift.String? = nil, bankAlias: Swift.String? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, currency: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, number: Swift.String? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, BIC: Swift.String? = nil, bankBranchCode: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, sourceId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractLimitedArrangement, rhs: ArrangementsClient2.AbstractLimitedArrangement) -> Swift.Bool
+}
+public struct AbstractProductSummaryItem : Swift.Codable, Swift.Equatable {
+  public var externalArrangementId: Swift.String?
+  public var externalLegalEntityId: Swift.String?
+  public var externalProductId: Swift.String?
+  public var bookedBalance: Swift.Double?
+  public var availableBalance: Swift.Double?
+  public var creditLimit: Swift.Double?
+  public var accruedInterest: Swift.Double?
+  public var principalAmount: Swift.Double?
+  public var currentInvestmentValue: Swift.Double?
+  public var productId: Swift.String?
+  public var productNumber: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var startDate: Foundation.Date?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestSettlementAccount: Swift.String?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var minimumRequiredBalance: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var totalInvestmentValue: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var lastUpdateDate: Foundation.Date?
+  public var favorite: Swift.Bool?
+  public var product: ArrangementsClient2.ProductItem?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var externalParentId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String
+  public var legalEntityIds: [Swift.String]
+  public var name: Swift.String?
+  public var bankAlias: Swift.String?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var currency: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var number: Swift.String?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var BIC: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var sourceId: Swift.String?
+  public init(externalArrangementId: Swift.String? = nil, externalLegalEntityId: Swift.String? = nil, externalProductId: Swift.String? = nil, bookedBalance: Swift.Double? = nil, availableBalance: Swift.Double? = nil, creditLimit: Swift.Double? = nil, accruedInterest: Swift.Double? = nil, principalAmount: Swift.Double? = nil, currentInvestmentValue: Swift.Double? = nil, productId: Swift.String? = nil, productNumber: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, startDate: Foundation.Date? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestSettlementAccount: Swift.String? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, minimumRequiredBalance: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, totalInvestmentValue: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderNames: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, lastUpdateDate: Foundation.Date? = nil, favorite: Swift.Bool? = nil, product: ArrangementsClient2.ProductItem? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, externalParentId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String, legalEntityIds: [Swift.String], name: Swift.String? = nil, bankAlias: Swift.String? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, currency: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, number: Swift.String? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, BIC: Swift.String? = nil, bankBranchCode: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, sourceId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractProductSummaryItem, rhs: ArrangementsClient2.AbstractProductSummaryItem) -> Swift.Bool
+}
+public struct AbstractSearchAccountsRequest : Swift.Codable, Swift.Equatable {
+  public var from: Swift.Int?
+  public var size: Swift.Int?
+  public var identifier: Swift.String?
+  public var customerId: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public init(from: Swift.Int? = nil, size: Swift.Int? = nil, identifier: Swift.String? = nil, customerId: Swift.String? = nil, accountHolderNames: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractSearchAccountsRequest, rhs: ArrangementsClient2.AbstractSearchAccountsRequest) -> Swift.Bool
+}
+public struct AbstractSearchAccountsRequestAllOf : Swift.Codable, Swift.Equatable {
+  public var identifier: Swift.String?
+  public var customerId: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public init(identifier: Swift.String? = nil, customerId: Swift.String? = nil, accountHolderNames: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractSearchAccountsRequestAllOf, rhs: ArrangementsClient2.AbstractSearchAccountsRequestAllOf) -> Swift.Bool
+}
+public struct AbstractSearchAccountsResponse : Swift.Codable, Swift.Equatable {
+  public var externalId: Swift.String
+  public var name: Swift.String?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var number: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(externalId: Swift.String, name: Swift.String? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, number: Swift.String? = nil, bankBranchCode: Swift.String? = nil, accountHolderNames: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AbstractSearchAccountsResponse, rhs: ArrangementsClient2.AbstractSearchAccountsResponse) -> Swift.Bool
+}
+public struct AccountAggregatedBalance : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var productKindName: Swift.String?
+  public var balanceType: Swift.String?
+  public var numberOfArrangements: Swift.Int?
+  public var aggregatedBalances: [ArrangementsClient2.AggregatedBalance]?
+  public init(additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, productKindName: Swift.String? = nil, balanceType: Swift.String? = nil, numberOfArrangements: Swift.Int? = nil, aggregatedBalances: [ArrangementsClient2.AggregatedBalance]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountAggregatedBalance, rhs: ArrangementsClient2.AccountAggregatedBalance) -> Swift.Bool
+}
+public struct AccountAggregatedBalanceCurrency : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var numberOfArrangements: Swift.Int
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public init(additions: [Swift.String : Swift.String]? = nil, numberOfArrangements: Swift.Int, amount: Swift.String, currencyCode: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountAggregatedBalanceCurrency, rhs: ArrangementsClient2.AccountAggregatedBalanceCurrency) -> Swift.Bool
+}
+public struct AccountArrangementItem : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var productKindName: Swift.String?
+  public var visible: Swift.Bool?
+  public var legalEntityIds: [Swift.String]?
+  public var productId: Swift.String
+  public var productTypeName: Swift.String?
+  public var externalLegalEntityId: Swift.String?
+  public var externalProductId: Swift.String?
+  public var externalArrangementId: Swift.String?
+  public var userPreferences: ArrangementsClient2.AccountUserPreferences?
+  public var product: ArrangementsClient2.ExternalProductItem?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public var additions: [Swift.String : Swift.String]?
+  public var displayName: Swift.String?
+  public var debitCards: [ArrangementsClient2.DebitCardItem]?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var name: Swift.String?
+  public var bookedBalance: Swift.Double?
+  public var availableBalance: Swift.Double?
+  public var creditLimit: Swift.Double?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var accruedInterest: Swift.Double?
+  public var number: Swift.String?
+  public var principalAmount: Swift.Double?
+  public var currentInvestmentValue: Swift.Double?
+  public var productNumber: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var accountOpeningDate: Foundation.Date?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var startDate: Foundation.Date?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestSettlementAccount: Swift.String?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var minimumRequiredBalance: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var totalInvestmentValue: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var lastUpdateDate: Foundation.Date?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var externalStateId: Swift.String?
+  public var externalParentId: Swift.String?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public init(id: Swift.String, productKindName: Swift.String? = nil, visible: Swift.Bool? = nil, legalEntityIds: [Swift.String]? = nil, productId: Swift.String, productTypeName: Swift.String? = nil, externalLegalEntityId: Swift.String? = nil, externalProductId: Swift.String? = nil, externalArrangementId: Swift.String? = nil, userPreferences: ArrangementsClient2.AccountUserPreferences? = nil, product: ArrangementsClient2.ExternalProductItem? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil, additions: [Swift.String : Swift.String]? = nil, displayName: Swift.String? = nil, debitCards: [ArrangementsClient2.DebitCardItem]? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, name: Swift.String? = nil, bookedBalance: Swift.Double? = nil, availableBalance: Swift.Double? = nil, creditLimit: Swift.Double? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, accruedInterest: Swift.Double? = nil, number: Swift.String? = nil, principalAmount: Swift.Double? = nil, currentInvestmentValue: Swift.Double? = nil, productNumber: Swift.String? = nil, bankBranchCode: Swift.String? = nil, accountOpeningDate: Foundation.Date? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, startDate: Foundation.Date? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestSettlementAccount: Swift.String? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, minimumRequiredBalance: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, totalInvestmentValue: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderNames: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, lastUpdateDate: Foundation.Date? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, externalStateId: Swift.String? = nil, externalParentId: Swift.String? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountArrangementItem, rhs: ArrangementsClient2.AccountArrangementItem) -> Swift.Bool
+}
+public struct AccountArrangementItemBase : Swift.Codable, Swift.Equatable {
+  public var displayName: Swift.String?
+  public var debitCards: [ArrangementsClient2.DebitCardItem]?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var bookedBalance: Swift.Double?
+  public var availableBalance: Swift.Double?
+  public var creditLimit: Swift.Double?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var accruedInterest: Swift.Double?
+  public var number: Swift.String?
+  public var principalAmount: Swift.Double?
+  public var currentInvestmentValue: Swift.Double?
+  public var productNumber: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var accountOpeningDate: Foundation.Date?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var startDate: Foundation.Date?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestSettlementAccount: Swift.String?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var minimumRequiredBalance: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var totalInvestmentValue: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var lastUpdateDate: Foundation.Date?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var externalStateId: Swift.String?
+  public var externalParentId: Swift.String?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public init(displayName: Swift.String? = nil, debitCards: [ArrangementsClient2.DebitCardItem]? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, bookedBalance: Swift.Double? = nil, availableBalance: Swift.Double? = nil, creditLimit: Swift.Double? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, accruedInterest: Swift.Double? = nil, number: Swift.String? = nil, principalAmount: Swift.Double? = nil, currentInvestmentValue: Swift.Double? = nil, productNumber: Swift.String? = nil, bankBranchCode: Swift.String? = nil, accountOpeningDate: Foundation.Date? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, startDate: Foundation.Date? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestSettlementAccount: Swift.String? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, minimumRequiredBalance: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, totalInvestmentValue: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderNames: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, lastUpdateDate: Foundation.Date? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, externalStateId: Swift.String? = nil, externalParentId: Swift.String? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountArrangementItemBase, rhs: ArrangementsClient2.AccountArrangementItemBase) -> Swift.Bool
+}
+public struct AccountBalanceHistory : Swift.Codable, Swift.Equatable {
+  public var items: [ArrangementsClient2.AccountBalanceHistoryForArrangement]
+  public var additions: [Swift.String : Swift.String]?
+  public init(items: [ArrangementsClient2.AccountBalanceHistoryForArrangement], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountBalanceHistory, rhs: ArrangementsClient2.AccountBalanceHistory) -> Swift.Bool
+}
+public struct AccountBalanceHistoryForArrangement : Swift.Codable, Swift.Equatable {
+  public var arrangementId: Swift.String
+  public var balanceHistory: [ArrangementsClient2.AccountBalanceHistoryItem]
+  public var additions: [Swift.String : Swift.String]?
+  public init(arrangementId: Swift.String, balanceHistory: [ArrangementsClient2.AccountBalanceHistoryItem], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountBalanceHistoryForArrangement, rhs: ArrangementsClient2.AccountBalanceHistoryForArrangement) -> Swift.Bool
+}
+public struct AccountBalanceHistoryItem : Swift.Codable, Swift.Equatable {
+  public var dateFrom: Swift.String?
+  public var dateTo: Swift.String
+  public var valuePtc: Swift.String?
+  public var value: ArrangementsClient2.BalanceHistoryItemValue
+  public var additions: [Swift.String : Swift.String]?
+  public init(dateFrom: Swift.String? = nil, dateTo: Swift.String, valuePtc: Swift.String? = nil, value: ArrangementsClient2.BalanceHistoryItemValue, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountBalanceHistoryItem, rhs: ArrangementsClient2.AccountBalanceHistoryItem) -> Swift.Bool
+}
+public struct AccountLinkedArrangementItem : Swift.Codable, Swift.Equatable {
+  public var linked: Swift.Bool?
+  public var legalEntityIds: [Swift.String]?
+  public var product: ArrangementsClient2.ExternalProductItem?
+  public var externalArrangementId: Swift.String?
+  public var productId: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public var displayName: Swift.String?
+  public var debitCards: [ArrangementsClient2.DebitCardItem]?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var name: Swift.String?
+  public var bookedBalance: Swift.Double?
+  public var availableBalance: Swift.Double?
+  public var creditLimit: Swift.Double?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var accruedInterest: Swift.Double?
+  public var number: Swift.String?
+  public var principalAmount: Swift.Double?
+  public var currentInvestmentValue: Swift.Double?
+  public var productNumber: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var accountOpeningDate: Foundation.Date?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var startDate: Foundation.Date?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestSettlementAccount: Swift.String?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var minimumRequiredBalance: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var totalInvestmentValue: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var lastUpdateDate: Foundation.Date?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var externalStateId: Swift.String?
+  public var externalParentId: Swift.String?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public init(linked: Swift.Bool? = nil, legalEntityIds: [Swift.String]? = nil, product: ArrangementsClient2.ExternalProductItem? = nil, externalArrangementId: Swift.String? = nil, productId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil, displayName: Swift.String? = nil, debitCards: [ArrangementsClient2.DebitCardItem]? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, name: Swift.String? = nil, bookedBalance: Swift.Double? = nil, availableBalance: Swift.Double? = nil, creditLimit: Swift.Double? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, accruedInterest: Swift.Double? = nil, number: Swift.String? = nil, principalAmount: Swift.Double? = nil, currentInvestmentValue: Swift.Double? = nil, productNumber: Swift.String? = nil, bankBranchCode: Swift.String? = nil, accountOpeningDate: Foundation.Date? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, startDate: Foundation.Date? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestSettlementAccount: Swift.String? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, minimumRequiredBalance: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, totalInvestmentValue: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderNames: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, lastUpdateDate: Foundation.Date? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, externalStateId: Swift.String? = nil, externalParentId: Swift.String? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountLinkedArrangementItem, rhs: ArrangementsClient2.AccountLinkedArrangementItem) -> Swift.Bool
+}
+public struct AccountLinkedArrangementItems : Swift.Codable, Swift.Equatable {
+  public var totalElements: Swift.Int64
+  public var arrangementElements: [ArrangementsClient2.AccountLinkedArrangementItem]
+  public var totalElementsFromCore: Swift.Int64?
+  public var additions: [Swift.String : Swift.String]?
+  public init(totalElements: Swift.Int64, arrangementElements: [ArrangementsClient2.AccountLinkedArrangementItem], totalElementsFromCore: Swift.Int64? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountLinkedArrangementItems, rhs: ArrangementsClient2.AccountLinkedArrangementItems) -> Swift.Bool
+}
+public struct AccountUserPreferences : Swift.Codable, Swift.Equatable {
+  public var arrangementId: Swift.String
+  public var alias: Swift.String?
+  public var visible: Swift.Bool?
+  public var favorite: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(arrangementId: Swift.String, alias: Swift.String? = nil, visible: Swift.Bool? = nil, favorite: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AccountUserPreferences, rhs: ArrangementsClient2.AccountUserPreferences) -> Swift.Bool
+}
+public protocol AccountsAPIProtocol {
+  func filterAccountsCall(filterAccountsRequest: ArrangementsClient2.FilterAccountsRequest) throws -> ClientCommon.Call<[ArrangementsClient2.FilterAccountsResponse]>
+  func getBalanceHistoryCall(arrangementIds: Swift.String, accept: Swift.String?, dateFrom: Foundation.Date?, dateTo: Foundation.Date?, timePeriod: ArrangementsClient2.TimePeriod?, format: ArrangementsClient2.AccountsAPI.Format_getBalanceHistory?) throws -> ClientCommon.Call<ArrangementsClient2.AccountBalanceHistory>
+  func getBalanceHistoryForArrangementCall(arrangementId: Swift.String, dateFrom: Foundation.Date?, dateTo: Foundation.Date?, timePeriod: ArrangementsClient2.TimePeriod?, from: Swift.Int?, size: Swift.Int?, cursor: Swift.String?) throws -> ClientCommon.Call<[ArrangementsClient2.AccountBalanceHistoryItem]>
+}
+@objc @_inheritsConvenienceInitializers public class AccountsAPI : ObjectiveC.NSObject, DBSClient, ArrangementsClient2.AccountsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func filterAccountsCall(filterAccountsRequest: ArrangementsClient2.FilterAccountsRequest) throws -> ClientCommon.Call<[ArrangementsClient2.FilterAccountsResponse]>
+  public enum Format_getBalanceHistory : Swift.String, Swift.CaseIterable {
+    case json
+    case csv
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [ArrangementsClient2.AccountsAPI.Format_getBalanceHistory]
+    public static var allCases: [ArrangementsClient2.AccountsAPI.Format_getBalanceHistory] {
+      get
+    }
+  }
+  open func getBalanceHistoryCall(arrangementIds: Swift.String, accept: Swift.String? = nil, dateFrom: Foundation.Date? = nil, dateTo: Foundation.Date? = nil, timePeriod: ArrangementsClient2.TimePeriod? = nil, format: ArrangementsClient2.AccountsAPI.Format_getBalanceHistory? = nil) throws -> ClientCommon.Call<ArrangementsClient2.AccountBalanceHistory>
+  open func getBalanceHistoryForArrangementCall(arrangementId: Swift.String, dateFrom: Foundation.Date? = nil, dateTo: Foundation.Date? = nil, timePeriod: ArrangementsClient2.TimePeriod? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, cursor: Swift.String? = nil) throws -> ClientCommon.Call<[ArrangementsClient2.AccountBalanceHistoryItem]>
+  @objc deinit
+}
+public struct AdditionalProperties : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public init(additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AdditionalProperties, rhs: ArrangementsClient2.AdditionalProperties) -> Swift.Bool
+}
+public struct AggregatedBalance : Swift.Codable, Swift.Equatable {
+  public var numberOfArrangements: Swift.Int
+  public var additions: [Swift.String : Swift.String]?
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public init(numberOfArrangements: Swift.Int, additions: [Swift.String : Swift.String]? = nil, amount: Swift.String, currencyCode: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AggregatedBalance, rhs: ArrangementsClient2.AggregatedBalance) -> Swift.Bool
+}
+public struct AggregatedBalances : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var productKindName: Swift.String?
+  public var balanceType: Swift.String?
+  public var numberOfArrangements: Swift.Int?
+  public var aggregatedBalances: [ArrangementsClient2.AggregatedBalance]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String? = nil, productKindName: Swift.String? = nil, balanceType: Swift.String? = nil, numberOfArrangements: Swift.Int? = nil, aggregatedBalances: [ArrangementsClient2.AggregatedBalance]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.AggregatedBalances, rhs: ArrangementsClient2.AggregatedBalances) -> Swift.Bool
+}
+public struct ApiError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public init(message: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ApiError, rhs: ArrangementsClient2.ApiError) -> Swift.Bool
+}
+public protocol ArrangementsAPIProtocol {
+  func getArrangementByIdCall(arrangementId: Swift.String, contentLanguage: Swift.String?, maskIndicator: Swift.Bool?) throws -> ClientCommon.Call<ArrangementsClient2.AccountArrangementItem>
+  func getArrangementChildrenCall(arrangementId: Swift.String, from: Swift.Int?, size: Swift.Int?) throws -> ClientCommon.Call<[ArrangementsClient2.ChildArrangementResult]>
+  func getLinkedCall(legalEntityId: Swift.String, from: Swift.Int?, size: Swift.Int?) throws -> ClientCommon.Call<ArrangementsClient2.AccountLinkedArrangementItems>
+  func getUserPreferencesCall(arrangementId: Swift.String) throws -> ClientCommon.Call<ArrangementsClient2.AccountUserPreferences>
+  func linkExternalLegalEntityCall(externalLegalEntityId: Swift.String, accountLinkedArrangementItem: ArrangementsClient2.AccountLinkedArrangementItem) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func unlinkExternalLegalEntityCall(externalLegalEntityId: Swift.String, externalArrangementId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  func unmaskedAttributeCall(arrangementId: Swift.String, attributeName: ArrangementsClient2.MaskableAttribute) throws -> ClientCommon.Call<Swift.String>
+  func updateUserPreferencesCall(accountUserPreferences: ArrangementsClient2.AccountUserPreferences) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+}
+@objc @_inheritsConvenienceInitializers public class ArrangementsAPI : ObjectiveC.NSObject, DBSClient, ArrangementsClient2.ArrangementsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getArrangementByIdCall(arrangementId: Swift.String, contentLanguage: Swift.String? = nil, maskIndicator: Swift.Bool? = nil) throws -> ClientCommon.Call<ArrangementsClient2.AccountArrangementItem>
+  open func getArrangementChildrenCall(arrangementId: Swift.String, from: Swift.Int? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<[ArrangementsClient2.ChildArrangementResult]>
+  open func getLinkedCall(legalEntityId: Swift.String, from: Swift.Int? = nil, size: Swift.Int? = nil) throws -> ClientCommon.Call<ArrangementsClient2.AccountLinkedArrangementItems>
+  open func getUserPreferencesCall(arrangementId: Swift.String) throws -> ClientCommon.Call<ArrangementsClient2.AccountUserPreferences>
+  open func linkExternalLegalEntityCall(externalLegalEntityId: Swift.String, accountLinkedArrangementItem: ArrangementsClient2.AccountLinkedArrangementItem) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func unlinkExternalLegalEntityCall(externalLegalEntityId: Swift.String, externalArrangementId: Swift.String) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  open func unmaskedAttributeCall(arrangementId: Swift.String, attributeName: ArrangementsClient2.MaskableAttribute) throws -> ClientCommon.Call<Swift.String>
+  open func updateUserPreferencesCall(accountUserPreferences: ArrangementsClient2.AccountUserPreferences) throws -> ClientCommon.Call<ClientCommon.NoResponse>
+  @objc deinit
+}
+public struct BadRequestError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [ArrangementsClient2.ErrorItem]
+  public init(message: Swift.String, errors: [ArrangementsClient2.ErrorItem])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.BadRequestError, rhs: ArrangementsClient2.BadRequestError) -> Swift.Bool
+}
+public struct BalanceHistoryItemValue : Swift.Codable, Swift.Equatable {
+  public var currency: Swift.String?
+  public var balance: Swift.String?
+  public init(currency: Swift.String? = nil, balance: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.BalanceHistoryItemValue, rhs: ArrangementsClient2.BalanceHistoryItemValue) -> Swift.Bool
+}
+public protocol BalancesAPIProtocol {
+  func getAggregationsCall(contentLanguage: Swift.String?, productKindIds: [Swift.Int]?, groupedBy: ArrangementsClient2.BalancesAPI.GroupedBy_getAggregations?, includeTotals: Swift.Bool?) throws -> ClientCommon.Call<[ArrangementsClient2.AggregatedBalances]>
+  func getFavoriteCurrenciesCall() throws -> ClientCommon.Call<[ArrangementsClient2.AggregatedBalance]>
+}
+@objc @_inheritsConvenienceInitializers public class BalancesAPI : ObjectiveC.NSObject, DBSClient, ArrangementsClient2.BalancesAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  public enum GroupedBy_getAggregations : Swift.String, Swift.CaseIterable {
+    case productKind
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public typealias AllCases = [ArrangementsClient2.BalancesAPI.GroupedBy_getAggregations]
+    public static var allCases: [ArrangementsClient2.BalancesAPI.GroupedBy_getAggregations] {
+      get
+    }
+  }
+  open func getAggregationsCall(contentLanguage: Swift.String? = nil, productKindIds: [Swift.Int]? = nil, groupedBy: ArrangementsClient2.BalancesAPI.GroupedBy_getAggregations? = nil, includeTotals: Swift.Bool? = nil) throws -> ClientCommon.Call<[ArrangementsClient2.AggregatedBalances]>
+  open func getFavoriteCurrenciesCall() throws -> ClientCommon.Call<[ArrangementsClient2.AggregatedBalance]>
+  @objc deinit
+}
+public struct BaseProduct : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.BaseProduct, rhs: ArrangementsClient2.BaseProduct) -> Swift.Bool
+}
+public struct CardDetails : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var cardProvider: Swift.String
+  public var secured: Swift.Bool?
+  public var availableCashCredit: Swift.Double?
+  public var cashCreditLimit: Swift.Double?
+  public var lastPaymentDate: Foundation.Date?
+  public var lastPaymentAmount: Swift.Double?
+  public var latePaymentFee: Swift.String?
+  public var previousStatementDate: Foundation.Date?
+  public var previousStatementBalance: Swift.Double?
+  public var statementBalance: Swift.Double?
+  public init(additions: [Swift.String : Swift.String]? = nil, cardProvider: Swift.String, secured: Swift.Bool? = nil, availableCashCredit: Swift.Double? = nil, cashCreditLimit: Swift.Double? = nil, lastPaymentDate: Foundation.Date? = nil, lastPaymentAmount: Swift.Double? = nil, latePaymentFee: Swift.String? = nil, previousStatementDate: Foundation.Date? = nil, previousStatementBalance: Swift.Double? = nil, statementBalance: Swift.Double? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.CardDetails, rhs: ArrangementsClient2.CardDetails) -> Swift.Bool
+}
+public struct ChildArrangementResult : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var currency: Swift.String
+  public var bookedBalance: Swift.Double?
+  public var accountOpeningDate: Foundation.Date?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String? = nil, displayName: Swift.String? = nil, currency: Swift.String, bookedBalance: Swift.Double? = nil, accountOpeningDate: Foundation.Date? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ChildArrangementResult, rhs: ArrangementsClient2.ChildArrangementResult) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateTimeFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  open class func decodeDate<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decodeDateTime<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date where T : Swift.CodingKey
+  open class func decodeDateTimeIfPresent<T>(from container: Swift.KeyedDecodingContainer<T>, forKey: T) throws -> Foundation.Date? where T : Swift.CodingKey
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, Swift.Error> where T : Swift.Decodable
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, Swift.Error> where T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  @available(*, unavailable, message: "To set a different date format, use CodableHelper.dateFormatter instead.")
+  public static var dateFormat: Swift.String
+  @objc deinit
+}
+public struct CreditCard : Swift.Codable, Swift.Equatable {
+  public var bookedBalance: Swift.String?
+  public var availableBalance: Swift.String?
+  public var creditLimit: Swift.String?
+  public var number: Swift.String?
+  public var currency: Swift.String?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var cardNumber: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var accountInterestRate: Swift.Double?
+  public var accountHolderNames: Swift.String?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var accruedInterest: Swift.Double?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public init(bookedBalance: Swift.String? = nil, availableBalance: Swift.String? = nil, creditLimit: Swift.String? = nil, number: Swift.String? = nil, currency: Swift.String? = nil, urgentTransferAllowed: Swift.Bool? = nil, cardNumber: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, accountInterestRate: Swift.Double? = nil, accountHolderNames: Swift.String? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, accruedInterest: Swift.Double? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.CreditCard, rhs: ArrangementsClient2.CreditCard) -> Swift.Bool
+}
+public struct CreditCardProductKinds : Swift.Codable, Swift.Equatable {
+  public var products: [ArrangementsClient2.CreditCard]
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public init(products: [ArrangementsClient2.CreditCard], additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.CreditCardProductKinds, rhs: ArrangementsClient2.CreditCardProductKinds) -> Swift.Bool
+}
+public struct CurrencyType : Swift.Codable, Swift.Equatable {
+  public var amount: Swift.String
+  public var currencyCode: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(amount: Swift.String, currencyCode: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.CurrencyType, rhs: ArrangementsClient2.CurrencyType) -> Swift.Bool
+}
+public struct CurrentAccount : Swift.Codable, Swift.Equatable {
+  public var bookedBalance: Swift.String?
+  public var availableBalance: Swift.String?
+  public var creditLimit: Swift.String?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var bankBranchCode: Swift.String?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var accruedInterest: Swift.Double?
+  public var debitCardsItems: [ArrangementsClient2.DebitCardItem]
+  public var accountHolderNames: Swift.String?
+  public var startDate: Foundation.Date?
+  public var minimumRequiredBalance: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var accountHolderCountry: Swift.String?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public init(bookedBalance: Swift.String? = nil, availableBalance: Swift.String? = nil, creditLimit: Swift.String? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String? = nil, urgentTransferAllowed: Swift.Bool? = nil, bankBranchCode: Swift.String? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, accruedInterest: Swift.Double? = nil, debitCardsItems: [ArrangementsClient2.DebitCardItem], accountHolderNames: Swift.String? = nil, startDate: Foundation.Date? = nil, minimumRequiredBalance: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, accountHolderCountry: Swift.String? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.CurrentAccount, rhs: ArrangementsClient2.CurrentAccount) -> Swift.Bool
+}
+public struct CurrentAccountProductKinds : Swift.Codable, Swift.Equatable {
+  public var products: [ArrangementsClient2.CurrentAccount]
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public init(products: [ArrangementsClient2.CurrentAccount], additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.CurrentAccountProductKinds, rhs: ArrangementsClient2.CurrentAccountProductKinds) -> Swift.Bool
+}
+public struct CustomProductKind : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var id: Swift.Int?
+  public var products: [ArrangementsClient2.GeneralAccount]
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String? = nil, id: Swift.Int? = nil, products: [ArrangementsClient2.GeneralAccount], aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.CustomProductKind, rhs: ArrangementsClient2.CustomProductKind) -> Swift.Bool
+}
+public struct DebitCard : Swift.Codable, Swift.Equatable {
+  public var number: Swift.String?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var cardNumber: Swift.Double?
+  public var accountInterestRate: Swift.Double?
+  public var accountHolderNames: Swift.String?
+  public var debitCardsItems: [ArrangementsClient2.DebitCardItem]
+  public var startDate: Foundation.Date?
+  public var validThru: Foundation.Date?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public init(number: Swift.String? = nil, urgentTransferAllowed: Swift.Bool? = nil, cardNumber: Swift.Double? = nil, accountInterestRate: Swift.Double? = nil, accountHolderNames: Swift.String? = nil, debitCardsItems: [ArrangementsClient2.DebitCardItem], startDate: Foundation.Date? = nil, validThru: Foundation.Date? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.DebitCard, rhs: ArrangementsClient2.DebitCard) -> Swift.Bool
+}
+public struct DebitCardItem : Swift.Codable, Swift.Equatable {
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var number: Swift.String?
+  public var expiryDate: Swift.String?
+  public var cardId: Swift.String?
+  public var cardholderName: Swift.String?
+  public var cardType: Swift.String?
+  public var cardStatus: Swift.String?
+  public init(unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, number: Swift.String? = nil, expiryDate: Swift.String? = nil, cardId: Swift.String? = nil, cardholderName: Swift.String? = nil, cardType: Swift.String? = nil, cardStatus: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.DebitCardItem, rhs: ArrangementsClient2.DebitCardItem) -> Swift.Bool
+}
+public struct DebitCardProductKinds : Swift.Codable, Swift.Equatable {
+  public var products: [ArrangementsClient2.DebitCard]
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public init(products: [ArrangementsClient2.DebitCard], additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.DebitCardProductKinds, rhs: ArrangementsClient2.DebitCardProductKinds) -> Swift.Bool
+}
+public struct ErrorAwareApi : Swift.Codable, Swift.Equatable {
+  public var errors: [ArrangementsClient2.ErrorItem]
+  public var message: Swift.String
+  public init(errors: [ArrangementsClient2.ErrorItem], message: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ErrorAwareApi, rhs: ArrangementsClient2.ErrorAwareApi) -> Swift.Bool
+}
+public struct ErrorItem : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String?
+  public var key: Swift.String?
+  public var context: [Swift.String : Swift.String]?
+  public init(message: Swift.String? = nil, key: Swift.String? = nil, context: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ErrorItem, rhs: ArrangementsClient2.ErrorItem) -> Swift.Bool
+}
+extension String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  public init?(stringValue: Swift.String)
+  public var intValue: Swift.Int? {
+    get
+  }
+  public init?(intValue: Swift.Int)
+}
+extension KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+}
+extension KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+}
+public struct ExternalProductItem : Swift.Codable, Swift.Equatable {
+  public var externalId: Swift.String?
+  public var externalTypeId: Swift.String?
+  public var typeName: Swift.String?
+  public var productKind: ArrangementsClient2.ExternalProductKindItem?
+  public var additions: [Swift.String : Swift.String]?
+  public init(externalId: Swift.String? = nil, externalTypeId: Swift.String? = nil, typeName: Swift.String? = nil, productKind: ArrangementsClient2.ExternalProductKindItem? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ExternalProductItem, rhs: ArrangementsClient2.ExternalProductItem) -> Swift.Bool
+}
+public struct ExternalProductKindItem : Swift.Codable, Swift.Equatable {
+  public var externalKindId: Swift.String
+  public var kindName: Swift.String
+  public var kindUri: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(externalKindId: Swift.String, kindName: Swift.String, kindUri: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ExternalProductKindItem, rhs: ArrangementsClient2.ExternalProductKindItem) -> Swift.Bool
+}
+public struct FilterAccountsRequest : Swift.Codable, Swift.Equatable {
+  public var from: Swift.Int?
+  public var size: Swift.Int?
+  public var identifier: Swift.String?
+  public var customerId: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public init(from: Swift.Int? = nil, size: Swift.Int? = nil, identifier: Swift.String? = nil, customerId: Swift.String? = nil, accountHolderNames: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.FilterAccountsRequest, rhs: ArrangementsClient2.FilterAccountsRequest) -> Swift.Bool
+}
+public struct FilterAccountsResponse : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var externalId: Swift.String
+  public var name: Swift.String?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var number: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public init(additions: [Swift.String : Swift.String]? = nil, externalId: Swift.String, name: Swift.String? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, number: Swift.String? = nil, bankBranchCode: Swift.String? = nil, accountHolderNames: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.FilterAccountsResponse, rhs: ArrangementsClient2.FilterAccountsResponse) -> Swift.Bool
+}
+public struct ForbiddenError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [ArrangementsClient2.ErrorItem]
+  public init(message: Swift.String, errors: [ArrangementsClient2.ErrorItem])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ForbiddenError, rhs: ArrangementsClient2.ForbiddenError) -> Swift.Bool
+}
+public struct GeneralAccount : Swift.Codable, Swift.Equatable {
+  public var bookedBalance: Swift.String?
+  public var availableBalance: Swift.String?
+  public var creditLimit: Swift.String?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var bankBranchCode: Swift.String?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var accruedInterest: Swift.Double?
+  public var debitCardsItems: [ArrangementsClient2.DebitCardItem]
+  public var startDate: Foundation.Date?
+  public var minimumRequiredBalance: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var number: Swift.String?
+  public var cardNumber: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var currentInvestmentValue: Swift.String?
+  public var productNumber: Swift.String?
+  public var principalAmount: Swift.Double?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var interestSettlementAccount: Swift.String?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public init(bookedBalance: Swift.String? = nil, availableBalance: Swift.String? = nil, creditLimit: Swift.String? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String? = nil, urgentTransferAllowed: Swift.Bool? = nil, bankBranchCode: Swift.String? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, accruedInterest: Swift.Double? = nil, debitCardsItems: [ArrangementsClient2.DebitCardItem], startDate: Foundation.Date? = nil, minimumRequiredBalance: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderNames: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, number: Swift.String? = nil, cardNumber: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, currentInvestmentValue: Swift.String? = nil, productNumber: Swift.String? = nil, principalAmount: Swift.Double? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, interestSettlementAccount: Swift.String? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.GeneralAccount, rhs: ArrangementsClient2.GeneralAccount) -> Swift.Bool
+}
+public struct InterestDetails : Swift.Codable, Swift.Equatable {
+  public var additions: [Swift.String : Swift.String]?
+  public var lastYearAccruedInterest: Swift.Double?
+  public var dividendWithheldYTD: Swift.String?
+  public var annualPercentageYield: Swift.Double?
+  public var cashAdvanceInterestRate: Swift.Double?
+  public var penaltyInterestRate: Swift.Double?
+  public init(additions: [Swift.String : Swift.String]? = nil, lastYearAccruedInterest: Swift.Double? = nil, dividendWithheldYTD: Swift.String? = nil, annualPercentageYield: Swift.Double? = nil, cashAdvanceInterestRate: Swift.Double? = nil, penaltyInterestRate: Swift.Double? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.InterestDetails, rhs: ArrangementsClient2.InterestDetails) -> Swift.Bool
+}
+public struct InternalServerError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public init(message: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.InternalServerError, rhs: ArrangementsClient2.InternalServerError) -> Swift.Bool
+}
+public struct InvestmentAccount : Swift.Codable, Swift.Equatable {
+  public var currentInvestmentValue: Swift.String?
+  public var currency: Swift.String?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var productNumber: Swift.String?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public init(currentInvestmentValue: Swift.String? = nil, currency: Swift.String? = nil, urgentTransferAllowed: Swift.Bool? = nil, productNumber: Swift.String? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.InvestmentAccount, rhs: ArrangementsClient2.InvestmentAccount) -> Swift.Bool
+}
+public struct InvestmentAccountProductKinds : Swift.Codable, Swift.Equatable {
+  public var products: [ArrangementsClient2.InvestmentAccount]
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public init(products: [ArrangementsClient2.InvestmentAccount], additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.InvestmentAccountProductKinds, rhs: ArrangementsClient2.InvestmentAccountProductKinds) -> Swift.Bool
+}
+public struct Loan : Swift.Codable, Swift.Equatable {
+  public var bookedBalance: Swift.String?
+  public var principalAmount: Swift.Double?
+  public var currency: Swift.String?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var productNumber: Swift.String?
+  public var accountInterestRate: Swift.Double?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var interestSettlementAccount: Swift.String?
+  public var accruedInterest: Swift.Double?
+  public var accountHolderNames: Swift.String?
+  public var maturityDate: Foundation.Date?
+  public var valueDateBalance: Swift.Double?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public init(bookedBalance: Swift.String? = nil, principalAmount: Swift.Double? = nil, currency: Swift.String? = nil, urgentTransferAllowed: Swift.Bool? = nil, productNumber: Swift.String? = nil, accountInterestRate: Swift.Double? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, interestSettlementAccount: Swift.String? = nil, accruedInterest: Swift.Double? = nil, accountHolderNames: Swift.String? = nil, maturityDate: Foundation.Date? = nil, valueDateBalance: Swift.Double? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.Loan, rhs: ArrangementsClient2.Loan) -> Swift.Bool
+}
+public struct LoanProductKinds : Swift.Codable, Swift.Equatable {
+  public var products: [ArrangementsClient2.Loan]
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public init(products: [ArrangementsClient2.Loan], additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.LoanProductKinds, rhs: ArrangementsClient2.LoanProductKinds) -> Swift.Bool
+}
+public struct LocaleTranslationItem : Swift.Codable, Swift.Equatable {
+  public var fieldName: Swift.String
+  public var fieldValue: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(fieldName: Swift.String, fieldValue: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.LocaleTranslationItem, rhs: ArrangementsClient2.LocaleTranslationItem) -> Swift.Bool
+}
+public enum MaskableAttribute : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case iban
+  case bban
+  case number
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ArrangementsClient2.MaskableAttribute]
+  public static var allCases: [ArrangementsClient2.MaskableAttribute] {
+    get
+  }
+}
+public struct NotFoundError : Swift.Codable, Swift.Equatable {
+  public var message: Swift.String
+  public var errors: [ArrangementsClient2.ErrorItem]
+  public init(message: Swift.String, errors: [ArrangementsClient2.ErrorItem])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.NotFoundError, rhs: ArrangementsClient2.NotFoundError) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  @objc deinit
+}
+public enum OrderByField : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case name
+  case bankalias
+  case bookedbalance
+  case availablebalance
+  case creditlimit
+  case displayname
+  case iban
+  case bban
+  case bic
+  case currency
+  case externaltransferallowed
+  case urgenttransferallowed
+  case accruedinterest
+  case principalamount
+  case currentinvestmentvalue
+  case productnumber
+  case accountopeningdate
+  case accountinterestrate
+  case valuedatebalance
+  case creditlimitusage
+  case creditlimitinterestrate
+  case creditlimitexpirydate
+  case startdate
+  case termunit
+  case termnumber
+  case maturitydate
+  case maturityamount
+  case autorenewalindicator
+  case interestpaymentfrequencyunit
+  case interestpaymentfrequencynumber
+  case interestsettlementaccount
+  case outstandingprincipalamount
+  case monthlyinstalmentamount
+  case amountinarrear
+  case minimumrequiredbalance
+  case creditcardaccountnumber
+  case validthru
+  case applicableinterestrate
+  case remainingcredit
+  case outstandingpayment
+  case minimumpayment
+  case minimumpaymentduedate
+  case totalinvestmentvalue
+  case accountholderaddressline1
+  case accountholderaddressline2
+  case accountholderstreetname
+  case postcode
+  case town
+  case countrysubdivision
+  case accountholdercountry
+  case creditaccount
+  case debitaccount
+  case productkindname
+  case producttypename
+  case sourceid
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ArrangementsClient2.OrderByField]
+  public static var allCases: [ArrangementsClient2.OrderByField] {
+    get
+  }
+}
+public struct PaginationDefTrait : Swift.Codable, Swift.Equatable {
+  public var from: Swift.Int?
+  public var size: Swift.Int?
+  public init(from: Swift.Int? = nil, size: Swift.Int? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.PaginationDefTrait, rhs: ArrangementsClient2.PaginationDefTrait) -> Swift.Bool
+}
+public struct PaginationTrait : Swift.Codable, Swift.Equatable {
+  public var from: Swift.Int?
+  public var size: Swift.Int?
+  public init(from: Swift.Int? = nil, size: Swift.Int? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.PaginationTrait, rhs: ArrangementsClient2.PaginationTrait) -> Swift.Bool
+}
+public struct ProductItem : Swift.Codable, Swift.Equatable {
+  public var externalId: Swift.String?
+  public var externalTypeId: Swift.String?
+  public var typeName: Swift.String?
+  public var productKind: ArrangementsClient2.SummaryProductKindItem?
+  public var additions: [Swift.String : Swift.String]?
+  public init(externalId: Swift.String? = nil, externalTypeId: Swift.String? = nil, typeName: Swift.String? = nil, productKind: ArrangementsClient2.SummaryProductKindItem? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductItem, rhs: ArrangementsClient2.ProductItem) -> Swift.Bool
+}
+public struct ProductKindItem : Swift.Codable, Swift.Equatable {
+  public var id: Swift.Int
+  public var externalKindId: Swift.String?
+  public var kindName: Swift.String
+  public var kindUri: Swift.String?
+  public var translations: [ArrangementsClient2.TranslationItem]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.Int, externalKindId: Swift.String? = nil, kindName: Swift.String, kindUri: Swift.String? = nil, translations: [ArrangementsClient2.TranslationItem]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductKindItem, rhs: ArrangementsClient2.ProductKindItem) -> Swift.Bool
+}
+public protocol ProductKindsAPIProtocol {
+  func getProductKindsCall(contentLanguage: Swift.String?) throws -> ClientCommon.Call<ArrangementsClient2.ProductKindsResult>
+}
+@objc @_inheritsConvenienceInitializers public class ProductKindsAPI : ObjectiveC.NSObject, DBSClient, ArrangementsClient2.ProductKindsAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getProductKindsCall(contentLanguage: Swift.String? = nil) throws -> ClientCommon.Call<ArrangementsClient2.ProductKindsResult>
+  @objc deinit
+}
+public struct ProductKindsBase : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String?
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public var additions: [Swift.String : Swift.String]?
+  public init(name: Swift.String? = nil, aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductKindsBase, rhs: ArrangementsClient2.ProductKindsBase) -> Swift.Bool
+}
+public struct ProductKindsResult : Swift.Codable, Swift.Equatable {
+  public var productKinds: [ArrangementsClient2.ProductKindItem]
+  public var additions: [Swift.String : Swift.String]?
+  public init(productKinds: [ArrangementsClient2.ProductKindItem], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductKindsResult, rhs: ArrangementsClient2.ProductKindsResult) -> Swift.Bool
+}
+public struct ProductSummary : Swift.Codable, Swift.Equatable {
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public var currentAccounts: ArrangementsClient2.CurrentAccountProductKinds?
+  public var savingsAccounts: ArrangementsClient2.SavingsAccountProductKinds?
+  public var termDeposits: ArrangementsClient2.TermDepositProductKinds?
+  public var loans: ArrangementsClient2.LoanProductKinds?
+  public var creditCards: ArrangementsClient2.CreditCardProductKinds?
+  public var debitCards: ArrangementsClient2.DebitCardProductKinds?
+  public var investmentAccounts: ArrangementsClient2.InvestmentAccountProductKinds?
+  public var customProductKinds: [ArrangementsClient2.CustomProductKind]
+  public var additions: [Swift.String : Swift.String]?
+  public init(aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil, currentAccounts: ArrangementsClient2.CurrentAccountProductKinds? = nil, savingsAccounts: ArrangementsClient2.SavingsAccountProductKinds? = nil, termDeposits: ArrangementsClient2.TermDepositProductKinds? = nil, loans: ArrangementsClient2.LoanProductKinds? = nil, creditCards: ArrangementsClient2.CreditCardProductKinds? = nil, debitCards: ArrangementsClient2.DebitCardProductKinds? = nil, investmentAccounts: ArrangementsClient2.InvestmentAccountProductKinds? = nil, customProductKinds: [ArrangementsClient2.CustomProductKind], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductSummary, rhs: ArrangementsClient2.ProductSummary) -> Swift.Bool
+}
+public protocol ProductSummaryAPIProtocol {
+  func getArrangementsByBusinessFunctionCall(businessFunction: Swift.String, resourceName: Swift.String, privilege: Swift.String, contentLanguage: Swift.String?, withLatestBalances: Swift.Bool?, maskIndicator: Swift.Bool?, debitAccount: Swift.Bool?, creditAccount: Swift.Bool?, externalTransferAllowed: Swift.Bool?, productKindName: Swift.String?, legalEntityIds: [Swift.String]?, sourceId: Swift.String?, favorite: Swift.Bool?, searchTerm: Swift.String?, customOrder: Swift.Bool?, favoriteFirst: Swift.Bool?, subscriptions: [Swift.String]?, from: Swift.Int?, size: Swift.Int?, cursor: Swift.String?, orderBy: [ArrangementsClient2.OrderByField]?, direction: ArrangementsClient2.SortDirection?, ignoredProductKindNames: [Swift.String]?) throws -> ClientCommon.Call<[ArrangementsClient2.ProductSummaryItem]>
+  func getProductSummaryCall(contentLanguage: Swift.String?, debitAccount: Swift.Bool?, creditAccount: Swift.Bool?, maskIndicator: Swift.Bool?, ignoredProductKindNames: [Swift.String]?) throws -> ClientCommon.Call<ArrangementsClient2.ProductSummary>
+  @available(*, deprecated)
+  func getProductSummaryEntitlementsByLegalEntityIdCall(legalEntityIds: [Swift.String], arrangementIds: [Swift.String]?, ignoredArrangementIds: [Swift.String]?, searchTerm: Swift.String?, from: Swift.Int?, size: Swift.Int?, cursor: Swift.String?, orderBy: [ArrangementsClient2.OrderByField]?, direction: ArrangementsClient2.SortDirection?) throws -> ClientCommon.Call<[ArrangementsClient2.ProductSummaryItem]>
+  func postFilterProductSummariesCall(productSummaryFilterParams: ArrangementsClient2.ProductSummaryFilterParams) throws -> ClientCommon.Call<ArrangementsClient2.ProductSummaryFilterResult>
+}
+@objc @_inheritsConvenienceInitializers public class ProductSummaryAPI : ObjectiveC.NSObject, DBSClient, ArrangementsClient2.ProductSummaryAPIProtocol {
+  @objc public var dataProvider: DBSDataProvider?
+  @objc public var baseURL: Foundation.URL
+  @objc override dynamic public init()
+  required public init(dataProvider: DBSDataProvider, baseURL: Foundation.URL)
+  open func getArrangementsByBusinessFunctionCall(businessFunction: Swift.String, resourceName: Swift.String, privilege: Swift.String, contentLanguage: Swift.String? = nil, withLatestBalances: Swift.Bool? = nil, maskIndicator: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, creditAccount: Swift.Bool? = nil, externalTransferAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, legalEntityIds: [Swift.String]? = nil, sourceId: Swift.String? = nil, favorite: Swift.Bool? = nil, searchTerm: Swift.String? = nil, customOrder: Swift.Bool? = nil, favoriteFirst: Swift.Bool? = nil, subscriptions: [Swift.String]? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, cursor: Swift.String? = nil, orderBy: [ArrangementsClient2.OrderByField]? = nil, direction: ArrangementsClient2.SortDirection? = nil, ignoredProductKindNames: [Swift.String]? = nil) throws -> ClientCommon.Call<[ArrangementsClient2.ProductSummaryItem]>
+  open func getProductSummaryCall(contentLanguage: Swift.String? = nil, debitAccount: Swift.Bool? = nil, creditAccount: Swift.Bool? = nil, maskIndicator: Swift.Bool? = nil, ignoredProductKindNames: [Swift.String]? = nil) throws -> ClientCommon.Call<ArrangementsClient2.ProductSummary>
+  @available(*, deprecated)
+  open func getProductSummaryEntitlementsByLegalEntityIdCall(legalEntityIds: [Swift.String], arrangementIds: [Swift.String]? = nil, ignoredArrangementIds: [Swift.String]? = nil, searchTerm: Swift.String? = nil, from: Swift.Int? = nil, size: Swift.Int? = nil, cursor: Swift.String? = nil, orderBy: [ArrangementsClient2.OrderByField]? = nil, direction: ArrangementsClient2.SortDirection? = nil) throws -> ClientCommon.Call<[ArrangementsClient2.ProductSummaryItem]>
+  open func postFilterProductSummariesCall(productSummaryFilterParams: ArrangementsClient2.ProductSummaryFilterParams) throws -> ClientCommon.Call<ArrangementsClient2.ProductSummaryFilterResult>
+  @objc deinit
+}
+public enum ProductSummaryFilterParamOrderBy : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case name
+  case bankalias
+  case iban
+  case bban
+  case currency
+  case bic
+  case producttypename
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ArrangementsClient2.ProductSummaryFilterParamOrderBy]
+  public static var allCases: [ArrangementsClient2.ProductSummaryFilterParamOrderBy] {
+    get
+  }
+}
+public struct ProductSummaryFilterParams : Swift.Codable, Swift.Equatable {
+  public var from: Swift.Int?
+  public var size: Swift.Int?
+  public var legalEntityIds: [Swift.String]
+  public var arrangementIds: [Swift.String]?
+  public var ignoredArrangementIds: [Swift.String]?
+  public var searchTerm: Swift.String?
+  public var ignoredProductKindNames: [Swift.String]?
+  public var orderBy: [ArrangementsClient2.ProductSummaryFilterParamOrderBy]?
+  public var direction: ArrangementsClient2.SortDirection?
+  public init(from: Swift.Int? = nil, size: Swift.Int? = nil, legalEntityIds: [Swift.String], arrangementIds: [Swift.String]? = nil, ignoredArrangementIds: [Swift.String]? = nil, searchTerm: Swift.String? = nil, ignoredProductKindNames: [Swift.String]? = nil, orderBy: [ArrangementsClient2.ProductSummaryFilterParamOrderBy]? = nil, direction: ArrangementsClient2.SortDirection? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductSummaryFilterParams, rhs: ArrangementsClient2.ProductSummaryFilterParams) -> Swift.Bool
+}
+public struct ProductSummaryFilterParamsAllOf : Swift.Codable, Swift.Equatable {
+  public var legalEntityIds: [Swift.String]?
+  public var arrangementIds: [Swift.String]?
+  public var ignoredArrangementIds: [Swift.String]?
+  public var searchTerm: Swift.String?
+  public var ignoredProductKindNames: [Swift.String]?
+  public var orderBy: [ArrangementsClient2.ProductSummaryFilterParamOrderBy]?
+  public var direction: ArrangementsClient2.SortDirection?
+  public init(legalEntityIds: [Swift.String]? = nil, arrangementIds: [Swift.String]? = nil, ignoredArrangementIds: [Swift.String]? = nil, searchTerm: Swift.String? = nil, ignoredProductKindNames: [Swift.String]? = nil, orderBy: [ArrangementsClient2.ProductSummaryFilterParamOrderBy]? = nil, direction: ArrangementsClient2.SortDirection? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductSummaryFilterParamsAllOf, rhs: ArrangementsClient2.ProductSummaryFilterParamsAllOf) -> Swift.Bool
+}
+public struct ProductSummaryFilterResult : Swift.Codable, Swift.Equatable {
+  public var totalCount: Swift.Int
+  public var items: [ArrangementsClient2.ProductSummaryItem]
+  public var additions: [Swift.String : Swift.String]?
+  public init(totalCount: Swift.Int, items: [ArrangementsClient2.ProductSummaryItem], additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductSummaryFilterResult, rhs: ArrangementsClient2.ProductSummaryFilterResult) -> Swift.Bool
+}
+public struct ProductSummaryItem : Swift.Codable, Swift.Equatable {
+  public var displayName: Swift.String?
+  public var debitCards: [ArrangementsClient2.DebitCardItem]?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var externalArrangementId: Swift.String?
+  public var externalLegalEntityId: Swift.String?
+  public var externalProductId: Swift.String?
+  public var bookedBalance: Swift.Double?
+  public var availableBalance: Swift.Double?
+  public var creditLimit: Swift.Double?
+  public var accruedInterest: Swift.Double?
+  public var principalAmount: Swift.Double?
+  public var currentInvestmentValue: Swift.Double?
+  public var productId: Swift.String?
+  public var productNumber: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var accountInterestRate: Swift.Double?
+  public var valueDateBalance: Swift.Double?
+  public var creditLimitUsage: Swift.Double?
+  public var creditLimitInterestRate: Swift.Double?
+  public var creditLimitExpiryDate: Foundation.Date?
+  public var startDate: Foundation.Date?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestSettlementAccount: Swift.String?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var monthlyInstalmentAmount: Swift.Double?
+  public var amountInArrear: Swift.Double?
+  public var minimumRequiredBalance: Swift.Double?
+  public var creditCardAccountNumber: Swift.String?
+  public var validThru: Foundation.Date?
+  public var applicableInterestRate: Swift.Double?
+  public var remainingCredit: Swift.Double?
+  public var outstandingPayment: Swift.Double?
+  public var minimumPayment: Swift.Double?
+  public var minimumPaymentDueDate: Foundation.Date?
+  public var totalInvestmentValue: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var lastUpdateDate: Foundation.Date?
+  public var favorite: Swift.Bool?
+  public var product: ArrangementsClient2.ProductItem?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var externalParentId: Swift.String?
+  public var id: Swift.String
+  public var legalEntityIds: [Swift.String]
+  public var name: Swift.String?
+  public var bankAlias: Swift.String?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var currency: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var number: Swift.String?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var BIC: Swift.String?
+  public var bankBranchCode: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var sourceId: Swift.String?
+  public init(displayName: Swift.String? = nil, debitCards: [ArrangementsClient2.DebitCardItem]? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, externalArrangementId: Swift.String? = nil, externalLegalEntityId: Swift.String? = nil, externalProductId: Swift.String? = nil, bookedBalance: Swift.Double? = nil, availableBalance: Swift.Double? = nil, creditLimit: Swift.Double? = nil, accruedInterest: Swift.Double? = nil, principalAmount: Swift.Double? = nil, currentInvestmentValue: Swift.Double? = nil, productId: Swift.String? = nil, productNumber: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, accountInterestRate: Swift.Double? = nil, valueDateBalance: Swift.Double? = nil, creditLimitUsage: Swift.Double? = nil, creditLimitInterestRate: Swift.Double? = nil, creditLimitExpiryDate: Foundation.Date? = nil, startDate: Foundation.Date? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestSettlementAccount: Swift.String? = nil, outstandingPrincipalAmount: Swift.Double? = nil, monthlyInstalmentAmount: Swift.Double? = nil, amountInArrear: Swift.Double? = nil, minimumRequiredBalance: Swift.Double? = nil, creditCardAccountNumber: Swift.String? = nil, validThru: Foundation.Date? = nil, applicableInterestRate: Swift.Double? = nil, remainingCredit: Swift.Double? = nil, outstandingPayment: Swift.Double? = nil, minimumPayment: Swift.Double? = nil, minimumPaymentDueDate: Foundation.Date? = nil, totalInvestmentValue: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderNames: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, lastUpdateDate: Foundation.Date? = nil, favorite: Swift.Bool? = nil, product: ArrangementsClient2.ProductItem? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, externalParentId: Swift.String? = nil, id: Swift.String, legalEntityIds: [Swift.String], name: Swift.String? = nil, bankAlias: Swift.String? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, currency: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, urgentTransferAllowed: Swift.Bool? = nil, number: Swift.String? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, BIC: Swift.String? = nil, bankBranchCode: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, sourceId: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.ProductSummaryItem, rhs: ArrangementsClient2.ProductSummaryItem) -> Swift.Bool
+}
+public struct SavingsAccount : Swift.Codable, Swift.Equatable {
+  public var bookedBalance: Swift.String?
+  public var availableBalance: Swift.String?
+  public var accruedInterest: Swift.Double?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var BIC: Swift.String?
+  public var currency: Swift.String?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var bankBranchCode: Swift.String?
+  public var accountInterestRate: Swift.Double?
+  public var minimumRequiredBalance: Swift.Double?
+  public var startDate: Foundation.Date?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var principalAmount: Swift.Double?
+  public var interestSettlementAccount: Swift.String?
+  public var accountHolderNames: Swift.String?
+  public var valueDateBalance: Swift.Double?
+  public var accountHolderAddressLine1: Swift.String?
+  public var accountHolderAddressLine2: Swift.String?
+  public var accountHolderStreetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var accountHolderCountry: Swift.String?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public init(bookedBalance: Swift.String? = nil, availableBalance: Swift.String? = nil, accruedInterest: Swift.Double? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, BIC: Swift.String? = nil, currency: Swift.String? = nil, urgentTransferAllowed: Swift.Bool? = nil, bankBranchCode: Swift.String? = nil, accountInterestRate: Swift.Double? = nil, minimumRequiredBalance: Swift.Double? = nil, startDate: Foundation.Date? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, principalAmount: Swift.Double? = nil, interestSettlementAccount: Swift.String? = nil, accountHolderNames: Swift.String? = nil, valueDateBalance: Swift.Double? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.SavingsAccount, rhs: ArrangementsClient2.SavingsAccount) -> Swift.Bool
+}
+public struct SavingsAccountProductKinds : Swift.Codable, Swift.Equatable {
+  public var products: [ArrangementsClient2.SavingsAccount]
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public init(products: [ArrangementsClient2.SavingsAccount], additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.SavingsAccountProductKinds, rhs: ArrangementsClient2.SavingsAccountProductKinds) -> Swift.Bool
+}
+public enum SortDirection : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case asc
+  case desc
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ArrangementsClient2.SortDirection]
+  public static var allCases: [ArrangementsClient2.SortDirection] {
+    get
+  }
+}
+public struct StateItem : Swift.Codable, Swift.Equatable {
+  public var externalStateId: Swift.String?
+  public var state: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(externalStateId: Swift.String? = nil, state: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.StateItem, rhs: ArrangementsClient2.StateItem) -> Swift.Bool
+}
+public struct SummaryAggregatedBalance : Swift.Codable, Swift.Equatable {
+  public var currency: Swift.String?
+  public var value: Swift.String?
+  public var additions: [Swift.String : Swift.String]?
+  public init(currency: Swift.String? = nil, value: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.SummaryAggregatedBalance, rhs: ArrangementsClient2.SummaryAggregatedBalance) -> Swift.Bool
+}
+public struct SummaryProductKindItem : Swift.Codable, Swift.Equatable {
+  public var id: Swift.Int
+  public var externalKindId: Swift.String
+  public var kindName: Swift.String
+  public var kindUri: Swift.String
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.Int, externalKindId: Swift.String, kindName: Swift.String, kindUri: Swift.String, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.SummaryProductKindItem, rhs: ArrangementsClient2.SummaryProductKindItem) -> Swift.Bool
+}
+public struct TermDeposit : Swift.Codable, Swift.Equatable {
+  public var bookedBalance: Swift.String?
+  public var principalAmount: Swift.Double?
+  public var accruedInterest: Swift.Double?
+  public var IBAN: Swift.String?
+  public var BBAN: Swift.String?
+  public var currency: Swift.String?
+  public var urgentTransferAllowed: Swift.Bool?
+  public var productNumber: Swift.String?
+  public var accountInterestRate: Swift.Double?
+  public var startDate: Foundation.Date?
+  public var termUnit: ArrangementsClient2.TimeUnit?
+  public var termNumber: Swift.Double?
+  public var maturityDate: Foundation.Date?
+  public var maturityAmount: Swift.Double?
+  public var autoRenewalIndicator: Swift.Bool?
+  public var interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit?
+  public var interestPaymentFrequencyNumber: Swift.Double?
+  public var interestSettlementAccount: Swift.String?
+  public var valueDateBalance: Swift.Double?
+  public var accountHolderNames: Swift.String?
+  public var outstandingPrincipalAmount: Swift.Double?
+  public var creditAccount: Swift.Bool?
+  public var debitAccount: Swift.Bool?
+  public var minimumRequiredBalance: Swift.Double?
+  public var unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]?
+  public var additions: [Swift.String : Swift.String]?
+  public var id: Swift.String?
+  public var name: Swift.String?
+  public var displayName: Swift.String?
+  public var externalTransferAllowed: Swift.Bool?
+  public var crossCurrencyAllowed: Swift.Bool?
+  public var productKindName: Swift.String?
+  public var productTypeName: Swift.String?
+  public var bankAlias: Swift.String?
+  public var sourceId: Swift.String?
+  public var visible: Swift.Bool?
+  public var accountOpeningDate: Foundation.Date?
+  public var lastUpdateDate: Foundation.Date?
+  public var userPreferences: ArrangementsClient2.UserPreferences?
+  public var state: ArrangementsClient2.StateItem?
+  public var parentId: Swift.String?
+  public var subArrangements: [ArrangementsClient2.BaseProduct]?
+  public var financialInstitutionId: Swift.Int64?
+  public var lastSyncDate: Foundation.Date?
+  public var cardDetails: ArrangementsClient2.CardDetails?
+  public var interestDetails: ArrangementsClient2.InterestDetails?
+  public var reservedAmount: Swift.Double?
+  public var remainingPeriodicTransfers: Swift.Double?
+  public var bankBranchCode2: Swift.String?
+  public var nextClosingDate: Foundation.Date?
+  public var overdueSince: Foundation.Date?
+  public init(bookedBalance: Swift.String? = nil, principalAmount: Swift.Double? = nil, accruedInterest: Swift.Double? = nil, IBAN: Swift.String? = nil, BBAN: Swift.String? = nil, currency: Swift.String? = nil, urgentTransferAllowed: Swift.Bool? = nil, productNumber: Swift.String? = nil, accountInterestRate: Swift.Double? = nil, startDate: Foundation.Date? = nil, termUnit: ArrangementsClient2.TimeUnit? = nil, termNumber: Swift.Double? = nil, maturityDate: Foundation.Date? = nil, maturityAmount: Swift.Double? = nil, autoRenewalIndicator: Swift.Bool? = nil, interestPaymentFrequencyUnit: ArrangementsClient2.TimeUnit? = nil, interestPaymentFrequencyNumber: Swift.Double? = nil, interestSettlementAccount: Swift.String? = nil, valueDateBalance: Swift.Double? = nil, accountHolderNames: Swift.String? = nil, outstandingPrincipalAmount: Swift.Double? = nil, creditAccount: Swift.Bool? = nil, debitAccount: Swift.Bool? = nil, minimumRequiredBalance: Swift.Double? = nil, unmaskableAttributes: [ArrangementsClient2.MaskableAttribute]? = nil, additions: [Swift.String : Swift.String]? = nil, id: Swift.String? = nil, name: Swift.String? = nil, displayName: Swift.String? = nil, externalTransferAllowed: Swift.Bool? = nil, crossCurrencyAllowed: Swift.Bool? = nil, productKindName: Swift.String? = nil, productTypeName: Swift.String? = nil, bankAlias: Swift.String? = nil, sourceId: Swift.String? = nil, visible: Swift.Bool? = nil, accountOpeningDate: Foundation.Date? = nil, lastUpdateDate: Foundation.Date? = nil, userPreferences: ArrangementsClient2.UserPreferences? = nil, state: ArrangementsClient2.StateItem? = nil, parentId: Swift.String? = nil, subArrangements: [ArrangementsClient2.BaseProduct]? = nil, financialInstitutionId: Swift.Int64? = nil, lastSyncDate: Foundation.Date? = nil, cardDetails: ArrangementsClient2.CardDetails? = nil, interestDetails: ArrangementsClient2.InterestDetails? = nil, reservedAmount: Swift.Double? = nil, remainingPeriodicTransfers: Swift.Double? = nil, bankBranchCode2: Swift.String? = nil, nextClosingDate: Foundation.Date? = nil, overdueSince: Foundation.Date? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.TermDeposit, rhs: ArrangementsClient2.TermDeposit) -> Swift.Bool
+}
+public struct TermDepositProductKinds : Swift.Codable, Swift.Equatable {
+  public var products: [ArrangementsClient2.TermDeposit]
+  public var additions: [Swift.String : Swift.String]?
+  public var name: Swift.String?
+  public var aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance?
+  public init(products: [ArrangementsClient2.TermDeposit], additions: [Swift.String : Swift.String]? = nil, name: Swift.String? = nil, aggregatedBalance: ArrangementsClient2.SummaryAggregatedBalance? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.TermDepositProductKinds, rhs: ArrangementsClient2.TermDepositProductKinds) -> Swift.Bool
+}
+public enum TimePeriod : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case lastday
+  case lastweek
+  case lastmonth
+  case lastyear
+  case all
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ArrangementsClient2.TimePeriod]
+  public static var allCases: [ArrangementsClient2.TimePeriod] {
+    get
+  }
+}
+public enum TimeUnit : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case d
+  case w
+  case m
+  case y
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ArrangementsClient2.TimeUnit]
+  public static var allCases: [ArrangementsClient2.TimeUnit] {
+    get
+  }
+}
+public struct TranslationItem : Swift.Codable, Swift.Equatable {
+  public var locale: Swift.String?
+  public var localeTranslations: [ArrangementsClient2.LocaleTranslationItem]?
+  public var additions: [Swift.String : Swift.String]?
+  public init(locale: Swift.String? = nil, localeTranslations: [ArrangementsClient2.LocaleTranslationItem]? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.TranslationItem, rhs: ArrangementsClient2.TranslationItem) -> Swift.Bool
+}
+public struct UserPreferences : Swift.Codable, Swift.Equatable {
+  public var alias: Swift.String?
+  public var visible: Swift.Bool?
+  public var favorite: Swift.Bool?
+  public var additions: [Swift.String : Swift.String]?
+  public init(alias: Swift.String? = nil, visible: Swift.Bool? = nil, favorite: Swift.Bool? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: ArrangementsClient2.UserPreferences, rhs: ArrangementsClient2.UserPreferences) -> Swift.Bool
+}
+extension ArrangementsClient2.AccountsAPI.Format_getBalanceHistory : Swift.Equatable {}
+extension ArrangementsClient2.AccountsAPI.Format_getBalanceHistory : Swift.Hashable {}
+extension ArrangementsClient2.AccountsAPI.Format_getBalanceHistory : Swift.RawRepresentable {}
+extension ArrangementsClient2.BalancesAPI.GroupedBy_getAggregations : Swift.Equatable {}
+extension ArrangementsClient2.BalancesAPI.GroupedBy_getAggregations : Swift.Hashable {}
+extension ArrangementsClient2.BalancesAPI.GroupedBy_getAggregations : Swift.RawRepresentable {}
+extension ArrangementsClient2.MaskableAttribute : Swift.Equatable {}
+extension ArrangementsClient2.MaskableAttribute : Swift.Hashable {}
+extension ArrangementsClient2.MaskableAttribute : Swift.RawRepresentable {}
+extension ArrangementsClient2.OrderByField : Swift.Equatable {}
+extension ArrangementsClient2.OrderByField : Swift.Hashable {}
+extension ArrangementsClient2.OrderByField : Swift.RawRepresentable {}
+extension ArrangementsClient2.ProductSummaryFilterParamOrderBy : Swift.Equatable {}
+extension ArrangementsClient2.ProductSummaryFilterParamOrderBy : Swift.Hashable {}
+extension ArrangementsClient2.ProductSummaryFilterParamOrderBy : Swift.RawRepresentable {}
+extension ArrangementsClient2.SortDirection : Swift.Equatable {}
+extension ArrangementsClient2.SortDirection : Swift.Hashable {}
+extension ArrangementsClient2.SortDirection : Swift.RawRepresentable {}
+extension ArrangementsClient2.TimePeriod : Swift.Equatable {}
+extension ArrangementsClient2.TimePeriod : Swift.Hashable {}
+extension ArrangementsClient2.TimePeriod : Swift.RawRepresentable {}
+extension ArrangementsClient2.TimeUnit : Swift.Equatable {}
+extension ArrangementsClient2.TimeUnit : Swift.Hashable {}
+extension ArrangementsClient2.TimeUnit : Swift.RawRepresentable {}

@@ -1,0 +1,4 @@
+framework module MessagesJourneyMessagesUseCase {
+  header "MessagesJourneyMessagesUseCase-Swift.h"
+  requires objc
+}

@@ -1,0 +1,706 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BusinessJourneyCommon
+import Backbase
+import BackbaseIdentity
+@_exported import BusinessJourneyCommon
+import Foundation
+import LocalAuthentication
+import Swift
+import UIKit
+import _Concurrency
+@_hasMissingDesignatedInitializers public class AccountFormatter {
+  public static func format(accountNumber: Swift.String?, type: Swift.String?) -> Swift.String?
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum AuthenticationError : Swift.Error {
+  case notConnected
+  case cancelledByUser
+  case passcodeMismatch
+  case invalidPasscode(Swift.Error)
+  case passcodeMaxAttemptsReached
+  case usernameNotFound
+  case emptyCredentials
+  case biometricsUsageDenied
+  case noMatchingPolicy
+  case invalidCredentials
+  case missingRefreshToken
+  case sdk(Swift.Error)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.AuthenticationError {
+  public init(underlying error: Swift.Error)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.AuthenticationError : Swift.Equatable {
+  public static func == (lhs: BusinessJourneyCommon.AuthenticationError, rhs: BusinessJourneyCommon.AuthenticationError) -> Swift.Bool
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.AuthenticationError : Foundation.LocalizedError {
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public typealias SessionHandler = (SessionState) -> Swift.Void
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public typealias AuthenticationResult = Swift.Result<[Swift.String : Swift.String], BusinessJourneyCommon.AuthenticationError>
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public typealias AuthenticationHandler = (BusinessJourneyCommon.AuthenticationResult) -> Swift.Void
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol AuthenticationRepositoryUseCase : AuthClient {
+  var currentUser: BusinessJourneyCommon.User { get }
+  var isEnrolled: Swift.Bool { get }
+  var isBiometricEnrolled: Swift.Bool { get }
+  var isPasscodeEnrolled: Swift.Bool { get }
+  var isWorkspaceEnrolled: Swift.Bool { get }
+  func authenticate(withUsername username: Swift.String, password: Swift.String, callback: BusinessJourneyCommon.AuthenticationHandler?)
+  func biometricAuthentication(withUsername username: Swift.String, callback: BusinessJourneyCommon.AuthenticationHandler?)
+  func passcodeAuthentication(withUsername username: Swift.String, callback: BusinessJourneyCommon.AuthenticationHandler?)
+  func logout(callback: BusinessJourneyCommon.SessionHandler?)
+  func endSession(callback: BusinessJourneyCommon.SessionHandler?)
+  func saveServiceAgreement(identifier: Swift.String, name: Swift.String)
+  func setServiceAgreement(quantity: Swift.Int?)
+  func validateSession(callback: BusinessJourneyCommon.SessionHandler?)
+}
+public protocol AppState {
+}
+public enum Undefined : BusinessJourneyCommon.AppState {
+}
+public enum UnInitialized : BusinessJourneyCommon.AppState {
+}
+public enum Initialized : BusinessJourneyCommon.AppState {
+}
+public enum Launched : BusinessJourneyCommon.AppState {
+}
+@_hasMissingDesignatedInitializers public class BBApp<State> where State : BusinessJourneyCommon.AppState {
+  public var authRepository: BusinessJourneyCommon.AuthenticationRepositoryUseCase? {
+    get
+  }
+  @discardableResult
+  public func logLevel(_ level: BBLogLevel = .debug) -> BusinessJourneyCommon.BBApp<State>
+  @objc deinit
+}
+extension BusinessJourneyCommon.BBApp where State == BusinessJourneyCommon.Undefined {
+  public static func new(environment: BusinessJourneyCommon.Environment = DefaultEnvironment(), privacyCoordinator: BusinessJourneyCommon.PrivacyCoordinator = DefaultPrivacyCoordinator()) -> BusinessJourneyCommon.BBApp<BusinessJourneyCommon.UnInitialized>
+}
+extension BusinessJourneyCommon.BBApp where State == BusinessJourneyCommon.UnInitialized {
+  @discardableResult
+  public func configure(fromFile path: Swift.String = "config.json", forceDecryption decryption: Swift.Bool = false) throws -> BusinessJourneyCommon.BBApp<BusinessJourneyCommon.Initialized>
+}
+extension BusinessJourneyCommon.BBApp where State == BusinessJourneyCommon.Initialized {
+  @discardableResult
+  public func register(authClient: AuthClient) -> BusinessJourneyCommon.BBApp<BusinessJourneyCommon.Initialized>
+  @discardableResult
+  public func register(authRepository: BusinessJourneyCommon.AuthenticationRepositoryUseCase) -> BusinessJourneyCommon.BBApp<BusinessJourneyCommon.Initialized>
+  @discardableResult
+  public func register(clients: [Swift.String : Swift.String], dataProvider: BusinessJourneyCommon.DataProvidable.Type) throws -> BusinessJourneyCommon.BBApp<BusinessJourneyCommon.Initialized>
+  @discardableResult
+  public func register(clients: [BusinessJourneyCommon.Client]) throws -> BusinessJourneyCommon.BBApp<BusinessJourneyCommon.Initialized>
+  @discardableResult
+  public func register(responseResolver: [Swift.Int : ErrorResponseResolver]) throws -> BusinessJourneyCommon.BBApp<BusinessJourneyCommon.Initialized>
+  @discardableResult
+  public func launch(in window: UIKit.UIWindow?) -> BusinessJourneyCommon.BBApp<BusinessJourneyCommon.Launched>
+}
+extension BusinessJourneyCommon.BBApp where State == BusinessJourneyCommon.Launched {
+  public func enterBackground()
+  public func enterForeground(expiredSessionHandler: @escaping (Swift.Bool) -> Swift.Void)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol BackbaseHelperCompatible {
+  associatedtype BBHelperType
+  var bb: Self.BBHelperType { get }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelperCompatible {
+  public var bb: BusinessJourneyCommon.BackbaseHelper<Self> {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public struct BackbaseHelper<Extended> {
+  public let extendedClass: Extended
+  public init(_ extendedClass: Extended)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum BiometryType {
+  case none
+  case faceID
+  case touchID
+  case denied
+  public static func == (a: BusinessJourneyCommon.BiometryType, b: BusinessJourneyCommon.BiometryType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BiometryType {
+  public static var supported: BusinessJourneyCommon.BiometryType {
+    get
+  }
+  public static var allowed: BusinessJourneyCommon.BiometryType {
+    get
+  }
+}
+extension QuartzCore.CALayer : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<QuartzCore.CALayer>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended : QuartzCore.CALayer {
+  public func addShadow(offset: CoreGraphics.CGSize = CGSize(width: 0, height: 2), opacity: Swift.Float = 0.17, radius: CoreGraphics.CGFloat = 4, color: UIKit.UIColor)
+  public func roundCorners(_ radius: CoreGraphics.CGFloat)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public struct Client {
+  public let name: Swift.String
+  public let path: Swift.String
+  public let dataProvider: BusinessJourneyCommon.DataProvidable.Type
+  public init(name: Swift.String, path: Swift.String, dataProvider: BusinessJourneyCommon.DataProvidable.Type)
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class CoreConfiguration {
+  public static let shared: BusinessJourneyCommon.CoreConfiguration
+  public var date: BusinessJourneyCommon.DateConfiguration
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol DataProvidable : ObjectiveC.NSObject, DBSDataProvider {
+  var baseURL: Foundation.URL { get set }
+  var path: Swift.String { get set }
+  var sessionConfiguration: Foundation.URLSessionConfiguration { get set }
+  init(path: Swift.String, baseURL: Foundation.URL, configuration: Foundation.URLSessionConfiguration)
+  func execute(_ request: Foundation.URLRequest, completionHandler: ((Foundation.URLResponse?, Foundation.Data?, Swift.Error?) -> Swift.Void)?)
+}
+@objc @available(*, deprecated, message: "Deprecated in 2.0.0")
+public class DataProvider : ObjectiveC.NSObject, BusinessJourneyCommon.DataProvidable {
+  public var baseURL: Foundation.URL
+  public var path: Swift.String
+  public var sessionConfiguration: Foundation.URLSessionConfiguration
+  required public init(path: Swift.String, baseURL: Foundation.URL, configuration: Foundation.URLSessionConfiguration)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DataProvider {
+  @objc dynamic public func execute(_ request: Foundation.URLRequest, completionHandler: ((Foundation.URLResponse?, Foundation.Data?, Swift.Error?) -> Swift.Void)? = nil)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol DataSource : AnyObject {
+  associatedtype Element
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol Reloadable {
+  associatedtype Element
+  func reload(size: Swift.Int, completion: @escaping (Swift.Result<[BusinessJourneyCommon.Section<Self.Element>], Swift.Error>) -> Swift.Void)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol Paginatable {
+  associatedtype Element
+  func loadMore(offset: Swift.Int?, size: Swift.Int, completion: @escaping (Swift.Result<[BusinessJourneyCommon.Section<Self.Element>], Swift.Error>) -> Swift.Void)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol Searchable {
+  associatedtype Element
+  func search(query: Swift.String, size: Swift.Int, completion: @escaping (Swift.Result<[BusinessJourneyCommon.Section<Self.Element>], Swift.Error>) -> Swift.Void)
+  func clearSearchingFilters()
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum DataPresenterLoadingType {
+  case reload
+  case loadMore
+  public static func == (a: BusinessJourneyCommon.DataPresenterLoadingType, b: BusinessJourneyCommon.DataPresenterLoadingType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum DataPresenterState {
+  case loading(BusinessJourneyCommon.DataPresenterLoadingType)
+  case completed
+  case error(Swift.Error)
+  case empty
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol DataPresenterDelegate : AnyObject {
+  func stateChanged(_ state: BusinessJourneyCommon.DataPresenterState)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class DataPresenter<Element, Cell, Source> : ObjectiveC.NSObject, UIKit.UITableViewDataSource where Cell : UIKit.UITableViewCell, Source : BusinessJourneyCommon.DataSource {
+  public typealias SectionElement = BusinessJourneyCommon.Section<Source.Element>
+  @_Concurrency.MainActor(unsafe) weak public var delegate: BusinessJourneyCommon.DataPresenterDelegate?
+  @_Concurrency.MainActor(unsafe) public init(source: Source, initialSections: [BusinessJourneyCommon.DataPresenter<Element, Cell, Source>.SectionElement] = [], cellConfigurator: @escaping (Cell, Source.Element) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public func registerCell(inTableView tableView: UIKit.UITableView)
+  @_Concurrency.MainActor(unsafe) public func sectionFor(indexPath: Foundation.IndexPath) -> BusinessJourneyCommon.DataPresenter<Element, Cell, Source>.SectionElement
+  @_Concurrency.MainActor(unsafe) public func itemFor(indexPath: Foundation.IndexPath) -> Source.Element
+  @_Concurrency.MainActor(unsafe) public func replaceItemAt(indexPath: Foundation.IndexPath, with replacement: Source.Element)
+  @_Concurrency.MainActor(unsafe) public func remove(where matcher: (Source.Element) -> Swift.Bool) -> [Foundation.IndexPath]
+  @_Concurrency.MainActor(unsafe) public func indexPaths(where matcher: (Source.Element) -> Swift.Bool) -> [Foundation.IndexPath]
+  @_Concurrency.MainActor(unsafe) public func titleFor(section: Swift.Int) -> Swift.String
+  @_Concurrency.MainActor(unsafe) @objc public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DataPresenter where Source : BusinessJourneyCommon.Reloadable {
+  @_Concurrency.MainActor(unsafe) public func reloadData(forced: Swift.Bool = false)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DataPresenter where Source : BusinessJourneyCommon.Paginatable {
+  @_Concurrency.MainActor(unsafe) public var currentOffset: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var canLoadMore: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public func shouldLoadMore(for indexPath: Foundation.IndexPath) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) public func loadOneMore()
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DataPresenter where Source : BusinessJourneyCommon.Searchable {
+  @_Concurrency.MainActor(unsafe) public func search(_ query: Swift.String)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DataPresenter where Source : BusinessJourneyCommon.Reloadable, Source : BusinessJourneyCommon.Searchable {
+  @_Concurrency.MainActor(unsafe) public func cancelFiltering()
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Foundation.Date : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<Foundation.Date>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended == Foundation.Date {
+  public var isToday: Swift.Bool {
+    get
+  }
+  public var isYesterday: Swift.Bool {
+    get
+  }
+  public var isCurrentYear: Swift.Bool {
+    get
+  }
+  public var prettyDate: Swift.String {
+    get
+  }
+  public func formatted(dateStyle: BusinessJourneyCommon.DateStyle) -> Swift.String
+  public func formatted(timeStyle: BusinessJourneyCommon.TimeStyle) -> Swift.String
+  public func formatted(dateTimeStyle: BusinessJourneyCommon.DateTimeStyle) -> Swift.String
+}
+public class DateConfiguration {
+  public var prettyDate: Swift.Bool
+  public var today: BusinessJourneyCommon.LocalizedString
+  public var yesterday: BusinessJourneyCommon.LocalizedString
+  public init()
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Foundation.DateFormatter {
+  convenience public init(_ format: Swift.String)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Foundation.Decimal : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<Foundation.Decimal>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended == Foundation.Decimal {
+  public func rounded(_ scale: Swift.Int, _ roundingMode: Foundation.NSDecimalNumber.RoundingMode) -> Foundation.Decimal
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Swift.Double : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<Swift.Double>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended == Swift.Double {
+  public var abbreviated: Swift.String? {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public var Current: BusinessJourneyCommon.Environment
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol Environment {
+  var date: () -> Foundation.Date { get }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public struct DefaultEnvironment : BusinessJourneyCommon.Environment {
+  public var date: () -> Foundation.Date
+  public init(date: @escaping () -> Foundation.Date = { return Date() })
+}
+@objc @_Concurrency.MainActor(unsafe) public class TextFieldDelegate : ObjectiveC.NSObject, UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) public init(textFields: [UIKit.UITextField])
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc deinit
+}
+public protocol FieldsRequiredValidatorDelegate : AnyObject {
+  func allFields(filled: Swift.Bool)
+  func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+}
+@objc @_Concurrency.MainActor(unsafe) public class FieldsRequiredValidator : BusinessJourneyCommon.TextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) public init(delegate: BusinessJourneyCommon.FieldsRequiredValidatorDelegate, textFields: [UIKit.UITextField])
+  @_Concurrency.MainActor(unsafe) @objc override public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum DataSourceState {
+  case loading
+  case completed
+  case error(Swift.Error)
+  case empty
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol GenericDataSource : AnyObject {
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol GenericDataSourceDelegate : AnyObject {
+  func stateChanged(_ state: BusinessJourneyCommon.DataSourceState)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public struct IBANUtils {
+  public static func formatIBAN(_ iban: Swift.String?) -> Swift.String?
+}
+@_hasMissingDesignatedInitializers public class IBANValidator {
+  public enum IBANValidationOption {
+    case checkDigit
+    case minLength
+    case maxLength
+    case characters
+    case exactLength
+    public static func == (a: BusinessJourneyCommon.IBANValidator.IBANValidationOption, b: BusinessJourneyCommon.IBANValidator.IBANValidationOption) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static func isValidIBAN(_ iban: Swift.String?, _ countryCode: Swift.String? = nil) -> Swift.Bool
+  public static func isValidIBAN(_ iban: Swift.String?, _ countryCode: Swift.String? = nil, _ options: BusinessJourneyCommon.IBANValidator.IBANValidationOption...) -> Swift.Bool
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension LocalAuthentication.LABiometryType : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<LocalAuthentication.LABiometryType>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended == LocalAuthentication.LABiometryType {
+  public func toString() -> Swift.String
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension LocalAuthentication.LAContext : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<LocalAuthentication.LAContext>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended : LocalAuthentication.LAContext {
+  public func supportedBiometricType() -> LocalAuthentication.LABiometryType?
+}
+@objc @available(*, deprecated, message: "Deprecated in 2.0.0")
+open class LocalDataProvider : ObjectiveC.NSObject, BusinessJourneyCommon.DataProvidable {
+  public var baseURL: Foundation.URL
+  public var path: Swift.String
+  public var sessionConfiguration: Foundation.URLSessionConfiguration
+  required public init(path: Swift.String, baseURL: Foundation.URL, configuration: Foundation.URLSessionConfiguration)
+  public struct Response {
+  }
+  open func createResponse(from resourceFile: Swift.String, httpMethod: Swift.String, statusCode: Swift.Int, queryItems: [Foundation.URLQueryItem]?) -> Swift.Result<BusinessJourneyCommon.LocalDataProvider.Response, Swift.Error>
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.LocalDataProvider {
+  @objc dynamic public func execute(_ request: Foundation.URLRequest, completionHandler: ((Foundation.URLResponse?, Foundation.Data?, Swift.Error?) -> Swift.Void)?)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.LocalDataProvider {
+  public enum ResponseError : Swift.Error {
+    case noResourceFile(message: Swift.String)
+    case noLaunchArguments
+    case malformedURL
+    case fileNotFound
+    case offline
+    case unauthorized
+    case unknown
+  }
+}
+public struct LocalizedString : Swift.ExpressibleByStringLiteral {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public init(stringLiteral value: Swift.String)
+  public init(key: Swift.String, prefix: Swift.String? = nil, in bundles: Foundation.Bundle?...)
+  public func callAsFunction() -> Swift.String
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Foundation.NotificationCenter {
+  public static func publishEvent(_ eventName: Swift.String, payload jsonObject: [Swift.String : ObjectiveC.NSObject]?)
+  public static func publishEvent(_ eventName: Swift.String, object: Any, payload jsonObject: [Swift.String : ObjectiveC.NSObject]?)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Foundation.NotificationCenter {
+  public static func registerObserver(_ obj: Any, selector: ObjectiveC.Selector, forEvent eventName: Swift.String)
+  public static func unregisterObserver(fromAll obj: Any)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Foundation.NotificationCenter : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<Foundation.NotificationCenter>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended : Foundation.NotificationCenter {
+  public func showErrorNudge(error: Swift.Error)
+  public func showNudge(title: Swift.String, subtitle: Swift.String, type: Swift.String)
+}
+public class PaginationData {
+  public var page: Swift.Int
+  public var size: Swift.Int
+  public var cursor: Swift.String?
+  public var canLoadMore: Swift.Bool
+  public init()
+  public func asDictionary() -> [Swift.String : Swift.String]
+  public func increment()
+  public func reset()
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.PaginatorLayoutable {
+  public var paginationView: UIKit.UIView {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol PaginatorLayoutable : AnyObject {
+  var paginationView: UIKit.UIView { get }
+  func loadMoreStarted()
+  func loadMoreFinished()
+}
+public protocol PrivacyCoordinator : AnyObject {
+  func launch(in window: UIKit.UIWindow?)
+  func enterBackground()
+  func enterForeground()
+}
+@objc @_inheritsConvenienceInitializers public class DefaultPrivacyCoordinator : ObjectiveC.NSObject, BusinessJourneyCommon.PrivacyCoordinator {
+  public func launch(in window: UIKit.UIWindow?)
+  public func enterBackground()
+  public func enterForeground()
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @available(*, deprecated, message: "Deprecated in 2.0.0")
+final public class RemoteDataProvider : ObjectiveC.NSObject, BusinessJourneyCommon.DataProvidable {
+  final public var baseURL: Foundation.URL
+  final public var path: Swift.String
+  final public var sessionConfiguration: Foundation.URLSessionConfiguration
+  public init(path: Swift.String, baseURL: Foundation.URL, configuration: Foundation.URLSessionConfiguration)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.RemoteDataProvider {
+  @objc final public func execute(_ request: Foundation.URLRequest, completionHandler: ((Foundation.URLResponse?, Foundation.Data?, Swift.Error?) -> Swift.Void)?)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Renderable {
+  public var disableBackNavigationControl: Swift.Bool {
+    get
+  }
+  public var favoriteIconName: Swift.String {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public typealias SearchableLayoutor = BusinessJourneyCommon.SearchInitializable & BusinessJourneyCommon.SearchableController
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol SearchInitializable : AnyObject {
+  func setupSearchBar()
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol SearchableController : AnyObject {
+  func search(query: Swift.String)
+  func searchBarTextDidBeginEditing()
+  func searchBarSearchButtonClicked()
+  func cancelSearching()
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.SearchableController where Self : UIKit.UIViewController {
+  public func searchBarSearchButtonClicked()
+  public func searchBarTextDidBeginEditing()
+}
+@objc @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Deprecated in 2.0.0")
+@_Concurrency.MainActor(unsafe) public class BBSearchViewController : UIKit.UISearchController {
+  @_Concurrency.MainActor(unsafe) convenience public init(searchable: BusinessJourneyCommon.SearchableController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BBSearchViewController : UIKit.UISearchBarDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBarTextDidBeginEditing(_ searchBar: UIKit.UISearchBar)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBar(_ searchBar: UIKit.UISearchBar, textDidChange searchText: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBarSearchButtonClicked(_ searchBar: UIKit.UISearchBar)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBarCancelButtonClicked(_ searchBar: UIKit.UISearchBar)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public class Section<T> {
+  final public let title: Swift.String
+  public var items: [T]
+  public init(title: Swift.String, items: [T])
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension Foundation.NSString : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<Foundation.NSString>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended : Foundation.NSString {
+  public var toDate: Foundation.Date? {
+    get
+  }
+  public var boolValue: Swift.Bool {
+    get
+  }
+  public func withEmojisInDecimalUnicode() -> Swift.String
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum DateStyle : Swift.String {
+  case short
+  case medium
+  case full
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum TimeStyle : Swift.String {
+  case short
+  case medium
+  case full
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum DateTimeStyle : Swift.String {
+  case short
+  case medium
+  case full
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension UIKit.UIView : BusinessJourneyCommon.BackbaseHelperCompatible {
+  @_Concurrency.MainActor(unsafe) public static let privacyViewTag: Swift.Int
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<UIKit.UIView>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended : UIKit.UIView {
+  public enum PrivacyMode {
+    case blur(UIKit.UIBlurEffect)
+    case launchScreen(UIKit.UIStoryboard)
+    case image(UIKit.UIImage, UIKit.UIView.ContentMode)
+    case view(UIKit.UIView)
+  }
+  public func showPrivacyView(mode: BusinessJourneyCommon.BackbaseHelper<Extended>.PrivacyMode = .blur(UIBlurEffect(style: .extraLight)))
+  public func hidePrivacyView()
+  public var activeController: UIKit.UIViewController? {
+    get
+  }
+  public func addConstraintsToFillSuperview(insets: UIKit.UIEdgeInsets = .zero)
+  public func addCenterConstraints(viewSize: CoreGraphics.CGSize, offset: UIKit.UIOffset = .zero)
+  public func addSubviewAndPinToEdges(_ view: UIKit.UIView, constants: UIKit.UIEdgeInsets = .zero, respectsLanguage: Swift.Bool = true)
+  public func pinToEdges(view: UIKit.UIView, constants: UIKit.UIEdgeInsets = .zero, respectsLanguage: Swift.Bool = true)
+  public func loadViewFromNib(nibName: Swift.String) -> UIKit.UIView?
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension UIKit.UIViewController : BusinessJourneyCommon.BackbaseHelperCompatible {
+  public typealias BBHelperType = BusinessJourneyCommon.BackbaseHelper<UIKit.UIViewController>
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended : UIKit.UIViewController {
+  public func presentAlert(forError error: Swift.Error, title: Swift.String? = nil, completion: (() -> Swift.Void)? = nil)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public protocol KeyboardObserver : AnyObject {
+  func keyboardWillAppear(duration: Swift.Double, animationOptions: UIKit.UIView.AnimationOptions, targetFrame: CoreGraphics.CGRect)
+  func keyboardWillDisappear(duration: Swift.Double, animationOptions: UIKit.UIView.AnimationOptions, targetFrame: CoreGraphics.CGRect)
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BackbaseHelper where Extended : UIKit.UIViewController {
+  public func enableKeyboardObserving(notificationCenter: Foundation.NotificationCenter = NotificationCenter.default, observer: BusinessJourneyCommon.KeyboardObserver)
+  public func disableKeyboardObserving(notificationCenter: Foundation.NotificationCenter = NotificationCenter.default)
+  public func keyboardWillShow(notification: Foundation.Notification, observer: BusinessJourneyCommon.KeyboardObserver)
+  public func keyboardWillHide(notification: Foundation.Notification, observer: BusinessJourneyCommon.KeyboardObserver)
+}
+public enum ServiceAgreementsQuantity {
+  case single
+  case multiple(Swift.Int)
+  case unknown
+}
+public struct User {
+  public var name: Swift.String?
+  public var username: Swift.String?
+  public var serviceAgreementIdentifier: Swift.String?
+  public var serviceAgreementName: Swift.String?
+  public var serviceAgreementsCount: Swift.Int?
+  public var serviceAgreementsQuantity: BusinessJourneyCommon.ServiceAgreementsQuantity {
+    get
+  }
+  public init(name: Swift.String? = nil, username: Swift.String? = nil, serviceAgreementIdentifier: Swift.String? = nil, serviceAgreementName: Swift.String? = nil, serviceAgreementsCount: Swift.Int? = nil)
+}
+public class UserRepository {
+  public init(storageComponent: StorageComponent?)
+  public var user: BusinessJourneyCommon.User {
+    get
+    set
+  }
+  public func clearUser()
+  public func set<T>(_ keyPath: Swift.WritableKeyPath<BusinessJourneyCommon.User, T?>, to value: T)
+  public func clear<T>(_ keyPath: Swift.WritableKeyPath<BusinessJourneyCommon.User, T?>)
+  public func value<T>(of keyPath: Swift.KeyPath<BusinessJourneyCommon.User, T?>) -> T?
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+public enum Visibility {
+  case hidden
+  case visible
+  public static func == (a: BusinessJourneyCommon.Visibility, b: BusinessJourneyCommon.Visibility) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BiometryType : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.BiometryType : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DataPresenterLoadingType : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DataPresenterLoadingType : Swift.Hashable {}
+extension BusinessJourneyCommon.IBANValidator.IBANValidationOption : Swift.Equatable {}
+extension BusinessJourneyCommon.IBANValidator.IBANValidationOption : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DateStyle : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DateStyle : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DateStyle : Swift.RawRepresentable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.TimeStyle : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.TimeStyle : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.TimeStyle : Swift.RawRepresentable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DateTimeStyle : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DateTimeStyle : Swift.Hashable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.DateTimeStyle : Swift.RawRepresentable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.Visibility : Swift.Equatable {}
+@available(*, deprecated, message: "Deprecated in 2.0.0")
+extension BusinessJourneyCommon.Visibility : Swift.Hashable {}

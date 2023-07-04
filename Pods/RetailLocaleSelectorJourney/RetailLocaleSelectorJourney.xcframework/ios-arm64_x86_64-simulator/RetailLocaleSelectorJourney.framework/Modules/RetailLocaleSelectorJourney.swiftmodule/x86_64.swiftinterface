@@ -1,0 +1,166 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RetailLocaleSelectorJourney
+import Backbase
+import BackbaseDesignSystem
+import Foundation
+import Resolver
+import RetailDesign
+import RetailJourneyCommon
+import RxCocoa
+import RxSwift
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+extension Foundation.Bundle {
+  public static var localeSelector: Foundation.Bundle? {
+    get
+  }
+}
+public struct ChangeLocale {
+  public static func build(navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension RetailLocaleSelectorJourney.ChangeLocale {
+  public struct Configuration {
+    public init()
+    public var strings: RetailLocaleSelectorJourney.ChangeLocale.Strings
+    public var design: RetailLocaleSelectorJourney.ChangeLocale.Design
+    public var router: RetailLocaleSelectorJourney.ChangeLocale.Router
+  }
+}
+extension RetailLocaleSelectorJourney.ChangeLocale {
+  public struct Design {
+    public init()
+    public var background: (_ view: RetailLocaleSelectorJourney.LocaleSelector.Design.BackgroundView) -> Swift.Void
+    public var descriptionLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var localesContainer: (_ view: RetailLocaleSelectorJourney.LocalesContainerView) -> Swift.Void
+    public var localeButton: (_ button: RetailLocaleSelectorJourney.LocaleButton) -> Swift.Void
+  }
+}
+extension RetailLocaleSelectorJourney.ChangeLocale {
+  public struct Router {
+    public var didSelectLocale: ((UIKit.UINavigationController) -> (Foundation.Locale) -> Swift.Void)?
+  }
+}
+extension RetailLocaleSelectorJourney.ChangeLocale {
+  public struct Strings {
+    public init()
+    public var navigationTitle: RetailJourneyCommon.LocalizedString
+    public var description: RetailJourneyCommon.LocalizedString
+    public var confirmAlertTitle: RetailJourneyCommon.LocalizedString
+    public var confirmAlertMessage: RetailJourneyCommon.LocalizedString
+    public var confirmAlertConfirmOption: RetailJourneyCommon.LocalizedString
+    public var confirmAlertCancelOption: RetailJourneyCommon.LocalizedString
+  }
+}
+public protocol LocaleButton : UIKit.UIButton {
+  var iconImageView: UIKit.UIImageView { get set }
+  var primaryLabel: UIKit.UILabel { get set }
+  var secondaryLabel: UIKit.UILabel { get set }
+  var labelsStackView: UIKit.UIStackView { get set }
+  var checkmarkImageView: UIKit.UIImageView { get set }
+  var stackView: UIKit.UIStackView { get set }
+}
+public struct LocaleSelector {
+  public struct Configuration {
+    public init()
+    public var availableLocales: (_ locales: [Foundation.Locale]) -> [Foundation.Locale]
+    public var defaultLocale: (_ locales: [Foundation.Locale]) -> Foundation.Locale?
+    public var icon: (Foundation.Locale) -> UIKit.UIImage?
+    public var primaryText: (_ locale: Foundation.Locale) -> Swift.String?
+    public var secondaryText: (_ locale: Foundation.Locale) -> Swift.String?
+    public var select: RetailLocaleSelectorJourney.SelectLocale.Configuration
+    public var change: RetailLocaleSelectorJourney.ChangeLocale.Configuration
+  }
+}
+extension RetailLocaleSelectorJourney.LocaleSelector.Design {
+  public enum Background {
+    case solid(UIKit.UIColor?)
+    case gradient(RetailLocaleSelectorJourney.LocaleSelector.Design.Gradient)
+    case image(UIKit.UIImage?)
+  }
+  @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BackgroundView : UIKit.UIView {
+    @_Concurrency.MainActor(unsafe) @objc override dynamic open var bounds: CoreGraphics.CGRect {
+      @_Concurrency.MainActor(unsafe) @objc get
+      @_Concurrency.MainActor(unsafe) @objc set
+    }
+    @_Concurrency.MainActor(unsafe) open var background: RetailLocaleSelectorJourney.LocaleSelector.Design.Background? {
+      get
+      set
+    }
+    @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+    @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+    @objc deinit
+  }
+}
+extension RetailLocaleSelectorJourney.LocaleSelector {
+  public struct Design {
+    public init()
+  }
+}
+extension RetailLocaleSelectorJourney.LocaleSelector.Design {
+  public struct Gradient {
+    public struct Point {
+      public let point: CoreGraphics.CGPoint
+      public let color: UIKit.UIColor
+      public init(point: CoreGraphics.CGPoint, color: UIKit.UIColor)
+    }
+    public struct Location {
+      public let location: CoreGraphics.CGFloat
+      public let color: UIKit.UIColor
+      public init(location: CoreGraphics.CGFloat, color: UIKit.UIColor)
+    }
+    public let startPoint: RetailLocaleSelectorJourney.LocaleSelector.Design.Gradient.Point
+    public let endPoint: RetailLocaleSelectorJourney.LocaleSelector.Design.Gradient.Point
+    public let locations: [RetailLocaleSelectorJourney.LocaleSelector.Design.Gradient.Location]
+    public init(startPoint: RetailLocaleSelectorJourney.LocaleSelector.Design.Gradient.Point, endPoint: RetailLocaleSelectorJourney.LocaleSelector.Design.Gradient.Point, locations: [RetailLocaleSelectorJourney.LocaleSelector.Design.Gradient.Location] = [])
+  }
+}
+public protocol LocaleSelectorUseCase {
+  var supportedLocales: [Foundation.Locale] { get }
+  var savedLocale: Foundation.Locale? { get set }
+  func enforceLocale(_ locale: Foundation.Locale)
+}
+public protocol LocalesContainerView : UIKit.UIView {
+  var scrollView: UIKit.UIScrollView { get set }
+  var containerView: UIKit.UIView { get set }
+  var stackView: UIKit.UIStackView { get set }
+}
+public struct SelectLocale {
+  public static func build(destination: @escaping ((UIKit.UINavigationController) -> UIKit.UIViewController)) -> ((UIKit.UINavigationController) -> UIKit.UIViewController)
+}
+extension RetailLocaleSelectorJourney.SelectLocale {
+  public struct Configuration {
+    public init()
+    public var enabled: Swift.Bool
+    public var strings: RetailLocaleSelectorJourney.SelectLocale.Strings
+    public var design: RetailLocaleSelectorJourney.SelectLocale.Design
+    public var router: RetailLocaleSelectorJourney.SelectLocale.Router
+  }
+}
+extension RetailLocaleSelectorJourney.SelectLocale {
+  public struct Design {
+    public init()
+    public var background: (_ view: RetailLocaleSelectorJourney.LocaleSelector.Design.BackgroundView) -> Swift.Void
+    public var titleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var subtitleLabel: (_ label: UIKit.UILabel) -> Swift.Void
+    public var localesContainer: (_ view: RetailLocaleSelectorJourney.LocalesContainerView) -> Swift.Void
+    public var localeButton: (_ button: RetailLocaleSelectorJourney.LocaleButton) -> Swift.Void
+    public var continueButton: (_ button: BackbaseDesignSystem.Button) -> Swift.Void
+  }
+}
+extension RetailLocaleSelectorJourney.SelectLocale {
+  public struct Router {
+    public typealias SelectHandler = (UIKit.UINavigationController) -> (@escaping (UIKit.UINavigationController) -> UIKit.UIViewController) -> (Foundation.Locale, Swift.Bool) -> Swift.Void
+    public var didSelectLocale: RetailLocaleSelectorJourney.SelectLocale.Router.SelectHandler?
+  }
+}
+extension RetailLocaleSelectorJourney.SelectLocale {
+  public struct Strings {
+    public init()
+    public var title: RetailJourneyCommon.LocalizedString
+    public var subtitle: RetailJourneyCommon.LocalizedString
+    public var continueButtonTitle: RetailJourneyCommon.LocalizedString
+  }
+}
