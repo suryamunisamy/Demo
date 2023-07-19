@@ -43,6 +43,13 @@ final class DemoUITestsLaunchTests: XCTestCase {
         loginButton.tap()
         username.tap()
         username.typeText("sdbxaz-sara")
+        
+        password.tap()
+        password.typeText("zovfspZnFF5RLx1mL69ev")
+        //let backButton = app.navigationBars.buttons["Back"]
+        //XCTAssertTrue(testButton.waitForExistence(timeout: TimeInterval(timeout)))
+        loginButton.tap()
+        
         password.tap()
         password.typeText("zovfspZnFF5RLx1mL69evw")
         //let backButton = app.navigationBars.buttons["Back"]
