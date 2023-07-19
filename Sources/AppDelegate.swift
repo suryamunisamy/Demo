@@ -23,7 +23,8 @@ override init() {
         //var cardImage =  CardsManagement.Design.
         //DesignSystem.initialize(jsonName: "designTokens", bundle: .main)
         //DesignSystem.initialize(jsonName: "designTokens")
-        Resolver.register { FakeTransactionsUseCase() as TransactionsUseCase }
+      //  Resolver.register { FakeTransactionsUseCase() as TransactionsUseCase }
+        
         Resolver.register { CustomJourney.Welcome.Configuration() }
         Resolver.register { CustomJourney.Another.Configuration() }
         Resolver.register { AnotherViewModel() }
@@ -36,9 +37,14 @@ override init() {
             
             DesignSystem.initialize(jsonName: "designTokens")
             //DesignSystem.initialize(jsonName: "designTokens", bundle: .main)
+            
+            
+            
             appConfig.splash.backgroundImage = UIImage(named: "splash.png")
+            
             appConfig.splash.strings.title = ""
-            appConfig.splash.strings.subtitle = ""
+            appConfig.authentication.register.strings.loginButtonTitle = "Login"
+            //appConfig.authentication.register.strings.
             appConfig.authentication.login.image =  UIImage(named: "ctslogo.png")
             appConfig.authentication.passcode.loginImage = UIImage(named: "ctslogo.png")
             let currentPaymentCardContentProvider = appConfig.cardsManagement.uiDataMapper.paymentCardContentProvider
@@ -87,7 +93,7 @@ override init() {
                 }
             }
             
-            appConfig.accountsAndTransactions.accounts.router.didSelectProduct = { navigationController in
+          /*  appConfig.accountsAndTransactions.accounts.router.didSelectProduct = { navigationController in
                 return { product in
                     guard let vc = Transactions.buildCustom(navigationController: navigationController, account: product.account) as? CustomTransactionsViewController else {
                         return
@@ -96,7 +102,8 @@ override init() {
                     navigationController.pushViewController(vc, animated: true)
                     
                 }
-            }
+            } */
+           
             appConfig.router.didUpdateState = { state in
                     return { window in
                         DispatchQueue.main.async {
@@ -104,7 +111,7 @@ override init() {
                             let featureFilter = Resolver.resolve(FeatureFilter.self)
                             if let features = featureFilter.features {
                                 entryPoint = .tabbedMenu([
-                                    Accounts.buildCustom(navigationController:),
+                                    Accounts.build(navigationController:),
                                     CustomJourney.Welcome.build(navigationController:),
                                     CardsDetails.build(navigationController:),
                                     More.build(identifier: PaymentHub.identifier),
